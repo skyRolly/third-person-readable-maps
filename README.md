@@ -1,2 +1,2 @@
-# third-person-held-maps
-A Minecraft mod. Properly renders held maps in third-person view.
+# third-person-readable-maps
+A Minecraft mod. Makes held maps readable in third-person view.
