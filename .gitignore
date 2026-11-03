@@ -3,7 +3,9 @@
 build/
 run/
 *.jar
+!/gradle/wrapper/gradle-wrapper.jar
 .idea/
 *.iml
 .vscode/
 .DS_Store
+dependency-graph-reports/

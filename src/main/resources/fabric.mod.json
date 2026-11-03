@@ -4,11 +4,17 @@
   "version": "${version}",
   "name": "Third Person Readable Maps",
   "description": "Renders filled map contents on maps carried by third-person players.",
+  "authors": ["skyRolly"],
+  "contact": {
+    "sources": "https://github.com/skyRolly/third-person-readable-maps",
+    "issues": "https://github.com/skyRolly/third-person-readable-maps/issues"
+  },
+  "license": "MIT",
   "environment": "client",
   "mixins": ["thirdpersonreadablemaps.mixins.json"],
   "depends": {
     "fabricloader": ">=0.18.1",
-    "minecraft": "1.21.11",
+    "minecraft": "${minecraft_version}",
     "java": ">=21"
   }
 }
