@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "thirdpersonreadablemaps",
+  "version": "${version}",
+  "name": "Third Person Readable Maps",
+  "description": "Renders filled map contents on maps carried by third-person players.",
+  "environment": "client",
+  "mixins": ["thirdpersonreadablemaps.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}

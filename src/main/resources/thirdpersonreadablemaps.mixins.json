@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tech.rolly.thirdpersonreadablemaps.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ReadableMapLayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
