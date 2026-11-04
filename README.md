@@ -11,10 +11,11 @@ The candidates in this repository build separate JARs with a shared mod version:
 | Minecraft | Java to play | Fabric Loader | Status |
 | --- | --- | --- | --- |
 | 1.21.11 | 21+ | 0.20.1+ | Maintenance candidate, intermediary/remapped JAR |
+| 26.1, 26.1.1, 26.1.2, 26.2 | 25+ | 0.20.1+ | One tested candidate JAR, official names |
 | 26.3 | 25+ | 0.20.1+ | Candidate based on unmerged PR #3, official-name JAR |
 
-These are exact game versions, not claims that the JARs work on a whole release
-family. There is no coordinated public release yet. The prior `main` history
+These are explicit game versions, not claims that the JARs work on an entire
+release family. There is no coordinated public release yet. The prior `main` history
 contains mod version `0.0.1`; `0.0.2` is proposed for the first coordinated
 release and must not be tagged or published until reviewed. See the full
 [compatibility decision record](docs/compatibility.md).
@@ -33,7 +34,9 @@ The Gradle 9.8.2 wrapper is included. The 1.21.11 branch executes Gradle and
 compiles with JDK 25 using `--release 21`: the resulting mod requires Java 21,
 not Java 25, to run. The artifact is
 `build/libs/third-person-readable-maps-<mod-version>-mc1.21.11.jar`.
-The separate 26.3 candidate uses Java 25 for both build and runtime and packages
+The 26.1–26.2 candidate compiles against 26.1 and packages
+`third-person-readable-maps-<mod-version>-mc26.1-26.2.jar`. The separate 26.3
+candidate uses Java 25 for both build and runtime and packages
 `third-person-readable-maps-<mod-version>-mc26.3.jar`.
 
 Do not install development intermediates. Copy the exact JAR for your game

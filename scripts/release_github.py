@@ -48,6 +48,7 @@ def verified_files(cfg, plan, directory):
         source = plan['groups'][name]
         require(group.get('branch') == spec['branch'] == source['source_branch'] and group.get('source_commit') == source['commit'] and
                 group.get('minecraft') == spec['minecraft'] and group.get('java') == spec['java'] and
+                group.get('compile_target') == spec['target'] and
                 group.get('loader') == spec['loader'] and group.get('namespace') == spec['namespace'] and
                 group.get('runtime_evidence') == source['runtime_evidence'],
                 f'{name}: source or runtime evidence differs from plan')
@@ -126,8 +127,8 @@ def main():
         if release is None:
             require(args.mode == 'prepare-draft', 'draft release does not exist')
             notes = '\n'.join(f'- {change}' for change in plan['changes'])
-            downloads = '\n'.join(f"- Minecraft {name}: Java {spec['java']}+, Fabric Loader {spec['loader']}+"
-                                  for name, spec in sorted(cfg['groups'].items()))
+            downloads = '\n'.join(f"- Minecraft {', '.join(spec['minecraft'])}: Java {spec['java']}+, Fabric Loader {spec['loader']}+"
+                                  for _, spec in sorted(cfg['groups'].items()))
             limitations = '\n'.join(f'- {item}' for item in plan['known_limitations']) or '- None recorded.'
             body = (f"Release date: {plan['release_date']}\n\n## Changes\n\n{notes}\n\n"
                     f'## Downloads and requirements\n\n{downloads}\n\n## Known limitations\n\n{limitations}\n\n'

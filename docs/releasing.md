@@ -3,18 +3,20 @@
 ## Branches and review
 
 `main` owns the release plan and workflows and continues to build its current
-game implementation. The intended maintained branches are `mc/1.21.11` and
-`mc/26.3`, each with its own exact game target, source, dependencies and Linux /
+game implementation. The intended maintained branches are `mc/1.21.11`,
+`mc/26.1-26.2` and `mc/26.3`, each with its own game targets, source, dependencies and Linux /
 Windows CI. The existing `mc/1.21.11` starts at approved main commit `4810b1b`;
 its proposed build changes are in PR #4. Protect and review the branches before
 treating their new history as approved. PR #3 is unmerged: the 26.3 candidate in PR #5 is stacked on its
 head, not silently incorporated into approved history. Review and integrate the
 central changes first, preserve the approved 1.21.11 line in its maintenance
 branch, then resolve any changes shared with PR #3 and review that port and its
-stacked candidate. Create the 26.3 maintenance branch only from approved history.
+stacked candidate. The 26.1–26.2 port in PR #7 is reviewed against a separate candidate
+base at PR #3’s head; do not merge it into the 26.3 modernization branch.
+Create both 26.x maintenance branches only from approved history.
 Never merge automatically.
 
-For a change, identify both groups, make a reviewable PR to each applicable
+For a change, identify all groups, make a reviewable PR to each applicable
 branch, adapt game-specific rendering where needed, and record whether each
 change was applied, modified or deferred. Reviewers verify feature equivalence;
 matching version strings or patch hashes alone are insufficient. Update the
@@ -25,18 +27,19 @@ already differ; independent small branches plus reviewed cherry-picks are less
 complex here.
 
 The proposed default-branch `.github/dependabot.yml` includes scheduled Gradle
-and Actions version updates for `mc/1.21.11`. After `mc/26.3` exists, add
-equivalent entries for that branch, e.g.:
+and Actions version updates for `mc/1.21.11`. After the 26.x branches exist, add
+equivalent entries for each branch, e.g.:
 
 ```yaml
 - package-ecosystem: gradle
   directory: /
-  target-branch: mc/26.3
+  target-branch: mc/26.1-26.2
   schedule:
     interval: weekly
 ```
 
-Add an equivalent `github-actions` entry for `mc/26.3`. Keep the default-branch entries and security
+Add `github-actions` coverage for that branch and both ecosystems for `mc/26.3`.
+Keep the default-branch entries and security
 updates enabled. Version updates targeting non-default branches do not change the
 separate default-branch behavior of Dependabot security updates.
 
@@ -74,7 +77,7 @@ published tag to repair a release; issue a new version instead.
    workflow fails closed if these APIs or protections are unavailable. Configure
    branch/tag rules so unauthorized actors cannot create or move release tags.
 3. Dispatch **Coordinated release / dry-run** from the reviewed candidate ref.
-   It verifies each candidate branch head, builds both pinned commits on Linux with JDK 25, runs each branch's build
+   It verifies each candidate branch head, builds all pinned commits on Linux with JDK 25, runs each branch's build
    and Mixin/JAR verification, then verifies names, metadata, namespaces,
    bytecode, checksums and version synchronization. The resulting artifact is
    marked `candidate: true`; dry runs do not create tags or Releases.
@@ -86,7 +89,7 @@ published tag to repair a release; issue a new version instead.
    Existing tags at another commit, public releases, conflicting assets and
    incomplete bundles are rejected. Retrying an identical draft is safe.
 5. Inspect the draft, notes, compatibility table, provenance manifest,
-   `SHA256SUMS`, the two JARs, and evidence. Then dispatch **publish** from the
+   `SHA256SUMS`, the JARs, and evidence. Then dispatch **publish** from the
    same unchanged `main` commit; the separately reviewed `release-publication`
    environment gates it. It rebuilds and checks the exact draft assets again.
    Any changed branch head, failed CI, missing review, missing proof or conflicting

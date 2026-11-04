@@ -25,8 +25,9 @@ class ReleaseValidationTests(unittest.TestCase):
         for name in self.config['groups']:
             self.plan['groups'][name] = {'source_branch': self.config['groups'][name]['branch'],
                                          'commit': 'a' * 40, 'verified_changes': ['Fix map rendering'],
-                                         'runtime_evidence': {name: {'installed_jar': 'https://example.org/installed',
-                                                                     'graphical': 'https://example.org/visual'}}}
+                                         'runtime_evidence': {v: {'installed_jar': 'https://example.org/installed',
+                                                                  'graphical': 'https://example.org/visual'}
+                                                              for v in self.config['groups'][name]['minecraft']}}
         self.path = self.root / 'plan.json'
         self.write_plan()
 
@@ -45,7 +46,8 @@ class ReleaseValidationTests(unittest.TestCase):
         path = self.root / release.archive_name('0.0.2', name)
         metadata = {'schemaVersion': 1, 'id': release.ID, 'version': version, 'environment': 'client',
                     'license': 'MIT', 'mixins': ['thirdpersonreadablemaps.mixins.json'],
-                    'depends': {'minecraft': name, 'java': f">={settings['java']}",
+                    'depends': {'minecraft': settings['minecraft'][0] if len(settings['minecraft']) == 1 else settings['minecraft'],
+                                'java': f">={settings['java']}",
                                 'fabricloader': f">={settings['loader']}"}}
         mixin = {'required': True, 'compatibilityLevel': f"JAVA_{settings['java']}",
                  'injectors': {'defaultRequire': 1}, 'client': ['ReadableMapLayerMixin'],
@@ -54,7 +56,7 @@ class ReleaseValidationTests(unittest.TestCase):
         with ZipFile(path, 'w') as jar:
             jar.writestr('fabric.mod.json', json.dumps(metadata))
             jar.writestr('thirdpersonreadablemaps.mixins.json', json.dumps(mixin))
-            jar.writestr('META-INF/MANIFEST.MF', f"Manifest-Version: 1.0\nFabric-Mapping-Namespace: {namespace or settings['namespace']}\nFabric-Minecraft-Version: {name}\n\n")
+            jar.writestr('META-INF/MANIFEST.MF', f"Manifest-Version: 1.0\nFabric-Mapping-Namespace: {namespace or settings['namespace']}\nFabric-Minecraft-Version: {settings['target']}\n\n")
             jar.writestr('LICENSE', 'MIT')
             jar.writestr(release.MIXIN_CLASS, b'\xca\xfe\xba\xbe\x00\x00' + struct.pack('>H', major) + target)
             if duplicate:
@@ -105,6 +107,14 @@ class ReleaseValidationTests(unittest.TestCase):
         with self.assertRaises(release.Invalid):
             release.read_json(self.path)
 
+    def test_overlapping_game_versions_are_rejected(self):
+        config = copy.deepcopy(self.config)
+        config['groups']['26.3']['minecraft'].append('26.2')
+        path = self.root / 'compatibility.json'
+        path.write_text(json.dumps(config), encoding='utf-8')
+        with self.assertRaises(release.Invalid):
+            release.load_plan(self.path, candidate=True, config_path=path)
+
     def test_aggregate_rechecks_artifacts_and_detects_tampering(self):
         cfg, plan = self.validate()
         artifacts = self.root / 'artifacts'
@@ -116,7 +126,7 @@ class ReleaseValidationTests(unittest.TestCase):
         bundle = self.root / 'bundle'
         release.aggregate(cfg, plan, artifacts, bundle)
         files = release_github.verified_files(cfg, plan, bundle)
-        self.assertEqual(len(files), 4)
+        self.assertEqual(len(files), len(cfg['groups']) + 2)
         with (bundle / release.archive_name('0.0.2', '1.21.11')).open('ab') as jar:
             jar.write(b'tampered')
         with self.assertRaises(release.Invalid):

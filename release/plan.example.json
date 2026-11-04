@@ -11,6 +11,12 @@
       "verified_changes": ["Describe the shared, reviewed user-visible change"],
       "runtime_evidence": {}
     },
+    "26.1-26.2": {
+      "source_branch": "mc/26.1-26.2",
+      "commit": "0000000000000000000000000000000000000000",
+      "verified_changes": ["Describe the shared, reviewed user-visible change"],
+      "runtime_evidence": {}
+    },
     "26.3": {
       "source_branch": "mc/26.3",
       "commit": "0000000000000000000000000000000000000000",

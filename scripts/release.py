@@ -73,8 +73,9 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
     limitations = plan.get('known_limitations')
     require(isinstance(limitations, list) and all(isinstance(x, str) and x.strip() for x in limitations),
             'known_limitations must be a list of nonempty strings')
+    seen_minecraft = set()
     for name, spec in groups.items():
-        require(re.fullmatch(r'\d+(?:\.\d+)+', name) is not None, f'unsafe group id: {name}')
+        require(re.fullmatch(r'\d+(?:\.\d+)+(?:-\d+(?:\.\d+)+)?', name) is not None, f'unsafe group id: {name}')
         entry = selected[name]
         require(isinstance(entry, dict), f'{name}: invalid entry')
         commit = entry.get('commit')
@@ -88,7 +89,13 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
                 f'{name}: invalid source branch')
         require(branch == spec['branch'] or (candidate and branch.startswith('candidate/')),
                 f'{name}: source must be the approved maintenance branch')
-        require(spec.get('minecraft') == [name], f'{name}: only exact runtime-tested Minecraft targets are enabled')
+        minecraft = spec.get('minecraft')
+        require(isinstance(minecraft, list) and minecraft and
+                all(isinstance(v, str) and re.fullmatch(r'\d+(?:\.\d+)+', v) for v in minecraft) and
+                len(set(minecraft)) == len(minecraft) and spec.get('target') in minecraft,
+                f'{name}: invalid explicit Minecraft versions or compilation target')
+        require(not (seen_minecraft & set(minecraft)), f'{name}: Minecraft versions overlap another group')
+        seen_minecraft.update(minecraft)
         require(spec.get('java') in (21, 25) and spec.get('namespace') in ('intermediary', 'official'),
                 f'{name}: invalid Java or namespace')
         require(re.fullmatch(r'\d+\.\d+\.\d+', spec.get('loader', '')) is not None, f'{name}: invalid loader')
@@ -109,7 +116,7 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
 
 def matrix(cfg, plan):
     return [{'group': name, 'commit': plan['groups'][name]['commit'],
-             'branch': plan['groups'][name]['source_branch']}
+             'branch': plan['groups'][name]['source_branch'], 'multi_version': len(spec['minecraft']) > 1}
             for name, spec in sorted(cfg['groups'].items())]
 
 
@@ -159,7 +166,8 @@ def inspect_jar(path, version, name, spec):
                     metadata.get('version') == version and metadata.get('environment') == 'client',
                     f'{name}: wrong mod identity, version, or environment')
             depends = metadata.get('depends', {})
-            require(depends.get('minecraft') == name and depends.get('java') == f">={spec['java']}" and
+            expected_minecraft = spec['minecraft'][0] if len(spec['minecraft']) == 1 else spec['minecraft']
+            require(depends.get('minecraft') == expected_minecraft and depends.get('java') == f">={spec['java']}" and
                     depends.get('fabricloader') == f">={spec['loader']}", f'{name}: wrong dependency metadata')
             require(metadata.get('license') == 'MIT' and metadata.get('mixins') == ['thirdpersonreadablemaps.mixins.json'],
                     f'{name}: wrong license or Mixin registration')
@@ -170,7 +178,7 @@ def inspect_jar(path, version, name, spec):
                     mixin.get('client') == ['ReadableMapLayerMixin'], f'{name}: Mixin is not strictly required')
             manifest = parse_manifest(jar.read('META-INF/MANIFEST.MF'))
             require(manifest.get('fabric-mapping-namespace') == spec['namespace'] and
-                    manifest.get('fabric-minecraft-version') == name, f'{name}: wrong namespace or build target')
+                    manifest.get('fabric-minecraft-version') == spec['target'], f'{name}: wrong namespace or build target')
             classes = [x for x in names if x.endswith('.class')]
             require(classes, f'{name}: no classes')
             major = spec['java'] + 44
@@ -207,7 +215,8 @@ def aggregate(cfg, plan, artifacts, output, candidate=False):
         shutil.copyfile(jars[0], output / jars[0].name)
         sums.append(f'{digest}  {jars[0].name}')
         result['groups'].append({'id': name, 'branch': entry['branch'], 'source_commit': entry['commit'],
-                                 'minecraft': spec['minecraft'], 'java': spec['java'], 'loader': spec['loader'],
+                                 'minecraft': spec['minecraft'], 'compile_target': spec['target'],
+                                 'java': spec['java'], 'loader': spec['loader'],
                                  'namespace': spec['namespace'], 'artifact': jars[0].name, 'sha256': digest,
                                  'runtime_evidence': plan['groups'][name].get('runtime_evidence', {})})
     manifest = output / 'release-manifest.json'
