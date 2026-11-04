@@ -133,7 +133,9 @@ def evidence_record(entry, group, minecraft, root=None):
             f'{group}: evidence requires a SHA-256 artifact digest')
     for kind in ('installed_jar', 'graphical'):
         require(isinstance(report[kind], str) and report[kind].strip(), f'{group}: missing {kind} test account')
-    return {'report': path, 'report_sha256': hashlib.sha256(raw).hexdigest(), **report}
+    return {'report': path, 'report_sha256': hashlib.sha256(raw).hexdigest(),
+            'attestation': 'reviewed-report-not-machine-proof',
+            'external_references': 'unverified', **report}
 
 
 def matrix(cfg, plan):

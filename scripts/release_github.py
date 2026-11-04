@@ -38,6 +38,9 @@ def mutate(path, method, data, content_type='application/json'):
 def verified_files(cfg, plan, directory, coordinator_sha):
     directory = Path(directory)
     manifest = read_json(directory / 'release-manifest.json')
+    require(set(manifest) == {'schema', 'version', 'tag', 'coordinator_sha', 'candidate', 'release_date',
+                              'changes', 'known_limitations', 'groups'} and manifest.get('schema') == 1,
+            'release manifest schema or fields are invalid')
     require(manifest.get('version') == manifest.get('tag') == plan['version'] and manifest.get('candidate') is False and
             manifest.get('coordinator_sha') == coordinator_sha,
             'release manifest version or candidate flag is invalid')
@@ -49,6 +52,9 @@ def verified_files(cfg, plan, directory, coordinator_sha):
     names = []
     sums = []
     for group in sorted(groups, key=lambda x: x['id']):
+        require(set(group) == {'id', 'branch', 'source_commit', 'minecraft', 'compile_target', 'java',
+                               'loader', 'namespace', 'artifact', 'sha256', 'runtime_evidence'},
+                'release manifest group fields are invalid')
         name = group['id']
         spec = cfg['groups'][name]
         source = plan['groups'][name]

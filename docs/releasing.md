@@ -81,7 +81,9 @@ dominant arms, map data, missing data, motion and first-person behavior, and
 record what was actually tested. Neither a URL nor a structurally valid report
 proves a test happened. The build must produce the exact SHA-256 tested in every
 report. The manifest embeds each report and its hash, source revision, artifact
-hash and coordinator commit; its report path resolves in that commit.
+hash and coordinator commit; its report path resolves in that commit. The
+manifest marks the report as a human attestation and any external references as
+unverified.
 
 `release/plan.example.json` is intentionally invalid: it contains zero SHAs and
 no runtime evidence. Create `release/plan.json` in a reviewed PR, using exact
