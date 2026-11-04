@@ -86,6 +86,47 @@ class AuthorizationTests(unittest.TestCase):
     def test_valid_current_protected_reviewed_sources(self):
         self.authorize()
 
+    def test_ci_run_path_accepts_only_expected_workflow_and_ref(self):
+        path = '.github/workflows/ci.yml'
+        for value in (path, f'{path}@{self.branch}', f'{path}@refs/heads/{self.branch}',
+                      f'owner/repo/{path}@{self.branch}', f'owner/repo/{path}'):
+            self.runs = [dict(self.run, path=value)]
+            with self.subTest(accepted=value):
+                self.authorize()
+        for value in (f'{path}@main', f'{path}@refs/tags/{self.branch}', f'{path}@{self.commit}',
+                      f'{path}@{self.branch}@other', path + '@', path + '/extra',
+                      f'other/repo/{path}@{self.branch}', f'{path}.backup@{self.branch}',
+                      './' + path, ' ' + path, path + '\n', None):
+            self.runs = [dict(self.run, path=value)]
+            with self.subTest(rejected=value), self.assertRaises(Invalid):
+                self.authorize()
+
+    def test_deployment_run_path_and_workflow_identity(self):
+        environment = {'id': 77, 'protection_rules': [{'type': 'required_reviewers',
+                       'reviewers': [{'type': 'User', 'reviewer': {'id': 5}}], 'prevent_self_review': True}]}
+        workflow = {'id': 13, 'path': '.github/workflows/release.yml', 'state': 'active'}
+        path = workflow['path']
+        run = {'id': 123, 'workflow_id': 13, 'event': 'workflow_dispatch', 'head_branch': 'main',
+               'head_sha': self.commit, 'path': path, 'run_attempt': 1,
+               'actor': {'login': 'dispatcher'}, 'triggering_actor': {'login': 'dispatcher'}}
+        approval = {'state': 'approved', 'user': {'login': 'reviewer', 'id': 5},
+                    'environments': [{'id': 77, 'name': 'release-publication'}]}
+        with patch.dict(os.environ, {'GITHUB_RUN_ID': '123', 'GITHUB_RUN_ATTEMPT': '1'}):
+            for value in (path, path + '@main', path + '@refs/heads/main', 'owner/repo/' + path + '@main'):
+                with self.subTest(accepted=value), patch.object(auth, 'api',
+                        side_effect=[environment, workflow, dict(run, path=value), [approval]]):
+                    auth.check_deployment_approval('owner/repo', 'release-publication', self.commit)
+            for change in ({'path': path + '@other'}, {'path': path + '@main@other'},
+                           {'path': '.github/workflows/ci.yml@main'}, {'path': 'evil/repo/' + path + '@main'},
+                           {'id': 124}, {'workflow_id': 14}, {'head_sha': 'c' * 40},
+                           {'head_branch': 'other'}, {'event': 'push'}):
+                with self.subTest(rejected=change), patch.object(auth, 'api',
+                        side_effect=[environment, workflow, dict(run, **change)]), self.assertRaises(Invalid):
+                    auth.check_deployment_approval('owner/repo', 'release-publication', self.commit)
+            for bad in (dict(workflow, path='.github/workflows/other.yml'), dict(workflow, state='disabled_manually')):
+                with patch.object(auth, 'api', side_effect=[environment, bad]), self.assertRaises(Invalid):
+                    auth.check_deployment_approval('owner/repo', 'release-publication', self.commit)
+
     def test_unrelated_unpinned_or_wrong_app_checks_fail(self):
         for checks in ([{'context': 'Unrelated', 'app_id': 123}],
                        [{'context': n, 'app_id': -1} for n in self.required],
@@ -180,18 +221,19 @@ class AuthorizationTests(unittest.TestCase):
     def test_environment_requires_a_real_independent_approval_for_this_dispatch(self):
         environment = {'id': 77, 'protection_rules': [{'type': 'required_reviewers',
                        'reviewers': [{'type': 'User', 'reviewer': {'id': 5}}], 'prevent_self_review': True}]}
-        run = {'event': 'workflow_dispatch', 'head_branch': 'main', 'head_sha': self.commit,
+        workflow = {'id': 13, 'path': '.github/workflows/release.yml', 'state': 'active'}
+        run = {'id': 123, 'workflow_id': 13, 'event': 'workflow_dispatch', 'head_branch': 'main', 'head_sha': self.commit,
                'path': '.github/workflows/release.yml', 'run_attempt': 1,
                'actor': {'login': 'dispatcher'}, 'triggering_actor': {'login': 'dispatcher'}}
         approval = {'state': 'approved', 'user': {'login': 'reviewer', 'id': 5},
                     'environments': [{'id': 77, 'name': 'release-publication'}]}
-        replies = [environment, run, [approval]]
+        replies = [environment, workflow, run, [approval]]
         with patch.dict(os.environ, {'GITHUB_RUN_ID': '123', 'GITHUB_RUN_ATTEMPT': '1'}):
             with patch.object(auth, 'api', side_effect=replies):
                 auth.check_deployment_approval('owner/repo', 'release-publication', self.commit)
             for bad in ([], [dict(approval, state='rejected')], [dict(approval, user={'login': 'dispatcher'})],
                         [approval, approval]):
-                with self.subTest(approval=bad), patch.object(auth, 'api', side_effect=[environment, run, bad]):
+                with self.subTest(approval=bad), patch.object(auth, 'api', side_effect=[environment, workflow, run, bad]):
                     with self.assertRaises(Invalid):
                         auth.check_deployment_approval('owner/repo', 'release-publication', self.commit)
         with patch.dict(os.environ, {'GITHUB_RUN_ID': '123', 'GITHUB_RUN_ATTEMPT': '2'}):

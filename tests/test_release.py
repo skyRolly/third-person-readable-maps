@@ -1,4 +1,7 @@
 import copy
+from contextlib import redirect_stderr, redirect_stdout
+import hashlib
+import io
 import os
 import subprocess
 import json
@@ -9,6 +12,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from zipfile import ZipFile
+from urllib.parse import parse_qs, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -147,6 +151,184 @@ class ReleaseValidationTests(unittest.TestCase):
             jar.write(b'tampered')
         with self.assertRaises(release.Invalid):
             release_github.verified_files(cfg, plan, bundle, 'c' * 40)
+
+    def test_simulated_prepare_and_publish_check_the_complete_authorization_boundary(self):
+        # Exercise actual plan, bundle, branch/review/CI and deployment checks;
+        # only GitHub's API and the final HTTP writes are simulated in memory.
+        coordinator = 'c' * 40
+        branch_shas = {'main': coordinator}
+        for i, (name, entry) in enumerate(self.plan['groups'].items()):
+            entry['commit'] = 'def'[i] * 40
+            branch_shas[entry['source_branch']] = entry['commit']
+            for ref in entry['runtime_evidence'].values():
+                report = self.root / ref['report']
+                data = json.loads(report.read_text())
+                data['source_commit'] = entry['commit']
+                report.write_text(json.dumps(data))
+        cfg, plan = self.validate()
+        artifacts = self.root / 'integration-artifacts'
+        for name, spec in cfg['groups'].items():
+            directory = artifacts / name
+            directory.mkdir(parents=True)
+            source = self.jar(name, major=spec['java'] + 44)
+            source.rename(directory / source.name)
+            digest = release.inspect_jar(directory / source.name, plan['version'], name, spec)
+            for ref in plan['groups'][name]['runtime_evidence'].values():
+                report = self.root / ref['report']
+                data = json.loads(report.read_text())
+                data['artifact_sha256'] = digest
+                report.write_text(json.dumps(data))
+        bundle = self.root / 'integration-bundle'
+        release.aggregate(cfg, plan, artifacts, bundle, coordinator_sha=coordinator)
+        files = release_github.verified_files(cfg, plan, bundle, coordinator)
+        required = sorted(authorize_release.BUILD_CHECKS)
+        protection = {'required_pull_request_reviews': {'required_approving_review_count': 1,
+            'dismiss_stale_reviews': True, 'require_code_owner_reviews': False, 'require_last_push_approval': False,
+            'bypass_pull_request_allowances': {'users': [], 'teams': [], 'apps': []}},
+            'enforce_admins': {'enabled': True}, 'allow_force_pushes': {'enabled': False},
+            'allow_deletions': {'enabled': False}, 'required_status_checks': {'strict': True,
+            'contexts': required, 'checks': [{'context': n, 'app_id': 15368} for n in required]}}
+        sha_branches = {sha: branch for branch, sha in branch_shas.items()}
+        branches = list(branch_shas)
+        run_ids = {branch: 100 + index for index, branch in enumerate(branches)}
+        ids_branches = {value: key for key, value in run_ids.items()}
+        env = {'GITHUB_REPOSITORY': 'owner/repo', 'GITHUB_RUN_ID': '999', 'GITHUB_RUN_ATTEMPT': '1',
+               'GH_TOKEN': 'write-token', 'RELEASE_AUDITOR_TOKEN': 'audit-token'}
+        state = {'environment': 'release-draft', 'deployment_path': '.github/workflows/release.yml@main',
+                 'failure': None, 'no_approval': False, 'writes': [], 'tag': False, 'draft': None}
+
+        def api(path, **kwargs):
+            parsed = urlsplit(path)
+            route = parsed.path.removeprefix('repos/owner/repo/')
+            query = parse_qs(parsed.query)
+            if route.startswith('environments/'):
+                return {'id': 77, 'protection_rules': [{'type': 'required_reviewers',
+                    'reviewers': [{'type': 'User', 'reviewer': {'id': 5}}], 'prevent_self_review': True}]}
+            if route.startswith('branches/'):
+                branch = unquote(route[len('branches/'):].removesuffix('/protection'))
+                return protection if route.endswith('/protection') else {'protected': True, 'commit': {'sha': branch_shas[branch]}}
+            if route.startswith(('rules/branches/', 'rulesets')):
+                return []
+            if route.startswith('commits/') and route.endswith('/pulls'):
+                sha = route.split('/')[1]
+                branch = sha_branches[sha]
+                return [{'number': 1, 'merged_at': '2026-11-04T00:00:00Z', 'merge_commit_sha': sha,
+                         'base': {'ref': branch}, 'head': {'sha': 'b' * 40}, 'user': {'login': 'author'}}]
+            if route.startswith('pulls/') and route.endswith('/reviews'):
+                return [{'id': 1, 'user': {'login': 'reviewer'}, 'state': 'APPROVED', 'commit_id': 'b' * 40,
+                         'submitted_at': '2026-11-03T00:00:00Z'}]
+            if route.startswith('collaborators/'):
+                return {'permission': 'write'}
+            if route == 'actions/workflows/ci.yml':
+                return {'id': 12, 'path': '.github/workflows/ci.yml', 'state': 'active'}
+            if route == 'actions/workflows/release.yml':
+                return {'id': 13, 'path': '.github/workflows/release.yml', 'state': 'active'}
+            if route == 'actions/workflows/ci.yml/runs':
+                branch = query['branch'][0]
+                return {'workflow_runs': [{'id': run_ids[branch], 'created_at': '2026-11-04T00:00:00Z',
+                    'workflow_id': 12, 'path': '.github/workflows/ci.yml@' + branch,
+                    'head_sha': branch_shas[branch], 'head_branch': branch, 'event': 'push', 'run_attempt': 1,
+                    'status': 'completed', 'conclusion': state['failure'] or 'success'}]}
+            if route.startswith('actions/runs/') and '/attempts/' in route:
+                run_id = int(route.split('/')[2])
+                sha = branch_shas[ids_branches[run_id]]
+                return {'jobs': [{'id': run_id * 10 + i, 'run_id': run_id, 'run_attempt': 1, 'head_sha': sha,
+                                  'name': name, 'status': 'completed', 'conclusion': 'success'}
+                                 for i, name in enumerate(required)]}
+            if route.startswith('commits/') and route.endswith('/check-runs'):
+                sha = route.split('/')[1]
+                run_id = run_ids[sha_branches[sha]]
+                return {'check_runs': [{'id': run_id * 10 + i, 'name': name, 'app': {'id': 15368},
+                    'head_sha': sha, 'started_at': '2026-11-04T00:00:01Z', 'status': 'completed',
+                    'conclusion': 'success'} for i, name in enumerate(required)]}
+            if route == 'actions/runs/999':
+                return {'id': 999, 'workflow_id': 13, 'event': 'workflow_dispatch', 'head_branch': 'main',
+                        'head_sha': coordinator, 'path': state['deployment_path'], 'run_attempt': 1,
+                        'actor': {'login': 'dispatcher'}, 'triggering_actor': {'login': 'dispatcher'}}
+            if route == 'actions/runs/999/approvals':
+                return [] if state['no_approval'] else [{'state': 'approved', 'user': {'id': 5, 'login': 'reviewer'},
+                    'environments': [{'id': 77, 'name': state['environment']}]}]
+            if route == 'releases/tags/0.0.2':
+                return copy.deepcopy(state['draft'])
+            if route == 'git/ref/tags/0.0.2':
+                return {'object': {'type': 'tag', 'sha': 'tag-object'}} if state['tag'] else None
+            if route == 'git/tags/tag-object':
+                return {'tag': plan['version'], 'object': {'type': 'commit', 'sha': coordinator}}
+            self.fail('Unexpected GitHub API path: ' + path)
+
+        def graphql(query, variables):
+            branch = variables['branch'].removeprefix('refs/heads/')
+            return {'repository': {'ref': {'name': branch, 'target': {'oid': branch_shas[branch]},
+                'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False,
+                    'requireLastPushApproval': False, 'bypassPullRequestAllowances': {'totalCount': 0}}}}}
+
+        def fake_urlopen(request, timeout):
+            # Only the intended fake upload / publish endpoints may be called.
+            url = urlsplit(request.full_url)
+            self.assertEqual(os.environ['GH_TOKEN'], 'write-token')
+            result = {}
+            if url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/git/tags' and request.method == 'POST':
+                data = json.loads(request.data)
+                self.assertEqual((data['tag'], data['object'], data['type']), (plan['version'], coordinator, 'commit'))
+                result = {'sha': 'tag-object'}
+            elif url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/git/refs' and request.method == 'POST':
+                self.assertEqual(json.loads(request.data), {'ref': 'refs/tags/0.0.2', 'sha': 'tag-object'})
+                state['tag'] = True
+            elif url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/releases' and request.method == 'POST':
+                data = json.loads(request.data)
+                self.assertTrue(state['tag'])
+                self.assertEqual(data, {'tag_name': plan['version'], 'name': plan['version'],
+                                        'body': release_github.release_body(cfg, plan), 'draft': True, 'prerelease': False})
+                state['draft'] = dict(data, id=8, assets=[])
+                result = copy.deepcopy(state['draft'])
+            elif url.netloc == 'uploads.github.com' and request.method == 'POST':
+                name = parse_qs(url.query)['name'][0]
+                digest = hashlib.sha256(request.data).hexdigest()
+                self.assertEqual(digest, files[name])
+                state['draft']['assets'].append({'name': name, 'digest': 'sha256:' + digest})
+            elif url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/releases/8' and request.method == 'PATCH':
+                self.assertEqual(json.loads(request.data), {'draft': False})
+                state['draft']['draft'] = False
+            else:
+                self.fail('Unexpected HTTP write: ' + request.full_url)
+            state['writes'].append((request.method, url.path))
+            return io.BytesIO(json.dumps(result).encode())
+
+        def invoke(mode):
+            with patch.object(sys, 'argv', ['release_github.py', mode, '--plan', str(self.path),
+                                         '--bundle', str(bundle), '--coordinator-sha', coordinator]), \
+                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                return release_github.main()
+
+        with patch.dict(os.environ, env), patch.object(authorize_release, 'api', side_effect=api), \
+             patch.object(authorize_release, 'graphql', side_effect=graphql), \
+             patch.object(release_github, 'api', side_effect=api), \
+             patch.object(release_github, 'urlopen', side_effect=fake_urlopen):
+            for field, value in [('failure', 'failure'), ('no_approval', True)]:
+                state[field] = value
+                with self.subTest(blocked_prepare=field):
+                    self.assertEqual(invoke('prepare-draft'), 1)
+                    self.assertEqual(state['writes'], [])
+                    self.assertFalse(state['tag'])
+                    self.assertIsNone(state['draft'])
+                state[field] = None if field == 'failure' else False
+            self.assertEqual(invoke('prepare-draft'), 0)
+            self.assertTrue(state['tag'])
+            self.assertEqual(len(state['draft']['assets']), len(files))
+            self.assertEqual(len(state['writes']), 3 + len(files))
+            state['environment'] = 'release-publication'
+            state['deployment_path'] = '.github/workflows/release.yml'  # observed bare form
+            for field, value in [('failure', 'failure'), ('no_approval', True)]:
+                state[field] = value
+                count = len(state['writes'])
+                with self.subTest(blocked=field):
+                    self.assertEqual(invoke('publish'), 1)
+                    self.assertEqual(len(state['writes']), count)
+                    self.assertTrue(state['draft']['draft'])
+                state[field] = None if field == 'failure' else False
+            self.assertEqual(invoke('publish'), 0)
+            self.assertFalse(state['draft']['draft'])
+            self.assertEqual(state['writes'][-1], ('PATCH', '/repos/owner/repo/releases/8'))
 
     def test_runtime_reports_reject_urls_malformed_paths_and_wrong_associations(self):
         item = self.plan['groups']['26.3']['runtime_evidence']['26.3']

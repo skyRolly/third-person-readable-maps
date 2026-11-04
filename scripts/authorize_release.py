@@ -89,6 +89,22 @@ def check_rulesets(repo, branch):
     page_list(f'{base}/rulesets?includes_parents=true')
 
 
+def workflow_run_path_matches(path, repo, workflow_path, branch):
+    """Accept documented run-path spellings only for the exact repository/ref.
+
+    The workflow metadata endpoint has a bare path; run responses may use a
+    bare path or append the triggering branch (including its qualified form).
+    GitHub's REST schema also illustrates a repository-qualified path. No
+    normalization, arbitrary suffix, alternate repository, tag, or SHA is
+    accepted. Branch, event, commit and workflow ID are checked separately.
+    """
+    if not isinstance(path, str):
+        return False
+    paths = (workflow_path, f'{repo}/{workflow_path}')
+    return path in {candidate + suffix for candidate in paths
+                    for suffix in ('', '@' + branch, '@refs/heads/' + branch)}
+
+
 def check_ci(repo, branch, commit, required):
     base = f'repos/{repo}'
     workflow = api(f'{base}/actions/workflows/ci.yml')
@@ -98,7 +114,8 @@ def check_ci(repo, branch, commit, required):
         'head_sha': commit, 'branch': branch, 'event': 'push'}), 'workflow_runs')
     require(runs, f'{branch}: no push CI run for pinned HEAD')
     require(all(r.get('id') and r.get('created_at') and r.get('workflow_id') == workflow['id'] and
-                r.get('path') == '.github/workflows/ci.yml' and r.get('head_sha') == commit and
+                workflow_run_path_matches(r.get('path'), repo, '.github/workflows/ci.yml', branch) and
+                r.get('head_sha') == commit and
                 r.get('head_branch') == branch and r.get('event') == 'push' for r in runs),
             f'{branch}: inconsistent CI run identity')
     run = max(runs, key=lambda r: (r['created_at'], r['id']))
@@ -224,9 +241,14 @@ def check_deployment_approval(repo, environment, coordinator_sha):
                  for r in rule.get('reviewers', []) if r.get('type') == 'User'}
     reviewers.discard(None)
     require(reviewers, f'environment {environment} needs an explicitly listed user reviewer')
+    workflow = api(f'repos/{repo}/actions/workflows/release.yml')
+    require(workflow.get('id') and workflow.get('path') == '.github/workflows/release.yml' and
+            workflow.get('state') == 'active', 'release workflow unavailable')
     run = api(f'repos/{repo}/actions/runs/{run_id}')
-    require(run.get('event') == 'workflow_dispatch' and run.get('head_branch') == 'main' and
-            run.get('head_sha') == coordinator_sha and run.get('path') == '.github/workflows/release.yml' and
+    require(run.get('id') == int(run_id) and run.get('workflow_id') == workflow['id'] and
+            run.get('event') == 'workflow_dispatch' and run.get('head_branch') == 'main' and
+            run.get('head_sha') == coordinator_sha and
+            workflow_run_path_matches(run.get('path'), repo, '.github/workflows/release.yml', 'main') and
             run.get('run_attempt') == 1, 'release workflow run identity does not match')
     actors = {(run.get('actor') or {}).get('login'), (run.get('triggering_actor') or {}).get('login')}
     require(None not in actors and all(actors), 'release workflow actor is unavailable')

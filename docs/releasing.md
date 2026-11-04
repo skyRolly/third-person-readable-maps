@@ -107,8 +107,11 @@ published tag to repair a release; issue a new version instead.
    PR head and the latest push CI run and
    its current attempt successful on both operating systems. The current
    required checks must also succeed. Rerun all jobs if a partial retry does not
-   provide both jobs in the latest attempt. Unknown API fields and ambiguous
-   checks fail closed.
+   provide both jobs in the latest attempt. Workflow-run paths may be bare or
+   include the exact triggering branch as `@<branch>` or `@refs/heads/<branch>`;
+   the repository-qualified form must name this repository. Workflow ID, event,
+   branch and pinned SHA are also checked independently. Unknown fields, other
+   refs, filenames or repositories, and ambiguous checks fail closed.
 2. Effective branch rulesets are currently unsupported and block authorization:
    their full review, status-check and bypass semantics cannot be established
    by this verifier. Use the legacy protection configuration above for these
