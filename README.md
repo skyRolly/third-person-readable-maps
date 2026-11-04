@@ -13,7 +13,7 @@ Build the mod below, or download and extract a mod artifact from a successful
 
 - Minecraft **26.3** and Fabric Loader **0.20.1 or newer**.
 - Java **25 LTS** to play. Fabric API is not required.
-- Copy `third-person-readable-maps-<version>.jar` into your instance's `mods`
+- Copy `third-person-readable-maps-<version>-mc26.3.jar` into your instance's `mods`
   directory, then launch its Fabric profile.
 
 Your client must have received the map data to display its contents. The mod does
@@ -50,14 +50,18 @@ Build-Windows.bat
 
 In PowerShell, prefix these Windows commands with `.\`. `Build-Windows.bat` also
 works when invoked by its full path from another directory. The installable output is
-`build/libs/third-person-readable-maps-<version>.jar` (currently `0.0.2`).
+`build/libs/third-person-readable-maps-<version>-mc26.3.jar` (currently `0.0.2`).
 Minecraft 26.3 ships unobfuscated; Loom's standard `jar` task produces the
 installable JAR using official names, without a mappings dependency or remapping
 step. Build scripts leave generated files under `build/`.
 
 ## Validation and contributions
 
-Open pull requests against `main`. CI runs clean Java 25 builds on Linux and
+This candidate is stacked on PR #3 and is not an approved release branch. After
+review, maintain this game-specific implementation on `mc/26.3`; coordinated
+releases and shared changes are reviewed separately on `main`.
+
+CI runs clean Java 25 builds on Linux and
 Windows, validates the Gradle wrapper, checks Fabric metadata, the packaged MIT
 license, Java bytecode, and the Mixin target signature, and uploads the mod JARs
 and verification reports. Run the same checks locally with `./gradlew build`.
