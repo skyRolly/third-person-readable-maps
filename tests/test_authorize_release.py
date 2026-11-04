@@ -43,9 +43,15 @@ class AuthorizationTests(unittest.TestCase):
         self.branch_details = {'protected': True, 'commit': {'sha': self.commit}}
         self.mock = patch.object(auth, 'api', side_effect=self.api)
         self.mock.start()
+        self.graph = patch.object(auth, 'graphql', return_value={'repository': {'ref': {
+            'name': self.branch, 'target': {'oid': self.commit}, 'branchProtectionRule': {
+                'id': 'rule', 'requiresCodeOwnerReviews': False, 'requireLastPushApproval': False,
+                'bypassPullRequestAllowances': {'totalCount': 0}}}}})
+        self.graph.start()
 
     def tearDown(self):
         self.mock.stop()
+        self.graph.stop()
 
     def api(self, path, **kwargs):
         if '/branches/mc%2F1.21.11/protection' in path:
@@ -87,6 +93,19 @@ class AuthorizationTests(unittest.TestCase):
             self.protection['required_status_checks']['checks'] = checks
             with self.subTest(checks=checks), self.assertRaises(Invalid):
                 self.authorize()
+
+    def test_missing_rest_bypass_uses_complete_graphql_count(self):
+        del self.protection['required_pull_request_reviews']['bypass_pull_request_allowances']
+        response = {'repository': {'ref': {'name': self.branch, 'target': {'oid': self.commit},
+                    'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False, 'requireLastPushApproval': False,
+                                             'bypassPullRequestAllowances': {'totalCount': 0}}}}}
+        with patch.object(auth, 'graphql', return_value=response):
+            self.authorize()
+        response['repository']['ref']['branchProtectionRule']['bypassPullRequestAllowances']['totalCount'] = 1
+        with patch.object(auth, 'graphql', return_value=response), self.assertRaises(Invalid):
+            self.authorize()
+        with patch.object(auth, 'graphql', side_effect=OSError('unavailable')), self.assertRaises(OSError):
+            self.authorize()
 
     def test_latest_run_and_attempt_must_succeed(self):
         for status, conclusion in [('completed', 'failure'), ('completed', 'cancelled'), ('in_progress', None),

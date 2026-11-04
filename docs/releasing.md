@@ -97,8 +97,8 @@ published tag to repair a release; issue a new version instead.
 
 1. Configure legacy branch protection for `main` and every maintenance branch:
    require a PR with at least one approval, stale-review dismissal, strict checks,
-   administrator enforcement, no PR-review bypass actors (the API must expose empty user, team and app
-   lists), no force pushes and
+   administrator enforcement, no PR-review bypass actors (verified through REST or the applicable
+   GraphQL branch-protection rule), no force pushes and
    no deletions. Require exactly named `Build (ubuntu-latest)` and
    `Build (windows-latest)` checks from the GitHub Actions app (ID 15368); pin
    every additional required check to its app as well. The head must be the

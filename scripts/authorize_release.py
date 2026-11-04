@@ -28,6 +28,43 @@ def api(path, *, allow_missing=False):
         raise Invalid(f'GitHub authorization query failed with HTTP {exc.code}: {path}') from exc
 
 
+def graphql(query, variables):
+    token = os.environ.get('GH_TOKEN')
+    require(bool(token), 'GH_TOKEN is required for release authorization')
+    request = Request('https://api.github.com/graphql', data=json.dumps({'query': query, 'variables': variables}).encode(),
+                      headers={'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json',
+                               'Content-Type': 'application/json', 'User-Agent': 'readable-maps-release'})
+    try:
+        with urlopen(request, timeout=30) as response:
+            result = json.load(response)
+    except HTTPError as exc:
+        raise Invalid(f'GitHub GraphQL authorization query failed with HTTP {exc.code}') from exc
+    require(isinstance(result, dict) and not result.get('errors') and isinstance(result.get('data'), dict),
+            'GitHub GraphQL authorization data is unavailable')
+    return result['data']
+
+
+def no_review_bypass(repo, branch, commit, bypass):
+    if bypass is not None:
+        require(isinstance(bypass, dict) and all(k in bypass and not bypass[k] for k in ('users', 'teams', 'apps')),
+                f'{branch}: PR review bypass permissions are present or unavailable')
+    # Inspect the applicable rule even when REST omits optional settings.
+    owner, name = repo.split('/')
+    query = """query($owner:String!,$name:String!,$branch:String!){
+      repository(owner:$owner,name:$name){ref(qualifiedName:$branch){name target{oid}
+        branchProtectionRule{id requiresCodeOwnerReviews requireLastPushApproval
+          bypassPullRequestAllowances(first:1){totalCount}}}}}
+    """
+    data = graphql(query, {'owner': owner, 'name': name, 'branch': 'refs/heads/' + branch})
+    ref = ((data.get('repository') or {}).get('ref') or {})
+    rule = ref.get('branchProtectionRule') or {}
+    count = (rule.get('bypassPullRequestAllowances') or {}).get('totalCount')
+    require(ref.get('name') == branch and (ref.get('target') or {}).get('oid') == commit and
+            rule.get('id') and type(count) is int and count == 0 and
+            rule.get('requiresCodeOwnerReviews') is False and rule.get('requireLastPushApproval') is False,
+            f'{branch}: PR review bypass permissions are present or unavailable')
+
+
 def page_list(path, key=None):
     result = []
     for page in range(1, 101):
@@ -109,13 +146,13 @@ def protected_branch(repo, branch, commit):
     reviews = protection.get('required_pull_request_reviews') or {}
     require(reviews.get('required_approving_review_count', 0) >= 1 and reviews.get('dismiss_stale_reviews') is True,
             f'{branch}: protection must require approval and dismiss stale approvals')
-    require(reviews.get('require_code_owner_reviews') is False and reviews.get('require_last_push_approval') is False,
-            f'{branch}: code-owner or last-push approval rules are unsupported or unavailable')
+    require(reviews.get('require_code_owner_reviews') is False and
+            reviews.get('require_last_push_approval') in (None, False),
+            f'{branch}: code-owner or last-push approval rules are unsupported')
     require((protection.get('enforce_admins') or {}).get('enabled') is True,
             f'{branch}: protection must include administrators')
     bypass = reviews.get('bypass_pull_request_allowances')
-    require(isinstance(bypass, dict) and all(k in bypass and not bypass[k] for k in ('users', 'teams', 'apps')),
-            f'{branch}: PR review bypass permissions are present or unavailable')
+    no_review_bypass(repo, branch, commit, bypass)
     require((protection.get('allow_force_pushes') or {}).get('enabled') is False and
             (protection.get('allow_deletions') or {}).get('enabled') is False,
             f'{branch}: force pushes or deletion are permitted or unavailable')
