@@ -40,6 +40,7 @@ java {
 
 jar {
     from('LICENSE')
+    archiveClassifier = 'mc26.1-26.2'
 }
 
 apply from: 'gradle/verification.gradle'
