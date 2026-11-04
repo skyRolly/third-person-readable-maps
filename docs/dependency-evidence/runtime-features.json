@@ -1,0 +1,224 @@
+{
+  "1.21.11": {
+    "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "erz",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  },
+  "26.1": {
+    "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "net/minecraft/world/level/chunk/storage/RegionFileVersion",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  },
+  "26.1.1": {
+    "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "net/minecraft/world/level/chunk/storage/RegionFileVersion",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  },
+  "26.1.2": {
+    "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "net/minecraft/world/level/chunk/storage/RegionFileVersion",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  },
+  "26.2": {
+    "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "net/minecraft/world/level/chunk/storage/RegionFileVersion",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  },
+  "26.3": {
+    "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+    "feature_references": {
+      "net/jpountz/lz4/LZ4BlockInputStream": [
+        {
+          "class": "net/minecraft/world/level/chunk/storage/RegionFileVersion",
+          "member_references": [
+            [
+              "method",
+              "net/jpountz/lz4/LZ4BlockInputStream",
+              "<init>",
+              "(Ljava/io/InputStream;)V"
+            ]
+          ]
+        }
+      ],
+      "net/jpountz/lz4/LZ4FrameInputStream": [],
+      "net/jpountz/lz4/LZ4DecompressorWithLength": [],
+      "net/jpountz/lz4/LZ4Factory": [],
+      "net/jpountz/xxhash/XXHashFactory": [],
+      "io/netty/handler/codec/compression/Lz4FrameDecoder": [],
+      "io/netty/handler/codec/compression/Bzip2Decoder": [],
+      "io/netty/handler/codec/http/HttpClientCodec": [],
+      "io/netty/handler/codec/http/cors/CorsHandler": [],
+      "io/netty/handler/ssl/SniHandler": [],
+      "io/netty/handler/ssl/AbstractSniHandler": [],
+      "io/netty/handler/codec/spdy/": [],
+      "io/netty/channel/unix/DomainSocketReadMode": [],
+      "io/netty/handler/ipfilter/IpSubnetFilterRule": [],
+      "java/io/ObjectInputStream": []
+    },
+    "default_logging": {
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Configuration status=\"WARN\">\r\n    <Appenders>\r\n        <Console name=\"SysOut\" target=\"SYSTEM_OUT\">\r\n            <LegacyXMLLayout />\r\n        </Console>\r\n        <RollingRandomAccessFile name=\"File\" fileName=\"logs/latest.log\" filePattern=\"logs/%d{yyyy-MM-dd}-%i.log.gz\">\r\n            <PatternLayout pattern=\"[%d{HH:mm:ss}] [%t/%level]: %msg{nolookups}%n\" />\r\n            <Policies>\r\n                <TimeBasedTriggeringPolicy />\r\n                <OnStartupTriggeringPolicy />\r\n            </Policies>\r\n        </RollingRandomAccessFile>\r\n        <Listener name=\"Tracy\">\r\n            <PatternLayout pattern=\"(%F:%L): %msg{nolookups}%n\" />\r\n        </Listener>\r\n    </Appenders>\r\n    <Loggers>\r\n        <Root level=\"info\">\r\n            <filters>\r\n                <MarkerFilter marker=\"NETWORK_PACKETS\" onMatch=\"DENY\" onMismatch=\"NEUTRAL\" />\r\n            </filters>\r\n            <AppenderRef ref=\"SysOut\"/>\r\n            <AppenderRef ref=\"File\"/>\r\n            <AppenderRef ref=\"Tracy\"/>\r\n        </Root>\r\n    </Loggers>\r\n</Configuration>"
+    }
+  }
+}

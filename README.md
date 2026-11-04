@@ -1,8 +1,8 @@
 # Third Person Readable Maps
 
-A client-side Fabric mod that renders filled map contents on maps held in
-third-person view, including either hand and left-handed players. The server does
-not need the mod, and Fabric API is not required.
+[![CI — coordination](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml?query=branch%3Amain)
+
+A client-side Fabric mod that renders filled map contents on maps held in third-person view. Maps follow the holding arm, with layouts for the main hand, off hand, and occupied opposite hand, including left-handed players.
 
 ## Minecraft compatibility
 
@@ -13,15 +13,15 @@ been published as a coordinated GitHub Release.
 
 | Minecraft | Source branch | Java to play | Fabric Loader | Artifact |
 | --- | --- | --- | --- | --- |
-| 1.21.11 | [`mc/1.21.11`](../../tree/mc/1.21.11) | 21+ | 0.20.1+ | One intermediary/remapped JAR |
-| 26.1, 26.1.1, 26.1.2, 26.2 | [`mc/26.1-26.2`](../../tree/mc/26.1-26.2) | 25+ | 0.20.1+ | One shared official-name JAR |
-| 26.3 | [`mc/26.3`](../../tree/mc/26.3) | 25+ | 0.20.1+ | A separate official-name JAR |
+| 1.21.11 | [`mc/1.21.11`](https://github.com/skyRolly/third-person-readable-maps/tree/mc/1.21.11) | 21+ | 0.20.1+ | One intermediary/remapped JAR |
+| 26.1, 26.1.1, 26.1.2, 26.2 | [`mc/26.1-26.2`](https://github.com/skyRolly/third-person-readable-maps/tree/mc/26.1-26.2) | 25+ | 0.20.1+ | One shared official-name JAR |
+| 26.3 | [`mc/26.3`](https://github.com/skyRolly/third-person-readable-maps/tree/mc/26.3) | 25+ | 0.20.1+ | A separate official-name JAR |
 
 The [compatibility record](docs/compatibility.md) describes the API boundaries,
 static checks and installed-client tests. Further graphical testing remains a
 release gate. Install only the JAR matching your game version in the client
 instance's `mods` directory; map contents require the client to have received
-the map data.
+the map data. Fabric API is not required; the server does not need the mod.
 
 ## Build or contribute
 
@@ -59,9 +59,11 @@ independent approvals, runtime testing and dry runs. No release is automatic.
 
 Dependabot version updates cover Gradle and Actions on all three maintenance
 branches and Actions on `main`. Default-branch Dependabot alerts do not give
-equivalent security coverage for non-default branches. The release guide
-explains the scheduled advisory reports, their limits, and the required
-repository-settings change for automatic Gradle submission.
+equivalent security coverage for non-default branches. The [monitoring record](docs/dependency-monitoring.md) explains actual coverage
+and the [advisory ledger](docs/security-advisories.md) records unresolved findings.
+The [release-readiness matrix](docs/release-readiness-2026-11-04.md) and
+[administrative controls](docs/administrative-controls.md) identify outstanding
+protection, approval, credential and automatic-submission requirements.
 
 Report bugs with the Minecraft, Fabric Loader, Java and mod versions, steps to
 reproduce and the relevant client log. Licensed under [MIT](LICENSE).

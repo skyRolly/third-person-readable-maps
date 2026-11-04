@@ -106,6 +106,15 @@ class ReleaseValidationTests(unittest.TestCase):
         with self.assertRaises(release.Invalid):
             self.validate(candidate=True)
 
+    def test_maintenance_heads_are_allowed_only_for_nonpublishing_candidates(self):
+        self.plan['groups']['26.3']['source_branch'] = 'maintenance/26.3-2026-11-04'
+        self.validate(candidate=True)
+        with self.assertRaises(release.Invalid):
+            self.validate()
+        self.plan['groups']['26.3']['source_branch'] = 'feature/unapproved'
+        with self.assertRaises(release.Invalid):
+            self.validate(candidate=True)
+
     def test_jar_rejects_wrong_version_new_bytecode_namespace_and_duplicates(self):
         spec = self.config['groups']['1.21.11']
         good = self.jar()
