@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "groups": {
+    "1.21.9-1.21.10": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
+      "candidate_head": "9c96b661713ac83fa09c0b8fc26c1bf3a62f8053",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
+      "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
+      "versions": [
+        "1.21.9",
+        "1.21.10"
+      ],
+      "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
+      "graphical": "PARTIAL: map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "negative": "Fabric Loader rejected 1.21.8; static descriptor checks reject 1.21.8 and 1.21.11",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "X11 cursor-shape warning in software display",
+        "Branch protection, OSV audit and central release registration outstanding"
+      ]
+    },
+    "1.21.4-1.21.8": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
+      "candidate_head": "4b2e363c495640fa5ca305620c51c709a434ee2c",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
+      "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
+      "versions": [
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8"
+      ],
+      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
+      "client_startup": "NOT RUN",
+      "graphical": "NOT RUN",
+      "per_version": {
+        "1.21.4": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
+          "graphical": "PARTIAL: terrain observed in third person; full contract NOT RUN"
+        }
+      },
+      "negative": "Static descriptor check rejects 1.21.9",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, OSV audit and central release registration outstanding"
+      ]
+    }
+  }
+}

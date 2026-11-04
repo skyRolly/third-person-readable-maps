@@ -70,3 +70,13 @@ payloads, permissions, read-back steps and recovery considerations. The
 [maintenance report](maintenance-2026-11-04.md) records branch changes, tests,
 intentional differences, monitoring and security evidence. A passing simulated
 publication test validates a control in code; it supplies no live approval.
+
+## Legacy expansion addendum — 2026-11-05
+
+| Gate | Current evidence | Remaining |
+| --- | --- | --- |
+| Historical inventory | 42 stable 1.14–1.21.10 releases inventoried with Mojang metadata and mapping excerpts | Artifact linkage and runtime evidence for 1.14–1.21.3 remain NOT RUN |
+| Candidate implementation | Draft PRs #13 and #14; one JAR per candidate group | Independent review and integration; branches currently point at the 1.21.11 baseline |
+| Legacy runtime | PR #13 has partial installed-client and visual smoke tests on both versions; PR #14 has a 1.21.4 world/terrain smoke test | Full per-version hand/movement tests, human review, remote players and remaining installed clients |
+| Dependency monitoring | Existing three groups remain covered; unresolved findings remain visible | Add newly reviewed groups to Dependabot and the authoritative OSV ledger only after auditing their actual merged heads; candidate branches still contain the baseline |
+| Release configuration | Existing three integrated groups unchanged; tool validates reviewed historical Java requirements and configurable build JDKs/Mixins | Register accepted groups and per-version evidence in a later reviewed change; complete administrative and security gates |

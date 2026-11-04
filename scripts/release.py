@@ -23,7 +23,10 @@ SHA = re.compile(r'[0-9a-f]{40}\Z')
 SHA256 = re.compile(r'[0-9a-f]{64}\Z')
 ID = 'thirdpersonreadablemaps'
 PREFIX = 'third-person-readable-maps'
-MIXIN_CLASS = 'tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class'
+MIXIN_DIR = 'tech/rolly/thirdpersonreadablemaps/mixin/'
+MIXIN_CLASS = MIXIN_DIR + 'ReadableMapLayerMixin.class'
+RUNTIME_REQUIREMENTS = ROOT / 'release/minecraft-runtime-requirements.json'
+JAVA_TARGETS = (8, 16, 17, 21, 25)
 
 
 class Invalid(ValueError):
@@ -73,6 +76,8 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
     limitations = plan.get('known_limitations')
     require(isinstance(limitations, list) and all(isinstance(x, str) and x.strip() for x in limitations),
             'known_limitations must be a list of nonempty strings')
+    runtime = read_json(RUNTIME_REQUIREMENTS)
+    require(runtime.get('schema') == 1 and isinstance(runtime.get('versions'), dict), 'invalid runtime requirements inventory')
     seen_minecraft = set()
     for name, spec in groups.items():
         require(re.fullmatch(r'\d+(?:\.\d+)+(?:-\d+(?:\.\d+)+)?', name) is not None, f'unsafe group id: {name}')
@@ -96,8 +101,22 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
                 f'{name}: invalid explicit Minecraft versions or compilation target')
         require(not (seen_minecraft & set(minecraft)), f'{name}: Minecraft versions overlap another group')
         seen_minecraft.update(minecraft)
-        require(spec.get('java') in (21, 25) and spec.get('namespace') in ('intermediary', 'official'),
+        java = spec.get('java')
+        require(type(java) is int and java in JAVA_TARGETS and spec.get('namespace') in ('intermediary', 'official'),
                 f'{name}: invalid Java or namespace')
+        for mc in minecraft:
+            requirement = runtime['versions'].get(mc)
+            require(isinstance(requirement, dict) and type(requirement.get('java')) is int and
+                    requirement['java'] in JAVA_TARGETS and java <= requirement['java'],
+                    f'{name}: Java target exceeds or lacks Mojang runtime requirement for {mc}')
+        build_jdk = spec.get('build_jdk')
+        require(isinstance(build_jdk, str) and re.fullmatch(r'(?:8|16|17|21|25)\.\d+\.\d+(?:\.\d+)?\+\d+', build_jdk),
+                f'{name}: build JDK must be an explicitly pinned supported version')
+        require(int(build_jdk.split('.')[0]) >= java, f'{name}: build JDK is older than the Java target')
+        mixins = spec.get('mixins')
+        require(isinstance(mixins, list) and 1 <= len(mixins) <= 8 and
+                all(isinstance(x, str) and re.fullmatch(r'[A-Za-z][A-Za-z0-9_]{1,79}', x) for x in mixins) and
+                len(set(mixins)) == len(mixins), f'{name}: invalid expected Mixin list')
         require(re.fullmatch(r'\d+\.\d+\.\d+', spec.get('loader', '')) is not None, f'{name}: invalid loader')
         evidence = entry.get('runtime_evidence', {})
         require(isinstance(evidence, dict), f'{name}: invalid runtime evidence')
@@ -140,7 +159,8 @@ def evidence_record(entry, group, minecraft, root=None):
 
 def matrix(cfg, plan):
     return [{'group': name, 'commit': plan['groups'][name]['commit'],
-             'branch': plan['groups'][name]['source_branch'], 'multi_version': len(spec['minecraft']) > 1}
+             'branch': plan['groups'][name]['source_branch'], 'build_jdk': spec['build_jdk'],
+             'multi_version': len(spec['minecraft']) > 1}
             for name, spec in sorted(cfg['groups'].items())]
 
 
@@ -182,7 +202,8 @@ def inspect_jar(path, version, name, spec):
             require(len(entries) <= 2000 and sum(x.file_size for x in entries) <= 50_000_000,
                     f'{name}: JAR exceeds verification limits')
             require(jar.testzip() is None, f'{name}: invalid ZIP checksum')
-            for required in ('fabric.mod.json', 'META-INF/MANIFEST.MF', 'LICENSE', MIXIN_CLASS):
+            for required in ('fabric.mod.json', 'META-INF/MANIFEST.MF', 'LICENSE',
+                             *(MIXIN_DIR + item + '.class' for item in spec['mixins'])):
                 require(required in names, f'{name}: missing {required}')
             require(not any(x.endswith('.jar') for x in names), f'{name}: nested JARs are not expected')
             metadata = json.loads(jar.read('fabric.mod.json'), object_pairs_hook=unique_object)
@@ -199,7 +220,7 @@ def inspect_jar(path, version, name, spec):
             require(mixin.get('required') is True and mixin.get('compatibilityLevel') == f"JAVA_{spec['java']}" and
                     mixin.get('injectors', {}).get('defaultRequire') == 1 and
                     mixin.get('package') == 'tech.rolly.thirdpersonreadablemaps.mixin' and
-                    mixin.get('client') == ['ReadableMapLayerMixin'], f'{name}: Mixin is not strictly required')
+                    mixin.get('client') == spec['mixins'], f'{name}: Mixin is not strictly required')
             manifest = parse_manifest(jar.read('META-INF/MANIFEST.MF'))
             require(manifest.get('fabric-mapping-namespace') == spec['namespace'] and
                     manifest.get('fabric-minecraft-version') == spec['target'], f'{name}: wrong namespace or build target')
@@ -211,11 +232,14 @@ def inspect_jar(path, version, name, spec):
                 require(len(data) >= 8 and data[:4] == b'\xca\xfe\xba\xbe', f'{name}: invalid class {cls}')
                 require(struct.unpack('>H', data[4:6])[0] != 65535, f'{name}: preview class requires special runtime flags')
                 require(struct.unpack('>H', data[6:8])[0] <= major, f'{name}: {cls} needs a newer Java runtime')
-            require(struct.unpack('>H', jar.read(MIXIN_CLASS)[6:8])[0] == major,
-                    f'{name}: unexpected Mixin bytecode target')
-            target = jar.read(MIXIN_CLASS)
-            expected = b'net/minecraft/class_' if spec['namespace'] == 'intermediary' else b'net/minecraft/client/renderer/entity/layers/ItemInHandLayer'
-            require(expected in target, f'{name}: Mixin target is in the wrong namespace')
+            for mixin_name in spec['mixins']:
+                target = jar.read(MIXIN_DIR + mixin_name + '.class')
+                require(struct.unpack('>H', target[6:8])[0] == major,
+                        f'{name}: unexpected Mixin bytecode target: {mixin_name}')
+                expected = (b'net/minecraft/class_' if spec['namespace'] == 'intermediary' else
+                            b'net/minecraft/client/renderer/entity/layers/ItemInHandLayer'
+                            if mixin_name == 'ReadableMapLayerMixin' else b'net/minecraft/')
+                require(expected in target, f'{name}: Mixin target is in the wrong namespace: {mixin_name}')
     except (KeyError, BadZipFile, json.JSONDecodeError, UnicodeError) as exc:
         raise Invalid(f'{name}: malformed JAR: {exc}') from exc
     return hashlib.sha256(path.read_bytes()).hexdigest()

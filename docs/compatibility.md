@@ -88,3 +88,10 @@ Runtime dependency manifests are not identical across all shared-JAR versions:
 26.2 updates Netty, Log4j, Guava and others. The [monitoring record](dependency-monitoring.md)
 therefore adds per-version manifest auditing alongside the 26.1 Gradle snapshot.
 This changes monitoring, not the supported game matrix or distributable identity.
+
+## Legacy investigation
+
+The [1.14–1.21.10 inventory](legacy-version-inventory.md) and
+[grouping decisions](legacy-group-decisions.md) distinguish candidates from
+integrated support. [PR #13](https://github.com/skyRolly/third-person-readable-maps/pull/13)
+and [PR #14](https://github.com/skyRolly/third-person-readable-maps/pull/14) contain 1.21.9/1.21.10 and 1.21.4–1.21.8 candidates. Neither is registered in the release configuration or security ledger.
