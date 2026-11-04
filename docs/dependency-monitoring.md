@@ -144,3 +144,18 @@ feature-preservation checks, reversibility and read-back procedure are in
 [administrative controls](administrative-controls.md#automatic-dependency-submission--final-disposition-c).
 No alert or graph setting was disabled and no graph-submission success is inferred
 from an uploaded artifact.
+
+
+## Focused integration follow-up — 2026-11-05
+
+The [review-resolution record](review-resolution-2026-11-05.md) verifies the current
+PR source snapshots and both OS artifacts. PR #9's retained snapshot and a local
+warm-cache run omitted `net.fabricmc/intermediary@1.21.11`; the unchanged baseline
+correctly reported an incomplete Gradle inventory. Re-running the same pinned
+detector with `--refresh-dependencies` restored the exact reviewed package/version
+set. The central weekly workflow now uses that option to make Loom re-resolve
+cached mappings. This costs additional resolution/network time, without changing
+pinned dependencies, cache write permissions, expected packages, or advisory policy.
+Per-commit artifacts remain useful inspection records, but a successful upload
+still does not prove inventory completeness, Graph indexing, or a clean scan.
+No raw PR snapshot was rewritten to claim a different source/ref.

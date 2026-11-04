@@ -8,7 +8,10 @@ and game compatibility matrix are unchanged.
 PASS means the named scope was verified. FAIL means an executed check/configuration
 fails the requirement. BLOCKED identifies an external prerequisite. NOT RUN means
 no execution evidence exists. PENDING REVIEW means independent approval is missing.
-None of the latter four statuses counts as PASS.
+None of the latter four statuses counts as PASS. The [review-resolution record](review-resolution-2026-11-05.md)
+updates completed candidate CI and corrects the reviewer-permission interpretation.
+Candidate tests are evidence for the proposed trees, not protection, approval,
+integration, or production-release authorization.
 
 | Gate | Required evidence | Status | Source / result | Remaining action / owner |
 | --- | --- | --- | --- | --- |
@@ -16,19 +19,19 @@ None of the latter four statuses counts as PASS.
 | 2. Three authoritative maintenance branches | Actual remote refs and independent build projects | PASS | All supplied baseline SHAs verified; each has complete Gradle/Fabric project | Review separate cleanup PRs — independent reviewer |
 | 3. Unified version 0.0.2 | Build properties and JAR metadata agree | PASS | All three local candidate JARs and existing properties verified | Recheck final merged artifacts — code |
 | 4. Compatibility matrix | Exact game groups, Loader, namespace and toolchain contracts | PASS | Unchanged release/compatibility.json and branch verification | Maintain six explicit game targets — code |
-| 5. Linux build verification | Clean builds for all groups on release source SHAs | PENDING REVIEW | Current merged heads have successful hosted push CI; proposed heads passed clean local builds; candidate hosted PR jobs queued | Finish hosted PR runs; after human merges require push CI on new exact heads — code/reviewer |
-| 6. Windows build verification | Both maintenance build identities successful on final heads | BLOCKED | Existing heads passed hosted Windows builds; proposed PR Windows jobs remain queued | Await hosted execution, fix failures if any, then require merged-head push CI — GitHub runner/code |
+| 5. Linux build verification | Clean builds for all groups on release source SHAs | PENDING REVIEW | All three current candidate heads passed hosted Linux CI and local checks; exact runs are in the review-resolution evidence | After eligible human review/integration require push CI on each new exact maintenance head — code/reviewer |
+| 6. Windows build verification | Both maintenance build identities successful on final heads | PENDING REVIEW | All three current candidate heads passed hosted Windows CI; no candidate runner blocker remains | After eligible human review/integration require both push build checks on each new exact maintenance head — code/reviewer |
 | 7. Java runtime and bytecode | JDK25 build; Java21 APIs/bytecode for 1.21.11, Java25 for 26.x | PASS | Gradle release flags, toolchain criteria, verifyModJar and central artifact inspection | Installed Java21 runtime evidence remains gate 9 — runtime tester |
-| 8. Four-version API verification | Shared JAR checked against hash-verified 26.1/26.1.1/26.1.2/26.2 clients | PASS | 33 game/Blaze3D references and Mixin descriptor passed on all four; 1.21.11/26.3 negative checks rejected | Repeat against final release JAR; hosted Linux/Windows execution pending — code |
+| 8. Four-version API verification | Shared JAR checked against hash-verified 26.1/26.1.1/26.1.2/26.2 clients | PASS | 33 game/Blaze3D references and Mixin descriptor passed on all four; 1.21.11/26.3 negative checks rejected | Both candidate hosted OS checks passed; repeat against final approved release JAR — code |
 | 9. Installed-client/graphical verification | Six version-specific reports bound to exact source/artifact, full hand/arm/data/motion matrix | BLOCKED | Historical smoke tests exist, but no approved reports for proposed source SHAs/artifact digests | Test all six versions, including Java21 for 1.21.11, and submit evidence — runtime tester |
 | 10. Dependency scanning and disposition | Complete inventories, advisory details and defensible reviewed outcomes | FAIL | Detection passed; 40 unique advisories / 105 group-package-version-advisory combinations remain Further investigation; no accepted risks | Resolve named applicability questions, upstream follow-ups and security approval; run integrated weekly audit — security reviewer/maintainer |
-| 11. Effective branch protection | Enforced policies on all four branches with read-back | FAIL | protected:false, GraphQL rules null, effective branch rules [] | Owner chooses eligible independent reviewer; administrator applies/read-backs payloads — owner/admin |
+| 11. Effective branch protection | Enforced policies on all four branches with read-back | FAIL | protected:false, GraphQL rules null, effective branch rules [] | Owner confirms independent reviewer availability/authorization; administrator applies/read-backs payloads — owner/admin |
 | 12. Required-check identities | Strict app-pinned required checks, not just successful jobs | FAIL | Current actual jobs verified with live verifier; no enforced required checks | Apply strict GitHub Actions app15368 check configuration — administrator |
-| 13. Independent GitHub source approvals | Eligible non-author approvals on current PR head before merge | PENDING REVIEW | Producing baseline PRs #4/#5/#7/#8 have no reviews; new PRs open | Authorize independent writer/maintainer/admin and approve exact new heads — owner/reviewer |
+| 13. Independent GitHub source approvals | Eligible non-author approvals on current PR head before merge | PENDING REVIEW | Producing baseline PRs #4/#5/#7/#8 lack eligible reviewed history; PRs #9–#12 have no submitted reviews; ZDN-1942 has verified Write and is potentially eligible | Confirm independence/availability/owner authorization and obtain actual exact-head reviews — owner/reviewer |
 | 14. Reviewed maintenance revisions | Independently approved PR merges into each mc branch | PENDING REVIEW | PRs #9/#10/#11 exist, unmerged/unapproved | Human review and merge after protection, then exact-head push CI — reviewer/owner |
 | 15. Coordination HEAD approval | Approved PR merge for exact main plan/coordinator head | PENDING REVIEW | PR #8 has no submitted reviews; proposed coordination changes need approval | Review coordination PR; later release-plan changes also need eligible reviewed merge — reviewer/owner |
 | 16. Protected release environments | Both named environments exist with verifiable policies | FAIL | Environment inventory empty; individual GETs404 | Create/read-back release-draft and release-publication — administrator |
-| 17. Independent deployment reviewers | Listed user, prevent-self-review, no admin bypass, actual independent approval | BLOCKED | Environments/reviewers absent; no approval records manufactured | Owner designates independent reviewers; later actual first-attempt dispatch approval — owner/admin/reviewer |
+| 17. Independent deployment reviewers | Listed user, prevent-self-review, no admin bypass, actual independent approval | BLOCKED | Environments/reviewers absent; Write-access collaborator is only a potential candidate, not an appointed approver | Owner confirms independence and designates environment users; later actual first-attempt dispatch approval — owner/admin/reviewer |
 | 18. Auditor credential | Supported secret metadata and read-only API functional access | BLOCKED | Secrets endpoint403; current credential cannot read protection/security settings | Configure/verify RELEASE_AUDITOR_TOKEN without exposing value — administrator |
 | 19. Git tag protection | Verified tag immutability and authorized creation path | BLOCKED | No rulesets listed; deprecated tag API404; creation-identity policy undecided | Select supported tag-only ruleset/credential policy; read back without tag writes — owner/admin |
 | 20. Release-plan pinning | Reviewed release/plan.json pins current approved mc heads, all groups/version/change attestations | PENDING REVIEW | Only example plan integrated; local candidate plan pins exact proposed heads, source verification passed | After source integration, submit real plan in reviewed main PR — maintainer/reviewer |
@@ -42,15 +45,16 @@ None of the latter four statuses counts as PASS.
 
 ## Integration and activation order
 
-1. Owner selects an eligible independent source reviewer and an administrator
-   credential; administrator verifies current state, enables the supported
-   protections and reads back the effective rules. Do not lock maintenance behind
-   reviews that no independent person can supply.
+1. Owner confirms an eligible independent source reviewer and their availability;
+   ZDN-1942 already has Write but independence and owner authorization still need
+   confirmation. Administrator verifies current state and, under separately
+   authorized administration, enables/read-backs protection. This focused review
+   does not authorize administrative changes or collaborator promotion.
 2. Review the coordination and maintenance PRs. The centralized Dependabot
    configuration is already integrated, so branch-local-file removal has no
-   dependency on new scanner code. Integrate the coordination documentation before
-   relying on new central links in the maintenance READMEs. No merge is performed
-   by this task.
+   dependency on new scanner code. After approval, integrate PR #12 into main
+   first, verify its main push check and central links, then integrate PRs #9–#11
+   in any order after their own approvals. No merge is performed by this task.
 3. Human maintainers integrate approved PRs and verify exact merged-head push CI.
    If checks or refs change, rerun review/validation; do not use earlier head
    approvals for a later commit.

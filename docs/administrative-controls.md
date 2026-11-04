@@ -8,6 +8,53 @@ security-settings mutation capability. No connected browser-control tool is
 available for inspecting the settings UI. These are external prerequisites,
 not grounds to relax release authorization.
 
+## Review correction and current evidence
+
+No administrative, collaborator-permission or credential change is authorized
+or performed in this focused review.
+
+The original collaborator response already records `ZDN-1942` with
+`role_name: write`, `permissions.push: true`, `permissions.triage: true`, and
+`permissions.admin: false`. The earlier triage-only conclusion was an
+**interpretation error**, not evidence that permissions changed. Write includes
+triage capabilities. The [historical API record](maintenance-evidence-2026-11-04.json)
+is preserved byte-for-byte; its original observations have not been rewritten.
+Fresh collaborator-list and effective-permission reads, collected starting
+2026-11-05 00:55:16 (UTC+08:00; raw evidence retains UTC), again report Write. The [correction evidence](review-resolution-evidence-2026-11-05.json)
+keeps both observations and the original file digest.
+
+`ZDN-1942` is **potentially eligible for independent source review**. GitHub
+required-review policy counts eligible approvals from repository writers (or a
+required code owner), and `authorize_release.py` accepts current `write`,
+`maintain`, or `admin` permission. The verifier additionally requires a non-author
+APPROVED review on the exact PR head before merge, enough current approvals for
+the configured count, and no outstanding changes requested. Permission alone
+cannot satisfy any of those review-record checks.
+
+All four PRs are authored by `skyRolly`; all currently proposed commits have
+`skyRolly` as GitHub-associated author and committer. The latest inspected PR CI
+actor and triggering actor are also `skyRolly`. No matching current-head PushEvent
+was available in the public event page, so the exact final git-push actor is not
+independently verified. These account observations support potential technical
+eligibility; they do not prove personal independence, absence of involvement or
+conflicts, reviewer availability, or the owner's authorization. No additional
+owner policy disqualifying this account was found in the accessible repository
+records; that is not an affirmative owner appointment. No review has been
+submitted on PRs #9–#12. Do not request or submit an approval on another person's
+behalf, or infer an approval from this correction.
+
+The same person could technically serve as a deployment reviewer: GitHub requires
+at least read access, and this verifier requires an explicitly listed user other
+than both the deployment actor and triggering actor. Source-review permission
+does not appoint an environment reviewer. Both environments remain absent; owner
+authorization, independence/conflict confirmation and a separate actual approval
+for each release stage remain required. If that person initiates or re-runs the
+release dispatch, they cannot supply its independent deployment approval. Any
+stronger owner separation-of-duties policy must also be respected.
+
+References: [GitHub required reviews](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-pull-request-reviews-before-merging)
+and [environment reviewers](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments#required-reviewers).
+
 ## Verified inventory and final disposition
 
 | Control | Scope | Initial state | Desired state | Final state | Evidence / blocker |
@@ -18,7 +65,7 @@ not grounds to relax release authorization.
 | Legacy branch protection | mc/26.3 | Missing | Enforced PR review and both build checks | BLOCKED: unchanged | Same three observations |
 | Effective branch rulesets | All four branches | None | Use supported legacy protection unless verifier is extended | Verified empty; no change | Ruleset inventory and each effective branch-rules endpoint returned `[]` |
 | Required checks | All four branches | Not enforced | Strict, app-pinned checks below | BLOCKED: not configured | Actual CI job names verified; protection missing |
-| Eligible independent source reviewers | All four branches | No eligible independent collaborator listed | At least one independent writer/maintainer/admin | Requires owner decision | skyRolly: admin, also PR author; ZDN-1942: triage, insufficient for source approval |
+| Eligible independent source reviewers | All four branches | Historical Write access was misclassified as triage-only | Eligible, independent, available and owner-authorized reviewer | PENDING REVIEW: ZDN-1942 is potentially eligible; not appointed | Historical and fresh reads report Write; account differs from author/commit identities; independence/availability/owner authorization and actual approval remain unverified |
 | Approved source PR history | Current four heads | No submitted reviews on producing PRs #4/#7/#5/#8 | Current-head approval before merge | FAIL: new independent reviews/merges required | Reviews API returned `[]`; open PRs do not repair history |
 | release-draft environment | Repository | Missing | Explicit independent user reviewer, prevent self-review, no admin bypass | BLOCKED: unchanged | Environments API: `total_count: 0` |
 | release-publication environment | Repository | Missing | Separate independent deployment approval | BLOCKED: unchanged | Same inventory; reviewer selection is an owner decision |
@@ -48,10 +95,12 @@ extend and independently test the verifier first; do not disable that policy.
 Team-only environment reviewers remain unsupported; list an independent user.
 Tag-only rulesets do not apply to branches and can coexist with legacy protection.
 
-1. The repository owner must select an independent source reviewer and give that
-   person write, maintain, or admin permission. Do not automatically promote the
-   currently listed triage collaborator. Confirm their availability and that
-   they are independent of the author and release dispatcher. The owner must
+1. The repository owner must confirm an authorized and available independent
+   source reviewer. ZDN-1942 already has Write and is a potential candidate;
+   no promotion is implied or needed to establish that technical permission.
+   Confirm independence from the author and changes, and any conflicts. This
+   record does not select or appoint that collaborator. Any permission change
+   for another account needs separate owner authorization. The owner must
    retain an authorized administrator recovery path for broken checks; recovery
    is an auditable administrative policy change, not a release bypass.
 2. Confirm current `ci.yml` produces `Validate coordination` on main and exactly
@@ -104,8 +153,9 @@ to main. Read back the environment ID and required-reviewer configuration. The
 release tool also requires an actual first-attempt dispatch approval by a listed
 user other than both actor and triggering actor. A configuration read-back or
 simulated unit test cannot prove that approval. Do not run a publishing mode to
-test configuration. The current user/triage permissions inventory does not
-establish whom the owner authorizes to approve deployments.
+test configuration. The current Write-access evidence does not establish whom
+the owner authorizes to approve deployments or whether they are independent of
+the future deployment actors.
 
 Create `RELEASE_AUDITOR_TOKEN` using an owner-approved credential with read access
 to Administration/protection, rulesets, environments, PRs/reviews, collaborators,

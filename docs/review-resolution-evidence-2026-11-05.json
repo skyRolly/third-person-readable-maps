@@ -1,0 +1,966 @@
+{
+  "schema": 1,
+  "collection_started_at": "2026-11-04T16:55:16.910465+00:00",
+  "recorded_at": "2026-11-04T17:00:01.175254+00:00",
+  "repository": "skyRolly/third-person-readable-maps",
+  "historical_evidence": {
+    "path": "docs/maintenance-evidence-2026-11-04.json",
+    "git_revision": "8ef5e97b61ca817f8a85727322724000595e2533",
+    "sha256": "6d173711bd67a31c5f9a528c89bb3dbff546963c7840ece0570841e60b1b2a1c",
+    "observed_on": "2026-11-04",
+    "collaborator_response": {
+      "login": "ZDN-1942",
+      "id": 248802433,
+      "node_id": "U_kgDODtRsgQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/248802433?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ZDN-1942",
+      "html_url": "https://github.com/ZDN-1942",
+      "followers_url": "https://api.github.com/users/ZDN-1942/followers",
+      "following_url": "https://api.github.com/users/ZDN-1942/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ZDN-1942/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ZDN-1942/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ZDN-1942/subscriptions",
+      "organizations_url": "https://api.github.com/users/ZDN-1942/orgs",
+      "repos_url": "https://api.github.com/users/ZDN-1942/repos",
+      "events_url": "https://api.github.com/users/ZDN-1942/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ZDN-1942/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false,
+      "permissions": {
+        "admin": false,
+        "maintain": false,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "role_name": "write"
+    },
+    "preserved_without_modification": true
+  },
+  "correction": {
+    "finding": "PR #12 reviewer eligibility evidence conflicts",
+    "incorrect_interpretation": "ZDN-1942 was triage-only and could not supply source approval",
+    "correct_interpretation": "The historical response already reported Write access; triage:true is an additional capability, not the highest role. Fresh permission and collaborator queries also report Write.",
+    "permission_change_established": false,
+    "technical_eligibility": "potentially eligible for independent source review",
+    "independence": "distinct account from PR/commit author and CI actors; personal independence and conflicts require human confirmation",
+    "availability": "unverified",
+    "owner_authorization": "no appointment or assignment made; owner confirmation pending",
+    "actual_approval": "none submitted on PRs #9-#12 at collection"
+  },
+  "current_permission": {
+    "endpoint": "GET /repos/skyRolly/third-person-readable-maps/collaborators/ZDN-1942/permission",
+    "response": {
+      "permission": "write",
+      "user": {
+        "login": "ZDN-1942",
+        "id": 248802433,
+        "node_id": "U_kgDODtRsgQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/248802433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ZDN-1942",
+        "html_url": "https://github.com/ZDN-1942",
+        "followers_url": "https://api.github.com/users/ZDN-1942/followers",
+        "following_url": "https://api.github.com/users/ZDN-1942/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ZDN-1942/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ZDN-1942/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ZDN-1942/subscriptions",
+        "organizations_url": "https://api.github.com/users/ZDN-1942/orgs",
+        "repos_url": "https://api.github.com/users/ZDN-1942/repos",
+        "events_url": "https://api.github.com/users/ZDN-1942/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ZDN-1942/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false,
+        "permissions": {
+          "admin": false,
+          "maintain": false,
+          "push": true,
+          "triage": true,
+          "pull": true
+        },
+        "role_name": "write"
+      },
+      "role_name": "write"
+    },
+    "corroborating_collaborators_entry": {
+      "login": "ZDN-1942",
+      "id": 248802433,
+      "node_id": "U_kgDODtRsgQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/248802433?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ZDN-1942",
+      "html_url": "https://github.com/ZDN-1942",
+      "followers_url": "https://api.github.com/users/ZDN-1942/followers",
+      "following_url": "https://api.github.com/users/ZDN-1942/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ZDN-1942/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ZDN-1942/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ZDN-1942/subscriptions",
+      "organizations_url": "https://api.github.com/users/ZDN-1942/orgs",
+      "repos_url": "https://api.github.com/users/ZDN-1942/repos",
+      "events_url": "https://api.github.com/users/ZDN-1942/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ZDN-1942/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false,
+      "permissions": {
+        "admin": false,
+        "maintain": false,
+        "push": true,
+        "triage": true,
+        "pull": true
+      },
+      "role_name": "write"
+    },
+    "connector_permission_result": "write"
+  },
+  "pr_observations": {
+    "9": {
+      "head_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+      "head_ref": "maintenance/1.21.11-2026-11-04",
+      "base_sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+      "base_ref": "mc/1.21.11",
+      "author": "skyRolly",
+      "state": "open",
+      "merged": false,
+      "auto_merge": null,
+      "commits": [
+        {
+          "sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "author": "skyRolly",
+          "committer": "skyRolly"
+        }
+      ],
+      "latest_workflow_actor": "skyRolly",
+      "latest_workflow_triggering_actor": "skyRolly",
+      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "reviews": [],
+      "review_comments": []
+    },
+    "10": {
+      "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+      "head_ref": "maintenance/26.1-26.2-2026-11-04",
+      "base_sha": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+      "base_ref": "mc/26.1-26.2",
+      "author": "skyRolly",
+      "state": "open",
+      "merged": false,
+      "auto_merge": null,
+      "commits": [
+        {
+          "sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "author": "skyRolly",
+          "committer": "skyRolly"
+        }
+      ],
+      "latest_workflow_actor": "skyRolly",
+      "latest_workflow_triggering_actor": "skyRolly",
+      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "reviews": [],
+      "review_comments": []
+    },
+    "11": {
+      "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+      "head_ref": "maintenance/26.3-2026-11-04",
+      "base_sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf",
+      "base_ref": "mc/26.3",
+      "author": "skyRolly",
+      "state": "open",
+      "merged": false,
+      "auto_merge": null,
+      "commits": [
+        {
+          "sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "author": "skyRolly",
+          "committer": "skyRolly"
+        }
+      ],
+      "latest_workflow_actor": "skyRolly",
+      "latest_workflow_triggering_actor": "skyRolly",
+      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "reviews": [],
+      "review_comments": []
+    },
+    "12": {
+      "head_sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+      "head_ref": "maintenance/coordination-2026-11-04",
+      "base_sha": "b90ee78e9b1da6d1da2c2f5f93da765739716137",
+      "base_ref": "main",
+      "author": "skyRolly",
+      "state": "open",
+      "merged": false,
+      "auto_merge": null,
+      "commits": [
+        {
+          "sha": "a3f444df4cbfa4a77c78abf795485156eb2a0cba",
+          "author": "skyRolly",
+          "committer": "skyRolly"
+        },
+        {
+          "sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+          "author": "skyRolly",
+          "committer": "skyRolly"
+        }
+      ],
+      "latest_workflow_actor": "skyRolly",
+      "latest_workflow_triggering_actor": "skyRolly",
+      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "reviews": [],
+      "review_comments": []
+    }
+  },
+  "completed_ci": {
+    "9": {
+      "id": 41862276302,
+      "head_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "workflow_id": 406332813,
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-11-04T15:53:00Z",
+      "updated_at": "2026-11-04T16:16:41Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/pulls/9",
+          "id": 5157305627,
+          "number": 9,
+          "head": {
+            "ref": "maintenance/1.21.11-2026-11-04",
+            "sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          },
+          "base": {
+            "ref": "mc/1.21.11",
+            "sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          }
+        }
+      ],
+      "jobs": [
+        {
+          "id": 126687054021,
+          "name": "Build (ubuntu-latest)",
+          "head_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "run_id": 41862276302,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687054437,
+          "name": "Build (windows-latest)",
+          "head_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "run_id": 41862276302,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687054483,
+          "name": "Resolve and inspect dependency graph",
+          "head_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "run_id": 41862276302,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 13341215586,
+          "name": "third-person-readable-maps-Linux",
+          "expired": false
+        },
+        {
+          "id": 13341190773,
+          "name": "diagnostics-Linux",
+          "expired": false
+        },
+        {
+          "id": 13339807950,
+          "name": "dependency-graph_ci-dependency-graph.json",
+          "expired": false
+        },
+        {
+          "id": 13339579160,
+          "name": "third-person-readable-maps-Windows",
+          "expired": false
+        },
+        {
+          "id": 13339259721,
+          "name": "diagnostics-Windows",
+          "expired": false
+        }
+      ]
+    },
+    "10": {
+      "id": 41862279700,
+      "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "workflow_id": 406332813,
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-11-04T15:53:02Z",
+      "updated_at": "2026-11-04T16:17:24Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/pulls/10",
+          "id": 5157306090,
+          "number": 10,
+          "head": {
+            "ref": "maintenance/26.1-26.2-2026-11-04",
+            "sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          },
+          "base": {
+            "ref": "mc/26.1-26.2",
+            "sha": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          }
+        }
+      ],
+      "jobs": [
+        {
+          "id": 126687067245,
+          "name": "Build (ubuntu-latest)",
+          "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "run_id": 41862279700,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687067655,
+          "name": "Build (windows-latest)",
+          "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "run_id": 41862279700,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687067724,
+          "name": "Resolve and inspect dependency graph",
+          "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "run_id": 41862279700,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 13339907909,
+          "name": "dependency-graph_ci-dependency-graph.json",
+          "expired": false
+        },
+        {
+          "id": 13339689138,
+          "name": "diagnostics-Windows",
+          "expired": false
+        },
+        {
+          "id": 13339594208,
+          "name": "third-person-readable-maps-Windows",
+          "expired": false
+        },
+        {
+          "id": 13339559274,
+          "name": "third-person-readable-maps-Linux",
+          "expired": false
+        },
+        {
+          "id": 13339544888,
+          "name": "diagnostics-Linux",
+          "expired": false
+        }
+      ]
+    },
+    "11": {
+      "id": 41862283894,
+      "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "workflow_id": 406332813,
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-11-04T15:53:04Z",
+      "updated_at": "2026-11-04T16:17:55Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/pulls/11",
+          "id": 5157306539,
+          "number": 11,
+          "head": {
+            "ref": "maintenance/26.3-2026-11-04",
+            "sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          },
+          "base": {
+            "ref": "mc/26.3",
+            "sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          }
+        }
+      ],
+      "jobs": [
+        {
+          "id": 126687083351,
+          "name": "Build (ubuntu-latest)",
+          "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "run_id": 41862283894,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687083840,
+          "name": "Resolve and inspect dependency graph",
+          "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "run_id": 41862283894,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 126687084226,
+          "name": "Build (windows-latest)",
+          "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "run_id": 41862283894,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 13340816558,
+          "name": "third-person-readable-maps-Windows",
+          "expired": false
+        },
+        {
+          "id": 13340756603,
+          "name": "diagnostics-Windows",
+          "expired": false
+        },
+        {
+          "id": 13340456904,
+          "name": "dependency-graph_ci-dependency-graph.json",
+          "expired": false
+        },
+        {
+          "id": 13339574850,
+          "name": "third-person-readable-maps-Linux",
+          "expired": false
+        },
+        {
+          "id": 13339544917,
+          "name": "diagnostics-Linux",
+          "expired": false
+        }
+      ]
+    },
+    "12": {
+      "id": 41864569719,
+      "head_sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "workflow_id": 406332813,
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-11-04T16:09:29Z",
+      "updated_at": "2026-11-04T16:28:24Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/pulls/12",
+          "id": 5157482797,
+          "number": 12,
+          "head": {
+            "ref": "maintenance/coordination-2026-11-04",
+            "sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          },
+          "base": {
+            "ref": "main",
+            "sha": "b90ee78e9b1da6d1da2c2f5f93da765739716137",
+            "repo": {
+              "id": 1444647729,
+              "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps",
+              "name": "third-person-readable-maps"
+            }
+          }
+        }
+      ],
+      "jobs": [
+        {
+          "id": 126695349895,
+          "name": "Validate coordination",
+          "head_sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+          "run_id": 41864569719,
+          "run_attempt": 1,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "artifacts": []
+    }
+  },
+  "documentation_http": [
+    {
+      "document": "dependency-monitoring.md",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/dependency-monitoring.md",
+      "status": 404
+    },
+    {
+      "document": "security-advisories.md",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/security-advisories.md",
+      "status": 404
+    },
+    {
+      "document": "compatibility.md",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/compatibility.md",
+      "status": 200
+    },
+    {
+      "document": "releasing.md",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/releasing.md",
+      "status": 200
+    }
+  ],
+  "administration": {
+    "changes_applied": false,
+    "branches": [
+      {
+        "name": "main",
+        "commit": {
+          "sha": "b90ee78e9b1da6d1da2c2f5f93da765739716137",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/b90ee78e9b1da6d1da2c2f5f93da765739716137"
+        },
+        "protected": false
+      },
+      {
+        "name": "maintenance/coordination-2026-11-04",
+        "commit": {
+          "sha": "8ef5e97b61ca817f8a85727322724000595e2533",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/8ef5e97b61ca817f8a85727322724000595e2533"
+        },
+        "protected": false
+      },
+      {
+        "name": "maintenance/1.21.11-2026-11-04",
+        "commit": {
+          "sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/7779e3a89849cdaf3b08aa536b79d8c238fa1874"
+        },
+        "protected": false
+      },
+      {
+        "name": "maintenance/26.1-26.2-2026-11-04",
+        "commit": {
+          "sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/e1bce43c0f370fb28bbf87ba974c8d1582c85fb0"
+        },
+        "protected": false
+      },
+      {
+        "name": "maintenance/26.3-2026-11-04",
+        "commit": {
+          "sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/dd43b41d3c4134430a57cc8eed0cc522249a614c"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/1.21.11",
+        "commit": {
+          "sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/26.1-26.2",
+        "commit": {
+          "sha": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/6891b6080e4bea981f7a7399a061b32f95f3452e"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/26.3",
+        "commit": {
+          "sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+        },
+        "protected": false
+      }
+    ],
+    "rulesets": [],
+    "environments": {
+      "total_count": 0,
+      "environments": []
+    },
+    "protection_reads": {
+      "main": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "403"
+      },
+      "1.21.11": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "403"
+      },
+      "26.1-26.2": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "403"
+      },
+      "26.3": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "403"
+      }
+    },
+    "secrets_metadata": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/actions/secrets#list-repository-secrets",
+      "status": "403"
+    },
+    "automatic_dependency_submission": "C remains; no settings mutation authorized or performed"
+  },
+  "review_date": "2026-11-05",
+  "review_timezone": "Asia/Shanghai",
+  "validation": {
+    "python_unit_tests": {
+      "count": 53,
+      "result": "PASS",
+      "scope": "local proposed coordination tree"
+    },
+    "reviewer_contract_fixture_checks": {
+      "hypothetical current-head non-author Write approval": {
+        "expected_authorized": true,
+        "observed_authorized": true,
+        "mode": "offline fixture only; not a submitted review or live authorization"
+      },
+      "Write without a submitted review": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; not a submitted review or live authorization"
+      },
+      "author self-approval": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; not a submitted review or live authorization"
+      },
+      "stale approved source revision": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; not a submitted review or live authorization"
+      },
+      "triage-only permission": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; not a submitted review or live authorization"
+      },
+      "release-draft independent-user acceptance": {
+        "expected_authorized": true,
+        "observed_authorized": true,
+        "mode": "offline fixture only; environments and approvals are not real"
+      },
+      "release-draft dispatcher rejection": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; environments and approvals are not real"
+      },
+      "release-publication independent-user acceptance": {
+        "expected_authorized": true,
+        "observed_authorized": true,
+        "mode": "offline fixture only; environments and approvals are not real"
+      },
+      "release-publication dispatcher rejection": {
+        "expected_authorized": false,
+        "observed_authorized": false,
+        "mode": "offline fixture only; environments and approvals are not real"
+      }
+    },
+    "hosted_artifacts": {
+      "1.21.11": {
+        "linux": {
+          "path": "1.21.11/linux/third-person-readable-maps-0.0.2-mc1.21.11.jar",
+          "sha256": "18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930",
+          "verified": true
+        },
+        "windows": {
+          "path": "1.21.11/windows/third-person-readable-maps-0.0.2-mc1.21.11.jar",
+          "sha256": "18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930",
+          "verified": true
+        },
+        "linux_windows_identical": true
+      },
+      "26.1-26.2": {
+        "linux": {
+          "path": "26.1-26.2/linux/third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "verified": true
+        },
+        "windows": {
+          "path": "26.1-26.2/windows/third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "verified": true
+        },
+        "linux_windows_identical": true
+      },
+      "26.3": {
+        "linux": {
+          "path": "26.3/linux/third-person-readable-maps-0.0.2-mc26.3.jar",
+          "sha256": "9f3bc6a3ee4477a3e7cc0f0ebb4c2ff25785ac3f608761f2dc502765f23e2e69",
+          "verified": true
+        },
+        "windows": {
+          "path": "26.3/windows/third-person-readable-maps-0.0.2-mc26.3.jar",
+          "sha256": "9f3bc6a3ee4477a3e7cc0f0ebb4c2ff25785ac3f608761f2dc502765f23e2e69",
+          "verified": true
+        },
+        "linux_windows_identical": true
+      }
+    },
+    "integration": {
+      "mode": "read-only comparison of four proposed branch trees; not merged production state",
+      "documentation_dependencies": [
+        {
+          "pr": 9,
+          "document": "docs/dependency-monitoring.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 9,
+          "document": "docs/security-advisories.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 9,
+          "document": "docs/compatibility.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 9,
+          "document": "docs/releasing.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 10,
+          "document": "docs/dependency-monitoring.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 10,
+          "document": "docs/security-advisories.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 10,
+          "document": "docs/compatibility.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 10,
+          "document": "docs/releasing.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 11,
+          "document": "docs/dependency-monitoring.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 11,
+          "document": "docs/security-advisories.md",
+          "exists_on_merged_main": false,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 11,
+          "document": "docs/compatibility.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        },
+        {
+          "pr": 11,
+          "document": "docs/releasing.md",
+          "exists_on_merged_main": true,
+          "exists_in_coordination_proposal": true,
+          "permanent_main_link_valid_after_12": true
+        }
+      ],
+      "maintenance_invariants": {
+        "1.21.11": {
+          "base": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+          "candidate": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+          "required_checks": [
+            "Build (ubuntu-latest)",
+            "Build (windows-latest)"
+          ],
+          "changes": [
+            ".github/dependabot.yml",
+            ".github/workflows/ci.yml",
+            ".gitignore",
+            "README.md",
+            "gradle/gradle-daemon-jvm.properties"
+          ]
+        },
+        "26.1-26.2": {
+          "base": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+          "candidate": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+          "required_checks": [
+            "Build (ubuntu-latest)",
+            "Build (windows-latest)"
+          ],
+          "changes": [
+            ".github/dependabot.yml",
+            ".github/workflows/ci.yml",
+            "README.md",
+            "gradle/gradle-daemon-jvm.properties"
+          ]
+        },
+        "26.3": {
+          "base": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf",
+          "candidate": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+          "required_checks": [
+            "Build (ubuntu-latest)",
+            "Build (windows-latest)"
+          ],
+          "changes": [
+            ".github/dependabot.yml",
+            ".github/workflows/ci.yml",
+            ".gitignore",
+            "README.md",
+            "gradle/gradle-daemon-jvm.properties"
+          ]
+        }
+      },
+      "coordination_runtime_security_and_historical_evidence_unchanged": [
+        "scripts/authorize_release.py",
+        "scripts/release.py",
+        "scripts/release_github.py",
+        "scripts/audit_dependencies.py",
+        "scripts/scan_dependency_snapshot.py",
+        "release/compatibility.json",
+        ".github/workflows/release.yml",
+        ".github/workflows/ci.yml",
+        "docs/security-advisories.json",
+        "docs/maintenance-evidence-2026-11-04.json"
+      ],
+      "compatibility_sha256": "c2b9cb2785a2df31979bd21c1ff328ea1e14b5c60279c10a2abc43b3e41216cf",
+      "readme_title_intro_badges_heading_order": "PASS",
+      "future_integration_order": [
+        "12",
+        "9/10/11 in any order after independent approvals"
+      ],
+      "new_commit_needed_on_maintenance_prs": false
+    },
+    "refreshed_inventories": {
+      "1.21.11": {
+        "package_count": 86,
+        "package_versions_equal_reviewed_inventory": true,
+        "source_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+        "declared_logical_ref": "refs/heads/mc/1.21.11",
+        "job": {
+          "id": "local-proposed-integration-not-github-run",
+          "correlator": "verified-refresh-1.21.11"
+        },
+        "input_mode": "local proposed integration, not remote mc HEAD",
+        "snapshot_sha256": "c8821be05e4796679133b8e9b50c191824279a5eafe8667389421d01abebf85e"
+      },
+      "26.1-26.2": {
+        "package_count": 84,
+        "package_versions_equal_reviewed_inventory": true,
+        "source_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+        "declared_logical_ref": "refs/heads/mc/26.1-26.2",
+        "job": {
+          "id": "local-proposed-integration-not-github-run",
+          "correlator": "verified-refresh-26.1-26.2"
+        },
+        "input_mode": "local proposed integration, not remote mc HEAD",
+        "snapshot_sha256": "45ea9a747fcb33ee5e6eb988312ec21026eb091b4d7c7f481e090969c0194b7f"
+      },
+      "26.3": {
+        "package_count": 86,
+        "package_versions_equal_reviewed_inventory": true,
+        "source_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+        "declared_logical_ref": "refs/heads/mc/26.3",
+        "job": {
+          "id": "local-proposed-integration-not-github-run",
+          "correlator": "verified-refresh-26.3"
+        },
+        "input_mode": "local proposed integration, not remote mc HEAD",
+        "snapshot_sha256": "0bdfae26629680e85ab1285263d11ad32ef0cc08e0bfea24f30af9b9c81e76c7"
+      }
+    },
+    "snapshot_gap": {
+      "unchanged_pr_9_snapshot_packages": 85,
+      "missing_mandatory_package": "pkg:maven/net.fabricmc/intermediary@1.21.11",
+      "warm_default_local_reproduced_packages": 85,
+      "warm_refresh_local_packages": 86,
+      "repeat_warm_refresh_local_packages": 86,
+      "disposition": "Fix resolution with --refresh-dependencies in the central workflow; no baseline deletion, no advisory acceptance, no input PR snapshot relabelling."
+    },
+    "final_head_ci": "Final corrected PR #12 head must have its own successful Validate coordination; final run/SHA are recorded by GitHub and the handoff, not inferred from the inspected 8ef5e97 head."
+  }
+}

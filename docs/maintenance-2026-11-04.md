@@ -8,6 +8,14 @@ changes are proposed in [PR #12](https://github.com/skyRolly/third-person-readab
 this task. No merge, auto-merge, tag write, Draft Release, or public Release was
 performed. Mod version 0.0.2 is unchanged and unreleased.
 
+Review update: the original collaborator evidence already showed Write access;
+the prior triage-only conclusion is corrected below and in the
+[administrative report](administrative-controls.md). The historical evidence JSON
+is unchanged. Candidate hosted jobs recorded as queued during the first handoff
+have since succeeded; this report now distinguishes that completed evidence from
+still-missing approvals and merged-head validation. See the focused
+[review-resolution report](review-resolution-2026-11-05.md).
+
 ## Verified baseline and branch maintenance matrix
 
 A fresh fetch and ls-remote confirmed all supplied heads. There were no open PRs
@@ -19,18 +27,20 @@ inferred from an earlier worklog.
 
 | Branch | Initial HEAD | Proposed HEAD / PR | Build CI | README | Dependencies | Outstanding issues |
 | --- | --- | --- | --- | --- | --- | --- |
-| main | b90ee78e9b1da6d1da2c2f5f93da765739716137 | maintenance/coordination-2026-11-04; exact final SHA in PR | Initial hosted coordination PASS; proposed 53 Python tests and workflow lint PASS; hosted proposal pending | Exact title/intro and coordination badge | Expanded existing central audit; reviewed ledger | Review, integrated schedule, admin/security/runtime gates |
-| mc/1.21.11 | 1bbd3f41b97ea5d0b78ae1909e846462078bdf9d | 7779e3a89849cdaf3b08aa536b79d8c238fa1874 / #9 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; candidate hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Queued candidate Windows/hosted snapshot; reviewed merge; Java21 runtime/graphics reports |
-| mc/26.1-26.2 | 6891b6080e4bea981f7a7399a061b32f95f3452e | e1bce43c0f370fb28bbf87ba974c8d1582c85fb0 / #10 | Initial hosted Linux+Windows PASS; candidate local Linux and four-version API PASS; hosted queued | Standardized, branch badge | No version change; four runtime manifests audited centrally | Queued candidate Windows/hosted snapshot; reviewed merge; all four runtime/graphics reports |
-| mc/26.3 | 0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf | dd43b41d3c4134430a57cc8eed0cc522249a614c / #11 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Queued candidate Windows/hosted snapshot; reviewed merge; runtime/graphics reports |
+| main | b90ee78e9b1da6d1da2c2f5f93da765739716137 | maintenance/coordination-2026-11-04; exact final SHA in PR | Initial hosted coordination PASS; inspected PR head passed hosted coordination CI; review corrections require their own exact-head CI | Exact title/intro and coordination badge | Expanded existing central audit; reviewed ledger | Review, integrated schedule, admin/security/runtime gates |
+| mc/1.21.11 | 1bbd3f41b97ea5d0b78ae1909e846462078bdf9d | 7779e3a89849cdaf3b08aa536b79d8c238fa1874 / #9 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; candidate hosted Linux+Windows PASS | Standardized, branch badge | No version change; duplicate Dependabot config removed | Candidate hosted snapshot PASS; reviewed merge; Java21 runtime/graphics reports |
+| mc/26.1-26.2 | 6891b6080e4bea981f7a7399a061b32f95f3452e | e1bce43c0f370fb28bbf87ba974c8d1582c85fb0 / #10 | Initial hosted Linux+Windows PASS; candidate local Linux and four-version API PASS; hosted Linux+Windows PASS | Standardized, branch badge | No version change; four runtime manifests audited centrally | Candidate hosted snapshot PASS; reviewed merge; all four runtime/graphics reports |
+| mc/26.3 | 0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf | dd43b41d3c4134430a57cc8eed0cc522249a614c / #11 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; hosted Linux+Windows PASS | Standardized, branch badge | No version change; duplicate Dependabot config removed | Candidate hosted snapshot PASS; reviewed merge; runtime/graphics reports |
 
 Baseline push CI runs: main **41853117268**, 1.21.11 **41842279767**,
 26.1–26.2 **41842370918**, 26.3 **41842321970**. The actual release verifier's
 `check_ci` function passed on each exact initial HEAD against live workflow,
 job/check identity and GitHub Actions app15368 data. New maintenance PR CI runs
 are **41862276302**, **41862279700**, **41862283894** respectively; they were
-queued at the recorded inspection. Queued jobs supply no successful execution
-evidence and are not counted as PASS.
+queued at the original inspection and have now completed successfully on the same
+unchanged maintenance PR heads. Their Linux, Windows and snapshot jobs passed.
+PR #12 run **41864569719** passed on the originally reviewed head8ef5e97; later
+review corrections must obtain their own head-specific coordination result.
 
 Branch relationships are intentionally not uniform: mc/26.3 is an ancestor of
 main (main is 12 commits ahead at the baseline). Main diverges from mc/1.21.11
@@ -44,8 +54,11 @@ current authorization contract.
 ## Findings by priority
 
 - **P1 / release blockers:** no branch protection on any authoritative branch;
-  no release environments; no eligible independent source reviewer other than
-  the author in the collaborator inventory; no submitted reviews on PRs #4/#5/#7/#8.
+  no release environments; no actual independent source approvals on the current
+  PRs or eligible reviewed baseline history. The earlier assertion that only the
+  author had eligible permission was incorrect: historical and fresh reads show
+  ZDN-1942 has Write. They are potentially eligible, subject to human confirmation
+  of independence, availability and owner authorization.
   Auditor secret metadata and security/protection settings are inaccessible (403).
   No tag ruleset is listed. Live preflight rejects protection and environment
   prerequisites. Prepared payloads are not applied settings.
@@ -66,8 +79,8 @@ current authorization contract.
   unmerged-PR and submission descriptions were inconsistent. README titles,
   introductions, section order and current branch/release status are corrected.
 - **P4 / verification:** local candidate builds, API checks, release regressions
-  and candidate aggregation pass. Hosted proposal jobs remain queued and fresh
-  source-bound graphical evidence is missing. Those are separate from code-test
+  and candidate aggregation pass. Maintenance candidate hosted jobs now pass; updated coordination evidence
+  must match the final PR #12 head, and fresh source-bound graphical evidence is missing. Those are separate from code-test
   success and must not be bypassed.
 
 ## Complete tracked-tree review
@@ -188,7 +201,8 @@ OSV matches, not inaccessible private alert metadata.
   checksum was verified. Read-only permissions, exact build identities, branch
   triggers, cache expressions, Windows external-directory entry point and both
   four-version checks were inspected; cache writes have not been live-exercised
-  on unmerged maintenance pushes.
+  on unmerged maintenance pushes. Current PR build logs explicitly show Gradle
+  caches were read-only and entries were not saved.
 - Temurin25.0.5+8 (download SHA-256 verified) and Gradle9.8.2: all three clean
   Linux builds passed with warning-mode=fail. Mixin target, bytecode, metadata,
   classifier, license and mapping namespace checks passed. Local CA trust was
@@ -234,3 +248,11 @@ and owner-controlled protection activation. Further live release authorization
 verification is blocked by the documented administrative, source-history,
 security-disposition and runtime-evidence prerequisites. Draft preparation and
 public publication are not ready and were not attempted.
+
+
+The focused review also found a cached intermediary-mapping omission in #9's
+snapshot. The strict baseline was preserved; the central audit command now uses
+`--refresh-dependencies` so the detector observes that input. See the
+[review-resolution record](review-resolution-2026-11-05.md) for reproduction,
+coverage and source-binding limits. This is an audit-resolution correction, not
+a dependency upgrade or game build change.

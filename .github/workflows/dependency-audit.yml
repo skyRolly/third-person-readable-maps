@@ -49,7 +49,8 @@ jobs:
           cache-read-only: true
           validate-wrappers: true
           dependency-graph: generate-and-upload
-          additional-arguments: --no-daemon --console=plain --stacktrace
+          # Re-resolve cached Loom mappings so the detector observes intermediary too.
+          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies
           artifact-retention-days: 14
       - name: Query OSV for snapshot packages
         env:
