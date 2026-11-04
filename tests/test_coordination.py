@@ -56,6 +56,22 @@ class CoordinationTests(unittest.TestCase):
             self.assertEqual(subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--help'],
                                             capture_output=True).returncode, 0)
 
+    def test_alternative_configuration_is_only_available_to_candidate_mode(self):
+        with tempfile.TemporaryDirectory() as temp:
+            config = Path(temp) / 'candidate-config.json'
+            plan = Path(temp) / 'candidate-plan.json'
+            config.write_text((ROOT / 'release/compatibility.json').read_text(), encoding='utf-8')
+            candidate = release.read_json(ROOT / 'release/plan.example.json')
+            for i, entry in enumerate(candidate['groups'].values(), 1):
+                entry['commit'] = str(i) * 40
+            plan.write_text(json.dumps(candidate), encoding='utf-8')
+            command = [sys.executable, str(ROOT / 'scripts/release.py'), 'matrix', '--plan', str(plan),
+                       '--candidate-config', str(config)]
+            strict = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(strict.returncode, 0)
+            self.assertIn('--candidate-config requires --candidate', strict.stderr)
+            self.assertEqual(subprocess.run(command + ['--candidate'], capture_output=True).returncode, 0)
+
     def test_dependency_updates_cover_each_maintained_branch(self):
         config = (ROOT / '.github/dependabot.yml').read_text(encoding='utf-8')
         blocks = re.split(r'(?m)^  - package-ecosystem: ', config)[1:]

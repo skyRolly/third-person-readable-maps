@@ -159,3 +159,22 @@ pinned dependencies, cache write permissions, expected packages, or advisory pol
 Per-commit artifacts remain useful inspection records, but a successful upload
 still does not prove inventory completeness, Graph indexing, or a clean scan.
 No raw PR snapshot was rewritten to claim a different source/ref.
+
+## Legacy candidate scan — 2026-11-05
+
+The [candidate OSV report](dependency-evidence/legacy-candidate-osv-2026-11-05.json)
+contains hash-verified Mojang runtime inventories for 1.21.4–1.21.10 and the
+retained Gradle snapshots from PRs #13 and #14. The snapshots report PR merge
+refs, not maintenance heads or proof of a GitHub Dependency Graph submission.
+The scan queried 112 distinct package/version pairs and retained full advisory
+records and stable group/package/advisory identities. It found **52** candidate
+matches for 1.21.4–1.21.8 and **59** for 1.21.9–1.21.10. All are marked new,
+unreviewed, and failing; none has been accepted or suppressed. Overlapping
+matches are counted once per group and may refer to the same advisory.
+
+This evidence covers candidate snapshots at their recorded SHAs, not the
+unmerged baseline maintenance branches. It does not replace the authoritative
+reviewed ledger, establish exploitability, audit native binary internals, or
+prove a successful scheduled audit. Triage every finding and regenerate the
+snapshots and ledger for the actual reviewed maintenance heads before adding
+those groups to the authoritative audit matrix or release configuration.

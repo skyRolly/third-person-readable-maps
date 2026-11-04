@@ -284,12 +284,15 @@ def main():
     parser.add_argument('command', choices=['validate', 'matrix', 'verify-sources', 'aggregate'])
     parser.add_argument('--plan', required=True)
     parser.add_argument('--candidate', action='store_true', help='allow missing runtime evidence; never use for release')
+    parser.add_argument('--candidate-config', help='alternative configuration for non-publishing candidate validation only')
     parser.add_argument('--artifacts')
     parser.add_argument('--output')
     parser.add_argument('--coordinator-sha')
     args = parser.parse_args()
     try:
-        cfg, plan = load_plan(args.plan, args.candidate)
+        require(not args.candidate_config or args.candidate, '--candidate-config requires --candidate')
+        config_path = Path(args.candidate_config) if args.candidate_config else ROOT / 'release/compatibility.json'
+        cfg, plan = load_plan(args.plan, args.candidate, config_path=config_path)
         if args.command == 'matrix':
             print(json.dumps({'include': matrix(cfg, plan)}, separators=(',', ':')))
         elif args.command == 'verify-sources':

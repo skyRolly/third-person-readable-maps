@@ -8,10 +8,10 @@ An **unverified** row is not a support claim. Candidate grouping is an investiga
 |---|---:|---|---|---|---|---|
 | 1.21.10 | 21 | listed / 1.21.10+build.3 | Mojang | 1.21.9–1.21.10* | PASS* | World PASS; graphics PARTIAL* |
 | 1.21.9 | 21 | listed / 1.21.9+build.1 | Mojang | 1.21.9–1.21.10* | PASS* | World PASS; graphics PARTIAL* |
-| 1.21.8 | 21 | listed / 1.21.8+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | NOT RUN |
-| 1.21.7 | 21 | listed / 1.21.7+build.8 | Mojang | 1.21.4–1.21.8* | PASS* | NOT RUN |
-| 1.21.6 | 21 | listed / 1.21.6+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | NOT RUN |
-| 1.21.5 | 21 | listed / 1.21.5+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | NOT RUN |
+| 1.21.8 | 21 | listed / 1.21.8+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | World PASS; graphics PARTIAL* |
+| 1.21.7 | 21 | listed / 1.21.7+build.8 | Mojang | 1.21.4–1.21.8* | PASS* | World PASS; graphics PARTIAL* |
+| 1.21.6 | 21 | listed / 1.21.6+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | World PASS; graphics PARTIAL* |
+| 1.21.5 | 21 | listed / 1.21.5+build.1 | Mojang | 1.21.4–1.21.8* | PASS* | World PASS; graphics PARTIAL* |
 | 1.21.4 | 21 | listed / 1.21.4+build.8 | Mojang | 1.21.4–1.21.8* | PASS* | World PASS; graphics PARTIAL* |
 | 1.21.3 | 21 | listed / 1.21.3+build.2 | Mojang | 1.21.2–1.21.3? | NOT RUN | NOT RUN |
 | 1.21.2 | 21 | listed / 1.21.2+build.1 | Mojang | 1.21.2–1.21.3? | NOT RUN | NOT RUN |
@@ -51,4 +51,4 @@ An **unverified** row is not a support claim. Candidate grouping is an investiga
 
 \* Candidate evidence is limited to the identified JAR and environment; it does not mean release-ready or complete graphical acceptance. `?` marks an unverified grouping hypothesis.
 
-Mojang metadata lists a client artifact for every row; listing is not a successful download. The 1.21.8–1.21.10 clients were actually downloaded and hash-checked for this round. Fabric’s game and intermediary metadata did not list sampled 1.13.2, 1.13.1, 1.13, or 1.12.2 releases; pre-1.14 is outside this round’s official Fabric target and has not been ported.
+Mojang metadata lists a client artifact for every row; listing is not a successful download. The 1.21.4–1.21.10 clients were actually downloaded and hash-checked for this round. Fabric’s game and intermediary metadata did not list sampled 1.13.2, 1.13.1, 1.13, or 1.12.2 releases; pre-1.14 is outside this round’s official Fabric target and has not been ported.

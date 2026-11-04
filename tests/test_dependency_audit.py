@@ -159,6 +159,28 @@ class AuditTests(unittest.TestCase):
         self.ledger['reviewed_on'] = '2026-01-01'
         with self.assertRaises(Invalid): audit.load_ledger(self.ledger, self.groups, TODAY)
 
+    def test_candidate_scan_keeps_every_match_unreviewed_and_source_bound(self):
+        root = Path(__file__).resolve().parents[1]
+        report = audit.read_json(root / 'docs/dependency-evidence/legacy-candidate-osv-2026-11-05.json')
+        self.assertEqual(report['status'], 'complete-unreviewed-candidate-scan')
+        self.assertFalse(report['risk_acceptance'])
+        versions = {'1.21.4-1.21.8': ['1.21.4', '1.21.5', '1.21.6', '1.21.7', '1.21.8'],
+                    '1.21.9-1.21.10': ['1.21.9', '1.21.10']}
+        for group, entry in report['groups'].items():
+            self.assertIn(group, versions)
+            self.assertEqual(set(entry['inventories']), {'gradle'} | {'runtime/' + v for v in versions[group]})
+            queried = set().union(*map(set, entry['inventories'].values()))
+            expected = {(purl, identifier) for purl, ids in report['findings'].items()
+                        if purl in queried for identifier in ids}
+            self.assertEqual(expected, {(m['purl'], m['advisory']) for m in entry['matches']})
+            for match in entry['matches']:
+                self.assertEqual(match['key'], audit.identity(group, match['purl'], match['advisory']))
+                self.assertEqual(match['fingerprint'], audit.advisory_fingerprint(report['advisories'][match['advisory']]))
+                self.assertEqual(match['scopes'], sorted(k for k, v in entry['inventories'].items() if match['purl'] in v))
+                self.assertTrue(match['failing'])
+                self.assertEqual(match['review_status'], 'awaiting investigation')
+                self.assertEqual(match['disposition'], 'Further investigation')
+
     def test_checked_in_ledger_covers_configured_inventories(self):
         root = Path(__file__).resolve().parents[1]
         groups = audit.read_json(root / 'release/compatibility.json')['groups']
