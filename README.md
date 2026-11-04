@@ -30,8 +30,11 @@ maintenance release. The committed Gradle **9.8.2** wrapper downloads and verifi
 you do not need a separate Gradle installation. Network access is required for
 Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.19.3**
 and Fabric Loader **0.20.1**, as pinned in `gradle.properties`.
-Gradle execution, the compiler toolchain, and the mod's bytecode target all use
-Java 25, matching Minecraft 26.3's runtime requirement.
+The Gradle build daemon, compiler toolchain, and mod bytecode all use Java 25,
+matching Minecraft 26.3's runtime requirement.
+The committed Gradle daemon criteria also let GitHub's managed dependency
+submission start with Java 21 and use the runner's installed Java 25 for the
+build. Gradle discovers that JDK through `JAVA_HOME_25_X64` on GitHub runners.
 
 ```sh
 # Linux / macOS
