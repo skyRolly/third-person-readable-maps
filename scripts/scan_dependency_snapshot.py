@@ -89,7 +89,7 @@ def main():
             print(f"{purl}: {', '.join('https://osv.dev/vulnerability/' + i for i in ids)}")
         if skipped:
             print('Unscanned snapshot entries: ' + ', '.join(skipped))
-        return 1 if findings else 0
+        return 1 if findings or skipped else 0
     except (Invalid, OSError, ValueError, TypeError, KeyError) as exc:
         print(f'dependency scan failed: {exc}', file=sys.stderr)
         return 2

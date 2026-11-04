@@ -87,6 +87,19 @@ class CoordinationTests(unittest.TestCase):
                 query.assert_not_called()
             self.assertFalse((Path(temp) / 'report.json').exists())
 
+    def test_audit_reports_and_fails_when_snapshot_contains_unscanned_entries(self):
+        with tempfile.TemporaryDirectory() as temp:
+            snapshot, output = Path(temp) / 'snapshot.json', Path(temp) / 'report.json'
+            snapshot.write_text(json.dumps({'ref': 'refs/heads/mc/1.21.11', 'sha': 'a' * 40,
+                'manifests': {'build': {'resolved': {'known': {'package_url': 'pkg:maven/example/x@1.0'},
+                                                     'unknown': {}}}}}))
+            argv = ['scan_dependency_snapshot.py', '--snapshot', str(snapshot), '--branch', 'mc/1.21.11',
+                    '--source-sha', 'a' * 40, '--output', str(output)]
+            with patch.object(sys, 'argv', argv), patch.object(scanner, 'query', return_value={}), \
+                 patch('sys.stdout', new_callable=io.StringIO):
+                self.assertEqual(scanner.main(), 1)
+            self.assertEqual(json.loads(output.read_text())['unscanned_snapshot_entries'], ['unknown'])
+
     def test_osv_snapshot_reports_skipped_entries_and_paginates(self):
         snapshot = {'manifests': {'build': {'resolved': {
             'one': {'package_url': 'pkg:maven/org.example/one@1.0'},

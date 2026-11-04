@@ -45,8 +45,8 @@ The weekly **Maintenance dependency audit** workflow checks out each current
 maintenance head, generates an inspectable Gradle dependency snapshot without
 submitting it, and queries OSV for versioned Maven package URLs. It uploads a
 report with the source SHA, scanned packages, unscanned entries and advisory IDs;
-a finding or a scan failure makes the relevant job fail. Review the workflow
-results and failures each week. This complements, rather than replaces, native
+a finding, unscanned snapshot entry or scan failure makes the relevant job fail.
+Review the workflow results and failures each week. This complements, rather than replaces, native
 alerts. It only covers resolved packages present in the snapshot and advisories
 known to OSV; unresolved configurations, build plugins, non-Maven entries, native
 libraries and Minecraft/Fabric-supplied dependencies may be missing. Inspect
