@@ -181,13 +181,12 @@ class ReleaseValidationTests(unittest.TestCase):
         bundle = self.root / 'integration-bundle'
         release.aggregate(cfg, plan, artifacts, bundle, coordinator_sha=coordinator)
         files = release_github.verified_files(cfg, plan, bundle, coordinator)
-        required = sorted(authorize_release.BUILD_CHECKS)
         protection = {'required_pull_request_reviews': {'required_approving_review_count': 1,
             'dismiss_stale_reviews': True, 'require_code_owner_reviews': False, 'require_last_push_approval': False,
             'bypass_pull_request_allowances': {'users': [], 'teams': [], 'apps': []}},
             'enforce_admins': {'enabled': True}, 'allow_force_pushes': {'enabled': False},
             'allow_deletions': {'enabled': False}, 'required_status_checks': {'strict': True,
-            'contexts': required, 'checks': [{'context': n, 'app_id': 15368} for n in required]}}
+            'contexts': [], 'checks': []}}
         sha_branches = {sha: branch for branch, sha in branch_shas.items()}
         branches = list(branch_shas)
         run_ids = {branch: 100 + index for index, branch in enumerate(branches)}
@@ -206,7 +205,13 @@ class ReleaseValidationTests(unittest.TestCase):
                     'reviewers': [{'type': 'User', 'reviewer': {'id': 5}}], 'prevent_self_review': True}]}
             if route.startswith('branches/'):
                 branch = unquote(route[len('branches/'):].removesuffix('/protection'))
-                return protection if route.endswith('/protection') else {'protected': True, 'commit': {'sha': branch_shas[branch]}}
+                if route.endswith('/protection'):
+                    result = copy.deepcopy(protection)
+                    required = sorted(authorize_release.role_checks(branch))
+                    result['required_status_checks'].update(contexts=required, checks=[
+                        {'context': n, 'app_id': 15368} for n in required])
+                    return result
+                return {'protected': True, 'commit': {'sha': branch_shas[branch]}}
             if route.startswith(('rules/branches/', 'rulesets')):
                 return []
             if route.startswith('commits/') and route.endswith('/pulls'):
@@ -231,13 +236,17 @@ class ReleaseValidationTests(unittest.TestCase):
                     'status': 'completed', 'conclusion': state['failure'] or 'success'}]}
             if route.startswith('actions/runs/') and '/attempts/' in route:
                 run_id = int(route.split('/')[2])
-                sha = branch_shas[ids_branches[run_id]]
+                branch = ids_branches[run_id]
+                sha = branch_shas[branch]
+                required = sorted(authorize_release.role_checks(branch))
                 return {'jobs': [{'id': run_id * 10 + i, 'run_id': run_id, 'run_attempt': 1, 'head_sha': sha,
                                   'name': name, 'status': 'completed', 'conclusion': 'success'}
                                  for i, name in enumerate(required)]}
             if route.startswith('commits/') and route.endswith('/check-runs'):
                 sha = route.split('/')[1]
-                run_id = run_ids[sha_branches[sha]]
+                branch = sha_branches[sha]
+                run_id = run_ids[branch]
+                required = sorted(authorize_release.role_checks(branch))
                 return {'check_runs': [{'id': run_id * 10 + i, 'name': name, 'app': {'id': 15368},
                     'head_sha': sha, 'started_at': '2026-11-04T00:00:01Z', 'status': 'completed',
                     'conclusion': 'success'} for i, name in enumerate(required)]}

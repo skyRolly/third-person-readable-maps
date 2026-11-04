@@ -1,60 +1,67 @@
 # Third Person Readable Maps
 
 A client-side Fabric mod that renders filled map contents on maps held in
-third-person view, including main and off hands, occupied opposite hands and
-left-handed players. The server does not need the mod. Fabric API is not needed.
+third-person view, including either hand and left-handed players. The server does
+not need the mod, and Fabric API is not required.
 
 ## Minecraft compatibility
 
-The candidates in this repository build separate JARs with a shared mod version:
+Each row has its own maintained source branch and distributable JAR. The listed
+Minecraft versions are explicit support targets, not promises for all versions
+in a release family. The current coordinated mod version is `0.0.2`; it has not
+been published as a coordinated GitHub Release.
 
-| Minecraft | Java to play | Fabric Loader | Status |
-| --- | --- | --- | --- |
-| 1.21.11 | 21+ | 0.20.1+ | Maintenance candidate, intermediary/remapped JAR |
-| 26.1, 26.1.1, 26.1.2, 26.2 | 25+ | 0.20.1+ | One tested candidate JAR, official names |
-| 26.3 | 25+ | 0.20.1+ | Candidate based on unmerged PR #3, official-name JAR |
+| Minecraft | Source branch | Java to play | Fabric Loader | Artifact |
+| --- | --- | --- | --- | --- |
+| 1.21.11 | [`mc/1.21.11`](../../tree/mc/1.21.11) | 21+ | 0.20.1+ | One intermediary/remapped JAR |
+| 26.1, 26.1.1, 26.1.2, 26.2 | [`mc/26.1-26.2`](../../tree/mc/26.1-26.2) | 25+ | 0.20.1+ | One shared official-name JAR |
+| 26.3 | [`mc/26.3`](../../tree/mc/26.3) | 25+ | 0.20.1+ | A separate official-name JAR |
 
-These are explicit game versions, not claims that the JARs work on an entire
-release family. There is no coordinated public release yet. The prior `main` history
-contains mod version `0.0.1`; `0.0.2` is proposed for the first coordinated
-release and must not be tagged or published until reviewed. See the full
-[compatibility decision record](docs/compatibility.md).
+The [compatibility record](docs/compatibility.md) describes the API boundaries,
+static checks and installed-client tests. Further graphical testing remains a
+release gate. Install only the JAR matching your game version in the client
+instance's `mods` directory; map contents require the client to have received
+the map data.
 
-## Build this branch
+## Build or contribute
 
-Install **JDK 25**, set `JAVA_HOME` to it, and run:
+`main` is the coordination branch: it owns documentation, the compatibility
+matrix, release plans, authorization, orchestration and validation. It is not
+a Minecraft build. Submit game-specific changes to the appropriate `mc/*`
+branch; submit shared coordination changes to `main`. Port applicable changes
+to every affected maintenance branch in separate reviewed PRs and record any
+adaptation or deferral in the release plan.
+
+To build one version, check out its source branch, install JDK 25, set
+`JAVA_HOME`, and run:
 
 ```sh
+git checkout mc/1.21.11   # or mc/26.1-26.2, or mc/26.3
 ./gradlew --no-daemon clean build
-python3 -m unittest discover -s tests -v
 ```
 
-On Windows, use `gradlew.bat --no-daemon clean build` or `Build-Windows.bat`.
-The Gradle 9.8.2 wrapper is included. The 1.21.11 branch executes Gradle and
-compiles with JDK 25 using `--release 21`: the resulting mod requires Java 21,
-not Java 25, to run. The artifact is
-`build/libs/third-person-readable-maps-<mod-version>-mc1.21.11.jar`.
-The 26.1–26.2 candidate compiles against 26.1 and packages
-`third-person-readable-maps-<mod-version>-mc26.1-26.2.jar`. The separate 26.3
-candidate uses Java 25 for both build and runtime and packages
-`third-person-readable-maps-<mod-version>-mc26.3.jar`.
+On Windows use `gradlew.bat --no-daemon clean build` or `Build-Windows.bat`.
+JDK 25 runs Gradle for all groups; the 1.21.11 build targets Java 21 bytecode
+and runs on Java 21. The 26.x JARs require Java 25. The distributable is in
+`build/libs/` and has `-mc<group>.jar` in its name. For 26.1–26.2 also run
+`python3 scripts/verify_supported_apis.py --jar build/libs` to verify all four
+targets. Each branch's CI retains Linux and Windows builds and its game-specific
+checks; CI on `main` validates coordination tools and workflows.
 
-Do not install development intermediates. Copy the exact JAR for your game
-version into the client instance's `mods` directory and launch its Fabric
-profile. Map contents require the client to have received that map's data.
+## Coordinated releases and dependencies
 
-## Development and releases
+One reviewed `X.X.X` mod version is shared across all branches. A reviewed
+plan pins each source commit and runtime evidence. One annotated tag without a
+`v` prefix identifies the approved `main` coordination commit, and one GitHub
+Release contains all three JARs, a provenance manifest and checksums. The
+[release guide](docs/releasing.md) describes required branch protections, CI,
+independent approvals, runtime testing and dry runs. No release is automatic.
 
-Linux and Windows CI build the branch under review, validate the exact Mixin
-target and inspect the distributable. Those checks do not replace an installed
-client or visual test. The [maintenance and release guide](docs/releasing.md)
-describes branch roles, propagation of changes, the single global tag and the
-review gates for a coordinated release. No release workflow runs automatically.
-
-Minecraft-managed libraries such as Netty, Log4j, Guava and LZ4 are supplied by
-the game, not bundled by this mod. The existing Dependabot security-update
-`dependency_not_found` issue and inaccessible alert details remain open; see
-the [decision record](docs/compatibility.md#dependency-maintenance).
+Dependabot version updates cover Gradle and Actions on all three maintenance
+branches and Actions on `main`. Default-branch Dependabot alerts do not give
+equivalent security coverage for non-default branches. The release guide
+explains the scheduled advisory reports, their limits, and the required
+repository-settings change for automatic Gradle submission.
 
 Report bugs with the Minecraft, Fabric Loader, Java and mod versions, steps to
 reproduce and the relevant client log. Licensed under [MIT](LICENSE).

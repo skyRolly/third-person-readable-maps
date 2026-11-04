@@ -1,6 +1,7 @@
 # Compatibility decision record
 
-This is a candidate architecture, not a list of already published artifacts.
+These branches and compatibility groups are maintained; their `0.0.2`
+artifacts have not yet been published as a coordinated release.
 The [Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
 listed 26.3 as the latest stable release on 2026-11-04; 26.4 was a snapshot.
 All 1.21 releases listed here require Java 21 and all listed 26.x releases require
@@ -15,7 +16,7 @@ selected and declared as the minimum for the three candidate builds.
 | 1.21.9, 1.21.10 | `submitArmWithItem` lacks the 1.21.11 `ItemStack` parameter | No: changed signature | Not run | Requires a port and separate verification |
 | 1.21.11 | Exact target and signature checked against mapped game classes | 1.21.11 only | Earlier 0.0.1 development-client graphical test: [PR #1](https://github.com/skyRolly/third-person-readable-maps/pull/1); the [current JAR](https://github.com/skyRolly/third-person-readable-maps/pull/4) loaded and applied its Mixin on Java 21 in an installed client and joined a single-player world | Candidate; full current graphical matrix remains a release gate |
 | 26.1, 26.1.1, 26.1.2, 26.2 | Same injection descriptor; these versions have `PoseStack.mulPose(Quaternionfc)` and lack 26.3’s `rotateDegrees` | One 26.1–26.2 JAR; separate from 26.3 | The identical installed Java 25 JAR loaded, applied its Mixin, and displayed map terrain in third person on all four | [Candidate build #7](https://github.com/skyRolly/third-person-readable-maps/pull/7), compiled against 26.1; broader hand/arm coverage remains a release gate |
-| 26.3 | Exact target and signature checked against game classes | 26.3 only | [PR #3](https://github.com/skyRolly/third-person-readable-maps/pull/3) reports a Java 25 development-client graphical test; the [candidate JAR](https://github.com/skyRolly/third-person-readable-maps/pull/5) loaded and applied its Mixin in an installed Java 25 client using software Vulkan | Candidate, dependent on PR #3; full current graphical matrix remains a release gate |
+| 26.3 | Exact target and signature checked against game classes | 26.3 only | [PR #3](https://github.com/skyRolly/third-person-readable-maps/pull/3) reports a Java 25 development-client graphical test; the [candidate JAR](https://github.com/skyRolly/third-person-readable-maps/pull/5) loaded and applied its Mixin in an installed Java 25 client using software Vulkan | Maintained in `mc/26.3`; full current graphical matrix remains a release gate |
 
 The 1.21 entries were inspected in Mojang's official client mappings, including
 the target method's complete descriptor. The 26.x entries were inspected in the
@@ -69,5 +70,6 @@ contains the investigation and remaining advisory ranges. The alert API returned
 HTTP 403 during this investigation, so individual alerts and branch protections
 could not be verified. Keep security updates and alerts enabled. GitHub's
 security updates primarily use the default branch; version updates can target
-additional maintenance branches. Add the branch-specific version-update
-configuration described in the release guide only once the branches exist.
+additional maintenance branches. Version updates target all three existing
+maintenance branches. The scheduled advisory scan and its limitations are
+described in the [release guide](releasing.md#dependency-maintenance).
