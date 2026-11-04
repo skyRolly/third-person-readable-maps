@@ -9,3 +9,5 @@ run/
 .vscode/
 .DS_Store
 dependency-graph-reports/
+__pycache__/
+*.py[cod]

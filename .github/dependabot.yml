@@ -10,3 +10,17 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+  # Version updates for the existing maintenance branch. Security updates
+  # retain GitHub's separate default-branch behavior.
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.21.11
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.21.11
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
