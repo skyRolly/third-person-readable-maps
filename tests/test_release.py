@@ -1,4 +1,6 @@
 import copy
+import os
+import subprocess
 import json
 from pathlib import Path
 import struct
@@ -19,19 +21,27 @@ class ReleaseValidationTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
+        self.root_patch = patch.object(release, 'ROOT', self.root)
+        self.root_patch.start()
         self.config = release.read_json(ROOT / 'release/compatibility.json')
         self.plan = {'schema': 1, 'version': '0.0.2', 'release_date': '2026-11-04',
                      'changes': ['Fix map rendering'], 'known_limitations': [], 'groups': {}}
         for name in self.config['groups']:
             self.plan['groups'][name] = {'source_branch': self.config['groups'][name]['branch'],
                                          'commit': 'a' * 40, 'verified_changes': ['Fix map rendering'],
-                                         'runtime_evidence': {v: {'installed_jar': 'https://example.org/installed',
-                                                                  'graphical': 'https://example.org/visual'}
+                                         'runtime_evidence': {v: {'report': f'release/evidence/mc-{v.replace(".", "-")}.json'}
                                                               for v in self.config['groups'][name]['minecraft']}}
+            for mc, ref in self.plan['groups'][name]['runtime_evidence'].items():
+                report = self.root / ref['report']
+                report.parent.mkdir(parents=True, exist_ok=True)
+                report.write_text(json.dumps({'group': name, 'minecraft': mc, 'source_commit': 'a' * 40,
+                                              'artifact_sha256': 'b' * 64, 'installed_jar': 'Installed with Loader',
+                                              'graphical': 'Observed map terrain'}), encoding='utf-8')
         self.path = self.root / 'plan.json'
         self.write_plan()
 
     def tearDown(self):
+        self.root_patch.stop()
         self.tmp.cleanup()
 
     def write_plan(self):
@@ -123,14 +133,98 @@ class ReleaseValidationTests(unittest.TestCase):
             directory.mkdir(parents=True)
             source = self.jar(name, major=settings['java'] + 44)
             source.rename(directory / source.name)
+            digest = release.inspect_jar(directory / source.name, plan['version'], name, settings)
+            for ref in plan['groups'][name]['runtime_evidence'].values():
+                report = self.root / ref['report']
+                data = json.loads(report.read_text())
+                data['artifact_sha256'] = digest
+                report.write_text(json.dumps(data), encoding='utf-8')
         bundle = self.root / 'bundle'
-        release.aggregate(cfg, plan, artifacts, bundle)
-        files = release_github.verified_files(cfg, plan, bundle)
+        release.aggregate(cfg, plan, artifacts, bundle, coordinator_sha='c' * 40)
+        files = release_github.verified_files(cfg, plan, bundle, 'c' * 40)
         self.assertEqual(len(files), len(cfg['groups']) + 2)
         with (bundle / release.archive_name('0.0.2', '1.21.11')).open('ab') as jar:
             jar.write(b'tampered')
         with self.assertRaises(release.Invalid):
-            release_github.verified_files(cfg, plan, bundle)
+            release_github.verified_files(cfg, plan, bundle, 'c' * 40)
+
+    def test_runtime_reports_reject_urls_malformed_paths_and_wrong_associations(self):
+        item = self.plan['groups']['26.3']['runtime_evidence']['26.3']
+        for value in ('https://evil.example/report', 'https://github.com/owner/repo/issues/1',
+                      'release/evidence/../other.json', 'release/evidence/x.json?redirect=evil',
+                      'release/evidence/%2e%2e.json', '//github.com/owner/repo'):
+            item['report'] = value
+            with self.subTest(value=value), self.assertRaises((release.Invalid, OSError)):
+                self.validate()
+        item['report'] = 'release/evidence/mc-26-3.json'
+        report = self.root / item['report']
+        original = json.loads(report.read_text())
+        for field, value in [('group', '1.21.11'), ('minecraft', '26.2'),
+                             ('source_commit', 'b' * 40), ('artifact_sha256', 'x' * 64),
+                             ('installed_jar', ''), ('graphical', '')]:
+            data = dict(original, **{field: value})
+            report.write_text(json.dumps(data))
+            with self.subTest(field=field), self.assertRaises(release.Invalid):
+                self.validate()
+        report.write_text(json.dumps(original))
+        self.validate()
+
+    def test_evidence_artifact_digest_must_match_aggregate(self):
+        cfg, plan = self.validate()
+        artifacts = self.root / 'artifacts'
+        for name, spec in cfg['groups'].items():
+            directory = artifacts / name
+            directory.mkdir(parents=True)
+            source = self.jar(name, major=spec['java'] + 44)
+            source.rename(directory / source.name)
+        with self.assertRaisesRegex(release.Invalid, 'runtime-tested'):
+            release.aggregate(cfg, plan, artifacts, self.root / 'bundle', coordinator_sha='c' * 40)
+
+    def test_changed_authorization_prevents_each_write(self):
+        calls = []
+        def guard():
+            calls.append('checked')
+            raise release.Invalid('branch head changed')
+        with patch.object(release_github, 'WRITE_GUARD', guard), \
+             patch.object(release_github, 'urlopen') as request, \
+             patch.dict(os.environ, {'GH_TOKEN': 'write-token'}):
+            with self.assertRaises(release.Invalid):
+                release_github.mutate('repos/owner/repo/releases', 'POST', {})
+            request.assert_not_called()
+        self.assertEqual(calls, ['checked'])
+
+    def test_draft_notes_and_nonpublishing_modes_are_guarded(self):
+        cfg, plan = self.validate()
+        body = release_github.release_body(cfg, plan)
+        draft = {'draft': True, 'tag_name': plan['version'], 'name': plan['version'],
+                 'body': body, 'prerelease': False}
+        release_github.check_draft(draft, plan['version'], body)
+        with self.assertRaises(release.Invalid):
+            release_github.check_draft(dict(draft, body='changed'), plan['version'], body)
+        workflow = (ROOT / '.github/workflows/release.yml').read_text()
+        self.assertIn("if: inputs.mode != 'dry-run' && github.ref == 'refs/heads/main'", workflow)
+        with patch.object(release_github, 'mutate') as mutate, patch.object(sys, 'argv',
+                ['release_github.py', 'dry-run', '--plan', str(self.path), '--bundle', str(self.root),
+                 '--coordinator-sha', 'a' * 40]), self.assertRaises(SystemExit):
+            release_github.main()
+        mutate.assert_not_called()
+
+    def test_multi_version_workflow_uses_checked_out_verifier_and_failure_propagates(self):
+        workflow = (ROOT / '.github/workflows/release.yml').read_text()
+        build = workflow.split('  build:\n', 1)[1].split('  collect:\n', 1)[0]
+        self.assertIn('ref: ${{ matrix.commit }}', build)
+        command = 'python3 scripts/verify_supported_apis.py --jar build/libs'
+        self.assertIn('if: matrix.multi_version\n        run: ' + command, build)
+        self.assertLess(build.index('ref: ${{ matrix.commit }}'), build.index(command))
+        self.assertLess(build.index(command), build.index('Upload group artifact'))
+        self.assertEqual([e['group'] for e in release.matrix(self.config, self.plan) if e['multi_version']], ['26.1-26.2'])
+        (self.root / 'scripts').mkdir()
+        self.assertNotEqual(subprocess.run(command, cwd=self.root, shell=True, capture_output=True).returncode, 0)
+        script = self.root / 'scripts/verify_supported_apis.py'
+        script.write_text('import sys\nsys.exit(1)\n')
+        self.assertNotEqual(subprocess.run(command, cwd=self.root, shell=True, capture_output=True).returncode, 0)
+        script.write_text('import sys\nsys.exit(0 if sys.argv[1:] == ["--jar", "build/libs"] else 1)\n')
+        self.assertEqual(subprocess.run(command, cwd=self.root, shell=True, capture_output=True).returncode, 0)
 
     def test_conflicting_or_lightweight_release_tag_is_rejected(self):
         with patch.object(release_github, 'tag_target', return_value='b' * 40), \

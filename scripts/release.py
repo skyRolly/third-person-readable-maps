@@ -15,12 +15,12 @@ import struct
 import subprocess
 import sys
 from pathlib import Path
-from urllib.parse import urlparse
 from zipfile import ZipFile, BadZipFile
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSION = re.compile(r'(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\Z')
 SHA = re.compile(r'[0-9a-f]{40}\Z')
+SHA256 = re.compile(r'[0-9a-f]{64}\Z')
 ID = 'thirdpersonreadablemaps'
 PREFIX = 'third-person-readable-maps'
 MIXIN_CLASS = 'tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class'
@@ -104,14 +104,36 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
         if not candidate:
             require(set(evidence) == set(spec['minecraft']), f'{name}: missing version-by-version runtime evidence')
             for mc in spec['minecraft']:
-                item = evidence[mc]
-                require(isinstance(item, dict), f'{name}: invalid runtime evidence for {mc}')
-                for kind in ('installed_jar', 'graphical'):
-                    url = item.get(kind, '')
-                    parsed = urlparse(url) if isinstance(url, str) else None
-                    require(parsed is not None and parsed.scheme == 'https' and parsed.netloc,
-                            f'{name}: missing HTTPS {kind} evidence for {mc}')
+                evidence_record(entry, name, mc)
     return cfg, plan
+
+
+def evidence_record(entry, group, minecraft, root=None):
+    """Read a reviewed, repository-owned report; its content is an attestation, not proof."""
+    root = root or ROOT
+    reference = entry['runtime_evidence'][minecraft]
+    require(isinstance(reference, dict) and set(reference) == {'report'},
+            f'{group}: evidence for {minecraft} must identify one repository report')
+    path = reference['report']
+    require(isinstance(path, str) and re.fullmatch(r'release/evidence/[A-Za-z0-9_-]+\.json', path),
+            f'{group}: invalid evidence report path for {minecraft}')
+    report_path = root / path
+    require(not (root / 'release').is_symlink() and not (root / 'release/evidence').is_symlink() and
+            not report_path.is_symlink() and report_path.resolve().parent == (root / 'release/evidence').resolve(),
+            f'{group}: evidence report must be a repository file')
+    raw = report_path.read_bytes()
+    require(len(raw) <= 100_000, f'{group}: evidence report is too large')
+    report = read_json(report_path)
+    require(isinstance(report, dict) and set(report) == {'group', 'minecraft', 'source_commit', 'artifact_sha256',
+                                                       'installed_jar', 'graphical'},
+            f'{group}: invalid evidence report fields')
+    require(report['group'] == group and report['minecraft'] == minecraft and
+            report['source_commit'] == entry['commit'], f'{group}: evidence source or version mismatch')
+    require(isinstance(report['artifact_sha256'], str) and SHA256.fullmatch(report['artifact_sha256']),
+            f'{group}: evidence requires a SHA-256 artifact digest')
+    for kind in ('installed_jar', 'graphical'):
+        require(isinstance(report[kind], str) and report[kind].strip(), f'{group}: missing {kind} test account')
+    return {'report': path, 'report_sha256': hashlib.sha256(raw).hexdigest(), **report}
 
 
 def matrix(cfg, plan):
@@ -197,11 +219,13 @@ def inspect_jar(path, version, name, spec):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def aggregate(cfg, plan, artifacts, output, candidate=False):
+def aggregate(cfg, plan, artifacts, output, candidate=False, coordinator_sha=None):
+    require(isinstance(coordinator_sha, str) and SHA.fullmatch(coordinator_sha) and coordinator_sha != '0' * 40,
+            'a full nonzero coordinator SHA is required')
     artifacts, output = Path(artifacts), Path(output)
     require(not output.exists() or (output.is_dir() and not any(output.iterdir())), 'output directory must be empty')
     output.mkdir(parents=True, exist_ok=True)
-    result = {'schema': 1, 'version': plan['version'], 'tag': plan['version'],
+    result = {'schema': 1, 'version': plan['version'], 'tag': plan['version'], 'coordinator_sha': coordinator_sha,
               'candidate': candidate, 'release_date': plan['release_date'], 'changes': plan['changes'],
               'known_limitations': plan['known_limitations'], 'groups': []}
     sums = []
@@ -212,13 +236,16 @@ def aggregate(cfg, plan, artifacts, output, candidate=False):
         require(len(jars) == 1, f'{name}: expected exactly one JAR, found {len(jars)}')
         spec = cfg['groups'][name]
         digest = inspect_jar(jars[0], plan['version'], name, spec)
+        evidence = {} if candidate else {mc: evidence_record(plan['groups'][name], name, mc) for mc in spec['minecraft']}
+        require(candidate or all(r['artifact_sha256'] == digest for r in evidence.values()),
+                f'{name}: built artifact differs from runtime-tested artifact')
         shutil.copyfile(jars[0], output / jars[0].name)
         sums.append(f'{digest}  {jars[0].name}')
         result['groups'].append({'id': name, 'branch': entry['branch'], 'source_commit': entry['commit'],
                                  'minecraft': spec['minecraft'], 'compile_target': spec['target'],
                                  'java': spec['java'], 'loader': spec['loader'],
                                  'namespace': spec['namespace'], 'artifact': jars[0].name, 'sha256': digest,
-                                 'runtime_evidence': plan['groups'][name].get('runtime_evidence', {})})
+                                 'runtime_evidence': evidence})
     manifest = output / 'release-manifest.json'
     manifest.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
     sums.append(f"{hashlib.sha256(manifest.read_bytes()).hexdigest()}  {manifest.name}")
@@ -233,6 +260,7 @@ def main():
     parser.add_argument('--candidate', action='store_true', help='allow missing runtime evidence; never use for release')
     parser.add_argument('--artifacts')
     parser.add_argument('--output')
+    parser.add_argument('--coordinator-sha')
     args = parser.parse_args()
     try:
         cfg, plan = load_plan(args.plan, args.candidate)
@@ -242,7 +270,7 @@ def main():
             verify_sources(cfg, plan)
         elif args.command == 'aggregate':
             require(args.artifacts and args.output, 'aggregate requires --artifacts and --output')
-            aggregate(cfg, plan, args.artifacts, args.output, args.candidate)
+            aggregate(cfg, plan, args.artifacts, args.output, args.candidate, args.coordinator_sha)
         else:
             print(f"Validated plan for {plan['version']} (candidate={args.candidate})")
     except (Invalid, OSError, ValueError, TypeError, subprocess.TimeoutExpired) as exc:
