@@ -25,10 +25,15 @@ not grounds to relax release authorization.
 | RELEASE_AUDITOR_TOKEN | Repository secret | Inaccessible, not proven absent | Read-only credential for all verifier APIs | BLOCKED: metadata 403 | No secret values inspected; current CLI credential is insufficient |
 | Release tag protection | Tags | Rulesets inventory empty; legacy endpoint 404 | Immutable tags and controlled creation credentials | Requires owner policy decision; not configured | 404 is not proof of protection; deprecated tag API cannot establish protection |
 | Automatic Dependency Submission | Repository | GitHub-managed workflow still active | Disable managed Gradle submission, retain graph/alerts/security updates | **C — blocked by settings access** | New managed runs were queued on maintenance PR pushes; no supported settings read/write access |
-| Dependency Graph | Default branch | Available, contains game dependencies from former main build | Retain graph; do not claim non-default alert equivalence | Available, revision binding UNVERIFIED | SBOM GET succeeded; creator includes Automatic Dependency Submission, but no source SHA/ref to prove current indexing |
+| Dependency Graph | Default branch | Available; game dependencies remain visible | Retain graph; do not claim non-default alert equivalence | Available, revision binding UNVERIFIED | SBOM GET succeeded; creator includes Automatic Dependency Submission, but no source SHA/ref to prove current indexing |
 | Dependabot alerts | Default branch | Active-alert warning observed, details inaccessible | Keep enabled, review individual native alerts | BLOCKED for settings/details | Git push reports 41 alerts (1 critical, 15 high, 24 moderate, 1 low); alerts endpoint 403 |
 | Dependabot security updates | Default branch | Inaccessible | Keep enabled | BLOCKED: current toggle unverified | `automated-security-fixes` GET 403 |
 | Dependabot version updates | All maintained branches | Active weekly jobs | Retain central weekly configuration | Configured; wrapper/Actions runs verified | See [monitoring](dependency-monitoring.md); broader pinned-version discovery has a gap |
+
+Tags and Releases list endpoints both returned `[]`; 0.0.2 has not been published.
+Repository-level Actions/default-token permission settings also returned403 and
+remain unverified; the checked-in workflow permission blocks are separately
+inspectable and do not prove those administrative defaults.
 
 API observations are retained in [the maintenance evidence](maintenance-evidence-2026-11-04.json).
 No API permission failure was treated as a successful read-back or a missing secret.

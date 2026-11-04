@@ -200,6 +200,18 @@
           }
         }
       }
+    },
+    "tags": [],
+    "releases": [],
+    "actions-permissions": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository",
+      "status": "403"
+    },
+    "workflow-permissions": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository",
+      "status": "403"
     }
   },
   "tracked_trees": {
@@ -385,5 +397,40 @@
         }
       ]
     }
+  },
+  "proposed_prs": {
+    "9": {
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/9",
+      "base": "mc/1.21.11",
+      "head": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+      "ci_run": 41862276302,
+      "ci_state": "queued at inspection; no execution evidence",
+      "merged": false,
+      "auto_merge": false
+    },
+    "10": {
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/10",
+      "base": "mc/26.1-26.2",
+      "head": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+      "ci_run": 41862279700,
+      "ci_state": "queued at inspection; no execution evidence",
+      "merged": false,
+      "auto_merge": false
+    },
+    "11": {
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/11",
+      "base": "mc/26.3",
+      "head": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+      "ci_run": 41862283894,
+      "ci_state": "queued at inspection; no execution evidence",
+      "merged": false,
+      "auto_merge": false
+    }
+  },
+  "coordination_pr": {
+    "number": 12,
+    "ref": "maintenance/coordination-2026-11-04",
+    "initial_ci_run": 41864031916,
+    "state": "open, unmerged; final HEAD recorded by PR API and handoff"
   }
 }

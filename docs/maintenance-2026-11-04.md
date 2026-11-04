@@ -4,14 +4,15 @@
 maintenance changes are open in PRs [#9](https://github.com/skyRolly/third-person-readable-maps/pull/9),
 [#10](https://github.com/skyRolly/third-person-readable-maps/pull/10), and
 [#11](https://github.com/skyRolly/third-person-readable-maps/pull/11). Coordination
-changes are proposed separately against main. None is integrated or approved by
+changes are proposed in [PR #12](https://github.com/skyRolly/third-person-readable-maps/pull/12) against main. None is integrated or approved by
 this task. No merge, auto-merge, tag write, Draft Release, or public Release was
 performed. Mod version 0.0.2 is unchanged and unreleased.
 
 ## Verified baseline and branch maintenance matrix
 
 A fresh fetch and ls-remote confirmed all supplied heads. There were no open PRs
-before this round; PR #8 was merged into main at the stated SHA. Full tracked
+before this round; PR #8 was merged into main at the stated SHA. Tags and
+Releases list endpoints both returned empty lists; no 0.0.2 release exists. Full tracked
 trees, actual API responses and current-head CI job identities are preserved in
 [the machine-readable evidence](maintenance-evidence-2026-11-04.json), rather than
 inferred from an earlier worklog.
@@ -19,9 +20,9 @@ inferred from an earlier worklog.
 | Branch | Initial HEAD | Proposed HEAD / PR | Build CI | README | Dependencies | Outstanding issues |
 | --- | --- | --- | --- | --- | --- | --- |
 | main | b90ee78e9b1da6d1da2c2f5f93da765739716137 | maintenance/coordination-2026-11-04; exact final SHA in PR | Initial hosted coordination PASS; proposed 53 Python tests and workflow lint PASS; hosted proposal pending | Exact title/intro and coordination badge | Expanded existing central audit; reviewed ledger | Review, integrated schedule, admin/security/runtime gates |
-| mc/1.21.11 | 1bbd3f41b97ea5d0b78ae1909e846462078bdf9d | 7779e3a89849cdaf3b08aa536b79d8c238fa1874 / #9 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; candidate hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Candidate Windows/hosted snapshot; reviewed merge; Java21 runtime/graphics reports |
-| mc/26.1-26.2 | 6891b6080e4bea981f7a7399a061b32f95f3452e | e1bce43c0f370fb28bbf87ba974c8d1582c85fb0 / #10 | Initial hosted Linux+Windows PASS; candidate local Linux and four-version API PASS; hosted queued | Standardized, branch badge | No version change; four runtime manifests audited centrally | Candidate Windows/hosted snapshot; reviewed merge; all four runtime/graphics reports |
-| mc/26.3 | 0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf | dd43b41d3c4134430a57cc8eed0cc522249a614c / #11 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Candidate Windows/hosted snapshot; reviewed merge; runtime/graphics reports |
+| mc/1.21.11 | 1bbd3f41b97ea5d0b78ae1909e846462078bdf9d | 7779e3a89849cdaf3b08aa536b79d8c238fa1874 / #9 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; candidate hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Queued candidate Windows/hosted snapshot; reviewed merge; Java21 runtime/graphics reports |
+| mc/26.1-26.2 | 6891b6080e4bea981f7a7399a061b32f95f3452e | e1bce43c0f370fb28bbf87ba974c8d1582c85fb0 / #10 | Initial hosted Linux+Windows PASS; candidate local Linux and four-version API PASS; hosted queued | Standardized, branch badge | No version change; four runtime manifests audited centrally | Queued candidate Windows/hosted snapshot; reviewed merge; all four runtime/graphics reports |
+| mc/26.3 | 0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf | dd43b41d3c4134430a57cc8eed0cc522249a614c / #11 | Initial hosted Linux+Windows PASS; candidate local Linux PASS; hosted queued | Standardized, branch badge | No version change; duplicate Dependabot config removed | Queued candidate Windows/hosted snapshot; reviewed merge; runtime/graphics reports |
 
 Baseline push CI runs: main **41853117268**, 1.21.11 **41842279767**,
 26.1–26.2 **41842370918**, 26.3 **41842321970**. The actual release verifier's

@@ -46,8 +46,8 @@ For each branch, the artifact was actually downloaded and its snapshot `sha` and
 `ref` matched the maintained source. Resolution is also verified by clean local
 candidate builds. Snapshot retention is verified from workflow policy and the
 retrievable, non-expired hosted artifact. No local snapshot artifact is claimed
-to populate the graph. The available SBOM endpoint returned a former main-game
-inventory, including 1.21.11 mapped Minecraft and Netty 4.2.7; its metadata did not
+to populate the graph. The available SBOM endpoint returned a game dependency
+inventory matching the former main build, including 1.21.11 mapped Minecraft and Netty 4.2.7; its metadata did not
 bind the inventory to a source SHA/ref. Per-maintenance indexing is therefore
 UNVERIFIED, not PASS. Native alert and security-update APIs returned 403.
 
