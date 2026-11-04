@@ -47,7 +47,8 @@ def query(packages_list):
         results = result.get('results') if isinstance(result, dict) else None
         require(isinstance(results, list) and len(results) == len(batch), 'invalid OSV response')
         for (purl, _), item in zip(batch, results):
-            require(isinstance(item, dict) and isinstance(item.get('vulns', []), list), 'invalid OSV result')
+            require(isinstance(item, dict) and set(item) <= {'vulns', 'next_page_token'} and
+                    isinstance(item.get('vulns', []), list), 'invalid OSV result')
             for vulnerability in item.get('vulns', []):
                 identifier = vulnerability.get('id') if isinstance(vulnerability, dict) else None
                 require(isinstance(identifier, str) and re.fullmatch(r'[A-Za-z0-9._-]+', identifier),

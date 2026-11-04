@@ -1,5 +1,13 @@
 # Coordination branch decision record
 
+Status: PR #8 merged this architecture at `b90ee78e9b1da6d1da2c2f5f93da765739716137`.
+The original decision below records the pre-merge alternatives and evidence; its
+imperative wording is historical, not unfinished game-build migration work.
+The current [maintenance report](maintenance-2026-11-04.md),
+[monitoring record](dependency-monitoring.md), and [administrative inventory](administrative-controls.md)
+supersede its preliminary configuration and advisory status. Main is coordination-only;
+all three game branches are established and 0.0.2 remains unreleased.
+
 Decision based on the repository state inspected on 2026-11-04: `main` was
 `3844e9bc0295f71cae64224cbfd6a2c36afb56f0`; the maintained heads were
 `1bbd3f41b97ea5d0b78ae1909e846462078bdf9d` (1.21.11),

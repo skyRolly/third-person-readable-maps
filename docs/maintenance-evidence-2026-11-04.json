@@ -1,0 +1,389 @@
+{
+  "observed_on": "2026-11-04",
+  "repository": "skyRolly/third-person-readable-maps",
+  "initial_heads": {
+    "main": "b90ee78e9b1da6d1da2c2f5f93da765739716137",
+    "mc/1.21.11": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+    "mc/26.1-26.2": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+    "mc/26.3": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+  },
+  "administrative_changes_applied": false,
+  "automatic_dependency_submission_disposition": "C - blocked by settings access; managed runs still generated",
+  "endpoint_results": {
+    "branches": [
+      {
+        "name": "main",
+        "commit": {
+          "sha": "b90ee78e9b1da6d1da2c2f5f93da765739716137",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/b90ee78e9b1da6d1da2c2f5f93da765739716137"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/1.21.11",
+        "commit": {
+          "sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/26.1-26.2",
+        "commit": {
+          "sha": "6891b6080e4bea981f7a7399a061b32f95f3452e",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/6891b6080e4bea981f7a7399a061b32f95f3452e"
+        },
+        "protected": false
+      },
+      {
+        "name": "mc/26.3",
+        "commit": {
+          "sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf",
+          "url": "https://api.github.com/repos/skyRolly/third-person-readable-maps/commits/0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+        },
+        "protected": false
+      }
+    ],
+    "rulesets": [],
+    "environments": {
+      "total_count": 0,
+      "environments": []
+    },
+    "main-protection": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    },
+    "main-rules": [],
+    "mc_1.21.11-protection": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    },
+    "mc_1.21.11-rules": [],
+    "mc_26.1-26.2-protection": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    },
+    "mc_26.1-26.2-rules": [],
+    "mc_26.3-protection": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+      "status": "403"
+    },
+    "mc_26.3-rules": [],
+    "secrets": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/actions/secrets#list-repository-secrets",
+      "status": "403"
+    },
+    "vulnerability-alerts": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository",
+      "status": "403"
+    },
+    "automated-security-fixes": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/repos/repos#check-if-dependabot-security-updates-are-enabled-for-a-repository",
+      "status": "403"
+    },
+    "dependabot-alerts": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository",
+      "status": "403"
+    },
+    "tags-protection": {
+      "message": "Not Found",
+      "documentation_url": "https://docs.github.com/rest",
+      "status": "404"
+    },
+    "code-security": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository",
+      "status": "403"
+    },
+    "collaborators": [
+      {
+        "login": "skyRolly",
+        "id": 16152857,
+        "node_id": "MDQ6VXNlcjE2MTUyODU3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/16152857?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/skyRolly",
+        "html_url": "https://github.com/skyRolly",
+        "followers_url": "https://api.github.com/users/skyRolly/followers",
+        "following_url": "https://api.github.com/users/skyRolly/following{/other_user}",
+        "gists_url": "https://api.github.com/users/skyRolly/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/skyRolly/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/skyRolly/subscriptions",
+        "organizations_url": "https://api.github.com/users/skyRolly/orgs",
+        "repos_url": "https://api.github.com/users/skyRolly/repos",
+        "events_url": "https://api.github.com/users/skyRolly/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/skyRolly/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false,
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "push": true,
+          "triage": true,
+          "pull": true
+        },
+        "role_name": "admin"
+      },
+      {
+        "login": "ZDN-1942",
+        "id": 248802433,
+        "node_id": "U_kgDODtRsgQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/248802433?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ZDN-1942",
+        "html_url": "https://github.com/ZDN-1942",
+        "followers_url": "https://api.github.com/users/ZDN-1942/followers",
+        "following_url": "https://api.github.com/users/ZDN-1942/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ZDN-1942/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ZDN-1942/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ZDN-1942/subscriptions",
+        "organizations_url": "https://api.github.com/users/ZDN-1942/orgs",
+        "repos_url": "https://api.github.com/users/ZDN-1942/repos",
+        "events_url": "https://api.github.com/users/ZDN-1942/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ZDN-1942/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false,
+        "permissions": {
+          "admin": false,
+          "maintain": false,
+          "push": true,
+          "triage": true,
+          "pull": true
+        },
+        "role_name": "write"
+      }
+    ],
+    "protection-graphql": {
+      "data": {
+        "repository": {
+          "refs": {
+            "nodes": [
+              {
+                "name": "main",
+                "target": {
+                  "oid": "b90ee78e9b1da6d1da2c2f5f93da765739716137"
+                },
+                "branchProtectionRule": null
+              },
+              {
+                "name": "mc/1.21.11",
+                "target": {
+                  "oid": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+                },
+                "branchProtectionRule": null
+              },
+              {
+                "name": "mc/26.1-26.2",
+                "target": {
+                  "oid": "6891b6080e4bea981f7a7399a061b32f95f3452e"
+                },
+                "branchProtectionRule": null
+              },
+              {
+                "name": "mc/26.3",
+                "target": {
+                  "oid": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+                },
+                "branchProtectionRule": null
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tracked_trees": {
+    "mc/1.21.11": {
+      ".gitattributes": "c23f052609ee358a6d4f015c09a57b12a03e73dd",
+      ".github/dependabot.yml": "8ee8b624acec0fb30ce704fe84cd2a29d3f95a2f",
+      ".github/workflows/ci.yml": "a399689eafd8e6bf2598f60107772499260a3bc9",
+      ".gitignore": "999d6f6a04dc67bb3cd2e90a7b08394de34a3b30",
+      "Build-Windows.bat": "063e215d5dfb5d768705598cbb0e0d04f4472287",
+      "LICENSE": "e805c4332b32f9f1d582ba54b3836265efa34637",
+      "README.md": "37edb5a42c4f972ed305272477bcef284c1ccd16",
+      "build.gradle": "f748f5d2d052968527f8c80504b3893a57f90b49",
+      "gradle.properties": "26aac8a9ca456687898a271568c71a96fb818fe9",
+      "gradle/gradle-daemon-jvm.properties": "9236954c48fae500d227ec3e76fbedd17ff338d0",
+      "gradle/verification.gradle": "8521fac4926762099eee8ef63cfe869dcdd3dc89",
+      "gradle/wrapper/gradle-wrapper.jar": "9fa7f288283f81eec4952784c271abd7e0938dee",
+      "gradle/wrapper/gradle-wrapper.properties": "07647661e19aac2c934bf0e658db1e7b99a7fe28",
+      "gradlew": "249efbb032ce46a80c687c0723eb172e85f6a136",
+      "gradlew.bat": "03754c4c3d9206f5c9ef69e41990dfe26a05251e",
+      "settings.gradle": "c515dc4dbeae0961ec35f788f4c9a1e85007d33b",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.java": "83880af57d541e3268ce721407dc43b0358095b3",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.java": "e48054fff2e76575e74d579329808766ed38d10f",
+      "src/main/resources/fabric.mod.json": "6735357d886c39290df51f418ced4b501593791f",
+      "src/main/resources/thirdpersonreadablemaps.mixins.json": "839483a42618de9a19e2fc0e255fb0f855f19536"
+    },
+    "mc/26.1-26.2": {
+      ".gitattributes": "c23f052609ee358a6d4f015c09a57b12a03e73dd",
+      ".github/dependabot.yml": "8ee8b624acec0fb30ce704fe84cd2a29d3f95a2f",
+      ".github/workflows/ci.yml": "8f69fc4b2f9f726224ecd2a0b012e92eaf9cde90",
+      ".gitignore": "ac30a8f71a20be4cdf46a7cc80aaf90953460d1c",
+      "Build-Windows.bat": "063e215d5dfb5d768705598cbb0e0d04f4472287",
+      "LICENSE": "e805c4332b32f9f1d582ba54b3836265efa34637",
+      "README.md": "676e929342de1d33a5921f041bfb6d1464622dd9",
+      "build.gradle": "838f6e705ef1d5b4212a2494bf7206f85060ca2b",
+      "gradle.properties": "f52dcd87637dbdd92015e7aa83c31c54119a6eaa",
+      "gradle/gradle-daemon-jvm.properties": "7d56faaed6bbeba44618be7d270ed690d3b78ead",
+      "gradle/verification.gradle": "c790bea33d32b2f54fd853c1cbe67938da56d736",
+      "gradle/wrapper/gradle-wrapper.jar": "9fa7f288283f81eec4952784c271abd7e0938dee",
+      "gradle/wrapper/gradle-wrapper.properties": "07647661e19aac2c934bf0e658db1e7b99a7fe28",
+      "gradlew": "249efbb032ce46a80c687c0723eb172e85f6a136",
+      "gradlew.bat": "03754c4c3d9206f5c9ef69e41990dfe26a05251e",
+      "scripts/verify_supported_apis.py": "2994a343019dedc9a521eff906cc2288575d8ade",
+      "settings.gradle": "c515dc4dbeae0961ec35f788f4c9a1e85007d33b",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.java": "83880af57d541e3268ce721407dc43b0358095b3",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.java": "e48054fff2e76575e74d579329808766ed38d10f",
+      "src/main/resources/fabric.mod.json": "88480ef9bf99d956f48f489c094e6aad4dd7913c",
+      "src/main/resources/thirdpersonreadablemaps.mixins.json": "f7a93c427b54f8c21daf5a459280ebeca7264a73"
+    },
+    "mc/26.3": {
+      ".gitattributes": "c23f052609ee358a6d4f015c09a57b12a03e73dd",
+      ".github/dependabot.yml": "8ee8b624acec0fb30ce704fe84cd2a29d3f95a2f",
+      ".github/workflows/ci.yml": "db7ed891abd0cda3c89dd01d508500a92a278d25",
+      ".gitignore": "999d6f6a04dc67bb3cd2e90a7b08394de34a3b30",
+      "Build-Windows.bat": "063e215d5dfb5d768705598cbb0e0d04f4472287",
+      "LICENSE": "e805c4332b32f9f1d582ba54b3836265efa34637",
+      "README.md": "31b1ecc4badf7e24cddc07e89e23b107961ecbbb",
+      "build.gradle": "e2f1dea4ea721355157d5e754439d4b07063bf0a",
+      "gradle.properties": "e45abc421aad11ad572f66691026313e15f2dc2c",
+      "gradle/gradle-daemon-jvm.properties": "7d56faaed6bbeba44618be7d270ed690d3b78ead",
+      "gradle/verification.gradle": "0bd807ab59c8fb60fd64dcbaead76b52fbf73c6e",
+      "gradle/wrapper/gradle-wrapper.jar": "9fa7f288283f81eec4952784c271abd7e0938dee",
+      "gradle/wrapper/gradle-wrapper.properties": "07647661e19aac2c934bf0e658db1e7b99a7fe28",
+      "gradlew": "249efbb032ce46a80c687c0723eb172e85f6a136",
+      "gradlew.bat": "03754c4c3d9206f5c9ef69e41990dfe26a05251e",
+      "settings.gradle": "c515dc4dbeae0961ec35f788f4c9a1e85007d33b",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.java": "ba7c6177fd67ce6223458ce7ff2191004286be08",
+      "src/main/java/tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.java": "3b52a010ce69e6bcf543fad7728764f9d7769d48",
+      "src/main/resources/fabric.mod.json": "7009871bc959f28203f7ddf54b80c8fdef23a001",
+      "src/main/resources/thirdpersonreadablemaps.mixins.json": "f7a93c427b54f8c21daf5a459280ebeca7264a73"
+    },
+    "main": {
+      ".gitattributes": "a4da72d1262e2e9b07ae6dba344f6432b79c2450",
+      ".github/dependabot.yml": "1a6817959daeb2a56728c8dd8c753d477ebda17b",
+      ".github/workflows/ci.yml": "d974f3c00009804ec6c93c76d23c6e62f2f7758d",
+      ".github/workflows/dependency-audit.yml": "79593fe02df1015e06857cba7e989586ac03f770",
+      ".github/workflows/release.yml": "ade793d690a61f3fa4bc2b4e5f754ca14791b5d1",
+      ".gitignore": "baa2b4e2d42eb71ff53e051467bffad90fda4b88",
+      "LICENSE": "e805c4332b32f9f1d582ba54b3836265efa34637",
+      "README.md": "7e97b10525f637ed661f2a22c3383e0a6905d257",
+      "docs/compatibility.md": "7887fa46028826271e6c58132a38dccc1e9e5dda",
+      "docs/coordination-architecture.md": "a82f557cf3ac31cd4cdaf6114824cd5f289e97f6",
+      "docs/dependency-audit-2026-11-04.md": "de23f1f74ae3fb8e02e5803945053f00ec5ced21",
+      "docs/releasing.md": "2b829d69049d68028d4eec0a867c090ade384a32",
+      "release/compatibility.json": "548de1faa1562936e0e8fa7ac6acc6a9c866d613",
+      "release/plan.example.json": "ad23abb4c60dd5078771cc2a2a2313499b6ecf38",
+      "scripts/authorize_release.py": "6884ca32c74ac9c56931827983deba040ae16e18",
+      "scripts/release.py": "9bdb7fc48c93f0ba1e57bad92c4ae4636e8a4e48",
+      "scripts/release_github.py": "14c4c2384f15b15d5ec0cda92a4140020d856742",
+      "scripts/scan_dependency_snapshot.py": "bfe091af840bb8464023c6d398c709945ed57245",
+      "tests/test_authorize_release.py": "1aabaff7fcbdb94c16efaf7b6142b20752dca728",
+      "tests/test_coordination.py": "8b245c57f0e0d11fee8af4120e434dfb68d343c6",
+      "tests/test_release.py": "7a5de96e37b4c6834a3395ff7b5ddb4bcf9a465c"
+    }
+  },
+  "baseline_ci": {
+    "main": {
+      "run_id": 41853117268,
+      "jobs": [
+        {
+          "id": 126654443616,
+          "name": "Validate coordination",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b90ee78e9b1da6d1da2c2f5f93da765739716137"
+        }
+      ]
+    },
+    "mc/1.21.11": {
+      "run_id": 41842279767,
+      "jobs": [
+        {
+          "id": 126616692733,
+          "name": "Build (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+        },
+        {
+          "id": 126616692793,
+          "name": "Resolve and inspect dependency graph",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+        },
+        {
+          "id": 126616693202,
+          "name": "Build (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "1bbd3f41b97ea5d0b78ae1909e846462078bdf9d"
+        }
+      ]
+    },
+    "mc/26.1-26.2": {
+      "run_id": 41842370918,
+      "jobs": [
+        {
+          "id": 126617002731,
+          "name": "Resolve and inspect dependency graph",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6891b6080e4bea981f7a7399a061b32f95f3452e"
+        },
+        {
+          "id": 126617002774,
+          "name": "Build (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6891b6080e4bea981f7a7399a061b32f95f3452e"
+        },
+        {
+          "id": 126617002956,
+          "name": "Build (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6891b6080e4bea981f7a7399a061b32f95f3452e"
+        }
+      ]
+    },
+    "mc/26.3": {
+      "run_id": 41842321970,
+      "jobs": [
+        {
+          "id": 126616833697,
+          "name": "Resolve and inspect dependency graph",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+        },
+        {
+          "id": 126616834253,
+          "name": "Build (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+        },
+        {
+          "id": 126616834339,
+          "name": "Build (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "0839b2cc31ec2a57ffeae82a8b8f892a649f8eaf"
+        }
+      ]
+    }
+  }
+}

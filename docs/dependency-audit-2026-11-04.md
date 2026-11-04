@@ -1,5 +1,13 @@
 # Initial dependency advisory audit — 2026-11-04
 
+Historical initial package-match report. The [individual ledger](security-advisories.md)
+and [monitoring record](dependency-monitoring.md) contain the current reviewed
+status, full advisory records and additional runtime coverage. The recovered
+1.21.11 hosted snapshot contains 86 packages, including Gradle core, rather than
+the initial 85. Its affected-package count remains 10. Four-version runtime
+manifest auditing adds matches for different 26.2 package versions; package counts
+below must not be read as unique-advisory counts or a complete runtime inventory.
+
 The read-only Gradle snapshots below were generated at the pinned branch heads
 and queried against OSV on 2026-11-04. A match is a version-level advisory,
 not a finding of reachability or exploitability in this mod. Maintainers

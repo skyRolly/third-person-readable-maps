@@ -24,39 +24,22 @@ namespace and rendering API boundaries.
 
 ## Dependency maintenance
 
-The default-branch Dependabot configuration schedules weekly Gradle and GitHub
-Actions version updates for each `mc/*` branch, plus Actions updates for `main`.
-GitHub's dependency graph, Dependabot alerts and security updates should remain
-enabled. GitHub generates alerts and security-update PRs for the default branch;
-a non-default snapshot or version-update PR does not establish equivalent
-vulnerability monitoring there. Alert details were inaccessible to the token
-used for this refactor; maintainers must review existing alerts, including the
-previously investigated `dependency_not_found` failures.
+The [monitoring record](dependency-monitoring.md) defines the actual responsibilities
+of Dependabot, Gradle snapshots, GitHub Dependency Graph, native alerts and OSV.
+The central weekly audit now compares hash-verified runtime manifests for every
+advertised version as well as resolved Gradle packages. Its structured ledger
+tracks individual advisory/package/version/group identities, changed scope,
+resolved matches and incomplete scans. [Individual dispositions](security-advisories.md)
+remain unresolved; none is an authorized risk acceptance. Do not force overrides
+of game-managed libraries to silence matches.
 
-After this change reaches `main`, a repository administrator must open **Settings
-→ Security and quality → Advanced Security → Dependency graph → Automatic
-dependency submission** and select **Disabled**. This disables the GitHub-managed
-Gradle submission workflow, which otherwise attempts to resolve a project from
-the coordination-only default branch. Do not disable the dependency graph,
-Dependabot alerts or security updates. This repository does not submit a second
-snapshot: non-default submissions alone do not provide equivalent alerts.
-
-The weekly **Maintenance dependency audit** workflow checks out each current
-maintenance head, generates an inspectable Gradle dependency snapshot without
-submitting it, and queries OSV for versioned Maven package URLs. It uploads a
-report with the source SHA, scanned packages, unscanned entries and advisory IDs;
-a finding, unscanned snapshot entry or scan failure makes the relevant job fail.
-Review the workflow results and failures each week. This complements, rather than replaces, native
-alerts. It only covers resolved packages present in the snapshot and advisories
-known to OSV; unresolved configurations, build plugins, non-Maven entries, native
-libraries and Minecraft/Fabric-supplied dependencies may be missing. Inspect
-unscanned entries, Minecraft's version manifests and upstream advisories
-separately. The 26.1–26.2 snapshot resolves the 26.1 build target; it does not
-independently enumerate libraries supplied by 26.1.1, 26.1.2 or 26.2. The
-[initial audit](dependency-audit-2026-11-04.md) records advisory matches that
-still require triage. Do not force arbitrary upgrades of Minecraft-managed libraries to
-silence a finding; assess exposure and upstream fixes. A successful scan is not
-proof of complete coverage.
+Automatic Dependency Submission remains active but inaccessible to the available
+integration: final disposition **C (blocked)**. An administrator must disable only
+that managed submission toggle while retaining graph/alert/security-update
+features. See [administrative controls](administrative-controls.md) for exact
+observed states, payloads, reviewer prerequisites and activation/read-back steps.
+The [maintenance report](maintenance-2026-11-04.md) and [release gate matrix](release-readiness-2026-11-04.md)
+separate proposed PR tests from integrated-source and live authorization evidence.
 
 ## The release commit and global tag
 
@@ -145,6 +128,8 @@ published tag to repair a release; issue a new version instead.
    branch protections and environments. The authorization APIs fail closed if
    unavailable; the current repository setup is not assumed to provide them.
 3. Dispatch **Coordinated release / dry-run** from the reviewed candidate ref.
+   Non-publishing candidate plans may pin `candidate/*` or `maintenance/*` branches;
+   strict release plans still require the authoritative `mc/*` branches.
    It verifies each candidate branch head, builds all pinned commits on Linux with JDK 25, runs each branch's build
    and Mixin/JAR verification, then verifies names, metadata, namespaces,
    bytecode, checksums and version synchronization. The resulting artifact is
