@@ -37,10 +37,12 @@ reviews accept eligible writers, and this repository's authorization implementat
 accepts `write`, `maintain`, or `admin` with a qualifying non-author approval on
 the exact source head before merge. All four PR authors are skyRolly; current PR
 commits are associated with skyRolly as author/committer, and the inspected CI
-actor/triggering actor is skyRolly. No current-head PushEvent was present in the
-accessible public event page. The exact last git-push actor is therefore not
-independently established; CI or commit identity is not a substitute for a push
-audit record.
+actor/triggering actor is skyRolly. The general public event page lacked matching
+PushEvents; the dedicated repository activity API instead identifies skyRolly
+for the three maintenance branch-creation pushes and the inspected coordination
+pushes, matching both ref and after-SHA. Those actual activity records corroborate
+publication identity rather than substituting CI or commit identity for a push
+record. The final correction-head activity is read back in the handoff.
 
 Distinct account identities do not prove personal independence or lack of
 involvement/conflicts. Availability, owner authorization and any additional owner
@@ -149,6 +151,12 @@ incomplete PR snapshot is still rejected by the strict audit. Locally generated
 proposed-integration snapshots identify the actual candidate SHA and a logical
 future mc ref, with a local job identifier; they are explicitly fixtures, not
 GitHub-indexed snapshots or evidence of current protected-branch contents.
+
+Full local proposed-integration audits completed with41/53/11 known unresolved
+matches and expected exit1; no new, changed or resolved matches were reported.
+The initial85-package snapshot still fails the completeness check. Both repeated
+1.21.11 refresh runs restored86 packages; refreshed26.x inventories exactly match
+their reviewed84/86 package/version sets.
 
 All six supported runtime manifests, full OSV advisory records, stable identities,
 changed/new/resolved handling and failure on incomplete scans remain in place.

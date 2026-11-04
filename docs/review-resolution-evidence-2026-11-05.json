@@ -45,7 +45,7 @@
     "correct_interpretation": "The historical response already reported Write access; triage:true is an additional capability, not the highest role. Fresh permission and collaborator queries also report Write.",
     "permission_change_established": false,
     "technical_eligibility": "potentially eligible for independent source review",
-    "independence": "distinct account from PR/commit author and CI actors; personal independence and conflicts require human confirmation",
+    "independence": "Distinct account from PR author, commit authors/committers, CI actors, and verified source-branch publication actor skyRolly. Personal independence, conflicts, availability and owner authorization still require human confirmation.",
     "availability": "unverified",
     "owner_authorization": "no appointment or assignment made; owner confirmation pending",
     "actual_approval": "none submitted on PRs #9-#12 at collection"
@@ -135,9 +135,40 @@
       ],
       "latest_workflow_actor": "skyRolly",
       "latest_workflow_triggering_actor": "skyRolly",
-      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "last_git_push_actor": "skyRolly",
       "reviews": [],
-      "review_comments": []
+      "review_comments": [],
+      "initial_public_event_feed_limitation": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "matching_repository_activity": {
+        "id": 48988016522,
+        "node_id": "PSH_kwLOVhuTMc8AAAALZ-nPig",
+        "before": "0000000000000000000000000000000000000000",
+        "after": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+        "ref": "refs/heads/maintenance/1.21.11-2026-11-04",
+        "timestamp": "2026-11-04T15:51:27Z",
+        "activity_type": "branch_creation",
+        "actor": {
+          "login": "skyRolly",
+          "id": 16152857,
+          "node_id": "MDQ6VXNlcjE2MTUyODU3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16152857?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/skyRolly",
+          "html_url": "https://github.com/skyRolly",
+          "followers_url": "https://api.github.com/users/skyRolly/followers",
+          "following_url": "https://api.github.com/users/skyRolly/following{/other_user}",
+          "gists_url": "https://api.github.com/users/skyRolly/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/skyRolly/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/skyRolly/subscriptions",
+          "organizations_url": "https://api.github.com/users/skyRolly/orgs",
+          "repos_url": "https://api.github.com/users/skyRolly/repos",
+          "events_url": "https://api.github.com/users/skyRolly/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/skyRolly/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        }
+      }
     },
     "10": {
       "head_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
@@ -157,9 +188,40 @@
       ],
       "latest_workflow_actor": "skyRolly",
       "latest_workflow_triggering_actor": "skyRolly",
-      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "last_git_push_actor": "skyRolly",
       "reviews": [],
-      "review_comments": []
+      "review_comments": [],
+      "initial_public_event_feed_limitation": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "matching_repository_activity": {
+        "id": 48988021826,
+        "node_id": "PSH_kwLOVhuTMc8AAAALZ-nkQg",
+        "before": "0000000000000000000000000000000000000000",
+        "after": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+        "ref": "refs/heads/maintenance/26.1-26.2-2026-11-04",
+        "timestamp": "2026-11-04T15:51:30Z",
+        "activity_type": "branch_creation",
+        "actor": {
+          "login": "skyRolly",
+          "id": 16152857,
+          "node_id": "MDQ6VXNlcjE2MTUyODU3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16152857?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/skyRolly",
+          "html_url": "https://github.com/skyRolly",
+          "followers_url": "https://api.github.com/users/skyRolly/followers",
+          "following_url": "https://api.github.com/users/skyRolly/following{/other_user}",
+          "gists_url": "https://api.github.com/users/skyRolly/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/skyRolly/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/skyRolly/subscriptions",
+          "organizations_url": "https://api.github.com/users/skyRolly/orgs",
+          "repos_url": "https://api.github.com/users/skyRolly/repos",
+          "events_url": "https://api.github.com/users/skyRolly/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/skyRolly/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        }
+      }
     },
     "11": {
       "head_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
@@ -179,9 +241,40 @@
       ],
       "latest_workflow_actor": "skyRolly",
       "latest_workflow_triggering_actor": "skyRolly",
-      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "last_git_push_actor": "skyRolly",
       "reviews": [],
-      "review_comments": []
+      "review_comments": [],
+      "initial_public_event_feed_limitation": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "matching_repository_activity": {
+        "id": 48988027287,
+        "node_id": "PSH_kwLOVhuTMc8AAAALZ-n5lw",
+        "before": "0000000000000000000000000000000000000000",
+        "after": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+        "ref": "refs/heads/maintenance/26.3-2026-11-04",
+        "timestamp": "2026-11-04T15:51:32Z",
+        "activity_type": "branch_creation",
+        "actor": {
+          "login": "skyRolly",
+          "id": 16152857,
+          "node_id": "MDQ6VXNlcjE2MTUyODU3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16152857?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/skyRolly",
+          "html_url": "https://github.com/skyRolly",
+          "followers_url": "https://api.github.com/users/skyRolly/followers",
+          "following_url": "https://api.github.com/users/skyRolly/following{/other_user}",
+          "gists_url": "https://api.github.com/users/skyRolly/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/skyRolly/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/skyRolly/subscriptions",
+          "organizations_url": "https://api.github.com/users/skyRolly/orgs",
+          "repos_url": "https://api.github.com/users/skyRolly/repos",
+          "events_url": "https://api.github.com/users/skyRolly/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/skyRolly/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        }
+      }
     },
     "12": {
       "head_sha": "8ef5e97b61ca817f8a85727322724000595e2533",
@@ -206,9 +299,40 @@
       ],
       "latest_workflow_actor": "skyRolly",
       "latest_workflow_triggering_actor": "skyRolly",
-      "last_git_push_actor": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "last_git_push_actor": "skyRolly",
       "reviews": [],
-      "review_comments": []
+      "review_comments": [],
+      "initial_public_event_feed_limitation": "UNVERIFIED: no matching current-head PushEvent in the accessible repository event page; commit/CI actor is not substituted for a push audit record",
+      "matching_repository_activity": {
+        "id": 48990015422,
+        "node_id": "PSH_kwLOVhuTMc8AAAALaAhPvg",
+        "before": "a3f444df4cbfa4a77c78abf795485156eb2a0cba",
+        "after": "8ef5e97b61ca817f8a85727322724000595e2533",
+        "ref": "refs/heads/maintenance/coordination-2026-11-04",
+        "timestamp": "2026-11-04T16:09:23Z",
+        "activity_type": "push",
+        "actor": {
+          "login": "skyRolly",
+          "id": 16152857,
+          "node_id": "MDQ6VXNlcjE2MTUyODU3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/16152857?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/skyRolly",
+          "html_url": "https://github.com/skyRolly",
+          "followers_url": "https://api.github.com/users/skyRolly/followers",
+          "following_url": "https://api.github.com/users/skyRolly/following{/other_user}",
+          "gists_url": "https://api.github.com/users/skyRolly/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/skyRolly/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/skyRolly/subscriptions",
+          "organizations_url": "https://api.github.com/users/skyRolly/orgs",
+          "repos_url": "https://api.github.com/users/skyRolly/repos",
+          "events_url": "https://api.github.com/users/skyRolly/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/skyRolly/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        }
+      }
     }
   },
   "completed_ci": {
@@ -961,6 +1085,40 @@
       "repeat_warm_refresh_local_packages": 86,
       "disposition": "Fix resolution with --refresh-dependencies in the central workflow; no baseline deletion, no advisory acceptance, no input PR snapshot relabelling."
     },
-    "final_head_ci": "Final corrected PR #12 head must have its own successful Validate coordination; final run/SHA are recorded by GitHub and the handoff, not inferred from the inspected 8ef5e97 head."
-  }
+    "final_head_ci": "Final corrected PR #12 head must have its own successful Validate coordination; final run/SHA are recorded by GitHub and the handoff, not inferred from the inspected 8ef5e97 head.",
+    "full_dependency_audits": {
+      "1.21.11": {
+        "source_sha": "7779e3a89849cdaf3b08aa536b79d8c238fa1874",
+        "complete": true,
+        "expected_exit_code": 1,
+        "known_unresolved_matches": 41,
+        "new": 0,
+        "changed": 0,
+        "resolved": 0,
+        "mode": "local proposed integration with actual candidate SHA and declared logical mc ref; not current protected branch or GitHub indexed state"
+      },
+      "26.1-26.2": {
+        "source_sha": "e1bce43c0f370fb28bbf87ba974c8d1582c85fb0",
+        "complete": true,
+        "expected_exit_code": 1,
+        "known_unresolved_matches": 53,
+        "new": 0,
+        "changed": 0,
+        "resolved": 0,
+        "mode": "local proposed integration with actual candidate SHA and declared logical mc ref; not current protected branch or GitHub indexed state"
+      },
+      "26.3": {
+        "source_sha": "dd43b41d3c4134430a57cc8eed0cc522249a614c",
+        "complete": true,
+        "expected_exit_code": 1,
+        "known_unresolved_matches": 11,
+        "new": 0,
+        "changed": 0,
+        "resolved": 0,
+        "mode": "local proposed integration with actual candidate SHA and declared logical mc ref; not current protected branch or GitHub indexed state"
+      }
+    }
+  },
+  "repository_activity_source": "GET /repos/skyRolly/third-person-readable-maps/activity?per_page=100",
+  "repository_activity_note": "The general public event page lacked matching PushEvents; the dedicated repository activity endpoint supplied source-specific push/branch-creation records. These records match the initially reviewed heads. Final correction-head activity is rechecked in the PR handoff."
 }

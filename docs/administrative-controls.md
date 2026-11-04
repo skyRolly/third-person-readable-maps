@@ -33,10 +33,13 @@ cannot satisfy any of those review-record checks.
 
 All four PRs are authored by `skyRolly`; all currently proposed commits have
 `skyRolly` as GitHub-associated author and committer. The latest inspected PR CI
-actor and triggering actor are also `skyRolly`. No matching current-head PushEvent
-was available in the public event page, so the exact final git-push actor is not
-independently verified. These account observations support potential technical
-eligibility; they do not prove personal independence, absence of involvement or
+actor and triggering actor are also `skyRolly`. The general public event page
+lacked matching PushEvents, but the dedicated repository activity endpoint
+independently identifies `skyRolly` for the maintenance source-branch creations
+and the inspected coordination pushes. Matching refs and after-SHAs are retained
+in the correction evidence; the final correction push is rechecked in the handoff.
+These account observations support potential technical eligibility; they do not
+prove personal independence, absence of involvement or
 conflicts, reviewer availability, or the owner's authorization. No additional
 owner policy disqualifying this account was found in the accessible repository
 records; that is not an affirmative owner appointment. No review has been
