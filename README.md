@@ -1,33 +1,34 @@
 # Third Person Readable Maps
 
-[![CI](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml/badge.svg)](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml)
+[![CI — mc/1.21.11](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml/badge.svg?branch=mc%2F1.21.11)](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml?query=branch%3Amc%2F1.21.11)
 
-A client-side Fabric mod that renders filled map contents on maps held in
-third-person view. Maps follow the holding arm, with layouts for the main hand,
-off hand, and occupied opposite hand, including left-handed players.
+A client-side Fabric mod that renders filled map contents on maps held in third-person view. Maps follow the holding arm, with layouts for the main hand, off hand, and occupied opposite hand, including left-handed players.
 
 ## Requirements and installation
 
-Build the mod below, or download and extract a mod artifact from a successful
-[CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml).
+Build from source, or download and extract an artifact from a successful
+[branch CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml?query=branch%3Amc%2F1.21.11). CI artifacts are development builds;
+mod version `0.0.2` has not yet been publicly released.
 
 - Minecraft **1.21.11** and Fabric Loader **0.20.1 or newer**.
 - Java **21 or newer** to play. Fabric API is not required.
-- Copy `third-person-readable-maps-<version>-mc1.21.11.jar` into your instance's `mods`
-  directory, then launch its Fabric profile.
+- Copy `third-person-readable-maps-<version>-mc1.21.11.jar` into the client
+  instance's `mods` directory, then launch its Fabric profile.
 
-Your client must have received the map data to display its contents. The mod does
-not need to be installed on the server. Mod ID: `thirdpersonreadablemaps`.
+Your client must have received the map data to display its contents. The server
+does not need the mod. Mod ID: `thirdpersonreadablemaps`.
 
 ## Build from source
 
 Install a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
-on `PATH`. The committed Gradle **9.8.2** wrapper downloads and verifies Gradle;
-you do not need a separate Gradle installation. Network access is required for
-Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.19.3**
-and Fabric Loader **0.20.1**, as pinned in `gradle.properties`. Gradle and the
-compiler use Java 25; `--release 21` preserves Java 21 APIs and bytecode, and
-Minecraft 1.21.11 still runs with Java 21.
+on `PATH`. CI pins Eclipse Temurin **25.0.5+8**. The committed Gradle **9.8.2**
+wrapper downloads and verifies Gradle; no separate Gradle installation is needed.
+Network access is required for Gradle, Minecraft, and Fabric dependencies.
+Fabric Loom **1.19.3** and Fabric Loader **0.20.1** are pinned in `gradle.properties`.
+
+Gradle and the compiler use Java 25; `--release 21` preserves Java 21 APIs
+and bytecode. Remapping Loom produces the intermediary/remapped installable JAR.
+`build/devlibs/` contains development intermediates; install from `build/libs/`.
 
 ```sh
 # Linux / macOS
@@ -37,38 +38,54 @@ Minecraft 1.21.11 still runs with Java 21.
 ```bat
 :: Windows Command Prompt
 gradlew.bat --no-daemon clean build
-:: Or use the convenient entry point:
+:: Or use the entry point from any directory:
 Build-Windows.bat
 ```
 
-In PowerShell, prefix these Windows commands with `.\`. `Build-Windows.bat` also
-works when invoked by its full path from another directory. The installable output is
+In PowerShell, prefix Windows commands with `.\`. The installable output is
 `build/libs/third-person-readable-maps-<version>-mc1.21.11.jar` (currently `0.0.2`).
-`build/devlibs/` contains development intermediates; install the remapped JAR
-from `build/libs/`. Build scripts leave generated files under `build/`.
+Generated build files stay under `build/`.
 
 ## Validation and contributions
 
-Open pull requests against `mc/1.21.11`. CI runs clean Java 25 builds on Linux and
-Windows, validates the Gradle wrapper, checks Fabric metadata, the packaged MIT
-license, Java bytecode, and the Mixin target signature, and uploads the mod JARs
-and verification reports. Run the same checks locally with `./gradlew build`.
-The dependency job also resolves the Gradle graph and uploads its snapshot;
-GitHub's automatic Gradle dependency submission remains the submission source.
-Dependabot checks Gradle and GitHub Actions weekly.
+Open game-specific PRs against `mc/1.21.11` and coordination PRs against `main`.
+Port shared changes to each affected maintenance branch in separate reviewed PRs.
+CI runs clean Java 25 builds on Linux and Windows, validates the Gradle wrapper,
+and checks Fabric metadata, the packaged MIT license, Java bytecode, mapping
+namespace, and the Mixin target signature. It retains JARs and verification reports.
+Run the same build checks locally with `./gradlew build`.
 
-Minecraft's Netty, Log4j, and LZ4 libraries come from its version manifest through
-Loom. Dependabot can report these libraries but cannot update their versions in
-this mod's build file. Keep security alerts enabled; resolving those alerts needs
-a compatible upstream Minecraft/library fix and review, rather than arbitrary
-dependency overrides in this mod.
+For graphical checks, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
+on a machine with graphics support. Check filled maps in each hand, both maps,
+an occupied opposite hand, both dominant-arm settings, missing map data, arm
+movement, and unchanged first-person behavior. CI does not verify visual rendering;
+installed-client and graphical evidence for every supported version remain release gates.
 
-For an in-game check, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
-on a machine with graphics support. Check a filled map in each hand, both maps,
-an occupied opposite hand, and both dominant-arm settings in third-person view.
-Also check missing map data, arm movement, and unchanged first-person behavior.
-CI's bytecode and artifact checks do not verify visual rendering.
+Report bugs in the [issue tracker](https://github.com/skyRolly/third-person-readable-maps/issues), including Minecraft, Fabric Loader,
+Java, and mod versions, reproduction steps, and the relevant client log.
 
-Report bugs in the [issue tracker](https://github.com/skyRolly/third-person-readable-maps/issues),
-including Minecraft, Fabric Loader, Java, and mod versions, reproduction steps,
-and the relevant client log. Licensed under [MIT](LICENSE).
+## Dependency maintenance and security
+
+The dependency inspection job resolves Gradle dependencies and retains a snapshot
+for 14 days. Uploading it does **not** submit it to GitHub's Dependency Graph.
+Weekly Dependabot version-update configuration is owned by `main`; security alerts
+on the default branch do not provide equivalent coverage for this branch.
+Central OSV auditing reports maintenance dependencies and game runtime manifests.
+See the [monitoring record](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/dependency-monitoring.md)
+and [advisory ledger](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/security-advisories.md) for coverage,
+individual dispositions, and unresolved risks.
+
+Minecraft supplies libraries such as Netty, Log4j, Guava, and LZ4 to the client
+runtime through Loom and its version manifests. These are not bundled in the mod
+JAR. Compatible upstream fixes require review; arbitrary overrides in this mod's
+build do not safely patch an installed game's libraries.
+
+## Compatibility and release status
+
+`mc/1.21.11` is an established maintenance branch. Version `0.0.2` remains unreleased.
+A coordinated release uses one `X.X.X` tag and three game-specific JARs, with
+reviewed source revisions, runtime evidence, provenance, checksums, and independent
+approvals. See the [compatibility record](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/compatibility.md)
+and [release guide](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/releasing.md).
+
+Licensed under [MIT](LICENSE).
