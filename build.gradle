@@ -1,5 +1,5 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 }
 
 version = project.mod_version
@@ -16,7 +16,8 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
 def resourceProperties = [version: project.version.toString(), minecraft_version: project.minecraft_version,
@@ -29,18 +30,22 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 25
+    options.release = 21
     options.encoding = 'UTF-8'
     options.compilerArgs.add('-Xlint:unchecked')
 }
 
 java {
+    // Compile with the same JDK as Gradle, but enforce Java 21's APIs and bytecode above.
     toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+tasks.named('remapJar') {
+    archiveClassifier = "mc${project.minecraft_version}"
 }
 
 jar {
     from('LICENSE')
-    archiveClassifier = "mc${project.minecraft_version}"
 }
 
 apply from: 'gradle/verification.gradle'

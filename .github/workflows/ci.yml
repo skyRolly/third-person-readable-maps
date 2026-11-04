@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [main, 'mc/**', 'candidate/**', 'modernization/**']
+    branches: [main, 'mc/**', 'candidate/**']
   push:
-    branches: [main, 'mc/**', 'candidate/**', 'modernization/**']
+    branches: [main, 'mc/**', 'candidate/**']
   workflow_dispatch:
 
 permissions:
@@ -31,23 +31,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '25.0.5+8'
-      - name: Install Java 21 launcher for submission regression
-        if: runner.os == 'Linux'
-        id: java21
-        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
-        with:
-          distribution: temurin
-          java-version: '21'
-          set-default: false
       - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
         with:
           cache-provider: basic
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-      - name: Verify Gradle with a Java 21 launcher
-        if: runner.os == 'Linux'
-        env:
-          JAVA_HOME: ${{ steps.java21.outputs.path }}
-        run: ./gradlew --no-daemon --console=plain --stacktrace --info help
       - name: Clean build and verify mod (Linux)
         if: runner.os == 'Linux'
         run: ./gradlew --no-daemon --console=plain --stacktrace --warning-mode=all clean build
@@ -79,6 +66,19 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+  release-checks:
+    name: Validate release tools
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - run: python3 -m unittest discover -s tests -v
+
   dependency-graph:
     name: Resolve and inspect dependency graph
     runs-on: ubuntu-latest
@@ -96,7 +96,7 @@ jobs:
       - uses: gradle/actions/dependency-submission@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
         with:
           cache-provider: basic
-          cache-read-only: true
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
           validate-wrappers: true
           dependency-graph: generate-and-upload
           additional-arguments: --no-daemon --console=plain --stacktrace

@@ -31,14 +31,14 @@ public final class ReadableMapSurface {
         MapItemSavedData readableMapData = MapItem.getSavedData(mapItemStack, mapClientInstance.level);
 
         if (useCompactMap) {
-            mapTransform.rotateDegrees(Axis.YP, 160f);
-            mapTransform.rotateDegrees(Axis.ZP, 180f);
+            mapTransform.mulPose(Axis.YP.rotationDegrees(160f));
+            mapTransform.mulPose(Axis.ZP.rotationDegrees(180f));
             mapTransform.scale(0.38f, 0.38f, 0.38f);
             mapTransform.translate(-0.1, -1.2, 0.0);
             mapTransform.scale(0.0098125f, 0.0098125f, 0.0098125f);
         } else {
-            mapTransform.rotateDegrees(Axis.YP, useLeftMapLayout ? 154.5f : 155f);
-            mapTransform.rotateDegrees(Axis.ZP, useLeftMapLayout ? 166.5f : 213.5f);
+            mapTransform.mulPose(Axis.YP.rotationDegrees(useLeftMapLayout ? 154.5f : 155f));
+            mapTransform.mulPose(Axis.ZP.rotationDegrees(useLeftMapLayout ? 166.5f : 213.5f));
             mapTransform.scale(0.38f, 0.38f, 0.38f);
             if (useLeftMapLayout) mapTransform.translate(0.585, -1.225, 0.15);
             else mapTransform.translate(-0.955, -1.8, 0.0);

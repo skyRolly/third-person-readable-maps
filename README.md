@@ -1,87 +1,60 @@
 # Third Person Readable Maps
 
-[![CI](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml/badge.svg)](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml)
-
 A client-side Fabric mod that renders filled map contents on maps held in
-third-person view. Maps follow the holding arm, with layouts for the main hand,
-off hand, and occupied opposite hand, including left-handed players.
+third-person view, including main and off hands, occupied opposite hands and
+left-handed players. The server does not need the mod. Fabric API is not needed.
 
-## Requirements and installation
+## Minecraft compatibility
 
-Build the mod below, or download and extract a mod artifact from a successful
-[CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml).
+The candidates in this repository build separate JARs with a shared mod version:
 
-- Minecraft **26.3** and Fabric Loader **0.20.1 or newer**.
-- Java **25 LTS** to play. Fabric API is not required.
-- Copy `third-person-readable-maps-<version>-mc26.3.jar` into your instance's `mods`
-  directory, then launch its Fabric profile.
+| Minecraft | Java to play | Fabric Loader | Status |
+| --- | --- | --- | --- |
+| 1.21.11 | 21+ | 0.20.1+ | Maintenance candidate, intermediary/remapped JAR |
+| 26.1, 26.1.1, 26.1.2, 26.2 | 25+ | 0.20.1+ | One tested candidate JAR, official names |
+| 26.3 | 25+ | 0.20.1+ | Candidate based on unmerged PR #3, official-name JAR |
 
-Your client must have received the map data to display its contents. The mod does
-not need to be installed on the server. Mod ID: `thirdpersonreadablemaps`.
+These are explicit game versions, not claims that the JARs work on an entire
+release family. There is no coordinated public release yet. The prior `main` history
+contains mod version `0.0.1`; `0.0.2` is proposed for the first coordinated
+release and must not be tagged or published until reviewed. See the full
+[compatibility decision record](docs/compatibility.md).
 
-Version **0.0.2** targets Minecraft 26.3 and Java 25. It is incompatible with
-Minecraft 1.21.11 and Java 21.
+## Build this branch
 
-## Build from source
-
-Install a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
-on `PATH`. CI uses **Eclipse Temurin 25.0.5+8**, the verified Java 25 LTS
-maintenance release. The committed Gradle **9.8.2** wrapper downloads and verifies Gradle;
-you do not need a separate Gradle installation. Network access is required for
-Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.19.3**
-and Fabric Loader **0.20.1**, as pinned in `gradle.properties`.
-The Gradle build daemon, compiler toolchain, and mod bytecode all use Java 25,
-matching Minecraft 26.3's runtime requirement.
-The committed Gradle daemon criteria also let GitHub's managed dependency
-submission start with Java 21 and use the runner's installed Java 25 for the
-build. Gradle discovers that JDK through `JAVA_HOME_25_X64` on GitHub runners.
+Install **JDK 25**, set `JAVA_HOME` to it, and run:
 
 ```sh
-# Linux / macOS
 ./gradlew --no-daemon clean build
+python3 -m unittest discover -s tests -v
 ```
 
-```bat
-:: Windows Command Prompt
-gradlew.bat --no-daemon clean build
-:: Or use the convenient entry point:
-Build-Windows.bat
-```
+On Windows, use `gradlew.bat --no-daemon clean build` or `Build-Windows.bat`.
+The Gradle 9.8.2 wrapper is included. The 1.21.11 branch executes Gradle and
+compiles with JDK 25 using `--release 21`: the resulting mod requires Java 21,
+not Java 25, to run. The artifact is
+`build/libs/third-person-readable-maps-<mod-version>-mc1.21.11.jar`.
+The 26.1–26.2 candidate compiles against 26.1 and packages
+`third-person-readable-maps-<mod-version>-mc26.1-26.2.jar`. The separate 26.3
+candidate uses Java 25 for both build and runtime and packages
+`third-person-readable-maps-<mod-version>-mc26.3.jar`.
 
-In PowerShell, prefix these Windows commands with `.\`. `Build-Windows.bat` also
-works when invoked by its full path from another directory. The installable output is
-`build/libs/third-person-readable-maps-<version>-mc26.3.jar` (currently `0.0.2`).
-Minecraft 26.3 ships unobfuscated; Loom's standard `jar` task produces the
-installable JAR using official names, without a mappings dependency or remapping
-step. Build scripts leave generated files under `build/`.
+Do not install development intermediates. Copy the exact JAR for your game
+version into the client instance's `mods` directory and launch its Fabric
+profile. Map contents require the client to have received that map's data.
 
-## Validation and contributions
+## Development and releases
 
-This candidate is stacked on PR #3 and is not an approved release branch. After
-review, maintain this game-specific implementation on `mc/26.3`; coordinated
-releases and shared changes are reviewed separately on `main`.
+Linux and Windows CI build the branch under review, validate the exact Mixin
+target and inspect the distributable. Those checks do not replace an installed
+client or visual test. The [maintenance and release guide](docs/releasing.md)
+describes branch roles, propagation of changes, the single global tag and the
+review gates for a coordinated release. No release workflow runs automatically.
 
-CI runs clean Java 25 builds on Linux and
-Windows, validates the Gradle wrapper, checks Fabric metadata, the packaged MIT
-license, Java bytecode, and the Mixin target signature, and uploads the mod JARs
-and verification reports. Run the same checks locally with `./gradlew build`.
-The dependency job also resolves the Gradle graph and uploads its snapshot;
-GitHub's automatic Gradle dependency submission remains the submission source.
-Dependabot checks Gradle and GitHub Actions weekly.
+Minecraft-managed libraries such as Netty, Log4j, Guava and LZ4 are supplied by
+the game, not bundled by this mod. The existing Dependabot security-update
+`dependency_not_found` issue and inaccessible alert details remain open; see
+the [decision record](docs/compatibility.md#dependency-maintenance).
 
-Minecraft's Netty, Log4j, Guava, and LZ4 libraries come from its version manifest through
-Loom. Dependabot can report these libraries but cannot update their versions in
-this mod's build file. Minecraft 26.3 still uses versions within reported advisory
-ranges. These libraries are not bundled in the mod JAR, but run in the Minecraft
-process. Keep alerts enabled and track upstream fixes; arbitrary overrides in a
-mod build do not safely patch the installed game's libraries.
-
-For an in-game check, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
-on a machine with graphics support. Check a filled map in each hand, both maps,
-an occupied opposite hand, and both dominant-arm settings in third-person view.
-Also check missing map data, arm movement, and unchanged first-person behavior.
-CI's bytecode and artifact checks do not verify visual rendering.
-
-Report bugs in the [issue tracker](https://github.com/skyRolly/third-person-readable-maps/issues),
-including Minecraft, Fabric Loader, Java, and mod versions, reproduction steps,
-and the relevant client log. Licensed under [MIT](LICENSE).
+Report bugs with the Minecraft, Fabric Loader, Java and mod versions, steps to
+reproduce and the relevant client log. Licensed under [MIT](LICENSE).

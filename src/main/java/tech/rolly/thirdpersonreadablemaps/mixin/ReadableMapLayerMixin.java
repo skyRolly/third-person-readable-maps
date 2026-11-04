@@ -62,10 +62,10 @@ public abstract class ReadableMapLayerMixin<
         readableMapTransform.pushPose();
         try {
             readableMapModel.translateToHand(mapEntityState, mapHoldingArm, readableMapTransform);
-            readableMapTransform.rotateDegrees(Axis.XP, -90.0f);
-            readableMapTransform.rotateDegrees(Axis.YP, isMapInMainHand ? 205.0f : 200.0f);
+            readableMapTransform.mulPose(Axis.XP.rotationDegrees(-90.0f));
+            readableMapTransform.mulPose(Axis.YP.rotationDegrees(isMapInMainHand ? 205.0f : 200.0f));
             if (isMapInMainHand) {
-                readableMapTransform.rotateDegrees(Axis.ZP, 10.0f);
+                readableMapTransform.mulPose(Axis.ZP.rotationDegrees(10.0f));
             }
             float mapHandSign = isMapInRightHand ? 1f : -1f;
             readableMapTransform.translate(mapHandSign / 16f, isMapInMainHand ? (useCompactMap ? 0.09 : 0.24) : 0.125, -0.625);

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "version": "0.0.2",
+  "release_date": "2026-11-04",
+  "changes": ["Describe the shared, reviewed user-visible change"],
+  "known_limitations": [],
+  "groups": {
+    "1.21.11": {
+      "source_branch": "mc/1.21.11",
+      "commit": "0000000000000000000000000000000000000000",
+      "verified_changes": ["Describe the shared, reviewed user-visible change"],
+      "runtime_evidence": {}
+    },
+    "26.1-26.2": {
+      "source_branch": "mc/26.1-26.2",
+      "commit": "0000000000000000000000000000000000000000",
+      "verified_changes": ["Describe the shared, reviewed user-visible change"],
+      "runtime_evidence": {}
+    },
+    "26.3": {
+      "source_branch": "mc/26.3",
+      "commit": "0000000000000000000000000000000000000000",
+      "verified_changes": ["Describe the shared, reviewed user-visible change"],
+      "runtime_evidence": {}
+    }
+  }
+}

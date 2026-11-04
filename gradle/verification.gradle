@@ -19,7 +19,6 @@ def readClass = { byte[] bytes ->
     node
 }
 def annotationValues = { annotation ->
-    if (annotation == null) throw new GradleException('Required Mixin annotation is missing')
     annotation.values.collate(2).collectEntries { [(it[0]): it[1]] }
 }
 def annotations = { node -> (node.visibleAnnotations ?: []) + (node.invisibleAnnotations ?: []) }
@@ -35,7 +34,7 @@ def loaderVersion = project.loader_version
 
 tasks.register('verifyMixinTarget') {
     group = 'verification'
-    description = 'Checks the injection handler against the actual Minecraft method signature.'
+    description = 'Checks the injection handler against the actual mapped Minecraft method signature.'
     dependsOn tasks.named('classes')
     inputs.files(compiledClasses, minecraftClasspath)
     def report = layout.buildDirectory.file('reports/verification/mixin-target.txt')
@@ -70,9 +69,9 @@ tasks.register('verifyMixinTarget') {
 
 tasks.register('verifyModJar') {
     group = 'verification'
-    description = 'Validates the distributable Fabric JAR, metadata, license, and Mixin.'
-    dependsOn tasks.named('jar')
-    def modJar = tasks.named('jar').flatMap { it.archiveFile }
+    description = 'Validates the distributable remapped Fabric JAR, metadata, license, and Mixin.'
+    dependsOn tasks.named('remapJar')
+    def modJar = tasks.named('remapJar').flatMap { it.archiveFile }
     inputs.file(modJar)
     inputs.property('modVersion', modVersion)
     inputs.property('minecraftVersion', minecraftVersion)
@@ -89,25 +88,31 @@ tasks.register('verifyModJar') {
             require(metadata.schemaVersion == 1 && metadata.id == 'thirdpersonreadablemaps', 'Invalid Fabric mod identity')
             require(metadata.version == modVersion, 'Unexpanded or incorrect mod version')
             require(metadata.environment == 'client', 'The mod must remain client-only')
-            require(metadata.depends.minecraft == minecraftVersion && metadata.depends.java == '>=25', 'Incorrect Minecraft or Java requirements')
+            require(metadata.depends.minecraft == minecraftVersion && metadata.depends.java == '>=21', 'Incorrect Minecraft or Java requirements')
             require(metadata.depends.fabricloader == ">=${loaderVersion}", 'Unexpected minimum Fabric Loader version')
             require(metadata.license == 'MIT' && jar.getJarEntry('LICENSE') != null, 'MIT license is missing')
             require(metadata.mixins == ['thirdpersonreadablemaps.mixins.json'], 'Incorrect Mixin resource path')
             def config = readJson(metadata.mixins[0])
-            require(config.required && config.compatibilityLevel == 'JAVA_25' && config.injectors.defaultRequire == 1, 'Mixin must be required on Java 25')
+            require(config.required && config.compatibilityLevel == 'JAVA_21' && config.injectors.defaultRequire == 1, 'Mixin must be required on Java 21')
             require(config.package == 'tech.rolly.thirdpersonreadablemaps.mixin' && config.client == ['ReadableMapLayerMixin'], 'Incorrect client Mixin registration')
-            require(jar.manifest.mainAttributes.getValue('Fabric-Mapping-Namespace') == 'official', 'Expected an official-namespace distributable JAR')
+            require(jar.manifest.mainAttributes.getValue('Fabric-Mapping-Namespace') == 'intermediary', 'Expected a remapped distributable JAR')
             require(jar.manifest.mainAttributes.getValue('Fabric-Minecraft-Version') == minecraftVersion, 'Wrong Minecraft build target')
             ['tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class', mixinClassPath].each { path ->
                 require(jar.getJarEntry(path) != null, "Missing mod class: ${path}")
-                require(readClass(jar.getInputStream(jar.getJarEntry(path)).bytes).version == Opcodes.V25, "Expected Java 25 bytecode: ${path}")
+                require(readClass(jar.getInputStream(jar.getJarEntry(path)).bytes).version == Opcodes.V21, "Expected Java 21 bytecode: ${path}")
+            }
+            jar.entries().each { entry ->
+                if (entry.name.endsWith('.class')) {
+                    require(readClass(jar.getInputStream(entry).bytes).version <= Opcodes.V21,
+                            "Class requires a newer runtime than Java 21: ${entry.name}")
+                }
             }
             def mixin = readClass(jar.getInputStream(jar.getJarEntry(mixinClassPath)).bytes)
             def target = annotationValues(annotations(mixin).find { it.desc == 'Lorg/spongepowered/asm/mixin/Mixin;' }).value[0].internalName
-            require(target == 'net/minecraft/client/renderer/entity/layers/ItemInHandLayer', 'Incorrect official-namespace Mixin target')
+            require(target.startsWith('net/minecraft/class_'), 'Mixin target was not remapped to intermediary names')
         }
         report.get().asFile.parentFile.mkdirs()
-        report.get().asFile.text = "Verified distributable: ${modJar.get().asFile.name}\nMinecraft ${minecraftVersion}, Java 25, client-only, official namespace, MIT license, required Mixin\n"
+        report.get().asFile.text = "Verified distributable: ${modJar.get().asFile.name}\nMinecraft ${minecraftVersion}, Java 21, client-only, intermediary mappings, MIT license, required Mixin\n"
         logger.lifecycle(report.get().asFile.text.trim())
     }
 }
