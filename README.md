@@ -11,9 +11,9 @@ off hand, and occupied opposite hand, including left-handed players.
 Build the mod below, or download and extract a mod artifact from a successful
 [CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml).
 
-- Minecraft **1.21.11** and Fabric Loader **0.18.1 or newer**.
+- Minecraft **1.21.11** and Fabric Loader **0.20.1 or newer**.
 - Java **21 or newer** to play. Fabric API is not required.
-- Copy `third-person-readable-maps-<version>.jar` into your instance's `mods`
+- Copy `third-person-readable-maps-<version>-mc1.21.11.jar` into your instance's `mods`
   directory, then launch its Fabric profile.
 
 Your client must have received the map data to display its contents. The mod does
@@ -21,11 +21,13 @@ not need to be installed on the server. Mod ID: `thirdpersonreadablemaps`.
 
 ## Build from source
 
-Install a **Java 21 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
-on `PATH`. The committed Gradle **9.6.1** wrapper downloads and verifies Gradle;
+Install a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
+on `PATH`. The committed Gradle **9.8.2** wrapper downloads and verifies Gradle;
 you do not need a separate Gradle installation. Network access is required for
-Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.17.21**
-and Fabric Loader **0.19.3**, as pinned in `gradle.properties`.
+Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.19.3**
+and Fabric Loader **0.20.1**, as pinned in `gradle.properties`. Gradle and the
+compiler use Java 25; `--release 21` preserves Java 21 APIs and bytecode, and
+Minecraft 1.21.11 still runs with Java 21.
 
 ```sh
 # Linux / macOS
@@ -41,13 +43,13 @@ Build-Windows.bat
 
 In PowerShell, prefix these Windows commands with `.\`. `Build-Windows.bat` also
 works when invoked by its full path from another directory. The installable output is
-`build/libs/third-person-readable-maps-<version>.jar` (currently `0.0.1`).
+`build/libs/third-person-readable-maps-<version>-mc1.21.11.jar` (currently `0.0.2`).
 `build/devlibs/` contains development intermediates; install the remapped JAR
 from `build/libs/`. Build scripts leave generated files under `build/`.
 
 ## Validation and contributions
 
-Open pull requests against `main`. CI runs clean Java 21 builds on Linux and
+Open pull requests against `mc/1.21.11`. CI runs clean Java 25 builds on Linux and
 Windows, validates the Gradle wrapper, checks Fabric metadata, the packaged MIT
 license, Java bytecode, and the Mixin target signature, and uploads the mod JARs
 and verification reports. Run the same checks locally with `./gradlew build`.
