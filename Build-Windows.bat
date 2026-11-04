@@ -1,13 +1,8 @@
 @echo off
 setlocal
-cd /d "%~dp0"
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0Build-Windows.ps1"
-if errorlevel 1 (
-  echo.
-  echo Build failed. See error messages above.
-  pause
-  exit /b 1
-)
-echo.
-echo Build completed.
-pause
+pushd "%~dp0" || exit /b 1
+call gradlew.bat --no-daemon --console=plain clean build %*
+set "build_exit=%errorlevel%"
+if "%build_exit%"=="0" echo Built Fabric mod in "%~dp0build\libs".
+popd
+exit /b %build_exit%

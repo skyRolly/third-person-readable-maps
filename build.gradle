@@ -20,19 +20,26 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
+def resourceProperties = [version: project.version.toString(), minecraft_version: project.minecraft_version]
 processResources {
-    inputs.property "version", project.version
+    inputs.properties resourceProperties
     filesMatching('fabric.mod.json') {
-        expand 'version': project.version
+        expand resourceProperties
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.release = 21
     options.encoding = 'UTF-8'
+    options.compilerArgs.add('-Xlint:unchecked')
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
+
+jar {
+    from('LICENSE')
+}
+
+apply from: 'gradle/verification.gradle'

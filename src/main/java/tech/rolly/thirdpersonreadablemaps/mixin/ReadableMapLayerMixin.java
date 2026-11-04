@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemInHandLayer.class)
 public abstract class ReadableMapLayerMixin<
         MapEntityState extends ArmedEntityRenderState,
-        MapEntityModel extends EntityModel<MapEntityState> & ArmedModel> extends RenderLayer<MapEntityState, MapEntityModel> {
+        MapEntityModel extends EntityModel<MapEntityState> & ArmedModel<MapEntityState>> extends RenderLayer<MapEntityState, MapEntityModel> {
 
     protected ReadableMapLayerMixin(RenderLayerParent<MapEntityState, MapEntityModel> mapLayerParent) {
         super(mapLayerParent);
