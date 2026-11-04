@@ -1,83 +1,40 @@
-# Third Person Readable Maps
+# Third Person Readable Maps — Minecraft 26.1–26.2 candidate
 
-[![CI](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml/badge.svg)](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml)
+This client-side Fabric mod makes filled maps readable while held in
+third-person view. This candidate JAR targets **Minecraft 26.1, 26.1.1,
+26.1.2 and 26.2**, Java **25+** and Fabric Loader **0.20.1+**. It is not a
+26.3 JAR: Minecraft 26.3 removed a pose API used by this implementation.
 
-A client-side Fabric mod that renders filled map contents on maps held in
-third-person view. Maps follow the holding arm, with layouts for the main hand,
-off hand, and occupied opposite hand, including left-handed players.
+The port is based on the unmerged modernization PR #3, but is reviewed against
+a separate candidate base so accepting it will not replace the 26.3 build. It
+is not yet an approved maintenance branch or a published release. Mod version
+`0.0.2` is a coordinated release candidate.
 
-## Requirements and installation
+## Build
 
-Build the mod below, or download and extract a mod artifact from a successful
-[CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml).
-
-- Minecraft **26.3** and Fabric Loader **0.20.1 or newer**.
-- Java **25 LTS** to play. Fabric API is not required.
-- Copy `third-person-readable-maps-<version>.jar` into your instance's `mods`
-  directory, then launch its Fabric profile.
-
-Your client must have received the map data to display its contents. The mod does
-not need to be installed on the server. Mod ID: `thirdpersonreadablemaps`.
-
-Version **0.0.2** targets Minecraft 26.3 and Java 25. It is incompatible with
-Minecraft 1.21.11 and Java 21.
-
-## Build from source
-
-Install a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
-on `PATH`. CI uses **Eclipse Temurin 25.0.5+8**, the verified Java 25 LTS
-maintenance release. The committed Gradle **9.8.2** wrapper downloads and verifies Gradle;
-you do not need a separate Gradle installation. Network access is required for
-Gradle, Minecraft, and Fabric dependencies. Builds use Fabric Loom **1.19.3**
-and Fabric Loader **0.20.1**, as pinned in `gradle.properties`.
-The Gradle build daemon, compiler toolchain, and mod bytecode all use Java 25,
-matching Minecraft 26.3's runtime requirement.
-The committed Gradle daemon criteria also let GitHub's managed dependency
-submission start with Java 21 and use the runner's installed Java 25 for the
-build. Gradle discovers that JDK through `JAVA_HOME_25_X64` on GitHub runners.
+Install JDK 25 (CI pins Temurin 25.0.5+8), then use Gradle 9.8.2 via the
+committed wrapper:
 
 ```sh
-# Linux / macOS
 ./gradlew --no-daemon clean build
+python3 scripts/verify_supported_apis.py --jar build/libs
 ```
 
-```bat
-:: Windows Command Prompt
-gradlew.bat --no-daemon clean build
-:: Or use the convenient entry point:
-Build-Windows.bat
-```
+On Windows, use `gradlew.bat --no-daemon clean build` or `Build-Windows.bat`.
+The installable artifact is
+`build/libs/third-person-readable-maps-<version>-mc26.1-26.2.jar`. Build and
+runtime both use Java 25; Fabric Loom 1.19.3 and Loader 0.20.1 are pinned in
+`gradle.properties`. Fabric API is not needed.
 
-In PowerShell, prefix these Windows commands with `.\`. `Build-Windows.bat` also
-works when invoked by its full path from another directory. The installable output is
-`build/libs/third-person-readable-maps-<version>.jar` (currently `0.0.2`).
-Minecraft 26.3 ships unobfuscated; Loom's standard `jar` task produces the
-installable JAR using official names, without a mappings dependency or remapping
-step. Build scripts leave generated files under `build/`.
+The API check downloads the four official game client JARs, verifies their
+Mojang manifest hashes and checks the exact Mixin target and packaged game
+member references in each. It requires Python 3 and network access. It cannot
+prove that rendering is correct; use an installed Fabric client for graphical
+checks. The same candidate JAR was smoke-tested in each listed game version.
+Check both hands, occupied opposite hands, left and right dominant arms, map
+data and missing data, motion and first-person rendering before release.
 
-## Validation and contributions
-
-Open pull requests against `main`. CI runs clean Java 25 builds on Linux and
-Windows, validates the Gradle wrapper, checks Fabric metadata, the packaged MIT
-license, Java bytecode, and the Mixin target signature, and uploads the mod JARs
-and verification reports. Run the same checks locally with `./gradlew build`.
-The dependency job also resolves the Gradle graph and uploads its snapshot;
-GitHub's automatic Gradle dependency submission remains the submission source.
-Dependabot checks Gradle and GitHub Actions weekly.
-
-Minecraft's Netty, Log4j, Guava, and LZ4 libraries come from its version manifest through
-Loom. Dependabot can report these libraries but cannot update their versions in
-this mod's build file. Minecraft 26.3 still uses versions within reported advisory
-ranges. These libraries are not bundled in the mod JAR, but run in the Minecraft
-process. Keep alerts enabled and track upstream fixes; arbitrary overrides in a
-mod build do not safely patch the installed game's libraries.
-
-For an in-game check, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
-on a machine with graphics support. Check a filled map in each hand, both maps,
-an occupied opposite hand, and both dominant-arm settings in third-person view.
-Also check missing map data, arm movement, and unchanged first-person behavior.
-CI's bytecode and artifact checks do not verify visual rendering.
-
-Report bugs in the [issue tracker](https://github.com/skyRolly/third-person-readable-maps/issues),
-including Minecraft, Fabric Loader, Java, and mod versions, reproduction steps,
-and the relevant client log. Licensed under [MIT](LICENSE).
+Copy the JAR into the client instance's `mods` directory. Map contents require
+the client to have received the relevant map data. The server does not need the
+mod. Minecraft-managed libraries are not bundled here; keep security alerts
+enabled and track compatible upstream fixes. Licensed under [MIT](LICENSE).

@@ -89,7 +89,7 @@ tasks.register('verifyModJar') {
             require(metadata.schemaVersion == 1 && metadata.id == 'thirdpersonreadablemaps', 'Invalid Fabric mod identity')
             require(metadata.version == modVersion, 'Unexpanded or incorrect mod version')
             require(metadata.environment == 'client', 'The mod must remain client-only')
-            require(metadata.depends.minecraft == minecraftVersion && metadata.depends.java == '>=25', 'Incorrect Minecraft or Java requirements')
+            require(metadata.depends.minecraft == ['26.1', '26.1.1', '26.1.2', '26.2'] && metadata.depends.java == '>=25', 'Incorrect Minecraft or Java requirements')
             require(metadata.depends.fabricloader == ">=${loaderVersion}", 'Unexpected minimum Fabric Loader version')
             require(metadata.license == 'MIT' && jar.getJarEntry('LICENSE') != null, 'MIT license is missing')
             require(metadata.mixins == ['thirdpersonreadablemaps.mixins.json'], 'Incorrect Mixin resource path')
