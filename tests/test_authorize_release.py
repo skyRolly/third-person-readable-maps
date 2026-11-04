@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import unittest
 from unittest.mock import patch
+from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import authorize_release as auth
@@ -54,9 +55,10 @@ class AuthorizationTests(unittest.TestCase):
         self.graph.stop()
 
     def api(self, path, **kwargs):
-        if '/branches/mc%2F1.21.11/protection' in path:
+        branch_path = '/branches/' + quote(self.branch, safe='')
+        if branch_path + '/protection' in path:
             return self.protection
-        if '/branches/mc%2F1.21.11' in path and '/rules/' not in path:
+        if branch_path in path and '/rules/' not in path:
             return self.branch_details
         if '/rules/branches/' in path:
             return self.effective_rules
@@ -85,6 +87,52 @@ class AuthorizationTests(unittest.TestCase):
 
     def test_valid_current_protected_reviewed_sources(self):
         self.authorize()
+
+    def test_main_requires_its_own_exact_coordination_job(self):
+        self.branch = 'main'
+        self.required = {name: auth.ACTIONS_APP for name in auth.COORDINATION_CHECKS}
+        checks = self.protection['required_status_checks']
+        checks['contexts'] = sorted(self.required)
+        checks['checks'] = [{'context': n, 'app_id': a} for n, a in self.required.items()]
+        self.run['head_branch'] = 'main'
+        self.run['path'] = '.github/workflows/ci.yml@main'
+        self.jobs = [dict(self.jobs[0], name='Validate coordination')]
+        self.checks = [dict(self.checks[0], name='Validate coordination')]
+        self.pr['base']['ref'] = 'main'
+        graph = {'repository': {'ref': {'name': 'main', 'target': {'oid': self.commit},
+                 'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False,
+                 'requireLastPushApproval': False, 'bypassPullRequestAllowances': {'totalCount': 0}}}}}
+        with patch.object(auth, 'graphql', return_value=graph):
+            self.authorize()
+            # A successful build, another workflow's check, an old run, or the
+            # wrong app must not substitute for this exact push job.
+            self.jobs[0]['name'] = 'Build (ubuntu-latest)'
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.jobs[0]['name'] = 'Validate coordination'
+            self.checks[0]['id'] += 1
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.checks[0]['id'] -= 1
+            self.run['path'] = '.github/workflows/other.yml@main'
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.run['path'] = '.github/workflows/ci.yml@main'
+            self.runs.append(dict(self.run, id=99, created_at='2026-11-05T00:00:00Z', conclusion='failure'))
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.runs.pop()
+            checks['checks'][0]['app_id'] = 123
+            with self.assertRaises(Invalid):
+                self.authorize()
+
+    def test_game_branch_cannot_use_coordination_check_in_place_of_builds(self):
+        self.protection['required_status_checks'] = {'strict': True, 'contexts': ['Validate coordination'],
+            'checks': [{'context': 'Validate coordination', 'app_id': auth.ACTIONS_APP}]}
+        with self.assertRaises(Invalid):
+            self.authorize()
+        with self.assertRaises(Invalid):
+            auth.role_checks('candidate/unapproved')
 
     def test_ci_run_path_accepts_only_expected_workflow_and_ref(self):
         path = '.github/workflows/ci.yml'

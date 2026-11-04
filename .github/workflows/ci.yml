@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [main, 'mc/**', 'candidate/**']
+    branches: [main]
   push:
-    branches: [main, 'mc/**', 'candidate/**']
+    branches: [main, 'coordination/**']
   workflow_dispatch:
 
 permissions:
@@ -15,61 +15,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build (${{ matrix.os }})
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
-        with:
-          distribution: temurin
-          java-version: '25.0.5+8'
-      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
-        with:
-          cache-provider: basic
-          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-      - name: Clean build and verify mod (Linux)
-        if: runner.os == 'Linux'
-        run: ./gradlew --no-daemon --console=plain --stacktrace --warning-mode=all clean build
-      - name: Clean build through Windows entry point
-        if: runner.os == 'Windows'
-        working-directory: ${{ runner.temp }}
-        shell: pwsh
-        run: '& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all'
-      - name: Upload distributable mod
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: third-person-readable-maps-${{ runner.os }}
-          path: |
-            build/libs/*.jar
-            !build/libs/*-dev.jar
-            !build/libs/*-sources.jar
-            !build/libs/*-javadoc.jar
-          if-no-files-found: error
-          retention-days: 14
-      - name: Upload verification reports and failure diagnostics
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: diagnostics-${{ runner.os }}
-          path: |
-            build/reports/
-            build/test-results/
-            hs_err_pid*.log
-          if-no-files-found: ignore
-          retention-days: 7
-
-  release-checks:
-    name: Validate release tools
+  coordination:
+    name: Validate coordination
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -77,27 +26,7 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.15.2'
-      - run: python3 -m unittest discover -s tests -v
-
-  dependency-graph:
-    name: Resolve and inspect dependency graph
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
-        with:
-          distribution: temurin
-          java-version: '25.0.5+8'
-      # Keep GitHub's existing automatic submission as the single submission source.
-      # Generate an inspectable snapshot here without repository write permissions.
-      - uses: gradle/actions/dependency-submission@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
-        with:
-          cache-provider: basic
-          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
-          validate-wrappers: true
-          dependency-graph: generate-and-upload
-          additional-arguments: --no-daemon --console=plain --stacktrace
-          artifact-retention-days: 14
+      - name: Test release and coordination controls
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate workflow syntax and expressions
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -color

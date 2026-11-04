@@ -2,46 +2,61 @@
 
 ## Branches and review
 
-`main` owns the release plan and workflows and continues to build its current
-game implementation. The intended maintained branches are `mc/1.21.11`,
-`mc/26.1-26.2` and `mc/26.3`, each with its own game targets, source, dependencies and Linux /
-Windows CI. The existing `mc/1.21.11` starts at approved main commit `4810b1b`;
-its proposed build changes are in PR #4. Protect and review the branches before
-treating their new history as approved. PR #3 is unmerged: the 26.3 candidate in PR #5 is stacked on its
-head, not silently incorporated into approved history. Review and integrate the
-central changes first, preserve the approved 1.21.11 line in its maintenance
-branch, then resolve any changes shared with PR #3 and review that port and its
-stacked candidate. The 26.1–26.2 port in PR #7 is reviewed against a separate candidate
-base at PR #3’s head; do not merge it into the 26.3 modernization branch.
-Create both 26.x maintenance branches only from approved history.
-Never merge automatically.
+`main` owns coordination and release governance, not a Minecraft build.
+`mc/1.21.11`, `mc/26.1-26.2` and `mc/26.3` each own their implementation,
+Gradle and Fabric configuration, verification, distributable JAR and Linux /
+Windows CI. PRs #3–#7 are merged. The maintenance heads and `main` still need
+branch protections and independent reviews configured before publication. The
+current maintenance HEAD merge PRs #4, #7 and #5 have no submitted reviews; the
+release verifier requires approval before merge, so each branch needs a new,
+independently reviewed merge commit after protection is configured. See the
+[architecture decision](coordination-architecture.md) for the evidence.
 
-For a change, identify all groups, make a reviewable PR to each applicable
-branch, adapt game-specific rendering where needed, and record whether each
-change was applied, modified or deferred. Reviewers verify feature equivalence;
-matching version strings or patch hashes alone are insufficient. Update the
-shared `changes` list and each group's `verified_changes` in the release plan.
-A coordinated release blocks on version drift or a missing group. A shared
-module was considered, but the two Loom modes, namespaces and rendering APIs
-already differ; independent small branches plus reviewed cherry-picks are less
-complex here.
+Submit each game-specific change to its maintenance branch. For a shared change,
+identify all affected groups, open a reviewable PR for each applicable branch,
+adapt game-specific rendering when necessary, and record whether it was applied,
+modified or deferred. Reviewers verify feature equivalence; matching version
+strings or patch hashes alone are insufficient. Update the shared `changes` list
+and each group's `verified_changes` in the release plan. Keep the same mod
+version in every branch; a coordinated release blocks on version drift or a
+missing group. Independent small branches retain the established Loom,
+namespace and rendering API boundaries.
 
-The proposed default-branch `.github/dependabot.yml` includes scheduled Gradle
-and Actions version updates for `mc/1.21.11`. After the 26.x branches exist, add
-equivalent entries for each branch, e.g.:
+## Dependency maintenance
 
-```yaml
-- package-ecosystem: gradle
-  directory: /
-  target-branch: mc/26.1-26.2
-  schedule:
-    interval: weekly
-```
+The default-branch Dependabot configuration schedules weekly Gradle and GitHub
+Actions version updates for each `mc/*` branch, plus Actions updates for `main`.
+GitHub's dependency graph, Dependabot alerts and security updates should remain
+enabled. GitHub generates alerts and security-update PRs for the default branch;
+a non-default snapshot or version-update PR does not establish equivalent
+vulnerability monitoring there. Alert details were inaccessible to the token
+used for this refactor; maintainers must review existing alerts, including the
+previously investigated `dependency_not_found` failures.
 
-Add `github-actions` coverage for that branch and both ecosystems for `mc/26.3`.
-Keep the default-branch entries and security
-updates enabled. Version updates targeting non-default branches do not change the
-separate default-branch behavior of Dependabot security updates.
+After this change reaches `main`, a repository administrator must open **Settings
+→ Security and quality → Advanced Security → Dependency graph → Automatic
+dependency submission** and select **Disabled**. This disables the GitHub-managed
+Gradle submission workflow, which otherwise attempts to resolve a project from
+the coordination-only default branch. Do not disable the dependency graph,
+Dependabot alerts or security updates. This repository does not submit a second
+snapshot: non-default submissions alone do not provide equivalent alerts.
+
+The weekly **Maintenance dependency audit** workflow checks out each current
+maintenance head, generates an inspectable Gradle dependency snapshot without
+submitting it, and queries OSV for versioned Maven package URLs. It uploads a
+report with the source SHA, scanned packages, unscanned entries and advisory IDs;
+a finding, unscanned snapshot entry or scan failure makes the relevant job fail.
+Review the workflow results and failures each week. This complements, rather than replaces, native
+alerts. It only covers resolved packages present in the snapshot and advisories
+known to OSV; unresolved configurations, build plugins, non-Maven entries, native
+libraries and Minecraft/Fabric-supplied dependencies may be missing. Inspect
+unscanned entries, Minecraft's version manifests and upstream advisories
+separately. The 26.1–26.2 snapshot resolves the 26.1 build target; it does not
+independently enumerate libraries supplied by 26.1.1, 26.1.2 or 26.2. The
+[initial audit](dependency-audit-2026-11-04.md) records advisory matches that
+still require triage. Do not force arbitrary upgrades of Minecraft-managed libraries to
+silence a finding; assess exposure and upstream fixes. A successful scan is not
+proof of complete coverage.
 
 ## The release commit and global tag
 
@@ -89,7 +104,7 @@ unverified.
 no runtime evidence. Create `release/plan.json` in a reviewed PR, using exact
 approved branch heads and a synchronized version and change list. Commit it to
 `main` through review. `0.0.2` is the first candidate because there are no
-existing tags or releases and PR #3 already uses it; if a published identity
+existing tags or releases and all three branches use it; if a published identity
 appears before release, use a new version. Never move, overwrite or delete a
 published tag to repair a release; issue a new version instead.
 
@@ -99,15 +114,16 @@ published tag to repair a release; issue a new version instead.
    require a PR with at least one approval, stale-review dismissal, strict checks,
    administrator enforcement, no PR-review bypass actors (verified through REST or the applicable
    GraphQL branch-protection rule), no force pushes and
-   no deletions. Require exactly named `Build (ubuntu-latest)` and
-   `Build (windows-latest)` checks from the GitHub Actions app (ID 15368); pin
+   no deletions. On `main`, require `Validate coordination` from the GitHub
+   Actions app (ID 15368). On each `mc/*` branch, require both
+   `Build (ubuntu-latest)` and `Build (windows-latest)` from that app. Pin
    every additional required check to its app as well. The head must be the
    merge commit of a PR into that branch with the required number of independent,
    non-dismissed approvals from currently write-authorized reviewers on the final
-   PR head and the latest push CI run and
-   its current attempt successful on both operating systems. The current
-   required checks must also succeed. Rerun all jobs if a partial retry does not
-   provide both jobs in the latest attempt. Workflow-run paths may be bare or
+   PR head. The latest push run of the exact `ci.yml` on each pinned HEAD must
+   succeed, with the role-specific jobs present and successful in its current
+   attempt. The current required checks must also succeed. Rerun all jobs if a
+   partial retry omits a required job. Workflow-run paths may be bare or
    include the exact triggering branch as `@<branch>` or `@refs/heads/<branch>`;
    the repository-qualified form must name this repository. Workflow ID, event,
    branch and pinned SHA are also checked independently. Unknown fields, other
@@ -123,8 +139,8 @@ published tag to repair a release; issue a new version instead.
    The write job also checks the run's actual independent environment approval.
    Because the approval API does not identify workflow attempts, release writes
    require attempt 1: dispatch a fresh workflow instead of re-running a failed
-   job. The read-only `RELEASE_AUDITOR_TOKEN` to read branch protection, rulesets,
-   environments, PR reviews, checks and Actions. Configure separately protected
+   job. Configure a read-only `RELEASE_AUDITOR_TOKEN` able to read branch protection,
+   rulesets, environments, PR reviews, checks and Actions. Configure separately protected
    release tags and restrict credentials capable of modifying tags, releases,
    branch protections and environments. The authorization APIs fail closed if
    unavailable; the current repository setup is not assumed to provide them.
@@ -150,9 +166,11 @@ published tag to repair a release; issue a new version instead.
 
 Tag and release automation has not been exercised against the default branch or
 GitHub-protected environments before review and integration. Repository rules,
-secrets, environment approvals, hosted Windows and manual graphical tests must
-be verified by maintainers after integration. GitHub does not provide a transaction spanning protection checks, tag creation,
-asset uploads and release publication. A privileged actor can still change
+secrets, environment approvals, manual graphical tests and the new coordination CI must
+be verified by maintainers after integration. All three current maintenance heads
+have successful hosted Linux and Windows CI; this does not supply runtime
+attestations. GitHub does not provide a transaction spanning protection checks,
+tag creation, asset uploads and release publication. A privileged actor can still change
 state between the final API check and a write, or modify a draft after it was
 inspected. The workflow rechecks before each write and checks draft metadata,
 assets and tag immediately before publication, but cannot eliminate this race.

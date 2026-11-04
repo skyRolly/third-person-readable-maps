@@ -11,6 +11,14 @@ from release import Invalid, load_plan, require
 
 ACTIONS_APP = 15368
 BUILD_CHECKS = {'Build (ubuntu-latest)', 'Build (windows-latest)'}
+COORDINATION_CHECKS = {'Validate coordination'}
+
+
+def role_checks(branch):
+    if branch == 'main':
+        return COORDINATION_CHECKS
+    require(branch.startswith('mc/'), f'{branch}: unsupported branch role')
+    return BUILD_CHECKS
 
 
 def api(path, *, allow_missing=False):
@@ -105,7 +113,7 @@ def workflow_run_path_matches(path, repo, workflow_path, branch):
                     for suffix in ('', '@' + branch, '@refs/heads/' + branch)}
 
 
-def check_ci(repo, branch, commit, required):
+def check_ci(repo, branch, commit, required, role_required):
     base = f'repos/{repo}'
     workflow = api(f'{base}/actions/workflows/ci.yml')
     require(workflow.get('id') and workflow.get('path') == '.github/workflows/ci.yml' and
@@ -123,7 +131,7 @@ def check_ci(repo, branch, commit, required):
     require(isinstance(attempt, int) and attempt > 0 and run.get('status') == 'completed' and
             run.get('conclusion') == 'success', f'{branch}: latest push CI run is not successful')
     jobs = page_list(f"{base}/actions/runs/{run['id']}/attempts/{attempt}/jobs", 'jobs')
-    for name in BUILD_CHECKS:
+    for name in role_required:
         matching = [j for j in jobs if j.get('name') == name]
         require(len(matching) == 1, f'{branch}: missing or ambiguous {name} job')
         job = matching[0]
@@ -138,7 +146,7 @@ def check_ci(repo, branch, commit, required):
         matching = [c for c in checks if c.get('name') == name and (c.get('app') or {}).get('id') == app_id]
         require(matching and all(c.get('head_sha') == commit and c.get('started_at') for c in matching),
                 f'{branch}: required check {name} is missing or has an unavailable start time')
-        if name in BUILD_CHECKS:
+        if name in role_required:
             job_id = next(j['id'] for j in jobs if j.get('name') == name)
             own = [c for c in matching if c.get('id') == job_id]
             require(len(own) == 1, f'{branch}: {name} does not match push CI job')
@@ -183,8 +191,9 @@ def protected_branch(repo, branch, commit):
         require(isinstance(name, str) and name and isinstance(app, int) and app > 0 and name not in required,
                 f'{branch}: required checks must have unique names and pinned apps')
         required[name] = app
-    require(all(required.get(name) == ACTIONS_APP for name in BUILD_CHECKS),
-            f'{branch}: both Linux and Windows checks must be required from GitHub Actions')
+    role_required = role_checks(branch)
+    require(all(required.get(name) == ACTIONS_APP for name in role_required),
+            f'{branch}: branch-role checks must be required from GitHub Actions: {sorted(role_required)}')
     require(set(checks.get('contexts', [])) == set(required), f'{branch}: ambiguous required check configuration')
     check_rulesets(repo, branch)
     pulls = page_list(f'{base}/commits/{commit}/pulls')
@@ -213,7 +222,7 @@ def protected_branch(repo, branch, commit):
     require(len(eligible) >= reviews['required_approving_review_count'] and
             not any(r.get('state') == 'CHANGES_REQUESTED' for r in latest.values()),
             f'{branch}: merged PR lacks current, non-stale approvals')
-    check_ci(repo, branch, commit, required)
+    check_ci(repo, branch, commit, required, role_required)
 
 
 def check_environment(repo, environment):
@@ -280,7 +289,7 @@ def main():
         repo = os.environ.get('GITHUB_REPOSITORY', '')
         require(repo and repo.count('/') == 1, 'GITHUB_REPOSITORY is missing')
         authorize(repo, cfg, plan, args.coordinator_sha, args.environment)
-        print('Release environment, reviewed branch heads and current Linux/Windows CI are authorized.')
+        print('Release environment, reviewed branch heads and current branch-role CI are authorized.')
     except (Invalid, OSError, ValueError, TypeError, KeyError) as exc:
         print(f'release authorization failed: {exc}', file=sys.stderr)
         return 1
