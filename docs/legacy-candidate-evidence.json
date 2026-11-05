@@ -94,7 +94,7 @@
     },
     "1.21-1.21.1": {
       "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
-      "candidate_head": "e0c95868280601981ecc577e61ba74c99d58e0cd",
+      "candidate_head": "bd9c180d8d241f6317d7499ddbf104bd7e48e992",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
       "versions": [
@@ -103,7 +103,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21-1.21.1.jar",
       "limitations": [
@@ -113,6 +113,9 @@
       ],
       "per_version": {
         "1.21": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.21.1": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
