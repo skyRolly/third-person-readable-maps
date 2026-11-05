@@ -66,7 +66,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.9\u20131.21.10 (candidate)",
+      "candidate_group": "1.21.9–1.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -128,7 +128,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.9\u20131.21.10 (candidate)",
+      "candidate_group": "1.21.9–1.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -187,7 +187,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
+      "candidate_group": "1.21.4–1.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -246,7 +246,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
+      "candidate_group": "1.21.4–1.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -305,7 +305,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
+      "candidate_group": "1.21.4–1.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -364,7 +364,7 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
+      "candidate_group": "1.21.4–1.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -424,7 +424,7 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
+      "candidate_group": "1.21.4–1.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -478,7 +478,7 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.2\u20131.21.3 (candidate)",
+      "candidate_group": "1.21.2–1.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 27 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -532,7 +532,7 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.2\u20131.21.3 (candidate)",
+      "candidate_group": "1.21.2–1.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 27 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -589,7 +589,7 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21\u20131.21.1 (candidate)",
+      "candidate_group": "1.21–1.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -646,11 +646,11 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21\u20131.21.1 (candidate)",
+      "candidate_group": "1.21–1.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -703,7 +703,7 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.20.5\u20131.20.6 (candidate)",
+      "candidate_group": "1.20.5–1.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -760,7 +760,7 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.20.5\u20131.20.6 (candidate)",
+      "candidate_group": "1.20.5–1.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
@@ -819,7 +819,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -878,7 +878,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -937,7 +937,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -996,7 +996,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1055,7 +1055,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1114,7 +1114,7 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
+      "candidate_group": "1.19.4–1.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1232,7 +1232,7 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1291,7 +1291,7 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1350,7 +1350,7 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1408,7 +1408,7 @@
           "250:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1466,7 +1466,7 @@
           "250:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1524,7 +1524,7 @@
           "250:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
@@ -1582,7 +1582,7 @@
           "250:337:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
@@ -1640,7 +1640,7 @@
           "250:337:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17\u20131.19.2 (candidate)",
+      "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
@@ -1700,7 +1700,7 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -1760,7 +1760,7 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -1820,7 +1820,7 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -1880,7 +1880,7 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -1940,7 +1940,7 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2000,7 +2000,7 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2060,7 +2060,7 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2120,7 +2120,7 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2180,7 +2180,7 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15\u20131.16.5 (candidate)",
+      "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2239,7 +2239,7 @@
           "256:338:void renderBiomePreviewMap(net.minecraft.world.level.Level,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.14\u20131.14.4 (candidate)",
+      "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2304,7 +2304,7 @@
           "m\t(Lnet/minecraft/class_1306;)V\tmethod_4193\tmethod_4193"
         ]
       },
-      "candidate_group": "1.14\u20131.14.4 (candidate)",
+      "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2369,7 +2369,7 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14\u20131.14.4 (candidate)",
+      "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2434,7 +2434,7 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14\u20131.14.4 (candidate)",
+      "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
@@ -2499,7 +2499,7 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14\u20131.14.4 (candidate)",
+      "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
