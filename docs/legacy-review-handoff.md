@@ -13,7 +13,7 @@ All entries below are **draft candidates**, not integrated support or release ac
 | [1.21-1.21.1](https://github.com/skyRolly/third-person-readable-maps/pull/17) (#17) | 1.21, 1.21.1 | 21 | `253e4600e94a5c05da81cb5d4bf700d5b7a7117d` | all |
 | [1.21.2-1.21.3](https://github.com/skyRolly/third-person-readable-maps/pull/16) (#16) | 1.21.2, 1.21.3 | 21 | `63338bbd9c3634e27a9a42e3025a8a3279301bbe` | all |
 | [1.21.4-1.21.8](https://github.com/skyRolly/third-person-readable-maps/pull/14) (#14) | 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8 | 21 | `e15fd43aba735760d37f61427a52e0a6305d1022` | all |
-| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `1485681eb0e2e8aeca9a589a3d5e8df4e40b2745` | all |
+| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `aa319a0ea75dd62eb23aa2d44dda3b827de973b5` | all |
 
 | Group | Candidate JAR | SHA-256 |
 |---|---|---|
