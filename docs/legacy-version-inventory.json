@@ -2066,7 +2066,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2207,7 +2207,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: ordinary installed-client verification for the revised lighting-state JAR",
       "yarn_latest_build_listed": "1.14.4+build.18",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2243,9 +2243,9 @@
       },
       "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
+      "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
+      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2266,7 +2266,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: ordinary installed-client verification for the revised lighting-state JAR",
       "yarn_latest_build_listed": "1.14.3+build.13",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2308,9 +2308,9 @@
       },
       "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
+      "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
+      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2331,7 +2331,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: ordinary installed-client verification for the revised lighting-state JAR",
       "yarn_latest_build_listed": "1.14.2+build.7",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2373,9 +2373,9 @@
       },
       "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
+      "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
+      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2396,7 +2396,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: ordinary installed-client verification for the revised lighting-state JAR",
       "yarn_latest_build_listed": "1.14.1+build.10",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2438,9 +2438,9 @@
       },
       "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
+      "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
+      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2461,7 +2461,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: ordinary installed-client verification for the revised lighting-state JAR",
       "yarn_latest_build_listed": "1.14+build.21",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2503,9 +2503,9 @@
       },
       "candidate_group": "1.14–1.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
+      "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
+      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
       "fabric_global_latest_stable_loader": "0.20.1"
     }
   ]

@@ -15,7 +15,7 @@
     {
       "id": "1.14-1.14.4",
       "branch": "candidate/mc-1.14-1.14.4",
-      "source_commit": "2dc87abb3e1023e81784ff82795e6937255af1c5",
+      "source_commit": "7ae80a9bd86b8fba08fba8a169fce0e547487972",
       "minecraft": [
         "1.14",
         "1.14.1",
@@ -28,13 +28,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
-      "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
+      "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
       "runtime_evidence": {}
     },
     {
       "id": "1.15-1.16.5",
       "branch": "candidate/mc-1.15-1.16.5",
-      "source_commit": "e71c8e35ea4a8e258503cea30712388d0d35bc06",
+      "source_commit": "4d25efbfc17ff8f3122c46cac3dd505f427e9707",
       "minecraft": [
         "1.15",
         "1.15.1",

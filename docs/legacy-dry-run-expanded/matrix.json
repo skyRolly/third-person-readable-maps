@@ -1,14 +1,14 @@
 [
   {
     "group": "1.14-1.14.4",
-    "commit": "2dc87abb3e1023e81784ff82795e6937255af1c5",
+    "commit": "7ae80a9bd86b8fba08fba8a169fce0e547487972",
     "branch": "candidate/mc-1.14-1.14.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.15-1.16.5",
-    "commit": "e71c8e35ea4a8e258503cea30712388d0d35bc06",
+    "commit": "4d25efbfc17ff8f3122c46cac3dd505f427e9707",
     "branch": "candidate/mc-1.15-1.16.5",
     "build_jdk": "25.0.5+8",
     "multi_version": true
