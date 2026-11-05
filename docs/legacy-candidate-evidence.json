@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "e8a8f5dbc6d2b4f856d22e2ddfaecde71cf068dd",
+      "candidate_head": "5c0678a8ad2dfb31e528224e9a28f7b0114f4356",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -14,7 +14,7 @@
       ],
       "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both terrain and left-handed/missing-data smoke observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
       "negative": "Fabric Loader rejected 1.21.8; static descriptor checks reject 1.21.8 and 1.21.11",
       "limitations": [
         "Independent human visual acceptance outstanding",
@@ -24,6 +24,9 @@
       ],
       "per_version": {
         "1.21.10": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.21.9": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
