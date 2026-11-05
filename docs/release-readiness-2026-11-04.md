@@ -75,8 +75,8 @@ publication test validates a control in code; it supplies no live approval.
 
 | Gate | Current evidence | Remaining |
 | --- | --- | --- |
-| Historical inventory | 42 stable 1.14–1.21.10 releases inventoried with Mojang metadata and mapping excerpts | Artifact linkage and runtime evidence for 1.14–1.21.3 remain NOT RUN |
-| Candidate implementation | Draft PRs #13 and #14; one JAR per candidate group | Independent review and integration; branches currently point at the 1.21.11 baseline |
-| Legacy runtime | PR #13 has partial installed-client and visual smoke tests on both versions; PR #14 has a local world and main-hand terrain smoke test on all five versions | Full per-version hand/movement tests, human review, remote players and independent installed-client acceptance |
+| Historical inventory | 42 stable 1.14–1.21.10 releases inventoried with Mojang metadata and mapping excerpts | All 42 candidate versions pass static linkage; full runtime acceptance remains outstanding for every candidate |
+| Candidate implementation | Draft PRs #13, #14, and #16–#23; one JAR per candidate group | Independent review and integration; branches currently point at the 1.21.11 baseline |
+| Legacy runtime | PRs #13, #14, and #16–#18 have partial installed-client visual smoke tests; #19 has Java 17 smoke tests on all six versions; #23 has a 1.14.4 Java 8 smoke test; #20–#22 have no completed installed-world tests yet | Full per-version hand/movement tests, human review, remote players and independent installed-client acceptance |
 | Dependency monitoring | Existing three groups remain covered; unresolved findings remain visible | Add newly reviewed groups to Dependabot and the authoritative OSV ledger only after auditing their actual merged heads; candidate branches still contain the baseline |
 | Release configuration | Existing three integrated groups unchanged; tool validates reviewed historical Java requirements and configurable build JDKs/Mixins | Register accepted groups and per-version evidence in a later reviewed change; complete administrative and security gates |

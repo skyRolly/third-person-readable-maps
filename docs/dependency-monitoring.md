@@ -178,3 +178,26 @@ reviewed ledger, establish exploitability, audit native binary internals, or
 prove a successful scheduled audit. Triage every finding and regenerate the
 snapshots and ledger for the actual reviewed maintenance heads before adding
 those groups to the authoritative audit matrix or release configuration.
+
+The proposed Dependabot configuration also lists Gradle and Actions updates for
+the ten candidate `mc/*` branches. Those branch heads currently contain the
+1.21.11 source baseline, so their Dependabot entries should be activated only
+after the corresponding reviewed ports are integrated. This is version-update
+configuration, not a completed OSV audit or a security-risk disposition.
+
+Additional candidate PR-merge-ref scans are retained in
+[1.21.2–1.21.3 evidence](dependency-evidence/legacy-candidate-1212-osv-2026-11-05.json)
+and [1.19.4–1.21.1 evidence](dependency-evidence/legacy-candidate-more-osv-2026-11-05.json).
+They recorded 45, 28, 28 and 42 unreviewed group-scoped matches respectively
+for 1.21.2–1.21.3, 1.21–1.21.1, 1.20.5–1.20.6 and 1.19.4–1.20.4. All are
+failing pending individual review; overlapping package/advisory identities
+can occur across groups. Re-scan the eventual reviewed maintenance heads.
+
+The [older candidate scan](dependency-evidence/legacy-candidate-older-osv-2026-11-05.json)
+uses retained PR merge-ref Gradle snapshots and hash-verified runtime inventories
+for all members of PRs #20–#22. It records 53 matches for 1.17–1.19.2,
+27 for 1.15–1.16.5 and 24 for 1.19.3. Every group-scoped match is unreviewed
+and failing; none is accepted. The same advisory may occur in multiple groups.
+
+The [1.14 candidate scan](dependency-evidence/legacy-candidate-114-osv-2026-11-05.json)
+contains 27 unreviewed, failing group-scoped matches; none is accepted.

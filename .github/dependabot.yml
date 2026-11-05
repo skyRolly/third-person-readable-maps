@@ -41,3 +41,123 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.19.4-1.20.4
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.19.4-1.20.4
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.20.5-1.20.6
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.20.5-1.20.6
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.21-1.21.1
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.21-1.21.1
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.21.2-1.21.3
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.21.2-1.21.3
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.21.4-1.21.8
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.21.4-1.21.8
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.21.9-1.21.10
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.21.9-1.21.10
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.19.3
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.19.3
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.17-1.19.2
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.17-1.19.2
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.15-1.16.5
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.15-1.16.5
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.14-1.14.4
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.14-1.14.4
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5

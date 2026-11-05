@@ -46,6 +46,200 @@
         "Remote-player multiplayer NOT RUN",
         "Branch protection, OSV audit and central release registration outstanding"
       ]
+    },
+    "1.21.2-1.21.3": {
+      "source_commit": "84d8291e16fc14ffa3b0956404b64c9538251693",
+      "candidate_head": "6a394c031d10fed5e4221285b40ea81f895de98b",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
+      "sha256": "28a15aacf531dfdb3dd51ba63b7e9cf42000e0b981d863cdc0c27bebc89523e4",
+      "versions": [
+        "1.21.2",
+        "1.21.3"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 27 classes, 43 game and 2 JOML references per version",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.21.2-1.21.3.jar",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.21-1.21.1": {
+      "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
+      "candidate_head": "b7eb29d9ce23f3267db33bbcfe5e291be75ebbf2",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
+      "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
+      "versions": [
+        "1.21",
+        "1.21.1"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.21-1.21.1.jar",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.20.5-1.20.6": {
+      "source_commit": "32164d846089ce67d5c0a10ba351796207312b02",
+      "candidate_head": "41323ecaf699e86d08b3ed3fff579bf2651b4924",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
+      "sha256": "8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd",
+      "versions": [
+        "1.20.5",
+        "1.20.6"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.20.5-1.20.6.jar",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.19.4-1.20.4": {
+      "source_commit": "532cfb548bb29eb99fbcb57424592f07c8ca3606",
+      "candidate_head": "d0e743e8023af9cb865e8c5980e7749318cbb7a2",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
+      "sha256": "7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9",
+      "versions": [
+        "1.19.4",
+        "1.20",
+        "1.20.1",
+        "1.20.2",
+        "1.20.3",
+        "1.20.4"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.19.4-1.20.4.jar",
+      "limitations": [
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.17-1.19.2": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
+      "candidate_head": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
+      "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
+      "versions": [
+        "1.17",
+        "1.17.1",
+        "1.18",
+        "1.18.1",
+        "1.18.2",
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
+      "client_startup": "NOT RUN",
+      "graphical": "NOT RUN",
+      "negative": "1.19.3 lacks the old game quaternion and vector classes",
+      "limitations": [
+        "Installed-client and full graphical acceptance outstanding for every version",
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.15-1.16.5": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
+      "candidate_head": "84dde45175c0ca154b44a1acd4efe30d741d5077",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
+      "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
+      "versions": [
+        "1.15",
+        "1.15.1",
+        "1.15.2",
+        "1.16",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
+      "client_startup": "NOT RUN",
+      "graphical": "NOT RUN",
+      "negative": "1.14.4 lacks the Mixin descriptor; 1.17 lacks required game members",
+      "limitations": [
+        "Installed-client and full graphical acceptance outstanding for every version",
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.19.3": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "c9ca3b5f05768017a197116919f22e2a967a8d01",
+      "candidate_head": "c9ca3b5f05768017a197116919f22e2a967a8d01",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.19.3.jar",
+      "sha256": "f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b",
+      "versions": [
+        "1.19.3"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
+      "client_startup": "NOT RUN",
+      "graphical": "NOT RUN",
+      "negative": "1.19.2 lacks a required game class; 1.19.4 lacks the Mixin descriptor",
+      "limitations": [
+        "Installed-client and full graphical acceptance outstanding for every version",
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ]
+    },
+    "1.14-1.14.4": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
+      "candidate_head": "8493bd64a2478cf898bb70c7947e2b6111905cc0",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
+      "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
+      "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
+      "versions": [
+        "1.14",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4"
+      ],
+      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
+      "client_startup": "NOT RUN",
+      "graphical": "NOT RUN",
+      "negative": "1.15 lacks the older Mixin target descriptor",
+      "limitations": [
+        "Installed-client and full graphical acceptance outstanding for 1.14\u20131.14.3 and complete acceptance outstanding for 1.14.4",
+        "Immediate OpenGL path and lighting state require graphical review",
+        "Independent human visual acceptance outstanding",
+        "Remote-player multiplayer NOT RUN",
+        "Branch protection, reviewed OSV ledger and central release registration outstanding"
+      ],
+      "per_version": {
+        "1.14.4": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        }
+      }
     }
   }
 }

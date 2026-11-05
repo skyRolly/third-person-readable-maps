@@ -88,6 +88,10 @@ class CoordinationTests(unittest.TestCase):
             for ecosystem in ('gradle', 'github-actions'):
                 expected.add((ecosystem, spec['branch']))
             self.assertIn(spec['branch'], (ROOT / '.github/workflows/dependency-audit.yml').read_text())
+        candidates = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']
+        for name in candidates:
+            for ecosystem in ('gradle', 'github-actions'):
+                expected.add((ecosystem, 'mc/' + name))
         self.assertEqual(entries, expected)
         self.assertEqual(len(blocks), len(entries))
 
