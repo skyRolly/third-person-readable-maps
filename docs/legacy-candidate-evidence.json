@@ -304,7 +304,7 @@
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "c9ca3b5f05768017a197116919f22e2a967a8d01",
-      "candidate_head": "b2e242c66c572c16bc38a7ce3a4d2400b9cf9159",
+      "candidate_head": "6405f8bbcf481bed760d7de73ca01d0f3e86e55c",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.3.jar",
       "sha256": "f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b",
@@ -313,7 +313,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both maps, left-handed layout, opposite-hand stone, and missing-data smoke observed; full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN",
       "negative": "1.19.2 lacks a required game class; 1.19.4 lacks the Mixin descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding",
@@ -326,7 +326,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
-      "candidate_head": "224a6215a4e8c5eb526e7281ae1457d14ef477d7",
+      "candidate_head": "2dc87abb3e1023e81784ff82795e6937255af1c5",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
@@ -339,7 +339,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
       "negative": "1.15 lacks the older Mixin target descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding for all five versions",
@@ -357,6 +357,12 @@
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
         },
         "1.14.2": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+        },
+        "1.14.3": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+        },
+        "1.14.4": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
         }
       }
