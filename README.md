@@ -23,7 +23,7 @@ release gate. Install only the JAR matching your game version in the client
 instance's `mods` directory; map contents require the client to have received
 the map data. Fabric API is not required; the server does not need the mod.
 
-The [legacy inventory](docs/legacy-version-inventory.md) covers 1.14–1.21.10. Several [draft candidate ports](docs/legacy-group-decisions.md) are under review; they are not yet integrated support or release-ready artifacts.
+The [legacy inventory](docs/legacy-version-inventory.md) covers 1.14–1.21.10. Several [draft candidate ports](docs/legacy-group-decisions.md) are under review; they are not yet integrated support or release-ready artifacts. The [review handoff](docs/legacy-review-handoff.md) lists candidate heads, artifacts, evidence and remaining gates.
 
 ## Build or contribute
 
