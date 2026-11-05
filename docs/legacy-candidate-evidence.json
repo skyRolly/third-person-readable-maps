@@ -225,7 +225,7 @@
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "c9ca3b5f05768017a197116919f22e2a967a8d01",
-      "candidate_head": "3342b75f30fdb72bcfdb0207a9b7a0a7923e5748",
+      "candidate_head": "4c71487d64dc5092f694aaf48b1d65a1bfb03fbd",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.3.jar",
       "sha256": "f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b",
@@ -234,7 +234,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both maps, left-handed layout, opposite-hand stone, and missing-data smoke observed; full acceptance NOT RUN",
       "negative": "1.19.2 lacks a required game class; 1.19.4 lacks the Mixin descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding",

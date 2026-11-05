@@ -79,7 +79,7 @@
     {
       "id": "1.19.3",
       "branch": "candidate/mc-1.19.3",
-      "source_commit": "3342b75f30fdb72bcfdb0207a9b7a0a7923e5748",
+      "source_commit": "4c71487d64dc5092f694aaf48b1d65a1bfb03fbd",
       "minecraft": [
         "1.19.3"
       ],
