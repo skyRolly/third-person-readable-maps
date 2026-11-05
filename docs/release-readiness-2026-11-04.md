@@ -1,9 +1,12 @@
 # 0.0.2 release-readiness gates — 2026-11-04
 
-**Decision: ready for PR review; blocked from release.** All improvements are
-proposed in open PRs and are not integrated maintenance state. No merge,
-auto-merge, tag, Draft Release, or public Release was performed. The mod version
-and game compatibility matrix are unchanged.
+**Historical decision on 2026-11-04: ready for PR review; blocked from release.**
+The table and original integration sequence below describe that dated snapshot.
+PRs #9–#12 have since been merged; the verified current baseline and remaining
+legacy work are in the [review handoff](legacy-review-handoff.md) and the
+2026-11-05 addendum. No merge, auto-merge, tag, Draft Release, or public Release
+was performed by the legacy expansion. The mod version and authoritative game
+compatibility matrix remain unchanged.
 
 PASS means the named scope was verified. FAIL means an executed check/configuration
 fails the requirement. BLOCKED identifies an external prerequisite. NOT RUN means
@@ -43,7 +46,10 @@ integration, or production-release authorization.
 | 26. Actual Draft Release preparation | All source/plan/runtime/security/admin gates satisfied and independent draft deployment approval | BLOCKED | Preconditions unsatisfied; no draft created, mode not dispatched | Owner resolves blockers and separately authorizes preparation in a later task — owner/reviewer |
 | 27. Actual public publication | Verified approved draft, immutable sources/assets and separate publication approval | BLOCKED | No draft, release authorization, or publication approval | Complete earlier gates; separate later publication authorization — owner/reviewer |
 
-## Integration and activation order
+## Historical integration and activation order
+
+This was the proposed order at the 2026-11-04 snapshot. PRs #9–#12 are now
+merged; consult the review handoff for the new candidate branches.
 
 1. Owner confirms an eligible independent source reviewer and their availability;
    ZDN-1942 already has Write but independence and owner authorization still need
@@ -78,5 +84,5 @@ publication test validates a control in code; it supplies no live approval.
 | Historical inventory | 42 stable 1.14–1.21.10 releases inventoried with Mojang metadata and mapping excerpts | All 42 candidate versions pass static linkage; full runtime acceptance remains outstanding for every candidate |
 | Candidate implementation | Draft PRs #13, #14, and #16–#23; one JAR per candidate group | Independent review and integration; branches currently point at the 1.21.11 baseline |
 | Legacy runtime | PRs #13, #14, and #16–#18 have partial installed-client visual smoke tests; #19 has Java 17 smoke tests on all six versions; #23 has Java 8 smoke tests on all five 1.14 versions, and #21 has Java 8 smoke tests on all nine 1.15–1.16.5 releases; #20 has 1.17 and 1.19.2 smoke tests; #22 has a 1.19.3 Java 17 smoke test | Full per-version hand/movement tests, human review, remote players and independent installed-client acceptance |
-| Dependency monitoring | Existing three groups remain covered; unresolved findings remain visible | Add newly reviewed groups to Dependabot and the authoritative OSV ledger only after auditing their actual merged heads; candidate branches still contain the baseline |
+| Dependency monitoring | Existing three groups remain covered; candidate scans and a separate proposed scheduled candidate workflow retain unresolved findings | Activate the planned Dependabot targets after integration; audit actual merged heads and review findings before updating the authoritative OSV ledger |
 | Release configuration | Existing three integrated groups unchanged; tool validates reviewed historical Java requirements and configurable build JDKs/Mixins | Register accepted groups and per-version evidence in a later reviewed change; complete administrative and security gates |
