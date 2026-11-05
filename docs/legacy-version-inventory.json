@@ -70,7 +70,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both terrain and left-handed/missing-data smoke observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -132,7 +132,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both terrain and left-handed/missing-data smoke observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {

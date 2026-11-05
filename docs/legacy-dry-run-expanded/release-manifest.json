@@ -196,7 +196,7 @@
     {
       "id": "1.21.9-1.21.10",
       "branch": "candidate/mc-1.21.9-1.21.10",
-      "source_commit": "9c96b661713ac83fa09c0b8fc26c1bf3a62f8053",
+      "source_commit": "51c28ccf5ead5a9fbcf4a6fefd654d5d283598ce",
       "minecraft": [
         "1.21.9",
         "1.21.10"
