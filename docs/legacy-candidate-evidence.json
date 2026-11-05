@@ -114,7 +114,7 @@
     },
     "1.20.5-1.20.6": {
       "source_commit": "32164d846089ce67d5c0a10ba351796207312b02",
-      "candidate_head": "8f50410b5ce79de1678e6398480feb1dcce1efca",
+      "candidate_head": "e655200fb67a5feb6853154f4c9f147dad4ffab0",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "sha256": "8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd",
       "versions": [
@@ -123,7 +123,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.20.5-1.20.6.jar",
       "limitations": [
@@ -133,6 +133,9 @@
       ],
       "per_version": {
         "1.20.5": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.20.6": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
@@ -179,7 +182,7 @@
         "1.19.2"
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16 for 1.17–1.17.1 or Java 17 for 1.18–1.19.2, Linux software-rendered local worlds",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16 for 1.17\u20131.17.1 or Java 17 for 1.18\u20131.19.2, Linux software-rendered local worlds",
       "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "negative": "1.19.3 lacks the old game quaternion and vector classes",
       "limitations": [
