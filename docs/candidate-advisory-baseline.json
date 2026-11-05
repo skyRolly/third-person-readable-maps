@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "captured_on": "2026-11-05",
+  "risk_acceptance": false,
+  "reports": [
+    {
+      "path": "docs/dependency-evidence/legacy-candidate-114-osv-2026-11-05.json",
+      "sha256": "213f4be2bc567495598ccd11011eaf92477a934dcb1900419a2393753b367732"
+    },
+    {
+      "path": "docs/dependency-evidence/legacy-candidate-1212-osv-2026-11-05.json",
+      "sha256": "06b6a25ebaed39fea134b6364a60f8fc5943d8b014f3ad4f5ddaad84e9d1c74a"
+    },
+    {
+      "path": "docs/dependency-evidence/legacy-candidate-more-osv-2026-11-05.json",
+      "sha256": "04d13dc2f09d8e7a8a5306f8363ada1c3147328ddce90257270a21bee29278d6"
+    },
+    {
+      "path": "docs/dependency-evidence/legacy-candidate-older-osv-2026-11-05.json",
+      "sha256": "1bc533ea0d1af39055fb854174371b0455a11ff477361a979211320cafd65c6b"
+    },
+    {
+      "path": "docs/dependency-evidence/legacy-candidate-osv-2026-11-05.json",
+      "sha256": "3a2c2c8bac734e28289d06470ca4d4846a0bdcd33b6f66024952f5fe150f3108"
+    }
+  ]
+}

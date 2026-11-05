@@ -211,14 +211,22 @@ Gradle snapshot, validates the snapshot's actual ref and SHA and the source's
 exact Fabric version list, and scans the hash-verified Mojang runtime inventory
 for **every** declared game version. Unknown snapshot entries, source drift,
 missing data, malformed advisories and network/API errors make the job
-incomplete. Every advisory match is unreviewed and failing; this workflow does
-not write the reviewed ledger, accept risk, submit a Dependency Graph snapshot,
-or authorize a release. Reports are retained for 30 days.
+incomplete. The [unreviewed baseline](candidate-advisory-baseline.json) pins the retained
+scan reports by SHA-256 and validates every group, source, runtime scope,
+package and advisory fingerprint. The audit detects new, changed and known
+matches, plus previously observed matches no longer returned by OSV. Every
+current match remains unreviewed and failing, and disappeared matches also
+fail until investigated. Missing inventory entries, modified reports and a
+baseline older than 90 days fail closed. This workflow does not write the
+reviewed ledger, accept risk, submit a Dependency Graph snapshot, or authorize
+a release. Reports are retained for 30 days.
 
 A local live execution used the [retained PR-merge-ref snapshot](dependency-evidence/candidate-audit-114-snapshot-2026-11-05.json)
 for candidate commit `4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8` and all five
 1.14 runtime manifests. The [full report](dependency-evidence/candidate-audit-114-live-2026-11-05.json)
 contains 27 unreviewed failing matches and the audit exited 1 as intended.
+A [subsequent baseline comparison](dependency-evidence/candidate-audit-114-baseline-live-2026-11-05.json)
+identified all 27 as known and still failing, with no disappeared matches.
 The snapshot ref is preserved as `refs/pull/23/merge`; it is not relabeled as a
 maintenance branch. The workflow is proposed on this PR: a hosted scheduled run
 has **not** occurred. It starts only after coordination changes are integrated

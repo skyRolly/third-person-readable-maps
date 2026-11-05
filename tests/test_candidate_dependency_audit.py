@@ -1,4 +1,5 @@
 import copy
+from datetime import date
 import io
 import json
 from contextlib import redirect_stderr, redirect_stdout
@@ -31,11 +32,13 @@ class CandidateAuditTests(unittest.TestCase):
         self.advisory = {'id': 'OSV-TEST-1', 'modified': '2026-11-05T00:00:00Z',
                          'details': 'test advisory', 'affected': [{'package': {'name': 'example'}}],
                          'database_specific': {'severity': 'HIGH'}}
+        self.baseline = {self.group: {'source_sha': 'b' * 40, 'records': {},
+                         'inventories': {**self.inventories, 'gradle': [self.purl]}}}
 
     def run_audit(self, snapshot=None, metadata=None, evidence=None, branch=None, sha=None, observed=None):
         return candidate.audit_candidate(snapshot or self.snapshot, metadata or self.metadata,
                 evidence or self.evidence, self.group, branch or self.branch,
-                sha or self.sha, observed or self.sha)
+                sha or self.sha, observed or self.sha, self.baseline)
 
     def test_matrix_covers_reviewed_source_pins_and_rejects_overlap(self):
         matrix = candidate.candidate_matrix(self.evidence)
@@ -60,6 +63,52 @@ class CandidateAuditTests(unittest.TestCase):
         self.assertEqual(match['review_status'], 'awaiting investigation')
         self.assertEqual(match['disposition'], 'Further investigation')
         self.assertTrue(match['failing'])
+
+    def test_baseline_detects_known_changed_and_disappeared_matches(self):
+        fingerprint = candidate.audit.advisory_fingerprint(self.advisory)
+        key = candidate.audit.identity(self.group, self.purl, 'OSV-TEST-1')
+        self.baseline[self.group]['records'][key] = {'fingerprint': fingerprint,
+                                                     'scopes': ['gradle', 'runtime/1.14', 'runtime/1.14.4']}
+        with patch.object(candidate.audit, 'runtime_inventories', return_value=(copy.deepcopy(self.inventories), self.manifests)), \
+             patch.object(candidate.scanner, 'query', return_value={self.purl: ['OSV-TEST-1']}), \
+             patch.object(candidate.audit, 'get_json', return_value=self.advisory):
+            report = self.run_audit()
+            self.assertEqual(report['matches'][0]['state'], 'known')
+            self.assertTrue(report['matches'][0]['failing'])
+            self.baseline[self.group]['records'][key]['fingerprint'] = 'f' * 64
+            self.assertEqual(self.run_audit()['matches'][0]['state'], 'changed')
+            self.baseline[self.group]['records'][key] = {'fingerprint': fingerprint, 'scopes': ['gradle']}
+            self.assertEqual(self.run_audit()['matches'][0]['state'], 'changed')
+        with patch.object(candidate.audit, 'runtime_inventories', return_value=(copy.deepcopy(self.inventories), self.manifests)), \
+             patch.object(candidate.scanner, 'query', return_value={}):
+            self.assertEqual(self.run_audit()['resolved_needing_review'], [key])
+
+    def test_candidate_baseline_is_complete_hash_pinned_and_unreviewed(self):
+        evidence = candidate.read_json(candidate.EVIDENCE)
+        manifest = candidate.read_json(candidate.BASELINE)
+        baseline = candidate.load_baseline(manifest, evidence, today=date(2026, 11, 5))
+        self.assertEqual(set(baseline), set(evidence['groups']))
+        self.assertEqual(sum(len(group['records']) for group in baseline.values()), 385)
+        self.assertTrue(all(record['failing'] and record['review_status'] == 'awaiting investigation'
+                            for group in baseline.values() for record in group['records'].values()))
+        broken = copy.deepcopy(manifest)
+        broken['reports'][0]['sha256'] = '0' * 64
+        with self.assertRaises(Invalid):
+            candidate.load_baseline(broken, evidence, today=date(2026, 11, 5))
+        with self.assertRaises(Invalid):
+            candidate.load_baseline(manifest, evidence, today=date(2027, 2, 4))
+        changed_source = copy.deepcopy(evidence)
+        changed_source['groups'][self.group]['candidate_head'] = 'd' * 40
+        changed_source['groups'][self.group]['source_commit'] = 'e' * 40
+        with self.assertRaises(Invalid):
+            candidate.load_baseline(manifest, changed_source, today=date(2026, 11, 5))
+
+    def test_missing_inventory_package_fails_before_osv(self):
+        self.baseline[self.group]['inventories']['gradle'].append('pkg:maven/old/missing@1')
+        with patch.object(candidate.audit, 'runtime_inventories', return_value=(copy.deepcopy(self.inventories), self.manifests)), \
+             patch.object(candidate.scanner, 'query') as query, self.assertRaises(Invalid):
+            self.run_audit()
+        query.assert_not_called()
 
     def test_wrong_ref_head_metadata_and_missing_package_fail_before_osv(self):
         bad_snap = copy.deepcopy(self.snapshot)
@@ -122,6 +171,7 @@ class CandidateAuditTests(unittest.TestCase):
                     '--output', str(output), '--evidence', str(evidence)]
             with patch.object(sys, 'argv', argv), \
                  patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate, 'load_baseline', return_value=self.baseline), \
                  patch.object(candidate.audit, 'runtime_inventories', side_effect=OSError('unavailable')), \
                  redirect_stderr(io.StringIO()):
                 self.assertEqual(candidate.main(), 2)
@@ -137,15 +187,24 @@ class CandidateAuditTests(unittest.TestCase):
             snapshot.write_text(json.dumps(self.snapshot))
             evidence.write_text(json.dumps(self.evidence))
             report = {'status': 'complete-unreviewed-candidate-scan', 'risk_acceptance': False,
-                      'matches': [{'failing': True}]}
+                      'matches': [{'failing': True}], 'resolved_needing_review': []}
             argv = ['audit_candidate_dependencies.py', 'audit', '--snapshot', str(snapshot), '--source', str(source),
                     '--group', self.group, '--branch', self.branch, '--source-sha', self.sha,
                     '--output', str(output), '--evidence', str(evidence)]
             with patch.object(sys, 'argv', argv), \
                  patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate, 'load_baseline', return_value=self.baseline), \
                  patch.object(candidate, 'audit_candidate', return_value=report), redirect_stdout(io.StringIO()):
                 self.assertEqual(candidate.main(), 1)
             self.assertTrue(json.loads(output.read_text())['matches'][0]['failing'])
+            report['matches'] = []
+            report['resolved_needing_review'] = ['unreviewed baseline identity']
+            with patch.object(sys, 'argv', argv), \
+                 patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate, 'load_baseline', return_value=self.baseline), \
+                 patch.object(candidate, 'audit_candidate', return_value=report), redirect_stdout(io.StringIO()):
+                self.assertEqual(candidate.main(), 1)
+            self.assertEqual(json.loads(output.read_text())['resolved_needing_review'], ['unreviewed baseline identity'])
 
     def test_retained_live_report_binds_source_and_fails_on_every_match(self):
         evidence = ROOT / 'docs/dependency-evidence'
@@ -166,6 +225,17 @@ class CandidateAuditTests(unittest.TestCase):
             self.assertEqual(match['review_status'], 'awaiting investigation')
             self.assertEqual(match['fingerprint'], candidate.audit.advisory_fingerprint(report['advisories'][match['advisory']]))
             self.assertEqual(match['scopes'], sorted(k for k, v in report['inventories'].items() if match['purl'] in v))
+
+    def test_live_baseline_comparison_keeps_known_findings_failing(self):
+        path = ROOT / 'docs/dependency-evidence/candidate-audit-114-baseline-live-2026-11-05.json'
+        report = json.loads(path.read_text())
+        self.assertEqual(report['snapshot_ref'], 'refs/pull/23/merge')
+        self.assertEqual(report['source_sha'], '4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8')
+        self.assertEqual(report['baseline_source_sha'], 'bfa85625b10a2709fc01af26eef9e80df791dcb9')
+        self.assertFalse(report['risk_acceptance'])
+        self.assertEqual(len(report['matches']), 27)
+        self.assertTrue(all(m['state'] == 'known' and m['failing'] for m in report['matches']))
+        self.assertEqual(report['resolved_needing_review'], [])
 
     def test_scheduled_workflow_uses_read_only_candidate_sources_and_fails_closed(self):
         text = (ROOT / '.github/workflows/candidate-dependency-audit.yml').read_text()
