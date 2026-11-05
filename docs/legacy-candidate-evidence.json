@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "ff6a08d9cd00ce3e8826f8b9dd91d4ecd637d09b",
+      "candidate_head": "61e174cdd84dd52e2bd1fd9909c3c7de8c4b46a2",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -30,12 +30,12 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       },
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.8 before Mixin initialization; wrong Java NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.8 and Java 17 on 1.21.9 before Mixin initialization"
     },
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "145bb381fe49eadf19a73f60e2a7d219fe7856b3",
+      "candidate_head": "e15fd43aba735760d37f61427a52e0a6305d1022",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -72,11 +72,11 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       },
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.9 before Mixin initialization; wrong Java NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.9 and Java 17 on 1.21.4 before Mixin initialization"
     },
     "1.21.2-1.21.3": {
       "source_commit": "84d8291e16fc14ffa3b0956404b64c9538251693",
-      "candidate_head": "efe48bebfe750c0270d5962c482ce9f99d1a6657",
+      "candidate_head": "63338bbd9c3634e27a9a42e3025a8a3279301bbe",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
       "sha256": "28a15aacf531dfdb3dd51ba63b7e9cf42000e0b981d863cdc0c27bebc89523e4",
       "versions": [
@@ -101,11 +101,11 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       },
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.2 with Java 17 before Mixin initialization; unsupported-neighbor launch NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.4 and Java 17 on 1.21.2 before Mixin initialization"
     },
     "1.21-1.21.1": {
       "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
-      "candidate_head": "846ff6f7954ae886ab1f51a2c45f1cc86bccc08d",
+      "candidate_head": "253e4600e94a5c05da81cb5d4bf700d5b7a7117d",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
       "versions": [
@@ -130,11 +130,11 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       },
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.2 before Mixin initialization; wrong Java NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.2 and Java 17 on 1.21 before Mixin initialization"
     },
     "1.20.5-1.20.6": {
       "source_commit": "32164d846089ce67d5c0a10ba351796207312b02",
-      "candidate_head": "6f517154802413efb18510c5f90e2081b628f388",
+      "candidate_head": "ec3f2a51d8afc7b0a1911cdc6cae88fe00e2b917",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "sha256": "8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd",
       "versions": [
@@ -159,11 +159,11 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       },
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.1 before Mixin initialization; wrong Java NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21 and 1.21.1 and Java 17 on 1.20.6 before Mixin initialization"
     },
     "1.19.4-1.20.4": {
       "source_commit": "532cfb548bb29eb99fbcb57424592f07c8ca3606",
-      "candidate_head": "ffff802538ae86e1bf58e4ce7f5c12eb3e31006e",
+      "candidate_head": "4df429e9a32da098b9bebd52f70989aa445245b0",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "sha256": "7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9",
       "versions": [
@@ -176,7 +176,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.4-1.20.4.jar",
       "limitations": [
@@ -184,7 +184,7 @@
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ],
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.3 before Mixin initialization; wrong Java NOT RUN",
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.19.3 and Java 16 on 1.19.4 before Mixin initialization",
       "per_version": {
         "1.19.4": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
@@ -193,6 +193,15 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         },
         "1.20.1": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.20.2": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.20.3": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.20.4": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
