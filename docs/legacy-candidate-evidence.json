@@ -232,7 +232,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
-      "candidate_head": "8493bd64a2478cf898bb70c7947e2b6111905cc0",
+      "candidate_head": "4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
@@ -244,22 +244,16 @@
         "1.14.4"
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "negative": "1.15 lacks the older Mixin target descriptor",
       "limitations": [
-        "Installed-client and full graphical acceptance outstanding for 1.14\u20131.14.3 and complete acceptance outstanding for 1.14.4",
+        "Full graphical acceptance remains outstanding for all five versions",
         "Immediate OpenGL path and lighting state require graphical review",
         "Independent human visual acceptance outstanding",
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
-      ],
-      "per_version": {
-        "1.14.4": {
-          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
-        }
-      }
+      ]
     }
   }
 }
