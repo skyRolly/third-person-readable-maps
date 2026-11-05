@@ -4,7 +4,7 @@ All entries below are **draft candidates**, not integrated support or release ac
 
 | Group and PR | Explicit versions | Runtime Java | Candidate head | Versions with installed-world map smoke |
 |---|---|---:|---|---|
-| [1.14-1.14.4](https://github.com/skyRolly/third-person-readable-maps/pull/23) (#23) | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | 8 | `dcc2fda3be3838f1c24b54199bbeeffee08234cb` | all |
+| [1.14-1.14.4](https://github.com/skyRolly/third-person-readable-maps/pull/23) (#23) | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | 8 | `06de1dedb3497473097c81ba81fc684ea09b7f93` | all |
 | [1.15-1.16.5](https://github.com/skyRolly/third-person-readable-maps/pull/21) (#21) | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | 8 | `e7d4a19c4f3ed7ebab18de18ff7085d18e3444a7` | all |
 | [1.17-1.19.2](https://github.com/skyRolly/third-person-readable-maps/pull/20) (#20) | 1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1, 1.19.2 | 16 (1.17–1.17.1); 17 (1.18+) | `89b7c1d537e40737ac49c3c318d647ee00fda557` | all |
 | [1.19.3](https://github.com/skyRolly/third-person-readable-maps/pull/22) (#22) | 1.19.3 | 17 | `b2e242c66c572c16bc38a7ce3a4d2400b9cf9159` | all |
@@ -13,7 +13,7 @@ All entries below are **draft candidates**, not integrated support or release ac
 | [1.21-1.21.1](https://github.com/skyRolly/third-person-readable-maps/pull/17) (#17) | 1.21, 1.21.1 | 21 | `253e4600e94a5c05da81cb5d4bf700d5b7a7117d` | all |
 | [1.21.2-1.21.3](https://github.com/skyRolly/third-person-readable-maps/pull/16) (#16) | 1.21.2, 1.21.3 | 21 | `63338bbd9c3634e27a9a42e3025a8a3279301bbe` | all |
 | [1.21.4-1.21.8](https://github.com/skyRolly/third-person-readable-maps/pull/14) (#14) | 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8 | 21 | `e15fd43aba735760d37f61427a52e0a6305d1022` | all |
-| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `61e174cdd84dd52e2bd1fd9909c3c7de8c4b46a2` | all |
+| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `1485681eb0e2e8aeca9a589a3d5e8df4e40b2745` | all |
 
 | Group | Candidate JAR | SHA-256 |
 |---|---|---|

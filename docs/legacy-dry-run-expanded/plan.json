@@ -35,7 +35,7 @@
     },
     "1.21.9-1.21.10": {
       "source_branch": "candidate/mc-1.21.9-1.21.10",
-      "commit": "61e174cdd84dd52e2bd1fd9909c3c7de8c4b46a2",
+      "commit": "1485681eb0e2e8aeca9a589a3d5e8df4e40b2745",
       "verified_changes": [
         "Preserve coordinated mod version 0.0.2 and the readable-map contract"
       ],
@@ -107,7 +107,7 @@
     },
     "1.14-1.14.4": {
       "source_branch": "candidate/mc-1.14-1.14.4",
-      "commit": "dcc2fda3be3838f1c24b54199bbeeffee08234cb",
+      "commit": "06de1dedb3497473097c81ba81fc684ea09b7f93",
       "verified_changes": [
         "Preserve coordinated mod version 0.0.2 and the readable-map contract"
       ],

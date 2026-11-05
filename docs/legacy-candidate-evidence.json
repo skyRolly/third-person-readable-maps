@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "61e174cdd84dd52e2bd1fd9909c3c7de8c4b46a2",
+      "candidate_head": "1485681eb0e2e8aeca9a589a3d5e8df4e40b2745",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -27,7 +27,8 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         },
         "1.21.9": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
+          "movement": "PARTIAL: local left-handed walking smoke captured over 10.2 blocks; full arm/lighting acceptance NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.8 and Java 17 on 1.21.9 before Mixin initialization"
@@ -324,7 +325,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
-      "candidate_head": "dcc2fda3be3838f1c24b54199bbeeffee08234cb",
+      "candidate_head": "06de1dedb3497473097c81ba81fc684ea09b7f93",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
@@ -346,7 +347,12 @@
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ],
-      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.15 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.15 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked",
+      "per_version": {
+        "1.14": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+        }
+      }
     }
   }
 }
