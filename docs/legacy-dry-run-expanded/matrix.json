@@ -1,7 +1,7 @@
 [
   {
     "group": "1.14-1.14.4",
-    "commit": "e5ccc19bfae90e75a65378e881f694b312f0a895",
+    "commit": "224a6215a4e8c5eb526e7281ae1457d14ef477d7",
     "branch": "candidate/mc-1.14-1.14.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
