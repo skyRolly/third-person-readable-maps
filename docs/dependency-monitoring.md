@@ -202,6 +202,8 @@ and failing; none is accepted. The same advisory may occur in multiple groups.
 The [1.14 candidate scan](dependency-evidence/legacy-candidate-114-osv-2026-11-05.json)
 contains 27 unreviewed, failing group-scoped matches; none is accepted.
 
+The [unreviewed review index](legacy-security-triage-2026-11-05.md) groups the retained matches by candidate, severity and inventory scope without changing their failing status.
+
 ## Proposed scheduled legacy-candidate audit
 
 The separate [candidate workflow](../.github/workflows/candidate-dependency-audit.yml)

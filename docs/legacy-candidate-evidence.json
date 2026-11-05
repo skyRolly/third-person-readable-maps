@@ -163,7 +163,7 @@
     },
     "1.19.4-1.20.4": {
       "source_commit": "532cfb548bb29eb99fbcb57424592f07c8ca3606",
-      "candidate_head": "3d7f62846ee737cf2c74e761bac5e8d9a235e3e6",
+      "candidate_head": "6f163151821e1de38eaf1378be4330e6fcbcb360",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "sha256": "7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9",
       "versions": [
@@ -187,6 +187,9 @@
       "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.3 before Mixin initialization; wrong Java NOT RUN",
       "per_version": {
         "1.19.4": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.20": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
