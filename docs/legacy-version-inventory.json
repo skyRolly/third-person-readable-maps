@@ -1176,8 +1176,8 @@
       "candidate_group": "1.19.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1235,8 +1235,8 @@
       "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1643,8 +1643,8 @@
       "candidate_group": "1.17–1.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1703,8 +1703,8 @@
       "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2183,8 +2183,8 @@
       "candidate_group": "1.15–1.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {

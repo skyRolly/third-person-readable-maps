@@ -7,9 +7,9 @@ All 13 actual JARs were inspected for filenames, metadata, namespace, bytecode, 
 | Group | Planned source head | Build source / provenance | JAR SHA-256 |
 |---|---|---|---|
 | 1.14-1.14.4 | `8493bd64a2478cf898bb70c7947e2b6111905cc0` | local clean build `bfa85625b10a2709fc01af26eef9e80df791dcb9`; pinned head adds evidence only | `909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec` |
-| 1.15-1.16.5 | `84dde45175c0ca154b44a1acd4efe30d741d5077` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077` | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
-| 1.17-1.19.2 | `a12c56cc742ec0b0c3ab26619bddf110482b95d6` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6` | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
-| 1.19.3 | `c9ca3b5f05768017a197116919f22e2a967a8d01` | local clean build `c9ca3b5f05768017a197116919f22e2a967a8d01` | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
+| 1.15-1.16.5 | `ea125a52773e114cd180e1ba1b10aeb425858659` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
+| 1.17-1.19.2 | `dc667d6af61135b5f1027026c901e0cd6e9809a3` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6`; pinned head adds evidence only | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
+| 1.19.3 | `3342b75f30fdb72bcfdb0207a9b7a0a7923e5748` | local clean build `c9ca3b5f05768017a197116919f22e2a967a8d01`; pinned head adds evidence only | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
 | 1.19.4-1.20.4 | `d0e743e8023af9cb865e8c5980e7749318cbb7a2` | local clean build `532cfb548bb29eb99fbcb57424592f07c8ca3606`; pinned head adds evidence only | `7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9` |
 | 1.20.5-1.20.6 | `41323ecaf699e86d08b3ed3fff579bf2651b4924` | local clean build `32164d846089ce67d5c0a10ba351796207312b02`; pinned head adds evidence only | `8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd` |
 | 1.21-1.21.1 | `b7eb29d9ce23f3267db33bbcfe5e291be75ebbf2` | local clean build `5f5fdad012ab499b2f31e0f878d507c4d774d4b4`; pinned head adds evidence only | `d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745` |
