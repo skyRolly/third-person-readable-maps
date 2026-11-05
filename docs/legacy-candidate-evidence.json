@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "51c28ccf5ead5a9fbcf4a6fefd654d5d283598ce",
+      "candidate_head": "e8a8f5dbc6d2b4f856d22e2ddfaecde71cf068dd",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -21,7 +21,12 @@
         "Remote-player multiplayer NOT RUN",
         "X11 cursor-shape warning in software display",
         "Branch protection, reviewed OSV disposition and central release registration outstanding"
-      ]
+      ],
+      "per_version": {
+        "1.21.10": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        }
+      }
     },
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
