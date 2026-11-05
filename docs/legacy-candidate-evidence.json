@@ -272,7 +272,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "e0acb539359e211a27f4b98ffac754c6463d4df5",
+      "candidate_head": "e7d4a19c4f3ed7ebab18de18ff7085d18e3444a7",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -297,7 +297,7 @@
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ],
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.17 before Mixin initialization; Java older than 8 NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.17 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked"
     },
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
@@ -324,7 +324,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
-      "candidate_head": "7c25b706d864d09cfce04a488e46d4bc4fc09b85",
+      "candidate_head": "dcc2fda3be3838f1c24b54199bbeeffee08234cb",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
@@ -346,7 +346,7 @@
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ],
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.15 before Mixin initialization; Java older than 8 NOT RUN"
+      "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.15 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked"
     }
   }
 }
