@@ -325,7 +325,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "bfa85625b10a2709fc01af26eef9e80df791dcb9",
-      "candidate_head": "06de1dedb3497473097c81ba81fc684ea09b7f93",
+      "candidate_head": "e5ccc19bfae90e75a65378e881f694b312f0a895",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec",
@@ -350,6 +350,9 @@
       "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.15 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked",
       "per_version": {
         "1.14": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+        },
+        "1.14.1": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
         }
       }
