@@ -34,7 +34,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "705ef07a42a7862518501acb612c7522f9b40875",
+      "candidate_head": "145bb381fe49eadf19a73f60e2a7d219fe7856b3",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -70,11 +70,12 @@
         "1.21.8": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
-      }
+      },
+      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.9 before Mixin initialization; wrong Java NOT RUN"
     },
     "1.21.2-1.21.3": {
       "source_commit": "84d8291e16fc14ffa3b0956404b64c9538251693",
-      "candidate_head": "ffe11a214cef0933b1ec76fdb48155940c41a18a",
+      "candidate_head": "6aa27709f03f6afb1e5fbe38d9eaacabe49efc65",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
       "sha256": "28a15aacf531dfdb3dd51ba63b7e9cf42000e0b981d863cdc0c27bebc89523e4",
       "versions": [
@@ -90,11 +91,17 @@
         "Independent human visual acceptance outstanding",
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
-      ]
+      ],
+      "per_version": {
+        "1.21.2": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        }
+      },
+      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.2 with Java 17 before Mixin initialization; unsupported-neighbor launch NOT RUN"
     },
     "1.21-1.21.1": {
       "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
-      "candidate_head": "bd9c180d8d241f6317d7499ddbf104bd7e48e992",
+      "candidate_head": "846ff6f7954ae886ab1f51a2c45f1cc86bccc08d",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
       "versions": [
@@ -118,11 +125,12 @@
         "1.21.1": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
-      }
+      },
+      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.2 before Mixin initialization; wrong Java NOT RUN"
     },
     "1.20.5-1.20.6": {
       "source_commit": "32164d846089ce67d5c0a10ba351796207312b02",
-      "candidate_head": "e655200fb67a5feb6853154f4c9f147dad4ffab0",
+      "candidate_head": "6f517154802413efb18510c5f90e2081b628f388",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "sha256": "8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd",
       "versions": [
@@ -146,7 +154,8 @@
         "1.20.6": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
-      }
+      },
+      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.21.1 before Mixin initialization; wrong Java NOT RUN"
     },
     "1.19.4-1.20.4": {
       "source_commit": "532cfb548bb29eb99fbcb57424592f07c8ca3606",

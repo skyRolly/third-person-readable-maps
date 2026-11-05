@@ -114,7 +114,7 @@
     {
       "id": "1.20.5-1.20.6",
       "branch": "candidate/mc-1.20.5-1.20.6",
-      "source_commit": "e655200fb67a5feb6853154f4c9f147dad4ffab0",
+      "source_commit": "6f517154802413efb18510c5f90e2081b628f388",
       "minecraft": [
         "1.20.5",
         "1.20.6"
@@ -130,7 +130,7 @@
     {
       "id": "1.21-1.21.1",
       "branch": "candidate/mc-1.21-1.21.1",
-      "source_commit": "bd9c180d8d241f6317d7499ddbf104bd7e48e992",
+      "source_commit": "846ff6f7954ae886ab1f51a2c45f1cc86bccc08d",
       "minecraft": [
         "1.21",
         "1.21.1"
@@ -161,7 +161,7 @@
     {
       "id": "1.21.2-1.21.3",
       "branch": "candidate/mc-1.21.2-1.21.3",
-      "source_commit": "ffe11a214cef0933b1ec76fdb48155940c41a18a",
+      "source_commit": "6aa27709f03f6afb1e5fbe38d9eaacabe49efc65",
       "minecraft": [
         "1.21.2",
         "1.21.3"
@@ -177,7 +177,7 @@
     {
       "id": "1.21.4-1.21.8",
       "branch": "candidate/mc-1.21.4-1.21.8",
-      "source_commit": "705ef07a42a7862518501acb612c7522f9b40875",
+      "source_commit": "145bb381fe49eadf19a73f60e2a7d219fe7856b3",
       "minecraft": [
         "1.21.4",
         "1.21.5",
