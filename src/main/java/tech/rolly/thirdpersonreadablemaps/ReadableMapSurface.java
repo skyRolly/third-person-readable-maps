@@ -9,6 +9,7 @@ import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapState;
 import net.minecraft.util.Identifier;
+import org.lwjgl.opengl.GL11;
 
 /** Draws both faces and available map data in the current hand transform. */
 public final class ReadableMapSurface {
@@ -35,6 +36,7 @@ public final class ReadableMapSurface {
             GlStateManager.scalef(0.0138125f, 0.0138125f, 0.0138125f);
         }
         // Follow the 1.14 first-person map renderer's lighting and texture path.
+        boolean lightingWasEnabled = GL11.glIsEnabled(GL11.GL_LIGHTING);
         GlStateManager.disableLighting();
         try {
             client.getTextureManager().bindTexture(MAP_FACE);
@@ -52,7 +54,8 @@ public final class ReadableMapSurface {
             tessellator.draw();
             if (data != null) client.gameRenderer.getMapRenderer().draw(data, false);
         } finally {
-            GlStateManager.enableLighting();
+            if (lightingWasEnabled) GlStateManager.enableLighting();
+            else GlStateManager.disableLighting();
         }
     }
 

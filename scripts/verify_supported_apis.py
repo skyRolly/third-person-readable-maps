@@ -148,6 +148,53 @@ def intermediary_mapping(data):
     return forward, reverse, members
 
 
+@lru_cache(maxsize=None)
+def checked_library(url, sha1, size):
+    return checked(get(url), sha1, size)
+
+
+def verify_lwjgl_member(node, ref, version):
+    kind, owner, name, descriptor = ref
+    require(node is not None and node['name'] == owner,
+            f'{version}: missing LWJGL class {owner}')
+    matches = [m for m in node['members'] if (m['kind'], m['name'], m['descriptor']) ==
+               (kind, name, descriptor)]
+    require(matches and (matches[0]['access'] & 1),
+            f'{version}: missing public LWJGL member {owner}.{name}{descriptor}')
+    if (kind, owner, name, descriptor) == ('method', 'org/lwjgl/opengl/GL11', 'glIsEnabled', '(I)Z'):
+        require(matches[0]['access'] & 8, f'{version}: GL11.glIsEnabled is not static')
+
+
+def verify_lwjgl_references(metadata, mod_classes, version):
+    refs = {ref for node in mod_classes.values() for ref in node['refs']
+            if ref[1].startswith('org/lwjgl/')}
+    classes = {name for node in mod_classes.values() for name in node['classes']
+               if name.startswith('org/lwjgl/')}
+    if not refs and not classes:
+        return 0, 0
+    require(all(name.startswith('org/lwjgl/opengl/') for name in classes | {r[1] for r in refs}),
+            f'{version}: unverified non-OpenGL LWJGL reference')
+    libraries = {}
+    for entry in metadata['libraries']:
+        if entry['name'].split(':')[:2] != ['org.lwjgl', 'lwjgl-opengl']:
+            continue
+        artifact = entry.get('downloads', {}).get('artifact')
+        if artifact:
+            libraries[(artifact['url'], artifact['sha1'], artifact['size'])] = artifact
+    require(libraries, f'{version}: no LWJGL OpenGL artifact in client metadata')
+    for url, sha1, size in libraries:
+        with ZipFile(io.BytesIO(checked_library(url, sha1, size))) as archive:
+            nodes = {}
+            for name in classes | {r[1] for r in refs}:
+                try:
+                    nodes[name] = read_class(archive.read(name + '.class'))
+                except KeyError as exc:
+                    raise ValueError(f'{version}: missing LWJGL class {name}') from exc
+            for ref in refs:
+                verify_lwjgl_member(nodes.get(ref[1]), ref, version)
+    return len(refs), len(libraries)
+
+
 def verify(mod_path, versions=None, clients=None):
     with ZipFile(mod_path) as mod:
         meta = json.loads(mod.read('fabric.mod.json'))
@@ -241,7 +288,8 @@ def verify(mod_path, versions=None, clients=None):
             require(not missing_classes, f'{version}: missing classes: {missing_classes}')
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
             require(not missing, f'{version}: missing game members: {missing}')
-        print(f'{version}: {len(injections)} Mixin descriptors, {len(classes)} game classes and {len(refs)} member references verified')
+        lwjgl_refs, lwjgl_variants = verify_lwjgl_references(metadata, mod_classes, version)
+        print(f'{version}: {len(injections)} Mixin descriptor(s), {len(classes)} game classes, {len(refs)} game member references and {lwjgl_refs} LWJGL reference(s) across {lwjgl_variants} library variant(s) verified')
 
 
 def main():
