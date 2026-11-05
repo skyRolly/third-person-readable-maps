@@ -22,7 +22,7 @@
   },
   {
     "group": "1.19.3",
-    "commit": "4c71487d64dc5092f694aaf48b1d65a1bfb03fbd",
+    "commit": "203dae2ef5cd5241a1b26db132fd4131b2f979c5",
     "branch": "candidate/mc-1.19.3",
     "build_jdk": "25.0.5+8",
     "multi_version": false

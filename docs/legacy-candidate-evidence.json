@@ -225,7 +225,7 @@
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "c9ca3b5f05768017a197116919f22e2a967a8d01",
-      "candidate_head": "4c71487d64dc5092f694aaf48b1d65a1bfb03fbd",
+      "candidate_head": "203dae2ef5cd5241a1b26db132fd4131b2f979c5",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.3.jar",
       "sha256": "f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b",
@@ -239,7 +239,7 @@
       "limitations": [
         "Full graphical acceptance remains outstanding",
         "Independent human visual acceptance outstanding",
-        "Remote-player multiplayer NOT RUN",
+        "Remote-player multiplayer NOT RUN: a local LAN observer could not authenticate because Minecraft services were unavailable",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ]
     },
