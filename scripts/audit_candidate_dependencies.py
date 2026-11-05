@@ -76,7 +76,6 @@ def load_baseline(manifest, evidence, root=ROOT, today=None):
             entry = evidence['groups'][name]
             pr = PR.fullmatch(entry['pull_request']).group(1)
             require(isinstance(old.get('source_sha'), str) and SHA.fullmatch(old['source_sha']) and
-                    old['source_sha'] in (entry.get('source_commit'), entry.get('candidate_head')) and
                     old.get('ref') == 'refs/pull/' + pr + '/merge', 'invalid candidate baseline provenance')
             scopes = {'gradle'} | {'runtime/' + version for version in entry['versions']}
             inventories = old.get('inventories')
@@ -212,6 +211,12 @@ def main():
         metadata = read_json(Path(args.source) / 'src/main/resources/fabric.mod.json')
         evidence = read_json(args.evidence)
         baseline = load_baseline(read_json(args.baseline), evidence)
+        require(args.group in baseline and SHA.fullmatch(args.source_sha), 'invalid candidate baseline source')
+        # A retained scan may predate evidence-only commits. It must still belong
+        # to the actual checked-out candidate history, including after a force-push.
+        subprocess.check_call(['git', '-C', args.source, 'merge-base', '--is-ancestor',
+                               baseline[args.group]['source_sha'], args.source_sha],
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         report = audit_candidate(read_json(args.snapshot), metadata, evidence,
                                  args.group, args.branch, args.source_sha, observed, baseline)
         print(f"{args.group} at {args.source_sha}: {len(report['matches'])} unreviewed, failing matches; "

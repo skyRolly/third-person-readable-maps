@@ -36,14 +36,14 @@
   },
   {
     "group": "1.20.5-1.20.6",
-    "commit": "41323ecaf699e86d08b3ed3fff579bf2651b4924",
+    "commit": "bf397eb8c5ea729999a77f2bbebea923c7a15aea",
     "branch": "candidate/mc-1.20.5-1.20.6",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.21-1.21.1",
-    "commit": "b7eb29d9ce23f3267db33bbcfe5e291be75ebbf2",
+    "commit": "439e964b09073bfe3e59e3a939c261271ab8516a",
     "branch": "candidate/mc-1.21-1.21.1",
     "build_jdk": "25.0.5+8",
     "multi_version": true

@@ -213,7 +213,8 @@ for **every** declared game version. Unknown snapshot entries, source drift,
 missing data, malformed advisories and network/API errors make the job
 incomplete. The [unreviewed baseline](candidate-advisory-baseline.json) pins the retained
 scan reports by SHA-256 and validates every group, source, runtime scope,
-package and advisory fingerprint. The audit detects new, changed and known
+package and advisory fingerprint. Each baseline source must be an ancestor of
+the exact checked-out candidate head; an unrelated or force-pushed history fails. The audit detects new, changed and known
 matches, plus previously observed matches no longer returned by OSV. Every
 current match remains unreviewed and failing, and disappeared matches also
 fail until investigated. Missing inventory entries, modified reports and a

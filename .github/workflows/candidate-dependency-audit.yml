@@ -43,6 +43,7 @@ jobs:
         with:
           ref: ${{ matrix.branch }}
           path: source
+          fetch-depth: 0
           persist-credentials: false
       - name: Reject changed candidate heads
         env:

@@ -11,6 +11,7 @@ from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import audit_dependencies as audit
+import audit_candidate_dependencies as candidate_audit
 from release import Invalid
 
 TODAY = date(2026, 11, 4)
@@ -163,7 +164,10 @@ class AuditTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         reports = sorted((root / 'docs/dependency-evidence').glob('legacy-candidate*osv-2026-11-05.json'))
         self.assertTrue(reports)
-        candidates = audit.read_json(root / 'docs/legacy-candidate-evidence.json')['groups']
+        evidence = audit.read_json(root / 'docs/legacy-candidate-evidence.json')
+        candidates = evidence['groups']
+        baseline = candidate_audit.load_baseline(audit.read_json(candidate_audit.BASELINE), evidence,
+                                                 today=date(2026, 11, 5))
         seen = set()
         for path in reports:
             report = audit.read_json(path)
@@ -172,9 +176,9 @@ class AuditTests(unittest.TestCase):
             for group, entry in report['groups'].items():
                 self.assertNotIn(group, seen)
                 seen.add(group)
-                self.assertTrue(entry['ref'].startswith('refs/pull/'))
+                self.assertEqual(entry['ref'], 'refs/pull/' + candidates[group]['pull_request'].rsplit('/', 1)[-1] + '/merge')
                 self.assertRegex(entry['source_sha'], r'^[a-f0-9]{40}$')
-                self.assertIn(entry['source_sha'], (candidates[group]['source_commit'], candidates[group]['candidate_head']))
+                self.assertEqual(entry['source_sha'], baseline[group]['source_sha'])
                 self.assertIn('gradle', entry['inventories'])
                 self.assertEqual(set(entry['runtime_manifests']),
                                  {s.removeprefix('runtime/') for s in entry['inventories'] if s.startswith('runtime/')})

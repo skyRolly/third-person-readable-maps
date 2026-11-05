@@ -114,7 +114,7 @@
     {
       "id": "1.20.5-1.20.6",
       "branch": "candidate/mc-1.20.5-1.20.6",
-      "source_commit": "41323ecaf699e86d08b3ed3fff579bf2651b4924",
+      "source_commit": "bf397eb8c5ea729999a77f2bbebea923c7a15aea",
       "minecraft": [
         "1.20.5",
         "1.20.6"
@@ -130,7 +130,7 @@
     {
       "id": "1.21-1.21.1",
       "branch": "candidate/mc-1.21-1.21.1",
-      "source_commit": "b7eb29d9ce23f3267db33bbcfe5e291be75ebbf2",
+      "source_commit": "439e964b09073bfe3e59e3a939c261271ab8516a",
       "minecraft": [
         "1.21",
         "1.21.1"

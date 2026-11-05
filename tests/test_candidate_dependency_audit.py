@@ -100,8 +100,8 @@ class CandidateAuditTests(unittest.TestCase):
         changed_source = copy.deepcopy(evidence)
         changed_source['groups'][self.group]['candidate_head'] = 'd' * 40
         changed_source['groups'][self.group]['source_commit'] = 'e' * 40
-        with self.assertRaises(Invalid):
-            candidate.load_baseline(manifest, changed_source, today=date(2026, 11, 5))
+        advanced = candidate.load_baseline(manifest, changed_source, today=date(2026, 11, 5))
+        self.assertEqual(advanced[self.group]['source_sha'], baseline[self.group]['source_sha'])
 
     def test_missing_inventory_package_fails_before_osv(self):
         self.baseline[self.group]['inventories']['gradle'].append('pkg:maven/old/missing@1')
@@ -171,10 +171,19 @@ class CandidateAuditTests(unittest.TestCase):
                     '--output', str(output), '--evidence', str(evidence)]
             with patch.object(sys, 'argv', argv), \
                  patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate.subprocess, 'check_call', return_value=0), \
                  patch.object(candidate, 'load_baseline', return_value=self.baseline), \
                  patch.object(candidate.audit, 'runtime_inventories', side_effect=OSError('unavailable')), \
                  redirect_stderr(io.StringIO()):
                 self.assertEqual(candidate.main(), 2)
+            self.assertEqual(json.loads(output.read_text())['status'], 'incomplete')
+            with patch.object(sys, 'argv', argv), \
+                 patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate.subprocess, 'check_call', side_effect=candidate.subprocess.CalledProcessError(1, 'git')), \
+                 patch.object(candidate, 'load_baseline', return_value=self.baseline), \
+                 patch.object(candidate, 'audit_candidate') as audit_call, redirect_stderr(io.StringIO()):
+                self.assertEqual(candidate.main(), 2)
+                audit_call.assert_not_called()
             self.assertEqual(json.loads(output.read_text())['status'], 'incomplete')
 
     def test_match_returns_failure_and_writes_report(self):
@@ -193,6 +202,7 @@ class CandidateAuditTests(unittest.TestCase):
                     '--output', str(output), '--evidence', str(evidence)]
             with patch.object(sys, 'argv', argv), \
                  patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate.subprocess, 'check_call', return_value=0), \
                  patch.object(candidate, 'load_baseline', return_value=self.baseline), \
                  patch.object(candidate, 'audit_candidate', return_value=report), redirect_stdout(io.StringIO()):
                 self.assertEqual(candidate.main(), 1)
@@ -201,6 +211,7 @@ class CandidateAuditTests(unittest.TestCase):
             report['resolved_needing_review'] = ['unreviewed baseline identity']
             with patch.object(sys, 'argv', argv), \
                  patch.object(candidate.subprocess, 'check_output', return_value=self.sha + '\n'), \
+                 patch.object(candidate.subprocess, 'check_call', return_value=0), \
                  patch.object(candidate, 'load_baseline', return_value=self.baseline), \
                  patch.object(candidate, 'audit_candidate', return_value=report), redirect_stdout(io.StringIO()):
                 self.assertEqual(candidate.main(), 1)
@@ -245,6 +256,7 @@ class CandidateAuditTests(unittest.TestCase):
         self.assertIn('audit_candidate_dependencies.py matrix', text)
         self.assertIn('audit_candidate_dependencies.py audit', text)
         self.assertIn('git -C source rev-parse HEAD', text)
+        self.assertIn('fetch-depth: 0', text)
         self.assertIn('--refresh-dependencies', text)
         self.assertIn('if: always()', text)
 

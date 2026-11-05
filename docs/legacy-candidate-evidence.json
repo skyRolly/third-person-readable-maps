@@ -69,7 +69,7 @@
     },
     "1.21-1.21.1": {
       "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
-      "candidate_head": "b7eb29d9ce23f3267db33bbcfe5e291be75ebbf2",
+      "candidate_head": "439e964b09073bfe3e59e3a939c261271ab8516a",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
       "versions": [
@@ -78,7 +78,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21-1.21.1.jar",
       "limitations": [
@@ -89,7 +89,7 @@
     },
     "1.20.5-1.20.6": {
       "source_commit": "32164d846089ce67d5c0a10ba351796207312b02",
-      "candidate_head": "41323ecaf699e86d08b3ed3fff579bf2651b4924",
+      "candidate_head": "bf397eb8c5ea729999a77f2bbebea923c7a15aea",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "sha256": "8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd",
       "versions": [
@@ -98,7 +98,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.20.5-1.20.6.jar",
       "limitations": [
