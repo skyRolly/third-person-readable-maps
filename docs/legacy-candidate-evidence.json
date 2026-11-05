@@ -26,7 +26,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "8ceeb5f28bfcc14104f39d2ab545d431e18683fc",
+      "candidate_head": "fac460cd14f7c27af87a414831261d0a975c23cf",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -51,6 +51,9 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         },
         "1.21.5": {
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+        },
+        "1.21.6": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         }
       }
