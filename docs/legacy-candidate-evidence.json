@@ -134,7 +134,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
-      "candidate_head": "dc667d6af61135b5f1027026c901e0cd6e9809a3",
+      "candidate_head": "fc2a798ed2e50a7cc800884265adab91074dbed6",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
       "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
@@ -149,11 +149,11 @@
         "1.19.2"
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16 for 1.17–1.17.1 or Java 17 for 1.18–1.19.2, Linux software-rendered local worlds",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "negative": "1.19.3 lacks the old game quaternion and vector classes",
       "limitations": [
-        "Installed-client tests outstanding for six versions and full graphical acceptance outstanding for every version",
+        "Full graphical acceptance outstanding for every version",
         "Independent human visual acceptance outstanding",
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
@@ -161,6 +161,30 @@
       "per_version": {
         "1.17": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.17.1": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.18": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.18.1": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.18.2": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.19": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
+          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+        },
+        "1.19.1": {
+          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
           "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
         },
         "1.19.2": {

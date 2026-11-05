@@ -95,6 +95,25 @@ class CoordinationTests(unittest.TestCase):
         self.assertEqual(entries, expected)
         self.assertEqual(len(blocks), len(entries))
 
+    def test_legacy_inventory_matches_candidate_runtime_evidence(self):
+        groups = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']
+        inventory = release.read_json(ROOT / 'docs/legacy-version-inventory.json')['versions']
+        by_version = {}
+        for group in groups.values():
+            for version in group['versions']:
+                self.assertNotIn(version, by_version)
+                by_version[version] = group
+        self.assertEqual({row['minecraft'] for row in inventory}, set(by_version))
+        for row in inventory:
+            group = by_version[row['minecraft']]
+            per_version = group.get('per_version', {}).get(row['minecraft'], {})
+            with self.subTest(version=row['minecraft']):
+                for field in ('client_startup', 'graphical'):
+                    self.assertEqual(row[field], per_version.get(field, group[field]))
+                if row['client_startup'].startswith('PASS'):
+                    self.assertTrue(row['fabric_loader_runtime_verification'].startswith('PARTIAL:'))
+                    self.assertIn('full runtime acceptance NOT RUN', row['fabric_loader_runtime_verification'])
+
     def test_audit_refuses_snapshot_for_another_branch_or_commit(self):
         with tempfile.TemporaryDirectory() as temp:
             snapshot = Path(temp) / 'snapshot.json'
