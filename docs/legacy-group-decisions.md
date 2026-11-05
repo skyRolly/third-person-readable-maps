@@ -15,7 +15,7 @@ runtime, review, security and administrative evidence.
 | 1.19.4–1.20.4 | 1.19.4, 1.20, 1.20.1, 1.20.2, 1.20.3, 1.20.4 | One Java 17 candidate; descriptors, game and JOML references checked on all six | All six local worlds and partial map smoke | Draft [#19](https://github.com/skyRolly/third-person-readable-maps/pull/19); full acceptance pending |
 | 1.19.3 | 1.19.3 | Java 17; Mixin, game and JOML linkage checked | Local world; main, off and both maps smoke-tested on Java 17 | Draft [#22](https://github.com/skyRolly/third-person-readable-maps/pull/22); full acceptance pending |
 | 1.17–1.19.2 | 1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1, 1.19.2 | One Java 16 candidate; descriptors and game linkage checked on all eight | 1.17 and 1.19.2 local worlds; main, off and both maps smoke-tested; other versions NOT RUN | Draft [#20](https://github.com/skyRolly/third-person-readable-maps/pull/20); 1.18+ itself requires Java 17 |
-| 1.15–1.16.5 | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | One Java 8 candidate; descriptors and game linkage checked on all nine | 1.15 and 1.16.5 local worlds and partial map smoke on Java 8; other versions NOT RUN | Draft [#21](https://github.com/skyRolly/third-person-readable-maps/pull/21); full acceptance pending |
+| 1.15–1.16.5 | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | One Java 8 candidate; descriptors and game linkage checked on all nine | All nine Java 8 local worlds; main, off and both maps smoke-tested | Draft [#21](https://github.com/skyRolly/third-person-readable-maps/pull/21); full acceptance pending |
 | 1.14–1.14.4 | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | One Java 8 candidate; older four-argument arm descriptor, immediate GL path and game linkage checked on all five; Yarn mappings | All five Java 8 local worlds; main, off and both maps smoke-tested | Draft [#23](https://github.com/skyRolly/third-person-readable-maps/pull/23); full visual and OpenGL-state acceptance pending |
 
 The 1.21.9 JAR fails descriptor checks on adjacent 1.21.8 and 1.21.11, and
@@ -39,3 +39,24 @@ The [inventory](legacy-version-inventory.md) covers all 42 targeted stable
 releases. Pre-1.14 samples are not listed in Fabric game/intermediary metadata
 and are outside this target; this does not characterize every third-party
 loader.
+
+## Partition and alternatives
+
+The present proposal uses **10 new candidate JARs and maintenance groups** for
+42 historical versions, plus the three existing groups. All 42 have static
+linkage checks; installed-client smoke coverage is listed per version in the
+[inventory](legacy-version-inventory.md). None of these partial smoke tests is
+full release acceptance. Each additional group costs one branch, two platform
+builds, a dependency inventory and a release artifact.
+
+A branch per major version would miss the observed splits inside 1.19 and 1.21
+and would unnecessarily separate the currently shared 1.15–1.16.5 and
+1.17–1.19.2 ranges. Reusing an unchanged neighboring candidate across the
+boundaries above fails the recorded checks. A single artifact containing several
+conditionally selected, still-required implementations could be investigated
+later, but its build/remapping, selection and per-version runtime behavior have
+not been demonstrated here. It is not ruled out as impossible, and reducing the
+count would require testing the *same resulting JAR* on every declared version
+without optional or silently failing injections. The current partition is the
+smallest established by the implemented candidates and evidence, not a proof of
+a global minimum.

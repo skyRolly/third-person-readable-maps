@@ -35,13 +35,13 @@ An **unverified** row is not a support claim. Candidate grouping remains provisi
 | 1.17.1 | 16 | listed / 1.17.1+build.65 | Mojang | 1.17–1.19.2* | PASS* | NOT RUN |
 | 1.17 | 16 | listed / 1.17+build.13 | Mojang | 1.17–1.19.2* | PASS* | World PASS; graphics PARTIAL* |
 | 1.16.5 | 8 | listed / 1.16.5+build.10 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
-| 1.16.4 | 8 | listed / 1.16.4+build.9 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.16.3 | 8 | listed / 1.16.3+build.47 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.16.2 | 8 | listed / 1.16.2+build.47 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.16.1 | 8 | listed / 1.16.1+build.21 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.16 | 8 | listed / 1.16+build.4 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.15.2 | 8 | listed / 1.15.2+build.17 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
-| 1.15.1 | 8 | listed / 1.15.1+build.37 | Mojang | 1.15–1.16.5* | PASS* | NOT RUN |
+| 1.16.4 | 8 | listed / 1.16.4+build.9 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.16.3 | 8 | listed / 1.16.3+build.47 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.16.2 | 8 | listed / 1.16.2+build.47 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.16.1 | 8 | listed / 1.16.1+build.21 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.16 | 8 | listed / 1.16+build.4 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.15.2 | 8 | listed / 1.15.2+build.17 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
+| 1.15.1 | 8 | listed / 1.15.1+build.37 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
 | 1.15 | 8 | listed / 1.15+build.2 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
 | 1.14.4 | 8 | listed / 1.14.4+build.18 | Mojang | 1.14–1.14.4* | PASS* | World PASS; graphics PARTIAL* |
 | 1.14.3 | 8 | listed / 1.14.3+build.13 | Yarn | 1.14–1.14.4* | PASS* | World PASS; graphics PARTIAL* |

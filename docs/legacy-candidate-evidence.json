@@ -172,7 +172,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "ea125a52773e114cd180e1ba1b10aeb425858659",
+      "candidate_head": "68d40087bc9368f99a0718e41ef253779b0f1eea",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -188,25 +188,15 @@
         "1.16.5"
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "NOT RUN",
-      "graphical": "NOT RUN",
+      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "negative": "1.14.4 lacks the Mixin descriptor; 1.17 lacks required game members",
       "limitations": [
-        "Installed-client tests outstanding for seven versions and full graphical acceptance outstanding for every version",
+        "Full graphical acceptance remains outstanding for all nine versions",
         "Independent human visual acceptance outstanding",
         "Remote-player multiplayer NOT RUN",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
-      ],
-      "per_version": {
-        "1.15": {
-          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
-        },
-        "1.16.5": {
-          "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
-        }
-      }
+      ]
     },
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
