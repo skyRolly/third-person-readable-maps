@@ -109,7 +109,7 @@
     },
     "1.19.4-1.20.4": {
       "source_commit": "532cfb548bb29eb99fbcb57424592f07c8ca3606",
-      "candidate_head": "d0e743e8023af9cb865e8c5980e7749318cbb7a2",
+      "candidate_head": "e48e1240c0e233009b35d5dc4625158f2f7c51a5",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "sha256": "7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9",
       "versions": [
@@ -122,7 +122,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main-hand terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
       "status": "CANDIDATE; NOT RELEASE READY",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.4-1.20.4.jar",
       "limitations": [
