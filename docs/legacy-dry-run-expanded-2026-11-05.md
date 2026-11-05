@@ -6,11 +6,11 @@ All 13 actual JARs were inspected for filenames, metadata, namespace, bytecode, 
 
 | Group | Planned source head | Build source / provenance | JAR SHA-256 |
 |---|---|---|---|
-| 1.14-1.14.4 | `4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8` | local clean build `bfa85625b10a2709fc01af26eef9e80df791dcb9`; pinned head adds evidence only | `909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec` |
-| 1.15-1.16.5 | `68d40087bc9368f99a0718e41ef253779b0f1eea` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
-| 1.17-1.19.2 | `781b7682e6dcfd6cc0a7925b2a03e4fcead9b8e3` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6`; pinned head adds evidence only | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
+| 1.14-1.14.4 | `7c25b706d864d09cfce04a488e46d4bc4fc09b85` | local clean build `bfa85625b10a2709fc01af26eef9e80df791dcb9`; pinned head adds evidence only | `909b2299eed92d71c054bc9ddb4829235f560c657fab79a60f91a78354a06eec` |
+| 1.15-1.16.5 | `e0acb539359e211a27f4b98ffac754c6463d4df5` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
+| 1.17-1.19.2 | `89b7c1d537e40737ac49c3c318d647ee00fda557` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6`; pinned head adds evidence only | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
 | 1.19.3 | `b2e242c66c572c16bc38a7ce3a4d2400b9cf9159` | local clean build `c9ca3b5f05768017a197116919f22e2a967a8d01`; pinned head adds evidence only | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
-| 1.19.4-1.20.4 | `1fabee08d45a58c247da25472dbae59bef1b64d6` | local clean build `532cfb548bb29eb99fbcb57424592f07c8ca3606`; pinned head adds evidence only | `7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9` |
+| 1.19.4-1.20.4 | `3d7f62846ee737cf2c74e761bac5e8d9a235e3e6` | local clean build `532cfb548bb29eb99fbcb57424592f07c8ca3606`; pinned head adds evidence only | `7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9` |
 | 1.20.5-1.20.6 | `6f517154802413efb18510c5f90e2081b628f388` | local clean build `32164d846089ce67d5c0a10ba351796207312b02`; pinned head adds evidence only | `8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd` |
 | 1.21-1.21.1 | `846ff6f7954ae886ab1f51a2c45f1cc86bccc08d` | local clean build `5f5fdad012ab499b2f31e0f878d507c4d774d4b4`; pinned head adds evidence only | `d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745` |
 | 1.21.11 | `177f5708727ae4c152091d185536aaa734063280` | merged-head Linux CI 41878123381 | `18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930` |

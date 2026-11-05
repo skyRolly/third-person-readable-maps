@@ -1,21 +1,21 @@
 [
   {
     "group": "1.14-1.14.4",
-    "commit": "4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8",
+    "commit": "7c25b706d864d09cfce04a488e46d4bc4fc09b85",
     "branch": "candidate/mc-1.14-1.14.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.15-1.16.5",
-    "commit": "68d40087bc9368f99a0718e41ef253779b0f1eea",
+    "commit": "e0acb539359e211a27f4b98ffac754c6463d4df5",
     "branch": "candidate/mc-1.15-1.16.5",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.17-1.19.2",
-    "commit": "781b7682e6dcfd6cc0a7925b2a03e4fcead9b8e3",
+    "commit": "89b7c1d537e40737ac49c3c318d647ee00fda557",
     "branch": "candidate/mc-1.17-1.19.2",
     "build_jdk": "25.0.5+8",
     "multi_version": true
@@ -29,7 +29,7 @@
   },
   {
     "group": "1.19.4-1.20.4",
-    "commit": "1fabee08d45a58c247da25472dbae59bef1b64d6",
+    "commit": "3d7f62846ee737cf2c74e761bac5e8d9a235e3e6",
     "branch": "candidate/mc-1.19.4-1.20.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
