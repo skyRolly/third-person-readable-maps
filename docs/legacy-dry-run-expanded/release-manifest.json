@@ -34,7 +34,7 @@
     {
       "id": "1.15-1.16.5",
       "branch": "candidate/mc-1.15-1.16.5",
-      "source_commit": "e8dbb4f9182486ec21d14472b2691bf8df23374e",
+      "source_commit": "3cff67730b141b49abf6a1048f7ee0f5e9ee3ffa",
       "minecraft": [
         "1.15",
         "1.15.1",
