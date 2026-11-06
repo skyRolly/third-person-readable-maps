@@ -94,7 +94,7 @@
     {
       "id": "1.19.4-1.20.4",
       "branch": "candidate/mc-1.19.4-1.20.4",
-      "source_commit": "867c753598172a9bceca216208ae91c1cc3a31c5",
+      "source_commit": "86a854632a11f4dc6fed381516e31f90943a1889",
       "minecraft": [
         "1.19.4",
         "1.20",
