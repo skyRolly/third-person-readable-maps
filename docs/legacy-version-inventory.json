@@ -1946,7 +1946,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and first-person comparison INCONCLUSIVE; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
