@@ -274,7 +274,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "91cf298922b40def1715829ffbcdbc33386bd3b4",
+      "candidate_head": "1e5e2d8679a0ce0b382fafd3cedd812b51dcc633",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -312,6 +312,12 @@
         },
         "1.16": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+        },
+        "1.16.1": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and first-person comparison INCONCLUSIVE; missing-data null path and full acceptance NOT RUN"
+        },
+        "1.16.2": {
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
         }
       }
     },
@@ -340,7 +346,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "7ae80a9bd86b8fba08fba8a169fce0e547487972",
+      "candidate_head": "16bde53cb6ce29699f4d0b382136f4f60ac68485",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -353,7 +359,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
       "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
-      "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical",
+      "graphical": "PARTIAL: ordinary revised-JAR smoke completed on 2/5 versions; remaining cases and full acceptance NOT RUN",
       "negative": "1.15 lacks the older Mixin target descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding for all five versions",
@@ -365,12 +371,12 @@
       "negative_launch": "Fabric 0.20.1 rejected the revised JAR on Minecraft 1.15 during resolution; Java 7 failed to start the loader before mod metadata could be inspected",
       "per_version": {
         "1.14": {
-          "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
-          "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical"
+          "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; first-person comparison INCONCLUSIVE; missing-data null path and full acceptance NOT RUN"
         },
         "1.14.1": {
-          "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
-          "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical"
+          "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; missing-data null path and full acceptance NOT RUN"
         },
         "1.14.2": {
           "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
