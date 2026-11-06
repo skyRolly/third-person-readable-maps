@@ -1530,7 +1530,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1646,7 +1646,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw and actual null lookup after artificially withheld updates observed in one local layout; broader missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {

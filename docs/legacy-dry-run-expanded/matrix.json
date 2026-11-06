@@ -15,7 +15,7 @@
   },
   {
     "group": "1.17-1.19.2",
-    "commit": "23102e10853e7593c6be2ed06d5f25efee1d70e5",
+    "commit": "1e60440427cc6494d980f48128c83cd1dee5e403",
     "branch": "candidate/mc-1.17-1.19.2",
     "build_jdk": "25.0.5+8",
     "multi_version": true
