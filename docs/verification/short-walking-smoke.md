@@ -29,7 +29,7 @@ record the test.
 ## 1.16
 
 The Java 8 client moved horizontally 6.90 blocks, from `[5.5, 81, -62.5]` to
-`[5.5, 81.0, -55.59626520962296]`. The walking frames are retained for visual review. See the [standing](short-walk/1.16-standing-day.png),
+`[5.5, 81.0, -55.59626520962296]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.16-standing-day.png),
 [walking frame 1](short-walk/1.16-walking-1.png), [walking frame 2](short-walk/1.16-walking-2.png),
 and [after-walk](short-walk/1.16-after-walk.png) views; the [measurement](short-walk/1.16-movement.json),
 [saved player data](short-walk/1.16-ending-player.dat), and [log excerpt](short-walk/1.16-excerpt.txt)
@@ -38,7 +38,7 @@ record the test.
 ## 1.16.1
 
 The Java 8 client moved horizontally 5.39 blocks, from `[5.5, 81, -62.5]` to
-`[5.5, 81.0, -57.10727868748431]`. The walking frames are retained for visual review. See the [standing](short-walk/1.16.1-standing-day.png),
+`[5.5, 81.0, -57.10727868748431]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.16.1-standing-day.png),
 [walking frame 1](short-walk/1.16.1-walking-1.png), [walking frame 2](short-walk/1.16.1-walking-2.png),
 and [after-walk](short-walk/1.16.1-after-walk.png) views; the [measurement](short-walk/1.16.1-movement.json),
 [saved player data](short-walk/1.16.1-ending-player.dat), and [log excerpt](short-walk/1.16.1-excerpt.txt)
