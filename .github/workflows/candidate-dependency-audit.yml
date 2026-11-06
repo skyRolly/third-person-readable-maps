@@ -99,8 +99,8 @@ jobs:
               if result['status'] == 'incomplete':
                   print('INCOMPLETE: see the retained report for the validation or API error.')
               else:
-              print('Source: `' + result['source_sha'] + '`; unreviewed failing matches: ' + str(len(result['matches'])))
-              print('Previously observed matches no longer returned and needing review: ' + str(len(result['resolved_needing_review'])))
+                  print('Source: `' + result['source_sha'] + '`; unreviewed failing matches: ' + str(len(result['matches'])))
+                  print('Previously observed matches no longer returned and needing review: ' + str(len(result['resolved_needing_review'])))
                   print('This is candidate monitoring, not risk acceptance or release approval.')
           PYTHON
       - name: Upload candidate advisory report

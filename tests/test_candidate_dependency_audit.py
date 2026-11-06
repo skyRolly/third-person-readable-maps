@@ -2,10 +2,13 @@ import copy
 from datetime import date
 import io
 import json
+import os
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
+import textwrap
 import unittest
 from unittest.mock import patch
 
@@ -259,6 +262,34 @@ class CandidateAuditTests(unittest.TestCase):
         self.assertIn('fetch-depth: 0', text)
         self.assertIn('--refresh-dependencies', text)
         self.assertIn('if: always()', text)
+
+    def test_scheduled_workflow_summary_reports_missing_incomplete_and_complete_scans(self):
+        workflow = (ROOT / '.github/workflows/candidate-dependency-audit.yml').read_text()
+        script = textwrap.dedent(workflow.split("python3 - <<'PYTHON' >> \"$GITHUB_STEP_SUMMARY\"\n", 1)[1]
+                                 .split('\n          PYTHON', 1)[0])
+        cases = [
+            (None, 'INCOMPLETE: source pin, snapshot generation or audit failed'),
+            ({'status': 'incomplete'}, 'INCOMPLETE: see the retained report'),
+            ({'status': 'complete-unreviewed-candidate-scan', 'source_sha': self.sha,
+              'matches': [{}, {}], 'resolved_needing_review': ['previous']},
+             'unreviewed failing matches: 2'),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            report = Path(directory) / 'candidate-dependency-audit.json'
+            for contents, expected in cases:
+                with self.subTest(contents=contents):
+                    if contents is None:
+                        report.unlink(missing_ok=True)
+                    else:
+                        report.write_text(json.dumps(contents))
+                    completed = subprocess.run([sys.executable, '-c', script], cwd=directory,
+                                               env={**os.environ, 'GROUP': self.group},
+                                               text=True, capture_output=True, check=True)
+                    self.assertIn(self.group, completed.stdout)
+                    self.assertIn(expected, completed.stdout)
+                    if contents and contents['status'] != 'incomplete':
+                        self.assertIn('no longer returned and needing review: 1', completed.stdout)
+                        self.assertIn('not risk acceptance or release approval', completed.stdout)
 
 
 if __name__ == '__main__':
