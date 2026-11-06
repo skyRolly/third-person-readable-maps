@@ -52,3 +52,15 @@ The Java 17 client moved horizontally 5.39 blocks, from `[5.5, 81, -62.5]` to
 and [after-walk](short-walk/1.20.4-after-walk.png) views; the [measurement](short-walk/1.20.4-movement.json),
 [saved player data](short-walk/1.20.4-ending-player.dat), and [log excerpt](short-walk/1.20.4-excerpt.txt)
 record the test.
+
+## 1.20.3
+
+The Java 17 client moved horizontally 11.22 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -51.279083841474474]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.20.3-standing-day.png),
+[walking frame 1](short-walk/1.20.3-walking-1.png), [walking frame 2](short-walk/1.20.3-walking-2.png),
+and [after-walk](short-walk/1.20.3-after-walk.png) views; the [measurement](short-walk/1.20.3-movement.json),
+[saved player data](short-walk/1.20.3-ending-player.dat), and [log excerpt](short-walk/1.20.3-excerpt.txt)
+record the test.
+
+The prior attempt captured a [walking view](short-walk/1.20.3-interrupted-walking.png) but did not log a completed save. The environment stopped during that attempt; the [log excerpt](short-walk/1.20.3-interrupted-excerpt.txt)
+is retained. Only the completed retry above is counted.
