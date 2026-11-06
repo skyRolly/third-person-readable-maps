@@ -211,7 +211,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
-      "candidate_head": "b88471db6bbea4fe7a73ece0c9853bc3cf0de7dd",
+      "candidate_head": "e999e1a24e55a95582689cf9b430cffaffa63c9b",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
       "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
@@ -275,7 +275,8 @@
         },
         "1.19.2": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN",
+          "forced_null_diagnostic": "PARTIAL: test-only helper forced eight null lookups and recorded eight completed draws in one local layout; ordinary missing-data scenarios NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.3 and on Minecraft 1.17 with Java 8 before Mixin initialization"
@@ -377,7 +378,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "36e79c7586e016979f1c82996489c73c1afd6f29",
+      "candidate_head": "8db35d3d13401008a5d60823020dd0d889984782",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -423,13 +424,15 @@
         },
         "1.14.3": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
-          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.3 map draws completed, one partially obscured empty face observed"
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.3 map draws completed, one partially obscured empty face observed",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.14.4": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
-          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.4 map draws completed, one partially obscured empty face observed"
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.26 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.4 map draws completed, one partially obscured empty face observed",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 6.26 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         }
       },
       "prior_artifact": {
