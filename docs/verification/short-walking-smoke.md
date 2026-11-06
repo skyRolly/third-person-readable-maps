@@ -19,3 +19,16 @@ record the test.
 
 A small dark foreground shape overlaps the map in the first walking view;
 map terrain remains visible. Its cause was not established by this check.
+
+## 1.21.4
+
+The Java 21 client moved horizontally 10.14 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -52.35837918351525]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.21.4-standing-day.png),
+[walking frame 1](short-walk/1.21.4-walking-1.png), [walking frame 2](short-walk/1.21.4-walking-2.png),
+and [after-walk](short-walk/1.21.4-after-walk.png) views; the [measurement](short-walk/1.21.4-movement.json),
+[saved player data](short-walk/1.21.4-ending-player.dat), and [log excerpt](short-walk/1.21.4-excerpt.txt)
+record the test.
+
+The first walking view contains large green foreground geometry above the
+player; its cause was not established by this smoke check. The map itself is
+visible in both views.
