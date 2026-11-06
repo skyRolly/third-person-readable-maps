@@ -355,7 +355,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "2b2229a0d2465a9c7fbd2d68f79420b120ea7b77",
+      "candidate_head": "9a5623a515b24ad09baf0fe4192fddb83da83e90",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -367,8 +367,8 @@
         "1.14.4"
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PARTIAL: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local worlds on 4/5 versions",
-      "graphical": "PARTIAL: ordinary revised-JAR smoke completed on 4/5 versions; remaining cases and full acceptance NOT RUN",
+      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local worlds on all five versions",
+      "graphical": "PARTIAL: ordinary revised-JAR smoke completed on 5/5 versions; remaining cases and full acceptance NOT RUN",
       "negative": "1.15 lacks the older Mixin target descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding for all five versions",
@@ -396,8 +396,8 @@
           "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; missing-data null path and full acceptance NOT RUN"
         },
         "1.14.4": {
-          "client_startup": "NOT RUN: ordinary local-world smoke for revised JAR",
-          "graphical": "NOT RUN: ordinary graphical smoke for revised JAR; prior artifact evidence is historical"
+          "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; missing-data null path and full acceptance NOT RUN"
         }
       },
       "prior_artifact": {
