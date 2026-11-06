@@ -366,7 +366,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "90f95aa4f61ea7ce13bd97dda1b26f2f1e063b92",
+      "candidate_head": "d6c8200734c9a9d98077921b8dc3eb68213cab94",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -392,11 +392,11 @@
       "per_version": {
         "1.14": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0022/255 and 99.9933% within 10 levels; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; map detected in 3/3 walking frames; sneaking visible, night INCONCLUSIVE; full acceptance NOT RUN",
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0022/255 and 99.9933% within 10 levels; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; map terrain visible in two walking frames, then obscured at a wall; sneaking and night INCONCLUSIVE in that position; full acceptance NOT RUN",
           "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14 map draws completed, one partially obscured empty face observed",
           "withheld_update_diagnostic": "PASS: test-only map-update withholding; actual 1.14 lookup returned null and map draw completed in one local layout",
           "controlled_first_person": "PARTIAL: identical-world repeat at fixed position and daylight; mean 0.0022/255, 99.9933% within 10, maximum 58; not complete acceptance",
-          "movement_diagnostic": "PARTIAL: one local layout moved 10.20 blocks; map detected in 3/3 walking frames; sneaking visible, night INCONCLUSIVE; full acceptance NOT RUN"
+          "movement_diagnostic": "PARTIAL: one local layout moved 10.20 blocks; map terrain visible in two walking frames, then obscured at a wall; sneaking and night INCONCLUSIVE in that position; full acceptance NOT RUN"
         },
         "1.14.1": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
