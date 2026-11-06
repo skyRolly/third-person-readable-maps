@@ -1,6 +1,7 @@
 package tech.rolly.thirdpersonreadablemaps.mixin;
 
 import tech.rolly.thirdpersonreadablemaps.ReadableMapSurface;
+import tech.rolly.thirdpersonreadablemaps.ReadableMapHands;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -35,13 +36,14 @@ public abstract class ReadableMapLayerMixin<
     private void thirdpersonreadablemaps$submitReadableMap(
             MapEntityState mapEntityState,
             ItemStackRenderState unusedMapItemState,
-            ItemStack readableMapStack,
             HumanoidArm mapHoldingArm,
             PoseStack readableMapTransform,
             SubmitNodeCollector readableMapQueue,
             int readableMapPackedLight,
             CallbackInfo readableMapCallback) {
 
+        ReadableMapHands readableMapHands = (ReadableMapHands) mapEntityState;
+        ItemStack readableMapStack = readableMapHands.thirdpersonreadablemaps$getStack(mapHoldingArm);
         if (!(readableMapStack.getItem() instanceof MapItem) || Minecraft.getInstance().level == null) {
             return;
         }
@@ -56,7 +58,8 @@ public abstract class ReadableMapLayerMixin<
         }
 
         boolean isMapInMainHand = mapHoldingArm == mapEntityState.mainArm;
-        ItemStack otherHandMapStack = isMapInRightHand ? mapEntityState.leftHandItemStack : mapEntityState.rightHandItemStack;
+        ItemStack otherHandMapStack = readableMapHands.thirdpersonreadablemaps$getStack(
+                isMapInRightHand ? HumanoidArm.LEFT : HumanoidArm.RIGHT);
         boolean useCompactMap = !isMapInMainHand || !otherHandMapStack.isEmpty();
 
         readableMapTransform.pushPose();
