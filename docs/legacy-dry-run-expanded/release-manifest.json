@@ -130,7 +130,7 @@
     {
       "id": "1.21-1.21.1",
       "branch": "candidate/mc-1.21-1.21.1",
-      "source_commit": "934093022148518a551f1d4c46a99b0c1c85c8b4",
+      "source_commit": "8445cefc7af9ce3fe797f00f423f2000a61dfc72",
       "minecraft": [
         "1.21",
         "1.21.1"

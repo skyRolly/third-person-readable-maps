@@ -107,7 +107,7 @@
     },
     "1.21-1.21.1": {
       "source_commit": "5f5fdad012ab499b2f31e0f878d507c4d774d4b4",
-      "candidate_head": "934093022148518a551f1d4c46a99b0c1c85c8b4",
+      "candidate_head": "8445cefc7af9ce3fe797f00f423f2000a61dfc72",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "sha256": "d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745",
       "versions": [
@@ -126,7 +126,8 @@
       ],
       "per_version": {
         "1.21": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.79 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 10.79 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.1": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 12.08 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
