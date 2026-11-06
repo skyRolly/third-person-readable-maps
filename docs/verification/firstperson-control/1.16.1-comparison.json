@@ -1,0 +1,41 @@
+{
+  "version": "1.16.1",
+  "crop": [
+    370,
+    60,
+    910,
+    500
+  ],
+  "pixels": 237600,
+  "mean_absolute_channel_difference": 0.0,
+  "fraction_with_max_channel_difference_at_most_10": 1.0,
+  "maximum_channel_difference": 0,
+  "positions": {
+    "candidate": {
+      "start": [
+        5.5,
+        86.0,
+        -62.5
+      ],
+      "end": [
+        5.5,
+        86.0,
+        -62.5
+      ]
+    },
+    "no-mod": {
+      "start": [
+        5.5,
+        86.0,
+        -62.5
+      ],
+      "end": [
+        5.5,
+        86.0,
+        -62.5
+      ]
+    }
+  },
+  "frozen_day_time": 1000,
+  "raining": false
+}
