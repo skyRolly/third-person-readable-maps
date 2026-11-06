@@ -1,12 +1,14 @@
 # Local non-publishing 13-group candidate dry run — 2026-11-05
 
-**PASS for the complete local candidate aggregation; not a hosted workflow or production approval.** Coordinator code `ac282db9ea8dd3c8468e3776c37d7ee86dd40c81` generated the 13-group dynamic matrix from the [candidate-only plan and configuration](legacy-dry-run-expanded/), covering all 42 historical versions plus the six already maintained versions. Every planned branch HEAD matched its pinned commit via remote source verification.
+**PASS for the complete local candidate aggregation; not a hosted workflow or production approval.** Coordinator release tooling `ac282db9ea8dd3c8468e3776c37d7ee86dd40c81` generated the 13-group dynamic matrix from the [candidate-only plan and configuration](legacy-dry-run-expanded/), covering all 42 historical versions plus the six already maintained versions. Every planned branch HEAD matched its pinned commit via remote source verification.
+
+Latest source-head verification and aggregation rerun: 2026-11-06 UTC. The plan date is a non-publishing test fixture.
 
 All 13 actual JARs were inspected for filenames, metadata, namespace, bytecode, expected required Mixins and ZIP integrity; aggregation produced a candidate provenance manifest and SHA-256 checksums. `sha256sum --check SHA256SUMS` passed for all JARs and the manifest. An empty artifact directory was rejected, and a strict plan without per-version runtime reports was rejected. Candidate configuration requires candidate mode. No tag, Draft Release, public Release, or release-writing API was invoked.
 
 | Group | Planned source head | Build source / provenance | JAR SHA-256 |
 |---|---|---|---|
-| 1.14-1.14.4 | `90ed033cb197cafca4ace1b60de9abe23b3658d2` | local clean build `d35a7f1074992607b6149842e4100cd936ba1430`; pinned head adds evidence only | `839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5` |
+| 1.14-1.14.4 | `a66fb221a63e085e04d2a6496841b0e5a3ce48d0` | local clean build `d35a7f1074992607b6149842e4100cd936ba1430`; pinned head adds evidence only | `839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5` |
 | 1.15-1.16.5 | `e5697c634e3fea68245299aac7a72eff83f66c3d` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
 | 1.17-1.19.2 | `bef39ccc65662d311303b93cf8717b03b5aabeac` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6`; pinned head adds evidence only | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
 | 1.19.3 | `6405f8bbcf481bed760d7de73ca01d0f3e86e55c` | local clean build `c9ca3b5f05768017a197116919f22e2a967a8d01`; pinned head adds evidence only | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
