@@ -52,3 +52,16 @@ The Java 17 client moved horizontally 5.61 blocks, from `[5.5, 81, -62.5]` to
 and [after-walk](short-walk/1.19.1-after-walk.png) views; the [measurement](short-walk/1.19.1-movement.json),
 [saved player data](short-walk/1.19.1-ending-player.dat), and [log excerpt](short-walk/1.19.1-excerpt.txt)
 record the test.
+
+## 1.19
+
+The Java 17 client moved horizontally 9.49 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -53.005956388739705]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.19-standing-day.png),
+[walking frame 1](short-walk/1.19-walking-1.png), [walking frame 2](short-walk/1.19-walking-2.png),
+and [after-walk](short-walk/1.19-after-walk.png) views; the [measurement](short-walk/1.19-movement.json),
+[saved player data](short-walk/1.19-ending-player.dat), and [log excerpt](short-walk/1.19-excerpt.txt)
+record the test.
+
+The first [evidence checkpoint attempt](short-walk/1.19-checkpoint-attempt.txt)
+stopped when its heading check confused 1.19 with 1.19.1. The recorder was
+corrected and the same completed client result was recorded without a rerun.
