@@ -8,8 +8,8 @@ All 13 actual JARs were inspected for filenames, metadata, namespace, bytecode, 
 
 | Group | Planned source head | Build source / provenance | JAR SHA-256 |
 |---|---|---|---|
-| 1.14-1.14.4 | `4efda773683abb558d29614bf5227c3cf8022bf2` | local clean build `d35a7f1074992607b6149842e4100cd936ba1430`; pinned head adds evidence only | `839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5` |
-| 1.15-1.16.5 | `18f59f3f20faa89656e29ab836439f9f304fabcd` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
+| 1.14-1.14.4 | `041dee5884ed07755665ee84c3b823162c606bcc` | local clean build `d35a7f1074992607b6149842e4100cd936ba1430`; pinned head adds evidence only | `839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5` |
+| 1.15-1.16.5 | `46ee6facc536985b6ffe068c79fe1cf01bc7e38c` | local clean build `84dde45175c0ca154b44a1acd4efe30d741d5077`; pinned head adds evidence only | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
 | 1.17-1.19.2 | `211a34f0a6d06da286460d479ceb9afdc2a0fd7a` | local clean build `a12c56cc742ec0b0c3ab26619bddf110482b95d6`; pinned head adds evidence only | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
 | 1.19.3 | `6405f8bbcf481bed760d7de73ca01d0f3e86e55c` | local clean build `c9ca3b5f05768017a197116919f22e2a967a8d01`; pinned head adds evidence only | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
 | 1.19.4-1.20.4 | `4df429e9a32da098b9bebd52f70989aa445245b0` | local clean build `532cfb548bb29eb99fbcb57424592f07c8ca3606`; pinned head adds evidence only | `7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9` |
