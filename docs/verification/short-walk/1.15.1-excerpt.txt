@@ -1,0 +1,17 @@
+[10:45:44] [main/INFO]: Loading Minecraft 1.15.1 with Fabric Loader 0.20.1
+	- thirdpersonreadablemaps 0.0.2
+[10:46:56] [Server thread/INFO]: MapSmokeTest joined the game
+[10:47:02] [Server thread/INFO]: [MapSmokeTest: Successfully filled 326 blocks]
+[10:47:03] [main/INFO]: [CHAT] Successfully filled 326 blocks
+[10:47:07] [Server thread/INFO]: [MapSmokeTest: Successfully filled 638 blocks]
+[10:47:07] [main/INFO]: [CHAT] Successfully filled 638 blocks
+[10:47:10] [Server thread/INFO]: [MapSmokeTest: Teleported MapSmokeTest to 5.5, 81.0, -62.5]
+[10:47:10] [main/INFO]: [CHAT] Teleported MapSmokeTest to 5.5, 81.0, -62.5
+[10:47:14] [main/INFO]: [CHAT] Set the time to 1000
+[10:47:14] [Server thread/INFO]: [MapSmokeTest: Set the time to 1000]
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:47:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
