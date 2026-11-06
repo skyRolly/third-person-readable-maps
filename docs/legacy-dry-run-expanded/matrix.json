@@ -36,7 +36,7 @@
   },
   {
     "group": "1.20.5-1.20.6",
-    "commit": "30c9fdb7c5cb471a0653ba7b580caa878e29daec",
+    "commit": "b0f62ef1c24f70d492b61a2407be6b1be1c7214d",
     "branch": "candidate/mc-1.20.5-1.20.6",
     "build_jdk": "25.0.5+8",
     "multi_version": true
