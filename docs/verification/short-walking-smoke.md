@@ -24,3 +24,12 @@ visible in both views.
 The first attempt stopped before a completed walking result because the
 test environment ran out of disk space; the [error excerpt](short-walk/1.21.1-diskfull-excerpt.txt)
 is retained. Only the completed retry above is counted.
+
+## 1.21
+
+The Java 21 client moved horizontally 10.79 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -51.71080197829078]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.21-standing-day.png),
+[walking frame 1](short-walk/1.21-walking-1.png), [walking frame 2](short-walk/1.21-walking-2.png),
+and [after-walk](short-walk/1.21-after-walk.png) views; the [measurement](short-walk/1.21-movement.json),
+[saved player data](short-walk/1.21-ending-player.dat), and [log excerpt](short-walk/1.21-excerpt.txt)
+record the test.
