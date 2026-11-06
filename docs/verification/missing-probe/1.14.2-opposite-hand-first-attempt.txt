@@ -1,0 +1,4 @@
+[02:52:36] [main/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=1
+[02:52:36] [main/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=1
+1.14.2 screenshot /workspace/.minecraft-test-missing-probe-1.14.2/forced-missing-map.png player motif 1500 paper pixels 0
+AssertionError
