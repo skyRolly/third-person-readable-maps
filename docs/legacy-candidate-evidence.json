@@ -355,7 +355,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "6c374d1c11a8eb0a8e6aedad51c3a2924e39f692",
+      "candidate_head": "90ed033cb197cafca4ace1b60de9abe23b3658d2",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -368,7 +368,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
       "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local worlds on all five versions",
-      "graphical": "PARTIAL: ordinary revised-JAR smoke on 5/5; forced-null diagnostic observed on 2/5 versions; first-person comparison includes an inconclusive result; ordinary missing-data cases and full acceptance NOT RUN",
+      "graphical": "PARTIAL: ordinary revised-JAR smoke on 5/5; forced-null diagnostic observed on 3/5 versions; first-person comparison includes an inconclusive result; ordinary missing-data cases and full acceptance NOT RUN",
       "negative": "1.15 lacks the older Mixin target descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding for all five versions",
@@ -391,7 +391,8 @@
         },
         "1.14.2": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; missing-data null path and full acceptance NOT RUN"
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.2 map draws completed, one partially obscured empty face observed"
         },
         "1.14.3": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
