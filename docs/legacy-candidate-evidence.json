@@ -274,7 +274,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "73a9c44f9f99edc89491e486d967c3e34faff959",
+      "candidate_head": "3d2df2d4c90f682781bf8abdfba5d0f14b27ae84",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -291,7 +291,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and first-person smoke recorded; forced-null diagnostic observed on 7/9 versions; first-person comparisons include inconclusive results; ordinary missing-data cases and full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and first-person smoke recorded; forced-null diagnostic observed on 8/9 versions; first-person comparisons include inconclusive results; ordinary missing-data cases and full acceptance NOT RUN",
       "negative": "1.14.4 lacks the Mixin descriptor; 1.17 lacks required game members",
       "limitations": [
         "Full graphical acceptance remains outstanding for all nine versions",
@@ -330,7 +330,8 @@
           "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.16.3 map draws completed, one partially obscured empty face observed"
         },
         "1.16.4": {
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and first-person comparison INCONCLUSIVE; missing-data null path and full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and first-person comparison INCONCLUSIVE; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.16.4 map draws completed, one partially obscured empty face observed"
         },
         "1.16.5": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
