@@ -1,0 +1,18 @@
+# Short walking smoke: 1.17-1.19.2
+
+These installed-client checks use the unchanged candidate JAR built from
+`a12c56cc742ec0b0c3ab26619bddf110482b95d6`, with SHA-256 `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6`, Fabric Loader 0.20.1,
+and Linux Xorg/Mesa software rendering. A copied local world was placed on
+a cleared stone platform at `[5.5, 81, -62.5]`, then the player walked forward.
+The ending position was read from saved player data after a clean exit. Screen
+captures are local visual smoke evidence, not complete arm, lighting, multiplayer
+or independent visual acceptance.
+
+## 1.18
+
+The Java 17 client moved horizontally 7.77 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -54.732828936003656]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.18-standing-day.png),
+[walking frame 1](short-walk/1.18-walking-1.png), [walking frame 2](short-walk/1.18-walking-2.png),
+and [after-walk](short-walk/1.18-after-walk.png) views; the [measurement](short-walk/1.18-movement.json),
+[saved player data](short-walk/1.18-ending-player.dat), and [log excerpt](short-walk/1.18-excerpt.txt)
+record the test.
