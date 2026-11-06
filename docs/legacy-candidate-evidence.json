@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "aa319a0ea75dd62eb23aa2d44dda3b827de973b5",
+      "candidate_head": "f4fbda6b07bba1bd85c5bbe505dc33008248a59d",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -24,7 +24,8 @@
       ],
       "per_version": {
         "1.21.10": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.06 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.06 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
         },
         "1.21.9": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
