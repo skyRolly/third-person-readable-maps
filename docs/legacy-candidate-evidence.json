@@ -37,7 +37,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "e15fd43aba735760d37f61427a52e0a6305d1022",
+      "candidate_head": "f5d921ff6aa55cc9e772118e58a405bec5101827",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -62,7 +62,8 @@
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
         },
         "1.21.5": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.6": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
