@@ -212,7 +212,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
-      "candidate_head": "cd65e439bd7438a4cd7fb9aca256f352cb3c60eb",
+      "candidate_head": "fdc9677c616d91f172b273985c234ecb29966a56",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
       "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
@@ -282,8 +282,9 @@
         },
         "1.19.2": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN",
-          "forced_null_diagnostic": "PARTIAL: test-only helper forced eight null lookups and recorded eight completed draws in one local layout; ordinary missing-data scenarios NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.22 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "forced_null_diagnostic": "PARTIAL: test-only helper forced eight null lookups and recorded eight completed draws in one local layout; ordinary missing-data scenarios NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 11.22 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.3 and on Minecraft 1.17 with Java 8 before Mixin initialization"
