@@ -211,7 +211,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
-      "candidate_head": "211a34f0a6d06da286460d479ceb9afdc2a0fd7a",
+      "candidate_head": "41df55f9c9b819c2181f4a8258d236675915cdf8",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
       "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
@@ -238,7 +238,8 @@
       "per_version": {
         "1.17": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; walking, sneaking and night screenshots retained for visual review; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local layout moved 10.20 blocks; walking, sneaking and night screenshots retained for visual review; full acceptance NOT RUN"
         },
         "1.17.1": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
