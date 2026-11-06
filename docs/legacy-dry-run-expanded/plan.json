@@ -75,7 +75,7 @@
     },
     "1.19.4-1.20.4": {
       "source_branch": "candidate/mc-1.19.4-1.20.4",
-      "commit": "c7d7547aa63fc4d84604199c7192280aff2edf42",
+      "commit": "2770989b856d25e765a9e50a5c98cc0671c1fd38",
       "verified_changes": [
         "Preserve coordinated mod version 0.0.2 and the readable-map contract"
       ],
