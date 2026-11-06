@@ -375,7 +375,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d35a7f1074992607b6149842e4100cd936ba1430",
-      "candidate_head": "52784fa79c15ba84712f44d61aa0bea899af3664",
+      "candidate_head": "36e79c7586e016979f1c82996489c73c1afd6f29",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar",
       "sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
@@ -409,13 +409,15 @@
         },
         "1.14.1": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
-          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.1 map draws completed, one partially obscured empty face observed"
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.1 map draws completed, one partially obscured empty face observed",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.14.2": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
-          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.2 map draws completed, one partially obscured empty face observed"
+          "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 7.77 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.14.2 map draws completed, one partially obscured empty face observed",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 7.77 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.14.3": {
           "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",

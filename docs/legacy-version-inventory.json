@@ -2375,7 +2375,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
       "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 7.77 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2440,7 +2440,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
       "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
