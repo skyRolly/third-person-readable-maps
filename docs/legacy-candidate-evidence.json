@@ -211,7 +211,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "a12c56cc742ec0b0c3ab26619bddf110482b95d6",
-      "candidate_head": "b216d231e84d8e224f19a405a54b889c3de74b25",
+      "candidate_head": "211a34f0a6d06da286460d479ceb9afdc2a0fd7a",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar",
       "sha256": "aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6",
@@ -227,7 +227,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16 for 1.17–1.17.1 or Java 17 for 1.18–1.19.2, Linux software-rendered local worlds",
-      "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN",
       "negative": "1.19.3 lacks the old game quaternion and vector classes",
       "limitations": [
         "Full graphical acceptance outstanding for every version",
@@ -266,7 +266,7 @@
         },
         "1.19.2": {
           "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-          "graphical": "PARTIAL: main-hand, off-hand, and both-map terrain observed; complete hand/movement/multiplayer matrix NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; missing-data null path and full acceptance NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.3 and on Minecraft 1.17 with Java 8 before Mixin initialization"
