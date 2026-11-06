@@ -159,3 +159,81 @@ pinned dependencies, cache write permissions, expected packages, or advisory pol
 Per-commit artifacts remain useful inspection records, but a successful upload
 still does not prove inventory completeness, Graph indexing, or a clean scan.
 No raw PR snapshot was rewritten to claim a different source/ref.
+
+## Legacy candidate scan — 2026-11-05
+
+The [candidate OSV report](dependency-evidence/legacy-candidate-osv-2026-11-05.json)
+contains hash-verified Mojang runtime inventories for 1.21.4–1.21.10 and the
+retained Gradle snapshots from PRs #13 and #14. The snapshots report PR merge
+refs, not maintenance heads or proof of a GitHub Dependency Graph submission.
+The scan queried 112 distinct package/version pairs and retained full advisory
+records and stable group/package/advisory identities. It found **52** candidate
+matches for 1.21.4–1.21.8 and **59** for 1.21.9–1.21.10. All are marked new,
+unreviewed, and failing; none has been accepted or suppressed. Overlapping
+matches are counted once per group and may refer to the same advisory.
+
+This evidence covers candidate snapshots at their recorded SHAs, not the
+unmerged baseline maintenance branches. It does not replace the authoritative
+reviewed ledger, establish exploitability, audit native binary internals, or
+prove a successful scheduled audit. Triage every finding and regenerate the
+snapshots and ledger for the actual reviewed maintenance heads before adding
+those groups to the authoritative audit matrix or release configuration.
+
+The proposed Dependabot configuration also lists Gradle and Actions updates for
+the ten candidate `mc/*` branches. Those branch heads currently contain the
+1.21.11 source baseline, so their Dependabot entries should be activated only
+after the corresponding reviewed ports are integrated. This is version-update
+configuration, not a completed OSV audit or a security-risk disposition.
+
+Additional candidate PR-merge-ref scans are retained in
+[1.21.2–1.21.3 evidence](dependency-evidence/legacy-candidate-1212-osv-2026-11-05.json)
+and [1.19.4–1.21.1 evidence](dependency-evidence/legacy-candidate-more-osv-2026-11-05.json).
+They recorded 45, 28, 28 and 42 unreviewed group-scoped matches respectively
+for 1.21.2–1.21.3, 1.21–1.21.1, 1.20.5–1.20.6 and 1.19.4–1.20.4. All are
+failing pending individual review; overlapping package/advisory identities
+can occur across groups. Re-scan the eventual reviewed maintenance heads.
+
+The [older candidate scan](dependency-evidence/legacy-candidate-older-osv-2026-11-05.json)
+uses retained PR merge-ref Gradle snapshots and hash-verified runtime inventories
+for all members of PRs #20–#22. It records 53 matches for 1.17–1.19.2,
+27 for 1.15–1.16.5 and 24 for 1.19.3. Every group-scoped match is unreviewed
+and failing; none is accepted. The same advisory may occur in multiple groups.
+
+The [1.14 candidate scan](dependency-evidence/legacy-candidate-114-osv-2026-11-05.json)
+contains 27 unreviewed, failing group-scoped matches; none is accepted.
+
+The [unreviewed review index](legacy-security-triage-2026-11-05.md) groups the retained matches by candidate, severity and inventory scope without changing their failing status.
+
+## Proposed scheduled legacy-candidate audit
+
+The separate [candidate workflow](../.github/workflows/candidate-dependency-audit.yml)
+selects every group from the checked-in candidate evidence, checks out its
+`candidate/mc-*` branch, and rejects a moved head. It generates a read-only
+Gradle snapshot, validates the snapshot's actual ref and SHA and the source's
+exact Fabric version list, and scans the hash-verified Mojang runtime inventory
+for **every** declared game version. Unknown snapshot entries, source drift,
+missing data, malformed advisories and network/API errors make the job
+incomplete. The [unreviewed baseline](candidate-advisory-baseline.json) pins the retained
+scan reports by SHA-256 and validates every group, source, runtime scope,
+package and advisory fingerprint. Each baseline source must be an ancestor of
+the exact checked-out candidate head; an unrelated or force-pushed history fails. The audit detects new, changed and known
+matches, plus previously observed matches no longer returned by OSV. Every
+current match remains unreviewed and failing, and disappeared matches also
+fail until investigated. Missing inventory entries, modified reports and a
+baseline older than 90 days fail closed. This workflow does not write the
+reviewed ledger, accept risk, submit a Dependency Graph snapshot, or authorize
+a release. Reports are retained for 30 days.
+
+A local live execution used the [retained PR-merge-ref snapshot](dependency-evidence/candidate-audit-114-snapshot-2026-11-05.json)
+for candidate commit `4ed41c5ff3a0bbd2a4eece0afc9de6c5e98ef0a8` and all five
+1.14 runtime manifests. The [full report](dependency-evidence/candidate-audit-114-live-2026-11-05.json)
+contains 27 unreviewed failing matches and the audit exited 1 as intended.
+A [subsequent baseline comparison](dependency-evidence/candidate-audit-114-baseline-live-2026-11-05.json)
+identified all 27 as known and still failing, with no disappeared matches.
+The snapshot ref is preserved as `refs/pull/23/merge`; it is not relabeled as a
+maintenance branch. The workflow is proposed on this PR: a hosted scheduled run
+has **not** occurred. It starts only after coordination changes are integrated
+on the default branch. Update the evidence pin when a candidate head changes;
+retire a candidate entry only after its actual maintained head is covered by the
+authoritative reviewed audit and ledger. A deleted or moved candidate branch
+fails visibly rather than appearing clean.

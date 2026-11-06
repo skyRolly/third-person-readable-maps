@@ -64,7 +64,7 @@ class ReleaseValidationTests(unittest.TestCase):
                                 'java': f">={settings['java']}",
                                 'fabricloader': f">={settings['loader']}"}}
         mixin = {'required': True, 'compatibilityLevel': f"JAVA_{settings['java']}",
-                 'injectors': {'defaultRequire': 1}, 'client': ['ReadableMapLayerMixin'],
+                 'injectors': {'defaultRequire': 1}, 'client': settings['mixins'],
                  'package': 'tech.rolly.thirdpersonreadablemaps.mixin'}
         target = b'net/minecraft/class_123' if settings['namespace'] == 'intermediary' else b'net/minecraft/client/renderer/entity/layers/ItemInHandLayer'
         with ZipFile(path, 'w') as jar:
@@ -72,7 +72,8 @@ class ReleaseValidationTests(unittest.TestCase):
             jar.writestr('thirdpersonreadablemaps.mixins.json', json.dumps(mixin))
             jar.writestr('META-INF/MANIFEST.MF', f"Manifest-Version: 1.0\nFabric-Mapping-Namespace: {namespace or settings['namespace']}\nFabric-Minecraft-Version: {settings['target']}\n\n")
             jar.writestr('LICENSE', 'MIT')
-            jar.writestr(release.MIXIN_CLASS, b'\xca\xfe\xba\xbe\x00\x00' + struct.pack('>H', major) + target)
+            for mixin_name in settings['mixins']:
+                jar.writestr(release.MIXIN_DIR + mixin_name + '.class', b'\xca\xfe\xba\xbe\x00\x00' + struct.pack('>H', major) + target)
             if duplicate:
                 with self.assertWarns(UserWarning):
                     jar.writestr('fabric.mod.json', json.dumps(metadata))
@@ -124,6 +125,51 @@ class ReleaseValidationTests(unittest.TestCase):
                 path = self.jar(**kwargs)
                 with self.assertRaises(release.Invalid):
                     release.inspect_jar(path, '0.0.2', '1.21.11', spec)
+
+    def test_legacy_java_targets_are_bounded_by_mojang_runtime_and_pinned_build_jdk(self):
+        for version, java in [('1.14', 8), ('1.17', 16), ('1.20.1', 17), ('1.21.9', 21)]:
+            with self.subTest(version=version):
+                config = copy.deepcopy(self.config)
+                spec = config['groups']['1.21.11']
+                spec.update(target=version, minecraft=[version], java=java)
+                path = self.root / 'compatibility.json'
+                path.write_text(json.dumps(config), encoding='utf-8')
+                release.load_plan(self.path, candidate=True, config_path=path)
+                spec['java'] = 25
+                path.write_text(json.dumps(config), encoding='utf-8')
+                with self.assertRaises(release.Invalid):
+                    release.load_plan(self.path, candidate=True, config_path=path)
+                spec['java'] = java
+                spec['build_jdk'] = 'latest'
+                path.write_text(json.dumps(config), encoding='utf-8')
+                with self.assertRaises(release.Invalid):
+                    release.load_plan(self.path, candidate=True, config_path=path)
+        config = copy.deepcopy(self.config)
+        config['groups']['1.21.11'].update(target='1.12', minecraft=['1.12'])
+        path = self.root / 'compatibility.json'
+        path.write_text(json.dumps(config), encoding='utf-8')
+        with self.assertRaises(release.Invalid):
+            release.load_plan(self.path, candidate=True, config_path=path)
+
+    def test_all_configured_mixins_are_required_and_checked(self):
+        spec = self.config['groups']['1.21.11']
+        spec['mixins'] = ['ArmedEntityRenderStateMixin', 'ReadableMapLayerMixin']
+        jar = self.jar()
+        self.assertEqual(len(release.inspect_jar(jar, '0.0.2', '1.21.11', spec)), 64)
+        with ZipFile(jar) as source:
+            files = {item: source.read(item) for item in source.namelist()
+                     if not item.endswith('ArmedEntityRenderStateMixin.class')}
+        with ZipFile(jar, 'w') as target:
+            for name, value in files.items():
+                target.writestr(name, value)
+        with self.assertRaises(release.Invalid):
+            release.inspect_jar(jar, '0.0.2', '1.21.11', spec)
+
+    def test_build_matrix_selects_each_reviewed_jdk(self):
+        rows = release.matrix(self.config, self.plan)
+        self.assertTrue(all(row['build_jdk'] == self.config['groups'][row['group']]['build_jdk'] for row in rows))
+        workflow = (ROOT / '.github/workflows/release.yml').read_text()
+        self.assertIn('java-version: ${{ matrix.build_jdk }}', workflow)
 
     def test_duplicate_json_keys_rejected(self):
         self.path.write_text('{"schema":1,"schema":1}', encoding='utf-8')

@@ -162,3 +162,19 @@ assets and tag immediately before publication, but cannot eliminate this race.
 Restrict and monitor administrator, tag, release and environment permissions;
 reviewers must inspect the exact draft and reports immediately before approval.
 An existing changed draft is rejected rather than silently repaired.
+
+## Adding a reviewed legacy group
+
+`release/minecraft-runtime-requirements.json` records Mojang-declared runtimes
+and metadata provenance. Update that reviewed inventory when adding a game
+version; the plan rejects unknown versions and a mod Java target above a
+member's game runtime. Each group declares a pinned `build_jdk` and expected
+Mixin classes, and the release matrix selects that build JDK. Artifact checks
+still enforce the declared runtime bytecode, required Mixins, namespace,
+metadata, source, evidence and checksums. A build JDK can be newer than the
+runtime target.
+
+A candidate branch and static checks alone do not add release support. Add a
+reviewed group to the compatibility configuration, plan, Dependabot and OSV
+ledger only with its per-version runtime evidence and reviewed dependency
+findings. Existing unresolved findings and all authorization gates remain.

@@ -23,6 +23,8 @@ release gate. Install only the JAR matching your game version in the client
 instance's `mods` directory; map contents require the client to have received
 the map data. Fabric API is not required; the server does not need the mod.
 
+The [legacy inventory](docs/legacy-version-inventory.md) covers 1.14–1.21.10. Several [draft candidate ports](docs/legacy-group-decisions.md) are under review; they are not yet integrated support or release-ready artifacts. The [review handoff](docs/legacy-review-handoff.md) lists candidate heads, artifacts, evidence and remaining gates.
+
 ## Build or contribute
 
 `main` is the coordination branch: it owns documentation, the compatibility
@@ -59,8 +61,10 @@ independent approvals, runtime testing and dry runs. No release is automatic.
 
 Dependabot version updates cover Gradle and Actions on all three maintenance
 branches and Actions on `main`. Default-branch Dependabot alerts do not give
-equivalent security coverage for non-default branches. The [monitoring record](docs/dependency-monitoring.md) explains actual coverage
-and the [advisory ledger](docs/security-advisories.md) records unresolved findings.
+equivalent security coverage for non-default branches. A separate proposed
+candidate audit fails on every unreviewed match. The [monitoring record](docs/dependency-monitoring.md)
+explains actual coverage and the [advisory ledger](docs/security-advisories.md)
+records unresolved findings.
 The [release-readiness matrix](docs/release-readiness-2026-11-04.md) and
 [administrative controls](docs/administrative-controls.md) identify outstanding
 protection, approval, credential and automatic-submission requirements.

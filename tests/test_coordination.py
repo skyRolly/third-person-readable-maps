@@ -56,6 +56,22 @@ class CoordinationTests(unittest.TestCase):
             self.assertEqual(subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--help'],
                                             capture_output=True).returncode, 0)
 
+    def test_alternative_configuration_is_only_available_to_candidate_mode(self):
+        with tempfile.TemporaryDirectory() as temp:
+            config = Path(temp) / 'candidate-config.json'
+            plan = Path(temp) / 'candidate-plan.json'
+            config.write_text((ROOT / 'release/compatibility.json').read_text(), encoding='utf-8')
+            candidate = release.read_json(ROOT / 'release/plan.example.json')
+            for i, entry in enumerate(candidate['groups'].values(), 1):
+                entry['commit'] = str(i) * 40
+            plan.write_text(json.dumps(candidate), encoding='utf-8')
+            command = [sys.executable, str(ROOT / 'scripts/release.py'), 'matrix', '--plan', str(plan),
+                       '--candidate-config', str(config)]
+            strict = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(strict.returncode, 0)
+            self.assertIn('--candidate-config requires --candidate', strict.stderr)
+            self.assertEqual(subprocess.run(command + ['--candidate'], capture_output=True).returncode, 0)
+
     def test_dependency_updates_cover_each_maintained_branch(self):
         config = (ROOT / '.github/dependabot.yml').read_text(encoding='utf-8')
         blocks = re.split(r'(?m)^  - package-ecosystem: ', config)[1:]
@@ -72,8 +88,31 @@ class CoordinationTests(unittest.TestCase):
             for ecosystem in ('gradle', 'github-actions'):
                 expected.add((ecosystem, spec['branch']))
             self.assertIn(spec['branch'], (ROOT / '.github/workflows/dependency-audit.yml').read_text())
+        candidates = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']
+        for name in candidates:
+            for ecosystem in ('gradle', 'github-actions'):
+                expected.add((ecosystem, 'mc/' + name))
         self.assertEqual(entries, expected)
         self.assertEqual(len(blocks), len(entries))
+
+    def test_legacy_inventory_matches_candidate_runtime_evidence(self):
+        groups = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']
+        inventory = release.read_json(ROOT / 'docs/legacy-version-inventory.json')['versions']
+        by_version = {}
+        for group in groups.values():
+            for version in group['versions']:
+                self.assertNotIn(version, by_version)
+                by_version[version] = group
+        self.assertEqual({row['minecraft'] for row in inventory}, set(by_version))
+        for row in inventory:
+            group = by_version[row['minecraft']]
+            per_version = group.get('per_version', {}).get(row['minecraft'], {})
+            with self.subTest(version=row['minecraft']):
+                for field in ('client_startup', 'graphical'):
+                    self.assertEqual(row[field], per_version.get(field, group[field]))
+                if row['client_startup'].startswith('PASS'):
+                    self.assertTrue(row['fabric_loader_runtime_verification'].startswith('PARTIAL:'))
+                    self.assertIn('full runtime acceptance NOT RUN', row['fabric_loader_runtime_verification'])
 
     def test_audit_refuses_snapshot_for_another_branch_or_commit(self):
         with tempfile.TemporaryDirectory() as temp:
