@@ -274,7 +274,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "5f67f52cfab5631763d91ac05b0b374dbae4d20c",
+      "candidate_head": "f1d0a814b7f98f2040d11ac2b8a26bc7b9250c44",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -302,9 +302,10 @@
       "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.17 during resolution; its entry class failed to start under Java 7 before mod metadata could be checked",
       "per_version": {
         "1.15": {
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; walking, sneaking and night screenshots retained for visual review; full acceptance NOT RUN",
           "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.15 map draws completed, one partially obscured empty face observed",
-          "withheld_update_diagnostic": "PASS: test-only map-update withholding; actual 1.15 lookup returned null and map draw completed in one local layout"
+          "withheld_update_diagnostic": "PASS: test-only map-update withholding; actual 1.15 lookup returned null and map draw completed in one local layout",
+          "movement_diagnostic": "PARTIAL: one local layout moved 10.20 blocks; walking, sneaking and night screenshots retained for visual review; full acceptance NOT RUN"
         },
         "1.15.1": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
