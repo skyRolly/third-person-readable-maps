@@ -284,7 +284,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "84dde45175c0ca154b44a1acd4efe30d741d5077",
-      "candidate_head": "a908ffbcc129e94f4e526e40e6898e5db7631711",
+      "candidate_head": "60280e9e83f445752d99d5d8d0e2f49ffe7ba3a9",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar",
       "sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
@@ -328,13 +328,15 @@
           "movement_diagnostic": "PARTIAL: one local walking trial moved 7.34 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.16": {
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
-          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.16 map draws completed, one partially obscured empty face observed"
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.90 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
+          "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.16 map draws completed, one partially obscured empty face observed",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 6.90 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
         },
         "1.16.1": {
-          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
+          "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
           "missing_data_diagnostic": "PASS: test-only lookup redirect returned null; eight 1.16.1 map draws completed, one partially obscured empty face observed",
-          "controlled_first_person": "PARTIAL: initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; not complete acceptance"
+          "controlled_first_person": "PARTIAL: initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; not complete acceptance",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 5.39 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
         },
         "1.16.2": {
           "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN",
