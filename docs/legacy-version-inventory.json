@@ -1179,7 +1179,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.47 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {

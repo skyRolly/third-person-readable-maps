@@ -370,7 +370,7 @@
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "c9ca3b5f05768017a197116919f22e2a967a8d01",
-      "candidate_head": "6405f8bbcf481bed760d7de73ca01d0f3e86e55c",
+      "candidate_head": "615b199515159b0510f7dd4b0437c503ccd79fcf",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-0.0.2-mc1.19.3.jar",
       "sha256": "f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b",
@@ -379,7 +379,7 @@
       ],
       "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.47 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
       "negative": "1.19.2 lacks a required game class; 1.19.4 lacks the Mixin descriptor",
       "limitations": [
         "Full graphical acceptance remains outstanding",
@@ -387,7 +387,8 @@
         "Remote-player multiplayer NOT RUN: a local LAN observer could not authenticate because Minecraft services were unavailable",
         "Branch protection, reviewed OSV ledger and central release registration outstanding"
       ],
-      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.4 and on Minecraft 1.19.3 with Java 16 before Mixin initialization"
+      "negative_launch": "Fabric 0.20.1 rejected the candidate on Minecraft 1.19.4 and on Minecraft 1.19.3 with Java 16 before Mixin initialization",
+      "movement_diagnostic": "PARTIAL: one local walking trial moved 6.47 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
     },
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
