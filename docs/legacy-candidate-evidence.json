@@ -38,7 +38,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "599a4cf4076bf18508fa2bd681a6957b7ce65aef",
+      "candidate_head": "4c2adec0ea87d79b7a25c90cc1f71c16c8165186",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -76,7 +76,8 @@
           "movement_diagnostic": "PARTIAL: one local walking trial moved 11.65 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
         },
         "1.21.8": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 8.85 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 8.85 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.9 and Java 17 on 1.21.4 before Mixin initialization"
