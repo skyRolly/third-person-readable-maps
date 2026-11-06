@@ -70,3 +70,17 @@ The Java 8 client moved horizontally 4.96 blocks, from `[5.5, 81, -62.5]` to
 and [after-walk](short-walk/1.16.5-after-walk.png) views; the [measurement](short-walk/1.16.5-movement.json),
 [saved player data](short-walk/1.16.5-ending-player.dat), and [log excerpt](short-walk/1.16.5-excerpt.txt)
 record the test.
+
+## 1.16.4
+
+The Java 8 client moved horizontally 10.14 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -52.35837918351525]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.16.4-standing-day.png),
+[walking frame 1](short-walk/1.16.4-walking-1.png), [walking frame 2](short-walk/1.16.4-walking-2.png),
+and [after-walk](short-walk/1.16.4-after-walk.png) views; the [measurement](short-walk/1.16.4-movement.json),
+[saved player data](short-walk/1.16.4-ending-player.dat), and [log excerpt](short-walk/1.16.4-excerpt.txt)
+record the test.
+
+The [first 1.16.4 attempt](short-walk/1.16.4-no-motion-attempt.png) ended at
+the start position, and its two walking captures were identical. The harness
+[stopped](short-walk/1.16.4-no-motion-excerpt.txt); [player data](short-walk/1.16.4-no-motion-player.dat)
+retains the zero-motion result. The completed check above is the retry.
