@@ -5,7 +5,7 @@ All entries below are **draft candidates**, not integrated support or release ac
 | Group and PR | Explicit versions | Runtime Java | Candidate head | Versions with installed-world map smoke |
 |---|---|---:|---|---|
 | [1.14-1.14.4](https://github.com/skyRolly/third-person-readable-maps/pull/23) (#23) | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | 8 | `8db35d3d13401008a5d60823020dd0d889984782` | all |
-| [1.15-1.16.5](https://github.com/skyRolly/third-person-readable-maps/pull/21) (#21) | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | 8 | `63cae9fa289a5fba544e313c96002f08f5b70fdb` | all |
+| [1.15-1.16.5](https://github.com/skyRolly/third-person-readable-maps/pull/21) (#21) | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | 8 | `92b7c9e2cacf84acdc1d8aa96e8a0f5c5e1938ca` | all |
 | [1.17-1.19.2](https://github.com/skyRolly/third-person-readable-maps/pull/20) (#20) | 1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1, 1.19.2 | 16 (1.17–1.17.1); 17 (1.18+) | `e999e1a24e55a95582689cf9b430cffaffa63c9b` | all |
 | [1.19.3](https://github.com/skyRolly/third-person-readable-maps/pull/22) (#22) | 1.19.3 | 17 | `6405f8bbcf481bed760d7de73ca01d0f3e86e55c` | all |
 | [1.19.4-1.20.4](https://github.com/skyRolly/third-person-readable-maps/pull/19) (#19) | 1.19.4, 1.20, 1.20.1, 1.20.2, 1.20.3, 1.20.4 | 17 | `4df429e9a32da098b9bebd52f70989aa445245b0` | all |
