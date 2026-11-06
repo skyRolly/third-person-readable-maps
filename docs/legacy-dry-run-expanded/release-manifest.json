@@ -15,7 +15,7 @@
     {
       "id": "1.14-1.14.4",
       "branch": "candidate/mc-1.14-1.14.4",
-      "source_commit": "d6c8200734c9a9d98077921b8dc3eb68213cab94",
+      "source_commit": "52784fa79c15ba84712f44d61aa0bea899af3664",
       "minecraft": [
         "1.14",
         "1.14.1",
@@ -34,7 +34,7 @@
     {
       "id": "1.15-1.16.5",
       "branch": "candidate/mc-1.15-1.16.5",
-      "source_commit": "f1d0a814b7f98f2040d11ac2b8a26bc7b9250c44",
+      "source_commit": "9c796e39ed75cc3dc6b53d88abfa46434ea437b8",
       "minecraft": [
         "1.15",
         "1.15.1",

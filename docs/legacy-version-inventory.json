@@ -2186,7 +2186,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
       "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; walking, sneaking and night screenshots retained for visual review; full acceptance NOT RUN",
+      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -2505,7 +2505,7 @@
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
       "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0022/255 and 99.9933% within 10 levels; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks; map terrain visible in two walking frames, then obscured at a wall; sneaking and night INCONCLUSIVE in that position; full acceptance NOT RUN",
+      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0022/255 and 99.9933% within 10 levels; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     }
   ]
