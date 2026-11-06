@@ -16,3 +16,12 @@ The Java 21 client moved horizontally 10.36 blocks, from `[5.5, 81, -62.5]` to
 and [after-walk](short-walk/1.21.3-after-walk.png) views; the [measurement](short-walk/1.21.3-movement.json),
 [saved player data](short-walk/1.21.3-ending-player.dat), and [log excerpt](short-walk/1.21.3-excerpt.txt)
 record the test.
+
+## 1.21.2
+
+The Java 21 client moved horizontally 10.79 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -51.71080197829078]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.21.2-standing-day.png),
+[walking frame 1](short-walk/1.21.2-walking-1.png), [walking frame 2](short-walk/1.21.2-walking-2.png),
+and [after-walk](short-walk/1.21.2-after-walk.png) views; the [measurement](short-walk/1.21.2-movement.json),
+[saved player data](short-walk/1.21.2-ending-player.dat), and [log excerpt](short-walk/1.21.2-excerpt.txt)
+record the test.
