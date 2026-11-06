@@ -23,3 +23,16 @@ is retained. Only the completed retry above is counted.
 The first walking view contains large green foreground geometry above the
 player; its cause was not established by this smoke check. The map itself is
 visible in both views.
+
+## 1.20.5
+
+The Java 21 client moved horizontally 9.71 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -52.790097320331554]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.20.5-standing-day.png),
+[walking frame 1](short-walk/1.20.5-walking-1.png), [walking frame 2](short-walk/1.20.5-walking-2.png),
+and [after-walk](short-walk/1.20.5-after-walk.png) views; the [measurement](short-walk/1.20.5-movement.json),
+[saved player data](short-walk/1.20.5-ending-player.dat), and [log excerpt](short-walk/1.20.5-excerpt.txt)
+record the test.
+
+The first attempt stopped before a completed walking result because the
+test environment ran out of disk space; the [error excerpt](short-walk/1.20.5-diskfull-excerpt.txt)
+is retained. Only the completed retry above is counted.
