@@ -45,7 +45,7 @@ An **unverified** row is not a support claim. Candidate grouping remains provisi
 | 1.15 | 8 | listed / 1.15+build.2 | Mojang | 1.15–1.16.5* | PASS* | World PASS; graphics PARTIAL* |
 | 1.14.4 | 8 | listed / 1.14.4+build.18 | Mojang | 1.14–1.14.4* | PASS* | Revised JAR ordinary smoke NOT RUN* |
 | 1.14.3 | 8 | listed / 1.14.3+build.13 | Yarn | 1.14–1.14.4* | PASS* | Revised JAR ordinary smoke NOT RUN* |
-| 1.14.2 | 8 | listed / 1.14.2+build.7 | Yarn | 1.14–1.14.4* | PASS* | Revised JAR ordinary smoke NOT RUN* |
+| 1.14.2 | 8 | listed / 1.14.2+build.7 | Yarn | 1.14–1.14.4* | PASS* | World PASS; graphics PARTIAL* |
 | 1.14.1 | 8 | listed / 1.14.1+build.10 | Yarn | 1.14–1.14.4* | PASS* | World PASS; graphics PARTIAL* |
 | 1.14 | 8 | listed / 1.14+build.21 | Yarn | 1.14–1.14.4* | PASS* | World PASS; graphics PARTIAL* |
 
