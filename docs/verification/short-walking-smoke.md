@@ -50,3 +50,12 @@ The Java 21 client moved horizontally 11.65 blocks, from `[5.5, 81, -62.5]` to
 and [after-walk](short-walk/1.21.7-after-walk.png) views; the [measurement](short-walk/1.21.7-movement.json),
 [saved player data](short-walk/1.21.7-ending-player.dat), and [log excerpt](short-walk/1.21.7-excerpt.txt)
 record the test.
+
+## 1.21.8
+
+The Java 21 client moved horizontally 8.85 blocks, from `[5.5, 81, -62.5]` to
+`[5.5, 81.0, -53.65353359396411]`. The walking frames are retained for visual review. See the [standing](short-walk/1.21.8-standing-day.png),
+[walking frame 1](short-walk/1.21.8-walking-1.png), [walking frame 2](short-walk/1.21.8-walking-2.png),
+and [after-walk](short-walk/1.21.8-after-walk.png) views; the [measurement](short-walk/1.21.8-movement.json),
+[saved player data](short-walk/1.21.8-ending-player.dat), and [log excerpt](short-walk/1.21.8-excerpt.txt)
+record the test.
