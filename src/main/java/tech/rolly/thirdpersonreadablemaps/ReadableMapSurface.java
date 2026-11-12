@@ -26,10 +26,10 @@ public final class ReadableMapSurface {
                             int mapPackedLight, boolean useCompactMap, boolean useLeftMapLayout) {
         Minecraft mapClientInstance = Minecraft.getInstance();
         if (mapClientInstance.level == null) return;
-        // These game versions resolve a missing numeric map tag to map zero.
-        // Preserve explicit zero, but do not display it for an untagged item.
+        // These game versions resolve missing tags to zero and coerce malformed
+        // numeric values into unrelated integer IDs.
         CompoundTag mapTag = mapItemStack.getTag();
-        MapItemSavedData readableMapData = mapTag != null && mapTag.contains("map", 99)
+        MapItemSavedData readableMapData = hasMapId(mapTag)
                 ? MapItem.getSavedData(mapItemStack, mapClientInstance.level) : null;
 
         if (useCompactMap) {
@@ -54,6 +54,12 @@ public final class ReadableMapSurface {
             mapClientInstance.gameRenderer.getMapRenderer().render(
                     mapTransform, mapQueue, readableMapData, false, mapPackedLight);
         }
+    }
+
+    private static boolean hasMapId(CompoundTag tag) {
+        if (tag == null || !tag.contains("map", 99)) return false;
+        double id = tag.getDouble("map");
+        return Double.isFinite(id) && id >= Integer.MIN_VALUE && id <= Integer.MAX_VALUE && id == Math.rint(id);
     }
 
     /** Apply the same quaternion to the pose and normal matrices. */
