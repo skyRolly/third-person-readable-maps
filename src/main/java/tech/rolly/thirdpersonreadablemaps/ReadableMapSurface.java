@@ -6,6 +6,7 @@ import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.nbt.CompoundTag;
 import com.mojang.math.Quaternion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -25,8 +26,10 @@ public final class ReadableMapSurface {
                             int mapPackedLight, boolean useCompactMap, boolean useLeftMapLayout) {
         Minecraft mapClientInstance = Minecraft.getInstance();
         if (mapClientInstance.level == null) return;
-        Integer readableMapId = MapItem.getMapId(mapItemStack);
-        MapItemSavedData readableMapData = MapItem.getSavedData(mapItemStack, mapClientInstance.level);
+        CompoundTag mapTag = mapItemStack.getTag();
+        Integer readableMapId = hasMapId(mapTag) ? MapItem.getMapId(mapItemStack) : null;
+        MapItemSavedData readableMapData = readableMapId != null
+                ? MapItem.getSavedData(mapItemStack, mapClientInstance.level) : null;
 
         if (useCompactMap) {
             rotate(mapTransform, Vector3f.YP.rotationDegrees(160f));
@@ -50,6 +53,12 @@ public final class ReadableMapSurface {
             mapClientInstance.gameRenderer.getMapRenderer().render(
                     mapTransform, mapQueue, readableMapId, readableMapData, false, mapPackedLight);
         }
+    }
+
+    private static boolean hasMapId(CompoundTag tag) {
+        if (tag == null || !tag.contains("map", 99)) return false;
+        double id = tag.getDouble("map");
+        return Double.isFinite(id) && id >= Integer.MIN_VALUE && id <= Integer.MAX_VALUE && id == Math.rint(id);
     }
 
     /** Apply the same quaternion to the pose and normal matrices. */
