@@ -22,10 +22,10 @@ public final class ReadableMapSurface {
     public static void draw(ItemStack stack, boolean compact, boolean leftLayout) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.world == null) return;
-        // The historical getter falls back to map zero when the numeric tag is
-        // absent. An explicit zero is valid, but a missing identity is not.
+        // The historical getter falls back to map zero for a missing tag and
+        // coerces malformed numeric values into unrelated integer IDs.
         CompoundTag tag = stack.getTag();
-        MapState data = tag != null && tag.contains("map", 99)
+        MapState data = hasMapId(tag)
                 ? FilledMapItem.getMapState(stack, client.world) : null;
         if (compact) {
             GlStateManager.rotatef(160f, 0f, 1f, 0f);
@@ -71,6 +71,12 @@ public final class ReadableMapSurface {
                 else GlStateManager.disableLighting();
             }
         }
+    }
+
+    private static boolean hasMapId(CompoundTag tag) {
+        if (tag == null || !tag.contains("map", 99)) return false;
+        double id = tag.getDouble("map");
+        return Double.isFinite(id) && id >= Integer.MIN_VALUE && id <= Integer.MAX_VALUE && id == Math.rint(id);
     }
 
     private static void vertex(BufferBuilder buffer, double x, double y, double u, double v) {
