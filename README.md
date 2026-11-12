@@ -4,11 +4,14 @@
 
 A client-side Fabric mod that renders filled map contents on maps held in third-person view. Maps follow the holding arm, with layouts for the main hand, off hand, and occupied opposite hand, including left-handed players.
 
+Earlier `0.0.2` verification records apply only to those artifacts; the `1.0.0`
+JAR needs its own source-bound and installed-client validation.
+
 ## Requirements and installation
 
 Build from source, or download and extract an artifact from a successful
 [branch CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml?query=branch%3Amc%2F26.3). CI artifacts are development builds;
-mod version `0.0.2` has not yet been publicly released.
+mod version `1.0.0` has not yet been publicly released.
 
 - Minecraft **26.3** and Fabric Loader **0.20.1 or newer**.
 - Java **25 or newer** to play. Fabric API is not required.
@@ -43,7 +46,7 @@ Build-Windows.bat
 ```
 
 In PowerShell, prefix Windows commands with `.\`. The installable output is
-`build/libs/third-person-readable-maps-<version>-mc26.3.jar` (currently `0.0.2`).
+`build/libs/third-person-readable-maps-<version>-mc26.3.jar` (currently `1.0.0`).
 Generated build files stay under `build/`.
 
 ## Validation and contributions
@@ -82,7 +85,7 @@ build do not safely patch an installed game's libraries.
 
 ## Compatibility and release status
 
-`mc/26.3` is an established maintenance branch. Version `0.0.2` remains unreleased.
+`mc/26.3` is an established maintenance branch. Version `1.0.0` remains unreleased.
 A coordinated release uses one `X.X.X` tag and three game-specific JARs, with
 reviewed source revisions, runtime evidence, provenance, checksums, and independent
 approvals. See the [compatibility record](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/compatibility.md)
