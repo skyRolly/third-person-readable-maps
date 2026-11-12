@@ -11,8 +11,11 @@ or independent visual acceptance.
 ## 1.21.10
 
 The Java 21 client moved horizontally 9.06 blocks, from `[5.5, 81, -62.5]` to
-`[5.5, 81.0, -53.437674525556]`. The walking frames are retained for visual review. See the [standing](short-walk/1.21.10-standing-day.png),
+`[5.5, 81.0, -53.437674525556]`. Map terrain is visible in both walking frames. See the [standing](short-walk/1.21.10-standing-day.png),
 [walking frame 1](short-walk/1.21.10-walking-1.png), [walking frame 2](short-walk/1.21.10-walking-2.png),
 and [after-walk](short-walk/1.21.10-after-walk.png) views; the [measurement](short-walk/1.21.10-movement.json),
 [saved player data](short-walk/1.21.10-ending-player.dat), and [log excerpt](short-walk/1.21.10-excerpt.txt)
 record the test.
+
+Several dark green shapes appear above the player in the first walking view;
+their cause was not established by this smoke check.
