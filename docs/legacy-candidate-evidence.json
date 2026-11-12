@@ -4,7 +4,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "ee07f9599f3868909c1d198802783422f6d83e72",
-      "candidate_head": "f4fbda6b07bba1bd85c5bbe505dc33008248a59d",
+      "candidate_head": "acd47c20c0e3a494d7d65ef8b7184258b60b34e2",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar",
       "sha256": "03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac",
@@ -24,8 +24,8 @@
       ],
       "per_version": {
         "1.21.10": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.06 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
-          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.06 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.06 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.06 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.9": {
           "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
@@ -38,7 +38,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "4b2e363c495640fa5ca305620c51c709a434ee2c",
-      "candidate_head": "4c2adec0ea87d79b7a25c90cc1f71c16c8165186",
+      "candidate_head": "b21bb047003049cb10a0480df791451983b7162b",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar",
       "sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
@@ -68,16 +68,16 @@
           "movement_diagnostic": "PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.6": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.93 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
-          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.93 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.7": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.65 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
-          "movement_diagnostic": "PARTIAL: one local walking trial moved 11.65 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.65 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 11.65 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         },
         "1.21.8": {
-          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 8.85 blocks; two moving frames retained for visual review; full acceptance NOT RUN",
-          "movement_diagnostic": "PARTIAL: one local walking trial moved 8.85 blocks; two moving frames retained for visual review; full acceptance NOT RUN"
+          "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 8.85 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+          "movement_diagnostic": "PARTIAL: one local walking trial moved 8.85 blocks; map terrain visible in two walking frames; full acceptance NOT RUN"
         }
       },
       "negative_launch": "Fabric 0.20.1 rejected Minecraft 1.21.9 and Java 17 on 1.21.4 before Mixin initialization"

@@ -2,6 +2,14 @@
 
 All entries below are **draft candidates**, not integrated support or release acceptance. The [version inventory](legacy-version-inventory.md) has one row per historical stable version; [candidate evidence](legacy-candidate-evidence.json) records JAR names, digests, source commits, static checks, runtime results and limitations. Every candidate currently passes its per-version static linkage checks.
 
+All 42 historical versions also have installed local-world main/off/both map
+smoke and one local walking trial. Portions of map terrain are
+visible in at least two walking frames per version; these are partial views,
+not full pose, lighting, multiplayer, hardware-GPU or independent human
+acceptance. Several frames contain unexplained foreground shapes. A
+[1.21.4 candidate and no-mod comparison](https://github.com/skyRolly/third-person-readable-maps/blob/b21bb047003049cb10a0480df791451983b7162b/docs/verification/foreground-1214-control.md)
+did not reproduce its large shape, so its cause remains unresolved.
+
 | Group and PR | Explicit versions | Runtime Java | Candidate head | Versions with installed-world map smoke |
 |---|---|---:|---|---|
 | [1.14-1.14.4](https://github.com/skyRolly/third-person-readable-maps/pull/23) (#23) | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | 8 | `8db35d3d13401008a5d60823020dd0d889984782` | all |
@@ -12,8 +20,8 @@ All entries below are **draft candidates**, not integrated support or release ac
 | [1.20.5-1.20.6](https://github.com/skyRolly/third-person-readable-maps/pull/18) (#18) | 1.20.5, 1.20.6 | 21 | `b0f62ef1c24f70d492b61a2407be6b1be1c7214d` | all |
 | [1.21-1.21.1](https://github.com/skyRolly/third-person-readable-maps/pull/17) (#17) | 1.21, 1.21.1 | 21 | `8445cefc7af9ce3fe797f00f423f2000a61dfc72` | all |
 | [1.21.2-1.21.3](https://github.com/skyRolly/third-person-readable-maps/pull/16) (#16) | 1.21.2, 1.21.3 | 21 | `a36ea18e3e4e0d748b0dc00e6fcb3f701b8c5291` | all |
-| [1.21.4-1.21.8](https://github.com/skyRolly/third-person-readable-maps/pull/14) (#14) | 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8 | 21 | `4c2adec0ea87d79b7a25c90cc1f71c16c8165186` | all |
-| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `f4fbda6b07bba1bd85c5bbe505dc33008248a59d` | all |
+| [1.21.4-1.21.8](https://github.com/skyRolly/third-person-readable-maps/pull/14) (#14) | 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8 | 21 | `b21bb047003049cb10a0480df791451983b7162b` | all |
+| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `acd47c20c0e3a494d7d65ef8b7184258b60b34e2` | all |
 
 | Group | Candidate JAR | SHA-256 |
 |---|---|---|
