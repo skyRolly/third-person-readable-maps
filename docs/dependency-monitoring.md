@@ -219,6 +219,15 @@ The [unreviewed review index](legacy-security-triage-2026-11-05.md) groups the r
 
 ### Candidate-to-maintenance transition
 
+The separate `scripts/audit_maintenance_proposal.py` can also audit a pinned,
+unmerged 1.0.0 proposal for an existing maintenance group. It verifies the
+proposal branch, source SHA, Minecraft metadata and coordinated version, and
+compares fresh Gradle/runtime inventories with the existing ledger. Its report
+is explicitly labeled `maintenance-proposal`: every current match and every
+disappeared baseline match remains unreviewed and failing, even if an older
+maintenance record had an accepted disposition. It does not replace the
+authoritative scheduled audit or activate release admission.
+
 The candidate evidence remains the historical index even after a port is
 integrated. Its optional `monitoring` field defaults to `{"state":"candidate"}`:
 the scheduled audit checks the exact `candidate_head` on `candidate/mc-<group>`.

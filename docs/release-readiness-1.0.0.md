@@ -14,7 +14,7 @@ and integrated; an open PR is not an integrated branch.
 | Static API verification | PENDING REVIEW | Current 1.0.0 JARs passed instruction-aware checks on all 48 versions and controlled fixtures; the [review matrix](review-resolution-1.0.0.md) records important verifier limits. |
 | Proposed-head Linux CI | PASS | All 13 product PR heads passed `Build (ubuntu-latest)` on 2026-11-12. Repeat for changed and merged heads. |
 | Proposed-head Windows CI | PASS | All 13 product PR heads passed `Build (windows-latest)` on 2026-11-12. Repeat for changed and merged heads. |
-| Coordination CI | PENDING REVIEW | The proposed coordinator must pass tests and its live integrated-verifier prerequisite. The latter intentionally requires the three maintenance PRs to be integrated first. |
+| Coordination CI | PENDING REVIEW | Local tests pass. The live integrated-verifier and coordinated-version prerequisites intentionally require the three maintenance PRs to be integrated first; hosted coordination CI therefore remains failing until then. |
 | Installed-client startup | BLOCKED | The [per-version inventory](legacy-version-inventory.md) distinguishes fresh 1.0.0 local-world observations from untested versions; old artifact runs are historical. |
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
@@ -31,7 +31,7 @@ and integrated; an open PR is not an integrated branch.
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
 | Provenance and checksums | PENDING REVIEW | Candidate aggregation and checksums must be reviewed and repeated against final integrated, approved heads. |
-| Non-publishing rehearsal | NOT RUN | A fresh 13-group 1.0.0 aggregation is required; the older 0.0.2 rehearsal is historical. |
+| Non-publishing rehearsal | PENDING REVIEW | The [local 13-group rehearsal](legacy-dry-run-1.0.0.md) passed candidate aggregation and negative controls. A hosted rehearsal against approved integrated heads remains NOT RUN. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |

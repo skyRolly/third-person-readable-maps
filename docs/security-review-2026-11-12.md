@@ -57,3 +57,25 @@ update removed separate 3.x and differently named package entries from the
 affected list. The `com.fasterxml.jackson.core` 2.x range containing 2.13.4.2
 is still present. The three matches remain changed, unreviewed and failing;
 the update is not a basis for accepting risk or overriding the game dependency.
+
+The [current source-bound worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
+now indexes complete fresh scans for all 13 groups: ten final candidate heads
+and the three actual integrated maintenance heads. It records 490 group-scoped
+matches across 243 distinct package/version/advisory combinations and 89 OSV
+IDs. The ten candidate scans contain 385 matches, including the three changed
+matches above; the maintenance scans contain 105 known failing matches. No
+previous match disappeared. Each record includes its scope, source identity,
+advisory references and affected/fixed ranges, dependency ownership, packaged
+artifact check, and remaining investigation. A fixed version in an upstream
+advisory is not by itself proof that overriding Minecraft's runtime is safe.
+All dispositions remain unresolved; no risk has been accepted.
+
+The [retained snapshots and reports](dependency-evidence/1.0.0-2026-11-12/)
+were produced locally from the exact source commits using the pinned
+`gradle/actions` dependency-graph init scripts, forced dependency resolution
+and `--refresh-dependencies`, followed by the source-bound audit. The
+maintenance snapshots describe the currently integrated 0.0.2 sources; they are
+not relabeled as scans of the proposed maintenance PR heads. The historical
+[pre-numeric-fix snapshots](dependency-evidence/1.0.0-pre-numeric-2026-11-12/)
+remain separate. These local results do not replace a later scan of approved
+merged heads or independent security review.

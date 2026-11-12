@@ -35,11 +35,11 @@ Current proposed version: **1.0.0**. The [machine-readable inventory](legacy-ver
 | 1.16.5 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
 | 1.16.4 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
 | 1.16.3 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16.2 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16.1 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.15.2 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.15.1 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
+| 1.16.2 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.16.1 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.16 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.15.2 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.15.1 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.15 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.14.4 | 1.14-1.14.4 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.14.3 | 1.14-1.14.4 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |

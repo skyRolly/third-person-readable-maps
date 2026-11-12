@@ -224,6 +224,31 @@
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        },
+        "1.15.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.15.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.16": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.16.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.16.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.65 blocks; screenshots retained in the local test workspace and require visual assessment"
         }
       }
     },
