@@ -11,6 +11,34 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_prioritized_advisory_evidence_is_retained_and_source_bound(self):
+        directory = ROOT / 'docs/dependency-evidence/high-advisories-2026-11-12'
+        index = json.loads((directory / 'index.json').read_text())['records']
+        worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
+        inventory = json.loads((directory / 'mod-class-reference-inventory.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        groups = {group['id']: group for group in manifest['groups']}
+        self.assertEqual(len(index), 7)
+        self.assertEqual(set(index), set(inventory['targets']))
+        self.assertEqual(set(groups), set(inventory['groups']))
+        self.assertEqual(inventory['parser']['source_commit'], groups['26.3']['source_commit'])
+        self.assertRegex(inventory['parser']['sha256'], r'^[0-9a-f]{64}$')
+        for advisory, source in index.items():
+            raw = (directory / (advisory + '.json')).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), source['sha256'])
+            self.assertEqual(json.loads(raw)['id'], advisory)
+            records = [r for r in worklist['records'].values() if r['advisory'] == advisory]
+            self.assertTrue(records)
+            self.assertTrue(all(r['review_evidence'] == 'docs/security-high-priority-2026-11-12.md'
+                                and r['disposition'] == 'Further investigation' and not r['risk_accepted']
+                                for r in records))
+        for group, result in inventory['groups'].items():
+            self.assertEqual(result['source_commit'], groups[group]['source_commit'])
+            self.assertEqual(result['artifact_sha256'], groups[group]['sha256'])
+            self.assertGreater(result['class_files'], 0)
+            self.assertEqual(set(result['direct_class_references']), set(index))
+            self.assertTrue(all(not references for references in result['direct_class_references'].values()))
+
     def test_complete_current_scans_match_sources_and_individual_worklist(self):
         worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
         candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']

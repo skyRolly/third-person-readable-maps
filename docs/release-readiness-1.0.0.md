@@ -14,12 +14,12 @@ and integrated; an open PR is not an integrated branch.
 | Static API verification | PENDING REVIEW | Current 1.0.0 JARs passed instruction-aware checks on all 48 versions and controlled fixtures; the [review matrix](review-resolution-1.0.0.md) records important verifier limits. |
 | Proposed-head Linux CI | PASS | All 13 product PR heads passed `Build (ubuntu-latest)` on 2026-11-12. Repeat for changed and merged heads. |
 | Proposed-head Windows CI | PASS | All 13 product PR heads passed `Build (windows-latest)` on 2026-11-12. Repeat for changed and merged heads. |
-| Coordination CI | PENDING REVIEW | Local tests pass. The live source-pin, integrated-verifier and coordinated-version prerequisites require the three maintenance PRs to be integrated and their exact merged heads and security evidence recorded first; hosted coordination CI remains failing until then. |
-| Installed-client startup | BLOCKED | The [per-version inventory](legacy-version-inventory.md) distinguishes fresh 1.0.0 local-world observations from untested versions; old artifact runs are historical. |
+| Coordination CI | BLOCKED | Local tests pass; the latest hosted check fails at the live integrated-verifier prerequisite. The three maintenance PRs must be integrated after review, then their exact merged heads and security evidence recorded before rerunning the check. |
+| Installed-client startup | BLOCKED | The [48-version matrix](compatibility-1.0.0-validation.md) distinguishes fresh 1.0.0 local-world observations from untested versions; old artifact runs are historical. |
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
 | Multiplayer testing | NOT RUN | Remote-player and naturally unavailable map-data behavior require a multiplayer environment. |
-| Security advisory disposition | FAIL | Known findings remain unresolved and failing. The [individual worklist](security-review-2026-11-12.md) has no accepted risk; complete source-bound scans and review each disposition. |
+| Security advisory disposition | FAIL | Known findings remain unresolved and failing. The [individual worklist](security-review-2026-11-12.md) has no accepted risk; review each disposition and rescan approved merged heads. |
 | Dependency monitoring | PENDING REVIEW | Placeholder Dependabot targets are removed from the proposal. Candidate and maintenance audit transitions require review and integration; no risk is accepted. |
 | Effective branch protection | FAIL | Live branch reads on 2026-11-12 reported `protected: false` for `main` and all three existing maintenance branches. Administrator action and read-back are required. |
 | Independent source approvals | PENDING REVIEW | The product and coordination PRs remain draft and unmerged; eligible independent reviewers must approve the final heads. |

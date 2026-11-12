@@ -31,9 +31,10 @@ and exact configuration files are retained with their hashes.
 These four advisory investigations remain **Further investigation**. A
 reviewer must verify relevant execution paths and effective configuration,
 assess compatible fixes or upstream ownership, and record a defensible
-individual disposition. Re-scan final source-bound `1.0.0` dependency
-inventories; do not treat an absent result, unbundled dependency, or this
-worklist as an approval.
+individual disposition. Fresh source-bound `1.0.0` candidate and proposal
+inventories were subsequently scanned as described below; scan again whenever
+the reviewed source or inventory changes. Do not treat an absent result, an
+unbundled dependency, or this worklist as an approval.
 
 The 2026-11-09 Maintenance Dependency Audit completed its scans and failed on
 105 known unresolved matches; that failure followed the intended fail-closed
@@ -69,6 +70,13 @@ advisory references and affected/fixed ranges, dependency ownership, packaged
 artifact check, and remaining investigation. A fixed version in an upstream
 advisory is not by itself proof that overriding Minecraft's runtime is safe.
 All dispositions remain unresolved; no risk has been accepted.
+
+The [high-priority advisory review](security-high-priority-2026-11-12.md)
+adds individual trigger, affected-package and remediation analysis for seven
+widely distributed high-severity IDs. It retains exact OSV responses and a
+source- and artifact-bound inventory of direct mod-class references. The
+absence of those direct references does not exclude a vulnerable game,
+loader, multiplayer or other installed-mod path, so these findings still fail.
 
 The [retained snapshots and reports](dependency-evidence/1.0.0-2026-11-12/)
 were produced locally from the exact source commits using the pinned
