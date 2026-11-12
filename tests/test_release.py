@@ -118,6 +118,11 @@ class ReleaseValidationTests(unittest.TestCase):
         self.plan['groups']['26.3']['source_branch'] = 'feature/unapproved'
         with self.assertRaises(release.Invalid):
             self.validate(candidate=True)
+        for wrong in ('candidate/mc-1.21.11', 'maintenance/mc-1.21.11-1.0.0',
+                      'maintenance/26.30-1.0.0'):
+            self.plan['groups']['26.3']['source_branch'] = wrong
+            with self.subTest(branch=wrong), self.assertRaises(release.Invalid):
+                self.validate(candidate=True)
 
     def test_jar_rejects_wrong_version_new_bytecode_namespace_and_duplicates(self):
         spec = self.config['groups']['1.21.11']

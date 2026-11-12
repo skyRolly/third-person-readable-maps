@@ -98,8 +98,10 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
         require(isinstance(branch, str) and re.fullmatch(r'[a-z0-9][a-z0-9./_-]{0,99}', branch) and
                 '..' not in branch and '//' not in branch and not branch.endswith(('/', '.', '.lock')),
                 f'{name}: invalid source branch')
-        require(branch == spec['branch'] or (candidate and branch.startswith(('candidate/', 'maintenance/'))),
-                f'{name}: source must be the approved maintenance branch')
+        candidate_source = (branch == f'candidate/mc-{name}' or
+                            re.fullmatch(r'maintenance/(?:mc-)?' + re.escape(name) + r'-[a-z0-9][a-z0-9._-]*', branch))
+        require(branch == spec['branch'] or (candidate and candidate_source),
+                f'{name}: source must be its maintenance branch or its own non-publishing candidate branch')
         minecraft = spec.get('minecraft')
         require(isinstance(minecraft, list) and minecraft and
                 all(isinstance(v, str) and re.fullmatch(r'\d+(?:\.\d+)+', v) for v in minecraft) and
