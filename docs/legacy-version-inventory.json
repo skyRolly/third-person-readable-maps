@@ -1080,7 +1080,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.4+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1117,8 +1117,8 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
-      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1139,7 +1139,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.3+build.5",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1176,8 +1176,8 @@
       "candidate_group": "1.19.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
-      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1607,7 +1607,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.17+build.13",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1643,8 +1643,8 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
-      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1905,7 +1905,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16.1+build.21",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1943,10 +1943,9 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 12.08 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
       "minecraft": "1.16",
@@ -1966,7 +1965,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2004,10 +2003,9 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 8.41 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
       "minecraft": "1.15.2",
@@ -2027,7 +2025,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.15.2+build.17",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2065,10 +2063,9 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
       "minecraft": "1.15.1",
@@ -2088,7 +2085,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.15.1+build.37",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2126,10 +2123,9 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
       "minecraft": "1.15",
@@ -2187,7 +2183,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
@@ -2247,10 +2243,10 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.3",
@@ -2313,10 +2309,10 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "movement_diagnostic": "Local walking distance 9.92 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.2",
@@ -2379,10 +2375,10 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.1",
@@ -2445,10 +2441,10 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "movement_diagnostic": "Local walking distance 14.03 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14",
@@ -2511,10 +2507,10 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
-      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
       "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
-      "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment"
+      "movement_diagnostic": "Local walking distance 9.93 blocks; screenshots retained in the local test workspace and require visual assessment"
     }
   ]
 }

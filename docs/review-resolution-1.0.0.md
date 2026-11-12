@@ -7,11 +7,11 @@ evidence stated below. None of these labels is release acceptance.
 
 | Group | Ordinary member linkage (#13, #16, #18) | Game/math/library coverage (#20) | Texture state (#23) | Missing map identity (#23) |
 |---|---|---|---|---|
-| 1.14–1.14.4 | A: old name/descriptor lookup omitted operation staticness | D: previous verifier separately checked LWJGL; current verifier checks actual operations and metadata-pinned libraries | A: direct texture bind changed incoming binding; corrected and probed on 1.14 | A: game lookup treated absent/non-numeric identity as zero; guard and 1.14 probe |
-| 1.15–1.16.5 | A: same lookup defect | D: no direct JOML/LWJGL references in this packaged JAR; game classes checked | N: buffered render types, no direct equivalent GL bind or lighting toggle; state contract still requires gameplay review | A: same fallback in the 1.15 API; guard and 1.15 probe |
-| 1.17–1.19.2 | A: same lookup defect | D: packaged legacy Mojang vector/quaternion classes are intermediary `net/minecraft/class_1158` etc., which the old game-class filter included; operation and descriptor coverage still strengthened | N: buffered renderer, no direct equivalent GL bind or lighting toggle; gameplay review remains | D: representative game `getMapId`/`getSavedData` returns null for absent identity; verify full runtime matrix |
-| 1.19.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: representative NBT API null-checks identity; verify full runtime matrix |
-| 1.19.4–1.20.4 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: representative NBT API null-checks identity; verify full runtime matrix |
+| 1.14–1.14.4 | A: old name/descriptor lookup omitted operation staticness | D: previous verifier separately checked LWJGL; current verifier checks actual operations and metadata-pinned libraries | A: direct texture bind changed incoming binding; corrected and probed on 1.14 | A: absent identity fell back to zero; invalid numeric tags also coerced to other IDs. Bounded numeric guard added. |
+| 1.15–1.16.5 | A: same lookup defect | D: no direct JOML/LWJGL references in this packaged JAR; game classes checked | N: buffered render types, no direct equivalent GL bind or lighting toggle; state contract still requires gameplay review | A: same absent-ID fallback and malformed numeric coercion; bounded numeric guard added. |
+| 1.17–1.19.2 | A: same lookup defect | D: packaged legacy Mojang vector/quaternion classes are intermediary `net/minecraft/class_1158` etc., which the old game-class filter included; operation and descriptor coverage still strengthened | N: buffered renderer, no direct equivalent GL bind or lighting toggle; gameplay review remains | A: absent identity returns null, but numeric coercion can select an unrelated ID; bounded numeric guard added. |
+| 1.19.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: `getMapId` reads any numeric tag through `getInt`; bounded numeric guard added. |
+| 1.19.4–1.20.4 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: same numeric coercion in inspected game bytecode; bounded numeric guard added. |
 | 1.20.5–1.20.6 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: map identity is a nullable data component; verify full runtime matrix |
 | 1.21–1.21.1 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
 | 1.21.2–1.21.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
@@ -43,14 +43,33 @@ the proven scope. These limits must not be read as complete linkage proof.
 
 The 1.14 state fix restores the previous active texture unit and bound texture
 through Minecraft's state manager, and restores the previous lighting state in
-`finally`. [Controlled before/after probes](https://github.com/skyRolly/third-person-readable-maps/blob/83f3a34a5a984d2ac88398465679b7dffd60e20d/docs/verification/1.0.0-state-probe.md)
+`finally`. [Controlled before/after probes](https://github.com/skyRolly/third-person-readable-maps/blob/341d33664272c2a19aa419e3d33f01b1954df991/docs/verification/1.0.0-final-mapid-state-probe.md)
 cover eight calls in each of two seeded-state runs on software rendering, not
 all hands, exception paths, subsequent entities or hardware GPUs. The early
-map-ID guards preserve an explicitly numeric zero and avoid looking up map zero
-for absent, empty or nonnumeric identity. [1.14](https://github.com/skyRolly/third-person-readable-maps/blob/83f3a34a5a984d2ac88398465679b7dffd60e20d/docs/verification/1.0.0-mapid-probe.md)
-and [1.15](https://github.com/skyRolly/third-person-readable-maps/blob/f566285f448411f0abc4a61c86a1036300547495/docs/verification/1.0.0-mapid-probe.md)
-controlled tests include zero, nonzero, absent, malformed and unavailable IDs.
-They do not prove naturally delayed client data in multiplayer.
+map-ID guards preserve numeric integral IDs, including an explicit zero, while
+rejecting absent, nonnumeric, fractional, non-finite and out-of-range identity.
+Controlled before/after tests on final artifacts cover [1.14](https://github.com/skyRolly/third-person-readable-maps/blob/341d33664272c2a19aa419e3d33f01b1954df991/docs/verification/1.0.0-final-mapid-state-probe.md),
+[1.15](https://github.com/skyRolly/third-person-readable-maps/blob/7bf2ae372fac4d6e478f3a523db963886e05900f/docs/verification/1.0.0-numeric-mapid-probe.md),
+[1.17](https://github.com/skyRolly/third-person-readable-maps/blob/96060a2c1c5267eae102f24cf3a78d6646d4dbce/docs/verification/1.0.0-numeric-mapid-probe.md),
+[1.19.3](https://github.com/skyRolly/third-person-readable-maps/blob/c3ac7d261b4289451c8b27df96fae7a316ba75ed/docs/verification/1.0.0-numeric-mapid-probe.md), and
+[1.19.4](https://github.com/skyRolly/third-person-readable-maps/blob/4c78b44bd8ac1a758f3c04987530b9fda844127b/docs/verification/1.0.0-numeric-mapid-probe.md).
+Each used a local single-player software-rendered scene; no diagnostic proves
+naturally delayed client data in multiplayer.
+
+For the component-based 1.20.5 family, inspection of the SHA-1-verified
+1.20.5 client (`c6b92b2374a629f20802bb284f98a4ee790e950a`) shows `MapId`
+stores an `int` and constructs its codec with `Codec.INT.xmap`. The runtime's
+DataFixerUpper 7.0.14 (Mojang SHA-1 `db3485dc1e6b712bd81170d5ce6dca2fb2f8bd86`)
+`Codec.INT` reads a numeric value and applies
+`Number.intValue`; `NbtOps` accepts numeric tags. Thus a malformed fractional
+or out-of-range serialized value can already be coerced before this mod sees
+the typed component. Once that happens, a resulting zero is indistinguishable
+from an explicit valid map-zero component inside the renderer. The renderer
+checks a missing component and does not create data, but it cannot reconstruct
+the original serialized type. Changing game-wide component decoding would
+affect other behavior and needs a separately reviewed design and runtime tests;
+it is not claimed fixed by the NBT-era guard. Confirm equivalent codec behavior
+and a bounded remedy on later component-era clients before closing this case.
 
 The old large foreground shape was not reproduced in one 1.21.4 candidate and
 no-mod comparison. Its cause remains **inconclusive**; repeat matched captures

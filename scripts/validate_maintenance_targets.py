@@ -89,7 +89,17 @@ def validate_release_verifier_files(group, files):
     require(required.issubset(files), group + ': integrated source lacks the required release API verifier')
 
 
+def validate_coordinated_version(group, properties, metadata, current):
+    require(isinstance(current, dict) and set(current) == {'schema', 'version'} and current['schema'] == 1 and
+            isinstance(current['version'], str) and re.fullmatch(r'(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)', current['version']),
+            'invalid coordinated version')
+    require(properties.get('mod_version') == current['version'] and
+            metadata.get('version') in ('${version}', current['version']),
+            group + ': integrated mod version differs from the coordinated version')
+
+
 def check_remote(registry, require_release_verifiers=False):
+    current = json.loads((ROOT / 'release/current-version.json').read_text()) if require_release_verifiers else None
     for group, spec in registry['groups'].items():
         ref = 'refs/tprm-maintenance-check/' + group
         git('fetch', '--no-tags', 'origin', '+' + 'refs/heads/' + spec['branch'] + ':' + ref)
@@ -106,6 +116,7 @@ def check_remote(registry, require_release_verifiers=False):
         if require_release_verifiers:
             files = set(git('ls-tree', '-r', '--name-only', ref, '--', 'scripts').stdout.splitlines())
             validate_release_verifier_files(group, files)
+            validate_coordinated_version(group, properties, metadata, current)
         print(group + ': integrated source is an ancestor and current metadata matches')
 
 

@@ -124,11 +124,11 @@
     },
     "1.19.4-1.20.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
-      "source_commit": "d727717745a29811b9bb6758b19f4a7c0dc548da",
-      "candidate_head": "d727717745a29811b9bb6758b19f4a7c0dc548da",
+      "source_commit": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "candidate_head": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
-      "sha256": "dfe2940c28a80b051856efbd1c86eec99ff7c1031426ab62ebcfc7f26efdd29a",
+      "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "versions": [
         "1.19.4",
         "1.20",
@@ -147,15 +147,21 @@
         "Candidate has not been integrated or admitted to strict release configuration",
         "Security findings and administrative approval gates remain unresolved"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.19.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        }
+      }
     },
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
-      "source_commit": "7bc8efafa18f832d683aed38ef3a998008afa070",
-      "candidate_head": "7bc8efafa18f832d683aed38ef3a998008afa070",
+      "source_commit": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "candidate_head": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
-      "sha256": "0bb801f64aa4adcea52ed50e123909d242a353d5faa4cdb69aae3e1fc5250116",
+      "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "versions": [
         "1.17",
         "1.17.1",
@@ -176,15 +182,21 @@
         "Candidate has not been integrated or admitted to strict release configuration",
         "Security findings and administrative approval gates remain unresolved"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.17": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        }
+      }
     },
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
-      "source_commit": "f566285f448411f0abc4a61c86a1036300547495",
-      "candidate_head": "f566285f448411f0abc4a61c86a1036300547495",
+      "source_commit": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
-      "sha256": "2f8b094db2de01569e42605870ef05a82880ffc72291796ded0a8dd518804eed",
+      "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "versions": [
         "1.15",
         "1.15.1",
@@ -208,40 +220,20 @@
       ],
       "per_version": {
         "1.15": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment",
-          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, empty and malformed identity did not look up map zero; unavailable ID returned null"
-        },
-        "1.15.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
-        },
-        "1.15.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
-        },
-        "1.16": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.41 blocks; screenshots retained in the local test workspace and require visual assessment"
-        },
-        "1.16.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 12.08 blocks; screenshots retained in the local test workspace and require visual assessment"
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         }
       }
     },
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
-      "source_commit": "52221cf3d087df8f3ec6d5533d2409a309b8193e",
-      "candidate_head": "52221cf3d087df8f3ec6d5533d2409a309b8193e",
+      "source_commit": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "candidate_head": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
-      "sha256": "cb5c1e04f33ad1fc572f72f01da6f15ba3c151e520df651b9638ae8a2afa4597",
+      "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
       "versions": [
         "1.19.3"
       ],
@@ -255,15 +247,21 @@
         "Candidate has not been integrated or admitted to strict release configuration",
         "Security findings and administrative approval gates remain unresolved"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.19.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        }
+      }
     },
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
-      "source_commit": "83f3a34a5a984d2ac88398465679b7dffd60e20d",
-      "candidate_head": "83f3a34a5a984d2ac88398465679b7dffd60e20d",
+      "source_commit": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
-      "sha256": "5770c22a021f1c2fd74a80444fe759701f70c82a65fa03e9fd5e90154e701423",
+      "sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
       "versions": [
         "1.14",
         "1.14.1",
@@ -283,31 +281,31 @@
       ],
       "per_version": {
         "1.14": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment",
-          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, empty and malformed identity did not look up map zero; unavailable ID returned null",
-          "render_state_probe": "Controlled probe preserved seeded texture binding, active texture unit and lighting across eight calls in each of two runs"
+          "movement_diagnostic": "Local walking distance 9.93 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null",
+          "render_state_probe": "Controlled probe preserved seeded texture binding, active texture unit and lighting across eight calls on texture units 0 and 1"
         },
         "1.14.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
+          "movement_diagnostic": "Local walking distance 14.03 blocks; screenshots retained in the local test workspace and require visual assessment"
         },
         "1.14.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment"
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment"
         },
         "1.14.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
+          "movement_diagnostic": "Local walking distance 9.92 blocks; screenshots retained in the local test workspace and require visual assessment"
         },
         "1.14.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
         }
       }
     }

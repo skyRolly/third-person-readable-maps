@@ -37,7 +37,10 @@ worklist as an approval.
 
 The 2026-11-09 Maintenance Dependency Audit completed its scans and failed on
 105 known unresolved matches; that failure followed the intended fail-closed
-policy, not an OSV or dependency-resolution outage. A separate review found a
+policy, not an OSV or dependency-resolution outage. A fresh source-bound local
+scan on 2026-11-12 again completed with 41, 53 and 11 known failing matches on
+the actual `mc/1.21.11`, `mc/26.1-26.2` and `mc/26.3` heads respectively,
+with no disappeared matches. A separate review found a
 latent comparison defect: a previously recorded match absent from a successful
 later scan was automatically counted as resolved and could leave the gate
 green. The proposed fix keeps such records failing as `resolved_needing_review`
@@ -45,3 +48,12 @@ until an explicit `Fixed`/`Resolved upstream` review names the source commit,
 complete scoped-inventory digest, reviewer and evidence reference. Changed
 sources or inventories invalidate that review. This defect did not cause the
 observed 105-match failure, in which no findings had disappeared.
+
+The fresh 2026-11-12 candidate scans also reported one changed advisory in
+three groups: [GHSA-hgj6-7826-r7m5](https://osv.dev/vulnerability/GHSA-hgj6-7826-r7m5)
+for `com.fasterxml.jackson.core:jackson-databind:2.13.4.2` in the
+1.21.2–1.21.3, 1.21.4–1.21.8, and 1.21.9–1.21.10 candidates. OSV's 2026-11-10
+update removed separate 3.x and differently named package entries from the
+affected list. The `com.fasterxml.jackson.core` 2.x range containing 2.13.4.2
+is still present. The three matches remain changed, unreviewed and failing;
+the update is not a basis for accepting risk or overriding the game dependency.

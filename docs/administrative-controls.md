@@ -1,5 +1,9 @@
 # Administrative release controls — inspected 2026-11-04
 
+This is the dated administrative evidence, not a current release approval.
+The proposed coordinated version is now 1.0.0; see the [current gate matrix](release-readiness-1.0.0.md)
+for refreshed branch-protection observations and remaining requirements.
+
 No administrative setting was changed in this maintenance round. Account-level
 `permissions.admin: true` does not grant this integration every permission: the
 REST protection, secrets, alert, security-update, and code-security-configuration

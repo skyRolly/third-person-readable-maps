@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-12",
+  "versions": {
+    "1.15": {
+      "group": "1.15-1.16.5",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "files_sha256": {
+        "movement.json": "7956a4eacefe6e9dfeec8082109af8bbf871b96a97787f36f8b86c68ff6102b5",
+        "ending-player.dat": "8eb73471a4109c8beae369100d6787af272a7521b3633574461aea1eac354e15",
+        "walking-1.png": "ca30b4e46b08407ecd1397d8bcb58612941e0a6d338d6adf71ca18cc3f690b78",
+        "walking-2.png": "1dddbff2cb301bf3ca47234b3ca756080f721d997140ba72cb996f6d6d4b9243",
+        "client.log": "3cc2dcae4d25d083bdfa7046539ec2a33f1ccf1f0a149915e00145eb78b652a1"
+      }
+    },
+    "1.14.4": {
+      "group": "1.14-1.14.4",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "files_sha256": {
+        "movement.json": "93f494b45b806920565def94e40a2ec471fe938743ba902f833ae1be13fb7c38",
+        "ending-player.dat": "6b22906ea4c3fa669aa5adbaedd63573f0b7d2cf5e370be4f3a09b1ad1059c56",
+        "walking-1.png": "4a163506714f9a8c78d4afd48cd112dc40ba267028ca957071e6da1471c4330b",
+        "walking-2.png": "7d900c301a44192b48c5eee14b81803b63139abd5dd062e35aedf1f4bdfbc7d3",
+        "client.log": "c18e2300ecb577de6846e68c36fc46c6136ef44c938c680702208ad0447cb9ce"
+      }
+    },
+    "1.14.3": {
+      "group": "1.14-1.14.4",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "files_sha256": {
+        "movement.json": "9e0892a0b65fbad0aed9ae0aba60371d239e1807222005bc0b3eca534397086c",
+        "ending-player.dat": "ed0653f49c4f1e4648665f47f905f9a59053f912d7c21438b016d3f9f1140fa2",
+        "walking-1.png": "c15645f843ce27e5c47ae6df57f1585861237098398ffb8f6d027d17b70d4ee9",
+        "walking-2.png": "042b4e76d4fc3704ba684e13d00ee39f77cd67ea8fa4824ce20d9e4994aab466",
+        "client.log": "64862216f4dcdf39e39bd7a58e579b398c55467531897ddd88d2b4c2211b64d3"
+      }
+    },
+    "1.14.2": {
+      "group": "1.14-1.14.4",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "files_sha256": {
+        "movement.json": "23beef0e9be53092deb454582152d57be168f3ddc25f7ec8d13ed6ad46c579df",
+        "ending-player.dat": "e88bd96dde555a8a57bb86ace4af14d3acc2fa34c18a5f328b088706f5cf4b22",
+        "walking-1.png": "f7d28f4a90e30126fee3927e7c1908ae2654511b1fa0a753aa69ec7d3be57ff1",
+        "walking-2.png": "bf58d865a12659f93f08318e8af51f02eedcf566dc75724f280f07535ae8a821",
+        "client.log": "413e96cb6b3b1a641973c0b381da545eeb2d4e89324e67a030d6af00b4c4ff1e"
+      }
+    },
+    "1.14.1": {
+      "group": "1.14-1.14.4",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "files_sha256": {
+        "movement.json": "e7144dfce1c44cb5e1d5b9eca3e45ad7a6a50eb719ec39f005ddf3509b080c92",
+        "ending-player.dat": "678c9d44f238511de7f677a8cfcf35fb8cf1d74843326fda5af109c12998e007",
+        "walking-1.png": "0a8729db66fc46ca70a661095e55ba500eac3dd3595f1e2525cbd87ac897e018",
+        "walking-2.png": "2d553385d60c75e6a6661185322e02984b8ff47e13562559705ed47be692db03",
+        "client.log": "4a6f59d7a40a4bdc0b8c2fe33a53ba9db6ff424b196ead09723fe8659c574171"
+      }
+    },
+    "1.14": {
+      "group": "1.14-1.14.4",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "files_sha256": {
+        "movement.json": "78546c16ff0d0cdbec3c804c10b82762dacad9b758549b57c26e569675753193",
+        "ending-player.dat": "ebe1ab2a7dd0dd636294f227952eb0801995b97710de87af5ed6f488c565ffbf",
+        "walking-1.png": "dca2c8585a7ba756b36d6ba5cfbe99b00a472a249659d4207e159b1f339da8ce",
+        "walking-2.png": "b6a4a33cb142b59890578ab6bff4d1cb2dbcf459eb8aa31457ec60b929385134",
+        "client.log": "70fcd6095104635caf8006c6c6ccc3ce82d2ef85a132367c1d3fd072ca6a7053"
+      }
+    }
+  }
+}

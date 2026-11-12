@@ -75,6 +75,15 @@ class MaintenanceTargetTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'lacks the required'):
             targets.validate_release_verifier_files('1.21.11', required - {'scripts/jvm_linkage.py'})
 
+    def test_release_prerequisite_rejects_mixed_integrated_versions(self):
+        current = {'schema': 1, 'version': '1.0.0'}
+        metadata = {'version': '${version}'}
+        targets.validate_coordinated_version('1.21.11', {'mod_version': '1.0.0'}, metadata, current)
+        for props, item in [({'mod_version': '0.0.2'}, metadata), ({}, metadata),
+                            ({'mod_version': '1.0.0'}, {'version': '0.0.2'})]:
+            with self.subTest(props=props, metadata=item), self.assertRaisesRegex(ValueError, 'differs'):
+                targets.validate_coordinated_version('1.21.11', props, item, current)
+
 
 if __name__ == '__main__':
     unittest.main()
