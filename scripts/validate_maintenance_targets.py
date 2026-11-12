@@ -89,6 +89,11 @@ def validate_release_verifier_files(group, files):
     require(required.issubset(files), group + ': integrated source lacks the required release API verifier')
 
 
+def validate_release_source_head(group, spec, observed):
+    require(observed == spec['integrated_commit'],
+            group + ': current maintenance head differs from the reviewed registry pin')
+
+
 def validate_coordinated_version(group, properties, metadata, current):
     require(isinstance(current, dict) and set(current) == {'schema', 'version'} and current['schema'] == 1 and
             isinstance(current['version'], str) and re.fullmatch(r'(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)', current['version']),
@@ -114,6 +119,7 @@ def check_remote(registry, require_release_verifiers=False):
         metadata = json.loads(git('show', ref + ':src/main/resources/fabric.mod.json').stdout)
         validate_source(group, spec, properties, metadata, ancestor)
         if require_release_verifiers:
+            validate_release_source_head(group, spec, git('rev-parse', ref).stdout.strip())
             files = set(git('ls-tree', '-r', '--name-only', ref, '--', 'scripts').stdout.splitlines())
             validate_release_verifier_files(group, files)
             validate_coordinated_version(group, properties, metadata, current)

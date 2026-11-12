@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "scope": "Unmerged maintenance proposal heads; separate from authoritative maintenance scans",
+  "risk_acceptance": false,
+  "groups": {
+    "1.21.11": {
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "source_sha": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+      "snapshot_sha256": "358529325a85b2b22eeef3972a5ddb9fc6bfebae40dedeacd29ec3318ae4e585",
+      "report_sha256": "0262bda2b3fa9dfb4eb157a91ce0a3473c67555629682b356260ea61b791c3df",
+      "matches": 41,
+      "states": {
+        "known": 41
+      },
+      "resolved_needing_review": 0
+    },
+    "26.1-26.2": {
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "source_sha": "d3695609e0a05ede476bf80b09bf0047868165e5",
+      "snapshot_sha256": "7440330c421ccc4fd343731386d2fff853b603c567af17dc9139e6fcd637e0ce",
+      "report_sha256": "e9fffbbde91df2d779b76aa8941b87f979f900e8ce6b30d872fc647e0e44dd3d",
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "resolved_needing_review": 0
+    },
+    "26.3": {
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "source_sha": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+      "snapshot_sha256": "91b32945938d8a5ccb5fe34b635986b23d7835e9da9790ee7a60109a2b74c959",
+      "report_sha256": "20c5116b404415679c65617efc1ed4383dc7b17bd5bad38d7b459f3616f4e10c",
+      "matches": 11,
+      "states": {
+        "known": 11
+      },
+      "resolved_needing_review": 0
+    }
+  }
+}

@@ -1,0 +1,2558 @@
+{
+  "schema": 1,
+  "status": "complete-unreviewed-maintenance-proposal",
+  "source_kind": "maintenance-proposal",
+  "group": "26.3",
+  "branch": "maintenance/mc-26.3-1.0.0",
+  "source_sha": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+  "snapshot_ref": "refs/heads/maintenance/mc-26.3-1.0.0",
+  "scanned_on": "2026-11-12",
+  "risk_acceptance": false,
+  "inventories": {
+    "runtime/26.3": [
+      "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "pkg:maven/ca.weblite/java-objc-bridge@1.1",
+      "pkg:maven/com.azure/azure-json@1.4.0",
+      "pkg:maven/com.github.oshi/oshi-core@6.9.0",
+      "pkg:maven/com.google.code.gson/gson@2.14.0",
+      "pkg:maven/com.google.guava/failureaccess@1.0.3",
+      "pkg:maven/com.google.guava/guava@33.6.0-jre",
+      "pkg:maven/com.ibm.icu/icu4j@78.3",
+      "pkg:maven/com.microsoft.azure/msal4j@1.24.1",
+      "pkg:maven/com.mojang/authlib@10.0.77",
+      "pkg:maven/com.mojang/blocklist@1.0.10",
+      "pkg:maven/com.mojang/brigadier@1.3.11",
+      "pkg:maven/com.mojang/datafixerupper@10.0.21",
+      "pkg:maven/com.mojang/jtracy@1.14.38",
+      "pkg:maven/com.mojang/logging@1.7.12",
+      "pkg:maven/com.mojang/patchy@2.2.10",
+      "pkg:maven/com.mojang/text2speech@1.19.12",
+      "pkg:maven/commons-codec/commons-codec@1.22.0",
+      "pkg:maven/commons-io/commons-io@2.20.0",
+      "pkg:maven/io.netty/netty-buffer@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-base@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-compression@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-http@4.2.16.Final",
+      "pkg:maven/io.netty/netty-common@4.2.16.Final",
+      "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+      "pkg:maven/io.netty/netty-resolver@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-classes-epoll@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-classes-kqueue@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-epoll@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-unix-common@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport@4.2.16.Final",
+      "pkg:maven/it.unimi.dsi/fastutil@8.5.18",
+      "pkg:maven/net.java.dev.jna/jna-platform@5.17.0",
+      "pkg:maven/net.java.dev.jna/jna@5.17.0",
+      "pkg:maven/net.sf.jopt-simple/jopt-simple@5.0.4",
+      "pkg:maven/org.apache.commons/commons-compress@1.28.0",
+      "pkg:maven/org.apache.commons/commons-lang3@3.20.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-core@2.26.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-slf4j2-impl@2.26.0",
+      "pkg:maven/org.jcraft/jorbis@0.0.17",
+      "pkg:maven/org.joml/joml@1.10.9",
+      "pkg:maven/org.jspecify/jspecify@1.0.0",
+      "pkg:maven/org.lwjgl/lwjgl-freetype@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-jemalloc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-openal@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-opengl@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-sdl@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-shaderc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-spvc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-stb@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-vma@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-vulkan@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl@3.4.3",
+      "pkg:maven/org.slf4j/slf4j-api@2.0.17"
+    ],
+    "gradle": [
+      "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "pkg:maven/com.azure/azure-json@1.4.0",
+      "pkg:maven/com.github.oshi/oshi-core@6.9.0",
+      "pkg:maven/com.google.code.gson/gson@2.14.0",
+      "pkg:maven/com.google.errorprone/error_prone_annotations@2.48.0",
+      "pkg:maven/com.google.guava/failureaccess@1.0.3",
+      "pkg:maven/com.google.guava/guava@33.6.0-jre",
+      "pkg:maven/com.ibm.icu/icu4j@78.3",
+      "pkg:maven/com.microsoft.azure/msal4j@1.24.1",
+      "pkg:maven/com.mojang/authlib@10.0.77",
+      "pkg:maven/com.mojang/blocklist@1.0.10",
+      "pkg:maven/com.mojang/brigadier@1.3.11",
+      "pkg:maven/com.mojang/datafixerupper@10.0.21",
+      "pkg:maven/com.mojang/jtracy@1.14.38",
+      "pkg:maven/com.mojang/logging@1.7.12",
+      "pkg:maven/com.mojang/patchy@2.2.10",
+      "pkg:maven/com.mojang/text2speech@1.19.12",
+      "pkg:maven/commons-codec/commons-codec@1.22.0",
+      "pkg:maven/commons-io/commons-io@2.20.0",
+      "pkg:maven/io.github.llamalad7/mixinextras-fabric@0.5.5",
+      "pkg:maven/io.netty/netty-buffer@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-base@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-compression@4.2.16.Final",
+      "pkg:maven/io.netty/netty-codec-http@4.2.16.Final",
+      "pkg:maven/io.netty/netty-common@4.2.16.Final",
+      "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+      "pkg:maven/io.netty/netty-resolver@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-classes-epoll@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-classes-kqueue@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-epoll@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport-native-unix-common@4.2.16.Final",
+      "pkg:maven/io.netty/netty-transport@4.2.16.Final",
+      "pkg:maven/it.unimi.dsi/fastutil@8.5.18",
+      "pkg:maven/net.fabricmc.unpick/unpick-format-utils@3.0.0-beta.13",
+      "pkg:maven/net.fabricmc.unpick/unpick@3.0.0-beta.13",
+      "pkg:maven/net.fabricmc/cfr@0.2.2",
+      "pkg:maven/net.fabricmc/class-tweaker@0.3.0",
+      "pkg:maven/net.fabricmc/dev-launch-injector@0.2.1+build.8",
+      "pkg:maven/net.fabricmc/fabric-loader@0.20.1",
+      "pkg:maven/net.fabricmc/fabric-log4j-util@1.0.2",
+      "pkg:maven/net.fabricmc/fabric-loom@1.19.3",
+      "pkg:maven/net.fabricmc/lorenz-tiny@4.0.2",
+      "pkg:maven/net.fabricmc/mapping-io@0.8.0",
+      "pkg:maven/net.fabricmc/mercury@0.4.3",
+      "pkg:maven/net.fabricmc/mercurymixin@0.2.2",
+      "pkg:maven/net.fabricmc/sponge-mixin@0.17.5+mixin.0.8.7",
+      "pkg:maven/net.fabricmc/stitch@0.6.2",
+      "pkg:maven/net.fabricmc/tiny-mappings-parser@0.3.0+build.17",
+      "pkg:maven/net.fabricmc/tiny-remapper@0.15.0",
+      "pkg:maven/net.java.dev.jna/jna-platform@5.17.0",
+      "pkg:maven/net.java.dev.jna/jna@5.17.0",
+      "pkg:maven/net.minecraft/minecraft-merged-deobf@26.3",
+      "pkg:maven/net.sf.jopt-simple/jopt-simple@5.0.4",
+      "pkg:maven/org.apache.commons/commons-compress@1.28.0",
+      "pkg:maven/org.apache.commons/commons-lang3@3.20.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-core@2.26.0",
+      "pkg:maven/org.apache.logging.log4j/log4j-slf4j2-impl@2.26.0",
+      "pkg:maven/org.cadixdev/at@0.1.0-rc1",
+      "pkg:maven/org.cadixdev/bombe@0.3.4",
+      "pkg:maven/org.cadixdev/lorenz@0.5.7",
+      "pkg:maven/org.gradle/gradle-core@9.8.2",
+      "pkg:maven/org.jcraft/jorbis@0.0.17",
+      "pkg:maven/org.jetbrains.kotlin/kotlin-metadata-jvm@2.4.10",
+      "pkg:maven/org.jetbrains/annotations@26.0.2",
+      "pkg:maven/org.joml/joml@1.10.9",
+      "pkg:maven/org.jspecify/jspecify@1.0.0",
+      "pkg:maven/org.lwjgl/lwjgl-freetype@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-jemalloc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-openal@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-opengl@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-sdl@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-shaderc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-spvc@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-stb@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-vma@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl-vulkan@3.4.3",
+      "pkg:maven/org.lwjgl/lwjgl@3.4.3",
+      "pkg:maven/org.ow2.asm/asm-analysis@9.10.1",
+      "pkg:maven/org.ow2.asm/asm-commons@9.10.1",
+      "pkg:maven/org.ow2.asm/asm-tree@9.10.1",
+      "pkg:maven/org.ow2.asm/asm-util@9.10.1",
+      "pkg:maven/org.ow2.asm/asm@9.10.1",
+      "pkg:maven/org.slf4j/slf4j-api@2.0.17",
+      "pkg:maven/org.vineflower/vineflower@1.12.0"
+    ]
+  },
+  "inventory_sha256": "380682fda882c0c893cb81fa6153260b18c1cc3cae0f84a11adc3a48343c6561",
+  "runtime_manifests": {
+    "26.3": {
+      "url": "https://piston-meta.mojang.com/v1/packages/9f67e10ed013deeaad20ac3c800652765d493408/26.3.json",
+      "sha1": "9f67e10ed013deeaad20ac3c800652765d493408",
+      "library_entries": 114,
+      "maven_packages": 56,
+      "scope": "all listed platform variants; native code advisories may be absent from OSV"
+    }
+  },
+  "findings": {
+    "pkg:maven/at.yawk.lz4/lz4-java@1.10.1": [
+      "GHSA-343h-94h5-c4wr",
+      "GHSA-4v53-57pg-c464",
+      "GHSA-6cx8-rjf8-pr8g",
+      "GHSA-gm45-99xc-r7wv",
+      "GHSA-mcr4-qmvw-px4g",
+      "GHSA-xx22-p4ch-683r"
+    ],
+    "pkg:maven/com.google.guava/guava@33.6.0-jre": [
+      "GHSA-xxph-c9ww-hj94"
+    ],
+    "pkg:maven/io.netty/netty-codec-http@4.2.16.Final": [
+      "GHSA-8c42-7qj2-3j46"
+    ],
+    "pkg:maven/io.netty/netty-handler@4.2.16.Final": [
+      "GHSA-c4c3-7fpv-j4q5",
+      "GHSA-fccg-mwvh-qqg4"
+    ],
+    "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0": [
+      "GHSA-qv9r-c865-cp47"
+    ]
+  },
+  "advisories": {
+    "GHSA-343h-94h5-c4wr": {
+      "id": "GHSA-343h-94h5-c4wr",
+      "summary": "yawkat LZ4 Java: LZ4BlockInputStream with stopOnEmptyBlock=false recurses once per empty block, causing StackOverflowError",
+      "details": "### Summary\n\nWhen `LZ4BlockInputStream` is configured with `stopOnEmptyBlock = false` (the mode for reading concatenated block streams), it handles each empty block by calling `refill()` recursively. A long run of empty blocks exhausts the thread stack and throws `StackOverflowError` out of `read()` or `skip()`.\n\n### Details\n\nIn `net.jpountz.lz4.LZ4BlockInputStream.refill()`:\n\n```java\nif (originalLen == 0 && compressedLen == 0) {\n  if (check != 0) {\n    throw new IOException(\"Stream is corrupted\");\n  }\n  if (!stopOnEmptyBlock) {\n    refill();\n  } else {\n    finished = true;\n  }\n  return;\n}\n```\n\nEach well-formed empty block is 21 bytes and adds one stack frame, with no limit on nesting depth. In local testing, around 10,000 to 100,000 consecutive empty blocks (about 210 KB to 2.1 MB, depending on JIT state and thread stack size) threw `StackOverflowError`. `StackOverflowError` is an `Error`, not an `IOException`, so callers that only handle I/O errors for corrupt input don't catch it.\n\n### Impact\n\nApplications that decode attacker-controlled `LZ4Block` streams with `LZ4BlockInputStream.newBuilder().withStopOnEmptyBlock(false)` or the deprecated `LZ4BlockInputStream(InputStream, boolean)` constructor can have the decoding thread fail with `StackOverflowError`. The default configuration (`stopOnEmptyBlock = true`) is not affected. There is no memory corruption. Availability impact only.\n\n### Patch\n\nFixed in lz4-java 1.11.4. Empty blocks are now skipped in a loop instead of by recursion, so any number of consecutive empty blocks uses constant stack space.\n\nFor older versions, the workaround is to use the default `stopOnEmptyBlock = true` for untrusted input, or catch `StackOverflowError` around the read loop.",
+      "aliases": [
+        "CVE-2026-106449"
+      ],
+      "modified": "2026-10-07T20:45:07.306709237Z",
+      "published": "2026-10-07T20:35:46Z",
+      "database_specific": {
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-10-07T20:35:46Z",
+        "nvd_published_at": "2026-10-06T20:17:26Z",
+        "cwe_ids": [
+          "CWE-674"
+        ],
+        "severity": "LOW"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-343h-94h5-c4wr"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106449"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/c8ebf97d504fb34434fda46fc761e8202570e0d8"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.4"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.4"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 1.11.3",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-343h-94h5-c4wr/GHSA-343h-94h5-c4wr.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.4",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-343h-94h5-c4wr/GHSA-343h-94h5-c4wr.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ]
+    },
+    "GHSA-4v53-57pg-c464": {
+      "id": "GHSA-4v53-57pg-c464",
+      "summary": "yawkat LZ4 Java: LZ4BlockInputStream allocates an unvalidated compressed length from the stream header",
+      "details": "### Summary\n\n`LZ4BlockInputStream` grows its compressed-input buffer to the attacker-controlled `compressedLen` value from the legacy `LZ4Block` stream header before reading any payload bytes. A header-only input can therefore trigger a near-2 GiB allocation and exhaust the JVM heap.\n\n### Details\n\nIn `net.jpountz.lz4.LZ4BlockInputStream`, `refill()` validates that `compressedLen` is nonnegative but does not cap it before allocation:\n\n```java\ncase COMPRESSION_METHOD_LZ4:\n  if (compressedBuffer.length < compressedLen) {\n    compressedBuffer = new byte[Math.max(compressedLen, compressedBuffer.length * 3 / 2)];\n  }\n  readFully(compressedBuffer, compressedLen);\n```\n\nThe paired `LZ4BlockOutputStream` never emits such a block. If compression is not smaller than the original block, it writes the block as RAW:\n\n```java\nif (compressedLength >= o) {\n  compressMethod = COMPRESSION_METHOD_RAW;\n  compressedLength = o;\n} else {\n  compressMethod = COMPRESSION_METHOD_LZ4;\n}\n```\n\nExisting readers generally accept noncanonical LZ4-method blocks where `compressedLen >= originalLen`, but no canonical writer found produces them.\n\n### Impact\n\nApplications that pass attacker-controlled legacy `LZ4Block` streams to `LZ4BlockInputStream` can suffer heap exhaustion from a header-only input. The impact is availability-only and requires no valid compressed payload.\n\n### Patch\n\nAs of lz4-java 1.11.2, lz4-java rejects lz4 blocks where the compressed length is larger than uncompressed. Readers would generally emit these as raw blocks instead. You can use the new `acceptOversizedBlocks` flag to restore the old behavior, but this reintroduces the DoS vector.",
+      "aliases": [
+        "CVE-2026-106452"
+      ],
+      "modified": "2026-10-07T16:30:04.845963758Z",
+      "published": "2026-10-07T16:17:50Z",
+      "database_specific": {
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-10-07T16:17:50Z",
+        "nvd_published_at": "2026-10-06T20:17:27Z",
+        "cwe_ids": [
+          "CWE-789"
+        ],
+        "severity": "MODERATE"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-4v53-57pg-c464"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106452"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/bb83dd16163cdb71231af06b0a5651881148a634"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.2"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-4v53-57pg-c464/GHSA-4v53-57pg-c464.json",
+            "last_known_affected_version_range": "<= 1.11.1"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.4",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-4v53-57pg-c464/GHSA-4v53-57pg-c464.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ]
+    },
+    "GHSA-6cx8-rjf8-pr8g": {
+      "id": "GHSA-6cx8-rjf8-pr8g",
+      "summary": "yawkat LZ4 Java: LZ4DecompressorWithLength allocates the unvalidated size from the 4-byte length header, so a 5-byte input triggers a 1 GiB allocation and OutOfMemoryError",
+      "details": "### Summary\n\n`LZ4DecompressorWithLength.decompress(byte[], int)` allocates whatever size the 4-byte length header declares, before it reads a single byte of compressed data. A 5-byte input whose header says `0x40000000` makes the JVM commit a gigabyte and can cause heap exhaustion.\n\n### Details\n\n`net.jpountz.lz4.LZ4DecompressorWithLength` reads the header and passes it straight on:\n\n```java\nfinal int destLen = getDecompressedLength(src, srcOff);\nreturn fastDecompressor.decompress(src, srcOff + 4, destLen);\n```\n\nand `net.jpountz.lz4.LZ4FastDecompressor` allocates it:\n\n```java\npublic final byte[] decompress(byte[] src, int srcOff, int destLen) {\n  final byte[] decompressed = new byte[destLen];\n  decompress(src, srcOff, decompressed, 0, destLen);\n  return decompressed;\n}\n```\n\n`getDecompressedLength` performs no validation: no comparison against `src.length`, no ceiling, no rejection of negatives. `LZ4SafeDecompressor.decompress(byte[], int, int, int)` has the same shape with `maxDestLen`.\n\nThe sibling overload that callers pass their own buffer to, `decompress(src, srcOff, dest, destOff, destLen)`, is fine, because there `destLen` is chosen by the caller rather than by the input. The bug is specific to the convenience overloads that take the size from the header, and that difference is the whole finding.\n\n### Impact\n\nAny application that decompresses attacker-supplied LZ4 frames through the with-length convenience API can be made to allocate up to 2 GiB per call from a 5-byte message. On a service that decompresses request bodies, a few concurrent 5-byte requests exhaust the heap. No privileges are needed, only the ability to get bytes into the decompressor. Confidentiality and integrity are untouched.",
+      "aliases": [
+        "CVE-2026-106453"
+      ],
+      "modified": "2026-10-07T16:30:05.557286626Z",
+      "published": "2026-10-07T16:17:47Z",
+      "database_specific": {
+        "github_reviewed_at": "2026-10-07T16:17:47Z",
+        "nvd_published_at": "2026-10-06T20:17:27Z",
+        "cwe_ids": [
+          "CWE-789"
+        ],
+        "severity": "MODERATE",
+        "github_reviewed": true
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-6cx8-rjf8-pr8g"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106453"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/6492ce5aca6bd03ff9e08ee18a2beb94c431371a"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.2"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 1.11.1",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-6cx8-rjf8-pr8g/GHSA-6cx8-rjf8-pr8g.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.4",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-6cx8-rjf8-pr8g/GHSA-6cx8-rjf8-pr8g.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ]
+    },
+    "GHSA-8c42-7qj2-3j46": {
+      "id": "GHSA-8c42-7qj2-3j46",
+      "summary": "Netty Vulnerable to Cache Poisoning and Information Disclosure via CORS Vary Header Overwrite",
+      "details": "### Summary\nNetty's `CorsHandler` silently overwrites existing `Vary` headers, enabling cache poisoning and sensitive information disclosure.\n\n### Details\n`io.netty.handler.codec.http.cors.CorsHandler#setVaryHeader` overwrites any existing Vary headers set by backend applications. \n\n```java\n    private static void setVaryHeader(final HttpResponse response) {\n        response.headers().set(HttpHeaderNames.VARY, HttpHeaderNames.ORIGIN);\n    }\n```\n\nBecause `set()` replaces all existing values for the header, if a backend application sets a `Vary` header (such as `Vary: Authorization` or `Vary: Cookie`) to ensure that intermediate caches (like CDNs) cache responses separately per user, the `CorsHandler` will overwrite it with `Vary: origin`. This causes the caching proxy to ignore the authorization context and cache the response based solely on the URL and Origin, allowing an attacker to retrieve another user's cached sensitive data.\n\n### Impact\nThis is a Cache Poisoning vulnerability that leads to Information Disclosure. It impacts any Netty-based web application that uses the CorsHandler, sets its own Vary headers to manage caching of authenticated or user-specific responses (e.g., Vary: Authorization), and is deployed behind a caching proxy or CDN. The end-users of these applications are impacted, as their sensitive data may be leaked to unauthorized actors.",
+      "aliases": [
+        "CVE-2026-59903"
+      ],
+      "modified": "2026-09-10T03:51:13.389261985Z",
+      "published": "2026-08-17T18:24:26Z",
+      "database_specific": {
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-08-17T18:24:26Z",
+        "nvd_published_at": null,
+        "cwe_ids": [
+          "CWE-524"
+        ],
+        "severity": "MODERATE"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/security/advisories/GHSA-8c42-7qj2-3j46"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17213"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17217"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/netty/netty"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.1.137.Final"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.2.17.Final"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "io.netty:netty-codec-http",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-codec-http"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "4.2.0.Final"
+                },
+                {
+                  "fixed": "4.2.17.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.2.0.Final",
+            "4.2.1.Final",
+            "4.2.10.Final",
+            "4.2.11.Final",
+            "4.2.12.Final",
+            "4.2.13.Final",
+            "4.2.14.Final",
+            "4.2.15.Final",
+            "4.2.16.Final",
+            "4.2.2.Final",
+            "4.2.3.Final",
+            "4.2.4.Final",
+            "4.2.5.Final",
+            "4.2.6.Final",
+            "4.2.7.Final",
+            "4.2.8.Final",
+            "4.2.9.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.2.16.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/08/GHSA-8c42-7qj2-3j46/GHSA-8c42-7qj2-3j46.json"
+          }
+        },
+        {
+          "package": {
+            "name": "io.netty:netty-codec-http",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-codec-http"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.1.137.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.0.0.Alpha1",
+            "4.0.0.Alpha2",
+            "4.0.0.Alpha3",
+            "4.0.0.Alpha4",
+            "4.0.0.Alpha5",
+            "4.0.0.Alpha6",
+            "4.0.0.Alpha7",
+            "4.0.0.Alpha8",
+            "4.0.0.Beta1",
+            "4.0.0.Beta2",
+            "4.0.0.Beta3",
+            "4.0.0.CR1",
+            "4.0.0.CR2",
+            "4.0.0.CR3",
+            "4.0.0.CR4",
+            "4.0.0.CR5",
+            "4.0.0.CR6",
+            "4.0.0.CR7",
+            "4.0.0.CR8",
+            "4.0.0.CR9",
+            "4.0.0.Final",
+            "4.0.1.Final",
+            "4.0.10.Final",
+            "4.0.11.Final",
+            "4.0.12.Final",
+            "4.0.13.Final",
+            "4.0.14.Beta1",
+            "4.0.14.Final",
+            "4.0.15.Final",
+            "4.0.16.Final",
+            "4.0.17.Final",
+            "4.0.18.Final",
+            "4.0.19.Final",
+            "4.0.2.Final",
+            "4.0.20.Final",
+            "4.0.21.Final",
+            "4.0.22.Final",
+            "4.0.23.Final",
+            "4.0.24.Final",
+            "4.0.25.Final",
+            "4.0.26.Final",
+            "4.0.27.Final",
+            "4.0.28.Final",
+            "4.0.29.Final",
+            "4.0.3.Final",
+            "4.0.30.Final",
+            "4.0.31.Final",
+            "4.0.32.Final",
+            "4.0.33.Final",
+            "4.0.34.Final",
+            "4.0.35.Final",
+            "4.0.36.Final",
+            "4.0.37.Final",
+            "4.0.38.Final",
+            "4.0.39.Final",
+            "4.0.4.Final",
+            "4.0.40.Final",
+            "4.0.41.Final",
+            "4.0.42.Final",
+            "4.0.43.Final",
+            "4.0.44.Final",
+            "4.0.45.Final",
+            "4.0.46.Final",
+            "4.0.47.Final",
+            "4.0.48.Final",
+            "4.0.49.Final",
+            "4.0.5.Final",
+            "4.0.50.Final",
+            "4.0.51.Final",
+            "4.0.52.Final",
+            "4.0.53.Final",
+            "4.0.54.Final",
+            "4.0.55.Final",
+            "4.0.56.Final",
+            "4.0.6.Final",
+            "4.0.7.Final",
+            "4.0.8.Final",
+            "4.0.9.Final",
+            "4.1.0.Beta1",
+            "4.1.0.Beta2",
+            "4.1.0.Beta3",
+            "4.1.0.Beta4",
+            "4.1.0.Beta5",
+            "4.1.0.Beta6",
+            "4.1.0.Beta7",
+            "4.1.0.Beta8",
+            "4.1.0.CR1",
+            "4.1.0.CR2",
+            "4.1.0.CR3",
+            "4.1.0.CR4",
+            "4.1.0.CR5",
+            "4.1.0.CR6",
+            "4.1.0.CR7",
+            "4.1.0.Final",
+            "4.1.1.Final",
+            "4.1.10.Final",
+            "4.1.100.Final",
+            "4.1.101.Final",
+            "4.1.102.Final",
+            "4.1.103.Final",
+            "4.1.104.Final",
+            "4.1.105.Final",
+            "4.1.106.Final",
+            "4.1.107.Final",
+            "4.1.108.Final",
+            "4.1.109.Final",
+            "4.1.11.Final",
+            "4.1.110.Final",
+            "4.1.111.Final",
+            "4.1.112.Final",
+            "4.1.113.Final",
+            "4.1.114.Final",
+            "4.1.115.Final",
+            "4.1.116.Final",
+            "4.1.117.Final",
+            "4.1.118.Final",
+            "4.1.119.Final",
+            "4.1.12.Final",
+            "4.1.120.Final",
+            "4.1.121.Final",
+            "4.1.122.Final",
+            "4.1.123.Final",
+            "4.1.124.Final",
+            "4.1.125.Final",
+            "4.1.126.Final",
+            "4.1.127.Final",
+            "4.1.128.Final",
+            "4.1.129.Final",
+            "4.1.13.Final",
+            "4.1.130.Final",
+            "4.1.131.Final",
+            "4.1.132.Final",
+            "4.1.133.Final",
+            "4.1.134.Final",
+            "4.1.135.Final",
+            "4.1.136.Final",
+            "4.1.14.Final",
+            "4.1.15.Final",
+            "4.1.16.Final",
+            "4.1.17.Final",
+            "4.1.18.Final",
+            "4.1.19.Final",
+            "4.1.2.Final",
+            "4.1.20.Final",
+            "4.1.21.Final",
+            "4.1.22.Final",
+            "4.1.23.Final",
+            "4.1.24.Final",
+            "4.1.25.Final",
+            "4.1.26.Final",
+            "4.1.27.Final",
+            "4.1.28.Final",
+            "4.1.29.Final",
+            "4.1.3.Final",
+            "4.1.30.Final",
+            "4.1.31.Final",
+            "4.1.32.Final",
+            "4.1.33.Final",
+            "4.1.34.Final",
+            "4.1.35.Final",
+            "4.1.36.Final",
+            "4.1.37.Final",
+            "4.1.38.Final",
+            "4.1.39.Final",
+            "4.1.4.Final",
+            "4.1.40.Final",
+            "4.1.41.Final",
+            "4.1.42.Final",
+            "4.1.43.Final",
+            "4.1.44.Final",
+            "4.1.45.Final",
+            "4.1.46.Final",
+            "4.1.47.Final",
+            "4.1.48.Final",
+            "4.1.49.Final",
+            "4.1.5.Final",
+            "4.1.50.Final",
+            "4.1.51.Final",
+            "4.1.52.Final",
+            "4.1.53.Final",
+            "4.1.54.Final",
+            "4.1.55.Final",
+            "4.1.56.Final",
+            "4.1.57.Final",
+            "4.1.58.Final",
+            "4.1.59.Final",
+            "4.1.6.Final",
+            "4.1.60.Final",
+            "4.1.61.Final",
+            "4.1.62.Final",
+            "4.1.63.Final",
+            "4.1.64.Final",
+            "4.1.65.Final",
+            "4.1.66.Final",
+            "4.1.67.Final",
+            "4.1.68.Final",
+            "4.1.69.Final",
+            "4.1.7.Final",
+            "4.1.70.Final",
+            "4.1.71.Final",
+            "4.1.72.Final",
+            "4.1.73.Final",
+            "4.1.74.Final",
+            "4.1.75.Final",
+            "4.1.76.Final",
+            "4.1.77.Final",
+            "4.1.78.Final",
+            "4.1.79.Final",
+            "4.1.8.Final",
+            "4.1.80.Final",
+            "4.1.81.Final",
+            "4.1.82.Final",
+            "4.1.83.Final",
+            "4.1.84.Final",
+            "4.1.85.Final",
+            "4.1.86.Final",
+            "4.1.87.Final",
+            "4.1.88.Final",
+            "4.1.89.Final",
+            "4.1.9.Final",
+            "4.1.90.Final",
+            "4.1.91.Final",
+            "4.1.92.Final",
+            "4.1.93.Final",
+            "4.1.94.Final",
+            "4.1.95.Final",
+            "4.1.96.Final",
+            "4.1.97.Final",
+            "4.1.98.Final",
+            "4.1.99.Final"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/08/GHSA-8c42-7qj2-3j46/GHSA-8c42-7qj2-3j46.json",
+            "last_known_affected_version_range": "<= 4.1.136.Final"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+        }
+      ]
+    },
+    "GHSA-c4c3-7fpv-j4q5": {
+      "id": "GHSA-c4c3-7fpv-j4q5",
+      "summary": "Netty: SNI Routing Bypass via Fragmented TLS ClientHello Causing Fallback to Default SslContext",
+      "details": "### Summary\nA fragmented TLS ClientHello whose handshake header spans multiple records makes Netty silently fall back to the default SslContext; where per-SNI selection is the sole mTLS gate, an unauthenticated attacker can bypass the route's mTLS requirement.\n\n### Details\nIn `io.netty.handler.ssl.SslClientHelloHandler#decode` the guard that should wait for the 4-byte handshake header checks the wrong offset - it ignores the 5-byte record header that precedes it - and therefore never fires:\n\n```java\nif (handshakeLength == -1) {\n    if (readerIndex + 4 > endOffset) {\n        // Need more data to read HandshakeType and handshakeLength (4 bytes)\n        return;\n    }\n```\n\nWhen the first record's payload is < 4 bytes, `handshakeLength = in.getUnsignedMedium(readerIndex + SslUtils.SSL_RECORD_HEADER_LENGTH + 1);` leads to `IndexOutOfBoundsException `. That is caught by the generic `catch (Exception)` block, which calls `select(ctx, null)` - this is the default `SslContext`. Fallback to default on parse failure is a problem when per-SNI selection is the sole mTLS gate.\n\n### Impact\nSNI routing bypass. Escalates to an unauthenticated mTLS bypass only when:\n- mTLS is enforced solely via per-SNI SslContext (clientAuth=REQUIRE)\n- the default/fallback SslContext is permissive (clientAuth=NONE/OPTIONAL)\n- no secondary peer-certificate verification exists at the application layer.",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "modified": "2026-09-08T18:27:48.571082951Z",
+      "published": "2026-09-08T18:16:14Z",
+      "database_specific": {
+        "severity": "CRITICAL",
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-09-08T18:16:14Z",
+        "nvd_published_at": "2026-08-19T21:17:37Z",
+        "cwe_ids": [
+          "CWE-475",
+          "CWE-754"
+        ]
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/security/advisories/GHSA-c4c3-7fpv-j4q5"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75595"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17213"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17217"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/1b5abc6443b63726c72cdd285af2feb7ddbb8ff7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/9e0519239108a69b7e9bbc5e9182ee139a0d7961"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/netty/netty"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.1.137.Final"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.2.17.Final"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "4.2.0.Final"
+                },
+                {
+                  "fixed": "4.2.17.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.2.0.Final",
+            "4.2.1.Final",
+            "4.2.10.Final",
+            "4.2.11.Final",
+            "4.2.12.Final",
+            "4.2.13.Final",
+            "4.2.14.Final",
+            "4.2.15.Final",
+            "4.2.16.Final",
+            "4.2.2.Final",
+            "4.2.3.Final",
+            "4.2.4.Final",
+            "4.2.5.Final",
+            "4.2.6.Final",
+            "4.2.7.Final",
+            "4.2.8.Final",
+            "4.2.9.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.2.16.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-c4c3-7fpv-j4q5/GHSA-c4c3-7fpv-j4q5.json"
+          }
+        },
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.1.137.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.0.0.Alpha1",
+            "4.0.0.Alpha2",
+            "4.0.0.Alpha3",
+            "4.0.0.Alpha4",
+            "4.0.0.Alpha5",
+            "4.0.0.Alpha6",
+            "4.0.0.Alpha7",
+            "4.0.0.Alpha8",
+            "4.0.0.Beta1",
+            "4.0.0.Beta2",
+            "4.0.0.Beta3",
+            "4.0.0.CR1",
+            "4.0.0.CR2",
+            "4.0.0.CR3",
+            "4.0.0.CR4",
+            "4.0.0.CR5",
+            "4.0.0.CR6",
+            "4.0.0.CR7",
+            "4.0.0.CR8",
+            "4.0.0.CR9",
+            "4.0.0.Final",
+            "4.0.1.Final",
+            "4.0.10.Final",
+            "4.0.11.Final",
+            "4.0.12.Final",
+            "4.0.13.Final",
+            "4.0.14.Beta1",
+            "4.0.14.Final",
+            "4.0.15.Final",
+            "4.0.16.Final",
+            "4.0.17.Final",
+            "4.0.18.Final",
+            "4.0.19.Final",
+            "4.0.2.Final",
+            "4.0.20.Final",
+            "4.0.21.Final",
+            "4.0.22.Final",
+            "4.0.23.Final",
+            "4.0.24.Final",
+            "4.0.25.Final",
+            "4.0.26.Final",
+            "4.0.27.Final",
+            "4.0.28.Final",
+            "4.0.29.Final",
+            "4.0.3.Final",
+            "4.0.30.Final",
+            "4.0.31.Final",
+            "4.0.32.Final",
+            "4.0.33.Final",
+            "4.0.34.Final",
+            "4.0.35.Final",
+            "4.0.36.Final",
+            "4.0.37.Final",
+            "4.0.38.Final",
+            "4.0.39.Final",
+            "4.0.4.Final",
+            "4.0.40.Final",
+            "4.0.41.Final",
+            "4.0.42.Final",
+            "4.0.43.Final",
+            "4.0.44.Final",
+            "4.0.45.Final",
+            "4.0.46.Final",
+            "4.0.47.Final",
+            "4.0.48.Final",
+            "4.0.49.Final",
+            "4.0.5.Final",
+            "4.0.50.Final",
+            "4.0.51.Final",
+            "4.0.52.Final",
+            "4.0.53.Final",
+            "4.0.54.Final",
+            "4.0.55.Final",
+            "4.0.56.Final",
+            "4.0.6.Final",
+            "4.0.7.Final",
+            "4.0.8.Final",
+            "4.0.9.Final",
+            "4.1.0.Beta1",
+            "4.1.0.Beta2",
+            "4.1.0.Beta3",
+            "4.1.0.Beta4",
+            "4.1.0.Beta5",
+            "4.1.0.Beta6",
+            "4.1.0.Beta7",
+            "4.1.0.Beta8",
+            "4.1.0.CR1",
+            "4.1.0.CR2",
+            "4.1.0.CR3",
+            "4.1.0.CR4",
+            "4.1.0.CR5",
+            "4.1.0.CR6",
+            "4.1.0.CR7",
+            "4.1.0.Final",
+            "4.1.1.Final",
+            "4.1.10.Final",
+            "4.1.100.Final",
+            "4.1.101.Final",
+            "4.1.102.Final",
+            "4.1.103.Final",
+            "4.1.104.Final",
+            "4.1.105.Final",
+            "4.1.106.Final",
+            "4.1.107.Final",
+            "4.1.108.Final",
+            "4.1.109.Final",
+            "4.1.11.Final",
+            "4.1.110.Final",
+            "4.1.111.Final",
+            "4.1.112.Final",
+            "4.1.113.Final",
+            "4.1.114.Final",
+            "4.1.115.Final",
+            "4.1.116.Final",
+            "4.1.117.Final",
+            "4.1.118.Final",
+            "4.1.119.Final",
+            "4.1.12.Final",
+            "4.1.120.Final",
+            "4.1.121.Final",
+            "4.1.122.Final",
+            "4.1.123.Final",
+            "4.1.124.Final",
+            "4.1.125.Final",
+            "4.1.126.Final",
+            "4.1.127.Final",
+            "4.1.128.Final",
+            "4.1.129.Final",
+            "4.1.13.Final",
+            "4.1.130.Final",
+            "4.1.131.Final",
+            "4.1.132.Final",
+            "4.1.133.Final",
+            "4.1.134.Final",
+            "4.1.135.Final",
+            "4.1.136.Final",
+            "4.1.14.Final",
+            "4.1.15.Final",
+            "4.1.16.Final",
+            "4.1.17.Final",
+            "4.1.18.Final",
+            "4.1.19.Final",
+            "4.1.2.Final",
+            "4.1.20.Final",
+            "4.1.21.Final",
+            "4.1.22.Final",
+            "4.1.23.Final",
+            "4.1.24.Final",
+            "4.1.25.Final",
+            "4.1.26.Final",
+            "4.1.27.Final",
+            "4.1.28.Final",
+            "4.1.29.Final",
+            "4.1.3.Final",
+            "4.1.30.Final",
+            "4.1.31.Final",
+            "4.1.32.Final",
+            "4.1.33.Final",
+            "4.1.34.Final",
+            "4.1.35.Final",
+            "4.1.36.Final",
+            "4.1.37.Final",
+            "4.1.38.Final",
+            "4.1.39.Final",
+            "4.1.4.Final",
+            "4.1.40.Final",
+            "4.1.41.Final",
+            "4.1.42.Final",
+            "4.1.43.Final",
+            "4.1.44.Final",
+            "4.1.45.Final",
+            "4.1.46.Final",
+            "4.1.47.Final",
+            "4.1.48.Final",
+            "4.1.49.Final",
+            "4.1.5.Final",
+            "4.1.50.Final",
+            "4.1.51.Final",
+            "4.1.52.Final",
+            "4.1.53.Final",
+            "4.1.54.Final",
+            "4.1.55.Final",
+            "4.1.56.Final",
+            "4.1.57.Final",
+            "4.1.58.Final",
+            "4.1.59.Final",
+            "4.1.6.Final",
+            "4.1.60.Final",
+            "4.1.61.Final",
+            "4.1.62.Final",
+            "4.1.63.Final",
+            "4.1.64.Final",
+            "4.1.65.Final",
+            "4.1.66.Final",
+            "4.1.67.Final",
+            "4.1.68.Final",
+            "4.1.69.Final",
+            "4.1.7.Final",
+            "4.1.70.Final",
+            "4.1.71.Final",
+            "4.1.72.Final",
+            "4.1.73.Final",
+            "4.1.74.Final",
+            "4.1.75.Final",
+            "4.1.76.Final",
+            "4.1.77.Final",
+            "4.1.78.Final",
+            "4.1.79.Final",
+            "4.1.8.Final",
+            "4.1.80.Final",
+            "4.1.81.Final",
+            "4.1.82.Final",
+            "4.1.83.Final",
+            "4.1.84.Final",
+            "4.1.85.Final",
+            "4.1.86.Final",
+            "4.1.87.Final",
+            "4.1.88.Final",
+            "4.1.89.Final",
+            "4.1.9.Final",
+            "4.1.90.Final",
+            "4.1.91.Final",
+            "4.1.92.Final",
+            "4.1.93.Final",
+            "4.1.94.Final",
+            "4.1.95.Final",
+            "4.1.96.Final",
+            "4.1.97.Final",
+            "4.1.98.Final",
+            "4.1.99.Final"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-c4c3-7fpv-j4q5/GHSA-c4c3-7fpv-j4q5.json",
+            "last_known_affected_version_range": "<= 4.1.136.Final"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "GHSA-fccg-mwvh-qqg4": {
+      "id": "GHSA-fccg-mwvh-qqg4",
+      "summary": "Netty: Fragmented ClientHello records trigger quadratic pre-handshake reassembly in default SNI parsing",
+      "details": "### Summary\n\nNetty's default SNI entrypoint reparses and recopies previously received ClientHello fragments on every additional TLS handshake record. A remote peer can send a small first record that advertises a large ClientHello length and then drip the body in many tiny records, causing **superlinear (quadratic) CPU work** before the handshake completes. With 4095 one-byte fragments, the handler recopies **8,386,560 bytes** from only **24,579 bytes** on the wire \u2014 a **341\u00d7 amplification** ratio.\n\n### Affected Entrypoints\n\n- `io.netty.handler.ssl.SniHandler` \u2014 default constructors\n- `io.netty.handler.ssl.SslClientHelloHandler` \u2014 pre-handshake ClientHello aggregation path\n\n### Vulnerable Code Locations\n\n- `handler/src/main/java/io/netty/handler/ssl/SniHandler.java:85`\n- `handler/src/main/java/io/netty/handler/ssl/SslClientHelloHandler.java:75` (decode entry)\n- `handler/src/main/java/io/netty/handler/ssl/SslClientHelloHandler.java:165` (handshakeBuffer.clear)\n- `handler/src/main/java/io/netty/handler/ssl/SslClientHelloHandler.java:174` (writeBytes re-copy)\n- `codec-base/src/main/java/io/netty/handler/codec/ByteToMessageDecoder.java:294` (cumulation retention)\n\n### Exploit Path\n\n```\n1. TCP connection \u2192 SniHandler \u2192 SslClientHelloHandler.decode\n2. First record: TLS handshake header declaring large ClientHello length (e.g., 4096 bytes)\n3. Attacker sends thousands of tiny follow-on handshake records (1 byte each)\n4. On each fragment: handshakeBuffer.clear() + writeBytes() re-copies ALL accumulated body bytes\n5. Total bytes copied = n*(n+1)/2 where n = number of body bytes \u2192 quadratic\n6. Event-loop CPU exhausted before SslHandler takes over\n```\n\n### Impact\n\n- **Vulnerability Type:** Inefficient Algorithmic Complexity\n- An unauthenticated network attacker can drive disproportionate CPU consumption on the Netty event loop\n- Affects **all** Netty deployments using `SniHandler` for TLS termination (the default SNI path)\n- No privileges, user interaction, or special configuration required\n- Can degrade or stall TLS connection handling for all clients on the affected event loop\n- The attack requires only modest bandwidth (~25 KB) to trigger significant CPU work\n\n---\n### Credits\n\nFound by a security research team from the University of Sydney, focusing on detecting open source software vulnerabilities.\nLiyi Zhou: https://lzhou1110.github.io/\nZiyue Wang: https://zyy0530.github.io/\nStrick: https://str1ckl4nd.github.io/\nMaurice: https://maurice.busystar.org/\nChenchen Yu: https://7thparkk.github.io/",
+      "aliases": [
+        "CVE-2026-75596"
+      ],
+      "modified": "2026-09-08T18:27:48.113951573Z",
+      "published": "2026-09-08T18:14:56Z",
+      "database_specific": {
+        "github_reviewed_at": "2026-09-08T18:14:56Z",
+        "nvd_published_at": "2026-08-19T21:17:37Z",
+        "cwe_ids": [
+          "CWE-407"
+        ],
+        "severity": "MODERATE",
+        "github_reviewed": true
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/security/advisories/GHSA-fccg-mwvh-qqg4"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75596"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17213"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17217"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/1b5abc6443b63726c72cdd285af2feb7ddbb8ff7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/9e0519239108a69b7e9bbc5e9182ee139a0d7961"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/netty/netty"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.1.137.Final"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.2.17.Final"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "4.2.0.Final"
+                },
+                {
+                  "fixed": "4.2.17.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.2.0.Final",
+            "4.2.1.Final",
+            "4.2.10.Final",
+            "4.2.11.Final",
+            "4.2.12.Final",
+            "4.2.13.Final",
+            "4.2.14.Final",
+            "4.2.15.Final",
+            "4.2.16.Final",
+            "4.2.2.Final",
+            "4.2.3.Final",
+            "4.2.4.Final",
+            "4.2.5.Final",
+            "4.2.6.Final",
+            "4.2.7.Final",
+            "4.2.8.Final",
+            "4.2.9.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.2.16.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-fccg-mwvh-qqg4/GHSA-fccg-mwvh-qqg4.json"
+          }
+        },
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.1.137.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.0.0.Alpha1",
+            "4.0.0.Alpha2",
+            "4.0.0.Alpha3",
+            "4.0.0.Alpha4",
+            "4.0.0.Alpha5",
+            "4.0.0.Alpha6",
+            "4.0.0.Alpha7",
+            "4.0.0.Alpha8",
+            "4.0.0.Beta1",
+            "4.0.0.Beta2",
+            "4.0.0.Beta3",
+            "4.0.0.CR1",
+            "4.0.0.CR2",
+            "4.0.0.CR3",
+            "4.0.0.CR4",
+            "4.0.0.CR5",
+            "4.0.0.CR6",
+            "4.0.0.CR7",
+            "4.0.0.CR8",
+            "4.0.0.CR9",
+            "4.0.0.Final",
+            "4.0.1.Final",
+            "4.0.10.Final",
+            "4.0.11.Final",
+            "4.0.12.Final",
+            "4.0.13.Final",
+            "4.0.14.Beta1",
+            "4.0.14.Final",
+            "4.0.15.Final",
+            "4.0.16.Final",
+            "4.0.17.Final",
+            "4.0.18.Final",
+            "4.0.19.Final",
+            "4.0.2.Final",
+            "4.0.20.Final",
+            "4.0.21.Final",
+            "4.0.22.Final",
+            "4.0.23.Final",
+            "4.0.24.Final",
+            "4.0.25.Final",
+            "4.0.26.Final",
+            "4.0.27.Final",
+            "4.0.28.Final",
+            "4.0.29.Final",
+            "4.0.3.Final",
+            "4.0.30.Final",
+            "4.0.31.Final",
+            "4.0.32.Final",
+            "4.0.33.Final",
+            "4.0.34.Final",
+            "4.0.35.Final",
+            "4.0.36.Final",
+            "4.0.37.Final",
+            "4.0.38.Final",
+            "4.0.39.Final",
+            "4.0.4.Final",
+            "4.0.40.Final",
+            "4.0.41.Final",
+            "4.0.42.Final",
+            "4.0.43.Final",
+            "4.0.44.Final",
+            "4.0.45.Final",
+            "4.0.46.Final",
+            "4.0.47.Final",
+            "4.0.48.Final",
+            "4.0.49.Final",
+            "4.0.5.Final",
+            "4.0.50.Final",
+            "4.0.51.Final",
+            "4.0.52.Final",
+            "4.0.53.Final",
+            "4.0.54.Final",
+            "4.0.55.Final",
+            "4.0.56.Final",
+            "4.0.6.Final",
+            "4.0.7.Final",
+            "4.0.8.Final",
+            "4.0.9.Final",
+            "4.1.0.Beta1",
+            "4.1.0.Beta2",
+            "4.1.0.Beta3",
+            "4.1.0.Beta4",
+            "4.1.0.Beta5",
+            "4.1.0.Beta6",
+            "4.1.0.Beta7",
+            "4.1.0.Beta8",
+            "4.1.0.CR1",
+            "4.1.0.CR2",
+            "4.1.0.CR3",
+            "4.1.0.CR4",
+            "4.1.0.CR5",
+            "4.1.0.CR6",
+            "4.1.0.CR7",
+            "4.1.0.Final",
+            "4.1.1.Final",
+            "4.1.10.Final",
+            "4.1.100.Final",
+            "4.1.101.Final",
+            "4.1.102.Final",
+            "4.1.103.Final",
+            "4.1.104.Final",
+            "4.1.105.Final",
+            "4.1.106.Final",
+            "4.1.107.Final",
+            "4.1.108.Final",
+            "4.1.109.Final",
+            "4.1.11.Final",
+            "4.1.110.Final",
+            "4.1.111.Final",
+            "4.1.112.Final",
+            "4.1.113.Final",
+            "4.1.114.Final",
+            "4.1.115.Final",
+            "4.1.116.Final",
+            "4.1.117.Final",
+            "4.1.118.Final",
+            "4.1.119.Final",
+            "4.1.12.Final",
+            "4.1.120.Final",
+            "4.1.121.Final",
+            "4.1.122.Final",
+            "4.1.123.Final",
+            "4.1.124.Final",
+            "4.1.125.Final",
+            "4.1.126.Final",
+            "4.1.127.Final",
+            "4.1.128.Final",
+            "4.1.129.Final",
+            "4.1.13.Final",
+            "4.1.130.Final",
+            "4.1.131.Final",
+            "4.1.132.Final",
+            "4.1.133.Final",
+            "4.1.134.Final",
+            "4.1.135.Final",
+            "4.1.136.Final",
+            "4.1.14.Final",
+            "4.1.15.Final",
+            "4.1.16.Final",
+            "4.1.17.Final",
+            "4.1.18.Final",
+            "4.1.19.Final",
+            "4.1.2.Final",
+            "4.1.20.Final",
+            "4.1.21.Final",
+            "4.1.22.Final",
+            "4.1.23.Final",
+            "4.1.24.Final",
+            "4.1.25.Final",
+            "4.1.26.Final",
+            "4.1.27.Final",
+            "4.1.28.Final",
+            "4.1.29.Final",
+            "4.1.3.Final",
+            "4.1.30.Final",
+            "4.1.31.Final",
+            "4.1.32.Final",
+            "4.1.33.Final",
+            "4.1.34.Final",
+            "4.1.35.Final",
+            "4.1.36.Final",
+            "4.1.37.Final",
+            "4.1.38.Final",
+            "4.1.39.Final",
+            "4.1.4.Final",
+            "4.1.40.Final",
+            "4.1.41.Final",
+            "4.1.42.Final",
+            "4.1.43.Final",
+            "4.1.44.Final",
+            "4.1.45.Final",
+            "4.1.46.Final",
+            "4.1.47.Final",
+            "4.1.48.Final",
+            "4.1.49.Final",
+            "4.1.5.Final",
+            "4.1.50.Final",
+            "4.1.51.Final",
+            "4.1.52.Final",
+            "4.1.53.Final",
+            "4.1.54.Final",
+            "4.1.55.Final",
+            "4.1.56.Final",
+            "4.1.57.Final",
+            "4.1.58.Final",
+            "4.1.59.Final",
+            "4.1.6.Final",
+            "4.1.60.Final",
+            "4.1.61.Final",
+            "4.1.62.Final",
+            "4.1.63.Final",
+            "4.1.64.Final",
+            "4.1.65.Final",
+            "4.1.66.Final",
+            "4.1.67.Final",
+            "4.1.68.Final",
+            "4.1.69.Final",
+            "4.1.7.Final",
+            "4.1.70.Final",
+            "4.1.71.Final",
+            "4.1.72.Final",
+            "4.1.73.Final",
+            "4.1.74.Final",
+            "4.1.75.Final",
+            "4.1.76.Final",
+            "4.1.77.Final",
+            "4.1.78.Final",
+            "4.1.79.Final",
+            "4.1.8.Final",
+            "4.1.80.Final",
+            "4.1.81.Final",
+            "4.1.82.Final",
+            "4.1.83.Final",
+            "4.1.84.Final",
+            "4.1.85.Final",
+            "4.1.86.Final",
+            "4.1.87.Final",
+            "4.1.88.Final",
+            "4.1.89.Final",
+            "4.1.9.Final",
+            "4.1.90.Final",
+            "4.1.91.Final",
+            "4.1.92.Final",
+            "4.1.93.Final",
+            "4.1.94.Final",
+            "4.1.95.Final",
+            "4.1.96.Final",
+            "4.1.97.Final",
+            "4.1.98.Final",
+            "4.1.99.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.1.136.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-fccg-mwvh-qqg4/GHSA-fccg-mwvh-qqg4.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "GHSA-gm45-99xc-r7wv": {
+      "id": "GHSA-gm45-99xc-r7wv",
+      "summary": "yawkat LZ4 Java: LZ4FrameInputStream reallocates block buffers for every frame, allowing CPU and GC amplification from small inputs",
+      "details": "### Summary\n\n`LZ4FrameInputStream` allocates two new buffers of the frame's maximum block size, up to 4 MiB each, every time it reads a frame header. Because concatenated frames are read by default, an input made of many minimal empty frames forces about 8 MiB of zeroed heap allocation for every 11 input bytes.\n\n### Details\n\nIn `net.jpountz.lz4.LZ4FrameInputStream.readHeader()`:\n\n```java\nmaxBlockSize = frameInfo.getBD().getBlockMaximumSize();\ncompressedBuffer = new byte[maxBlockSize]; // Reused during different compressions\nrawBuffer = new byte[maxBlockSize];\nbuffer = ByteBuffer.wrap(rawBuffer);\n```\n\nThis runs for every frame, and the previous frame's arrays are never reused. A valid 11-byte frame consists of the magic number, FLG `0x60`, BD `0x70` (4 MiB blocks), the header checksum, and an immediate end mark. It carries no data, yet triggers the full 8 MiB allocation. `new LZ4FrameInputStream(in)` reads concatenated frames by default.\n\nIn local measurements on JDK 25, 10,000 such frames (110 KB of input) took about 8 seconds of CPU to read, roughly 70 seconds per MiB of input. This was similar under G1, Parallel, Serial and ZGC. A legitimate stream costs orders of magnitude less per input byte.\n\n### Impact\n\nApplications that decode attacker-controlled LZ4 frame data with `LZ4FrameInputStream` can be made to spend large amounts of CPU and GC time relative to the input size. Live heap stays bounded at about 8 MiB and the stream produces no output, so decompressed-size limits do not help. Cost grows linearly with input size, so the practical limit is the compressed input size the application accepts. Availability impact only.\n\nApplications using `readSingleFrame = true` perform only one allocation and are not affected.\n\n### Patch\n\nFixed in lz4-java 1.11.4. `LZ4FrameInputStream` now allocates its block buffers only when a block needs them and reuses them across frames, never shrinking them. The content checksum hash and the skippable-frame skip buffer are also reused instead of being created for every frame. Decompression is limited to the current frame's maximum block size.\n\nFor older versions, the workaround is to limit the compressed input size accepted from untrusted sources, or use single-frame mode where that is sufficient.",
+      "aliases": [
+        "CVE-2026-106450"
+      ],
+      "modified": "2026-10-07T20:45:05.906321924Z",
+      "published": "2026-10-07T20:35:40Z",
+      "database_specific": {
+        "severity": "MODERATE",
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-10-07T20:35:40Z",
+        "nvd_published_at": "2026-10-06T20:17:27Z",
+        "cwe_ids": [
+          "CWE-770"
+        ]
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-gm45-99xc-r7wv"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106450"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/2acc0ec1ead226145c62a817c18c8ed49233a283"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.4"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.4"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-gm45-99xc-r7wv/GHSA-gm45-99xc-r7wv.json",
+            "last_known_affected_version_range": "<= 1.11.3"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.4",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-gm45-99xc-r7wv/GHSA-gm45-99xc-r7wv.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ]
+    },
+    "GHSA-mcr4-qmvw-px4g": {
+      "id": "GHSA-mcr4-qmvw-px4g",
+      "summary": "yawkat LZ4 Java: Native library extraction to a shared temporary directory is vulnerable to file replacement by another local user",
+      "details": "### Summary\n\nWhen no system-installed `liblz4-java` is found, `net.jpountz.util.Native.load()` extracts the bundled native library to `java.io.tmpdir` and loads it with `System.load`. The path of the extracted library can be predicted before it is created, and the library file is opened without exclusive creation. Another local user who can write to the same temporary directory can therefore create the file first and control the code that is loaded.\n\n### Details\n\n```java\ntempLibLock = File.createTempFile(\"liblz4-java-\", \".\" + os().libExtension + \".lck\");\ntempLib = new File(tempLibLock.getAbsolutePath().replaceFirst(\".lck$\", \"\"));\n// copy to tempLib\ntry (FileOutputStream out = new FileOutputStream(tempLib)) { ... }\n...\nSystem.load(tempLib.getAbsolutePath());\n```\n\nOnly the `.lck` file is created safely, with a random name and exclusive creation. The library path is the `.lck` name without the `.lck` suffix, and nothing reserves it. `new FileOutputStream(tempLib)` opens it with `O_CREAT|O_TRUNC` and follows symlinks.\n\nIn a shared, world-writable temporary directory, another user can watch for the `.lck` file and create the corresponding library file before it is opened. If they win that race, they own the file. The victim then writes into the attacker-owned file, and the attacker can overwrite it again before `System.load`.\n\nWhether this can be exploited depends on the host:\n\n- With `fs.protected_regular = 0`, the attacker can pre-create a world-writable file, and their code is then loaded into the victim's JVM.\n- With `fs.protected_regular >= 1` (the default on many systemd-based distributions), the victim's open fails. The library then fails to load and the library falls back to the Java implementations, so the attacker can only cause a denial of service.\n- A symlink variant is blocked by `fs.protected_symlinks = 1`.\n- Temporary directories without the sticky bit, or shared across users in containers, are exploitable whatever these settings are.\n\nThis behaviour was introduced upstream in commit c3ddae5 (lz4-java 1.7.0), which swapped which of the two files is created with `createTempFile`.\n\n### Impact\n\nA local user who can write to the same temporary directory as a victim process that uses the bundled JNI library may be able to execute code as the victim. Exploitation requires a shared temporary directory, host settings that permit it, and winning a race.\n\nThe issue does not apply if `liblz4-java` is found on `java.library.path`, if `java.io.tmpdir` is private to the user (for example systemd `PrivateTmp`, or a per-user temporary directory), or if only the Java implementations are used.\n\n### Patch\n\nFixed in lz4-java 1.11.4. The native library is now extracted directly into a file created by `File.createTempFile`, which has a random name and is created exclusively, so a file or symlink planted in advance cannot be reused. The `.lck` lock files are no longer used. Instead, the startup cleanup removes stale `liblz4-java-*` temporary files (including `.lck` files left by older versions) only once they are more than one hour old.\n\nFor older versions, the workaround is to set `java.io.tmpdir` to a directory writable only by the application user, or install `liblz4-java` on `java.library.path`.",
+      "aliases": [
+        "CVE-2026-106451"
+      ],
+      "modified": "2026-10-07T20:45:06.908713391Z",
+      "published": "2026-10-07T20:35:51Z",
+      "database_specific": {
+        "severity": "HIGH",
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-10-07T20:35:51Z",
+        "nvd_published_at": "2026-10-06T20:17:27Z",
+        "cwe_ids": [
+          "CWE-367",
+          "CWE-377"
+        ]
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-mcr4-qmvw-px4g"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106451"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/7a48b7f6b8099b9dab6541e4ac2ee0979dc55aa3"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.4"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.4"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 1.11.3",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-mcr4-qmvw-px4g/GHSA-mcr4-qmvw-px4g.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.7.0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-mcr4-qmvw-px4g/GHSA-mcr4-qmvw-px4g.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "GHSA-qv9r-c865-cp47": {
+      "id": "GHSA-qv9r-c865-cp47",
+      "summary": "Apache Log4j API: Improper encoding of non-finite floating-point values during MapMessage JSON serialization",
+      "details": "Improper encoding of non-finite floating-point values during MapMessage JSON serialization in Apache Log4j API produces output that is not valid JSON. This issue affects Apache Log4j API versions 2.13.1 through 2.25.4 and version 2.26.0.\n\nThe fix for CVE-2026-34481 did not cover all code paths: when a MapMessage contains a non-finite IEEE 754 value (NaN, Infinity, or -Infinity), MapMessage.asJson() emits the corresponding bare token. RFC 8259 does not permit these tokens, so a conformant parser rejects the resulting document.\n\nThe defect is reachable only when both of the following conditions hold:\n\n  *  The application uses the  message resolver https://logging.apache.org/log4j/2.x/manual/json-template-layout.html#event-template-resolver-message  of JsonTemplateLayout or any other layout that relies on MapMessage.asJson() or MapMessage.getFormattedMessage(new String[]{\"JSON\"}).\n  *  The application logs a MapMessage that contains an attacker-controlled floating-point value.\n\n\nAn attacker who can supply a non-finite value can cause the affected layout to emit malformed JSON, which may corrupt the enclosing log record or disrupt downstream log ingestion and parsing.\n\nUsers are advised to upgrade to Apache Log4j API 2.25.5 or 2.26.1, both of which emit RFC 8259-compliant JSON for non-finite values.",
+      "aliases": [
+        "CVE-2026-49844"
+      ],
+      "modified": "2026-09-10T03:50:52.972700022Z",
+      "published": "2026-07-11T00:31:48Z",
+      "database_specific": {
+        "cwe_ids": [
+          "CWE-116"
+        ],
+        "severity": "MODERATE",
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-08-13T18:28:30Z",
+        "nvd_published_at": "2026-07-10T22:16:42Z"
+      },
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49844"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/pull/4163"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/commit/19edb23e162d6c728a8c2221a240037d389ed300"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/commit/feadf8eb0b4acb6ddfa4c0ab2bbc6d88b8e12d82"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/logging-log4j2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/releases/tag/rel/2.25.5"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/releases/tag/rel/2.26.1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/cyclonedx/vdr.xml"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/manual/json-template-layout.html#event-template-resolver-message"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/security.html#CVE-2026-49844"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-api",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-api"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.13.1"
+                },
+                {
+                  "fixed": "2.25.5"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.13.1",
+            "2.13.2",
+            "2.13.3",
+            "2.14.0",
+            "2.14.1",
+            "2.15.0",
+            "2.16.0",
+            "2.17.0",
+            "2.17.1",
+            "2.17.2",
+            "2.18.0",
+            "2.19.0",
+            "2.20.0",
+            "2.21.0",
+            "2.21.1",
+            "2.22.0",
+            "2.22.1",
+            "2.23.0",
+            "2.23.1",
+            "2.24.0",
+            "2.24.1",
+            "2.24.2",
+            "2.24.3",
+            "2.25.0",
+            "2.25.1",
+            "2.25.2",
+            "2.25.3",
+            "2.25.4"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/07/GHSA-qv9r-c865-cp47/GHSA-qv9r-c865-cp47.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-api",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-api"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.26.0"
+                },
+                {
+                  "fixed": "2.26.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.26.0"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/07/GHSA-qv9r-c865-cp47/GHSA-qv9r-c865-cp47.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N"
+        }
+      ]
+    },
+    "GHSA-xx22-p4ch-683r": {
+      "id": "GHSA-xx22-p4ch-683r",
+      "summary": "LZ4 Java: Native XXHash implementations can crash the JVM when passed invalid byte array ranges",
+      "details": "### Summary\n\nInsufficient validation of byte array arguments in JNI-based XXHash implementations in lz4-java 1.11.0 and earlier allows callers to crash the JVM by passing an invalid array reference or invalid range to native XXHash methods.\n\nThis affects applications where an attacker can influence the byte array object or the `off` / `len` arguments passed to affected XXHash APIs. It does **not** affect the common case where only the contents of a valid byte array are attacker-controlled.\n\nJava-based XXHash implementations are *not* affected.\n\n### Details\n\nThe JNI-backed XXHash implementations pass caller-provided byte array arguments to native code. The affected APIs are:\n\n- `XXHashFactory.nativeInstance().hash32().hash(byte[] buf, int off, int len, int seed)`\n- `XXHashFactory.nativeInstance().hash64().hash(byte[] buf, int off, int len, long seed)`\n- `XXHashFactory.nativeInstance().newStreamingHash32(seed).update(byte[] bytes, int off, int len)`\n- `XXHashFactory.nativeInstance().newStreamingHash64(seed).update(byte[] bytes, int off, int len)`\n\nBefore the fix, the streaming JNI implementations did not validate `bytes`, `off`, or `len` before calling `XXHashJNI.XXH32_update` / `XXHashJNI.XXH64_update`. The non-streaming JNI implementations called `SafeUtils.checkRange`, but `SafeUtils.checkRange(byte[], int, int)` skipped all array access when `len == 0`, so a null byte array with a zero length could still reach JNI.\n\nAs a result:\n\n- `hash(null, 0, 0, seed)` and `update(null, 0, 0)` could pass a null array reference to JNI, causing a fatal JVM crash in `GetPrimitiveArrayCritical`.\n- `update(new byte[16], 0, Integer.MAX_VALUE)` could cause native XXHash code to read far beyond the end of the Java array, causing a fatal JVM crash and potentially exposing in-process memory to the native routine before the crash.\n\nThe oversized-length non-streaming `hash(new byte[16], 0, Integer.MAX_VALUE, seed)` case was already rejected in Java before this fix. The missing validation affected the streaming oversized-length case and the zero-length null-array case for both streaming and non-streaming JNI XXHash APIs.\n\nThe impact of this vulnerability depends on how user code uses the XXHash API. Code that hashes attacker-controlled byte contents in a valid, correctly bounded array is not affected. Code may be affected if an attacker can cause the application to pass a null array, an attacker-controlled offset, or an attacker-controlled length to the native XXHash API. The primary impact is denial of service due to JVM termination. For oversized lengths, native code may also read outside the Java array before the process crashes.\n\n### Mitigation\n\nlz4-java 1.11.1 fixes this issue without requiring changes in user code.\n\nIf you cannot upgrade, avoid passing attacker-controlled array references, offsets, or lengths to JNI-backed XXHash APIs. In particular, validate that arrays are non-null and that `off` and `len` describe a range fully contained in the array before calling native XXHash methods.\n\nUsing `XXHashFactory.safeInstance()` avoids the JNI boundary and is not affected by this native crash behavior.",
+      "aliases": [
+        "CVE-2026-59949"
+      ],
+      "modified": "2026-09-10T03:51:12.782091174Z",
+      "published": "2026-07-24T16:13:41Z",
+      "database_specific": {
+        "github_reviewed_at": "2026-07-24T16:13:41Z",
+        "nvd_published_at": null,
+        "cwe_ids": [
+          "CWE-125",
+          "CWE-476"
+        ],
+        "severity": "MODERATE",
+        "github_reviewed": true
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/security/advisories/GHSA-xx22-p4ch-683r"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/commit/dbd86d04b8dd716e1c2bc626be54189997d910da"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/yawkat/lz4-java"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/yawkat/lz4-java/releases/tag/v1.11.1"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "at.yawk.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/at.yawk.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.11.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.8.1",
+            "1.9.0"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 1.11.0",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/07/GHSA-xx22-p4ch-683r/GHSA-xx22-p4ch-683r.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.lz4:lz4-java",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.lz4/lz4-java"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.4",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.7.0",
+            "1.7.1",
+            "1.8.0",
+            "1.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/07/GHSA-xx22-p4ch-683r/GHSA-xx22-p4ch-683r.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H"
+        }
+      ]
+    },
+    "GHSA-xxph-c9ww-hj94": {
+      "id": "GHSA-xxph-c9ww-hj94",
+      "summary": "Google Guava: CompactHashMap/CompactHashSet/MapMakerInternalMap deserialization triggers uncontrolled memory allocation",
+      "details": "# CompactHashMap/CompactHashSet/MapMakerInternalMap native deserialization triggers uncontrolled memory allocation\n\n## Summary\n\n`CompactHashMap`, `CompactHashSet`, and `MapMakerInternalMap` implement `readObject(ObjectInputStream)` by reading an attacker-controlled `elementCount` or `initialCapacity` from the stream. On the very first insertion during or after deserialization (for the `CompactHash*` collections, inside `allocArrays()`) or immediately during deserialization (for `MapMakerInternalMap`), the implementation eagerly allocates arrays sized to that full, unvalidated value (up to `CompactHashing.MAX_SIZE` = 2^30-1, ~1.07 billion, for example) before the rest of the stream's actual content has been consumed. A 72-byte malicious serialized stream containing a single tiny element can force a multi-gigabyte allocation and crash a JVM with `OutOfMemoryError`, dynamically confirmed against the current release.\n\n## Details\n\n`CompactHashMap.readObject()` (`guava/src/com/google/common/collect/CompactHashMap.java`):\n\n```java\nprivate void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {\n  stream.defaultReadObject();\n  int elementCount = stream.readInt();\n  if (elementCount < 0) {\n    throw new InvalidObjectException(\"Invalid size: \" + elementCount);\n  }\n  init(elementCount);\n  for (int i = 0; i < elementCount; i++) {\n    K key = (K) stream.readObject();\n    V value = (V) stream.readObject();\n    put(key, value);\n  }\n}\n```\n\n`elementCount` is only checked for being non-negative; there is no upper bound and no relationship enforced between the declared count and how much data actually follows in the stream. `init(elementCount)` (line 251) just stores the value (clamped to `[1, CompactHashing.MAX_SIZE]`, i.e. up to 2^30-1):\n\n```java\nvoid init(int expectedSize) {\n  Preconditions.checkArgument(expectedSize >= 0, \"Expected size must be >= 0\");\n  this.metadata = Ints.constrainToRange(expectedSize, 1, CompactHashing.MAX_SIZE);\n}\n```\n\nThe real allocation is deferred to `allocArrays()`, which fires lazily on the *first* `put()` call \u2014 i.e. after only one key/value pair has actually been read off the wire:\n\n```java\nint allocArrays() {\n  ...\n  int expectedSize = metadata;\n  int buckets = CompactHashing.tableSize(expectedSize);\n  this.table = CompactHashing.createTable(buckets);\n  setHashTableMask(buckets - 1);\n  this.entries = new int[expectedSize];\n  this.keys = new Object[expectedSize];\n  this.values = new Object[expectedSize];\n  return expectedSize;\n}\n```\n\nWith `expectedSize` near `CompactHashing.MAX_SIZE` (2^30-1), this single call allocates a hash `table` plus three `expectedSize`-length arrays \u2014 multiple gigabytes \u2014 triggered by a stream that has, at that point, only supplied one small real element. `CompactHashSet.readObject()`/`allocArrays()` have the identical shape. `CompactLinkedHashMap`/`CompactLinkedHashSet` extend these classes and inherit the same unguarded path.\n\nThe problem with `MapMakerInternalMap` is similar, with [a size read from the serialized data and stored in a `MapMaker` instance](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L2848-L2851) for [later user during deserialization](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L2897), when [the `MapMaker` is passed back to `MapMakerInternalMap`](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMaker.java#L287) and [segments are allocated](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L173-L200) by [calling `newSegment`](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L1143), whose implementations ([example](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L443)) create `Segment` instances ([example](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L2019)) that [allocate arrays of the requested capacity](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L1234) through [the `newTable`](https://github.com/google/guava/blob/1278ad9c2257f48dc82fb7b7c625ab563605aa24/guava/src/com/google/common/collect/MapMakerInternalMap.java#L1262) helper.\n\nThis is the same amplification shape as the already-fixed **CVE-2018-10237** (`AtomicDoubleArray`/`CompoundOrdering`: attacker declares a large size, library eagerly allocates before validating against actual stream content). That fix rewrote `AtomicDoubleArray.readObject()` to grow an `ImmutableLongArray.Builder` incrementally per element actually read, rather than pre-allocating from the declared size \u2014 Guava's own `HashBiMap.readObject()` documents the same defensive principle explicitly in a comment: `init(16); // resist hostile attempts to allocate gratuitous heap`. `CompactHashMap`/`CompactHashSet` do not follow either of these two patterns already present elsewhere in the same codebase.\n\n**Reachability**: All classes are top-level, `implements ... Serializable`, and require no special classpath setup beyond Guava being present (near-ubiquitous on JVM backends). A native Java deserialization attacker names the class directly in a hand-crafted stream \u2014 no particular Guava factory method needs to have been used by the victim application, exactly as with the precedent CVE.\n\n## PoC\n\nFull source and run instructions in the attached `poc-guava-compacthash-dos.zip` (Maven project, `guava:33.7.1-jre` \u2014 the current latest release \u2014 as the only dependency). The PoC:\n\n1. Uses reflection only to legitimately obtain a `CompactHashSet` instance (it is package-private; a real attacker does not need this step, since they craft the serialized bytes directly rather than calling Guava's own serialization code).\n2. Serializes one set with 1 element and one with 2 elements, diffs the two byte streams to locate the exact offset of the `elementCount` field (byte-precise, not guessed).\n3. Patches that one 4-byte field in the 1-element stream from `1` to `0x3FFFFFFF` (`CompactHashing.MAX_SIZE`), leaving the rest of the 72-byte stream (one real `\"A\"` element) untouched.\n4. Feeds the resulting 72-byte malicious stream into a plain `new ObjectInputStream(...).readObject()` call against the real, unmodified `guava-33.7.1-jre.jar`.\n\nActual run output:\n\n```\n### -Xmx8g (generous heap) ###\nLocated size field at offset 63, value=1 (expected 1)\nMalicious stream size: 72 bytes\nDeclared elementCount: 1073741823 (~1.07 billion)\nReal payload: 1 tiny string element (\"A\")\n=== RESULT ===\nException: java.lang.OutOfMemoryError: Java heap space\nTime to allocate+fail: 4013 ms\nHeap used before: 3 MB\nHeap used after (at failure point): 4103 MB\nJVM max heap (-Xmx): 8192 MB\n\n### -Xmx128m (ordinary service-sized heap) ###\nLocated size field at offset 63, value=1 (expected 1)\nMalicious stream size: 72 bytes\nDeclared elementCount: 1073741823 (~1.07 billion)\nReal payload: 1 tiny string element (\"A\")\n=== RESULT ===\nException: java.lang.OutOfMemoryError: Java heap space\nTime to allocate+fail: 24 ms\nHeap used before: 4 MB\nHeap used after (at failure point): 2 MB\nJVM max heap (-Xmx): 128 MB\n```\n\nA 72-byte input forces ~4.1 GB of real allocation before failing on an 8 GB heap, and crashes a 128 MB heap in 24 ms \u2014 over 50,000x amplification between input size and forced allocation.\n\nTo reproduce: `mvn -q compile dependency:build-classpath -Dmdep.outputFile=cp.txt && java -Xmx128m -cp \"target/classes:$(cat cp.txt)\" poc.Poc`\n\n## Impact\n\nUncontrolled resource consumption (CWE-770 / CWE-400) via native Java deserialization: any application that runs `ObjectInputStream.readObject()` on data reachable by an attacker, and has Guava on its classpath (true for a large fraction of the JVM ecosystem), can be crashed with a single ~72-byte payload, regardless of what type the application itself expected to deserialize.\n\n## Severity\n\nCVSS 3.1: `AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H` \u2014 identical vector to CVE-2018-10237, the precedent this is a sibling of. Recomputed with the full formula: exploitability = 8.22\u00d70.85\u00d70.44\u00d70.85\u00d70.85 = 2.221; ISS = 1-(1\u00d71\u00d70.44) = 0.56; impact = 6.42\u00d70.56 = 3.595; base = roundup(5.816) = **5.9 (Medium)**.\n\n## Affected\n\n`com.google.guava:guava`, all editions (`-jre`/`-android`) \u2014 confirmed on the current latest release, 33.7.1-jre. `CompactHashMap`/`CompactHashSet`/`CompactLinkedHashMap`/`CompactLinkedHashSet` have had this same `readObject`/`allocArrays` shape for a long time (probably since they were added in Guava 23.6), and similarly for `MapMakerInternalMap` (which was introduced in Guava 4.0); not tested against older individual releases.\n\n## Suggested fix\n\nApply the same defense already used elsewhere in this codebase: either clamp the initial `init()` capacity to a small constant regardless of the declared `elementCount` (as `HashBiMap.readObject()` already does \u2014 `init(16); // resist hostile attempts to allocate gratuitous heap`) and grow incrementally as elements are actually read, or grow the backing arrays incrementally per iteration of the deserialization loop (as the fixed `AtomicDoubleArray.readObject()` does via `ImmutableLongArray.Builder`) instead of eagerly sizing to the full attacker-declared count on first insert.",
+      "aliases": [
+        "CVE-2026-102554"
+      ],
+      "modified": "2026-10-27T14:45:04.803511466Z",
+      "published": "2026-10-27T14:27:53Z",
+      "database_specific": {
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-10-27T14:27:53Z",
+        "nvd_published_at": "2026-10-09T16:17:20Z",
+        "cwe_ids": [
+          "CWE-400",
+          "CWE-502",
+          "CWE-770"
+        ],
+        "severity": "HIGH"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/google/guava/security/advisories/GHSA-xxph-c9ww-hj94"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102554"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/google/guava/commit/b931fe9d6d5cf00bc55714ad3308d086f71850fe"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/google/guava"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/google/guava/releases/tag/v33.7.2"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "com.google.guava:guava",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/com.google.guava/guava"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "4.0"
+                },
+                {
+                  "fixed": "33.7.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "10.0",
+            "10.0-rc1",
+            "10.0-rc2",
+            "10.0-rc3",
+            "10.0.1",
+            "11.0",
+            "11.0-rc1",
+            "11.0.1",
+            "11.0.2",
+            "12.0",
+            "12.0-rc1",
+            "12.0-rc2",
+            "12.0.1",
+            "13.0",
+            "13.0-rc1",
+            "13.0-rc2",
+            "13.0.1",
+            "14.0",
+            "14.0-rc1",
+            "14.0-rc2",
+            "14.0-rc3",
+            "14.0.1",
+            "15.0",
+            "15.0-rc1",
+            "16.0",
+            "16.0-rc1",
+            "16.0.1",
+            "17.0",
+            "17.0-rc1",
+            "17.0-rc2",
+            "18.0",
+            "18.0-rc1",
+            "18.0-rc2",
+            "19.0",
+            "19.0-rc1",
+            "19.0-rc2",
+            "19.0-rc3",
+            "20.0",
+            "20.0-rc1",
+            "21.0",
+            "21.0-rc1",
+            "21.0-rc2",
+            "22.0",
+            "22.0-android",
+            "22.0-rc1",
+            "22.0-rc1-android",
+            "23.0",
+            "23.0-android",
+            "23.0-rc1",
+            "23.0-rc1-android",
+            "23.1-android",
+            "23.1-jre",
+            "23.2-android",
+            "23.2-jre",
+            "23.3-android",
+            "23.3-jre",
+            "23.4-android",
+            "23.4-jre",
+            "23.5-android",
+            "23.5-jre",
+            "23.6-android",
+            "23.6-jre",
+            "23.6.1-android",
+            "23.6.1-jre",
+            "24.0-android",
+            "24.0-jre",
+            "24.1-android",
+            "24.1-jre",
+            "24.1.1-android",
+            "24.1.1-jre",
+            "25.0-android",
+            "25.0-jre",
+            "25.1-android",
+            "25.1-jre",
+            "26.0-android",
+            "26.0-jre",
+            "27.0-android",
+            "27.0-jre",
+            "27.0.1-android",
+            "27.0.1-jre",
+            "27.1-android",
+            "27.1-jre",
+            "28.0-android",
+            "28.0-jre",
+            "28.1-android",
+            "28.1-jre",
+            "28.2-android",
+            "28.2-jre",
+            "29.0-android",
+            "29.0-jre",
+            "30.0-android",
+            "30.0-jre",
+            "30.1-android",
+            "30.1-jre",
+            "30.1.1-android",
+            "30.1.1-jre",
+            "31.0-android",
+            "31.0-jre",
+            "31.0.1-android",
+            "31.0.1-jre",
+            "31.1-android",
+            "31.1-jre",
+            "32.0.0-android",
+            "32.0.0-jre",
+            "32.0.1-android",
+            "32.0.1-jre",
+            "32.1.0-android",
+            "32.1.0-jre",
+            "32.1.1-android",
+            "32.1.1-jre",
+            "32.1.2-android",
+            "32.1.2-jre",
+            "32.1.3-android",
+            "32.1.3-jre",
+            "33.0.0-android",
+            "33.0.0-jre",
+            "33.1.0-android",
+            "33.1.0-jre",
+            "33.2.0-android",
+            "33.2.0-jre",
+            "33.2.1-android",
+            "33.2.1-jre",
+            "33.3.0-android",
+            "33.3.0-jre",
+            "33.3.1-android",
+            "33.3.1-jre",
+            "33.4.0-android",
+            "33.4.0-jre",
+            "33.4.1-android",
+            "33.4.1-jre",
+            "33.4.2-android",
+            "33.4.2-jre",
+            "33.4.3-android",
+            "33.4.3-jre",
+            "33.4.4-android",
+            "33.4.4-jre",
+            "33.4.5-android",
+            "33.4.5-jre",
+            "33.4.6-android",
+            "33.4.6-jre",
+            "33.4.7-android",
+            "33.4.7-jre",
+            "33.4.8-android",
+            "33.4.8-jre",
+            "33.5.0-android",
+            "33.5.0-jre",
+            "33.6.0-android",
+            "33.6.0-jre",
+            "33.7.0-android",
+            "33.7.0-jre",
+            "33.7.1-android",
+            "33.7.1-jre"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/10/GHSA-xxph-c9ww-hj94/GHSA-xxph-c9ww-hj94.json",
+            "last_known_affected_version_range": "<= 33.7.1"
+          }
+        }
+      ],
+      "schema_version": "1.9.2",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        },
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+        }
+      ]
+    }
+  },
+  "matches": [
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-343h-94h5-c4wr",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-343h-94h5-c4wr",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "LOW",
+      "fingerprint": "22a8b10b1a76d1ba8df6a5b8c4e85158b056ab348e8a224e73e65bdfbab8913c",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-4v53-57pg-c464",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-4v53-57pg-c464",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "30f315d81c604dd09a55fb64b4689a223ba18dba63efcde3478ee1370ad2e7f6",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-6cx8-rjf8-pr8g",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-6cx8-rjf8-pr8g",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "fc079d3982721be81565929fa1ee18e1d80898d698a83698ace823de2d088d65",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-gm45-99xc-r7wv",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-gm45-99xc-r7wv",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "315d487554aae576a2e2912387b1f90db56866ec6a3cde49f9be838fea954bd8",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-mcr4-qmvw-px4g",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-mcr4-qmvw-px4g",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "HIGH",
+      "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-xx22-p4ch-683r",
+      "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+      "advisory": "GHSA-xx22-p4ch-683r",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "991b84a32bd43c99845b43563298653d4e245a11cfb11d7b73de1f06b87021f4",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/com.google.guava/guava@33.6.0-jre|GHSA-xxph-c9ww-hj94",
+      "purl": "pkg:maven/com.google.guava/guava@33.6.0-jre",
+      "advisory": "GHSA-xxph-c9ww-hj94",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "HIGH",
+      "fingerprint": "32f1ee8c39054ece96cf831d304813c5378a1a2cefba76653df85cef81764191",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/io.netty/netty-codec-http@4.2.16.Final|GHSA-8c42-7qj2-3j46",
+      "purl": "pkg:maven/io.netty/netty-codec-http@4.2.16.Final",
+      "advisory": "GHSA-8c42-7qj2-3j46",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-c4c3-7fpv-j4q5",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "CRITICAL",
+      "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-fccg-mwvh-qqg4",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+      "advisory": "GHSA-fccg-mwvh-qqg4",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    },
+    {
+      "key": "26.3|pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0|GHSA-qv9r-c865-cp47",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0",
+      "advisory": "GHSA-qv9r-c865-cp47",
+      "scopes": [
+        "gradle",
+        "runtime/26.3"
+      ],
+      "state": "known",
+      "disposition": "Further investigation",
+      "failing": true,
+      "severity": "MODERATE",
+      "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
+      "baseline_disposition": "Further investigation",
+      "review_status": "awaiting investigation"
+    }
+  ],
+  "resolved_needing_review": [],
+  "failing": true
+}

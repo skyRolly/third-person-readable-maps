@@ -74,7 +74,11 @@ and a bounded remedy on later component-era clients before closing this case.
 The old large foreground shape was not reproduced in one 1.21.4 candidate and
 no-mod comparison. Its cause remains **inconclusive**; repeat matched captures
 with the same game, world, camera, perspective, pose, motion, renderer and frame
-timing. Full graphical acceptance is still required on the new artifacts.
+timing. The separate observations on 1.20.6, 1.21.1, 1.21.5 and 1.21.10 were
+not reproduced by that experiment and also remain **inconclusive**. Repeat a
+candidate/no-mod comparison for each of those versions under the same controls
+and investigate any repeatable difference. Full graphical acceptance is still
+required on the new artifacts.
 
 Coordination PR #15 previously added update targets for branches containing the
 1.21.11 placeholder. The proposed configuration now targets only the three

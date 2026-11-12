@@ -14,7 +14,7 @@ and integrated; an open PR is not an integrated branch.
 | Static API verification | PENDING REVIEW | Current 1.0.0 JARs passed instruction-aware checks on all 48 versions and controlled fixtures; the [review matrix](review-resolution-1.0.0.md) records important verifier limits. |
 | Proposed-head Linux CI | PASS | All 13 product PR heads passed `Build (ubuntu-latest)` on 2026-11-12. Repeat for changed and merged heads. |
 | Proposed-head Windows CI | PASS | All 13 product PR heads passed `Build (windows-latest)` on 2026-11-12. Repeat for changed and merged heads. |
-| Coordination CI | PENDING REVIEW | Local tests pass. The live integrated-verifier and coordinated-version prerequisites intentionally require the three maintenance PRs to be integrated first; hosted coordination CI therefore remains failing until then. |
+| Coordination CI | PENDING REVIEW | Local tests pass. The live source-pin, integrated-verifier and coordinated-version prerequisites require the three maintenance PRs to be integrated and their exact merged heads and security evidence recorded first; hosted coordination CI remains failing until then. |
 | Installed-client startup | BLOCKED | The [per-version inventory](legacy-version-inventory.md) distinguishes fresh 1.0.0 local-world observations from untested versions; old artifact runs are historical. |
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
@@ -42,9 +42,10 @@ and integrated; an open PR is not an integrated branch.
    reviewers. Review the three separate 1.0.0 maintenance PRs and the ten legacy
    ports. Resolve findings before any integration.
 2. After independent approval, integrate the three existing maintenance PRs,
-   verify exact merged-head Linux and Windows checks, and recheck the proposed
-   coordinator's live prerequisite. Review and integrate coordination PR #15
-   without activating any legacy placeholder target.
+   verify exact merged-head Linux and Windows checks, update the registry to
+   those exact merged heads, and refresh their source-bound security evidence.
+   Recheck the proposed coordinator's live prerequisites. Review and integrate
+   coordination PR #15 without activating any legacy placeholder target.
 3. Integrate a reviewed legacy port only with its candidate audit covered. The
    repository currently auto-deletes merged PR branches; the candidate audit
    can continue using the exact candidate commit only while the merged target

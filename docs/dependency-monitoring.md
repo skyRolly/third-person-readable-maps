@@ -228,6 +228,12 @@ disappeared baseline match remains unreviewed and failing, even if an older
 maintenance record had an accepted disposition. It does not replace the
 authoritative scheduled audit or activate release admission.
 
+For the coordinator's release-workflow prerequisite, the active maintenance
+head must also equal the registry's reviewed commit, contain the packaged-JAR
+verifier and declare the coordinated mod version. If an existing maintenance
+PR is merged, update that pin and refresh its security evidence through review
+before the coordinator can pass; an old ancestor is not current scan evidence.
+
 The candidate evidence remains the historical index even after a port is
 integrated. Its optional `monitoring` field defaults to `{"state":"candidate"}`:
 the scheduled audit checks the exact `candidate_head` on `candidate/mc-<group>`.

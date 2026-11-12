@@ -75,6 +75,12 @@ class MaintenanceTargetTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'lacks the required'):
             targets.validate_release_verifier_files('1.21.11', required - {'scripts/jvm_linkage.py'})
 
+    def test_release_prerequisite_requires_current_reviewed_source_pin(self):
+        spec = self.registry['groups']['1.21.11']
+        targets.validate_release_source_head('1.21.11', spec, spec['integrated_commit'])
+        with self.assertRaisesRegex(ValueError, 'differs from the reviewed registry pin'):
+            targets.validate_release_source_head('1.21.11', spec, 'f' * 40)
+
     def test_release_prerequisite_rejects_mixed_integrated_versions(self):
         current = {'schema': 1, 'version': '1.0.0'}
         metadata = {'version': '${version}'}

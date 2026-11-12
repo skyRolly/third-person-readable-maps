@@ -79,3 +79,10 @@ not relabeled as scans of the proposed maintenance PR heads. The historical
 [pre-numeric-fix snapshots](dependency-evidence/1.0.0-pre-numeric-2026-11-12/)
 remain separate. These local results do not replace a later scan of approved
 merged heads or independent security review.
+
+The separate [maintenance-proposal scans](dependency-evidence/1.0.0-maintenance-proposals-2026-11-12/)
+also cover the exact unmerged 1.0.0 heads for PRs #31–#33. They found 41, 53
+and 11 matches respectively; every proposal finding is unreviewed and failing,
+with no disappeared baseline match accepted as resolved. These are additional
+source identities for the same three groups, so their 105 matches are not
+added a second time to the 490-group total above.

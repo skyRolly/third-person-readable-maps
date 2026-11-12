@@ -52,6 +52,32 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
                 indexed.add((occurrence['group'], record['purl'], record['advisory'], occurrence['fingerprint']))
         self.assertEqual(indexed, expected)
 
+    def test_unmerged_maintenance_proposals_remain_distinct_and_unreviewed(self):
+        directory = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
+        index = json.loads((directory / 'index.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        proposals = {entry['id']: entry for entry in manifest['groups'] if entry['branch'].startswith('maintenance/')}
+        self.assertFalse(index['risk_acceptance'])
+        self.assertEqual(set(index['groups']), set(proposals))
+        for group, source in index['groups'].items():
+            self.assertEqual(source['source_sha'], proposals[group]['source_commit'])
+            self.assertEqual(source['branch'], proposals[group]['branch'])
+            for kind in ('snapshot', 'osv'):
+                raw = (directory / (group + '-' + kind + '.json')).read_bytes()
+                expected = source['snapshot_sha256' if kind == 'snapshot' else 'report_sha256']
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected)
+                data = json.loads(raw)
+                if kind == 'snapshot':
+                    self.assertEqual(data['sha'], source['source_sha'])
+                    self.assertEqual(data['ref'], 'refs/heads/' + source['branch'])
+                else:
+                    self.assertEqual(data['status'], 'complete-unreviewed-maintenance-proposal')
+                    self.assertFalse(data['risk_acceptance'])
+                    self.assertEqual(data['source_sha'], source['source_sha'])
+                    self.assertEqual(len(data['matches']), source['matches'])
+                    self.assertTrue(all(match['failing'] and match['review_status'] == 'awaiting investigation'
+                                        for match in data['matches']))
+
 
 if __name__ == '__main__':
     unittest.main()
