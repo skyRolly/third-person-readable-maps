@@ -2,6 +2,66 @@
   "schema": 1,
   "observed_on": "2026-11-12",
   "versions": {
+    "1.17.1": {
+      "group": "1.17-1.19.2",
+      "candidate_head": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "files_sha256": {
+        "movement.json": "c5e6296dc9d71a795626f84bbc3c94108c0ded3f083931f3f88e11fc011affae",
+        "ending-player.dat": "7f307d546fa687d4f47f6903ec484c7d6afc7ec916d9709000899c03288da904",
+        "walking-1.png": "417cd3f8436f294a0ae957be49e4347535e5f4204193cfa5088d9737c0f39351",
+        "walking-2.png": "6bac95feee36529f313b57664ceff8ff9a7f1e6ec3eb126b5836bee53c69fa87",
+        "client.log": "e73f4ba93bf78bb569b5377c4d284df3635f34a7612169575db272cfcbe6d038"
+      }
+    },
+    "1.17": {
+      "group": "1.17-1.19.2",
+      "candidate_head": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "files_sha256": {
+        "movement.json": "7d82c2369368ccb98dd5e5d6e07e2a4da70617b396773f20dcb647f960a28f6f",
+        "ending-player.dat": "95157d576b0b8b1f21c079d62c3fc58124086aaec2bbed04d2de73864a8c8de6",
+        "walking-1.png": "55f7e6ce68fb7aed4a52db5e88f97c4b1e4e985cdfa60dbcfed78b24e8babd33",
+        "walking-2.png": "0c5e676791b11838d5b546a4697ee76d4077dc605a2b1171b4c80fe5a319a90d",
+        "client.log": "3d5b80fd1feb41a309e247fe0e9d46f2822672d2ec7bae9943093e4dfa4c1e35"
+      }
+    },
+    "1.16.5": {
+      "group": "1.15-1.16.5",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "files_sha256": {
+        "movement.json": "82233566c6e08e4de9e60b2ab28c2d0a524d8b34de074cf0ff4534c50060b56a",
+        "ending-player.dat": "c979208607584206c4d840184632ceb8679e6f4fa7b25c9bd4046ca2a6f03b31",
+        "walking-1.png": "9dae61ba5da71e81ccfb4c138c90350751ad83de3e8ef9e0b5df3af00e42a27f",
+        "walking-2.png": "cdfa9bc235b3de8e0ae7dce261bce998bc221f29c76dc2d5b9db5b12785d3e35",
+        "client.log": "5053d55f09c8dd5410b22e2f55ee46901f205c75699b1db81ac386270cb4b6c2"
+      }
+    },
+    "1.16.4": {
+      "group": "1.15-1.16.5",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "files_sha256": {
+        "movement.json": "e24e28dbf31898a01ba55864b249661ba1437414b221e2b169f381782250b65f",
+        "ending-player.dat": "154caa2b8217115d9d19bd068c9f47bf25b1055449d1ab4a7a479343184629e5",
+        "walking-1.png": "978fddc99470fa0f2a6e9df6f573a9b0318b29562f37689bc2a466fbb0035df7",
+        "walking-2.png": "dad7821f49121bb100de3d25e0df732a3b6def348123b22b8e21c08d54dc9bdc",
+        "client.log": "f52b92c8f4cdb2186ec272260dfbc3ed41b293332e0807c826065b3aada35316"
+      }
+    },
+    "1.16.3": {
+      "group": "1.15-1.16.5",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "files_sha256": {
+        "movement.json": "b3bc2b6b8ac132ce1b8874883758986814901b683223cf8d9fec07621d7cb63a",
+        "ending-player.dat": "faf4df5f603e4c143ae0cea0b0cfbffc06ff91a58bc2d37c6ebbedd9185a5b0a",
+        "walking-1.png": "24efe95357a0569b9e79ce29f826843e3290f7a1c384e272b4d618d415b41027",
+        "walking-2.png": "889a847421ad9cfc2b85cd7cf78c4766710c9fc112a47251215b3d5f9904f2ec",
+        "client.log": "8e741c7b8640a3b045e03b1bb1bac8b98ed20d90e0686ececf4ae417269faa9b"
+      }
+    },
     "1.16.2": {
       "group": "1.15-1.16.5",
       "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",

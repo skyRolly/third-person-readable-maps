@@ -2,7 +2,7 @@
   "schema": 1,
   "version": "1.0.0",
   "tag": "1.0.0",
-  "coordinator_sha": "3c00573b8052cf20313bab633a394ca8d514ac5d",
+  "coordinator_sha": "559ca7cd0896f382618bb1356fad034bdf382103",
   "candidate": true,
   "release_date": "2026-11-12",
   "changes": [

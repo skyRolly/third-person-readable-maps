@@ -30,11 +30,11 @@ Current proposed version: **1.0.0**. The [machine-readable inventory](legacy-ver
 | 1.18.2 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
 | 1.18.1 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
 | 1.18 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
-| 1.17.1 | 1.17-1.19.2 | 16 | PASS | NOT RUN | NOT RUN |
+| 1.17.1 | 1.17-1.19.2 | 16 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.17 | 1.17-1.19.2 | 16 | PASS | PASS (local world) | PARTIAL diagnostic |
-| 1.16.5 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16.4 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16.3 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
+| 1.16.5 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.16.4 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.16.3 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16.2 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16.1 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
