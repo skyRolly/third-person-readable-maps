@@ -9,7 +9,7 @@
     "https://meta.fabricmc.net/v2/versions/loader"
   ],
   "scope": "stable 1.14 through 1.21.10; excludes snapshots and 1.21.11",
-  "caveat": "Mappings and metadata are not proof that an artifact loads or renders.",
+  "caveat": "Version metadata and static linkage do not establish runtime behavior, full graphical acceptance, or integrated support. Historical 0.0.2 evidence is archived separately.",
   "versions": [
     {
       "minecraft": "1.21.10",
@@ -29,7 +29,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.10+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -66,11 +66,11 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.9–1.21.10 (candidate)",
+      "candidate_group": "1.21.9\u20131.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.06 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -91,7 +91,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.9+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -128,14 +128,12 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.9–1.21.10 (candidate)",
+      "candidate_group": "1.21.9\u20131.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 27 classes, 39 game member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1",
-      "movement": "PARTIAL: local left-handed walking smoke captured over 10.2 blocks; full arm/lighting acceptance NOT RUN",
-      "lighting": "PARTIAL: map terrain observed in one standing day/night and daytime sneaking arrangement; complete lighting and pose acceptance NOT RUN"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
       "minecraft": "1.21.8",
@@ -155,7 +153,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.8+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -189,11 +187,11 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4–1.21.8 (candidate)",
+      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 8.85 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -214,7 +212,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.7+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -248,11 +246,11 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4–1.21.8 (candidate)",
+      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.65 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -273,7 +271,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.6+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -307,11 +305,11 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4–1.21.8 (candidate)",
+      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -332,7 +330,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -366,11 +364,11 @@
           "231:300:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.21.4–1.21.8 (candidate)",
+      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.93 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -391,7 +389,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.4+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -426,11 +424,11 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.4–1.21.8 (candidate)",
+      "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 2 Mixin descriptors, 28 classes, 44 game and 2 JOML member references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.14 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -451,7 +449,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.3+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -480,11 +478,11 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.2–1.21.3 (candidate)",
+      "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 27 classes, 43 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.36 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -505,7 +503,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.2+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -534,11 +532,11 @@
           "384:384:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21.2–1.21.3 (candidate)",
+      "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 27 classes, 43 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.79 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -559,7 +557,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21.1+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -591,11 +589,11 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21–1.21.1 (candidate)",
+      "candidate_group": "1.21\u20131.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 12.08 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -616,7 +614,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.21+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -648,11 +646,11 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.21–1.21.1 (candidate)",
+      "candidate_group": "1.21\u20131.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 42 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.79 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -673,7 +671,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.6+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -705,11 +703,11 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.20.5–1.20.6 (candidate)",
+      "candidate_group": "1.20.5\u20131.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.57 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -730,7 +728,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -762,11 +760,11 @@
           "396:396:net.minecraft.network.chat.Component getTooltipForId(net.minecraft.world.level.saveddata.maps.MapId) -> a"
         ]
       },
-      "candidate_group": "1.20.5–1.20.6 (candidate)",
+      "candidate_group": "1.20.5\u20131.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 26 classes, 43 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 21, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.71 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -787,7 +785,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.4+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -821,11 +819,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -846,7 +844,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.3+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -880,11 +878,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.22 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -905,7 +903,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -939,11 +937,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 4.75 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -964,7 +962,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20.1+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -998,11 +996,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.44 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1023,7 +1021,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.20+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1057,11 +1055,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 4.96 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1082,7 +1080,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.19.4+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1116,11 +1114,11 @@
           "257:326:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.19.4–1.20.4 (candidate)",
+      "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 classes, 39 game and 2 JOML references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.01 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1141,7 +1139,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.19.3+build.5",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1177,9 +1175,9 @@
       },
       "candidate_group": "1.19.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 23 game classes, 39 game and 2 JOML references",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed, opposite-hand stone and missing-data smoke observed; one controlled first-person comparison completed; full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.47 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1200,7 +1198,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.19.2+build.28",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1234,11 +1232,11 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.22 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1259,7 +1257,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.19.1+build.6",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1293,11 +1291,11 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.61 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1318,7 +1316,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.19+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1352,11 +1350,11 @@
           "251:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.49 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1377,7 +1375,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.18.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1410,11 +1408,11 @@
           "250:320:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.47 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1435,7 +1433,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.18.1+build.22",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1468,11 +1466,11 @@
           "250:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 12.52 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1493,7 +1491,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.18+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1526,11 +1524,11 @@
           "250:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 17, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 7.77 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1551,7 +1549,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.17.1+build.65",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1584,11 +1582,11 @@
           "250:337:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw completed in one layout; ordinary missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local walking trial moved 11.44 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1609,7 +1607,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.17+build.13",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1642,11 +1640,11 @@
           "250:337:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.17–1.19.2 (candidate)",
+      "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 39 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 16, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; test-only forced-null draw and actual null lookup after artificially withheld updates observed in one local layout; broader missing-data scenarios and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1667,7 +1665,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16.5+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1702,11 +1700,11 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 4.96 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1727,7 +1725,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16.4+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1762,11 +1760,11 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0005/255, 100.0000% within 10 levels, maximum 1; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 10.14 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1787,7 +1785,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16.3+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1822,11 +1820,11 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1847,7 +1845,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "NOT RUN: final 1.0.0 JAR has no recorded installed-client startup on this version",
       "yarn_latest_build_listed": "1.16.2+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1882,11 +1880,11 @@
           "258:346:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 9.06 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
       "fabric_global_latest_stable_loader": "0.20.1"
     },
     {
@@ -1907,7 +1905,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.1+build.21",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1942,12 +1940,13 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0000/255, 100.0000% within 10 levels, maximum 0; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 12.08 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.16",
@@ -1967,7 +1966,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2002,12 +2001,13 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.90 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 8.41 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.15.2",
@@ -2027,7 +2027,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.2+build.17",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2062,12 +2062,13 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 7.34 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.15.1",
@@ -2087,7 +2088,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.1+build.37",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2122,12 +2123,13 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.61 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.15",
@@ -2147,7 +2149,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: Fabric Loader 0.20.1 started the installed candidate in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2182,12 +2184,13 @@
           "257:345:void renderBiomePreviewMap(net.minecraft.server.level.ServerLevel,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.15–1.16.5 (candidate)",
+      "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 24 game classes, 38 game references per version",
-      "client_startup": "PASS: installed JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: main/off/both, left-handed and opposite-hand stone smoke observed; untagged map and one first-person comparison exercised; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.4",
@@ -2207,7 +2210,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: revised JAR loaded with Fabric 0.20.1 in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.4+build.18",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2241,12 +2244,13 @@
           "256:338:void renderBiomePreviewMap(net.minecraft.world.level.Level,net.minecraft.world.item.ItemStack) -> a"
         ]
       },
-      "candidate_group": "1.14–1.14.4 (candidate)",
+      "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 6.26 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.3",
@@ -2266,7 +2270,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: revised JAR loaded with Fabric 0.20.1 in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.3+build.13",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2306,12 +2310,13 @@
           "m\t(Lnet/minecraft/class_1306;)V\tmethod_4193\tmethod_4193"
         ]
       },
-      "candidate_group": "1.14–1.14.4 (candidate)",
+      "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.2",
@@ -2331,7 +2336,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: revised JAR loaded with Fabric 0.20.1 in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.2+build.7",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2371,12 +2376,13 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14–1.14.4 (candidate)",
+      "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 7.77 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14.1",
@@ -2396,7 +2402,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: revised JAR loaded with Fabric 0.20.1 in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.1+build.10",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2436,12 +2442,13 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14–1.14.4 (candidate)",
+      "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; one first-person comparison observed; fault-injected null-data draw observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local walking trial moved 5.39 blocks; map terrain visible in two walking frames; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment"
     },
     {
       "minecraft": "1.14",
@@ -2461,7 +2468,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL: revised JAR loaded with Fabric 0.20.1 in a Linux local world; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14+build.21",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2501,12 +2508,13 @@
           "m\t(Lnet/minecraft/world/World;Lnet/minecraft/entity/Entity;Lnet/minecraft/item/map/MapState;)V\tupdateColors\tmethod_7998"
         ]
       },
-      "candidate_group": "1.14–1.14.4 (candidate)",
+      "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
-      "static_linkage": "PASS: 1 Mixin descriptor, 22 game classes, 38 game references and 1 LWJGL reference per version; all declared OpenGL library variants checked",
-      "client_startup": "PASS: revised JAR, Fabric 0.20.1, Java 8, Linux software-rendered local world",
-      "graphical": "PARTIAL: revised JAR right/left main/off/both maps, opposite-hand stone and untagged-map smoke observed; initial first-person comparison INCONCLUSIVE; controlled repeat mean 0.0022/255 and 99.9933% within 10 levels; fault-injected null-data draw and unavailable-data lookup after withheld updates observed in one local layout; ordinary missing-data scenario and full acceptance NOT RUN; PARTIAL: one local layout moved 10.20 blocks with terrain visible in two walking frames before a wall obscured it; clear-position repeat shows terrain standing by day/night and sneaking by day; full acceptance NOT RUN",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, Java 8, Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment"
     }
   ]
 }

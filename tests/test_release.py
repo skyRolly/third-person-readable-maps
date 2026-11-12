@@ -28,7 +28,7 @@ class ReleaseValidationTests(unittest.TestCase):
         self.root_patch = patch.object(release, 'ROOT', self.root)
         self.root_patch.start()
         self.config = release.read_json(ROOT / 'release/compatibility.json')
-        self.plan = {'schema': 1, 'version': '0.0.2', 'release_date': '2026-11-04',
+        self.plan = {'schema': 1, 'version': '1.0.0', 'release_date': '2026-11-04',
                      'changes': ['Fix map rendering'], 'known_limitations': [], 'groups': {}}
         for name in self.config['groups']:
             self.plan['groups'][name] = {'source_branch': self.config['groups'][name]['branch'],
@@ -55,9 +55,9 @@ class ReleaseValidationTests(unittest.TestCase):
         self.write_plan()
         return release.load_plan(self.path, candidate)
 
-    def jar(self, name='1.21.11', *, major=65, namespace=None, version='0.0.2', duplicate=False):
+    def jar(self, name='1.21.11', *, major=65, namespace=None, version='1.0.0', duplicate=False):
         settings = self.config['groups'][name]
-        path = self.root / release.archive_name('0.0.2', name)
+        path = self.root / release.archive_name('1.0.0', name)
         metadata = {'schemaVersion': 1, 'id': release.ID, 'version': version, 'environment': 'client',
                     'license': 'MIT', 'mixins': ['thirdpersonreadablemaps.mixins.json'],
                     'depends': {'minecraft': settings['minecraft'][0] if len(settings['minecraft']) == 1 else settings['minecraft'],
@@ -81,11 +81,14 @@ class ReleaseValidationTests(unittest.TestCase):
 
     def test_release_plan_rejects_invalid_tags_and_version_drift(self):
         self.validate()
-        for invalid in ('v0.0.2', '0.0.02', '0.0', '1.2.3-rc1'):
+        for invalid in ('v1.0.0', '0.0.02', '0.0', '1.2.3-rc1'):
             self.plan['version'] = invalid
             with self.subTest(version=invalid), self.assertRaises(release.Invalid):
                 self.validate()
         self.plan['version'] = '0.0.2'
+        with self.assertRaisesRegex(release.Invalid, 'coordinated current version'):
+            self.validate(candidate=True)
+        self.plan['version'] = '1.0.0'
         self.plan['groups']['26.3']['verified_changes'] = []
         with self.assertRaises(release.Invalid):
             self.validate()
@@ -119,12 +122,12 @@ class ReleaseValidationTests(unittest.TestCase):
     def test_jar_rejects_wrong_version_new_bytecode_namespace_and_duplicates(self):
         spec = self.config['groups']['1.21.11']
         good = self.jar()
-        self.assertEqual(len(release.inspect_jar(good, '0.0.2', '1.21.11', spec)), 64)
-        for kwargs in ({'version': '0.0.1'}, {'major': 69}, {'namespace': 'named'}, {'duplicate': True}):
+        self.assertEqual(len(release.inspect_jar(good, '1.0.0', '1.21.11', spec)), 64)
+        for kwargs in ({'version': '0.0.1'}, {'version': '0.0.2'}, {'major': 69}, {'namespace': 'named'}, {'duplicate': True}):
             with self.subTest(kwargs=kwargs):
                 path = self.jar(**kwargs)
                 with self.assertRaises(release.Invalid):
-                    release.inspect_jar(path, '0.0.2', '1.21.11', spec)
+                    release.inspect_jar(path, '1.0.0', '1.21.11', spec)
 
     def test_legacy_java_targets_are_bounded_by_mojang_runtime_and_pinned_build_jdk(self):
         for version, java in [('1.14', 8), ('1.17', 16), ('1.20.1', 17), ('1.21.9', 21)]:
@@ -155,7 +158,7 @@ class ReleaseValidationTests(unittest.TestCase):
         spec = self.config['groups']['1.21.11']
         spec['mixins'] = ['ArmedEntityRenderStateMixin', 'ReadableMapLayerMixin']
         jar = self.jar()
-        self.assertEqual(len(release.inspect_jar(jar, '0.0.2', '1.21.11', spec)), 64)
+        self.assertEqual(len(release.inspect_jar(jar, '1.0.0', '1.21.11', spec)), 64)
         with ZipFile(jar) as source:
             files = {item: source.read(item) for item in source.namelist()
                      if not item.endswith('ArmedEntityRenderStateMixin.class')}
@@ -163,7 +166,7 @@ class ReleaseValidationTests(unittest.TestCase):
             for name, value in files.items():
                 target.writestr(name, value)
         with self.assertRaises(release.Invalid):
-            release.inspect_jar(jar, '0.0.2', '1.21.11', spec)
+            release.inspect_jar(jar, '1.0.0', '1.21.11', spec)
 
     def test_build_matrix_selects_each_reviewed_jdk(self):
         rows = release.matrix(self.config, self.plan)
@@ -202,7 +205,7 @@ class ReleaseValidationTests(unittest.TestCase):
         release.aggregate(cfg, plan, artifacts, bundle, coordinator_sha='c' * 40)
         files = release_github.verified_files(cfg, plan, bundle, 'c' * 40)
         self.assertEqual(len(files), len(cfg['groups']) + 2)
-        with (bundle / release.archive_name('0.0.2', '1.21.11')).open('ab') as jar:
+        with (bundle / release.archive_name('1.0.0', '1.21.11')).open('ab') as jar:
             jar.write(b'tampered')
         with self.assertRaises(release.Invalid):
             release_github.verified_files(cfg, plan, bundle, 'c' * 40)
@@ -312,9 +315,9 @@ class ReleaseValidationTests(unittest.TestCase):
             if route == 'actions/runs/999/approvals':
                 return [] if state['no_approval'] else [{'state': 'approved', 'user': {'id': 5, 'login': 'reviewer'},
                     'environments': [{'id': 77, 'name': state['environment']}]}]
-            if route == 'releases/tags/0.0.2':
+            if route == 'releases/tags/1.0.0':
                 return copy.deepcopy(state['draft'])
-            if route == 'git/ref/tags/0.0.2':
+            if route == 'git/ref/tags/1.0.0':
                 return {'object': {'type': 'tag', 'sha': 'tag-object'}} if state['tag'] else None
             if route == 'git/tags/tag-object':
                 return {'tag': plan['version'], 'object': {'type': 'commit', 'sha': coordinator}}
@@ -336,7 +339,7 @@ class ReleaseValidationTests(unittest.TestCase):
                 self.assertEqual((data['tag'], data['object'], data['type']), (plan['version'], coordinator, 'commit'))
                 result = {'sha': 'tag-object'}
             elif url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/git/refs' and request.method == 'POST':
-                self.assertEqual(json.loads(request.data), {'ref': 'refs/tags/0.0.2', 'sha': 'tag-object'})
+                self.assertEqual(json.loads(request.data), {'ref': 'refs/tags/1.0.0', 'sha': 'tag-object'})
                 state['tag'] = True
             elif url.netloc == 'api.github.com' and url.path == '/repos/owner/repo/releases' and request.method == 'POST':
                 data = json.loads(request.data)
@@ -455,12 +458,13 @@ class ReleaseValidationTests(unittest.TestCase):
             release_github.main()
         mutate.assert_not_called()
 
-    def test_multi_version_workflow_uses_checked_out_verifier_and_failure_propagates(self):
+    def test_every_release_group_uses_checked_out_verifier_and_failure_propagates(self):
         workflow = (ROOT / '.github/workflows/release.yml').read_text()
         build = workflow.split('  build:\n', 1)[1].split('  collect:\n', 1)[0]
         self.assertIn('ref: ${{ matrix.commit }}', build)
         command = 'python3 scripts/verify_supported_apis.py --jar build/libs'
-        self.assertIn('if: matrix.multi_version\n        run: ' + command, build)
+        self.assertIn('run: ' + command, build)
+        self.assertNotIn('if: matrix.multi_version', build)
         self.assertLess(build.index('ref: ${{ matrix.commit }}'), build.index(command))
         self.assertLess(build.index(command), build.index('Upload group artifact'))
         self.assertEqual([e['group'] for e in release.matrix(self.config, self.plan) if e['multi_version']], ['26.1-26.2'])
@@ -476,11 +480,11 @@ class ReleaseValidationTests(unittest.TestCase):
         with patch.object(release_github, 'tag_target', return_value='b' * 40), \
              patch.object(release_github, 'mutate') as mutate:
             with self.assertRaises(release.Invalid):
-                release_github.ensure_tag('owner/repo', '0.0.2', 'a' * 40, True)
+                release_github.ensure_tag('owner/repo', '1.0.0', 'a' * 40, True)
             mutate.assert_not_called()
         with patch.object(release_github, 'api', return_value={'object': {'type': 'commit', 'sha': 'a' * 40}}):
             with self.assertRaises(release.Invalid):
-                release_github.tag_target('owner/repo', '0.0.2')
+                release_github.tag_target('owner/repo', '1.0.0')
 
     def test_unprotected_source_is_rejected_before_release(self):
         with patch.object(authorize_release, 'api', return_value={'protected': False, 'commit': {'sha': 'a' * 40}}):

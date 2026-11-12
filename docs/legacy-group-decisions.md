@@ -1,5 +1,8 @@
 # Legacy compatibility-group decisions
 
+**Evidence dating:** Runtime and graphical observations in the original tables below concern historical 0.0.2 or earlier artifacts. They do not certify 1.0.0. See the [current 1.0.0 handoff](legacy-review-handoff.md) and [version inventory](legacy-version-inventory.md). The coordinated proposed version is 1.0.0; no coordinated release has been published.
+
+
 These are candidate decisions, not proof that the final minimum partition or
 complete support has been established. The release configuration remains
 restricted to the three integrated groups until a port has the required

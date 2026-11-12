@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import release
 import scan_dependency_snapshot as scanner
+import validate_maintenance_targets as maintenance
 
 
 class CoordinationTests(unittest.TestCase):
@@ -23,7 +24,12 @@ class CoordinationTests(unittest.TestCase):
                 self.assertFalse((ROOT / path).exists())
         cfg = release.read_json(ROOT / 'release/compatibility.json')
         plan = release.read_json(ROOT / 'release/plan.example.json')
+        current = release.read_json(ROOT / 'release/current-version.json')
+        self.assertEqual(current['schema'], 1)
+        self.assertRegex(current['version'], r'^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$')
+        self.assertEqual(plan['version'], current['version'])
         readme = (ROOT / 'README.md').read_text(encoding='utf-8')
+        self.assertIn('`' + current['version'] + '`', readme)
         self.assertEqual(set(cfg['groups']), set(plan['groups']))
         for name, spec in cfg['groups'].items():
             self.assertIn(spec['branch'], readme)
@@ -74,26 +80,12 @@ class CoordinationTests(unittest.TestCase):
 
     def test_dependency_updates_cover_each_maintained_branch(self):
         config = (ROOT / '.github/dependabot.yml').read_text(encoding='utf-8')
-        blocks = re.split(r'(?m)^  - package-ecosystem: ', config)[1:]
-        entries = set()
-        for block in blocks:
-            ecosystem = block.splitlines()[0].strip()
-            branch = re.search(r'(?m)^    target-branch: (.+)$', block)
-            self.assertIsNotNone(re.search(r'(?m)^    directory: /$', block))
-            self.assertIsNotNone(re.search(r'(?m)^      interval: weekly$', block))
-            entries.add((ecosystem, branch.group(1) if branch else 'main'))
+        registry = release.read_json(ROOT / 'release/maintenance-targets.json')
+        maintenance.validate_configuration(registry, config)
         groups = release.read_json(ROOT / 'release/compatibility.json')['groups']
-        expected = {('github-actions', 'main')}
+        self.assertTrue(set(groups).issubset(registry['groups']))
         for spec in groups.values():
-            for ecosystem in ('gradle', 'github-actions'):
-                expected.add((ecosystem, spec['branch']))
             self.assertIn(spec['branch'], (ROOT / '.github/workflows/dependency-audit.yml').read_text())
-        candidates = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']
-        for name in candidates:
-            for ecosystem in ('gradle', 'github-actions'):
-                expected.add((ecosystem, 'mc/' + name))
-        self.assertEqual(entries, expected)
-        self.assertEqual(len(blocks), len(entries))
 
     def test_legacy_inventory_matches_candidate_runtime_evidence(self):
         groups = release.read_json(ROOT / 'docs/legacy-candidate-evidence.json')['groups']

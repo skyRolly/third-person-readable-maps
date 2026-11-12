@@ -1,47 +1,22 @@
 # Legacy candidate review handoff
 
-All entries below are **draft candidates**, not integrated support or release acceptance. The [version inventory](legacy-version-inventory.md) has one row per historical stable version; [candidate evidence](legacy-candidate-evidence.json) records JAR names, digests, source commits, static checks, runtime results and limitations. Every candidate currently passes its per-version static linkage checks.
+All ten proposed legacy implementations remain draft PRs against placeholder `mc/*` branches. They are not integrated or release-ready. The coordinated proposed mod version is **1.0.0**; the three already-integrated branches still contain 0.0.2 until their separate review PRs merge. No release has been published.
 
-All 42 historical versions also have installed local-world main/off/both map
-smoke and one local walking trial. Portions of map terrain are
-visible in at least two walking frames per version; these are partial views,
-not full pose, lighting, multiplayer, hardware-GPU or independent human
-acceptance. Several frames contain unexplained foreground shapes. A
-[1.21.4 candidate and no-mod comparison](https://github.com/skyRolly/third-person-readable-maps/blob/b21bb047003049cb10a0480df791451983b7162b/docs/verification/foreground-1214-control.md)
-did not reproduce its large shape, so its cause remains unresolved.
+All 42 legacy versions passed the current instruction-aware static checks against the identified local 1.0.0 JARs. This is not complete JVM verification or graphical acceptance. [Current per-version results](legacy-version-inventory.md), [machine-readable candidate evidence](legacy-candidate-evidence.json), and [historical 0.0.2 observations](historical-0.0.2-2026-11-05/) are separate.
 
-| Group and PR | Explicit versions | Runtime Java | Candidate head | Versions with installed-world map smoke |
-|---|---|---:|---|---|
-| [1.14-1.14.4](https://github.com/skyRolly/third-person-readable-maps/pull/23) (#23) | 1.14, 1.14.1, 1.14.2, 1.14.3, 1.14.4 | 8 | `8db35d3d13401008a5d60823020dd0d889984782` | all |
-| [1.15-1.16.5](https://github.com/skyRolly/third-person-readable-maps/pull/21) (#21) | 1.15, 1.15.1, 1.15.2, 1.16, 1.16.1, 1.16.2, 1.16.3, 1.16.4, 1.16.5 | 8 | `e6eb2d0481c96a88bf551390bb071a86143337b8` | all |
-| [1.17-1.19.2](https://github.com/skyRolly/third-person-readable-maps/pull/20) (#20) | 1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1, 1.19.2 | 16 (1.17–1.17.1); 17 (1.18+) | `fdc9677c616d91f172b273985c234ecb29966a56` | all |
-| [1.19.3](https://github.com/skyRolly/third-person-readable-maps/pull/22) (#22) | 1.19.3 | 17 | `615b199515159b0510f7dd4b0437c503ccd79fcf` | all |
-| [1.19.4-1.20.4](https://github.com/skyRolly/third-person-readable-maps/pull/19) (#19) | 1.19.4, 1.20, 1.20.1, 1.20.2, 1.20.3, 1.20.4 | 17 | `2770989b856d25e765a9e50a5c98cc0671c1fd38` | all |
-| [1.20.5-1.20.6](https://github.com/skyRolly/third-person-readable-maps/pull/18) (#18) | 1.20.5, 1.20.6 | 21 | `b0f62ef1c24f70d492b61a2407be6b1be1c7214d` | all |
-| [1.21-1.21.1](https://github.com/skyRolly/third-person-readable-maps/pull/17) (#17) | 1.21, 1.21.1 | 21 | `8445cefc7af9ce3fe797f00f423f2000a61dfc72` | all |
-| [1.21.2-1.21.3](https://github.com/skyRolly/third-person-readable-maps/pull/16) (#16) | 1.21.2, 1.21.3 | 21 | `a36ea18e3e4e0d748b0dc00e6fcb3f701b8c5291` | all |
-| [1.21.4-1.21.8](https://github.com/skyRolly/third-person-readable-maps/pull/14) (#14) | 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8 | 21 | `b21bb047003049cb10a0480df791451983b7162b` | all |
-| [1.21.9-1.21.10](https://github.com/skyRolly/third-person-readable-maps/pull/13) (#13) | 1.21.9, 1.21.10 | 21 | `acd47c20c0e3a494d7d65ef8b7184258b60b34e2` | all |
+| Group | Draft PR | Proposed source HEAD | 1.0.0 JAR SHA-256 | Installed 1.0.0 coverage |
+|---|---|---|---|---|
+| 1.14-1.14.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/23) | `83f3a34a5a984d2ac88398465679b7dffd60e20d` | `5770c22a021f1c2fd74a80444fe759701f70c82a65fa03e9fd5e90154e701423` | 5/5 partial local-world evidence |
+| 1.15-1.16.5 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/21) | `f566285f448411f0abc4a61c86a1036300547495` | `2f8b094db2de01569e42605870ef05a82880ffc72291796ded0a8dd518804eed` | 5/9 partial local-world evidence |
+| 1.17-1.19.2 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/20) | `7bc8efafa18f832d683aed38ef3a998008afa070` | `0bb801f64aa4adcea52ed50e123909d242a353d5faa4cdb69aae3e1fc5250116` | 0/8 partial local-world evidence |
+| 1.19.3 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/22) | `52221cf3d087df8f3ec6d5533d2409a309b8193e` | `cb5c1e04f33ad1fc572f72f01da6f15ba3c151e520df651b9638ae8a2afa4597` | 0/1 partial local-world evidence |
+| 1.19.4-1.20.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/19) | `d727717745a29811b9bb6758b19f4a7c0dc548da` | `dfe2940c28a80b051856efbd1c86eec99ff7c1031426ab62ebcfc7f26efdd29a` | 0/6 partial local-world evidence |
+| 1.20.5-1.20.6 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/18) | `44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96` | `d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a` | 0/2 partial local-world evidence |
+| 1.21-1.21.1 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/17) | `b24ed245e4630c2df87f539707dbf662bba354ac` | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | 0/2 partial local-world evidence |
+| 1.21.2-1.21.3 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/16) | `2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1` | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | 0/2 partial local-world evidence |
+| 1.21.4-1.21.8 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/14) | `08f70683b93eff8d4a68dd366232c70cedd65101` | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | 0/5 partial local-world evidence |
+| 1.21.9-1.21.10 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/13) | `ec7b47fb8d87e307d33250ef8693671d8e65ab0b` | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | 0/2 partial local-world evidence |
 
-| Group | Candidate JAR | SHA-256 |
-|---|---|---|
-| 1.14-1.14.4 | `third-person-readable-maps-0.0.2-mc1.14-1.14.4.jar` | `839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5` |
-| 1.15-1.16.5 | `third-person-readable-maps-0.0.2-mc1.15-1.16.5.jar` | `d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de` |
-| 1.17-1.19.2 | `third-person-readable-maps-0.0.2-mc1.17-1.19.2.jar` | `aee00518a1a5b3c31cf794063ac685aa2675ac0b719f11d2b50d0ec8ccf351e6` |
-| 1.19.3 | `third-person-readable-maps-0.0.2-mc1.19.3.jar` | `f7288ad9a7f73f718176db15f185bab10d8a02548b02e2f4a943aac06f0db16b` |
-| 1.19.4-1.20.4 | `third-person-readable-maps-0.0.2-mc1.19.4-1.20.4.jar` | `7b6e18ebce73045fb937640a1edc0b364a6b13f6bb66941f0c209a204cab0af9` |
-| 1.20.5-1.20.6 | `third-person-readable-maps-0.0.2-mc1.20.5-1.20.6.jar` | `8c02fa2fc1b565e8154926642ac4fa260b28f59aeca8a49f9958a8d39050cdfd` |
-| 1.21-1.21.1 | `third-person-readable-maps-0.0.2-mc1.21-1.21.1.jar` | `d4054952d77a3b4dc79d7681779126cf38bd0fb34c1f9afd3346ceb9f4ca4745` |
-| 1.21.2-1.21.3 | `third-person-readable-maps-0.0.2-mc1.21.2-1.21.3.jar` | `28a15aacf531dfdb3dd51ba63b7e9cf42000e0b981d863cdc0c27bebc89523e4` |
-| 1.21.4-1.21.8 | `third-person-readable-maps-0.0.2-mc1.21.4-1.21.8.jar` | `26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776` |
-| 1.21.9-1.21.10 | `third-person-readable-maps-0.0.2-mc1.21.9-1.21.10.jar` | `03c760850ef7b1501fb5b6d23af61ce855e746ab8d5a2f2a1deed9a4480e26ac` |
+The 1.14 and 1.15 candidates include source-bound controlled map-ID probes; 1.14 also includes texture and lighting state probes. These are targeted diagnostics, not independent full acceptance. An unexplained foreground shape in earlier walking captures did not recur in one matched 1.21.4 candidate/no-mod comparison; the cause remains unresolved and requires matched world, camera, pose, renderer, and frame comparisons.
 
-The legacy candidate JARs use Fabric intermediary names; the 26.x JARs use official names.
-
-The [grouping record](legacy-group-decisions.md) describes the tested API boundaries and rejected unchanged-JAR combinations. Ten new candidate JARs plus the three maintained JARs are the current practical partition, not proof that a smaller fully tested partition is impossible. Build execution uses Java 25, Gradle 9.8.2, Loom 1.19.3 and Loader 0.20.1; older artifacts target Java 8, 16, 17 or 21 as listed in the [toolchain record](compatibility.md#toolchain-decision).
-
-The verified integrated baseline heads were `main` `794aec0eda8e7bfaea5f5e14307766b359589d8f`, `mc/1.21.11` `177f5708727ae4c152091d185536aaa734063280`, `mc/26.1-26.2` `453cf35695cf07be4072f77895cdbafbed617870`, and `mc/26.3` `226b1de7dd4e7c2a75ec35eef1697434462e4f54`. The ten new `mc/*` base branches remain at the 1.21.11 baseline until their draft PRs are independently reviewed and integrated. [Coordination PR #15](https://github.com/skyRolly/third-person-readable-maps/pull/15) targets `main`; its current head and checks are shown on the PR.
-
-The [13-group dry-run record](legacy-dry-run-expanded-2026-11-05.md) lists every tested source head, local build source, artifact digest, matrix, provenance and checksum. This was local staged aggregation, not a hosted release workflow. The [advisory review index](legacy-security-triage-2026-11-05.md) summarizes the unreviewed, failing candidate OSV results; the authoritative security ledger and release configuration still cover only integrated groups. The separately proposed [scheduled candidate audit](dependency-monitoring.md#proposed-scheduled-legacy-candidate-audit) compares source-pinned candidate branches against an unreviewed baseline without accepting risk; its hosted workflow has not run.
-
-Review game-specific ports and their human runtime evidence independently. Integrate only reviewed branches under appropriate protections, verify their actual merged-head Linux and Windows checks, and activate their planned Dependabot targets only when those branches contain the port. Review the coordination PR and refresh its candidate fixture when heads move. Before any later release registration, re-scan actual maintained heads, individually triage advisories, add verified groups and per-version runtime reports to the strict release plan, complete independent review and administrative gates, and rerun the full release authorization and aggregation checks. No merge, tag, draft release or publication was performed by this work.
+Do not activate Dependabot for a placeholder. After independent source review and integration, register the exact maintenance commit, switch candidate monitoring to the pinned integrated-transition state, and only then activate Gradle and Actions updates. Strict release admission, current per-version runtime evidence, independent approvals, security dispositions, branch protection and release authorization are separate gates. See [dependency monitoring](dependency-monitoring.md) and the [1.0.0 release gate matrix](release-readiness-1.0.0.md).

@@ -8,8 +8,9 @@ A client-side Fabric mod that renders filled map contents on maps held in third-
 
 Each row has its own maintained source branch and distributable JAR. The listed
 Minecraft versions are explicit support targets, not promises for all versions
-in a release family. The current coordinated mod version is `0.0.2`; it has not
-been published as a coordinated GitHub Release.
+in a release family. The current coordinated mod version is `1.0.0`; its
+branch updates are proposed for review and it has not been published as a
+coordinated GitHub Release.
 
 | Minecraft | Source branch | Java to play | Fabric Loader | Artifact |
 | --- | --- | --- | --- | --- |
@@ -45,17 +46,20 @@ git checkout mc/1.21.11   # or mc/26.1-26.2, or mc/26.3
 On Windows use `gradlew.bat --no-daemon clean build` or `Build-Windows.bat`.
 JDK 25 runs Gradle for all groups; the 1.21.11 build targets Java 21 bytecode
 and runs on Java 21. The 26.x JARs require Java 25. The distributable is in
-`build/libs/` and has `-mc<group>.jar` in its name. For 26.1–26.2 also run
-`python3 scripts/verify_supported_apis.py --jar build/libs` to verify all four
-targets. Each branch's CI retains Linux and Windows builds and its game-specific
-checks; CI on `main` validates coordination tools and workflows.
+`build/libs/` and has `-mc<group>.jar` in its name. The proposed 1.0.0 changes
+add `python3 scripts/verify_supported_apis.py --jar build/libs` to each product
+branch to check its declared game targets. Each branch's CI retains Linux and
+Windows builds and its game-specific checks; CI on `main` validates coordination
+tools and workflows.
 
 ## Coordinated releases and dependencies
 
 One reviewed `X.X.X` mod version is shared across all branches. A reviewed
 plan pins each source commit and runtime evidence. One annotated tag without a
 `v` prefix identifies the approved `main` coordination commit, and one GitHub
-Release contains all three JARs, a provenance manifest and checksums. The
+Release contains one JAR per admitted group, a provenance manifest and
+checksums. Three groups are integrated today; the ten legacy candidates require
+review and release admission before they can be included. The
 [release guide](docs/releasing.md) describes required branch protections, CI,
 independent approvals, runtime testing and dry runs. No release is automatic.
 
@@ -65,7 +69,7 @@ equivalent security coverage for non-default branches. A separate proposed
 candidate audit fails on every unreviewed match. The [monitoring record](docs/dependency-monitoring.md)
 explains actual coverage and the [advisory ledger](docs/security-advisories.md)
 records unresolved findings.
-The [release-readiness matrix](docs/release-readiness-2026-11-04.md) and
+The [1.0.0 release-readiness matrix](docs/release-readiness-1.0.0.md) and
 [administrative controls](docs/administrative-controls.md) identify outstanding
 protection, approval, credential and automatic-submission requirements.
 

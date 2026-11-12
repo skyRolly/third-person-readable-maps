@@ -21,13 +21,26 @@ import scan_dependency_snapshot as scanner
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/legacy-candidate-evidence.json'
 BASELINE = ROOT / 'docs/candidate-advisory-baseline.json'
+MAINTENANCE = ROOT / 'release/maintenance-targets.json'
+AUTHORITATIVE = ROOT / 'release/compatibility.json'
+LEDGER = ROOT / 'docs/security-advisories.json'
+MAINTENANCE_WORKFLOW = ROOT / '.github/workflows/dependency-audit.yml'
 GROUP = re.compile(r'[0-9]+(?:\.[0-9]+)*(?:-[0-9]+(?:\.[0-9]+)*)?')
 SHA = re.compile(r'[a-f0-9]{40}')
 VERSION = re.compile(r'1\.[0-9]+(?:\.[0-9]+)?')
 PR = re.compile(r'https://github\.com/skyRolly/third-person-readable-maps/pull/([1-9][0-9]*)')
 
 
-def candidate_matrix(evidence):
+def maintenance_audit_branches(workflow):
+    rows = re.findall(r'(?m)^\s*branch:\s*\[([^\]\n]+)\]\s*$', workflow)
+    require(len(rows) == 1, 'maintenance audit must have one explicit branch matrix')
+    branches = [value.strip().strip("'\"") for value in rows[0].split(',')]
+    require(all(re.fullmatch(r'mc/[0-9]+(?:\.[0-9]+)*(?:-[0-9]+(?:\.[0-9]+)*)?', b) for b in branches)
+            and len(branches) == len(set(branches)), 'invalid maintenance audit branch matrix')
+    return set(branches)
+
+
+def candidate_matrix(evidence, maintenance=None, authoritative=None, ledger=None, audit_workflow=''):
     require(isinstance(evidence, dict) and evidence.get('schema') == 1 and
             isinstance(evidence.get('groups'), dict) and evidence['groups'], 'invalid candidate evidence')
     rows, covered = [], set()
@@ -40,13 +53,41 @@ def candidate_matrix(evidence):
                 all(isinstance(v, str) and VERSION.fullmatch(v) for v in versions), group + ': invalid versions')
         require(not covered.intersection(versions), group + ': overlapping candidate versions')
         covered.update(versions)
-        rows.append({'group': group, 'branch': 'candidate/mc-' + group, 'sha': sha})
+        monitoring = entry.get('monitoring', {'state': 'candidate'})
+        require(isinstance(monitoring, dict) and monitoring.get('state') in
+                ('candidate', 'integrated-transition', 'retired-authoritative'), group + ': invalid monitoring state')
+        state = monitoring['state']
+        if state == 'candidate':
+            require(set(monitoring) == {'state'}, group + ': invalid candidate monitoring fields')
+            rows.append({'group': group, 'branch': 'candidate/mc-' + group, 'sha': sha})
+            continue
+        require(isinstance(maintenance, dict) and isinstance(maintenance.get('groups'), dict),
+                group + ': missing integrated maintenance registry')
+        spec = maintenance['groups'].get(group)
+        require(isinstance(spec, dict) and spec.get('branch') == 'mc/' + group and
+                spec.get('minecraft') == versions and isinstance(spec.get('integrated_commit'), str) and
+                SHA.fullmatch(spec['integrated_commit']), group + ': maintenance source is not registered')
+        if state == 'integrated-transition':
+            require(set(monitoring) == {'state', 'source_sha'} and
+                    monitoring['source_sha'] == spec['integrated_commit'],
+                    group + ': transition must pin the registered integrated commit')
+            rows.append({'group': group, 'branch': spec['branch'], 'sha': monitoring['source_sha']})
+        else:
+            require(set(monitoring) == {'state'} and isinstance(authoritative, dict) and
+                    isinstance(authoritative.get('groups'), dict) and isinstance(ledger, dict) and
+                    isinstance(ledger.get('inventories'), dict), group + ': incomplete authoritative handoff')
+            active = authoritative['groups'].get(group)
+            require(isinstance(active, dict) and active.get('branch') == spec['branch'] and
+                    active.get('minecraft') == versions and group in ledger['inventories'] and
+                    spec['branch'] in maintenance_audit_branches(audit_workflow),
+                    group + ': authoritative monitoring is not active')
+            audit.load_ledger(ledger, authoritative['groups'])
     return {'include': rows}
 
 
-def load_baseline(manifest, evidence, root=ROOT, today=None):
+def load_baseline(manifest, evidence, root=ROOT, today=None, maintenance=None, authoritative=None, ledger=None, audit_workflow=''):
     """Validate the retained, explicitly unreviewed comparison baseline."""
-    candidate_matrix(evidence)
+    candidate_matrix(evidence, maintenance, authoritative, ledger, audit_workflow)
     today = today or date.today()
     require(isinstance(manifest, dict) and manifest.get('schema') == 1 and
             manifest.get('risk_acceptance') is False and isinstance(manifest.get('reports'), list) and
@@ -119,15 +160,18 @@ def load_baseline(manifest, evidence, root=ROOT, today=None):
     return groups
 
 
-def audit_candidate(snapshot, metadata, evidence, group, branch, source_sha, observed_sha, baseline):
-    matrix = candidate_matrix(evidence)
+def audit_candidate(snapshot, metadata, evidence, group, branch, source_sha, observed_sha, baseline,
+                    maintenance=None, authoritative=None, ledger=None, audit_workflow=''):
+    matrix = candidate_matrix(evidence, maintenance, authoritative, ledger, audit_workflow)
     rows = [r for r in matrix['include'] if r['group'] == group]
     require(len(rows) == 1, 'unknown candidate group')
     row, entry = rows[0], evidence['groups'][group]
     require(branch == row['branch'] and source_sha == row['sha'] and observed_sha == source_sha,
             'candidate branch or checked-out commit does not match evidence')
     pr_number = PR.fullmatch(entry['pull_request']).group(1)
-    allowed_refs = {'refs/heads/' + branch, 'refs/pull/' + pr_number + '/merge'}
+    allowed_refs = {'refs/heads/' + branch}
+    if branch.startswith('candidate/'):
+        allowed_refs.add('refs/pull/' + pr_number + '/merge')
     require(isinstance(snapshot, dict) and snapshot.get('sha') == source_sha and
             snapshot.get('ref') in allowed_refs, 'snapshot does not identify the candidate source and ref')
     require(isinstance(metadata, dict) and metadata.get('id') == 'thirdpersonreadablemaps' and
@@ -182,6 +226,7 @@ def audit_candidate(snapshot, metadata, evidence, group, branch, source_sha, obs
     resolved = sorted(set(baseline[group]['records']) - {m['key'] for m in matches})
     return {'schema': 1, 'status': 'complete-unreviewed-candidate-scan', 'group': group,
             'branch': branch, 'source_sha': source_sha, 'snapshot_ref': snapshot['ref'],
+            'source_kind': 'candidate' if branch.startswith('candidate/') else 'integrated-transition',
             'scanned_on': date.today().isoformat(), 'database': 'https://api.osv.dev',
             'risk_acceptance': False, 'inventories': inventories, 'runtime_manifests': manifests,
             'baseline_source_sha': baseline[group]['source_sha'], 'findings': findings,
@@ -201,7 +246,9 @@ def main():
     args = parser.parse_args()
     if args.command == 'matrix':
         try:
-            print(json.dumps(candidate_matrix(read_json(args.evidence)), separators=(',', ':')))
+            print(json.dumps(candidate_matrix(read_json(args.evidence), read_json(MAINTENANCE),
+                                              read_json(AUTHORITATIVE), read_json(LEDGER),
+                                              MAINTENANCE_WORKFLOW.read_text()), separators=(',', ':')))
             return 0
         except (Invalid, OSError, ValueError, TypeError, KeyError) as exc:
             print('Candidate matrix incomplete: ' + str(exc), file=sys.stderr)
@@ -210,15 +257,20 @@ def main():
         observed = subprocess.check_output(['git', '-C', args.source, 'rev-parse', 'HEAD'], text=True).strip()
         metadata = read_json(Path(args.source) / 'src/main/resources/fabric.mod.json')
         evidence = read_json(args.evidence)
-        baseline = load_baseline(read_json(args.baseline), evidence)
+        maintenance, authoritative, ledger = read_json(MAINTENANCE), read_json(AUTHORITATIVE), read_json(LEDGER)
+        workflow = MAINTENANCE_WORKFLOW.read_text()
+        baseline = load_baseline(read_json(args.baseline), evidence, maintenance=maintenance,
+                                 authoritative=authoritative, ledger=ledger, audit_workflow=workflow)
         require(args.group in baseline and SHA.fullmatch(args.source_sha), 'invalid candidate baseline source')
         # A retained scan may predate evidence-only commits. It must still belong
         # to the actual checked-out candidate history, including after a force-push.
-        subprocess.check_call(['git', '-C', args.source, 'merge-base', '--is-ancestor',
-                               baseline[args.group]['source_sha'], args.source_sha],
-                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if args.branch.startswith('candidate/'):
+            subprocess.check_call(['git', '-C', args.source, 'merge-base', '--is-ancestor',
+                                   baseline[args.group]['source_sha'], args.source_sha],
+                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         report = audit_candidate(read_json(args.snapshot), metadata, evidence,
-                                 args.group, args.branch, args.source_sha, observed, baseline)
+                                 args.group, args.branch, args.source_sha, observed, baseline,
+                                 maintenance, authoritative, ledger, workflow)
         print(f"{args.group} at {args.source_sha}: {len(report['matches'])} unreviewed, failing matches; "
               f"{len(report['resolved_needing_review'])} disappeared matches need review")
         result = 1 if report['matches'] or report['resolved_needing_review'] else 0

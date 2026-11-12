@@ -26,6 +26,7 @@ PREFIX = 'third-person-readable-maps'
 MIXIN_DIR = 'tech/rolly/thirdpersonreadablemaps/mixin/'
 MIXIN_CLASS = MIXIN_DIR + 'ReadableMapLayerMixin.class'
 RUNTIME_REQUIREMENTS = ROOT / 'release/minecraft-runtime-requirements.json'
+CURRENT_VERSION = ROOT / 'release/current-version.json'
 JAVA_TARGETS = (8, 16, 17, 21, 25)
 
 
@@ -59,6 +60,11 @@ def load_plan(path, candidate=False, config_path=ROOT / 'release/compatibility.j
     require(cfg.get('schema') == plan.get('schema') == 1, 'unsupported schema')
     version = plan.get('version')
     require(isinstance(version, str) and VERSION.fullmatch(version), 'version must be X.X.X without a v prefix')
+    current = read_json(CURRENT_VERSION)
+    require(isinstance(current, dict) and set(current) == {'schema', 'version'} and current['schema'] == 1 and
+            isinstance(current['version'], str) and VERSION.fullmatch(current['version']),
+            'invalid coordinated current version')
+    require(version == current['version'], 'plan version differs from coordinated current version')
     groups = cfg.get('groups')
     selected = plan.get('groups')
     require(isinstance(groups, dict) and isinstance(selected, dict) and groups, 'missing groups')

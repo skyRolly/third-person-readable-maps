@@ -1,0 +1,80 @@
+import copy
+import json
+from pathlib import Path
+import sys
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+import validate_maintenance_targets as targets
+
+
+class MaintenanceTargetTests(unittest.TestCase):
+    def setUp(self):
+        self.registry = json.loads((ROOT / 'release/maintenance-targets.json').read_text())
+        self.config = (ROOT / '.github/dependabot.yml').read_text()
+        self.legacy = {'branch': 'mc/1.14-1.14.4', 'target': '1.14.4',
+                       'minecraft': ['1.14', '1.14.1', '1.14.2', '1.14.3', '1.14.4'],
+                       'integrated_commit': 'a' * 40}
+        self.legacy_entries = '''  - package-ecosystem: gradle
+    directory: /
+    target-branch: mc/1.14-1.14.4
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: mc/1.14-1.14.4
+    schedule:
+      interval: weekly
+'''
+
+    def test_candidates_do_not_activate_dependency_updates(self):
+        # Neither a proposed candidate nor a placeholder name adds an active target.
+        targets.validate_configuration(self.registry, self.config)
+        with self.assertRaisesRegex(ValueError, 'unexpected'):
+            targets.validate_configuration(self.registry, self.config + self.legacy_entries)
+
+    def test_integrated_branch_requires_both_updates_and_matching_source(self):
+        self.registry['groups']['1.14-1.14.4'] = self.legacy
+        with self.assertRaisesRegex(ValueError, 'missing'):
+            targets.validate_configuration(self.registry, self.config)
+        targets.validate_configuration(self.registry, self.config + self.legacy_entries)
+        metadata = {'id': 'thirdpersonreadablemaps', 'depends': {'minecraft': self.legacy['minecraft']}}
+        props = {'minecraft_version': '1.14.4', 'minecraft_group': '1.14-1.14.4'}
+        targets.validate_source('1.14-1.14.4', self.legacy, props, metadata, True)
+        for changed in ({**props, 'minecraft_version': '1.21.11'}, {**props, 'minecraft_group': '1.21.11'}):
+            with self.assertRaises(ValueError):
+                targets.validate_source('1.14-1.14.4', self.legacy, changed, metadata, True)
+        with self.assertRaisesRegex(ValueError, 'different Minecraft'):
+            targets.validate_source('1.14-1.14.4', self.legacy, props,
+                                    {'id': 'thirdpersonreadablemaps', 'depends': {'minecraft': '1.21.11'}}, True)
+        with self.assertRaisesRegex(ValueError, 'not an ancestor'):
+            targets.validate_source('1.14-1.14.4', self.legacy, props, metadata, False)
+
+    def test_duplicate_and_stale_entries_fail(self):
+        with self.assertRaisesRegex(ValueError, 'duplicate'):
+            targets.validate_configuration(self.registry, self.config + self.config[self.config.index('  - package-ecosystem:'):])
+        with self.assertRaisesRegex(ValueError, 'unexpected'):
+            targets.validate_configuration(self.registry, self.config + self.legacy_entries)
+        duplicate = copy.deepcopy(self.registry)
+        duplicate['groups']['26.4'] = copy.deepcopy(duplicate['groups']['26.3'])
+        with self.assertRaises(ValueError):
+            targets.registry_entries(duplicate)
+
+    def test_existing_single_version_template_is_checked(self):
+        spec = self.registry['groups']['1.21.11']
+        targets.validate_source('1.21.11', spec, {'minecraft_version': '1.21.11'},
+                                {'id': 'thirdpersonreadablemaps', 'depends': {'minecraft': '${minecraft_version}'}}, True)
+        with self.assertRaises(ValueError):
+            targets.validate_source('1.21.11', spec, {'minecraft_version': '1.14.4'},
+                                    {'id': 'thirdpersonreadablemaps', 'depends': {'minecraft': '${minecraft_version}'}}, True)
+
+    def test_release_verifier_dependency_blocks_incomplete_source(self):
+        required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py'}
+        targets.validate_release_verifier_files('1.21.11', required)
+        with self.assertRaisesRegex(ValueError, 'lacks the required'):
+            targets.validate_release_verifier_files('1.21.11', required - {'scripts/jvm_linkage.py'})
+
+
+if __name__ == '__main__':
+    unittest.main()

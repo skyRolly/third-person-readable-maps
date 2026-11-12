@@ -52,6 +52,49 @@ class CandidateAuditTests(unittest.TestCase):
         with self.assertRaises(Invalid):
             candidate.candidate_matrix(evidence)
 
+    def test_integrated_transition_uses_pinned_maintenance_source(self):
+        evidence = copy.deepcopy(self.evidence)
+        evidence['groups'][self.group]['monitoring'] = {'state': 'integrated-transition', 'source_sha': 'd' * 40}
+        registry = {'groups': {self.group: {'branch': 'mc/' + self.group,
+                                            'minecraft': ['1.14', '1.14.4'],
+                                            'integrated_commit': 'd' * 40}}}
+        self.assertEqual(candidate.candidate_matrix(evidence, registry)['include'],
+                         [{'group': self.group, 'branch': 'mc/' + self.group, 'sha': 'd' * 40}])
+        with self.assertRaises(Invalid):
+            candidate.candidate_matrix(evidence)
+        changed = copy.deepcopy(registry); changed['groups'][self.group]['integrated_commit'] = 'e' * 40
+        with self.assertRaises(Invalid):
+            candidate.candidate_matrix(evidence, changed)
+        snapshot = copy.deepcopy(self.snapshot)
+        snapshot['sha'] = 'd' * 40; snapshot['ref'] = 'refs/heads/mc/' + self.group
+        with patch.object(candidate.audit, 'runtime_inventories', return_value=(copy.deepcopy(self.inventories), self.manifests)), \
+             patch.object(candidate.scanner, 'query', return_value={}):
+            report = candidate.audit_candidate(snapshot, self.metadata, evidence, self.group, 'mc/' + self.group,
+                                               'd' * 40, 'd' * 40, self.baseline, registry)
+        self.assertEqual(report['source_kind'], 'integrated-transition')
+        self.assertEqual(report['snapshot_ref'], 'refs/heads/mc/' + self.group)
+        snapshot['ref'] = 'refs/pull/23/merge'
+        with self.assertRaises(Invalid):
+            candidate.audit_candidate(snapshot, self.metadata, evidence, self.group, 'mc/' + self.group,
+                                      'd' * 40, 'd' * 40, self.baseline, registry)
+
+    def test_retirement_requires_authoritative_inventory_and_audit_matrix(self):
+        evidence = copy.deepcopy(self.evidence)
+        evidence['groups'][self.group]['monitoring'] = {'state': 'retired-authoritative'}
+        registry = {'groups': {self.group: {'branch': 'mc/' + self.group,
+                                            'minecraft': ['1.14', '1.14.4'],
+                                            'integrated_commit': 'd' * 40}}}
+        config = {'groups': {self.group: {'branch': 'mc/' + self.group, 'minecraft': ['1.14', '1.14.4']}}}
+        ledger = {'inventories': {self.group: {}}}
+        workflow = 'matrix:\n  branch: [mc/1.14-1.14.4]\n'
+        with patch.object(candidate.audit, 'load_ledger', return_value={}):
+            self.assertEqual(candidate.candidate_matrix(evidence, registry, config, ledger, workflow), {'include': []})
+            with self.assertRaises(Invalid):
+                candidate.candidate_matrix(evidence, registry, config, {'inventories': {}}, workflow)
+            with self.assertRaises(Invalid):
+                candidate.candidate_matrix(evidence, registry, config, ledger,
+                                           'matrix:\n  branch: [mc/1.21.11]\n# mc/1.14-1.14.4\n')
+
     def test_match_is_unreviewed_failing_and_scoped_to_each_runtime(self):
         with patch.object(candidate.audit, 'runtime_inventories', return_value=(copy.deepcopy(self.inventories), self.manifests)), \
              patch.object(candidate.scanner, 'query', return_value={self.purl: ['OSV-TEST-1']}) as query, \
@@ -260,6 +303,7 @@ class CandidateAuditTests(unittest.TestCase):
         self.assertIn('audit_candidate_dependencies.py audit', text)
         self.assertIn('git -C source rev-parse HEAD', text)
         self.assertIn('fetch-depth: 0', text)
+        self.assertIn("if: needs.candidates.outputs.has_candidates == 'true'", text)
         self.assertIn('--refresh-dependencies', text)
         self.assertIn('if: always()', text)
 

@@ -1,5 +1,8 @@
 # Compatibility decision record
 
+**Evidence dating:** Runtime and graphical observations in the original tables below concern historical 0.0.2 or earlier artifacts. They do not certify 1.0.0. See the [current 1.0.0 handoff](legacy-review-handoff.md) and [version inventory](legacy-version-inventory.md). The coordinated proposed version is 1.0.0; no coordinated release has been published.
+
+
 The 1.21.11 and 26.x groups are maintained; the older rows below describe draft
 candidates. No `0.0.2` artifact has been published as a coordinated release.
 The [Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)

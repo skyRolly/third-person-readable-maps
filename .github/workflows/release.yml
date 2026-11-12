@@ -85,11 +85,9 @@ jobs:
       - name: Clean build and verify
         run: ./gradlew --no-daemon --console=plain --stacktrace --warning-mode=fail clean build
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        if: matrix.multi_version
         with:
           python-version: '3.15.2'
       - name: Verify every advertised Minecraft version
-        if: matrix.multi_version
         run: python3 scripts/verify_supported_apis.py --jar build/libs
       - name: Upload group artifact
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
