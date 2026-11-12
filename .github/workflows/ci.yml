@@ -43,6 +43,13 @@ jobs:
         working-directory: ${{ runner.temp }}
         shell: pwsh
         run: '& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Test static verification
+        run: python -m unittest discover -s tests
+      - name: Verify packaged game and library APIs
+        run: python scripts/verify_supported_apis.py --jar build/libs
       - name: Upload distributable mod
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
