@@ -15,6 +15,8 @@ import struct
 import sys
 from urllib.request import urlopen
 from zipfile import ZipFile
+import game_linkage
+import jvm_linkage
 
 MANIFEST = 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'
 MIXIN = 'tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class'
@@ -97,15 +99,25 @@ def verify(mod_path, versions, clients):
         require(isinstance(required, list) and required, 'expected an explicit supported-version list')
         if versions is None:
             versions = required
-        mixin = parse_class(mod.read(MIXIN))
-        handlers = [x[2] for x in mixin['members'] if x[0] == 'method' and x[1].startswith('thirdpersonreadablemaps$')]
-        require(len(handlers) == 1 and handlers[0].endswith(CALLBACK + ')V'), 'unexpected Mixin handler descriptor')
-        target_descriptor = handlers[0][:-len(CALLBACK + ')V')] + ')V'
+        config = json.loads(mod.read('thirdpersonreadablemaps.mixins.json'))
+        require(config.get('required') is True and config.get('injectors', {}).get('defaultRequire') == 1 and
+                config.get('client') == ['ReadableMapLayerMixin'], 'unexpected or optional Mixin configuration')
+        mod_nodes = {node['name']: node for node in
+                     (jvm_linkage.parse(mod.read(path)) for path in mod.namelist() if path.endswith('.class'))}
+        mixin_name = MIXIN[:-6]
+        mixin = mod_nodes[mixin_name]
+        require(mixin['annotations'].get('Lorg/spongepowered/asm/mixin/Mixin;', {}).get('value') == ['L' + TARGET + ';'],
+                'unexpected Mixin target annotation')
+        handlers = [m for m in mixin['members'] if 'Lorg/spongepowered/asm/mixin/injection/Inject;' in m['annotations']]
+        require(len(handlers) == 1 and handlers[0]['descriptor'].endswith(CALLBACK + ')V') and
+                handlers[0]['annotations']['Lorg/spongepowered/asm/mixin/injection/Inject;'].get('method') == ['submitArmWithItem'],
+                'unexpected Mixin handler or injection method')
+        target_descriptor = handlers[0]['descriptor'][:-len(CALLBACK + ')V')] + ')V'
         refs = set()
         for path in mod.namelist():
             if path.endswith('.class'):
                 refs.update(ref for ref in parse_class(mod.read(path))['refs']
-                            if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/')))
+                            if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
     manifest = json.loads(get(MANIFEST))
     for version in versions:
         items = [x for x in manifest['versions'] if x['type'] == 'release' and x['id'] == version]
@@ -140,9 +152,25 @@ def verify(mod_path, versions, clients):
             target = game_class(TARGET)
             require(target and ('method', 'submitArmWithItem', target_descriptor) in target['members'],
                     f'{version}: Mixin target descriptor is missing')
+            target_node = jvm_linkage.parse(game.read(TARGET + '.class'))
+            try:
+                jvm_linkage.validate_mixin_target(target_node, 'submitArmWithItem', target_descriptor, handlers[0]['access'])
+                jvm_linkage.validate_injection_point(target_node, 'submitArmWithItem', target_descriptor, 'HEAD')
+            except ValueError as exc:
+                raise ValueError(f'{version}: {exc}') from exc
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
             require(not missing, f'{version}: missing game references: {missing}')
-            print(f'{version}: Mixin target and {len(refs)} game/Blaze3D member references verified')
+            classes = {c for node in mod_nodes.values() for c in node['classes']
+                       if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))}
+            require(not [c for c in classes if not game_class(c)], f'{version}: missing descriptor or referenced game classes')
+            count = game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {}, version)
+        def fetch_library(artifact):
+            data = checked(get(artifact['url']), artifact['sha1'], version + ' library')
+            require(len(data) == artifact['size'], f'{version}: library size mismatch')
+            return data
+        libraries = game_linkage.verify_declared_libraries(meta, mod_nodes, {mixin_name: TARGET}, fetch_library, version)
+        print(f'{version}: Mixin target, {len(classes)} game classes, {count} game instructions, '
+              f'and dependency libraries {libraries} verified')
 
 
 def main():
