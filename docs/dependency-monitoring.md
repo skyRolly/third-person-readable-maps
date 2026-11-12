@@ -116,10 +116,15 @@ query implementation.
   responses, malformed/duplicate ledger records, or expired reviews fail as
   **incomplete** (exit 2). Missing data never means clean or resolved. Legitimate
   dependency removals need an inventory-baseline review.
-- Successfully scanned matches absent from current results are reported as
-  resolved; records are retained for history. No risk record is automatically
-  deleted, approved, or reclassified. Reviews expire within 90 days, or earlier
-  on changed inputs/before release. The current review deadline is 2027-02-02.
+- Previously recorded matches absent from a complete scan are reported as
+  **disappeared and needing review**, and keep the gate failing. A reviewed
+  `Fixed` or `Resolved upstream` record may be reported as resolved only when
+  its `resolution_review` records a reviewer and evidence reference and binds
+  the exact source SHA and `inventory_sha256` emitted by the scan. The digest
+  covers sorted package URLs in every Gradle/runtime scope, excluding ephemeral
+  job timestamps. A changed source or inventory requires renewed review. Records
+  remain in history; no risk is automatically accepted. Reviews expire within
+  90 days, or earlier on changed inputs/before release.
 
 Exit 0 means the reporting policy has no failing matches, **not** release approval;
 exit 1 means findings need action; exit 2 means incomplete/invalid execution. The

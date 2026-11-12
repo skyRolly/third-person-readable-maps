@@ -74,7 +74,8 @@ class AuditTests(unittest.TestCase):
         result = self.compare()
         self.assertEqual(result['matches'][0]['state'], 'new')
         self.assertTrue(result['failing'])
-        self.assertEqual(result['resolved'], [self.ledger['records'][0]['key']])
+        self.assertEqual(result['resolved'], [])
+        self.assertEqual(result['resolved_needing_review'], [self.ledger['records'][0]['key']])
 
     def test_new_affected_compatibility_group_has_no_implicit_review(self):
         new_group = '26.3'
@@ -101,12 +102,33 @@ class AuditTests(unittest.TestCase):
                 self.assertTrue(self.compare()['failing'])
                 self.advisory.clear(); self.advisory.update(original)
 
-    def test_resolved_finding_is_reported_not_deleted(self):
+    def test_disappeared_finding_requires_review_and_is_not_deleted(self):
         self.findings = {}
         result = self.compare()
-        self.assertFalse(result['failing'])
-        self.assertEqual(result['resolved'], [self.ledger['records'][0]['key']])
+        self.assertTrue(result['failing'])
+        self.assertEqual(result['resolved'], [])
+        self.assertEqual(result['resolved_needing_review'], [self.ledger['records'][0]['key']])
         self.assertEqual(len(self.ledger['records']), 1)
+
+    def test_resolution_review_binds_source_and_complete_inventory(self):
+        self.findings = {}
+        record = self.ledger['records'][0]
+        record['disposition'] = 'Fixed'
+        record['resolution_review'] = {'source_sha': 'a' * 40,
+            'inventory_sha256': audit.inventory_fingerprint(self.inventories),
+            'reviewed_by': 'independent-reviewer', 'evidence_reference': 'reviewed report'}
+        def compare(sha):
+            return audit.compare(self.group, self.inventories, self.findings, self.advisories,
+                                 self.ledger, self.groups, TODAY, source_sha=sha)
+        reviewed = compare('a' * 40)
+        self.assertFalse(reviewed['failing'])
+        self.assertEqual(reviewed['resolved'], [record['key']])
+        self.assertEqual(reviewed['resolved_needing_review'], [])
+        self.assertTrue(compare('b' * 40)['failing'])
+        self.inventories['gradle'].append('pkg:maven/example/another@1.0')
+        self.assertTrue(compare('a' * 40)['failing'])
+        record['resolution_review']['reviewed_by'] = ''
+        with self.assertRaises(Invalid): compare('a' * 40)
 
     def test_missing_or_incomplete_advisory_data_fails(self):
         for value in [None, {}, {'id': 'GHSA-example', 'modified': '2026-11-04'}]:

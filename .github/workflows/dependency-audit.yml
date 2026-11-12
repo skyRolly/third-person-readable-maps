@@ -83,8 +83,9 @@ jobs:
               else:
                   for state in ("new", "changed", "known"):
                       print(state + ": " + str(sum(m["state"] == state for m in r["matches"])))
-                  print("Resolved: " + str(len(r["resolved"])))
-                  print("Unresolved/failing: " + str(sum(m["failing"] for m in r["matches"])))
+                  print("Reviewed resolved: " + str(len(r["resolved"])))
+                  print("Disappeared and needing review: " + str(len(r["resolved_needing_review"])))
+                  print("Unresolved/failing current matches: " + str(sum(m["failing"] for m in r["matches"])))
                   print("Known findings remain visible in the full artifact; this is not release approval.")
           PYTHON
       - name: Upload advisory report

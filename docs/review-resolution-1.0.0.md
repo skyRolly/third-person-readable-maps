@@ -64,3 +64,7 @@ ancestry checks gate later activation. Candidate audit transitions retain exact
 source pins and unreviewed historical advisory records. A merged, automatically
 deleted candidate may temporarily remain scanned only under the exact-tree
 checks in `verify_candidate_source.py`; this remains candidate evidence.
+The maintenance audit's observed 105 unresolved matches correctly failed, but
+a separate absent-advisory comparison defect was also corrected: disappearance
+now requires explicit source- and inventory-bound resolution review before the
+gate can pass. See the [security review](security-review-2026-11-12.md).

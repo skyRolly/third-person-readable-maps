@@ -34,3 +34,14 @@ assess compatible fixes or upstream ownership, and record a defensible
 individual disposition. Re-scan final source-bound `1.0.0` dependency
 inventories; do not treat an absent result, unbundled dependency, or this
 worklist as an approval.
+
+The 2026-11-09 Maintenance Dependency Audit completed its scans and failed on
+105 known unresolved matches; that failure followed the intended fail-closed
+policy, not an OSV or dependency-resolution outage. A separate review found a
+latent comparison defect: a previously recorded match absent from a successful
+later scan was automatically counted as resolved and could leave the gate
+green. The proposed fix keeps such records failing as `resolved_needing_review`
+until an explicit `Fixed`/`Resolved upstream` review names the source commit,
+complete scoped-inventory digest, reviewer and evidence reference. Changed
+sources or inventories invalidate that review. This defect did not cause the
+observed 105-match failure, in which no findings had disappeared.
