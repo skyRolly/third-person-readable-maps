@@ -2,3 +2,4 @@
 *.jar binary
 # Retained upstream logging configuration is hash-bound byte-for-byte evidence.
 docs/dependency-evidence/log4j-config-2026-11-12/*.xml -text
+docs/dependency-evidence/component-mapid-codec-2026-11-12/*-metadata.json -text

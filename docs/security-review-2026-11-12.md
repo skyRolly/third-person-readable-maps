@@ -72,7 +72,7 @@ advisory is not by itself proof that overriding Minecraft's runtime is safe.
 All dispositions remain unresolved; no risk has been accepted.
 
 The [high-priority advisory review](security-high-priority-2026-11-12.md)
-adds individual trigger, affected-package and remediation analysis for seven
+adds individual trigger, affected-package and remediation analysis for eleven
 widely distributed high-severity IDs. It retains exact OSV responses and a
 source- and artifact-bound inventory of direct mod-class references. The
 absence of those direct references does not exclude a vulnerable game,

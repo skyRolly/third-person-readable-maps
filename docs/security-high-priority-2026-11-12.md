@@ -1,6 +1,6 @@
 # Individual high-priority dependency review — 2026-11-12
 
-These seven high-severity advisories were selected because they span several
+These eleven high-severity advisories were selected because they span several
 of the 13 proposed groups. The [current worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
 identifies each exact package/version/advisory occurrence, source SHA,
 Gradle/runtime scope and failing state. The affected versions and fixed events
@@ -18,8 +18,12 @@ heads and the final 1.0.0 legacy candidates, not the extra proposal scans.
 | [GHSA-c653-97m9-rcg9](https://osv.dev/vulnerability/GHSA-c653-97m9-rcg9), CVE-2026-50010 | A plain `X509TrustManager` wrapped by Netty can silently omit hostname verification. The same six recorded `netty-handler` versions span 10 groups; OSV lists fixes 4.1.135.Final and 4.2.15.Final. | Inspect actual TLS client trust-manager construction, including loader and server integrations; do not infer safety from the mod JAR alone. |
 | [GHSA-x4gw-5cx5-pgmh](https://osv.dev/vulnerability/GHSA-x4gw-5cx5-pgmh), CVE-2026-45416 | Certain default Netty SNI handlers can reserve up to 16 MiB for a short attacker-controlled ClientHello. The same six recorded `netty-handler` versions span 10 groups; OSV lists fixes 4.1.135.Final and 4.2.15.Final. | Determine whether any reachable game, server or installed component creates the affected TLS SNI handlers and whether bounds are configured. |
 | [GHSA-mcr4-qmvw-px4g](https://osv.dev/vulnerability/GHSA-mcr4-qmvw-px4g), CVE-2026-106451 | LZ4 native extraction in a shared writable temporary directory can allow another local user to replace a native library. `org.lz4:lz4-java` 1.8.0 and `at.yawk.lz4:lz4-java` 1.8.1 and 1.10.1 occur across eight groups. OSV records 1.11.4 as fixed for the `at.yawk` package; the `org.lz4` range ends at 1.8.1 without a fixed event. | Verify native extraction, temporary-directory permissions and actual platform use for each installation; assess a game-compatible upstream update for each package. |
+| [GHSA-cmp6-m4wj-q63q](https://osv.dev/vulnerability/GHSA-cmp6-m4wj-q63q), CVE-2025-66566 | Java LZ4 decompression can expose stale output-buffer contents for crafted input and reused uncleared buffers. `org.lz4:lz4-java` 1.8.0 and `at.yawk.lz4:lz4-java` 1.8.1 occur across six groups. OSV lists `at.yawk` 1.10.1 as fixed; its `org.lz4` entry has no fixed event. | Determine the actual decompressor implementation, input trust and buffer reuse. Native safe decompression is excluded by the advisory, but selecting a native factory does not make every decompressor path safe. |
+| [GHSA-4g8c-wm8x-jfhw](https://osv.dev/vulnerability/GHSA-4g8c-wm8x-jfhw), CVE-2025-24970 | A crafted packet handled by Netty `SslHandler` can trigger a native-engine crash. `netty-handler` 4.1.97.Final and 4.1.115.Final occur across five groups; OSV lists 4.1.118.Final as fixed. | Determine whether a reachable TLS pipeline uses the native `SSLEngine` and affected handler construction. |
+| [GHSA-78wr-2p64-hpwj](https://osv.dev/vulnerability/GHSA-78wr-2p64-hpwj), CVE-2024-47554 | Commons IO `XmlStreamReader` can consume excessive CPU on crafted XML input. Versions 2.5, 2.11.0 and 2.13.0 occur across five groups; OSV lists 2.14.0 as fixed. | Identify whether game, build or loader paths feed untrusted data to this reader; check a compatible upstream dependency update. |
+| [GHSA-vqf4-7m7x-wgfc](https://osv.dev/vulnerability/GHSA-vqf4-7m7x-wgfc), CVE-2025-12183 | `org.lz4:lz4-java` 1.8.0 can perform out-of-bounds memory operations on crafted compressed input, appearing in five groups. The advisory points to a forked fix in `at.yawk.lz4:lz4-java` 1.8.1 and an `org.lz4` 1.8.1 redirect. | Verify actual decompression paths and game compatibility. The related CVE-2025-66566 also affects the fork's 1.8.1, so migration to that version alone does not resolve both advisories. |
 
-All seven remain **Further investigation** and failing. All observed vulnerable
+All eleven remain **Further investigation** and failing. All observed vulnerable
 versions also occur in recorded Minecraft runtime inventories, though individual
 occurrences may additionally appear in Gradle inventories. The mod does not
 bundle those libraries. A [class-file inventory](dependency-evidence/high-advisories-2026-11-12/mod-class-reference-inventory.json)

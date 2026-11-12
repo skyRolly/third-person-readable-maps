@@ -1,0 +1,17 @@
+{
+  "minecraft": "1.19.3",
+  "start": [
+    5.5,
+    81,
+    -62.5
+  ],
+  "end": [
+    5.5,
+    81.0,
+    -50.63150663625001
+  ],
+  "horizontal_distance": 11.868493363749991,
+  "renderer": "Linux Xorg/Mesa software",
+  "candidate_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+  "note": "One short local walking scene; screenshots require visual inspection and do not establish full acceptance."
+}

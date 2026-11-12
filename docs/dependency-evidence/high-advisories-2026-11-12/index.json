@@ -35,6 +35,26 @@
       "url": "https://api.osv.dev/v1/vulns/GHSA-mcr4-qmvw-px4g",
       "sha256": "87b4f40859a21690d34513dd869a98a97e5063f4cf7ea9f3ecbc5cd0ea0d3899",
       "modified": "2026-10-07T20:45:06.908713391Z"
+    },
+    "GHSA-cmp6-m4wj-q63q": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-cmp6-m4wj-q63q",
+      "sha256": "7ffacf8cfb876fcd01b78a8b7b9681741f2e3eebc23559a25ea1d5a1eefb8fd2",
+      "modified": "2026-09-10T03:50:58.809735567Z"
+    },
+    "GHSA-4g8c-wm8x-jfhw": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-4g8c-wm8x-jfhw",
+      "sha256": "edabc9ff9fbc9d163f19f9cdc3e5d86e40c90c35cb727a232de557f52387cb74",
+      "modified": "2026-09-10T03:50:22.400091931Z"
+    },
+    "GHSA-78wr-2p64-hpwj": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-78wr-2p64-hpwj",
+      "sha256": "387c4aaca2c1e91b6c616b4c678ce9111c104af947c169a58211ab59c801eb6b",
+      "modified": "2026-09-10T03:50:19.619589743Z"
+    },
+    "GHSA-vqf4-7m7x-wgfc": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-vqf4-7m7x-wgfc",
+      "sha256": "3d10b2eaf0ae670218045ac66de1fc7f170142b7819cd8227e34225695849a59",
+      "modified": "2026-09-10T03:50:58.551985640Z"
     }
   }
 }

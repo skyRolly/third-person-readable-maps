@@ -18,5 +18,10 @@ walking observation. The second 26.1 attempt completed the game run, but the
 runner looked for saved player data in the pre-26 path. The separate recovery
 script checks the original log, frames, artifact and the new `players/data`
 file before recording its observed movement; the runner was then updated to
-use that path. The scripts use a dummy local identity and token; they do not
-establish authenticated, multiplayer, hardware-GPU or human acceptance.
+use that path. On 26.2 the world saved and closed after the walking captures,
+but the client-menu exit timed out and the harness terminated the client. A
+second recovery script verifies the saved data and records that limitation.
+The later modern runner requests an X11 window close after the world save
+instead of using the earlier fixed menu coordinates. The scripts use a dummy
+local identity and token; they do not establish authenticated, multiplayer,
+hardware-GPU or human acceptance.

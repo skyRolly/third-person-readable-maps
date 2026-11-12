@@ -149,9 +149,30 @@
       ],
       "per_version": {
         "1.19.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in the local test workspace and require visual assessment",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        },
+        "1.20": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.20.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.20.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.36 blocks; screenshots retained in the local test workspace and require visual assessment"
+        },
+        "1.20.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in the local test workspace and require visual assessment"
         }
       }
     },
@@ -325,8 +346,9 @@
       ],
       "per_version": {
         "1.19.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1 and the required Java runtime on Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: controlled map-identity diagnostic; full graphical acceptance NOT RUN",
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.87 blocks; screenshots retained in the local test workspace and require visual assessment",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         }
       }

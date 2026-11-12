@@ -18,7 +18,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
         inventory = json.loads((directory / 'mod-class-reference-inventory.json').read_text())
         manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
         groups = {group['id']: group for group in manifest['groups']}
-        self.assertEqual(len(index), 7)
+        self.assertEqual(len(index), 11)
         self.assertEqual(set(index), set(inventory['targets']))
         self.assertEqual(set(groups), set(inventory['groups']))
         self.assertEqual(inventory['parser']['source_commit'], groups['26.3']['source_commit'])
@@ -36,6 +36,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
             self.assertEqual(result['source_commit'], groups[group]['source_commit'])
             self.assertEqual(result['artifact_sha256'], groups[group]['sha256'])
             self.assertGreater(result['class_files'], 0)
+            self.assertEqual(result['external_field_writes'], [])
             self.assertEqual(set(result['direct_class_references']), set(index))
             self.assertTrue(all(not references for references in result['direct_class_references'].values()))
 

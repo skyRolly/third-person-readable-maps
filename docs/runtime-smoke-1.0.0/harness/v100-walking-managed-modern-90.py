@@ -44,6 +44,13 @@ def tap(name):send_key(name,True);time.sleep(.2);send_key(name,False);time.sleep
 def capture(root,name):
  d=display.Display(':90');r=d.screen().root;g=r.get_geometry();raw=r.get_image(0,0,g.width,g.height,X.ZPixmap,0xffffffff);im=Image.frombytes('RGB',(g.width,g.height),raw.data,'raw','BGRX');d.close();im.save(root/(name+'.png'));print('Captured',name,flush=True)
 
+def request_close():
+ from Xlib.protocol import event
+ d=display.Display(':90');r=d.screen().root
+ wins=[w for w in r.query_tree().children if (w.get_wm_name() or '').startswith('Minecraft')];assert len(wins)==1
+ message=event.ClientMessage(window=wins[0],client_type=d.intern_atom('WM_PROTOCOLS'),data=(32,[d.intern_atom('WM_DELETE_WINDOW'),X.CurrentTime,0,0,0]))
+ wins[0].send_event(message,event_mask=0);d.sync();d.close()
+
 def hotbar():
  end=time.monotonic()+180
  while time.monotonic()<end:
@@ -114,7 +121,7 @@ for version,fixture,jar,digest,java in runs:
    for i in range(1,3):time.sleep(.9);capture(root,'walking-'+str(i))
   finally:xtest.fake_input(d,X.KeyRelease,code);d.sync();d.close()
   time.sleep(1);capture(root,'after-walk')
-  offset=log.stat().st_size;tap('Escape');subprocess.run(['python3',str(helper/'x11-90.py'),'click:640:520'],env=env,check=True,stdout=subprocess.DEVNULL);wait(p,log,'All dimensions are saved' if tuple(map(int,version.split('.'))) >= (1,21,5) else 'All chunks are saved',120,offset);time.sleep(5);subprocess.run(['python3',str(helper/'x11-90.py'),'click:785:605'],env=env,check=True,stdout=subprocess.DEVNULL);p.wait(timeout=45);assert p.returncode==0
+  offset=log.stat().st_size;tap('Escape');subprocess.run(['python3',str(helper/'x11-90.py'),'click:640:520'],env=env,check=True,stdout=subprocess.DEVNULL);wait(p,log,'All dimensions are saved' if tuple(map(int,version.split('.'))) >= (1,21,5) else 'All chunks are saved',120,offset);time.sleep(5);request_close();p.wait(timeout=45);assert p.returncode==0
  playerdata=root/'saves/New World'/('players/data' if tuple(map(int,version.split('.'))) >= (26,1) else 'playerdata')/player
  end=[float(x) for x in nbtlib.load(playerdata)['Pos']];horizontal=math.hypot(end[0]-5.5,end[2]+62.5);print(version,'ending position',end,'horizontal distance',horizontal,flush=True);assert horizontal>.5
  assert not any(x in log.read_text(errors='replace') for x in ('MixinApplyError','InvalidInjectionException','NoSuchMethodError','MixinTransformerError'))

@@ -23,6 +23,10 @@ TARGETS = {
     'GHSA-c653-97m9-rcg9': ['io/netty/handler/ssl/util/SimpleTrustManagerFactory'],
     'GHSA-x4gw-5cx5-pgmh': ['io/netty/handler/ssl/SslClientHelloHandler'],
     'GHSA-mcr4-qmvw-px4g': ['net/jpountz/util/Native'],
+    'GHSA-cmp6-m4wj-q63q': ['net/jpountz/lz4/LZ4Factory'],
+    'GHSA-4g8c-wm8x-jfhw': ['io/netty/handler/ssl/SslHandler'],
+    'GHSA-78wr-2p64-hpwj': ['org/apache/commons/io/input/XmlStreamReader'],
+    'GHSA-vqf4-7m7x-wgfc': ['net/jpountz/lz4/LZ4Factory'],
 }
 
 spec = importlib.util.spec_from_file_location('jvm_linkage', PARSER)
@@ -42,16 +46,21 @@ for group in manifest['groups']:
     jar = repo / 'build/libs' / group['artifact']
     digest = hashlib.sha256(jar.read_bytes()).hexdigest()
     assert head == group['source_commit'] and digest == group['sha256'], name
-    refs = set()
+    refs, external_field_writes = set(), []
     with zipfile.ZipFile(jar) as artifact:
         classes = [entry for entry in artifact.namelist() if entry.endswith('.class')]
         assert classes, name
         for entry in classes:
-            refs.update(parser.parse(artifact.read(entry))['classes'])
+            node = parser.parse(artifact.read(entry))
+            refs.update(node['classes'])
+            external_field_writes.extend({'class': node['name'], **use} for use in node['uses']
+                                         if use['operation'] in ('putfield', 'putstatic') and
+                                         not use['owner'].startswith('tech/rolly/thirdpersonreadablemaps/'))
     results[name] = {
         'source_commit': head,
         'artifact_sha256': digest,
         'class_files': len(classes),
+        'external_field_writes': external_field_writes,
         'direct_class_references': {key: sorted(refs.intersection(names)) for key, names in TARGETS.items()},
     }
 out = Path(__file__).with_name('mod-class-reference-inventory.json')

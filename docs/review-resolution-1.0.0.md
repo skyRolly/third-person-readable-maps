@@ -12,13 +12,13 @@ evidence stated below. None of these labels is release acceptance.
 | 1.17–1.19.2 | A: same lookup defect | D: packaged legacy Mojang vector/quaternion classes are intermediary `net/minecraft/class_1158` etc., which the old game-class filter included; operation and descriptor coverage still strengthened | N: buffered renderer, no direct equivalent GL bind or lighting toggle; gameplay review remains | A: absent identity returns null, but numeric coercion can select an unrelated ID; bounded numeric guard added. |
 | 1.19.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: `getMapId` reads any numeric tag through `getInt`; bounded numeric guard added. |
 | 1.19.4–1.20.4 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: same numeric coercion in inspected game bytecode; bounded numeric guard added. |
-| 1.20.5–1.20.6 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: map identity is a nullable data component; verify full runtime matrix |
+| 1.20.5–1.20.6 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A for inspected 1.20.5: game component codec can coerce malformed numbers before the mod sees them; 1.20.6 still needs equivalent investigation. |
 | 1.21–1.21.1 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
 | 1.21.2–1.21.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
 | 1.21.4–1.21.8 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
 | 1.21.9–1.21.10 | A: same lookup defect | A: packaged JOML descriptor classes had no separate JOML verification | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
-| 1.21.11 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: JOML descriptor classes now checked against declared runtime library | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
-| 26.1–26.2 | A: official-namespace verifier also resolved ordinary members by kind/name/descriptor | A: `com/mojang/math/Axis` and JOML descriptor classes require explicit game/library resolution | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
+| 1.21.11 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: JOML descriptor classes now checked against declared runtime library | N: queued renderer; gameplay state ownership remains to be tested | A: controlled game-codec probe confirmed malformed numbers can become zero before the mod sees the component; bounded remedy remains open. |
+| 26.1–26.2 | A: official-namespace verifier also resolved ordinary members by kind/name/descriptor | A: `com/mojang/math/Axis` and JOML descriptor classes require explicit game/library resolution | N: queued renderer; gameplay state ownership remains to be tested | A for tested 26.1.2: controlled game-codec probe confirmed the same conversion; other group versions and a bounded remedy require investigation. |
 | 26.3 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: official game supplies `com/mojang/math/Axis`; now verified in packaged references | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
 
 The old resolver's success on a static-to-instance fixture is explicitly
@@ -37,9 +37,15 @@ It accounts for the target class when validating transformed Mixin references.
 Unsupported Mixin annotations and injection points fail closed. Java platform
 APIs and Mixin callback internals rely on the compiler `--release` target and
 declared Fabric/Mixin build dependencies. This is not a complete JVM verifier:
-protected receiver dataflow, all `invokespecial` selection cases, complex
-transformation semantics and arbitrary runtime-generated linkage remain outside
-the proven scope. These limits must not be read as complete linkage proof.
+protected receiver dataflow, all `invokespecial` selection cases, access to
+classes referenced only by class instructions or descriptors, final-field write
+restrictions, complex transformation semantics and arbitrary runtime-generated
+linkage remain outside the proven scope. The current [artifact inventory](dependency-evidence/high-advisories-2026-11-12/mod-class-reference-inventory.json)
+found no `putfield` or `putstatic` instructions targeting external owners in
+the 13 packaged JARs; unsupported Mixin member annotations, including shadow
+fields, fail closed. This observation does not extend the verifier to future
+artifacts or prove class-only accessibility. These limits must not be read as
+complete linkage proof.
 
 The 1.14 state fix restores the previous active texture unit and bound texture
 through Minecraft's state manager, and restores the previous lighting state in
@@ -68,8 +74,14 @@ from an explicit valid map-zero component inside the renderer. The renderer
 checks a missing component and does not create data, but it cannot reconstruct
 the original serialized type. Changing game-wide component decoding would
 affect other behavior and needs a separately reviewed design and runtime tests;
-it is not claimed fixed by the NBT-era guard. Confirm equivalent codec behavior
-and a bounded remedy on later component-era clients before closing this case.
+it is not claimed fixed by the NBT-era guard. A separate [controlled codec
+probe](dependency-evidence/component-mapid-codec-2026-11-12/) used the actual
+SHA-1-verified 1.21.11 and 26.1.2 client classes and their metadata-selected
+DataFixerUpper 9.0.19. On Java 25, explicit integer zero and seven decoded to
+zero and seven; double 0.5, long 4294967296 and double NaN each decoded to zero;
+a string was rejected. This proves the codec conversion in those two tested
+versions, not the complete item-loading or rendering paths. Confirm the other
+component-era clients and a bounded remedy before closing this case.
 
 The old large foreground shape was not reproduced in one 1.21.4 candidate and
 no-mod comparison. Its cause remains **inconclusive**; repeat matched captures
