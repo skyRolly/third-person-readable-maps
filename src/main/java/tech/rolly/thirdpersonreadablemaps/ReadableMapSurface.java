@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import com.mojang.math.Quaternion;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
@@ -25,7 +26,11 @@ public final class ReadableMapSurface {
                             int mapPackedLight, boolean useCompactMap, boolean useLeftMapLayout) {
         Minecraft mapClientInstance = Minecraft.getInstance();
         if (mapClientInstance.level == null) return;
-        MapItemSavedData readableMapData = MapItem.getSavedData(mapItemStack, mapClientInstance.level);
+        // These game versions resolve a missing numeric map tag to map zero.
+        // Preserve explicit zero, but do not display it for an untagged item.
+        CompoundTag mapTag = mapItemStack.getTag();
+        MapItemSavedData readableMapData = mapTag != null && mapTag.contains("map", 99)
+                ? MapItem.getSavedData(mapItemStack, mapClientInstance.level) : null;
 
         if (useCompactMap) {
             rotate(mapTransform, Vector3f.YP.rotationDegrees(160f));
