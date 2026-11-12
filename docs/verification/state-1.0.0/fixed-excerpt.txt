@@ -1,0 +1,21 @@
+[11:10:10] [main/INFO]: Loading Minecraft 1.14 with Fabric Loader 0.20.1
+	- thirdpersonreadablemaps 1.0.0
+	- tprm_state_probe 1.0.0
+[11:11:01] [Server thread/INFO]: MapSmokeTest joined the game
+[11:11:04] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=0 expected_unit=33984 actual_unit=33984 expected_binding=44 actual_binding=44 expected_lighting=true actual_lighting=true
+[11:11:04] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=1 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[11:11:04] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=2 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[11:11:04] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=3 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[11:11:04] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=4 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[11:11:05] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=5 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[11:11:05] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=6 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[11:11:05] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=7 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:11:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved

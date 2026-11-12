@@ -8,8 +8,10 @@ import net.minecraft.client.render.VertexFormats;
 import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapState;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 
 /** Draws both faces and available map data in the current hand transform. */
 public final class ReadableMapSurface {
@@ -20,7 +22,11 @@ public final class ReadableMapSurface {
     public static void draw(ItemStack stack, boolean compact, boolean leftLayout) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.world == null) return;
-        MapState data = FilledMapItem.getMapState(stack, client.world);
+        // The historical getter falls back to map zero when the numeric tag is
+        // absent. An explicit zero is valid, but a missing identity is not.
+        CompoundTag tag = stack.getTag();
+        MapState data = tag != null && tag.contains("map", 99)
+                ? FilledMapItem.getMapState(stack, client.world) : null;
         if (compact) {
             GlStateManager.rotatef(160f, 0f, 1f, 0f);
             GlStateManager.rotatef(180f, 0f, 0f, 1f);
@@ -37,6 +43,8 @@ public final class ReadableMapSurface {
         }
         // Follow the 1.14 first-person map renderer's lighting and texture path.
         boolean lightingWasEnabled = GL11.glIsEnabled(GL11.GL_LIGHTING);
+        int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
+        int boundTexture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GlStateManager.disableLighting();
         try {
             client.getTextureManager().bindTexture(MAP_FACE);
@@ -54,8 +62,14 @@ public final class ReadableMapSurface {
             tessellator.draw();
             if (data != null) client.gameRenderer.getMapRenderer().draw(data, false);
         } finally {
-            if (lightingWasEnabled) GlStateManager.enableLighting();
-            else GlStateManager.disableLighting();
+            try {
+                // Use the state manager so its texture cache follows OpenGL.
+                GlStateManager.activeTexture(activeTexture);
+                GlStateManager.bindTexture(boundTexture);
+            } finally {
+                if (lightingWasEnabled) GlStateManager.enableLighting();
+                else GlStateManager.disableLighting();
+            }
         }
     }
 

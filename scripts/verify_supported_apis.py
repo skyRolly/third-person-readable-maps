@@ -16,6 +16,8 @@ import struct
 import sys
 from urllib.request import urlopen
 from zipfile import ZipFile
+import game_linkage
+import jvm_linkage
 
 MANIFEST = 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'
 CALLBACK = 'Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;'
@@ -165,7 +167,7 @@ def verify_lwjgl_member(node, ref, version):
         require(matches[0]['access'] & 8, f'{version}: GL11.glIsEnabled is not static')
 
 
-def verify_lwjgl_references(metadata, mod_classes, version):
+def verify_lwjgl_references(metadata, mod_classes, version, instruction_classes=None, mixin_targets=None):
     refs = {ref for node in mod_classes.values() for ref in node['refs']
             if ref[1].startswith('org/lwjgl/')}
     classes = {name for node in mod_classes.values() for name in node['classes']
@@ -192,6 +194,8 @@ def verify_lwjgl_references(metadata, mod_classes, version):
                     raise ValueError(f'{version}: missing LWJGL class {name}') from exc
             for ref in refs:
                 verify_lwjgl_member(nodes.get(ref[1]), ref, version)
+            if instruction_classes is not None:
+                game_linkage.verify_library_instructions(instruction_classes, mixin_targets, archive, 'org/lwjgl/', version)
     return len(refs), len(libraries)
 
 
@@ -205,19 +209,28 @@ def verify(mod_path, versions=None, clients=None):
         require(config['required'] is True and config['injectors']['defaultRequire'] == 1, 'Mixins must be required')
         require(config['client'] == ['ReadableMapLayerMixin'], 'unexpected Mixins')
         prefix = config['package'].replace('.', '/') + '/'
-        mod_classes = {node['name']: node for node in (read_class(mod.read(path)) for path in mod.namelist() if path.endswith('.class'))}
+        raw_classes = [mod.read(path) for path in mod.namelist() if path.endswith('.class')]
+        mod_classes = {node['name']: node for node in (read_class(raw) for raw in raw_classes)}
+        instruction_classes = {node['name']: node for node in (jvm_linkage.parse(raw) for raw in raw_classes)}
         injections = []
+        mixin_targets = {}
         for mixin_name in config['client']:
             node = mod_classes[prefix + mixin_name]
             target = node['annotations'][MIXIN_ANNOTATION]['value']
             require(len(target) == 1 and target[0].startswith('L') and target[0].endswith(';'), 'unexpected Mixin target')
             target = target[0][1:-1]
+            mixin_targets[prefix + mixin_name] = target
             handlers = [x for x in node['members'] if INJECT_ANNOTATION in x['annotations']]
             require(len(handlers) == 1, 'expected one injection per Mixin')
             handler = handlers[0]
             methods = handler['annotations'][INJECT_ANNOTATION]['method']
             require(len(methods) == 1 and handler['descriptor'].endswith(CALLBACK + ')V'), 'unexpected injection descriptor')
-            injections.append((target, methods[0], handler['descriptor'][:-len(CALLBACK + ')V')] + ')V', handler['access']))
+            at = handler['annotations'][INJECT_ANNOTATION].get('at')
+            require(isinstance(at, list) and len(at) == 1 and isinstance(at[0], tuple) and
+                    at[0][0] == 'Lorg/spongepowered/asm/mixin/injection/At;' and
+                    at[0][1] in ({'value': 'HEAD'}, {'value': 'TAIL'}), 'unsupported Mixin injection point')
+            injections.append((target, methods[0], handler['descriptor'][:-len(CALLBACK + ')V')] + ')V',
+                               handler['access'], at[0][1]['value']))
     manifest = json.loads(get(MANIFEST))
     for version in versions:
         found = [x for x in manifest['versions'] if x['id'] == version and x['type'] == 'release']
@@ -269,26 +282,39 @@ def verify(mod_path, versions=None, clients=None):
                     return False
                 return any(resolve(kind, forward.get(ancestor, ancestor), member, desc, seen)
                            for ancestor in [node['super']] + node['interfaces'] if ancestor)
-            for target, name, desc, access in injections:
+            for target, name, desc, access, point in injections:
                 require(target in reverse, f'{version}: missing Mixin target {target}')
                 node = game_class(reverse[target]); original_name = mapped_members.get(('method', target, name, desc))
-                require(node and original_name and any(m['kind'] == 'method' and m['name'] == original_name and
-                        m['descriptor'] == to_original(desc) and (m['access'] & 8) == (access & 8) for m in node['members']),
-                        f'{version}: missing Mixin target {target}.{name}{desc}')
+                require(node and original_name, f'{version}: missing Mixin target {target}.{name}{desc}')
+                try:
+                    jvm_linkage.validate_mixin_target(node, original_name, to_original(desc), access)
+                    target_code = jvm_linkage.parse(game.read(reverse[target] + '.class'))
+                    jvm_linkage.validate_injection_point(target_code, original_name, to_original(desc), point)
+                except ValueError as exc:
+                    raise ValueError(f'{version}: {target}.{name}{desc}: {exc}') from exc
             refs, classes = set(), set()
             for node in mod_classes.values():
                 for ref in node['refs']:
-                    if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/')) or (
+                    if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')) or (
                             ref[1] in mod_classes and ref[2].startswith(('method_', 'field_'))):
                         refs.add(ref)
-                classes.update(c for c in node['classes'] if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/')))
+                classes.update(c for c in node['classes'] if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
                 for member in node['members']:
-                    classes.update(x for x in re.findall(r'L([^;]+);', member['descriptor']) if x.startswith(('net/minecraft/', 'com/mojang/blaze3d/')))
+                    classes.update(x for x in re.findall(r'L([^;]+);', member['descriptor']) if x.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
+            classes.update(c for node in instruction_classes.values() for c in node['classes']
+                           if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
             missing_classes = [c for c in sorted(classes) if not game_class(reverse.get(c, c))]
             require(not missing_classes, f'{version}: missing classes: {missing_classes}')
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
             require(not missing, f'{version}: missing game members: {missing}')
-        lwjgl_refs, lwjgl_variants = verify_lwjgl_references(metadata, mod_classes, version)
+            instruction_count = game_linkage.verify_game_instructions(
+                instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version)
+        library_coverage = game_linkage.verify_declared_libraries(
+            metadata, instruction_classes, mixin_targets,
+            lambda artifact: checked(get(artifact['url']), artifact['sha1'], artifact['size']), version)
+        print(f'{version}: dependency library checks: {library_coverage}')
+        print(f'{version}: {instruction_count} JVM game member instructions verified')
+        lwjgl_refs, lwjgl_variants = verify_lwjgl_references(metadata, mod_classes, version, instruction_classes, mixin_targets)
         print(f'{version}: {len(injections)} Mixin descriptor(s), {len(classes)} game classes, {len(refs)} game member references and {lwjgl_refs} LWJGL reference(s) across {lwjgl_variants} library variant(s) verified')
 
 
