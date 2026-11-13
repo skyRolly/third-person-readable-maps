@@ -60,6 +60,13 @@ def verify_game_instructions(mod_nodes, mixin_targets, game, forward, reverse, m
     verified = set()
     for name, node in mod_nodes.items():
         caller = mixin_targets.get(name, name)
+        for use in node.get('class_uses', []):
+            target = jvm.class_use_name(use['name'])
+            if target and target.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')):
+                try:
+                    jvm.validate_class_use(use, caller, lookup)
+                except ValueError as exc:
+                    raise ValueError(version + ': ' + str(exc) + ' from ' + name) from exc
         for use in node['uses']:
             owner = use['owner']
             inherited_mod_member = owner in mod_nodes and not any(
@@ -100,6 +107,13 @@ def verify_library_instructions(mod_nodes, mixin_targets, library, prefix, versi
     verified = set()
     for name, node in mod_nodes.items():
         caller = mixin_targets.get(name, name)
+        for use in node.get('class_uses', []):
+            target = jvm.class_use_name(use['name'])
+            if target and target.startswith(prefix) and not target.startswith(excluded):
+                try:
+                    jvm.validate_class_use(use, caller, lookup)
+                except ValueError as exc:
+                    raise ValueError(version + ': ' + str(exc) + ' from ' + name) from exc
         for use in node['uses']:
             if not use['owner'].startswith(prefix) or use['owner'].startswith(excluded):
                 continue
