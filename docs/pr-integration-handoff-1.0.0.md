@@ -1,5 +1,7 @@
 # 1.0.0 PR and integration handoff
 
+**Source-head transition:** The product PR heads advanced after this snapshot. The [current source identities and pending refresh](source-head-transition-2026-11-13.md) distinguish the prior evidence from the new heads.
+
 Snapshot: 2026-11-13 UTC. All product and coordination PRs below are open, draft, unmerged and have no auto-merge request. Product heads passed the named hosted build jobs as recorded below; check the current PR if any head changes. The coordination head may advance with evidence-only commits and its live source-pin/verifier/version prerequisites remain blocked until the three existing maintenance PRs are independently approved and integrated, and their exact merged-head evidence is refreshed.
 
 | PR | Target | Proposed HEAD | Scope | Linux | Windows | Review / dependency |

@@ -1,5 +1,7 @@
 # Non-publishing 1.0.0 candidate rehearsal — 2026-11-13
 
+**Source-head transition:** The product PR heads advanced after this snapshot. The [current source identities and pending refresh](source-head-transition-2026-11-13.md) distinguish the prior evidence from the new heads.
+
 The local rehearsal used [13-group candidate compatibility](legacy-dry-run-1.0.0/candidate-compatibility.json)
 and a [plan](legacy-dry-run-1.0.0/candidate-plan.json) pinning ten legacy
 candidate heads and three separate 1.0.0 maintenance PR heads. The generated

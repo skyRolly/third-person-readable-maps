@@ -1,5 +1,7 @@
 # Legacy candidate review handoff
 
+**Source-head transition:** The product PR heads advanced after this snapshot. The [current source identities and pending refresh](source-head-transition-2026-11-13.md) distinguish the prior evidence from the new heads.
+
 All ten proposed legacy implementations remain draft PRs against placeholder `mc/*` branches. They are not integrated or release-ready. The coordinated proposed mod version is **1.0.0**; the three already-integrated branches still contain 0.0.2 until their separate review PRs merge. No release has been published.
 
 All 42 legacy versions passed the current instruction-aware static checks against the identified local 1.0.0 JARs. This is not complete JVM verification or graphical acceptance. [Current per-version results](legacy-version-inventory.md), [machine-readable candidate evidence](legacy-candidate-evidence.json), and [historical 0.0.2 observations](historical-0.0.2-2026-11-05/) are separate.

@@ -4,6 +4,8 @@ This records the 2026-11-12 proposed heads and later diagnostic evidence. **A** 
 **D** means a different implementation whose equivalent invariant must still
 be verified; **N** means the specific mechanism is not present, with the
 evidence stated below. None of these labels is release acceptance.
+The [source-head transition](source-head-transition-2026-11-13.md) identifies
+the subsequent verifier-only product commits and the evidence requiring refresh.
 
 | Group | Ordinary member linkage (#13, #16, #18) | Game/math/library coverage (#20) | Texture state (#23) | Missing map identity (#23) |
 |---|---|---|---|---|
@@ -34,11 +36,15 @@ missing targets, classes or members. Each product branch records its digest.
 The resolver uses the actual consuming instructions and mapped names, and
 checks exact Minecraft client and game-library artifacts against Mojang metadata.
 It accounts for the target class when validating transformed Mixin references.
+The latest product PR heads also check access to classes consumed by bytecode
+class instructions and class constants, and reject abstract instantiation and
+constructor handles. A controlled fixture distinguishes this from the previous
+presence-only check; a prototype passed on all 48 previously built artifacts.
 Unsupported Mixin annotations and injection points fail closed. Java platform
 APIs and Mixin callback internals rely on the compiler `--release` target and
 declared Fabric/Mixin build dependencies. This is not a complete JVM verifier:
 protected receiver dataflow, all `invokespecial` selection cases, access to
-classes referenced only by class instructions or descriptors, final-field write
+classes referenced only by descriptors, final-field write
 restrictions, complex transformation semantics and arbitrary runtime-generated
 linkage remain outside the proven scope. The current [artifact inventory](dependency-evidence/high-advisories-2026-11-12/mod-class-reference-inventory.json)
 found no `putfield` or `putstatic` instructions targeting external owners in

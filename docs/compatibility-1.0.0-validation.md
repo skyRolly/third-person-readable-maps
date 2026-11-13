@@ -1,5 +1,7 @@
 # 1.0.0 compatibility validation matrix
 
+**Source-head transition:** The product PR heads advanced after this snapshot. The [current source identities and pending refresh](source-head-transition-2026-11-13.md) distinguish the prior evidence from the new heads.
+
 This is the non-publishing proposed matrix, not integrated legacy support or a release claim. Artifact hashes identify the locally built JARs used for static checks; hosted Linux and Windows builds passed on all 13 proposed product heads. Installed-client observations are separate and partial; old 0.0.2 results do not certify these artifacts.
 
 | Minecraft | Group | 1.0.0 artifact SHA-256 | Static | Installed startup | Graphical evidence | Remaining |

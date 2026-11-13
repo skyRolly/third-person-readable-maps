@@ -1,5 +1,10 @@
 # Security review worklist — 2026-11-12
 
+**Source-head transition:** The ten candidate PR heads advanced after these
+scans. The [current source identities](source-head-transition-2026-11-13.md)
+must receive fresh source-bound snapshots and audits; these reports retain
+their original provenance and cannot certify the advanced heads.
+
 The [individual candidate worklist](dependency-evidence/candidate-security-worklist-2026-11-12.json)
 preserves all 180 distinct package/version/advisory pairs and their 385
 group-scoped occurrences from the **2026-11-05 historical scans**. It records
