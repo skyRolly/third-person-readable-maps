@@ -2,14 +2,26 @@
 import hashlib
 import json
 from pathlib import Path
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILDS = ROOT / 'docs/builds-verifier-followup-2026-11-13'
 RUNTIME = ROOT / 'docs/runtime-smoke-verifier-followup-2026-11-13'
+sys.path.insert(0, str(ROOT / 'scripts'))
+import audit_candidate_dependencies as candidate_audit
 
 
 class VerifierFollowupEvidenceTests(unittest.TestCase):
+    def test_candidate_monitoring_pins_advanced_heads(self):
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        evidence = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())
+        rows = candidate_audit.candidate_matrix(evidence)['include']
+        self.assertEqual(len(rows), 10)
+        for row in rows:
+            self.assertEqual(row['sha'], refs[row['group']]['new_head'])
+            self.assertEqual(row['branch'], refs[row['group']]['branch'])
+
     def test_adjacent_version_negative_controls_match_new_sources(self):
         directory = ROOT / 'docs/negative-verifier-followup-2026-11-13'
         refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']

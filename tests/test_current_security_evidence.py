@@ -159,7 +159,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
 
     def test_complete_current_scans_match_sources_and_individual_worklist(self):
         worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
-        candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']
+        candidates = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/legacy-candidate-evidence.json').read_text())['groups']
         registry = json.loads((ROOT / 'release/maintenance-targets.json').read_text())['groups']
         self.assertFalse(worklist['risk_acceptance'])
         self.assertEqual(worklist['missing_or_stale_groups'], [])

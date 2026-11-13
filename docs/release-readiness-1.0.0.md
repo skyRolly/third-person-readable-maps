@@ -24,7 +24,7 @@ checks and evidence on the preceding heads do not certify the new sources.
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
 | Multiplayer testing | NOT RUN | Remote-player and naturally unavailable map-data behavior require a multiplayer environment. |
 | Security advisory disposition | FAIL | Known findings remain unresolved and failing. The [individual worklist](security-review-2026-11-12.md) has no accepted risk; review each disposition and rescan approved merged heads. |
-| Dependency monitoring | BLOCKED | Placeholder Dependabot targets are removed from the proposal, but candidate audit source pins and source-bound snapshots must be refreshed for the advanced heads. No risk is accepted. |
+| Dependency monitoring | BLOCKED | Placeholder Dependabot targets are removed from the proposal, and candidate audit pins now identify the advanced heads. Fresh source-bound snapshots and audits are still incomplete. No risk is accepted. |
 | Effective branch protection | FAIL | On 2026-11-13 the branch API reported `protected: false` for `main` and all three existing maintenance branches; effective branch rules returned zero for each and the visible repository/parent ruleset list was empty. Administrator action and read-back are required. |
 | Independent source approvals | PENDING REVIEW | The product and coordination PRs remain draft and unmerged; eligible independent reviewers must approve the final heads. |
 | Reviewed and integrated source HEADs | PENDING REVIEW | No requested source PR was merged in this round. Integrate only after protection and independent review. |
