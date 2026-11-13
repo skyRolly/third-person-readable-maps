@@ -1,0 +1,830 @@
+{
+  "schema": 1,
+  "reviewed_on": "2026-11-13",
+  "scope": "Individual trigger reads only; applicability and disposition remain unreviewed.",
+  "records": {
+    "GHSA-343h-94h5-c4wr": {
+      "severity": "LOW",
+      "trigger": "LZ4 block streams with stopOnEmptyBlock=false recurse on consecutive empty blocks and can exhaust the stack.",
+      "remaining_investigation": "Trace use of that non-default mode with untrusted input, including Minecraft and loader paths.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "22a8b10b1a76d1ba8df6a5b8c4e85158b056ab348e8a224e73e65bdfbab8913c",
+      "records": [
+        "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-343h-94h5-c4wr",
+        "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-343h-94h5-c4wr",
+        "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-343h-94h5-c4wr"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-389x-839f-4rhx": {
+      "severity": "MODERATE",
+      "trigger": "The Windows Netty environment-file size limit can be bypassed using null bytes.",
+      "remaining_investigation": "Check Windows local file permissions and Netty initialization; distinguish the incomplete earlier fix.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
+      "records": [
+        "pkg:maven/io.netty/netty-common@4.1.115.Final|GHSA-389x-839f-4rhx",
+        "pkg:maven/io.netty/netty-common@4.1.77.Final|GHSA-389x-839f-4rhx",
+        "pkg:maven/io.netty/netty-common@4.1.82.Final|GHSA-389x-839f-4rhx",
+        "pkg:maven/io.netty/netty-common@4.1.97.Final|GHSA-389x-839f-4rhx"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-38f8-5428-x5cv": {
+      "severity": "MODERATE",
+      "trigger": "Malformed Transfer-Encoding ordering can cause HTTP request-boundary disagreement.",
+      "remaining_investigation": "Identify a reachable HTTP decoder, proxy differential and untrusted request path.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "60a7970e802e0bfff68d6b776bacd9a7bd0c738fbc7ffdaac0b37d13a089024c",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-38f8-5428-x5cv",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-38f8-5428-x5cv"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-3p8m-j85q-pgmj": {
+      "severity": "MODERATE",
+      "trigger": "Brotli and other decompressing Netty decoders can retain excessive output buffers.",
+      "remaining_investigation": "Determine whether attacker-controlled compressed input reaches these decoders and what limits apply.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
+      "records": [
+        "pkg:maven/io.netty/netty-codec@4.1.115.Final|GHSA-3p8m-j85q-pgmj",
+        "pkg:maven/io.netty/netty-codec@4.1.118.Final|GHSA-3p8m-j85q-pgmj",
+        "pkg:maven/io.netty/netty-codec@4.1.77.Final|GHSA-3p8m-j85q-pgmj",
+        "pkg:maven/io.netty/netty-codec@4.1.82.Final|GHSA-3p8m-j85q-pgmj",
+        "pkg:maven/io.netty/netty-codec@4.1.97.Final|GHSA-3p8m-j85q-pgmj"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-3pxv-7cmr-fjr4": {
+      "severity": "MODERATE",
+      "trigger": "Log4j XmlLayout can produce invalid XML or lose events for XML-forbidden characters.",
+      "remaining_investigation": "Check the effective logging configuration and whether untrusted messages reach XmlLayout.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-3pxv-7cmr-fjr4",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-3pxv-7cmr-fjr4"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-3wrr-7qpf-2prh": {
+      "severity": "MODERATE",
+      "trigger": "Serializing a deeply nested JsonNode with toString can exhaust the stack.",
+      "remaining_investigation": "Trace untrusted JSON readTree followed by JsonNode.toString and nesting limits.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "5a1e785a1fa255af1408b390e33d1abe0bb1ec5802da87ff8d42cdd016edac12",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-3wrr-7qpf-2prh"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-4265-ccf5-phj5": {
+      "severity": "MODERATE",
+      "trigger": "Malformed Pack200 data can exhaust memory in the affected Commons Compress range.",
+      "remaining_investigation": "Find whether game, loader or build paths unpack untrusted Pack200 files.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "82b6a13a67ea0790f22cb513eb9d9ebd1d7f6294b276aca36c4cd1eba7a289eb",
+      "records": [
+        "pkg:maven/org.apache.commons/commons-compress@1.21|GHSA-4265-ccf5-phj5",
+        "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-4265-ccf5-phj5"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-445c-vh5m-36rj": {
+      "severity": "MODERATE",
+      "trigger": "Changed Rfc5424Layout attributes can silently disable newline escaping or TLS framing.",
+      "remaining_investigation": "Check for directly configured Rfc5424Layout, streaming syslog and effective attribute names.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "3f671494b9a039104192b4528b3ffb72b14bed4f7faaca23823e095647fcc8db",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-445c-vh5m-36rj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-445c-vh5m-36rj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-445c-vh5m-36rj"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-4g9r-vxhx-9pgx": {
+      "severity": "MODERATE",
+      "trigger": "A corrupted DUMP archive can cause an infinite loop in Commons Compress.",
+      "remaining_investigation": "Identify reachable extraction of untrusted DUMP archives.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "834a646efa886cbeef708e463f6d35344244a0cac5ad166fee0942ab23062a0d",
+      "records": [
+        "pkg:maven/org.apache.commons/commons-compress@1.21|GHSA-4g9r-vxhx-9pgx",
+        "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-4g9r-vxhx-9pgx",
+        "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-4g9r-vxhx-9pgx"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-4mp9-239f-g9hg": {
+      "severity": "MODERATE",
+      "trigger": "Netty WebSocket V07/V08 handshakers can accept missing upgrade headers.",
+      "remaining_investigation": "Check for reachable legacy WebSocket server handshakers and proxy handling.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "1d4ebad7053fb01a79bd995f97988b6b5a9632db6a3bebd1f70dbaca61271690",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-4mp9-239f-g9hg",
+        "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-4mp9-239f-g9hg",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-4mp9-239f-g9hg"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-4v53-57pg-c464": {
+      "severity": "MODERATE",
+      "trigger": "LZ4BlockInputStream can allocate an attacker-declared compressed length before reading data.",
+      "remaining_investigation": "Trace untrusted legacy LZ4Block input and any enforced size limit; assess each package separately.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "30f315d81c604dd09a55fb64b4689a223ba18dba63efcde3478ee1370ad2e7f6",
+      "records": [
+        "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-4v53-57pg-c464",
+        "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-4v53-57pg-c464",
+        "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-4v53-57pg-c464"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-5gvw-p9qm-jgwh": {
+      "severity": "MODERATE",
+      "trigger": "Jackson can bypass a JsonView restriction on an unwrapped container during deserialization.",
+      "remaining_investigation": "Check for untrusted JSON bound with JsonView and JsonUnwrapped on the same container.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "2402deb2c5b280fea9fa013d05b2f49e3418ef2621cc84ab3023283cc709367e",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-5gvw-p9qm-jgwh"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-5jmj-h7xm-6q6v": {
+      "severity": "MODERATE",
+      "trigger": "Case-insensitive Jackson deserialization can restore properties excluded by per-property JsonIgnoreProperties.",
+      "remaining_investigation": "Trace the affected annotation combination and untrusted deserialization paths.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "54f02bae137594795a5d13edcc2e5774bd8e5d507f981d8099fa82306d8e960a",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-5jmj-h7xm-6q6v"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-5mg8-w23w-74h3": {
+      "severity": "LOW",
+      "trigger": "Guava Files.createTempDir can create locally accessible temporary data.",
+      "remaining_investigation": "Identify calls, effective directory permissions and local attacker access; evaluate the JRE-specific fix.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "14be6854afabf4b08b5cc2753e25f00d2a4c82b0ff7cb0a66b6e1ac4553d9fa8",
+      "records": [
+        "pkg:maven/com.google.guava/guava@21.0|GHSA-5mg8-w23w-74h3",
+        "pkg:maven/com.google.guava/guava@31.0.1-jre|GHSA-5mg8-w23w-74h3",
+        "pkg:maven/com.google.guava/guava@31.1-jre|GHSA-5mg8-w23w-74h3"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-6cqp-g7gg-8hr5": {
+      "severity": "MODERATE",
+      "trigger": "Netty CorsHandler short-circuit checks may accept Origin: null despite configuration.",
+      "remaining_investigation": "Find any reachable CorsHandler using shortCircuit and the effective origin policy.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "60aa2719965c66d3844014f38be048eb1a588ef73990bca66a9919102a01bf5b",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-6cqp-g7gg-8hr5",
+        "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-6cqp-g7gg-8hr5",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-6cqp-g7gg-8hr5"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-6cx8-rjf8-pr8g": {
+      "severity": "MODERATE",
+      "trigger": "LZ4 with-length convenience APIs allocate the untrusted declared decompressed size.",
+      "remaining_investigation": "Determine whether untrusted input reaches those overloads and whether size is bounded first.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "fc079d3982721be81565929fa1ee18e1d80898d698a83698ace823de2d088d65",
+      "records": [
+        "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-6cx8-rjf8-pr8g",
+        "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-6cx8-rjf8-pr8g",
+        "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-6cx8-rjf8-pr8g"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-6hg6-v5c8-fphq": {
+      "severity": "MODERATE",
+      "trigger": "Log4j TLS verifyHostName in nested Ssl configuration can be ignored for network appenders.",
+      "remaining_investigation": "Inspect effective SMTP, Socket and Syslog appender configuration and trust stores.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-6hg6-v5c8-fphq",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-6hg6-v5c8-fphq",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-6hg6-v5c8-fphq",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-6hg6-v5c8-fphq",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-6hg6-v5c8-fphq",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-6hg6-v5c8-fphq"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-6mjq-h674-j845": {
+      "severity": "MODERATE",
+      "trigger": "Netty SniHandler can allocate up to 16 MiB per incomplete TLS handshake.",
+      "remaining_investigation": "Determine whether an exposed TLS server uses SNI and effective idle timeouts.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "1eef368131f86a36d4f6377fdc471a9895969d383779bff33907425f41c9a76f",
+      "records": [
+        "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-6mjq-h674-j845",
+        "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-6mjq-h674-j845"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-7g45-4rm6-3mm3": {
+      "severity": "MODERATE",
+      "trigger": "Guava FileBackedOutputStream can place accessible temporary data in the default directory.",
+      "remaining_investigation": "Trace use and effective file permissions; advisory notes a Windows regression in 32.0.0.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "75d99e14eec8799403adeadcaf11db419df8abdda2c938258b4c0c53120d58cd",
+      "records": [
+        "pkg:maven/com.google.guava/guava@21.0|GHSA-7g45-4rm6-3mm3",
+        "pkg:maven/com.google.guava/guava@31.0.1-jre|GHSA-7g45-4rm6-3mm3",
+        "pkg:maven/com.google.guava/guava@31.1-jre|GHSA-7g45-4rm6-3mm3"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-7r82-7xv7-xcpj": {
+      "severity": "MODERATE",
+      "trigger": "Apache HttpClient can select the wrong host from malformed request URI authority.",
+      "remaining_investigation": "Trace attacker-influenced URI construction and destination validation.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "af6b59dfbd4dea2aee65f24d81f4e00f5756c3f40f06daf78605c5d138d4ea2c",
+      "records": [
+        "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-7r82-7xv7-xcpj"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-8489-44mv-ggj8": {
+      "severity": "MODERATE",
+      "trigger": "A modified Log4j configuration can use JDBC appender JNDI to execute code.",
+      "remaining_investigation": "Check logging-configuration write access, JDBC appender use and effective JNDI settings.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "945cce6a8e7a7f7d1df145652567203ad7c823d663c6a3465a4ec50a2059bdf6",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-8489-44mv-ggj8",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-8489-44mv-ggj8",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-8489-44mv-ggj8"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-84h7-rjj3-6jx4": {
+      "severity": "MODERATE",
+      "trigger": "Netty HttpRequestEncoder can emit CRLF from an unsanitized request URI.",
+      "remaining_investigation": "Trace attacker-controlled request URIs to the encoder and upstream validation.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "a72d94da21b6c2a7e30cc0b4addaf0a5ba3bf57d3ecab4115a144cfb363eb2f6",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-84h7-rjj3-6jx4",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-84h7-rjj3-6jx4"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-8c42-7qj2-3j46": {
+      "severity": "MODERATE",
+      "trigger": "Netty CorsHandler can overwrite Vary headers and permit shared-cache disclosure.",
+      "remaining_investigation": "Check for a CORS handler in front of authenticated responses and any shared cache.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-8c42-7qj2-3j46",
+        "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-8c42-7qj2-3j46",
+        "pkg:maven/io.netty/netty-codec-http@4.2.16.Final|GHSA-8c42-7qj2-3j46",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-8c42-7qj2-3j46"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-cfh5-3ghh-wfjx": {
+      "severity": "MODERATE",
+      "trigger": "Older Apache HttpClient hostname verification can misinterpret certificate distinguished names.",
+      "remaining_investigation": "Determine whether vulnerable HTTPS verification is used and whether a trusted malicious certificate is plausible.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "c12771bca93b739994ff56ee6ab3429a1117f58ba17573ce9fa0d47b5ab85298",
+      "records": [
+        "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-cfh5-3ghh-wfjx"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-cgwf-w82q-5jrr": {
+      "severity": "MODERATE",
+      "trigger": "A crafted TAR PAX timestamp can consume excessive CPU in Commons Compress.",
+      "remaining_investigation": "Trace untrusted TAR parsing and effective archive limits.",
+      "report_group": "1.19.4-1.20.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.19.4-1.20.4-osv.json",
+      "report_sha256": "f0e2c9c4c73340a0d0e77c86325a92cf74c9ee5e25e43a970d9543c3aa3f59d2",
+      "advisory_fingerprint": "7c627784ab49e9c851ede47cc3ad8428567e224a6fc5a8fbc83643a4fd2494df",
+      "records": [
+        "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-cgwf-w82q-5jrr"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-fccg-mwvh-qqg4": {
+      "severity": "MODERATE",
+      "trigger": "Fragmented TLS ClientHello messages can cause quadratic SNI parsing work.",
+      "remaining_investigation": "Identify reachable SNI server pipelines and effective handshake timeouts.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
+      "records": [
+        "pkg:maven/io.netty/netty-handler@4.1.115.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.1.118.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-fccg-mwvh-qqg4",
+        "pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-fccg-mwvh-qqg4"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-fghv-69vj-qj49": {
+      "severity": "LOW",
+      "trigger": "Netty accepts LF inside a chunk extension in a way that can disagree with a proxy.",
+      "remaining_investigation": "Verify reachable HTTP/1 decoding and intermediary parsing behavior.",
+      "report_group": "1.21.9-1.21.10",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.9-1.21.10-osv.json",
+      "report_sha256": "c5442539cc44f32d77119bafbaec6e5d89e9fd933be109834b6c5f6d4f69be5d",
+      "advisory_fingerprint": "b48d98594c92ca95ebdc246f191bc321fe6c53d7981604dda744c125d3b1bd46",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-fghv-69vj-qj49"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-fmj5-wv96-r2ch": {
+      "severity": "MODERATE",
+      "trigger": "Older Apache HttpClient can ignore socket timeouts during TLS handshake.",
+      "remaining_investigation": "Trace HTTPS use and handshake/connect timeout behavior under an unresponsive peer.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "7f957fbf44e612b78af09f7bed98e3a284037b682cb1dbd3b105aedaf70a0d3d",
+      "records": [
+        "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-fmj5-wv96-r2ch"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-gcjf-9mgh-3p7g": {
+      "severity": "MODERATE",
+      "trigger": "Netty multipart encoding can inject CRLF from a controlled filename or name.",
+      "remaining_investigation": "Trace untrusted multipart filenames to HttpPostRequestEncoder; reconcile the advisory prose CVSS with the OSV MODERATE label.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "2b9ff5755a7f163e0e5dbf6c8f81fd46f7bcddd7523bb8968eef3398a8184e0b",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-gcjf-9mgh-3p7g",
+        "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-gcjf-9mgh-3p7g",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-gcjf-9mgh-3p7g"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-gm45-99xc-r7wv": {
+      "severity": "MODERATE",
+      "trigger": "Concatenated empty LZ4 frames can amplify buffer allocation, CPU and garbage collection.",
+      "remaining_investigation": "Trace untrusted frame input and limits on compressed input size.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "315d487554aae576a2e2912387b1f90db56866ec6a3cde49f9be838fea954bd8",
+      "records": [
+        "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-gm45-99xc-r7wv",
+        "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-gm45-99xc-r7wv",
+        "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-gm45-99xc-r7wv"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-gwrp-pvrq-jmwv": {
+      "severity": "MODERATE",
+      "trigger": "Commons IO filename normalization can retain parent traversal in special malformed paths.",
+      "remaining_investigation": "Identify use of normalized untrusted paths for access control or file operations.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "faa5d128bedc28a4fb4ed213a31bbec998b174970c0846dae43d12c043cca87b",
+      "records": [
+        "pkg:maven/commons-io/commons-io@2.5|GHSA-gwrp-pvrq-jmwv"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-gx83-3vf8-gh7j": {
+      "severity": "MODERATE",
+      "trigger": "Jackson polymorphic type validation may allow broad Comparable subtypes.",
+      "remaining_investigation": "Verify the affected feature and annotation in the recorded 2.13.4.2 artifact, custom validators and untrusted type IDs.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "19b0af2fb2a4634399fe5f29aa3f0fca24b34296c434671e0027589916428d78",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-gx83-3vf8-gh7j"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-h383-gmxw-35v2": {
+      "severity": "MODERATE",
+      "trigger": "The Log4j 1 bridge XML layout can emit XML-forbidden characters and lose downstream records.",
+      "remaining_investigation": "Verify whether the bridge/layout is present and used; the scan flags log4j-core and requires package-applicability review.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-h383-gmxw-35v2",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-h383-gmxw-35v2"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-hgj6-7826-r7m5": {
+      "severity": "MODERATE",
+      "trigger": "Jackson InetSocketAddress deserialization can perform an eager attacker-selected DNS lookup.",
+      "remaining_investigation": "Trace untrusted binding and reconcile the scanned 2.13.4.2 range with the versions described in advisory prose.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "7aad6954fba078971390db742eca78ed243cb8a33e7f18146ae54682e9e6805e",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-hgj6-7826-r7m5"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-hrmr-f5m6-m9pq": {
+      "severity": "MODERATE",
+      "trigger": "A crafted ZIP can yield an infinite stream in Commons Compress when used through an InputStreamReader.",
+      "remaining_investigation": "Identify untrusted ZIP input and the vulnerable reader composition.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "45a28f3d3c33767905b1886023d189c4cbb4aed621869de36f73cb55910f2c35",
+      "records": [
+        "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-hrmr-f5m6-m9pq"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-hvcg-qmg6-jm4c": {
+      "severity": "MODERATE",
+      "trigger": "Netty HttpObjectDecoder skips initial control bytes beyond permitted empty CRLF lines.",
+      "remaining_investigation": "Find an exposed decoder and proxy or pipelining boundary with different parsing.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "b39c796c3421545a582607679a8903fdc8440bdb6adc4ceec41d8e6967f227ce",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-hvcg-qmg6-jm4c",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-hvcg-qmg6-jm4c"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-j288-q9x7-2f5v": {
+      "severity": "MODERATE",
+      "trigger": "Commons Lang ClassUtils.getClass can overflow the stack on a very long input.",
+      "remaining_investigation": "Trace attacker-influenced class-name strings and their size limits.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
+      "records": [
+        "pkg:maven/org.apache.commons/commons-lang3@3.12.0|GHSA-j288-q9x7-2f5v",
+        "pkg:maven/org.apache.commons/commons-lang3@3.13.0|GHSA-j288-q9x7-2f5v",
+        "pkg:maven/org.apache.commons/commons-lang3@3.14.0|GHSA-j288-q9x7-2f5v",
+        "pkg:maven/org.apache.commons/commons-lang3@3.17.0|GHSA-j288-q9x7-2f5v",
+        "pkg:maven/org.apache.commons/commons-lang3@3.5|GHSA-j288-q9x7-2f5v"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-m4cv-j2px-7723": {
+      "severity": "MODERATE",
+      "trigger": "Netty chunk-size integer overflow can cause HTTP request-boundary confusion.",
+      "remaining_investigation": "Identify exposed HTTP/1 parsing and possible downstream or proxy disagreement.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "3bf0530ab7f3298f93d0e825d45d60d35585150550d20450d309e7bcd41a6539",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-m4cv-j2px-7723",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-m4cv-j2px-7723"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-m5vv-6r4h-3vj9": {
+      "severity": "MODERATE",
+      "trigger": "The OSV record describes an MSAL4J elevation-of-privilege issue but gives no trigger detail.",
+      "remaining_investigation": "Consult the linked Microsoft advisory for prerequisites and trace the exact authentication flow before a disposition.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "babbe6a6a802c9aeafc2a39d61bb531f36615604feef85f2a33d886e9661aa4b",
+      "records": [
+        "pkg:maven/com.microsoft.azure/msal4j@1.15.0|GHSA-m5vv-6r4h-3vj9"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-mvr2-9pj6-7w5j": {
+      "severity": "MODERATE",
+      "trigger": "Guava AtomicDoubleArray or CompoundOrdering deserialization can allocate unbounded memory.",
+      "remaining_investigation": "Determine whether untrusted Java or GWT serialized data reaches those types.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "901194f72aa5c36e8b78af63b3cec4bc2cd3379812f6206de653e48cbd24955b",
+      "records": [
+        "pkg:maven/com.google.guava/guava@21.0|GHSA-mvr2-9pj6-7w5j"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-q4f6-jm68-57ww": {
+      "severity": "MODERATE",
+      "trigger": "Netty HttpContentEncoder can queue pipelined requests without a per-connection bound.",
+      "remaining_investigation": "Determine whether a reachable HTTP server uses this encoder and controls pipelining.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "e2eeee41567c317028f827163b93c4ba7271dedcb5349399c55fccf3b5ed21cf",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-q4f6-jm68-57ww",
+        "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-q4f6-jm68-57ww",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-q4f6-jm68-57ww"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-qv9r-c865-cp47": {
+      "severity": "MODERATE",
+      "trigger": "Log4j MapMessage JSON formatting can output invalid non-finite floating-point values.",
+      "remaining_investigation": "Check effective layouts and whether attacker-controlled non-finite values enter MapMessage.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.14.1|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.17.0|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.19.0|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.22.1|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.1|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.25.2|GHSA-qv9r-c865-cp47",
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0|GHSA-qv9r-c865-cp47"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-v8h7-rr48-vmmv": {
+      "severity": "MODERATE",
+      "trigger": "Netty request setUri can bypass start-line validation and inject HTTP or RTSP requests.",
+      "remaining_investigation": "Trace attacker-controlled URI updates after request construction and subsequent encoders.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "e53da84584a3dba75cac011fc1ba17952d288616fe3f90220a666aade866f080",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-v8h7-rr48-vmmv",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-v8h7-rr48-vmmv"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-vc5p-v9hr-52mj": {
+      "severity": "MODERATE",
+      "trigger": "The Log4j Socket Appender may skip TLS hostname verification.",
+      "remaining_investigation": "Check the effective network appender, trust store and interception path; also evaluate the later incomplete-fix advisory.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-vc5p-v9hr-52mj",
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-vc5p-v9hr-52mj"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-vvgp-rfg2-7rr6": {
+      "severity": "MODERATE",
+      "trigger": "Jackson InetAddress deserialization can perform eager DNS resolution.",
+      "remaining_investigation": "Trace untrusted InetAddress binding and reconcile the recorded 2.13.4.2 applicability and fixed ranges.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "2d6e5bd22a9bb57853a89ba8e6e2dc10263a2e04e4b5ee04487808814e3e4457",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-vvgp-rfg2-7rr6"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-vwqq-5vrc-xw9h": {
+      "severity": "LOW",
+      "trigger": "An older Log4j SMTP appender can omit TLS hostname verification.",
+      "remaining_investigation": "Check whether SMTP logging is configured and whether a trusted certificate can be presented.",
+      "report_group": "1.14-1.14.4",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "advisory_fingerprint": "29eca61e2b79506877e5dd3203a5f793104e658ffe15b7118f8cfaeed74ce2c7",
+      "records": [
+        "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-vwqq-5vrc-xw9h"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-w573-9ffj-6ff9": {
+      "severity": "MODERATE",
+      "trigger": "Netty native domain-socket descriptor receipt can leak file descriptors when two arrive together.",
+      "remaining_investigation": "Check non-default FILE_DESCRIPTORS mode, Unix-domain channels and peer trust.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
+      "records": [
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.1.115.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.1.118.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.1.77.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.1.82.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.1.97.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-epoll@4.2.7.Final|GHSA-w573-9ffj-6ff9",
+        "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.7.Final|GHSA-w573-9ffj-6ff9"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-wjgm-6hv5-3cvf": {
+      "severity": "MODERATE",
+      "trigger": "Untrusted Jackson Path deserialization can select a registered FileSystemProvider by URI scheme.",
+      "remaining_investigation": "Trace Path binding, installed providers and any side-effecting provider; verify recorded version applicability.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "6b36fb88dd8d77d769445da7c71c5cd08bf3edf37f497f09ee6c6747e725bf0e",
+      "records": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-wjgm-6hv5-3cvf"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-xq3w-v528-46rv": {
+      "severity": "MODERATE",
+      "trigger": "On Windows Netty may read an attacker-created oversized os-release file.",
+      "remaining_investigation": "Check local file creation permissions and Netty initialization; assess the later incomplete-fix advisory separately.",
+      "report_group": "1.17-1.19.2",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "advisory_fingerprint": "647133cda119c39e76046b1cbd16dcf48f188c283a981571002afc8d6cf0be82",
+      "records": [
+        "pkg:maven/io.netty/netty-common@4.1.77.Final|GHSA-xq3w-v528-46rv",
+        "pkg:maven/io.netty/netty-common@4.1.82.Final|GHSA-xq3w-v528-46rv",
+        "pkg:maven/io.netty/netty-common@4.1.97.Final|GHSA-xq3w-v528-46rv"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-xwmg-2g98-w7v9": {
+      "severity": "MODERATE",
+      "trigger": "Deeply nested JWT claim JSON can exhaust recursion in Nimbus JOSE + JWT.",
+      "remaining_investigation": "Trace untrusted JWT processing and nesting limits in the recorded runtime or build paths.",
+      "report_group": "1.21.2-1.21.3",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "advisory_fingerprint": "25f3afb4126314dbac3173becda25eb87b001c0874e1be7bf04ca1b381f281c1",
+      "records": [
+        "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3|GHSA-xwmg-2g98-w7v9",
+        "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.40|GHSA-xwmg-2g98-w7v9"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-xx22-p4ch-683r": {
+      "severity": "MODERATE",
+      "trigger": "Native LZ4 XXHash methods can crash the JVM on invalid array references or ranges.",
+      "remaining_investigation": "Trace native XXHash calls and attacker control of array objects or offsets, not only contents.",
+      "report_group": "1.20.5-1.20.6",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "advisory_fingerprint": "991b84a32bd43c99845b43563298653d4e245a11cfb11d7b73de1f06b87021f4",
+      "records": [
+        "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-xx22-p4ch-683r",
+        "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-xx22-p4ch-683r",
+        "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-xx22-p4ch-683r"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    },
+    "GHSA-xxqh-mfjm-7mv9": {
+      "severity": "MODERATE",
+      "trigger": "Netty HTTP/1.0 can retain both Transfer-Encoding and Content-Length, causing parser disagreement.",
+      "remaining_investigation": "Trace exposed HTTP/1.0 parsing and intermediary behavior; reconcile prose HIGH with the OSV MODERATE label.",
+      "report_group": "1.21.11",
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "advisory_fingerprint": "ae986ffd0ac20a4e91708a33224526797ba347e4389b6926c2a96566057f0e75",
+      "records": [
+        "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-xxqh-mfjm-7mv9",
+        "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-xxqh-mfjm-7mv9"
+      ],
+      "disposition": "Further investigation",
+      "risk_accepted": false
+    }
+  }
+}

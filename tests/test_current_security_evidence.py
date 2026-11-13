@@ -11,6 +11,37 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_moderate_low_investigation_is_source_bound_and_not_a_disposition(self):
+        worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
+        evidence = json.loads((ROOT / 'docs/dependency-evidence/moderate-low-advisory-review-2026-11-13.json').read_text())
+        index = json.loads((ROOT / worklist['last_osv_rescan']['index_path']).read_text())['groups']
+        eligible = {key: row for key, row in worklist['records'].items() if row['severity'] in ('MODERATE', 'LOW')}
+        self.assertEqual(set(evidence['records']), {row['advisory'] for row in eligible.values()})
+        self.assertEqual(len(evidence['records']), 52)
+        summary = (ROOT / 'docs/security-moderate-low-2026-11-13.md').read_text()
+        for advisory, note in evidence['records'].items():
+            with self.subTest(advisory=advisory):
+                group = index[note['report_group']]
+                self.assertEqual(note['report_path'], group['report_path'])
+                self.assertEqual(note['report_sha256'], group['report_sha256'])
+                raw = (ROOT / note['report_path']).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), note['report_sha256'])
+                report = json.loads(raw)
+                fingerprint = audit.advisory_fingerprint(report['advisories'][advisory])
+                self.assertEqual(note['advisory_fingerprint'], fingerprint)
+                self.assertIn(advisory, summary)
+                self.assertTrue(note['trigger'] and note['remaining_investigation'])
+                self.assertEqual(note['disposition'], 'Further investigation')
+                self.assertFalse(note['risk_accepted'])
+                expected = {key for key, row in eligible.items() if row['advisory'] == advisory}
+                self.assertEqual(set(note['records']), expected)
+                for key in expected:
+                    record = eligible[key]
+                    self.assertEqual(record['review_evidence'], 'docs/security-moderate-low-2026-11-13.md')
+                    self.assertEqual(record['disposition'], 'Further investigation')
+                    self.assertFalse(record['risk_accepted'])
+                    self.assertTrue(all(o['fingerprint'] == fingerprint and o['failing'] for o in record['occurrences']))
+
     def test_november_13_proposal_rescans_remain_unreviewed(self):
         directory = ROOT / 'docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13'
         index = json.loads((directory / 'index.json').read_text())

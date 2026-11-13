@@ -82,6 +82,14 @@ reviews the remaining 12 high-severity IDs in the current worklist. These
 targeted advisory reads do not replace a fresh full scan, and all 33 high IDs
 remain unresolved and failing.
 
+The [moderate- and low-severity investigation](security-moderate-low-2026-11-13.md)
+adds a trigger and concrete follow-up for every remaining 48 moderate and
+four low advisory IDs in the current worklist. Its index points to the exact
+retained November 13 OSV response and fingerprints for each finding; package,
+version, source, scope and affected ranges remain in the current worklist.
+These advisory-document investigations are not completed applicability
+reviews. All findings remain **Further investigation**, failing and unaccepted.
+
 The [retained snapshots and reports](dependency-evidence/1.0.0-2026-11-12/)
 were produced locally from the exact source commits using the pinned
 `gradle/actions` dependency-graph init scripts, forced dependency resolution

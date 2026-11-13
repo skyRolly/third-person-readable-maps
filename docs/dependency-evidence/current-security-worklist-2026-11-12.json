@@ -6406,7 +6406,8 @@
           "fingerprint": "14be6854afabf4b08b5cc2753e25f00d2a4c82b0ff7cb0a66b6e1ac4553d9fa8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@21.0|GHSA-7g45-4rm6-3mm3": {
       "purl": "pkg:maven/com.google.guava/guava@21.0",
@@ -6490,7 +6491,8 @@
           "fingerprint": "75d99e14eec8799403adeadcaf11db419df8abdda2c938258b4c0c53120d58cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@21.0|GHSA-mvr2-9pj6-7w5j": {
       "purl": "pkg:maven/com.google.guava/guava@21.0",
@@ -6574,7 +6576,8 @@
           "fingerprint": "901194f72aa5c36e8b78af63b3cec4bc2cd3379812f6206de653e48cbd24955b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@21.0|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@21.0",
@@ -6828,7 +6831,8 @@
           "fingerprint": "faa5d128bedc28a4fb4ed213a31bbec998b174970c0846dae43d12c043cca87b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-all@4.1.25.Final|GHSA-p979-4mfw-53vg": {
       "purl": "pkg:maven/io.netty/netty-all@4.1.25.Final",
@@ -6997,7 +7001,8 @@
           "fingerprint": "834a646efa886cbeef708e463f6d35344244a0cac5ad166fee0942ab23062a0d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-7hfm-57qf-j43q": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7251,7 +7256,8 @@
           "fingerprint": "45a28f3d3c33767905b1886023d189c4cbb4aed621869de36f73cb55910f2c35",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-mc84-pj99-q6hh": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7505,7 +7511,8 @@
           "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-7r82-7xv7-xcpj": {
       "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3",
@@ -7601,7 +7608,8 @@
           "fingerprint": "af6b59dfbd4dea2aee65f24d81f4e00f5756c3f40f06daf78605c5d138d4ea2c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-cfh5-3ghh-wfjx": {
       "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3",
@@ -7685,7 +7693,8 @@
           "fingerprint": "c12771bca93b739994ff56ee6ab3429a1117f58ba17573ce9fa0d47b5ab85298",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3|GHSA-fmj5-wv96-r2ch": {
       "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.3.3",
@@ -7769,7 +7778,8 @@
           "fingerprint": "7f957fbf44e612b78af09f7bed98e3a284037b682cb1dbd3b105aedaf70a0d3d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -7849,7 +7859,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-7rjr-3q55-vv33": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8037,7 +8048,8 @@
           "fingerprint": "945cce6a8e7a7f7d1df145652567203ad7c823d663c6a3465a4ec50a2059bdf6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-fxph-q3j8-mv87": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8188,7 +8200,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-jfh8-c2jp-5v3q": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8446,7 +8459,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-vwqq-5vrc-xw9h": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8539,7 +8553,8 @@
           "fingerprint": "29eca61e2b79506877e5dd3203a5f793104e658ffe15b7118f8cfaeed74ce2c7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.code.gson/gson@2.8.8|GHSA-4jrv-ppp4-jm57": {
       "purl": "pkg:maven/com.google.code.gson/gson@2.8.8",
@@ -8630,7 +8645,8 @@
           "fingerprint": "14be6854afabf4b08b5cc2753e25f00d2a4c82b0ff7cb0a66b6e1ac4553d9fa8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@31.0.1-jre|GHSA-7g45-4rm6-3mm3": {
       "purl": "pkg:maven/com.google.guava/guava@31.0.1-jre",
@@ -8677,7 +8693,8 @@
           "fingerprint": "75d99e14eec8799403adeadcaf11db419df8abdda2c938258b4c0c53120d58cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@31.0.1-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@31.0.1-jre",
@@ -8847,7 +8864,8 @@
           "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.77.Final|GHSA-558v-64gr-wgg4": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
@@ -8981,7 +8999,8 @@
           "fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-common@4.1.77.Final|GHSA-xq3w-v528-46rv": {
       "purl": "pkg:maven/io.netty/netty-common@4.1.77.Final",
@@ -9025,7 +9044,8 @@
           "fingerprint": "647133cda119c39e76046b1cbd16dcf48f188c283a981571002afc8d6cf0be82",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-3qp7-7mw8-wx86": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
@@ -9126,7 +9146,8 @@
           "fingerprint": "1eef368131f86a36d4f6377fdc471a9895969d383779bff33907425f41c9a76f",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-c4c3-7fpv-j4q5": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
@@ -9297,7 +9318,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
@@ -9410,7 +9432,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.21|GHSA-4265-ccf5-phj5": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.21",
@@ -9487,7 +9510,8 @@
           "fingerprint": "82b6a13a67ea0790f22cb513eb9d9ebd1d7f6294b276aca36c4cd1eba7a289eb",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.21|GHSA-4g9r-vxhx-9pgx": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.21",
@@ -9564,7 +9588,8 @@
           "fingerprint": "834a646efa886cbeef708e463f6d35344244a0cac5ad166fee0942ab23062a0d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-lang3@3.12.0|GHSA-j288-q9x7-2f5v": {
       "purl": "pkg:maven/org.apache.commons/commons-lang3@3.12.0",
@@ -9641,7 +9666,8 @@
           "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.14.1|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.14.1",
@@ -9699,7 +9725,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.17.0|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.17.0",
@@ -9756,7 +9783,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -9813,7 +9841,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -9870,7 +9899,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-7rjr-3q55-vv33": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -10012,7 +10042,8 @@
           "fingerprint": "945cce6a8e7a7f7d1df145652567203ad7c823d663c6a3465a4ec50a2059bdf6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -10069,7 +10100,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-jfh8-c2jp-5v3q": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -10258,7 +10290,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
@@ -10314,7 +10347,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
@@ -10370,7 +10404,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-8489-44mv-ggj8": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
@@ -10439,7 +10474,8 @@
           "fingerprint": "945cce6a8e7a7f7d1df145652567203ad7c823d663c6a3465a4ec50a2059bdf6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
@@ -10495,7 +10531,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
@@ -10540,7 +10577,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@31.1-jre|GHSA-5mg8-w23w-74h3": {
       "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
@@ -10599,7 +10637,8 @@
           "fingerprint": "14be6854afabf4b08b5cc2753e25f00d2a4c82b0ff7cb0a66b6e1ac4553d9fa8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@31.1-jre|GHSA-7g45-4rm6-3mm3": {
       "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
@@ -10658,7 +10697,8 @@
           "fingerprint": "75d99e14eec8799403adeadcaf11db419df8abdda2c938258b4c0c53120d58cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@31.1-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
@@ -10777,7 +10817,8 @@
           "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.82.Final|GHSA-558v-64gr-wgg4": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
@@ -10956,7 +10997,8 @@
           "fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-common@4.1.82.Final|GHSA-xq3w-v528-46rv": {
       "purl": "pkg:maven/io.netty/netty-common@4.1.82.Final",
@@ -11015,7 +11057,8 @@
           "fingerprint": "647133cda119c39e76046b1cbd16dcf48f188c283a981571002afc8d6cf0be82",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-3qp7-7mw8-wx86": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
@@ -11146,7 +11189,8 @@
           "fingerprint": "1eef368131f86a36d4f6377fdc471a9895969d383779bff33907425f41c9a76f",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-c4c3-7fpv-j4q5": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
@@ -11362,7 +11406,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
@@ -11505,7 +11550,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.19.0|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.19.0",
@@ -11579,7 +11625,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
@@ -11652,7 +11699,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
@@ -11725,7 +11773,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
@@ -11798,7 +11847,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
@@ -11860,7 +11910,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@32.1.2-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@32.1.2-jre",
@@ -12084,7 +12135,8 @@
           "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.97.Final|GHSA-558v-64gr-wgg4": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
@@ -12353,7 +12405,8 @@
           "fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-common@4.1.97.Final|GHSA-xq3w-v528-46rv": {
       "purl": "pkg:maven/io.netty/netty-common@4.1.97.Final",
@@ -12442,7 +12495,8 @@
           "fingerprint": "647133cda119c39e76046b1cbd16dcf48f188c283a981571002afc8d6cf0be82",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-3qp7-7mw8-wx86": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
@@ -12940,7 +12994,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
@@ -13143,7 +13198,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-4265-ccf5-phj5": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.22",
@@ -13187,7 +13243,8 @@
           "fingerprint": "82b6a13a67ea0790f22cb513eb9d9ebd1d7f6294b276aca36c4cd1eba7a289eb",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-4g9r-vxhx-9pgx": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.22",
@@ -13231,7 +13288,8 @@
           "fingerprint": "834a646efa886cbeef708e463f6d35344244a0cac5ad166fee0942ab23062a0d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.22|GHSA-cgwf-w82q-5jrr": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.22",
@@ -13275,7 +13333,8 @@
           "fingerprint": "7c627784ab49e9c851ede47cc3ad8428567e224a6fc5a8fbc83643a4fd2494df",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-lang3@3.13.0|GHSA-j288-q9x7-2f5v": {
       "purl": "pkg:maven/org.apache.commons/commons-lang3@3.13.0",
@@ -13319,7 +13378,8 @@
           "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-lang3@3.14.0|GHSA-j288-q9x7-2f5v": {
       "purl": "pkg:maven/org.apache.commons/commons-lang3@3.14.0",
@@ -13393,7 +13453,8 @@
           "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.22.1|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.22.1",
@@ -13479,7 +13540,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1",
@@ -13564,7 +13626,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-445c-vh5m-36rj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1",
@@ -13649,7 +13712,8 @@
           "fingerprint": "3f671494b9a039104192b4528b3ffb72b14bed4f7faaca23823e095647fcc8db",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1",
@@ -13734,7 +13798,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1",
@@ -13819,7 +13884,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.22.1",
@@ -13893,7 +13959,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-343h-94h5-c4wr": {
       "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
@@ -13998,7 +14065,8 @@
           "fingerprint": "22a8b10b1a76d1ba8df6a5b8c4e85158b056ab348e8a224e73e65bdfbab8913c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-4v53-57pg-c464": {
       "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
@@ -14103,7 +14171,8 @@
           "fingerprint": "30f315d81c604dd09a55fb64b4689a223ba18dba63efcde3478ee1370ad2e7f6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-6cx8-rjf8-pr8g": {
       "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
@@ -14208,7 +14277,8 @@
           "fingerprint": "fc079d3982721be81565929fa1ee18e1d80898d698a83698ace823de2d088d65",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-cmp6-m4wj-q63q": {
       "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
@@ -14419,7 +14489,8 @@
           "fingerprint": "315d487554aae576a2e2912387b1f90db56866ec6a3cde49f9be838fea954bd8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.lz4/lz4-java@1.8.0|GHSA-mcr4-qmvw-px4g": {
       "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
@@ -14738,7 +14809,8 @@
           "fingerprint": "991b84a32bd43c99845b43563298653d4e245a11cfb11d7b73de1f06b87021f4",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-343h-94h5-c4wr": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
@@ -14781,7 +14853,8 @@
           "fingerprint": "22a8b10b1a76d1ba8df6a5b8c4e85158b056ab348e8a224e73e65bdfbab8913c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-4v53-57pg-c464": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
@@ -14824,7 +14897,8 @@
           "fingerprint": "30f315d81c604dd09a55fb64b4689a223ba18dba63efcde3478ee1370ad2e7f6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-6cx8-rjf8-pr8g": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
@@ -14867,7 +14941,8 @@
           "fingerprint": "fc079d3982721be81565929fa1ee18e1d80898d698a83698ace823de2d088d65",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-cmp6-m4wj-q63q": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
@@ -14954,7 +15029,8 @@
           "fingerprint": "315d487554aae576a2e2912387b1f90db56866ec6a3cde49f9be838fea954bd8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-mcr4-qmvw-px4g": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
@@ -15041,7 +15117,8 @@
           "fingerprint": "991b84a32bd43c99845b43563298653d4e245a11cfb11d7b73de1f06b87021f4",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@33.5.0-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@33.5.0-jre",
@@ -15292,7 +15369,8 @@
           "fingerprint": "60a7970e802e0bfff68d6b776bacd9a7bd0c738fbc7ffdaac0b37d13a089024c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-4mp9-239f-g9hg": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15363,7 +15441,8 @@
           "fingerprint": "1d4ebad7053fb01a79bd995f97988b6b5a9632db6a3bebd1f70dbaca61271690",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-57rv-r2g8-2cj3": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15506,7 +15585,8 @@
           "fingerprint": "60aa2719965c66d3844014f38be048eb1a588ef73990bca66a9919102a01bf5b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-6jqx-86gh-f27w": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15649,7 +15729,8 @@
           "fingerprint": "a72d94da21b6c2a7e30cc0b4addaf0a5ba3bf57d3ecab4115a144cfb363eb2f6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-8c42-7qj2-3j46": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15720,7 +15801,8 @@
           "fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-f6hv-jmp6-3vwv": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15863,7 +15945,8 @@
           "fingerprint": "2b9ff5755a7f163e0e5dbf6c8f81fd46f7bcddd7523bb8968eef3398a8184e0b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-hvcg-qmg6-jm4c": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15934,7 +16017,8 @@
           "fingerprint": "b39c796c3421545a582607679a8903fdc8440bdb6adc4ceec41d8e6967f227ce",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-jppx-w49h-x2qq": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16077,7 +16161,8 @@
           "fingerprint": "3bf0530ab7f3298f93d0e825d45d60d35585150550d20450d309e7bcd41a6539",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-mvh2-crg5-v77c": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16292,7 +16377,8 @@
           "fingerprint": "e2eeee41567c317028f827163b93c4ba7271dedcb5349399c55fccf3b5ed21cf",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-v8h7-rr48-vmmv": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16363,7 +16449,8 @@
           "fingerprint": "e53da84584a3dba75cac011fc1ba17952d288616fe3f90220a666aade866f080",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-xxqh-mfjm-7mv9": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16434,7 +16521,8 @@
           "fingerprint": "ae986ffd0ac20a4e91708a33224526797ba347e4389b6926c2a96566057f0e75",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-3qp7-7mw8-wx86": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
@@ -16721,7 +16809,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
@@ -16924,7 +17013,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.7.Final|GHSA-w573-9ffj-6ff9": {
       "purl": "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.7.Final",
@@ -16995,7 +17085,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.25.2|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.25.2",
@@ -17066,7 +17157,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2",
@@ -17136,7 +17228,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-445c-vh5m-36rj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2",
@@ -17206,7 +17299,8 @@
           "fingerprint": "3f671494b9a039104192b4528b3ffb72b14bed4f7faaca23823e095647fcc8db",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2",
@@ -17276,7 +17370,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2",
@@ -17346,7 +17441,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.25.2",
@@ -17405,7 +17501,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4|GHSA-7hhh-6rmp-j9qf": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
@@ -17752,7 +17849,8 @@
           "fingerprint": "5a1e785a1fa255af1408b390e33d1abe0bb1ec5802da87ff8d42cdd016edac12",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-5gvw-p9qm-jgwh": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -17853,7 +17951,8 @@
           "fingerprint": "2402deb2c5b280fea9fa013d05b2f49e3418ef2621cc84ab3023283cc709367e",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-5jmj-h7xm-6q6v": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -17966,7 +18065,8 @@
           "fingerprint": "54f02bae137594795a5d13edcc2e5774bd8e5d507f981d8099fa82306d8e960a",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-cxp5-3px4-pw24": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18169,7 +18269,8 @@
           "fingerprint": "19b0af2fb2a4634399fe5f29aa3f0fca24b34296c434671e0027589916428d78",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-hgj6-7826-r7m5": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18258,7 +18359,8 @@
           "fingerprint": "7aad6954fba078971390db742eca78ed243cb8a33e7f18146ae54682e9e6805e",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-j3rv-43j4-c7qm": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18563,7 +18665,8 @@
           "fingerprint": "2d6e5bd22a9bb57853a89ba8e6e2dc10263a2e04e4b5ee04487808814e3e4457",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-wjgm-6hv5-3cvf": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18664,7 +18767,8 @@
           "fingerprint": "6b36fb88dd8d77d769445da7c71c5cd08bf3edf37f497f09ee6c6747e725bf0e",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-wv8q-qhhj-9h54": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18810,7 +18914,8 @@
           "fingerprint": "babbe6a6a802c9aeafc2a39d61bb531f36615604feef85f2a33d886e9661aa4b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3|GHSA-xwmg-2g98-w7v9": {
       "purl": "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3",
@@ -18866,7 +18971,8 @@
           "fingerprint": "25f3afb4126314dbac3173becda25eb87b001c0874e1be7bf04ca1b381f281c1",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/net.minidev/json-smart@2.5.0|GHSA-pq2g-wx69-c263": {
       "purl": "pkg:maven/net.minidev/json-smart@2.5.0",
@@ -19048,7 +19154,8 @@
           "fingerprint": "25f3afb4126314dbac3173becda25eb87b001c0874e1be7bf04ca1b381f281c1",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.115.Final|GHSA-3p8m-j85q-pgmj": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
@@ -19091,7 +19198,8 @@
           "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.115.Final|GHSA-558v-64gr-wgg4": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
@@ -19239,7 +19347,8 @@
           "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec@4.1.118.Final|GHSA-558v-64gr-wgg4": {
       "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
@@ -19404,7 +19513,8 @@
           "fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.115.Final|GHSA-3qp7-7mw8-wx86": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
@@ -19672,7 +19782,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.115.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
@@ -20020,7 +20131,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.118.Final|GHSA-x4gw-5cx5-pgmh": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
@@ -20148,7 +20260,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-transport-native-epoll@4.1.118.Final|GHSA-w573-9ffj-6ff9": {
       "purl": "pkg:maven/io.netty/netty-transport-native-epoll@4.1.118.Final",
@@ -20220,7 +20333,8 @@
           "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/net.minidev/json-smart@2.5.1|GHSA-pq2g-wx69-c263": {
       "purl": "pkg:maven/net.minidev/json-smart@2.5.1",
@@ -20345,7 +20459,8 @@
           "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.1|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.1",
@@ -20419,7 +20534,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-3pxv-7cmr-fjr4": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1",
@@ -20492,7 +20608,8 @@
           "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-445c-vh5m-36rj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1",
@@ -20565,7 +20682,8 @@
           "fingerprint": "3f671494b9a039104192b4528b3ffb72b14bed4f7faaca23823e095647fcc8db",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-6hg6-v5c8-fphq": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1",
@@ -20638,7 +20756,8 @@
           "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1",
@@ -20711,7 +20830,8 @@
           "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.24.1",
@@ -20773,7 +20893,8 @@
           "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-38f8-5428-x5cv": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -20829,7 +20950,8 @@
           "fingerprint": "60a7970e802e0bfff68d6b776bacd9a7bd0c738fbc7ffdaac0b37d13a089024c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-4mp9-239f-g9hg": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -20885,7 +21007,8 @@
           "fingerprint": "1d4ebad7053fb01a79bd995f97988b6b5a9632db6a3bebd1f70dbaca61271690",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-57rv-r2g8-2cj3": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -20998,7 +21121,8 @@
           "fingerprint": "60aa2719965c66d3844014f38be048eb1a588ef73990bca66a9919102a01bf5b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-6jqx-86gh-f27w": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21111,7 +21235,8 @@
           "fingerprint": "a72d94da21b6c2a7e30cc0b4addaf0a5ba3bf57d3ecab4115a144cfb363eb2f6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-8c42-7qj2-3j46": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21167,7 +21292,8 @@
           "fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-f6hv-jmp6-3vwv": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21280,7 +21406,8 @@
           "fingerprint": "b48d98594c92ca95ebdc246f191bc321fe6c53d7981604dda744c125d3b1bd46",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-gcjf-9mgh-3p7g": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21336,7 +21463,8 @@
           "fingerprint": "2b9ff5755a7f163e0e5dbf6c8f81fd46f7bcddd7523bb8968eef3398a8184e0b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-hvcg-qmg6-jm4c": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21392,7 +21520,8 @@
           "fingerprint": "b39c796c3421545a582607679a8903fdc8440bdb6adc4ceec41d8e6967f227ce",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-jppx-w49h-x2qq": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21505,7 +21634,8 @@
           "fingerprint": "3bf0530ab7f3298f93d0e825d45d60d35585150550d20450d309e7bcd41a6539",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-mvh2-crg5-v77c": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21675,7 +21805,8 @@
           "fingerprint": "e2eeee41567c317028f827163b93c4ba7271dedcb5349399c55fccf3b5ed21cf",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-v8h7-rr48-vmmv": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21731,7 +21862,8 @@
           "fingerprint": "e53da84584a3dba75cac011fc1ba17952d288616fe3f90220a666aade866f080",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-xxqh-mfjm-7mv9": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21787,7 +21919,8 @@
           "fingerprint": "ae986ffd0ac20a4e91708a33224526797ba347e4389b6926c2a96566057f0e75",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-343h-94h5-c4wr": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
@@ -21847,7 +21980,8 @@
           "fingerprint": "22a8b10b1a76d1ba8df6a5b8c4e85158b056ab348e8a224e73e65bdfbab8913c",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-4v53-57pg-c464": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
@@ -21907,7 +22041,8 @@
           "fingerprint": "30f315d81c604dd09a55fb64b4689a223ba18dba63efcde3478ee1370ad2e7f6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-6cx8-rjf8-pr8g": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
@@ -21967,7 +22102,8 @@
           "fingerprint": "fc079d3982721be81565929fa1ee18e1d80898d698a83698ace823de2d088d65",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-gm45-99xc-r7wv": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
@@ -22027,7 +22163,8 @@
           "fingerprint": "315d487554aae576a2e2912387b1f90db56866ec6a3cde49f9be838fea954bd8",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-mcr4-qmvw-px4g": {
       "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
@@ -22148,7 +22285,8 @@
           "fingerprint": "991b84a32bd43c99845b43563298653d4e245a11cfb11d7b73de1f06b87021f4",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/com.google.guava/guava@33.6.0-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@33.6.0-jre",
@@ -22302,7 +22440,8 @@
           "fingerprint": "1d4ebad7053fb01a79bd995f97988b6b5a9632db6a3bebd1f70dbaca61271690",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-6cqp-g7gg-8hr5": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22356,7 +22495,8 @@
           "fingerprint": "60aa2719965c66d3844014f38be048eb1a588ef73990bca66a9919102a01bf5b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-6jqx-86gh-f27w": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22465,7 +22605,8 @@
           "fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-gcjf-9mgh-3p7g": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22519,7 +22660,8 @@
           "fingerprint": "2b9ff5755a7f163e0e5dbf6c8f81fd46f7bcddd7523bb8968eef3398a8184e0b",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-jppx-w49h-x2qq": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22683,7 +22825,8 @@
           "fingerprint": "e2eeee41567c317028f827163b93c4ba7271dedcb5349399c55fccf3b5ed21cf",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-c4c3-7fpv-j4q5": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.15.Final",
@@ -22792,7 +22935,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0|GHSA-qv9r-c865-cp47": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0",
@@ -22860,7 +23004,8 @@
           "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.16.Final|GHSA-8c42-7qj2-3j46": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.16.Final",
@@ -22915,7 +23060,8 @@
           "fingerprint": "3af912c23e45a7ad78ee89b15179700d37c2de36b46389cf0631fe4a29003888",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-c4c3-7fpv-j4q5": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
@@ -23026,7 +23172,8 @@
           "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-moderate-low-2026-11-13.md"
     }
   },
   "last_osv_rescan": {
