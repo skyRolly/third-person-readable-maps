@@ -9,6 +9,24 @@ DIRECTORY = ROOT / 'docs/runtime-smoke-1.0.0'
 
 
 class RuntimeSmokeEvidenceTests(unittest.TestCase):
+    def test_1_20_6_no_mod_control_is_separate_from_the_candidate(self):
+        directory = ROOT / 'docs/foreground-comparison-1.20.6-2026-11-13'
+        evidence = json.loads((directory / 'index.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        group = next(group for group in manifest['groups'] if group['id'] == '1.20.5-1.20.6')
+        self.assertEqual(evidence['candidate_head'], group['source_commit'])
+        self.assertEqual(evidence['candidate_artifact_sha256'], group['sha256'])
+        for name, digest in evidence['control_files_sha256'].items():
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
+        control = json.loads((directory / 'movement.json').read_text())
+        candidate = json.loads((ROOT / evidence['candidate_evidence'] / 'movement.json').read_text())
+        self.assertEqual(control['paired_candidate_sha256'], candidate['candidate_sha256'])
+        self.assertEqual(control['start'], candidate['start'])
+        self.assertGreater(control['horizontal_distance'], 0.5)
+        self.assertIn('MapSmokeTest joined the game', (directory / 'client.log').read_text(errors='replace'))
+        self.assertNotIn('thirdpersonreadablemaps', (directory / 'client.log').read_text(errors='replace').lower())
+        self.assertIn('thirdpersonreadablemaps', (ROOT / evidence['candidate_evidence'] / 'client.log').read_text(errors='replace').lower())
+
     def test_26_3_egl_startup_records_the_harness_failure(self):
         directory = DIRECTORY / '26.3-egl-startup-attempt'
         evidence = json.loads((directory / 'index.json').read_text())

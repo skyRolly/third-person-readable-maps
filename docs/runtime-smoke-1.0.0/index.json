@@ -2,6 +2,34 @@
   "schema": 1,
   "observed_through": "2026-11-13",
   "versions": {
+    "1.21.1": {
+      "group": "1.21-1.21.1",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "1e10f8f836a63c8ee04a53388f2ce29844a5dc7c6b0325342d579b3ee39283d7",
+        "ending-player.dat": "e10973324a6f91a985f91a6b89c5ccd478c34b055d12c9af1a808c82d78ea7d3",
+        "walking-1.png": "de739ecc2a6f07df3f4d068e2951e56d75596f6cbd276b1dadea4d97eccd2c8f",
+        "walking-2.png": "dc72814a22a5c26a264beb1897fa435eea42eced95d3167d0a63d3365755da67",
+        "client.log": "1e2087a0af94f9fec19faeb5921848039bf489618b0682d8d100ee9560fd9089"
+      }
+    },
+    "1.21": {
+      "group": "1.21-1.21.1",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "9396ba19c7bfe3780c786d0add08790bbb8a3ced5c0c61466f6f6d5e65e2f17c",
+        "ending-player.dat": "98a26c8b596adb1e15b832bbd94e23fefe7db5f867c455e43bacfa75d651a505",
+        "walking-1.png": "b931b93320c6ea0bced8d1a6a8a1ef71d7bee09217c4c85cfdb229aa3f9001a2",
+        "walking-2.png": "03da568e2ba283742451a0a3392f2997df6ddd12ae08374b494b9578caf4965b",
+        "client.log": "67427985d11787f0608b8b6c7ccdb112d0bd445aad7a89c0d7f9d97a20797184"
+      }
+    },
     "1.20.6": {
       "group": "1.20.5-1.20.6",
       "source_kind": "legacy-candidate",

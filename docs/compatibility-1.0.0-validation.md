@@ -35,8 +35,8 @@ This is the non-publishing proposed matrix, not integrated legacy support or a r
 | 1.20.4 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.20.5 | 1.20.5-1.20.6 | `d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.20.6 | 1.20.5-1.20.6 | `d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21 | 1.21-1.21.1 | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.1 | 1.21-1.21.1 | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21 | 1.21-1.21.1 | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.1 | 1.21-1.21.1 | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.11 | 1.21.11 | `c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.2 | 1.21.2-1.21.3 | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.3 | 1.21.2-1.21.3 | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
