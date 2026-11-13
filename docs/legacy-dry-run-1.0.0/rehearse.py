@@ -8,7 +8,9 @@ out=Path(os.environ.get('TPRM_REHEARSAL_DIR','/workspace/.tprm-dryrun/100/rehear
 assert not out.exists(), 'preserve previous rehearsal if present'
 out.mkdir(parents=True)
 cfg=json.loads(Path('/workspace/.tprm-dryrun/expanded-config.json').read_text())
-legacy=json.loads((coord/'docs/legacy-candidate-evidence.json').read_text())['groups']
+evidence_path=Path(os.environ.get('TPRM_REHEARSAL_EVIDENCE',str(coord/'docs/legacy-candidate-evidence.json')))
+artifact_root=os.environ.get('TPRM_REHEARSAL_ARTIFACTS')
+legacy=json.loads(evidence_path.read_text())['groups']
 coordinator=subprocess.check_output(['git','rev-parse','HEAD'],cwd=coord,text=True).strip()
 changes=['Prepare the coordinated 1.0.0 mod version and readable-map corrections']
 heads={}
@@ -24,7 +26,7 @@ for group in cfg['groups']:
     if group in legacy:assert sha==legacy[group]['candidate_head']
     heads[group]=(branch,sha)
     dest=out/'artifacts'/group;dest.mkdir(parents=True)
-    jar=root/'build/libs'/f'third-person-readable-maps-1.0.0-mc{group}.jar'
+    jar=(Path(artifact_root)/group if artifact_root else root/'build/libs')/f'third-person-readable-maps-1.0.0-mc{group}.jar'
     shutil.copyfile(jar,dest/jar.name)
 plan={'schema':1,'version':'1.0.0','release_date':'2026-11-13','changes':changes,
       'known_limitations':['Non-publishing candidate rehearsal; runtime, security, review and administrative gates remain open'],
