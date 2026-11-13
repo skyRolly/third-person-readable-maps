@@ -25,5 +25,7 @@ Its cause is unconfirmed. The `modern-100` retry uses checksum-verified private
 copies of the Fabric launcher libraries, SDL EGL for the software-renderer
 environment, and version-specific save-log detection. The subsequent
 [26.1 attempt](26.1-upgrade-timeout-attempt/) timed out after a manual
-world-upgrade prompt on the copied fixture. Completed results are recorded
-independently and incomplete attempts are not counted as passes.
+world-upgrade prompt on the copied fixture. The `modern-102` retry and its
+join-prompt sidecar use recorded OCR for recognized prompts; any manual
+intervention is documented with the individual result. Completed results are
+recorded independently and incomplete attempts are not counted as passes.

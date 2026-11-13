@@ -29,7 +29,8 @@ for group in manifest['groups']:
         target.mkdir(parents=True, exist_ok=True)
         files = ['movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log']
         for optional in ('launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png',
-                         'world-upgrade-ocr.txt'):
+                         'world-upgrade-ocr.txt', 'world-upgrade-completed-prompt.png',
+                         'world-upgrade-completed-ocr.txt'):
             if (source / optional).is_file():
                 files.append(optional)
         for file in files:
@@ -44,6 +45,7 @@ harnesses = ['class-followup-walking-early-91.py', 'class-followup-walking-middl
              'class-followup-walking-early-96.py', 'class-followup-walking-middle-97.py',
              'class-followup-walking-later-98.py', 'class-followup-walking-modern-99.py',
              'class-followup-walking-modern-100.py', 'class-followup-walking-modern-102.py',
+             'modern-world-join-sidecar.py',
              'x11-class-followup-91.py', 'x11-class-followup-92.py',
              'x11-class-followup-93.py', 'x11-class-followup-94.py',
              'x11-class-followup-96.py', 'x11-class-followup-97.py', 'x11-class-followup-98.py',

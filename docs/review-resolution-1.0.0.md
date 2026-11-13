@@ -19,7 +19,7 @@ the subsequent verifier-only product commits and the evidence requiring refresh.
 | 1.21.2–1.21.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions; item-loading behavior and remedy remain open. |
 | 1.21.4–1.21.8 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for all five versions; item-loading behavior and remedy remain open. |
 | 1.21.9–1.21.10 | A: same lookup defect | A: packaged JOML descriptor classes had no separate JOML verification | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions; item-loading behavior and remedy remain open. |
-| 1.21.11 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: JOML descriptor classes now checked against declared runtime library | N: queued renderer; gameplay state ownership remains to be tested | A: controlled game-codec probe confirmed malformed numbers can become zero before the mod sees the component; bounded remedy remains open. |
+| 1.21.11 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: JOML descriptor classes now checked against declared runtime library | N: queued renderer; gameplay state ownership remains to be tested | A: a controlled [actual item-loading probe](component-map-id-item-loading-2026-11-13/host-inventory-attempt/) observed malformed numeric IDs become zero and map-zero terrain displayed; bounded remedy remains open. |
 | 26.1–26.2 | A: official-namespace verifier also resolved ordinary members by kind/name/descriptor | A: `com/mojang/math/Axis` and JOML descriptor classes require explicit game/library resolution | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for all four versions; item-loading behavior and remedy remain open. |
 | 26.3 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: official game supplies `com/mojang/math/Axis`; now verified in packaged references | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary; item-loading behavior and remedy remain open. |
 
@@ -90,9 +90,13 @@ DataFixerUpper 9.0.19. On Java 25, explicit integer zero and seven decoded to
 zero and seven; double 0.5, long 4294967296 and double NaN each decoded to zero;
 a string was rejected. A later [19-version codec sweep](dependency-evidence/component-mapid-codec-2026-11-13/)
 executed the exact game's codec on every component-era version in the proposed
-matrix and observed the same results. This proves the isolated codec
-conversion, not the complete item-loading or rendering paths. Confirm those
-paths and a bounded remedy before closing this case.
+matrix and observed the same results. A later [controlled 1.21.11 host-world
+probe](component-map-id-item-loading-2026-11-13/host-inventory-attempt/)
+observed the fractional and overflowing input values load and save as zero,
+with terrain shown while the fractional item was selected. The isolated codec
+sweep does not prove the other versions' complete item-loading or rendering
+paths. A bounded remedy and those remaining paths need review before closing
+this case.
 
 The old large foreground shape was not reproduced in one 1.21.4 candidate and
 no-mod comparison. Its cause remains **inconclusive**; repeat matched captures

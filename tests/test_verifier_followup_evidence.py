@@ -81,7 +81,8 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 self.assertTrue(required <= set(row['files_sha256']))
                 self.assertLessEqual(set(row['files_sha256']) - required,
                                      {'launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png',
-                                      'world-upgrade-ocr.txt'})
+                                      'world-upgrade-ocr.txt', 'world-upgrade-completed-prompt.png',
+                                      'world-upgrade-completed-ocr.txt'})
                 for name, digest in row['files_sha256'].items():
                     self.assertEqual(hashlib.sha256((RUNTIME / version / name).read_bytes()).hexdigest(), digest)
                 if 'launcher-pins.json' in row['files_sha256']:
@@ -127,6 +128,26 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         for name, digest in index['files_sha256'].items():
             self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
         self.assertIn('level.dat', index['explanation'])
+
+    def test_corrected_item_loading_probe_is_source_bound(self):
+        directory = ROOT / 'docs/component-map-id-item-loading-2026-11-13/host-inventory-attempt'
+        index = json.loads((directory / 'index.json').read_text())
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(index['source_commit'], builds['1.21.11']['source_commit'])
+        self.assertEqual(index['artifact_sha256'], builds['1.21.11']['sha256'])
+        self.assertEqual(index['selected_slot'], 3)
+        self.assertGreater(index['map_zero_nonblank_color_count'], 1000)
+        for name, digest in index['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
+        before, after = index['input_inventory'], index['saved_inventory']
+        self.assertEqual((before['1']['value'], after['1']['value']), (0, 0))
+        self.assertEqual((before['2']['value'], after['2']['value']), (7, 7))
+        self.assertEqual((before['3']['tag'], before['3']['value']), ('Double', 0.5))
+        self.assertEqual((before['4']['tag'], before['4']['value']), ('Long', 4294967296))
+        self.assertEqual((after['3']['tag'], after['3']['value']), ('Int', 0))
+        self.assertEqual((after['4']['tag'], after['4']['value']), ('Int', 0))
+        self.assertIsNone(before['8']['value'])
+        self.assertIsNone(after['8']['value'])
 
     def test_managed_submission_runs_do_not_imply_settings_access(self):
         path = ROOT / 'docs/dependency-evidence/automatic-submission-2026-11-13.json'

@@ -1,0 +1,100 @@
+{
+  "minecraft": "1.21.11",
+  "status": "OBSERVED in one local integrated-server world with mod installed",
+  "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+  "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+  "selected_slot": 3,
+  "map_zero_nonblank_color_count": 15691,
+  "input_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": 0.5
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Long",
+      "value": 4294967296
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "saved_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "limitation": "One controlled single-player world; other versions, network paths and independent visual acceptance remain untested.",
+  "files_sha256": {
+    "client.log": "78f322ff48e691645e150c7027926dc925fba795f7528367ead1b35fffe367db",
+    "ending-player.dat": "3e71451719d3286ebb51ea9d003bfc4119e141539dfe68226ef788d5862cb31d",
+    "first-person.png": "83f43330ab856812a4c6fcdb4134f04e40fbbc1b78af2b23531e056986f41f95",
+    "fixture.json": "58be777aa2c0e97e49687a38e1dc578b0ff7fb1dc31ecd9269cb35e27d38230e",
+    "input-level.dat": "e8f9d59f5058e99e6eb288bb0d7c99827acc731d7bbef89037253eba197685ad",
+    "input-map-zero.dat": "e4b17e8aaf1ac1695eb5fa52d27b65f740d867b80272f3fa502291b02f58c86f",
+    "input-player.dat": "2466daf4c984de1ac89be62648ffbd314f26dc5ffb7470712e7c828c2134b13e",
+    "launcher-pins.json": "fdb4e506dce5efb1db26e3ee4b84b09f556a936353732723174ca976c8b8e30d",
+    "movement.json": "77726282d4c7803203d3b8bf2874dff9787ab6c1420e9d69f4d737152a355a85",
+    "runner.log": "859ae17fea9c8e4d33d6d98d83a656947a93b3d29169dc9585b7dec9739992f8",
+    "runner.py": "41fff46ab7feeae144d8d5571083f2dfca01933c4a0f04466ba4abd486fcda9f",
+    "standing-day.png": "177512c19521a766860abe07ee2acc88ba28917037725a1b5b821726264a1bd6",
+    "walking-1.png": "bca4c22295377b9b133fc12e05837436fe7919ea256f76f73006cdd80d3ce6cc",
+    "walking-2.png": "a6d5995dd040076ad4bc3c58601811e2c42ebf26b4a2933a9b2a24f3980d75a2",
+    "x11-helper.py": "6e263e973a8d38b829197bf31ab5156d0929dcb61bf3963e4f95afa7e51d1ac7"
+  }
+}
