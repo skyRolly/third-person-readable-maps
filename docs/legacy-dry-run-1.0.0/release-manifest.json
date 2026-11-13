@@ -2,7 +2,7 @@
   "schema": 1,
   "version": "1.0.0",
   "tag": "1.0.0",
-  "coordinator_sha": "e9f13f113b04dbd6939bc124ed739213bf624ab7",
+  "coordinator_sha": "61ce5c52ea37b21a57f97e21bf0906fe9c240bfd",
   "candidate": true,
   "release_date": "2026-11-13",
   "changes": [
@@ -15,7 +15,7 @@
     {
       "id": "1.14-1.14.4",
       "branch": "candidate/mc-1.14-1.14.4",
-      "source_commit": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
       "minecraft": [
         "1.14",
         "1.14.1",
@@ -34,7 +34,7 @@
     {
       "id": "1.15-1.16.5",
       "branch": "candidate/mc-1.15-1.16.5",
-      "source_commit": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
       "minecraft": [
         "1.15",
         "1.15.1",
@@ -57,7 +57,7 @@
     {
       "id": "1.17-1.19.2",
       "branch": "candidate/mc-1.17-1.19.2",
-      "source_commit": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
       "minecraft": [
         "1.17",
         "1.17.1",
@@ -79,7 +79,7 @@
     {
       "id": "1.19.3",
       "branch": "candidate/mc-1.19.3",
-      "source_commit": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
       "minecraft": [
         "1.19.3"
       ],
@@ -94,7 +94,7 @@
     {
       "id": "1.19.4-1.20.4",
       "branch": "candidate/mc-1.19.4-1.20.4",
-      "source_commit": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "source_commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
       "minecraft": [
         "1.19.4",
         "1.20",
@@ -114,7 +114,7 @@
     {
       "id": "1.20.5-1.20.6",
       "branch": "candidate/mc-1.20.5-1.20.6",
-      "source_commit": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
       "minecraft": [
         "1.20.5",
         "1.20.6"
@@ -130,7 +130,7 @@
     {
       "id": "1.21-1.21.1",
       "branch": "candidate/mc-1.21-1.21.1",
-      "source_commit": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "source_commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
       "minecraft": [
         "1.21",
         "1.21.1"
@@ -146,7 +146,7 @@
     {
       "id": "1.21.11",
       "branch": "maintenance/mc-1.21.11-1.0.0",
-      "source_commit": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+      "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
       "minecraft": [
         "1.21.11"
       ],
@@ -161,7 +161,7 @@
     {
       "id": "1.21.2-1.21.3",
       "branch": "candidate/mc-1.21.2-1.21.3",
-      "source_commit": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "source_commit": "78ef3c311f2db755c87907af6d698ed4527bd2de",
       "minecraft": [
         "1.21.2",
         "1.21.3"
@@ -177,7 +177,7 @@
     {
       "id": "1.21.4-1.21.8",
       "branch": "candidate/mc-1.21.4-1.21.8",
-      "source_commit": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
       "minecraft": [
         "1.21.4",
         "1.21.5",
@@ -196,7 +196,7 @@
     {
       "id": "1.21.9-1.21.10",
       "branch": "candidate/mc-1.21.9-1.21.10",
-      "source_commit": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
       "minecraft": [
         "1.21.9",
         "1.21.10"
@@ -212,7 +212,7 @@
     {
       "id": "26.1-26.2",
       "branch": "maintenance/mc-26.1-26.2-1.0.0",
-      "source_commit": "d3695609e0a05ede476bf80b09bf0047868165e5",
+      "source_commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
       "minecraft": [
         "26.1",
         "26.1.1",
@@ -230,7 +230,7 @@
     {
       "id": "26.3",
       "branch": "maintenance/mc-26.3-1.0.0",
-      "source_commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+      "source_commit": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
       "minecraft": [
         "26.3"
       ],

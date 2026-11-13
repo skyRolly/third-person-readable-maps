@@ -12,7 +12,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
     def test_component_codec_probes_cover_every_component_era_version(self):
         directory = ROOT / 'docs/dependency-evidence/component-mapid-codec-2026-11-13'
         evidence = json.loads((directory / 'results.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         group_ids = {'1.20.5-1.20.6', '1.21-1.21.1', '1.21.2-1.21.3',
                      '1.21.4-1.21.8', '1.21.9-1.21.10', '1.21.11', '26.1-26.2', '26.3'}
         expected = {version for group in manifest['groups'] if group['id'] in group_ids
@@ -48,7 +48,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
     def test_additional_no_mod_controls_remain_separate_from_candidates(self):
         directory = ROOT / 'docs/foreground-comparisons-2026-11-13'
         evidence = json.loads((directory / 'index.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         groups = {group['id']: group for group in manifest['groups']}
         self.assertEqual(hashlib.sha256((directory / 'run.py').read_bytes()).hexdigest(), evidence['runner_sha256'])
         self.assertEqual(set(evidence['versions']), {'1.21.1', '1.21.5', '1.21.10'})
@@ -73,7 +73,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
     def test_1_20_6_no_mod_control_is_separate_from_the_candidate(self):
         directory = ROOT / 'docs/foreground-comparison-1.20.6-2026-11-13'
         evidence = json.loads((directory / 'index.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         group = next(group for group in manifest['groups'] if group['id'] == '1.20.5-1.20.6')
         self.assertEqual(evidence['candidate_head'], group['source_commit'])
         self.assertEqual(evidence['candidate_artifact_sha256'], group['sha256'])
@@ -91,7 +91,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
     def test_26_3_egl_startup_records_the_harness_failure(self):
         directory = DIRECTORY / '26.3-egl-startup-attempt'
         evidence = json.loads((directory / 'index.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         group = next(group for group in manifest['groups'] if group['id'] == '26.3')
         self.assertEqual(evidence['status'], 'PASS local-world startup; walking harness failed')
         self.assertEqual(evidence['source_commit'], group['source_commit'])
@@ -108,7 +108,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
     def test_26_3_backend_failure_is_not_counted_as_a_success(self):
         directory = DIRECTORY / '26.3-backend-attempt'
         evidence = json.loads((directory / 'index.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         group = next(group for group in manifest['groups'] if group['id'] == '26.3')
         self.assertTrue(evidence['status'].startswith('blocked:'))
         self.assertEqual(evidence['source_commit'], group['source_commit'])
@@ -130,7 +130,7 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
 
     def test_walk_observations_match_proposed_artifacts_and_retained_files(self):
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         groups = {group['id']: group for group in manifest['groups']}
         index = json.loads((DIRECTORY / 'index.json').read_text())
         self.assertEqual(index['schema'], 1)

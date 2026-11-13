@@ -1,6 +1,8 @@
 # Non-publishing 1.0.0 candidate rehearsal — 2026-11-13
 
-**Source-head transition:** The product PR heads advanced after this snapshot. The [current source identities and pending refresh](source-head-transition-2026-11-13.md) distinguish the prior evidence from the new heads.
+This rehearsal uses the advanced product PR heads identified in the
+[source transition](source-head-transition-2026-11-13.md). Candidate monitoring
+and full runtime evidence remain separate, unfinished gates.
 
 The local rehearsal used [13-group candidate compatibility](legacy-dry-run-1.0.0/candidate-compatibility.json)
 and a [plan](legacy-dry-run-1.0.0/candidate-plan.json) pinning ten legacy
@@ -26,16 +28,20 @@ branch, mismatched remote source SHA, missing strict runtime evidence, a
 candidate-only configuration in strict CLI mode, and use of the candidate
 manifest for publication. Existing unit tests cover further authorization,
 evidence and configuration failures. The [local harness](legacy-dry-run-1.0.0/rehearse.py)
-records these controls and expects the original local worktrees and historical
-0.0.2 negative fixture. No release-write mode, tag, draft or public release was
-used.
+records these controls and expects the product worktrees and historical 0.0.2
+negative fixture. This run supplied the advanced candidate evidence and
+clean-build artifact directories through `TPRM_REHEARSAL_EVIDENCE` and
+`TPRM_REHEARSAL_ARTIFACTS`. No release-write mode, tag, draft or public release
+was used.
 
 The manifest records coordinator commit
-`e9f13f113b04dbd6939bc124ed739213bf624ab7`, the exact committed
+`61ce5c52ea37b21a57f97e21bf0906fe9c240bfd`, the exact committed
 release-validation code used in this rehearsal. The later evidence commit
 containing this record does not retroactively change the coordinator identity.
 The [earlier November 13 rehearsal](historical-1.0.0-rehearsal-2026-11-13-a30dff/)
 retains its original manifest and checksums separately.
+The [immediately preceding source-head snapshot](historical-verifier-followup-2026-11-13/)
+also retains its manifest and checksums.
 The [2026-11-12 rehearsal](historical-1.0.0-rehearsal-2026-11-12/report.md)
 and its original manifest and checksums remain historical. This was local
 candidate aggregation with proposed unmerged sources, not production

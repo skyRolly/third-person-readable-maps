@@ -8,3 +8,7 @@ are historical; they do not become source-bound evidence for the advanced heads.
 See the [source transition](../source-head-transition-2026-11-13.md) and current
 review records for updated status. The checksums here retain their original bytes;
 their JARs are not committed.
+
+The earlier rehearsal log, runner and report are preserved as written. Links in
+the copied report described its former location and may not resolve from this
+archive; the accompanying manifest and checksum files retain their original bytes.

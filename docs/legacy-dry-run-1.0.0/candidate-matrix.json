@@ -1,91 +1,91 @@
 [
   {
     "group": "1.14-1.14.4",
-    "commit": "341d33664272c2a19aa419e3d33f01b1954df991",
+    "commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
     "branch": "candidate/mc-1.14-1.14.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.15-1.16.5",
-    "commit": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+    "commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
     "branch": "candidate/mc-1.15-1.16.5",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.17-1.19.2",
-    "commit": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+    "commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
     "branch": "candidate/mc-1.17-1.19.2",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.19.3",
-    "commit": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+    "commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
     "branch": "candidate/mc-1.19.3",
     "build_jdk": "25.0.5+8",
     "multi_version": false
   },
   {
     "group": "1.19.4-1.20.4",
-    "commit": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+    "commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
     "branch": "candidate/mc-1.19.4-1.20.4",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.20.5-1.20.6",
-    "commit": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+    "commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
     "branch": "candidate/mc-1.20.5-1.20.6",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.21-1.21.1",
-    "commit": "b24ed245e4630c2df87f539707dbf662bba354ac",
+    "commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
     "branch": "candidate/mc-1.21-1.21.1",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.21.11",
-    "commit": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+    "commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
     "branch": "maintenance/mc-1.21.11-1.0.0",
     "build_jdk": "25.0.5+8",
     "multi_version": false
   },
   {
     "group": "1.21.2-1.21.3",
-    "commit": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+    "commit": "78ef3c311f2db755c87907af6d698ed4527bd2de",
     "branch": "candidate/mc-1.21.2-1.21.3",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.21.4-1.21.8",
-    "commit": "08f70683b93eff8d4a68dd366232c70cedd65101",
+    "commit": "55df5055388918d5df96a3f61f6c9dc999042271",
     "branch": "candidate/mc-1.21.4-1.21.8",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "1.21.9-1.21.10",
-    "commit": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+    "commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
     "branch": "candidate/mc-1.21.9-1.21.10",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "26.1-26.2",
-    "commit": "d3695609e0a05ede476bf80b09bf0047868165e5",
+    "commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
     "branch": "maintenance/mc-26.1-26.2-1.0.0",
     "build_jdk": "25.0.5+8",
     "multi_version": true
   },
   {
     "group": "26.3",
-    "commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+    "commit": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
     "branch": "maintenance/mc-26.3-1.0.0",
     "build_jdk": "25.0.5+8",
     "multi_version": false

@@ -14,3 +14,8 @@ hardware-GPU or multiplayer validation, or independent human approval. Earlier
 1.0.0 runs on the previous source heads are kept separately in
 [the historical runtime evidence](../runtime-smoke-1.0.0/); matching artifact
 hashes do not relabel those runs as current source-bound tests.
+
+The initial sweep was interrupted with incomplete runs for 1.16, 1.18.1 and
+1.21.1; their incomplete local directories were preserved, and no walking
+result was recorded for those attempts. The early-family sweep was resumed on
+a separate display using the included `early-96` harness.

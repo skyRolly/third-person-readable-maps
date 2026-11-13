@@ -29,4 +29,4 @@ REJECTED overlapping-game-version 1.14-1.14.4: Minecraft versions overlap anothe
 REJECTED strict-rejects-candidate-config
 REJECTED changed-artifact-after-checksum
 REJECTED wrong-remote-source-commit 1.14-1.14.4: source branch is missing or its HEAD differs from the plan
-REHEARSAL COMPLETE 13 groups; 48 versions; coordinator e9f13f113b04dbd6939bc124ed739213bf624ab7
+REHEARSAL COMPLETE 13 groups; 48 versions; coordinator 61ce5c52ea37b21a57f97e21bf0906fe9c240bfd

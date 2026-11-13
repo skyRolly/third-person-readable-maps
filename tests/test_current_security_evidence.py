@@ -133,7 +133,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
         index = json.loads((directory / 'index.json').read_text())['records']
         worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
         inventory = json.loads((directory / 'mod-class-reference-inventory.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         groups = {group['id']: group for group in manifest['groups']}
         self.assertEqual(len(index), 21)
         self.assertEqual(set(index), set(inventory['targets']))
@@ -201,7 +201,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
     def test_unmerged_maintenance_proposals_remain_distinct_and_unreviewed(self):
         directory = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
         index = json.loads((directory / 'index.json').read_text())
-        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
         proposals = {entry['id']: entry for entry in manifest['groups'] if entry['branch'].startswith('maintenance/')}
         self.assertFalse(index['risk_acceptance'])
         self.assertEqual(set(index['groups']), set(proposals))

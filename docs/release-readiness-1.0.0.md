@@ -34,8 +34,8 @@ checks and evidence on the preceding heads do not certify the new sources.
 | Auditor access | BLOCKED | Configure and verify the read-only auditor credential through the administrator without exposing its value. |
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
-| Provenance and checksums | BLOCKED | The preceding candidate aggregation and checksums identify earlier product heads. Regenerate and review them for the new proposed sources and again for final integrated, approved heads. |
-| Non-publishing rehearsal | BLOCKED | The [preceding local 13-group rehearsal](legacy-dry-run-1.0.0.md) passed its negative controls but pins superseded product heads. Repeat it for the new heads; a hosted rehearsal against approved integrated heads remains NOT RUN. |
+| Provenance and checksums | PENDING REVIEW | The new candidate aggregation and checksums identify all advanced product heads. Review them and repeat against final integrated, approved heads. |
+| Non-publishing rehearsal | PENDING REVIEW | The [new local 13-group rehearsal](legacy-dry-run-1.0.0.md) passed candidate aggregation and negative controls on the advanced heads. A hosted rehearsal against approved integrated heads remains NOT RUN. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |
