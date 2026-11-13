@@ -105,6 +105,13 @@ class ClassFileFixtures(unittest.TestCase):
         handle = next(u for u in uses if u['name'] == '<init>')
         self.assertEqual(handle['operation'], 'newinvokespecial')
         linkage.validate_use(handle, 'fixture/Caller', nodes.get)
+        nodes, uses = self.compile_case('public class Api { public Api() {} }',
+                                        'public class Caller { java.util.function.Supplier<Api> call() { return Api::new; } }',
+                                        'public abstract class Api { public Api() {} }')
+        handle = next(u for u in uses if u['name'] == '<init>')
+        self.assertIsNotNone(linkage.resolve_member('fixture/Api', 'method', '<init>', '()V', nodes.get))
+        with self.assertRaisesRegex(ValueError, 'cannot instantiate'):
+            linkage.validate_use(handle, 'fixture/Caller', nodes.get)
 
     def test_inherited_public_and_cross_package_protected(self):
         temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
@@ -194,6 +201,56 @@ class ClassFileFixtures(unittest.TestCase):
         subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector)], check=True, capture_output=True)
         write_game(True)
         with ZipFile(archive) as z, self.assertRaisesRegex(ValueError, 'static/instance mismatch'):
+            game_linkage.verify_game_instructions({mod['name']:mod}, {}, z, {}, {}, {}, 'fixture')
+
+    def test_instruction_only_class_access_and_new_abstract(self):
+        temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
+        root = Path(temp.name); math = root/'src/com/mojang/math'; app = root/'src/app'
+        math.mkdir(parents=True); app.mkdir(parents=True)
+        vector = math/'Vector.java'; caller = app/'Caller.java'
+        vector.write_text('package com.mojang.math; public class Vector { public Vector() {} }')
+        caller.write_text('package app; public class Caller { '
+                          'Class<?> literal() { return com.mojang.math.Vector.class; } '
+                          'boolean test(Object x) { return x instanceof com.mojang.math.Vector; } '
+                          'Object cast(Object x) { return (com.mojang.math.Vector)x; } '
+                          'Object array() { return new com.mojang.math.Vector[1]; } '
+                          'Object matrix() { return new com.mojang.math.Vector[1][1]; } }')
+        out = root/'classes'; out.mkdir()
+        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector), str(caller)],
+                       check=True, capture_output=True)
+        mod = linkage.parse((out/'app/Caller.class').read_bytes()); archive = root/'game.jar'
+        self.assertEqual({u['operation'] for u in mod['class_uses']},
+                         {'class_constant', 'instanceof', 'checkcast', 'anewarray', 'multianewarray'})
+        def write_game():
+            with ZipFile(archive, 'w') as z:
+                z.write(out/'com/mojang/math/Vector.class', 'com/mojang/math/Vector.class')
+        write_game()
+        with ZipFile(archive) as z:
+            game_linkage.verify_game_instructions({mod['name']:mod}, {}, z, {}, {}, {}, 'fixture')
+        vector.write_text('package com.mojang.math; class Vector { public Vector() {} }')
+        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector)], check=True, capture_output=True)
+        write_game()
+        legacy = dict(mod); legacy.pop('class_uses')
+        with ZipFile(archive) as z:
+            # The previous class-presence/member-only check accepted these invalid class operations.
+            self.assertEqual(game_linkage.verify_game_instructions({legacy['name']:legacy}, {}, z, {}, {}, {}, 'fixture'), 0)
+        with ZipFile(archive) as z, self.assertRaisesRegex(ValueError, 'inaccessible referenced class'):
+            game_linkage.verify_game_instructions({mod['name']:mod}, {}, z, {}, {}, {}, 'fixture')
+        with ZipFile(archive) as z:
+            game_linkage.verify_game_instructions({mod['name']:mod}, {'app/Caller':'com/mojang/math/Target'},
+                                                  z, {}, {}, {}, 'fixture')
+        vector.write_text('package com.mojang.math; public class Vector { public Vector() {} }')
+        caller.write_text('package app; public class Caller { Object make() { return new com.mojang.math.Vector(); } }')
+        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector), str(caller)],
+                       check=True, capture_output=True)
+        mod = linkage.parse((out/'app/Caller.class').read_bytes())
+        vector.write_text('package com.mojang.math; public abstract class Vector { public Vector() {} }')
+        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector)], check=True, capture_output=True)
+        write_game()
+        legacy = dict(mod); legacy.pop('class_uses')
+        with ZipFile(archive) as z:
+            self.assertEqual(game_linkage.verify_game_instructions({legacy['name']:legacy}, {}, z, {}, {}, {}, 'fixture'), 1)
+        with ZipFile(archive) as z, self.assertRaisesRegex(ValueError, 'cannot instantiate'):
             game_linkage.verify_game_instructions({mod['name']:mod}, {}, z, {}, {}, {}, 'fixture')
 
     def test_library_descriptor_only_class_is_required(self):
