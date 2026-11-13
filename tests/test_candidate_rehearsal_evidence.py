@@ -9,6 +9,20 @@ DIRECTORY = ROOT / 'docs/legacy-dry-run-1.0.0'
 
 
 class CandidateRehearsalEvidenceTests(unittest.TestCase):
+    def test_new_product_ci_results_match_transition_heads(self):
+        transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        evidence = json.loads((ROOT / 'docs/hosted-builds-verifier-followup-2026-11-13.json').read_text())['groups']
+        self.assertEqual(len(transition), 13)
+        self.assertEqual(set(transition), set(evidence))
+        for group, row in evidence.items():
+            with self.subTest(group=group):
+                self.assertEqual(row['source_commit'], transition[group]['new_head'])
+                self.assertEqual(set(row['checks']), {'Build (ubuntu-latest)', 'Build (windows-latest)'})
+                for check in row['checks'].values():
+                    self.assertEqual((check['status'], check['conclusion']), ('COMPLETED', 'SUCCESS'))
+                    self.assertTrue(check['completedAt'])
+                    self.assertTrue(check['detailsUrl'].startswith('https://github.com/skyRolly/third-person-readable-maps/actions/runs/'))
+
     def test_manifest_matches_the_candidate_plan_and_checksum_list(self):
         raw = (DIRECTORY / 'release-manifest.json').read_bytes()
         manifest = json.loads(raw)

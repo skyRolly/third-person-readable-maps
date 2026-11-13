@@ -1,6 +1,6 @@
 # Product source-head transition — 2026-11-13 UTC
 
-All 13 proposed product heads advanced with the same verifier-only correction. The prior source-bound CI, runtime and candidate-security reports remain historical for their recorded heads. New exact-head Linux/Windows CI, clean builds, runtime evidence, dependency snapshots and the candidate rehearsal must be recorded separately before those gates can pass. No product branch was merged.
+All 13 proposed product heads advanced with the same verifier-only correction. The prior source-bound CI, runtime and candidate-security reports remain historical for their recorded heads. New [exact-head Linux/Windows CI](hosted-builds-verifier-followup-2026-11-13.json) passed for every product PR. Clean local builds, runtime evidence, dependency snapshots and the candidate rehearsal must be recorded separately before those gates can pass. No product branch was merged.
 
 The updated parser checks class-only instructions, class constants and constructor method handles, using the effective Mixin target as the access context. Its 16 controlled fixtures and a prototype run over all 48 previous artifacts passed. Protected-receiver flow, some `invokespecial` cases, descriptor-only class access and complex transformations remain unproven. The prototype run is not a source-bound test of newly built artifacts.
 
