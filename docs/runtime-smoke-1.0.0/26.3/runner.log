@@ -1,0 +1,19 @@
+Already completed 1.21.11
+Already completed 26.1
+Already completed 26.1.1
+Already completed 26.1.2
+Already completed 26.2
+Pruned re-downloadable assets for modern 26.3 bytes 0
+Launching 26.3 ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559
+Captured standing-day
+Captured walking-1
+Captured walking-2
+Captured after-walk
+Traceback (most recent call last):
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 136, in <module>
+    offset=log.stat().st_size;tap('Escape');subprocess.run(['python3',str(helper/'x11-90.py'),'click:640:520'],env=env,check=True,stdout=subprocess.DEVNULL);wait(p,log,'All dimensions are saved' if tuple(map(int,version.split('.'))) >= (1,21,5) else 'All chunks are saved',120,offset);time.sleep(5);request_close();p.wait(timeout=45);assert p.returncode==0
+                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 35, in wait
+    if p.poll() is not None:raise RuntimeError('Client exited before '+needle)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Client exited before All dimensions are saved

@@ -72,11 +72,15 @@ advisory is not by itself proof that overriding Minecraft's runtime is safe.
 All dispositions remain unresolved; no risk has been accepted.
 
 The [high-priority advisory review](security-high-priority-2026-11-12.md)
-adds individual trigger, affected-package and remediation analysis for eleven
+adds individual trigger, affected-package and remediation analysis for 21
 widely distributed high-severity IDs. It retains exact OSV responses and a
 source- and artifact-bound inventory of direct mod-class references. The
 absence of those direct references does not exclude a vulnerable game,
 loader, multiplayer or other installed-mod path, so these findings still fail.
+The [2026-11-13 follow-up](security-high-priority-2026-11-13.md) individually
+reviews the remaining 12 high-severity IDs in the current worklist. These
+targeted advisory reads do not replace a fresh full scan, and all 33 high IDs
+remain unresolved and failing.
 
 The [retained snapshots and reports](dependency-evidence/1.0.0-2026-11-12/)
 were produced locally from the exact source commits using the pinned
@@ -94,3 +98,10 @@ and 11 matches respectively; every proposal finding is unreviewed and failing,
 with no disappeared baseline match accepted as resolved. These are additional
 source identities for the same three groups, so their 105 matches are not
 added a second time to the 490-group total above.
+
+A [2026-11-13 OSV rescan](dependency-evidence/1.0.0-osv-rescan-2026-11-13/)
+completed on all 13 unchanged source identities using the earlier source-bound
+Gradle snapshots. It found the same 490 failing group-scoped matches, including
+the same three changed candidate matches and no accepted disappearance. The
+rescan queried OSV again; it did not re-resolve Gradle dependencies or turn
+the historical maintenance snapshots into scans of unmerged proposals.

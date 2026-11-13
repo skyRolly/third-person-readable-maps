@@ -6321,7 +6321,8 @@
           "fingerprint": "884fa093d27d131d35e2a993fda634b5b6c6023201c7f4fd701c098e74133723",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.google.guava/guava@21.0|GHSA-5mg8-w23w-74h3": {
       "purl": "pkg:maven/com.google.guava/guava@21.0",
@@ -6911,7 +6912,8 @@
           "fingerprint": "369ef5bb8c0c0a10e918b49f342292ca2f219d64c8574154f2a63bde48d4870a",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-4g9r-vxhx-9pgx": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7079,7 +7081,8 @@
           "fingerprint": "32da4018ea4feefd855b21d793b34a765561f2f79834829387865cd1dcbec679",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-crv7-7245-f45f": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7163,7 +7166,8 @@
           "fingerprint": "f04440d199d452e93298ce79b75da858e1bc4ec00853963cac4d0c99941d0f8d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-hrmr-f5m6-m9pq": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7331,7 +7335,8 @@
           "fingerprint": "98858fd078ac32be6dfe4fee3600f75a43a1c71fcda0e787a389e3e871cc21a1",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-compress@1.8.1|GHSA-xqfj-vm6h-2x34": {
       "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
@@ -7415,7 +7420,8 @@
           "fingerprint": "8bad139ba3cf1bb675af773810255bc8406cd52d01fc5d37f138095f80be4afe",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/org.apache.commons/commons-lang3@3.5|GHSA-j288-q9x7-2f5v": {
       "purl": "pkg:maven/org.apache.commons/commons-lang3@3.5",
@@ -7937,7 +7943,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
       ],
-      "triage_note": "The advisory describes non-default Thread Context patterns or lookups. The retained default client configurations contain neither identified context pattern nor context lookup, but runtime configuration and alternate paths remain unverified. Investigate before disposition."
+      "triage_note": "The advisory describes non-default Thread Context patterns or lookups. The retained default client configurations contain neither identified context pattern nor context lookup, but runtime configuration and alternate paths remain unverified. Investigate before disposition.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-8489-44mv-ggj8": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8100,7 +8107,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
       ],
-      "triage_note": "The advisory requires a TCP or UDP Log4j socket server receiving serialized events. Determine whether game, loader, server, or other installed components expose that path; direct Mod usage alone is insufficient to rule it out."
+      "triage_note": "The advisory requires a TCP or UDP Log4j socket server receiving serialized events. Determine whether game, loader, server, or other installed components expose that path; direct Mod usage alone is insufficient to rule it out.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-h383-gmxw-35v2": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8274,7 +8282,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
       ],
-      "triage_note": "The advisory concerns JNDI lookups in attacker-controlled log content. Hash-verified Mojang default client configurations use no-lookups formatting, but custom launchers, changed configurations and other paths remain unverified. Verify effective runtime configuration and supported mitigation before disposition."
+      "triage_note": "The advisory concerns JNDI lookups in attacker-controlled log content. Hash-verified Mojang default client configurations use no-lookups formatting, but custom launchers, changed configurations and other paths remain unverified. Verify effective runtime configuration and supported mitigation before disposition.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-p6xc-xr62-6r2g": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8367,7 +8376,8 @@
           "fingerprint": "778d796a01cbc47489b87d4552eab10fc5fa4a829ed4c7a87d6d42d5e473f735",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
@@ -8572,7 +8582,8 @@
           "fingerprint": "884fa093d27d131d35e2a993fda634b5b6c6023201c7f4fd701c098e74133723",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.google.guava/guava@31.0.1-jre|GHSA-5mg8-w23w-74h3": {
       "purl": "pkg:maven/com.google.guava/guava@31.0.1-jre",
@@ -9172,7 +9183,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
       ],
-      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review."
+      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
@@ -9929,7 +9941,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
       ],
-      "triage_note": "The advisory describes non-default Thread Context patterns or lookups. The retained default client configurations contain neither identified context pattern nor context lookup, but runtime configuration and alternate paths remain unverified. Investigate before disposition."
+      "triage_note": "The advisory describes non-default Thread Context patterns or lookups. The retained default client configurations contain neither identified context pattern nor context lookup, but runtime configuration and alternate paths remain unverified. Investigate before disposition.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-8489-44mv-ggj8": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -10127,7 +10140,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
       ],
-      "triage_note": "The advisory concerns JNDI lookups in attacker-controlled log content. Hash-verified Mojang default client configurations use no-lookups formatting, but custom launchers, changed configurations and other paths remain unverified. Verify effective runtime configuration and supported mitigation before disposition."
+      "triage_note": "The advisory concerns JNDI lookups in attacker-controlled log content. Hash-verified Mojang default client configurations use no-lookups formatting, but custom launchers, changed configurations and other paths remain unverified. Verify effective runtime configuration and supported mitigation before disposition.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-p6xc-xr62-6r2g": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -10197,7 +10211,8 @@
           "fingerprint": "778d796a01cbc47489b87d4552eab10fc5fa4a829ed4c7a87d6d42d5e473f735",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-vc5p-v9hr-52mj": {
       "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
@@ -11203,7 +11218,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-osv.json"
         }
       ],
-      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review."
+      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
@@ -12720,7 +12736,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
       ],
-      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review."
+      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
@@ -15417,7 +15434,8 @@
           "fingerprint": "757bb77cb9f1832f874a382601da5e51b2f06683a7a86cf142d47255465e8b55",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-6cqp-g7gg-8hr5": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15559,7 +15577,8 @@
           "fingerprint": "d6f13ad768f11242f4e9503ff71077af218e74d89d28abdde02e348ff3312a07",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-84h7-rjj3-6jx4": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15772,7 +15791,8 @@
           "fingerprint": "4c4b67218e6b9db0734c73f44650ea00e7a10ba26acaacc39ca2c95b3a306c43",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-gcjf-9mgh-3p7g": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -15985,7 +16005,8 @@
           "fingerprint": "50579b7169cf3a3c3afe9b606d71651a2331d3d770c9c0e15ed7dcfdf4d4b4d9",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-m4cv-j2px-7723": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16127,7 +16148,8 @@
           "fingerprint": "81969f2066b63c22546ba4f9afee2fab3538929e93ca168727583e73b237ad12",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-pwqr-wmgm-9rr8": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16198,7 +16220,8 @@
           "fingerprint": "321351f68c35482fc54e06a2f9dbeb4637020338f6b61daf75035385fe0cd0a7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-q4f6-jm68-57ww": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
@@ -16554,7 +16577,8 @@
           "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
@@ -16828,7 +16852,8 @@
           "fingerprint": "06fdb1383adb97f837d47b35e8a011127efbbed746ecfd689b79e1e1299cb866",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-transport-native-epoll@4.2.7.Final|GHSA-w573-9ffj-6ff9": {
       "purl": "pkg:maven/io.netty/netty-transport-native-epoll@4.2.7.Final",
@@ -17481,7 +17506,8 @@
           "fingerprint": "b4306a05e8d6758c90bd291b6aa99d4cc60880ad3e19434883cb648cc200b424",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4|GHSA-h46c-h94j-95f3": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
@@ -17558,7 +17584,8 @@
           "fingerprint": "d649ebb6a2d2bfeeb8f3596599f9111747826235cebf4abe19115966aa9845c7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4|GHSA-r7wm-3cxj-wff9": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
@@ -17647,7 +17674,8 @@
           "fingerprint": "069a1ec25cbaf8ddab80994ec402a8de28bb3b39d77a65b4bc35554a589d90db",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-3wrr-7qpf-2prh": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18039,7 +18067,8 @@
           "fingerprint": "06d7d00c4e35aa8d6da6709436dbf93d8038c206821879423d8461f1e627f446",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-gx83-3vf8-gh7j": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18330,7 +18359,8 @@
           "fingerprint": "802c6ab25e04a33d9eeae8bd546798deedaf3af28fd42985d7ef280084ac50b6",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-rmj7-2vxq-3g9f": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18431,7 +18461,8 @@
           "fingerprint": "3ebb82179aa4cd5885cdc4bf6497c30e20aeaf7b657c9ba4f51fcf65131b6607",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2|GHSA-vvgp-rfg2-7rr6": {
       "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
@@ -18734,7 +18765,8 @@
           "fingerprint": "237fe46e0ab5dd8aa91c039261a39cb232ddfd538ade64356fed5ae3d77af76d",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.microsoft.azure/msal4j@1.15.0|GHSA-m5vv-6r4h-3vj9": {
       "purl": "pkg:maven/com.microsoft.azure/msal4j@1.15.0",
@@ -18878,7 +18910,8 @@
           "fingerprint": "111a5969bebf600bda82852dc8cfa087f0d44a9280315e2b60465c958b3900e7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/com.google.guava/guava@33.3.1-jre|GHSA-xxph-c9ww-hj94": {
       "purl": "pkg:maven/com.google.guava/guava@33.3.1-jre",
@@ -19527,7 +19560,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-osv.json"
         }
       ],
-      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review."
+      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.115.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
@@ -19840,7 +19874,8 @@
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
       ],
-      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review."
+      "triage_note": "The advisory describes a server-side fragmented TLS ClientHello and SNI/mTLS routing precondition. Verify whether any supported client, integrated server, loader or other component enables the affected path. The matched runtime version is selected by Mojang metadata; do not override it without compatibility review.",
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.1.118.Final|GHSA-c653-97m9-rcg9": {
       "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
@@ -20247,7 +20282,8 @@
           "fingerprint": "111a5969bebf600bda82852dc8cfa087f0d44a9280315e2b60465c958b3900e7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-12.md"
     },
     "pkg:maven/org.apache.commons/commons-lang3@3.17.0|GHSA-j288-q9x7-2f5v": {
       "purl": "pkg:maven/org.apache.commons/commons-lang3@3.17.0",
@@ -20905,7 +20941,8 @@
           "fingerprint": "757bb77cb9f1832f874a382601da5e51b2f06683a7a86cf142d47255465e8b55",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-6cqp-g7gg-8hr5": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21017,7 +21054,8 @@
           "fingerprint": "d6f13ad768f11242f4e9503ff71077af218e74d89d28abdde02e348ff3312a07",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-84h7-rjj3-6jx4": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21185,7 +21223,8 @@
           "fingerprint": "4c4b67218e6b9db0734c73f44650ea00e7a10ba26acaacc39ca2c95b3a306c43",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-fghv-69vj-qj49": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21409,7 +21448,8 @@
           "fingerprint": "50579b7169cf3a3c3afe9b606d71651a2331d3d770c9c0e15ed7dcfdf4d4b4d9",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-m4cv-j2px-7723": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21521,7 +21561,8 @@
           "fingerprint": "81969f2066b63c22546ba4f9afee2fab3538929e93ca168727583e73b237ad12",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-pwqr-wmgm-9rr8": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -21577,7 +21618,8 @@
           "fingerprint": "321351f68c35482fc54e06a2f9dbeb4637020338f6b61daf75035385fe0cd0a7",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.1.118.Final|GHSA-q4f6-jm68-57ww": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
@@ -22368,7 +22410,8 @@
           "fingerprint": "d6f13ad768f11242f4e9503ff71077af218e74d89d28abdde02e348ff3312a07",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-8c42-7qj2-3j46": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22530,7 +22573,8 @@
           "fingerprint": "50579b7169cf3a3c3afe9b606d71651a2331d3d770c9c0e15ed7dcfdf4d4b4d9",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-mvh2-crg5-v77c": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22584,7 +22628,8 @@
           "fingerprint": "81969f2066b63c22546ba4f9afee2fab3538929e93ca168727583e73b237ad12",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-high-priority-2026-11-13.md"
     },
     "pkg:maven/io.netty/netty-codec-http@4.2.15.Final|GHSA-q4f6-jm68-57ww": {
       "purl": "pkg:maven/io.netty/netty-codec-http@4.2.15.Final",
@@ -22692,7 +22737,8 @@
           "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-fccg-mwvh-qqg4": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.15.Final",
@@ -22924,7 +22970,8 @@
           "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
           "report": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-osv.json"
         }
-      ]
+      ],
+      "review_evidence": "docs/security-review-2026-11-12.md"
     },
     "pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-fccg-mwvh-qqg4": {
       "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
@@ -22981,5 +23028,10 @@
         }
       ]
     }
+  },
+  "last_osv_rescan": {
+    "scanned_on": "2026-11-13",
+    "index_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/index.json",
+    "snapshot_note": "Reused exact source-bound 2026-11-12 Gradle snapshots; OSV was queried again without re-resolving Gradle dependencies."
   }
 }

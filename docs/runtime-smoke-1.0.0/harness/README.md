@@ -22,6 +22,13 @@ use that path. On 26.2 the world saved and closed after the walking captures,
 but the client-menu exit timed out and the harness terminated the client. A
 second recovery script verifies the saved data and records that limitation.
 The later modern runner requests an X11 window close after the world save
-instead of using the earlier fixed menu coordinates. The scripts use a dummy
-local identity and token; they do not establish authenticated, multiplayer,
-hardware-GPU or human acceptance.
+instead of using the earlier fixed menu coordinates. The 26.3 SDL client sets
+`_NET_WM_NAME` but leaves the legacy window-name property empty; the final
+harness checks either name and excludes the smaller hidden utility window.
+The day command is confirmed when it either sets the clock or reports it was
+already at day. For 26.3, the world returned to the menu without the earlier
+save-completion log string; the client was manually exited and a third recovery
+script checked the resulting player file, log and frames. Earlier revisions
+are retained alongside it. The scripts use a dummy local identity and token;
+they do not establish authenticated, multiplayer, hardware-GPU or human
+acceptance.

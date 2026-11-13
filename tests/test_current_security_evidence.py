@@ -11,6 +11,61 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_november_13_osv_rescan_reuses_exact_snapshots_and_keeps_findings_failing(self):
+        worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
+        pointer = worklist['last_osv_rescan']
+        self.assertEqual(pointer['scanned_on'], '2026-11-13')
+        index = json.loads((ROOT / pointer['index_path']).read_text())
+        self.assertEqual(set(index['groups']), set(worklist['sources']))
+        for group, result in index['groups'].items():
+            with self.subTest(group=group):
+                source = worklist['sources'][group]
+                self.assertTrue(result['complete'])
+                self.assertEqual(result['exit_code'], 1)
+                self.assertEqual(result['source_sha'], source['source_sha'])
+                self.assertEqual(result['source_kind'], source['source_kind'])
+                self.assertEqual(result['snapshot_sha256'], source['snapshot_sha256'])
+                self.assertEqual(result['snapshot_path'], source['snapshot_path'])
+                for kind in ('report', 'log'):
+                    raw = (ROOT / result[kind + '_path']).read_bytes()
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), result[kind + '_sha256'])
+                    if kind == 'report':
+                        report = json.loads(raw)
+                self.assertEqual(report['scanned_on'], '2026-11-13')
+                self.assertEqual(report['source_sha'], source['source_sha'])
+                previous = json.loads((ROOT / source['report_path']).read_text())
+                key = lambda m: (m['purl'], m['advisory'], m['fingerprint'], m['state'], m['failing'])
+                self.assertEqual({key(m) for m in report['matches']}, {key(m) for m in previous['matches']})
+                self.assertEqual(result['matches'], len(report['matches']))
+                self.assertEqual(result['failing'], len(report['matches']))
+                self.assertFalse(report.get('resolved_needing_review', []))
+
+    def test_followup_high_advisory_responses_match_the_scanned_findings(self):
+        directory = ROOT / 'docs/dependency-evidence/high-advisories-2026-11-13'
+        index = json.loads((directory / 'index.json').read_text())['records']
+        worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
+        self.assertEqual(len(index), 12)
+        for advisory, source in index.items():
+            raw = (directory / (advisory + '.json')).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), source['sha256'])
+            response = json.loads(raw)
+            self.assertEqual(response['id'], advisory)
+            fingerprint = audit.advisory_fingerprint(response)
+            records = [r for r in worklist['records'].values() if r['advisory'] == advisory]
+            self.assertTrue(records)
+            for record in records:
+                self.assertEqual(record['severity'], 'HIGH')
+                self.assertEqual(record['review_evidence'], 'docs/security-high-priority-2026-11-13.md')
+                self.assertEqual(record['disposition'], 'Further investigation')
+                self.assertFalse(record['risk_accepted'])
+                self.assertTrue(all(o['fingerprint'] == fingerprint and o['failing'] for o in record['occurrences']))
+        for record in worklist['records'].values():
+            if record['severity'] in ('HIGH', 'CRITICAL'):
+                self.assertTrue(record.get('review_evidence'))
+        previous = json.loads((ROOT / 'docs/dependency-evidence/high-advisories-2026-11-12/index.json').read_text())['records']
+        high_ids = {r['advisory'] for r in worklist['records'].values() if r['severity'] == 'HIGH'}
+        self.assertEqual(high_ids, set(index) | set(previous))
+
     def test_prioritized_advisory_evidence_is_retained_and_source_bound(self):
         directory = ROOT / 'docs/dependency-evidence/high-advisories-2026-11-12'
         index = json.loads((directory / 'index.json').read_text())['records']
@@ -18,7 +73,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
         inventory = json.loads((directory / 'mod-class-reference-inventory.json').read_text())
         manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
         groups = {group['id']: group for group in manifest['groups']}
-        self.assertEqual(len(index), 11)
+        self.assertEqual(len(index), 21)
         self.assertEqual(set(index), set(inventory['targets']))
         self.assertEqual(set(groups), set(inventory['groups']))
         self.assertEqual(inventory['parser']['source_commit'], groups['26.3']['source_commit'])

@@ -1,6 +1,6 @@
 # 1.0.0 PR and integration handoff
 
-Snapshot: 2026-11-12 UTC. All product and coordination PRs below are open, draft, unmerged and have no auto-merge request. Product heads passed the named hosted build jobs as recorded below; check the current PR if any head changes. The coordination head may advance with evidence-only commits and its live source-pin/verifier/version prerequisites remain blocked until the three existing maintenance PRs are independently approved and integrated, and their exact merged-head evidence is refreshed.
+Snapshot: 2026-11-13 UTC. All product and coordination PRs below are open, draft, unmerged and have no auto-merge request. Product heads passed the named hosted build jobs as recorded below; check the current PR if any head changes. The coordination head may advance with evidence-only commits and its live source-pin/verifier/version prerequisites remain blocked until the three existing maintenance PRs are independently approved and integrated, and their exact merged-head evidence is refreshed.
 
 | PR | Target | Proposed HEAD | Scope | Linux | Windows | Review / dependency |
 |---|---|---|---|---|---|---|

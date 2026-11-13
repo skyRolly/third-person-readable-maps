@@ -51,6 +51,6 @@ This is the non-publishing proposed matrix, not integrated legacy support or a r
 | 26.1.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 26.3 | 26.3 | `ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
+| 26.3 | 26.3 | `ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 
 The [candidate handoff](legacy-review-handoff.md) lists exact proposed source heads. Per-version [walking evidence](runtime-smoke-1.0.0/) and branch-specific map/state probes remain partial observations, not full graphical acceptance. The [review matrix](review-resolution-1.0.0.md) records verifier scope, the component-era malformed-ID limitation, and the unresolved foreground-shape investigation.

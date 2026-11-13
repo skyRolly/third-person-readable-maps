@@ -1,0 +1,21 @@
+Already completed 1.21.11
+Already completed 26.1
+Already completed 26.1.1
+Already completed 26.1.2
+Already completed 26.2
+Pruned re-downloadable assets for modern 26.3 bytes 0
+Launching 26.3 ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559
+Traceback (most recent call last):
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 116, in <module>
+    command('/fill -5 80 -73 15 80 -33 minecraft:stone','Successfully filled',log);command('/fill -5 81 -73 15 85 -33 minecraft:air','Successfully filled',log)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 64, in command
+    off=log.stat().st_size;tap('t');subprocess.run(['python3',str(helper/'x11-90.py'),'type:'+text],env=env,check=True,stdout=subprocess.DEVNULL);tap('Return')
+                           ^^^^^^^^
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 43, in tap
+    def tap(name):send_key(name,True);time.sleep(.2);send_key(name,False);time.sleep(.8)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.minecraft-test/v100-walking-managed-modern-90.py", line 41, in send_key
+    wins=[w for w in r.query_tree().children if (w.get_wm_name() or '').startswith('Minecraft')];assert len(wins)==1;wins[0].set_input_focus(X.RevertToParent,X.CurrentTime);code=d.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(d,X.KeyPress if pressed else X.KeyRelease,code);d.sync()
+                                                                                                        ^^^^^^^^^^^^
+AssertionError

@@ -42,6 +42,36 @@
     ],
     "GHSA-vqf4-7m7x-wgfc": [
       "net/jpountz/lz4/LZ4Factory"
+    ],
+    "GHSA-4jrv-ppp4-jm57": [
+      "com/google/gson/Gson"
+    ],
+    "GHSA-p6xc-xr62-6r2g": [
+      "org/apache/logging/log4j/core/lookup/StrSubstitutor"
+    ],
+    "GHSA-7hhh-6rmp-j9qf": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-h46c-h94j-95f3": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-r7wm-3cxj-wff9": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-cxp5-3px4-pw24": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-j3rv-43j4-c7qm": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-rmj7-2vxq-3g9f": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-wv8q-qhhj-9h54": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-pq2g-wx69-c263": [
+      "net/minidev/json/parser/JSONParser"
     ]
   },
   "groups": {
@@ -61,7 +91,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.15-1.16.5": {
@@ -80,7 +120,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.17-1.19.2": {
@@ -99,7 +149,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.19.3": {
@@ -118,7 +178,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.19.4-1.20.4": {
@@ -137,7 +207,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.20.5-1.20.6": {
@@ -156,7 +236,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.21-1.21.1": {
@@ -175,7 +265,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.21.11": {
@@ -194,7 +294,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.21.2-1.21.3": {
@@ -213,7 +323,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.21.4-1.21.8": {
@@ -232,7 +352,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "1.21.9-1.21.10": {
@@ -251,7 +381,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "26.1-26.2": {
@@ -270,7 +410,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     },
     "26.3": {
@@ -289,7 +439,17 @@
         "GHSA-cmp6-m4wj-q63q": [],
         "GHSA-4g8c-wm8x-jfhw": [],
         "GHSA-78wr-2p64-hpwj": [],
-        "GHSA-vqf4-7m7x-wgfc": []
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
       }
     }
   }

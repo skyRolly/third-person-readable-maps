@@ -5,7 +5,13 @@ import sys,time
 
 d=display.Display(':90');root=d.screen().root
 for win in root.query_tree().children:
-    if (win.get_wm_name() or '').startswith('Minecraft'):
+    name=win.get_wm_name()
+    if not name:
+        prop=win.get_full_property(d.intern_atom('_NET_WM_NAME'),0)
+        name=prop.value if prop else ''
+    if isinstance(name,bytes):name=name.decode('utf-8','replace')
+    geometry=win.get_geometry()
+    if name.startswith('Minecraft') and geometry.width>=640 and geometry.height>=480:
         win.set_input_focus(X.RevertToParent, X.CurrentTime)
 d.sync()
 for arg in sys.argv[1:]:

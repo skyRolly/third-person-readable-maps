@@ -1,0 +1,65 @@
+{
+  "retrieved_on": "2026-11-13",
+  "records": {
+    "GHSA-57rv-r2g8-2cj3": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-57rv-r2g8-2cj3",
+      "sha256": "291094de1016b1d7220465ce9b241743711badce759fcfca8f857098067df790",
+      "modified": "2026-09-10T03:51:04.645242629Z"
+    },
+    "GHSA-6jqx-86gh-f27w": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-6jqx-86gh-f27w",
+      "sha256": "d670c26fc682453c6cc3b06171c6bd38a4d35322c5a79d3163e22c0ae81bff36",
+      "modified": "2026-09-10T03:51:10.812069139Z"
+    },
+    "GHSA-7hfm-57qf-j43q": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-7hfm-57qf-j43q",
+      "sha256": "f32736a8643217ffe0d93f295f428f99021360fac99ee42349ac0c2e6654fbe5",
+      "modified": "2024-03-08T05:18:24.619639Z"
+    },
+    "GHSA-crv7-7245-f45f": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-crv7-7245-f45f",
+      "sha256": "2e414610994394927f5631fa8845b7fd6bd73cba56e246224d442747157e0c5f",
+      "modified": "2024-03-08T05:19:35.252507Z"
+    },
+    "GHSA-f6hv-jmp6-3vwv": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-f6hv-jmp6-3vwv",
+      "sha256": "5c92e4a546e87970ef32b5e33d470e2ffccb34adf18edd0874db96aae58eab5b",
+      "modified": "2026-09-10T03:51:05.447415711Z"
+    },
+    "GHSA-jppx-w49h-x2qq": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-jppx-w49h-x2qq",
+      "sha256": "adf21e795a3548eebac3091520b8a7ab6e4e8fa3c128f4cea659204c5392c8d6",
+      "modified": "2026-09-10T03:50:12.368445504Z"
+    },
+    "GHSA-mc84-pj99-q6hh": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-mc84-pj99-q6hh",
+      "sha256": "8a75f1cec8af02203522c0260cebae47f96c766544d08d777a18e838f803c869",
+      "modified": "2024-03-08T05:19:48.954731Z"
+    },
+    "GHSA-mvh2-crg5-v77c": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-mvh2-crg5-v77c",
+      "sha256": "d6e7530ffaa8acf2d9b3a17ba08d94d894555cadd31be46765d0cfad12a606db",
+      "modified": "2026-09-10T03:50:52.830435122Z"
+    },
+    "GHSA-p979-4mfw-53vg": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-p979-4mfw-53vg",
+      "sha256": "e7e00ffa3a45e4e77b2ca61d4686cca59f48c841adf699db268f3422bb6d7417",
+      "modified": "2026-06-29T15:46:31.336570451Z"
+    },
+    "GHSA-pwqr-wmgm-9rr8": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-pwqr-wmgm-9rr8",
+      "sha256": "9c3227e5b7316f07ee40a58a1d9b265fd6781201a515595e9524b58677a8aa5a",
+      "modified": "2026-09-10T03:50:40.493461444Z"
+    },
+    "GHSA-xqfj-vm6h-2x34": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-xqfj-vm6h-2x34",
+      "sha256": "ff7ee8bd602bb3a0776218e9f594a655c2f9c691c735a55968c46cbd93f4b55a",
+      "modified": "2024-03-08T05:19:25.295269Z"
+    },
+    "GHSA-rwm7-x88c-3g2p": {
+      "url": "https://api.osv.dev/v1/vulns/GHSA-rwm7-x88c-3g2p",
+      "sha256": "11c827f48a74309755bf36d7bac21ed4bb4c4a886253404912403365cd910a34",
+      "modified": "2026-09-10T03:50:47.593221129Z"
+    }
+  }
+}

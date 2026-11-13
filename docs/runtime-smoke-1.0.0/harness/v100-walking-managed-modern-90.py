@@ -35,10 +35,21 @@ def wait(p,log,needle,seconds,offset=0):
   if p.poll() is not None:raise RuntimeError('Client exited before '+needle)
   time.sleep(2)
  raise TimeoutError(needle)
+def game_windows(d):
+ matches=[]
+ for w in d.screen().root.query_tree().children:
+  name=w.get_wm_name()
+  if not name:
+   prop=w.get_full_property(d.intern_atom('_NET_WM_NAME'),0)
+   name=prop.value if prop else ''
+  if isinstance(name,bytes):name=name.decode('utf-8','replace')
+  g=w.get_geometry()
+  if name.startswith('Minecraft') and g.width>=640 and g.height>=480:matches.append(w)
+ return matches
 def send_key(name,pressed):
  d=display.Display(':90');r=d.screen().root
  try:
-  wins=[w for w in r.query_tree().children if (w.get_wm_name() or '').startswith('Minecraft')];assert len(wins)==1;wins[0].set_input_focus(X.RevertToParent,X.CurrentTime);code=d.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(d,X.KeyPress if pressed else X.KeyRelease,code);d.sync()
+  wins=game_windows(d);assert len(wins)==1;wins[0].set_input_focus(X.RevertToParent,X.CurrentTime);code=d.keysym_to_keycode(XK.string_to_keysym(name));xtest.fake_input(d,X.KeyPress if pressed else X.KeyRelease,code);d.sync()
  finally:d.close()
 def tap(name):send_key(name,True);time.sleep(.2);send_key(name,False);time.sleep(.8)
 def capture(root,name):
@@ -47,7 +58,7 @@ def capture(root,name):
 def request_close():
  from Xlib.protocol import event
  d=display.Display(':90');r=d.screen().root
- wins=[w for w in r.query_tree().children if (w.get_wm_name() or '').startswith('Minecraft')];assert len(wins)==1
+ wins=game_windows(d);assert len(wins)==1
  message=event.ClientMessage(window=wins[0],client_type=d.intern_atom('WM_PROTOCOLS'),data=(32,[d.intern_atom('WM_DELETE_WINDOW'),X.CurrentTime,0,0,0]))
  wins[0].send_event(message,event_mask=0);d.sync();d.close()
 
@@ -64,7 +75,8 @@ def command(text,expected,log):
  off=log.stat().st_size;tap('t');subprocess.run(['python3',str(helper/'x11-90.py'),'type:'+text],env=env,check=True,stdout=subprocess.DEVNULL);tap('Return')
  end=time.monotonic()+30
  while time.monotonic()<end:
-  if expected in log.read_text(errors='replace')[off:]:return
+  values=(expected,) if isinstance(expected,str) else expected
+  if any(value in log.read_text(errors='replace')[off:] for value in values):return
   time.sleep(.5)
  raise RuntimeError('Unconfirmed command '+text)
 def prune_assets_for(version):
@@ -114,9 +126,9 @@ for version,fixture,jar,digest,java in runs:
    if 'Starting integrated' not in log.read_text(errors='replace'):subprocess.run(['python3',str(helper/'x11-90.py'),'click:380:410'],env=env,check=True,stdout=subprocess.DEVNULL)
   wait(p,log,'MapSmokeTest joined the game',360);hotbar()
   command('/fill -5 80 -73 15 80 -33 minecraft:stone','Successfully filled',log);command('/fill -5 81 -73 15 85 -33 minecraft:air','Successfully filled',log)
-  command('/tp @s 5.5 81 -62.5','Teleported',log);command('/time set day','Set minecraft:overworld to time marker minecraft:day' if tuple(map(int,version.split('.'))) >= (26,1) else 'Set the time to 1000',log);tap('F5');time.sleep(3)
+  command('/tp @s 5.5 81 -62.5','Teleported',log);command('/time set day',('Set minecraft:overworld to time marker minecraft:day','Clock minecraft:overworld is already at time marker minecraft:day') if tuple(map(int,version.split('.'))) >= (26,1) else 'Set the time to 1000',log);tap('F5');time.sleep(3)
   capture(root,'standing-day')
-  d=display.Display(':90');r=d.screen().root;wins=[w for w in r.query_tree().children if (w.get_wm_name() or '').startswith('Minecraft')];assert len(wins)==1;wins[0].set_input_focus(X.RevertToParent,X.CurrentTime);code=d.keysym_to_keycode(XK.string_to_keysym('w'));xtest.fake_input(d,X.KeyPress,code);d.sync()
+  d=display.Display(':90');r=d.screen().root;wins=game_windows(d);assert len(wins)==1;wins[0].set_input_focus(X.RevertToParent,X.CurrentTime);code=d.keysym_to_keycode(XK.string_to_keysym('w'));xtest.fake_input(d,X.KeyPress,code);d.sync()
   try:
    for i in range(1,3):time.sleep(.9);capture(root,'walking-'+str(i))
   finally:xtest.fake_input(d,X.KeyRelease,code);d.sync();d.close()

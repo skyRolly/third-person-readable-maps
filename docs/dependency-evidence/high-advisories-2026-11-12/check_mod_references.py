@@ -27,6 +27,16 @@ TARGETS = {
     'GHSA-4g8c-wm8x-jfhw': ['io/netty/handler/ssl/SslHandler'],
     'GHSA-78wr-2p64-hpwj': ['org/apache/commons/io/input/XmlStreamReader'],
     'GHSA-vqf4-7m7x-wgfc': ['net/jpountz/lz4/LZ4Factory'],
+    'GHSA-4jrv-ppp4-jm57': ['com/google/gson/Gson'],
+    'GHSA-p6xc-xr62-6r2g': ['org/apache/logging/log4j/core/lookup/StrSubstitutor'],
+    'GHSA-7hhh-6rmp-j9qf': ['com/fasterxml/jackson/core/JsonFactory'],
+    'GHSA-h46c-h94j-95f3': ['com/fasterxml/jackson/core/JsonFactory'],
+    'GHSA-r7wm-3cxj-wff9': ['com/fasterxml/jackson/core/JsonFactory'],
+    'GHSA-cxp5-3px4-pw24': ['com/fasterxml/jackson/databind/ObjectMapper'],
+    'GHSA-j3rv-43j4-c7qm': ['com/fasterxml/jackson/databind/ObjectMapper'],
+    'GHSA-rmj7-2vxq-3g9f': ['com/fasterxml/jackson/databind/ObjectMapper'],
+    'GHSA-wv8q-qhhj-9h54': ['com/fasterxml/jackson/databind/ObjectMapper'],
+    'GHSA-pq2g-wx69-c263': ['net/minidev/json/parser/JSONParser'],
 }
 
 spec = importlib.util.spec_from_file_location('jvm_linkage', PARSER)

@@ -3,3 +3,5 @@
 # Retained upstream logging configuration is hash-bound byte-for-byte evidence.
 docs/dependency-evidence/log4j-config-2026-11-12/*.xml -text
 docs/dependency-evidence/component-mapid-codec-2026-11-12/*-metadata.json -text
+# Preserve whitespace in the raw upstream client diagnostic log.
+docs/runtime-smoke-1.0.0/26.3-backend-attempt/client.log whitespace=-blank-at-eol
