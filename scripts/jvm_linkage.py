@@ -33,6 +33,8 @@ MEMBER_OPS = {178: 'getstatic', 179: 'putstatic', 180: 'getfield', 181: 'putfiel
 HANDLE_OPS = {1: 'getfield', 2: 'getstatic', 3: 'putfield', 4: 'putstatic',
               5: 'invokevirtual', 6: 'invokestatic', 7: 'invokespecial',
               8: 'newinvokespecial', 9: 'invokeinterface'}
+CLASS_OPS = {187: 'new', 189: 'anewarray', 192: 'checkcast',
+             193: 'instanceof', 197: 'multianewarray'}
 LENGTHS = [1] * 202
 for _op in (16, 18, 21, 22, 23, 24, 25, 54, 55, 56, 57, 58, 169, 188): LENGTHS[_op] = 2
 for _op in (17, 19, 20, 132, *range(153, 169), *range(178, 185), 187, 189, 192, 193, 198, 199): LENGTHS[_op] = 3
@@ -148,7 +150,7 @@ def parse(data, include_code=True):
             require(not b.buf.read(1), 'trailing BootstrapMethods bytes')
     require(not r.buf.read(1), 'trailing class bytes')
 
-    uses, seen_constants = [], set()
+    uses, class_uses, seen_constants = [], [], set()
     def member(index, operation):
         tag, owner, nt = entry(index, 9, 10, 11)
         _, name, desc = entry(nt, 12)
@@ -163,6 +165,8 @@ def parse(data, include_code=True):
         if tag == 15:
             require(item[1] in HANDLE_OPS, 'invalid method-handle kind')
             member(item[2], HANDLE_OPS[item[1]])
+        elif tag == 7:
+            class_uses.append({'name': class_name(index), 'operation': 'class_constant'})
         elif tag in (17, 18):
             require(item[1] < len(bootstrap), 'missing bootstrap method')
             ref, args = bootstrap[item[1]]
@@ -177,6 +181,9 @@ def parse(data, include_code=True):
                 if op == 185:
                     require(operands[2] > 0 and operands[3] == 0, 'invalid invokeinterface operands')
                 member(struct.unpack_from('>H', operands)[0], MEMBER_OPS[op])
+            elif op in CLASS_OPS:
+                class_uses.append({'name': class_name(struct.unpack_from('>H', operands)[0]),
+                                   'operation': CLASS_OPS[op]})
             elif op == 186:
                 require(operands[2:] == b'\0\0', 'invalid invokedynamic operands')
                 constant(struct.unpack_from('>H', operands)[0])
@@ -194,8 +201,29 @@ def parse(data, include_code=True):
     for member_info in members:
         classes.update(re.findall(r'L([^;]+);', member_info['descriptor']))
     return {'name': class_name(own), 'super': class_name(parent), 'interfaces': interfaces,
-            'access': access, 'major': major, 'members': members, 'uses': uses, 'classes': classes,
+            'access': access, 'major': major, 'members': members, 'uses': uses,
+            'class_uses': class_uses, 'classes': classes,
             'annotations': class_annotations}
+
+
+def class_use_name(name):
+    if not name.startswith('['): return name
+    element = name.lstrip('[')
+    if element.startswith('L') and element.endswith(';'): return element[1:-1]
+    require(len(element) == 1 and element in 'ZBCSIJFD', 'invalid array class: ' + name)
+    return None
+
+
+def validate_class_use(use, caller, lookup):
+    name = class_use_name(use['name'])
+    if name is None: return
+    node = lookup(name)
+    require(node is not None, 'missing referenced class: ' + name)
+    require((node['access'] & 1) or name.rpartition('/')[0] == caller.rpartition('/')[0],
+            'inaccessible referenced class: ' + name)
+    if use['operation'] == 'new':
+        require(not use['name'].startswith('[') and not (node['access'] & (0x0200 | 0x0400)),
+                'cannot instantiate interface or abstract class: ' + name)
 
 
 def is_subclass(child, parent, lookup, seen=None):
@@ -292,6 +320,9 @@ def validate_use(use, caller, lookup):
         require(name != '<clinit>', 'class initializer is not callable: ' + symbol)
         require((name == '<init>') == (op == 'newinvokespecial' or (op == 'invokespecial' and name == '<init>')),
                 'invalid constructor invocation: ' + symbol)
+        if op == 'newinvokespecial':
+            require(not (node['access'] & (0x0200 | 0x0400)),
+                    'constructor handle cannot instantiate interface or abstract class: ' + symbol)
         if op == 'invokespecial' and name != '<init>':
             require(owner == caller or is_subclass(caller, owner, lookup), 'invalid invokespecial owner: ' + symbol)
     require((node['access'] & 1) or owner.rpartition('/')[0] == caller.rpartition('/')[0],
