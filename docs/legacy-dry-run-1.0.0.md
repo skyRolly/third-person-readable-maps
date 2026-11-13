@@ -11,7 +11,8 @@ The aggregator inspected one locally built 1.0.0 JAR per group for identity,
 metadata, Java bytecode, namespace, Mixin configuration, license and
 classifier. It produced the candidate-only [provenance manifest](legacy-dry-run-1.0.0/release-manifest.json)
 and [SHA256SUMS](legacy-dry-run-1.0.0/SHA256SUMS); all 13 JAR checksums and
-the manifest checksum passed locally. The JARs themselves are not committed to
+the manifest checksum passed locally. The [execution log](legacy-dry-run-1.0.0/rehearsal.log)
+records the source checks and negative controls. The JARs themselves are not committed to
 this coordination repository. Product PR CI retains its own distributable
 artifacts; verify their identity separately before using them as evidence.
 
@@ -28,9 +29,11 @@ records these controls and expects the original local worktrees and historical
 used.
 
 The manifest records coordinator commit
-`a30dff08e200f431b3a3cd965d2fa4f01d3d5bb9`, the exact committed
+`e9f13f113b04dbd6939bc124ed739213bf624ab7`, the exact committed
 release-validation code used in this rehearsal. The later evidence commit
 containing this record does not retroactively change the coordinator identity.
+The [earlier November 13 rehearsal](historical-1.0.0-rehearsal-2026-11-13-a30dff/)
+retains its original manifest and checksums separately.
 The [2026-11-12 rehearsal](historical-1.0.0-rehearsal-2026-11-12/report.md)
 and its original manifest and checksums remain historical. This was local
 candidate aggregation with proposed unmerged sources, not production
