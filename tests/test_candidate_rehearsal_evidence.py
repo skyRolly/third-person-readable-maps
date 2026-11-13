@@ -23,6 +23,18 @@ class CandidateRehearsalEvidenceTests(unittest.TestCase):
                     self.assertTrue(check['completedAt'])
                     self.assertTrue(check['detailsUrl'].startswith('https://github.com/skyRolly/third-person-readable-maps/actions/runs/'))
 
+    def test_pre_followup_snapshot_keeps_original_source_and_manifest_identity(self):
+        history = ROOT / 'docs/historical-verifier-followup-2026-11-13'
+        transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        raw = (history / 'release-manifest.json').read_bytes()
+        manifest = json.loads(raw)
+        checksums = dict(line.split('  ', 1)[::-1] for line in (history / 'SHA256SUMS').read_text().splitlines())
+        self.assertEqual(checksums['release-manifest.json'], hashlib.sha256(raw).hexdigest())
+        self.assertEqual({group['id'] for group in manifest['groups']}, set(transition))
+        for group in manifest['groups']:
+            self.assertEqual(group['source_commit'], transition[group['id']]['old_head'])
+            self.assertEqual(group['sha256'], transition[group['id']]['artifact_sha256_before_rebuild'])
+
     def test_manifest_matches_the_candidate_plan_and_checksum_list(self):
         raw = (DIRECTORY / 'release-manifest.json').read_bytes()
         manifest = json.loads(raw)
