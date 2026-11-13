@@ -9,6 +9,42 @@ DIRECTORY = ROOT / 'docs/runtime-smoke-1.0.0'
 
 
 class RuntimeSmokeEvidenceTests(unittest.TestCase):
+    def test_component_codec_probes_cover_every_component_era_version(self):
+        directory = ROOT / 'docs/dependency-evidence/component-mapid-codec-2026-11-13'
+        evidence = json.loads((directory / 'results.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        group_ids = {'1.20.5-1.20.6', '1.21-1.21.1', '1.21.2-1.21.3',
+                     '1.21.4-1.21.8', '1.21.9-1.21.10', '1.21.11', '26.1-26.2', '26.3'}
+        expected = {version for group in manifest['groups'] if group['id'] in group_ids
+                    for version in group['minecraft']}
+        self.assertEqual(set(evidence['cases']), expected)
+        self.assertEqual(len(expected), 19)
+        manifest_raw = (directory / 'version_manifest_v2.json').read_bytes()
+        self.assertEqual(hashlib.sha256(manifest_raw).hexdigest(), evidence['manifest_sha256'])
+        versions = {row['id']: row for row in json.loads(manifest_raw)['versions']}
+        for name, key in (('MapCodecProbe.java', 'probe_source_sha256'), ('run.py', 'runner_sha256')):
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), evidence[key])
+        for version, result in evidence['cases'].items():
+            with self.subTest(version=version):
+                self.assertEqual(result['status'], 'complete')
+                raw = (directory / (version + '-metadata.json')).read_bytes()
+                self.assertEqual(hashlib.sha1(raw).hexdigest(), result['metadata_sha1'])
+                self.assertEqual(versions[version]['sha1'], result['metadata_sha1'])
+                self.assertEqual(versions[version]['url'], result['metadata_url'])
+                metadata = json.loads(raw)
+                self.assertEqual(metadata['id'], version)
+                self.assertEqual(metadata['downloads']['client']['sha1'], result['client_sha1'])
+                dfu = next(item for item in metadata['libraries'] if item['name'] == result['datafixerupper'])
+                self.assertEqual(dfu['downloads']['artifact']['sha1'], result['datafixerupper_sha1'])
+                self.assertEqual(result['verified_library_artifacts'][dfu['downloads']['artifact']['path']],
+                                 result['datafixerupper_sha1'])
+                if result['official_mapping']:
+                    self.assertEqual(metadata['downloads']['client_mappings']['sha1'],
+                                     result['official_mapping']['sha1'])
+                self.assertEqual(result['output'], ['explicit_zero=0', 'explicit_seven=7',
+                                                  'fractional_double=0', 'overflow_long=0',
+                                                  'nan_double=0', 'string=error'])
+
     def test_additional_no_mod_controls_remain_separate_from_candidates(self):
         directory = ROOT / 'docs/foreground-comparisons-2026-11-13'
         evidence = json.loads((directory / 'index.json').read_text())

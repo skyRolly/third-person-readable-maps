@@ -1,6 +1,6 @@
 # 1.0.0 cross-branch review resolution
 
-This records the 2026-11-12 proposed heads. **A** means confirmed affected;
+This records the 2026-11-12 proposed heads and later diagnostic evidence. **A** means confirmed affected;
 **D** means a different implementation whose equivalent invariant must still
 be verified; **N** means the specific mechanism is not present, with the
 evidence stated below. None of these labels is release acceptance.
@@ -12,14 +12,14 @@ evidence stated below. None of these labels is release acceptance.
 | 1.17–1.19.2 | A: same lookup defect | D: packaged legacy Mojang vector/quaternion classes are intermediary `net/minecraft/class_1158` etc., which the old game-class filter included; operation and descriptor coverage still strengthened | N: buffered renderer, no direct equivalent GL bind or lighting toggle; gameplay review remains | A: absent identity returns null, but numeric coercion can select an unrelated ID; bounded numeric guard added. |
 | 1.19.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: `getMapId` reads any numeric tag through `getInt`; bounded numeric guard added. |
 | 1.19.4–1.20.4 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A: same numeric coercion in inspected game bytecode; bounded numeric guard added. |
-| 1.20.5–1.20.6 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A for inspected 1.20.5: game component codec can coerce malformed numbers before the mod sees them; 1.20.6 still needs equivalent investigation. |
-| 1.21–1.21.1 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
-| 1.21.2–1.21.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
-| 1.21.4–1.21.8 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
-| 1.21.9–1.21.10 | A: same lookup defect | A: packaged JOML descriptor classes had no separate JOML verification | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
+| 1.20.5–1.20.6 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions: malformed numbers can become zero before the renderer sees the component; item-loading behavior and remedy remain open. |
+| 1.21–1.21.1 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions; item-loading behavior and remedy remain open. |
+| 1.21.2–1.21.3 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions; item-loading behavior and remedy remain open. |
+| 1.21.4–1.21.8 | A: same lookup defect | A: old JOML member scan did not establish descriptor-only class existence | N: buffered renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for all five versions; item-loading behavior and remedy remain open. |
+| 1.21.9–1.21.10 | A: same lookup defect | A: packaged JOML descriptor classes had no separate JOML verification | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for both versions; item-loading behavior and remedy remain open. |
 | 1.21.11 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: JOML descriptor classes now checked against declared runtime library | N: queued renderer; gameplay state ownership remains to be tested | A: controlled game-codec probe confirmed malformed numbers can become zero before the mod sees the component; bounded remedy remains open. |
-| 26.1–26.2 | A: official-namespace verifier also resolved ordinary members by kind/name/descriptor | A: `com/mojang/math/Axis` and JOML descriptor classes require explicit game/library resolution | N: queued renderer; gameplay state ownership remains to be tested | A for tested 26.1.2: controlled game-codec probe confirmed the same conversion; other group versions and a bounded remedy require investigation. |
-| 26.3 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: official game supplies `com/mojang/math/Axis`; now verified in packaged references | N: queued renderer; gameplay state ownership remains to be tested | D: nullable map-ID component; verify full runtime matrix |
+| 26.1–26.2 | A: official-namespace verifier also resolved ordinary members by kind/name/descriptor | A: `com/mojang/math/Axis` and JOML descriptor classes require explicit game/library resolution | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary for all four versions; item-loading behavior and remedy remain open. |
+| 26.3 | D: singleton had Gradle compile checks but no independent packaged-JAR linkage verifier; added one | D: official game supplies `com/mojang/math/Axis`; now verified in packaged references | N: queued renderer; gameplay state ownership remains to be tested | A at the game-codec boundary; item-loading behavior and remedy remain open. |
 
 The old resolver's success on a static-to-instance fixture is explicitly
 reproduced in `tests/test_jvm_linkage.py`; the current check rejects it. The
@@ -79,9 +79,11 @@ probe](dependency-evidence/component-mapid-codec-2026-11-12/) used the actual
 SHA-1-verified 1.21.11 and 26.1.2 client classes and their metadata-selected
 DataFixerUpper 9.0.19. On Java 25, explicit integer zero and seven decoded to
 zero and seven; double 0.5, long 4294967296 and double NaN each decoded to zero;
-a string was rejected. This proves the codec conversion in those two tested
-versions, not the complete item-loading or rendering paths. Confirm the other
-component-era clients and a bounded remedy before closing this case.
+a string was rejected. A later [19-version codec sweep](dependency-evidence/component-mapid-codec-2026-11-13/)
+executed the exact game's codec on every component-era version in the proposed
+matrix and observed the same results. This proves the isolated codec
+conversion, not the complete item-loading or rendering paths. Confirm those
+paths and a bounded remedy before closing this case.
 
 The old large foreground shape was not reproduced in one 1.21.4 candidate and
 no-mod comparison. Its cause remains **inconclusive**; repeat matched captures
