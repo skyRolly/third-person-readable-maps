@@ -52,8 +52,6 @@
     "26.3"
   ],
   "pending_versions": [
-    "1.16",
-    "1.16.1",
     "1.16.2",
     "1.16.3",
     "1.16.4",
@@ -92,10 +90,12 @@
     "class-followup-walking-middle-92.py": "e9979e1fdc46bdec577a2149e1afcd1e274ba7ccc5333c2c2a367040c7387810",
     "class-followup-walking-later-93.py": "e5cfd239cc77179cb5cdb0c6fd0c39ce57c6f86272ba5ed24855ff837d370215",
     "class-followup-walking-early-96.py": "91e23ef509a191c062f21ca65d338099352a65b34ccd5a7c167c4113d8215ba5",
+    "class-followup-walking-middle-97.py": "78b6d5d454b2069aa33b5d0163b21f2cb7ca37719fbb28b4e663b6fb46169bb8",
     "x11-class-followup-91.py": "62521d1a4ab42d3e1a1a4e1e294f1f5170a3d9c1231b6a74da7d2a293e358ec8",
     "x11-class-followup-92.py": "b210b59a00be94cb61470d392acc2bc8379e9a361c08a88a3506c4de3c3f03b0",
     "x11-class-followup-93.py": "681cd047551a1d537aba82a3fc24469adb4663ddb53294d9b84901b13dc99c9f",
-    "x11-class-followup-96.py": "f275b746da0723914683fcb5506c834cc9daaf96815d794c01dbdf134a0d29ee"
+    "x11-class-followup-96.py": "f275b746da0723914683fcb5506c834cc9daaf96815d794c01dbdf134a0d29ee",
+    "x11-class-followup-97.py": "f6f6fca918c50eb4e5c449ef58e8b57c173af2a418b2c5462e52725769e87544"
   },
   "versions": {
     "1.14": {
@@ -200,6 +200,32 @@
         "walking-1.png": "af52df0cd43e29f84f62a02b75c4900ae28d4a3ae3aa273042fd953f1ad70f31",
         "walking-2.png": "081cb16281e38ba9943e8a3b97f59b81c4a282de95ed2ae8020eaa57696c78ef",
         "client.log": "43e270999a298809ff33f83af08fe2314e68e574b859ef55b287b523945ca57f"
+      }
+    },
+    "1.16": {
+      "group": "1.15-1.16.5",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "cde7af20165ac64037239e4722e903c4e7446bf63bf0d0f0e97873206ebc3584",
+        "ending-player.dat": "99708aafef3a0daba0459d253f628a48ff48c8c7be9d70df2aff97a123af7c83",
+        "walking-1.png": "530913865505fc8234bc8d49138bce56f8acbe0939af8e2fb2ab3a957104a2ae",
+        "walking-2.png": "3d689b109ad1e366dadc5090a08e615ce753fd12ee55e50486f61d3b3123a7d6",
+        "client.log": "913accbf3c011aed27651aa97490ced5d1c5df1e72deb671e4f4115aaa581334"
+      }
+    },
+    "1.16.1": {
+      "group": "1.15-1.16.5",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "10733d2ee9c887e09502d3754014f54b5ce770a6cf3506cec9e23d8f66de5922",
+        "ending-player.dat": "7cd04a928f88a875fb6533bd936ddbd7c47e762d6057a4deb8c1722c3bb05a86",
+        "walking-1.png": "027d3c4cdefe2b78a040ad0a4e66662edb010021f80f922bc33369ccae074d26",
+        "walking-2.png": "20a3608d15dcdcb2c621ac0b1964002eb516f9853fcb3daa5761f47609afcd1c",
+        "client.log": "6f06f74ad1f787630c7c7c27af53e3513dbb318f96f09db590d9a1b0f2a3912c"
       }
     },
     "1.17": {

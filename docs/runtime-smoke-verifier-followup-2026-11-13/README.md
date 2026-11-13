@@ -17,5 +17,6 @@ hashes do not relabel those runs as current source-bound tests.
 
 The initial sweep was interrupted with incomplete runs for 1.16, 1.18.1 and
 1.21.1; their incomplete local directories were preserved, and no walking
-result was recorded for those attempts. The early-family sweep was resumed on
-a separate display using the included `early-96` harness.
+result was recorded for those attempts. The early and middle sweeps were
+resumed on separate displays using the included `early-96` and `middle-97`
+harnesses.
