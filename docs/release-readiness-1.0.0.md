@@ -1,4 +1,4 @@
-# 1.0.0 release-readiness gate matrix — 2026-11-12
+# 1.0.0 release-readiness gate matrix — 2026-11-13
 
 **Not release-ready.** Version 1.0.0 is the coordinated proposal, not a
 publication authorization. The [2026-11-04 gate history](release-readiness-2026-11-04.md)
@@ -21,7 +21,7 @@ and integrated; an open PR is not an integrated branch.
 | Multiplayer testing | NOT RUN | Remote-player and naturally unavailable map-data behavior require a multiplayer environment. |
 | Security advisory disposition | FAIL | Known findings remain unresolved and failing. The [individual worklist](security-review-2026-11-12.md) has no accepted risk; review each disposition and rescan approved merged heads. |
 | Dependency monitoring | PENDING REVIEW | Placeholder Dependabot targets are removed from the proposal. Candidate and maintenance audit transitions require review and integration; no risk is accepted. |
-| Effective branch protection | FAIL | Live branch reads on 2026-11-12 reported `protected: false` for `main` and all three existing maintenance branches. Administrator action and read-back are required. |
+| Effective branch protection | FAIL | On 2026-11-13 the branch API reported `protected: false` for `main` and all three existing maintenance branches; effective branch rules returned zero for each and the visible repository/parent ruleset list was empty. Administrator action and read-back are required. |
 | Independent source approvals | PENDING REVIEW | The product and coordination PRs remain draft and unmerged; eligible independent reviewers must approve the final heads. |
 | Reviewed and integrated source HEADs | PENDING REVIEW | No requested source PR was merged in this round. Integrate only after protection and independent review. |
 | Exact merged-head CI | NOT RUN | No final merged heads exist yet. Require the Linux, Windows and coordination checks on the exact resulting commits. |
@@ -61,7 +61,9 @@ and integrated; an open PR is not an integrated branch.
    non-publishing rehearsal, then independently evaluate release authorization.
    A later owner instruction is required before draft or public release actions.
 
-GitHub-managed Automatic Dependency Submission was still running on 2026-11-12.
+GitHub-managed Automatic Dependency Submission was last observed running on
+2026-11-12; settings access remains unavailable, so its current setting has not
+been independently read back.
 The existing administrative disposition requires the administrator to disable
 that managed submission while preserving Dependency Graph, Dependabot alerts
 and security updates; verify the setting and subsequent run history separately

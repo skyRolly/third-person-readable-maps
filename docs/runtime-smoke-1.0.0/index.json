@@ -2,6 +2,48 @@
   "schema": 1,
   "observed_through": "2026-11-13",
   "versions": {
+    "1.20.6": {
+      "group": "1.20.5-1.20.6",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "53e739ea6e5589a4566684795d30228c438204553b4c54e7ad0127b767004334",
+        "ending-player.dat": "f69a8984719df9f6ef0d8dfe708b8a1dc7deeccdc60b6689f9aeaf9cab74f526",
+        "walking-1.png": "a0a351cbd45eef1f2a2ce9e16d8bfbb41f88bd355a2ff934a9bd57901ba8ef04",
+        "walking-2.png": "51e0fa3a8fd0af1600136d856e2720017fa0047f7d5b6058e678decd34739899",
+        "client.log": "1506c3695996351a9cd5798c1b660052cba2fd5b5f52cccb6b8604b1d33c53d6"
+      }
+    },
+    "1.20.5": {
+      "group": "1.20.5-1.20.6",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "38968b9a7385089a27ca2e9953ce26f5afa48e901fa25b54eb7f6672c84db56c",
+        "ending-player.dat": "073436d92f995d8fe80251ba6ff580e6e064f2b1acd0ff126989de0b9c972a25",
+        "walking-1.png": "75e98f9a10cb92ed17c2064139664366df12888bdf99a5b275bd2a1a50a36cae",
+        "walking-2.png": "8ed53bacfd7a49844d3c151460df24d568d29677bb5334deb46ffbd653426f44",
+        "client.log": "5fc54d34bfcf493e306c12d2e0d2244377f9c2b154d7de71f9524682e6acbda7"
+      }
+    },
+    "1.20.4": {
+      "group": "1.19.4-1.20.4",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "6b8e67f85a2d4623894d4149e4406f007881e5178fff7d8fcdcde0885edcd0a5",
+        "ending-player.dat": "519a2fdd028a75ea6a8ab69e8010aeec209dcd86f4a0d2d408e9549dc9998c3f",
+        "walking-1.png": "a92f825b2d6d26fc3e5bae770c324e37c2200e6d9a1fe11e38366ebf0f3e2050",
+        "walking-2.png": "20753ebe9092704084012cc57a99a59b121e512d6fd38fbe1678229e725ab92f",
+        "client.log": "cf0ecd9ddb6dd4ee16253d3ebcc90f9ce282624ab492ac523803ab03c747d928"
+      }
+    },
     "1.20.3": {
       "group": "1.19.4-1.20.4",
       "source_kind": "legacy-candidate",

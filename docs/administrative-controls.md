@@ -4,6 +4,15 @@ This is the dated administrative evidence, not a current release approval.
 The proposed coordinated version is now 1.0.0; see the [current gate matrix](release-readiness-1.0.0.md)
 for refreshed branch-protection observations and remaining requirements.
 
+On 2026-11-13 UTC, read-only branch API responses still reported
+`protected: false` for `main`, `mc/1.21.11`, `mc/26.1-26.2` and `mc/26.3`.
+The effective-rules endpoint returned zero rules for each, and the visible
+repository/parent ruleset list was empty. No settings were changed. The latest
+observed GitHub-managed Automatic Dependency Submission run was successful on
+2026-11-12; inaccessible settings prevent confirming whether it is currently
+enabled. The existing administrator action and independent read-back below
+remain necessary.
+
 No administrative setting was changed in this maintenance round. Account-level
 `permissions.admin: true` does not grant this integration every permission: the
 REST protection, secrets, alert, security-update, and code-security-configuration

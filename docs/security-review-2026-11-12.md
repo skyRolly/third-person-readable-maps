@@ -105,3 +105,6 @@ Gradle snapshots. It found the same 490 failing group-scoped matches, including
 the same three changed candidate matches and no accepted disappearance. The
 rescan queried OSV again; it did not re-resolve Gradle dependencies or turn
 the historical maintenance snapshots into scans of unmerged proposals.
+The separately retained [proposal OSV rescans](dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/)
+also queried the three unchanged 1.0.0 PR heads using their earlier snapshots;
+their 41, 53 and 11 matches remain unreviewed and failing.

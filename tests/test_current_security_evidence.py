@@ -11,6 +11,37 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_november_13_proposal_rescans_remain_unreviewed(self):
+        directory = ROOT / 'docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13'
+        index = json.loads((directory / 'index.json').read_text())
+        previous_dir = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
+        previous = json.loads((previous_dir / 'index.json').read_text())['groups']
+        self.assertEqual(set(index['groups']), set(previous))
+        for group, result in index['groups'].items():
+            with self.subTest(group=group):
+                source = previous[group]
+                self.assertTrue(result['complete'] and result['same_as_previous'])
+                self.assertEqual(result['exit_code'], 1)
+                self.assertEqual(result['source_sha'], source['source_sha'])
+                self.assertEqual(result['branch'], source['branch'])
+                self.assertEqual(result['snapshot_sha256'], source['snapshot_sha256'])
+                self.assertEqual(hashlib.sha256((ROOT / result['snapshot_path']).read_bytes()).hexdigest(), source['snapshot_sha256'])
+                for kind in ('report', 'log'):
+                    raw = (ROOT / result[kind + '_path']).read_bytes()
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), result[kind + '_sha256'])
+                    if kind == 'report':
+                        report = json.loads(raw)
+                self.assertEqual(report['scanned_on'], '2026-11-13')
+                self.assertEqual(report['status'], 'complete-unreviewed-maintenance-proposal')
+                self.assertFalse(report['risk_acceptance'])
+                self.assertEqual(report['source_sha'], source['source_sha'])
+                old = json.loads((previous_dir / (group + '-osv.json')).read_text())
+                key = lambda m: (m['purl'], m['advisory'], m['fingerprint'], m['state'], m['failing'])
+                self.assertEqual({key(m) for m in report['matches']}, {key(m) for m in old['matches']})
+                self.assertEqual(result['matches'], len(report['matches']))
+                self.assertEqual(result['failing'], len(report['matches']))
+                self.assertTrue(all(m['review_status'] == 'awaiting investigation' for m in report['matches']))
+
     def test_november_13_osv_rescan_reuses_exact_snapshots_and_keeps_findings_failing(self):
         worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
         pointer = worklist['last_osv_rescan']
