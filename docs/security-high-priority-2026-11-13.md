@@ -1,7 +1,7 @@
 # Remaining high-priority dependency review — 2026-11-13 UTC
 
 This supplements the [2026-11-12 review](security-high-priority-2026-11-12.md)
-with the remaining twelve high-severity advisory IDs in the [current worklist](dependency-evidence/current-security-worklist-2026-11-12.json).
+with the remaining twelve high-severity advisory IDs in the [current worklist](dependency-evidence/current-security-worklist-2026-11-13.json).
 The [original OSV responses](dependency-evidence/high-advisories-2026-11-13/index.json)
 were retrieved on 2026-11-13; each response's advisory fingerprint matches the
 2026-11-12 source-bound scan. The separate [November 13 OSV rescan](dependency-evidence/1.0.0-osv-rescan-2026-11-13/)

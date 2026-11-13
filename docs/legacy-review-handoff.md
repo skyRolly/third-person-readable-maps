@@ -7,8 +7,8 @@ All 42 legacy versions passed instruction-aware verification on the advanced pro
 | Group | Draft PR | Proposed source HEAD | 1.0.0 JAR SHA-256 | New-head installed coverage |
 |---|---|---|---|---|
 | 1.14-1.14.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/23) | `f2b45ae6242ac44d952f7b037e0200f4a85ad128` | `e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b` | 5/5 partial local-world evidence |
-| 1.15-1.16.5 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/21) | `24cd97031ac91ab3595c50add83c2208f5230fbc` | `11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c` | 7/9 partial local-world evidence |
-| 1.17-1.19.2 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/20) | `d5792f245f133cdf4873b1e6ce0078c77d20a3d3` | `fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5` | 3/8 partial local-world evidence |
+| 1.15-1.16.5 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/21) | `24cd97031ac91ab3595c50add83c2208f5230fbc` | `11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c` | 9/9 partial local-world evidence |
+| 1.17-1.19.2 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/20) | `d5792f245f133cdf4873b1e6ce0078c77d20a3d3` | `fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5` | 6/8 partial local-world evidence |
 | 1.19.3 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/22) | `2cb3f385443e6db375eb46077d562421ed7aa4cc` | `4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1` | 0/1 partial local-world evidence |
 | 1.19.4-1.20.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/19) | `991fc1d6d21819f642c9963f91570fb10ab40f92` | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | 0/6 partial local-world evidence |
 | 1.20.5-1.20.6 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/18) | `c0efb70ad1e01298c96441d18bc68f0b2674d6d6` | `d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a` | 2/2 partial local-world evidence |

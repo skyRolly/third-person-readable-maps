@@ -38,9 +38,10 @@ for group in manifest['groups']:
 harnesses = ['class-followup-walking-early-91.py', 'class-followup-walking-middle-92.py',
              'class-followup-walking-later-93.py', 'class-followup-walking-modern-94.py',
              'class-followup-walking-early-96.py', 'class-followup-walking-middle-97.py',
+             'class-followup-walking-later-98.py',
              'x11-class-followup-91.py', 'x11-class-followup-92.py',
              'x11-class-followup-93.py', 'x11-class-followup-94.py',
-             'x11-class-followup-96.py', 'x11-class-followup-97.py']
+             'x11-class-followup-96.py', 'x11-class-followup-97.py', 'x11-class-followup-98.py']
 harness_hashes = {}
 for file in harnesses:
     source = WORKSPACE / '.minecraft-test' / file

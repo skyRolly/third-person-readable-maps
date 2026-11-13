@@ -222,6 +222,24 @@
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18/",
           "movement_observed_on": "2026-11-13"
+        },
+        "1.18.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.1/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.18.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 13.60 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.2/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.19": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19/",
+          "movement_observed_on": "2026-11-13"
         }
       }
     },
@@ -295,6 +313,18 @@
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 15.10 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.3/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.16.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.4/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.16.5": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.5/",
           "movement_observed_on": "2026-11-13"
         }
       }

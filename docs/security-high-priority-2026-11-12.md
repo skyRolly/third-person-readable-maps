@@ -1,7 +1,7 @@
 # Individual high-priority dependency review — 2026-11-12
 
 These 21 high-severity advisories were selected because they span several
-of the 13 proposed groups. The [current worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
+of the 13 proposed groups. The [November 12 worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
 identifies each exact package/version/advisory occurrence, source SHA,
 Gradle/runtime scope and failing state. The affected versions and fixed events
 below are the OSV results for the recorded packages, not a recommendation to

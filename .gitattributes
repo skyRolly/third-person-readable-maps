@@ -7,3 +7,5 @@ docs/dependency-evidence/component-mapid-codec-2026-11-12/*-metadata.json -text
 docs/runtime-smoke-1.0.0/26.3-backend-attempt/client.log whitespace=-blank-at-eol
 # Retained Gradle output is hash-bound byte-for-byte, including its spacing.
 docs/builds-verifier-followup-2026-11-13/*-build.log -text whitespace=-blank-at-eol
+# Raw dependency audit logs are retained byte-for-byte as source-bound evidence.
+docs/dependency-evidence/class-linkage-2026-11-13/*.log -text whitespace=-blank-at-eol

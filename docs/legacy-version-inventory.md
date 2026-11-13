@@ -26,14 +26,14 @@ The current proposed version is **1.0.0**. The [machine-readable inventory](lega
 | 1.19.3 | 1.19.3 | 17 | PASS | NOT RUN | NOT RUN |
 | 1.19.2 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
 | 1.19.1 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
-| 1.19 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
-| 1.18.2 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
-| 1.18.1 | 1.17-1.19.2 | 17 | PASS | NOT RUN | NOT RUN |
+| 1.19 | 1.17-1.19.2 | 17 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.18.2 | 1.17-1.19.2 | 17 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.18.1 | 1.17-1.19.2 | 17 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.18 | 1.17-1.19.2 | 17 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.17.1 | 1.17-1.19.2 | 16 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.17 | 1.17-1.19.2 | 16 | PASS | PASS (local world) | PARTIAL diagnostic |
-| 1.16.5 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
-| 1.16.4 | 1.15-1.16.5 | 8 | PASS | NOT RUN | NOT RUN |
+| 1.16.5 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.16.4 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16.3 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16.2 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.16.1 | 1.15-1.16.5 | 8 | PASS | PASS (local world) | PARTIAL diagnostic |

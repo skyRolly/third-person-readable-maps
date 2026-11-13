@@ -52,11 +52,6 @@
     "26.3"
   ],
   "pending_versions": [
-    "1.16.4",
-    "1.16.5",
-    "1.18.1",
-    "1.18.2",
-    "1.19",
     "1.19.1",
     "1.19.2",
     "1.19.3",
@@ -89,11 +84,13 @@
     "class-followup-walking-later-93.py": "e5cfd239cc77179cb5cdb0c6fd0c39ce57c6f86272ba5ed24855ff837d370215",
     "class-followup-walking-early-96.py": "91e23ef509a191c062f21ca65d338099352a65b34ccd5a7c167c4113d8215ba5",
     "class-followup-walking-middle-97.py": "78b6d5d454b2069aa33b5d0163b21f2cb7ca37719fbb28b4e663b6fb46169bb8",
+    "class-followup-walking-later-98.py": "1cf21524f70ea2b803e18a3dfe5b8090a7675d8dcf21083e6acf013c66dc178b",
     "x11-class-followup-91.py": "62521d1a4ab42d3e1a1a4e1e294f1f5170a3d9c1231b6a74da7d2a293e358ec8",
     "x11-class-followup-92.py": "b210b59a00be94cb61470d392acc2bc8379e9a361c08a88a3506c4de3c3f03b0",
     "x11-class-followup-93.py": "681cd047551a1d537aba82a3fc24469adb4663ddb53294d9b84901b13dc99c9f",
     "x11-class-followup-96.py": "f275b746da0723914683fcb5506c834cc9daaf96815d794c01dbdf134a0d29ee",
-    "x11-class-followup-97.py": "f6f6fca918c50eb4e5c449ef58e8b57c173af2a418b2c5462e52725769e87544"
+    "x11-class-followup-97.py": "f6f6fca918c50eb4e5c449ef58e8b57c173af2a418b2c5462e52725769e87544",
+    "x11-class-followup-98.py": "6b7df7b9cd4a16a297df8f6fa1fc834cebcd8e8641529f78d3f055e664e41741"
   },
   "versions": {
     "1.14": {
@@ -252,6 +249,32 @@
         "client.log": "d2c5f912348e7597746ac0e3775b4630987c3a7f6f93d194b35f4d441e9e4955"
       }
     },
+    "1.16.4": {
+      "group": "1.15-1.16.5",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "7362e8256eca541d079fd5afd84e45df56791f0bd202c906c6f4992f02895581",
+        "ending-player.dat": "da5425dd140f0d79566b69cc2a7d0f3679513704b44875de1416195b2cec041d",
+        "walking-1.png": "9002f4b31d068798caf212ecad7c0a91771b506bbe599214fbf79adf738f325a",
+        "walking-2.png": "6084477ce3744403957580268de658b1524fa190f6f9158ace554add45443156",
+        "client.log": "bc641c6571df19be46759be896a817c67302b3a9c80d9514dec5f9bfc7564995"
+      }
+    },
+    "1.16.5": {
+      "group": "1.15-1.16.5",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "0aa26d15f28368debd4c64b141bd628986297dc840dbc2fc05823e49b413cd90",
+        "ending-player.dat": "7cda98b21164524f8642b2bcea24bd945179e2fbfc7fcabe0d573c321b55c0e7",
+        "walking-1.png": "5668871c0e6de0a55c5faafad27ef7debff00b9b5636c27989c0147f23ca74ce",
+        "walking-2.png": "e41522539f711cc60fea8cbb18c2c632575ab57cfd8640633d58ff18f7e7622b",
+        "client.log": "2a7e6eea2a7173ba2405d61aa82a625c72718b8f61c86a89168f26dcb329ca72"
+      }
+    },
     "1.17": {
       "group": "1.17-1.19.2",
       "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
@@ -289,6 +312,45 @@
         "walking-1.png": "670ae244fb7a75593b4a7277bccbd61d7757d635fb53376e85b61051f0f046af",
         "walking-2.png": "548e9d16f335b45674c4bfcb366b04f3e5459a0050b061d748c85766735c6522",
         "client.log": "0ea417e0ed3830836e68999414bd03c07fc68135fa08d6e4e5c3bab4d095d401"
+      }
+    },
+    "1.18.1": {
+      "group": "1.17-1.19.2",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "df420327268b85c6a81cb9feec52c40c8466b4863ba15897fa4dc63a57fb58aa",
+        "ending-player.dat": "fb6795ecae91753c68395c8e9cffe08208b265a9dc4eb3d6b7bc1d18448e9783",
+        "walking-1.png": "34621733d655856621395789128022116aaf826516339e72330eb0f47516f7a0",
+        "walking-2.png": "6cc05fcce61dee58c71cbedbcc95a0d72b9d0035db841779592cedaff8c37384",
+        "client.log": "227b02f26b2468cba4c2d3e67e2d0d858836cb16e70c20f7e46c8c9edd758a06"
+      }
+    },
+    "1.18.2": {
+      "group": "1.17-1.19.2",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "26ee12f45dd0516351903b07c8681dd526b4c06bf65fa67459211554f1f3676e",
+        "ending-player.dat": "eeb2f14c40cf057a6265aa44cb0eabd7544a0f17b1c8953475ddc951672a8a24",
+        "walking-1.png": "250db4967216ff433b21e03903ee332e7d8d33fca582d0a95a31c859156f098f",
+        "walking-2.png": "a3bc66dd92862cc91c3cba3a8f168232ea6a8b372c9b2b06bf8ba5c0896ac66e",
+        "client.log": "83df42fbb86903ebade17d3232ca16671e9a8c7beb6b180e30eca3334178a8cd"
+      }
+    },
+    "1.19": {
+      "group": "1.17-1.19.2",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "9b017c91b1bcaf7c8d6b1a868b1c4be9d72a9e4a76a732a9da164ea9dc43bb01",
+        "ending-player.dat": "60e5cffcfb4990c320048a58212ac04c5437c0ec1abcd5b2b0e3a65f255f6fc5",
+        "walking-1.png": "b02bf5a3ce84d3f76124b84a1c0f88f49741d12540ea66c3dad644e42e60463f",
+        "walking-2.png": "d6211df306d62858dbfa0317c7fc074626ca535e915a78efc3c168453b00c1a6",
+        "client.log": "d3abfc6d9255d5a3a5f4594c569b02825d1e9ac58aeb9238b616b1c9368af24a"
       }
     },
     "1.20.5": {

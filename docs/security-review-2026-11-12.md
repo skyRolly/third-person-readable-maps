@@ -1,9 +1,10 @@
 # Security review worklist — 2026-11-12
 
 **Source-head transition:** The ten candidate PR heads advanced after these
-scans. The [current source identities](source-head-transition-2026-11-13.md)
-must receive fresh source-bound snapshots and audits; these reports retain
-their original provenance and cannot certify the advanced heads.
+scans. Fresh source-bound scans are documented in the
+[November 13 follow-up](security-review-2026-11-13-verifier-followup.md).
+The records below retain their original provenance and cannot by themselves
+certify the advanced heads.
 
 The [individual candidate worklist](dependency-evidence/candidate-security-worklist-2026-11-12.json)
 preserves all 180 distinct package/version/advisory pairs and their 385
@@ -64,7 +65,7 @@ affected list. The `com.fasterxml.jackson.core` 2.x range containing 2.13.4.2
 is still present. The three matches remain changed, unreviewed and failing;
 the update is not a basis for accepting risk or overriding the game dependency.
 
-The [current source-bound worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
+The [November 12 source-bound worklist](dependency-evidence/current-security-worklist-2026-11-12.json)
 now indexes complete fresh scans for all 13 groups: ten final candidate heads
 and the three actual integrated maintenance heads. It records 490 group-scoped
 matches across 243 distinct package/version/advisory combinations and 89 OSV
