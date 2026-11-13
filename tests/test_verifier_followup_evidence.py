@@ -77,9 +77,17 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 self.assertEqual(row['group'], group)
                 self.assertEqual(row['source_commit'], refs[group]['new_head'])
                 self.assertEqual(row['artifact_sha256'], builds[group]['sha256'])
-                self.assertEqual(set(row['files_sha256']), {'movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log'})
+                required = {'movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log'}
+                self.assertTrue(required <= set(row['files_sha256']))
+                self.assertLessEqual(set(row['files_sha256']) - required, {'launcher-pins.json'})
                 for name, digest in row['files_sha256'].items():
                     self.assertEqual(hashlib.sha256((RUNTIME / version / name).read_bytes()).hexdigest(), digest)
+                if 'launcher-pins.json' in row['files_sha256']:
+                    pins = json.loads((RUNTIME / version / 'launcher-pins.json').read_text())
+                    self.assertTrue(pins['libraries'])
+                    for library in pins['libraries']:
+                        self.assertRegex(library['sha1'], r'^[0-9a-f]{40}$')
+                        self.assertRegex(library['sha256'], r'^[0-9a-f]{64}$')
                 movement = json.loads((RUNTIME / version / 'movement.json').read_text())
                 self.assertEqual(movement['source_commit'], row['source_commit'])
                 self.assertEqual(movement['candidate_sha256'], row['artifact_sha256'])
@@ -87,6 +95,32 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 log = (RUNTIME / version / 'client.log').read_text(errors='replace')
                 self.assertIn('MapSmokeTest joined the game', log)
                 self.assertFalse(any(err in log for err in ('MixinApplyError', 'InvalidInjectionException', 'NoSuchMethodError', 'MixinTransformerError')))
+
+    def test_failed_initialization_attempt_remains_separate(self):
+        attempt = RUNTIME / '1.21.11-initialization-attempt'
+        row = json.loads((attempt / 'index.json').read_text())
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(row['source_commit'], builds['1.21.11']['source_commit'])
+        self.assertEqual(row['artifact_sha256'], builds['1.21.11']['sha256'])
+        self.assertIn('FAILED', row['result'])
+        for name, digest in row['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((attempt / name).read_bytes()).hexdigest(), digest)
+        self.assertIn('No mixin global property service is available', (attempt / 'client.log').read_text())
+
+    def test_artifact_operation_inventory_matches_proposed_sources(self):
+        path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'
+        index = json.loads(path.read_text())
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(set(index['groups']), set(builds))
+        self.assertRegex(index['parser_sha256'], r'^[0-9a-f]{64}$')
+        for group, row in index['groups'].items():
+            with self.subTest(group=group):
+                self.assertEqual(row['source_commit'], builds[group]['source_commit'])
+                self.assertEqual(row['artifact'], builds[group]['artifact'])
+                self.assertEqual(row['artifact_sha256'], builds[group]['sha256'])
+                self.assertGreater(row['class_count'], 0)
+                self.assertEqual(row['external_or_inherited_field_writes'], [])
+                self.assertEqual(row['external_or_inherited_nonconstructor_invokespecial'], [])
 
 
 if __name__ == '__main__':

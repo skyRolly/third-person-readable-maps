@@ -19,5 +19,9 @@ The initial sweep was interrupted with incomplete runs for 1.16, 1.18.1 and
 1.21.1; their incomplete local directories were preserved, and no walking
 result was recorded for those attempts. The early and middle sweeps were
 resumed on separate displays using the included `early-96` and `middle-97`
-harnesses; the later sweep resumed with `later-98`. Completed results are
+harnesses; the later sweep resumed with `later-98`. The first modern attempt
+with `modern-99` [failed during Mixin initialization](1.21.11-initialization-attempt/).
+Its cause is unconfirmed. The `modern-100` retry uses checksum-verified private
+copies of the Fabric launcher libraries, SDL EGL for the software-renderer
+environment, and version-specific save-log detection. Completed results are
 recorded independently and incomplete attempts are not counted as passes.

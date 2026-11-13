@@ -389,7 +389,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.4+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -427,9 +427,10 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/"
     },
     {
       "minecraft": "1.21.3",
@@ -449,7 +450,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.3+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -481,9 +482,10 @@
       "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 10.36 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.3/"
     },
     {
       "minecraft": "1.21.2",
@@ -503,7 +505,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.2+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -535,9 +537,10 @@
       "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.2/"
     },
     {
       "minecraft": "1.21.1",
@@ -1143,7 +1146,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.3+build.5",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1180,9 +1183,10 @@
       "candidate_group": "1.19.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 11.44 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.3/"
     },
     {
       "minecraft": "1.19.2",
@@ -1202,7 +1206,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.2+build.28",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1239,9 +1243,10 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.2/"
     },
     {
       "minecraft": "1.19.1",
@@ -1261,7 +1266,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "NOT RUN: no recorded installed-client startup on the advanced source head",
+      "fabric_loader_runtime_verification": "PARTIAL: installed 1.0.0 JAR joined a Linux local world; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.1+build.6",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1298,9 +1303,10 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
-      "fabric_global_latest_stable_loader": "0.20.1"
+      "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+      "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+      "fabric_global_latest_stable_loader": "0.20.1",
+      "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.1/"
     },
     {
       "minecraft": "1.19",

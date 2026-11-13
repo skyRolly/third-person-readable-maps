@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-13",
+  "parser_sha256": "c44f686231bffaff26a09fd230ca3c7ce2dd0ad8d30fee95336b7024c137865e",
+  "groups": {
+    "1.14-1.14.4": {
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 3,
+        "invokestatic": 41,
+        "getfield": 8,
+        "invokevirtual": 22,
+        "getstatic": 3,
+        "invokeinterface": 1
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.15-1.16.5": {
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 7,
+        "getfield": 8,
+        "invokevirtual": 41,
+        "getstatic": 9,
+        "invokeinterface": 42
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.17-1.19.2": {
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 8,
+        "getfield": 8,
+        "invokevirtual": 42,
+        "getstatic": 9,
+        "invokeinterface": 42
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.19.3": {
+      "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+      "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 8,
+        "getfield": 8,
+        "invokevirtual": 39,
+        "getstatic": 9,
+        "invokeinterface": 49
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.19.4-1.20.4": {
+      "source_commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+      "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 8,
+        "getfield": 8,
+        "invokevirtual": 39,
+        "getstatic": 9,
+        "invokeinterface": 49
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.20.5-1.20.6": {
+      "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 5,
+        "getfield": 8,
+        "invokevirtual": 30,
+        "invokeinterface": 52,
+        "getstatic": 10
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.21-1.21.1": {
+      "source_commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 2,
+        "invokestatic": 7,
+        "getfield": 8,
+        "invokevirtual": 30,
+        "invokeinterface": 44,
+        "getstatic": 10
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.21.11": {
+      "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+      "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 3,
+        "invokestatic": 8,
+        "getfield": 11,
+        "getstatic": 10,
+        "invokevirtual": 27,
+        "invokeinterface": 41
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.21.2-1.21.3": {
+      "source_commit": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+      "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 3,
+        "invokestatic": 7,
+        "getfield": 11,
+        "invokevirtual": 28,
+        "invokeinterface": 44,
+        "getstatic": 10
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.21.4-1.21.8": {
+      "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "class_count": 4,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 7,
+        "getfield": 9,
+        "invokevirtual": 32,
+        "invokeinterface": 44,
+        "getstatic": 17
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "1.21.9-1.21.10": {
+      "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+      "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "class_count": 4,
+      "external_or_inherited_operations": {
+        "invokespecial": 4,
+        "invokestatic": 8,
+        "getfield": 9,
+        "getstatic": 17,
+        "invokevirtual": 31,
+        "invokeinterface": 41
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "26.1-26.2": {
+      "source_commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "artifact": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+      "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 3,
+        "invokestatic": 8,
+        "getfield": 11,
+        "getstatic": 10,
+        "invokevirtual": 27,
+        "invokeinterface": 41
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    },
+    "26.3": {
+      "source_commit": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "artifact": "third-person-readable-maps-1.0.0-mc26.3.jar",
+      "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "class_count": 2,
+      "external_or_inherited_operations": {
+        "invokespecial": 3,
+        "invokestatic": 8,
+        "getfield": 11,
+        "getstatic": 10,
+        "invokevirtual": 27,
+        "invokeinterface": 34
+      },
+      "external_or_inherited_field_writes": [],
+      "external_or_inherited_nonconstructor_invokespecial": []
+    }
+  }
+}

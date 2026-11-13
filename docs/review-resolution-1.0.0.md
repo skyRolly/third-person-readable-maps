@@ -25,7 +25,7 @@ the subsequent verifier-only product commits and the evidence requiring refresh.
 
 The old resolver's success on a static-to-instance fixture is explicitly
 reproduced in `tests/test_jvm_linkage.py`; the current check rejects it. The
-15 fixtures also exercise access, inherited public and protected members,
+16 fixtures also exercise access, inherited public and protected members,
 interfaces, constructors, method handles, missing descriptor classes,
 libraries, Mixin target staticness and supported injection points, plus Java
 8/16/17/21/25 class files. All 13 proposed artifacts passed their actual
@@ -50,8 +50,10 @@ restrictions, complex transformation semantics and arbitrary runtime-generated
 linkage remain outside the proven scope. The current [artifact inventory](dependency-evidence/high-advisories-2026-11-12/mod-class-reference-inventory.json)
 found no `putfield` or `putstatic` instructions targeting external owners in
 the 13 packaged JARs; unsupported Mixin member annotations, including shadow
-fields, fail closed. This observation does not extend the verifier to future
-artifacts or prove class-only accessibility. These limits must not be read as
+fields, fail closed. A [fresh exact-artifact inventory](artifact-linkage-inventory-2026-11-13/)
+also found no external or inherited non-constructor `invokespecial` in these
+13 JARs. These observations do not extend the verifier to future artifacts or
+prove accessibility for descriptor-only classes. These limits must not be read as
 complete linkage proof.
 
 The 1.14 state fix restores the previous active texture unit and bound texture
@@ -61,7 +63,7 @@ cover eight calls in each of two seeded-state runs on software rendering, not
 all hands, exception paths, subsequent entities or hardware GPUs. The early
 map-ID guards preserve numeric integral IDs, including an explicit zero, while
 rejecting absent, nonnumeric, fractional, non-finite and out-of-range identity.
-Controlled before/after tests on final artifacts cover [1.14](https://github.com/skyRolly/third-person-readable-maps/blob/341d33664272c2a19aa419e3d33f01b1954df991/docs/verification/1.0.0-final-mapid-state-probe.md),
+Controlled before/after tests on the prior source heads' 1.0.0 artifacts cover [1.14](https://github.com/skyRolly/third-person-readable-maps/blob/341d33664272c2a19aa419e3d33f01b1954df991/docs/verification/1.0.0-final-mapid-state-probe.md),
 [1.15](https://github.com/skyRolly/third-person-readable-maps/blob/7bf2ae372fac4d6e478f3a523db963886e05900f/docs/verification/1.0.0-numeric-mapid-probe.md),
 [1.17](https://github.com/skyRolly/third-person-readable-maps/blob/96060a2c1c5267eae102f24cf3a78d6646d4dbce/docs/verification/1.0.0-numeric-mapid-probe.md),
 [1.19.3](https://github.com/skyRolly/third-person-readable-maps/blob/c3ac7d261b4289451c8b27df96fae7a316ba75ed/docs/verification/1.0.0-numeric-mapid-probe.md), and

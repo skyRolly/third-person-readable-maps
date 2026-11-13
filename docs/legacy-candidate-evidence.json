@@ -54,7 +54,14 @@
         "Security findings and administrative approval gates remain unresolved",
         "Earlier map-ID and rendering-state probes retain their previous source identities"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.21.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
     },
     "1.21.2-1.21.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
@@ -78,7 +85,20 @@
         "Security findings and administrative approval gates remain unresolved",
         "Earlier map-ID and rendering-state probes retain their previous source identities"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.21.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.2/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.36 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.3/",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
     },
     "1.21-1.21.1": {
       "status": "CANDIDATE; NOT RELEASE READY",
@@ -246,6 +266,18 @@
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19/",
           "movement_observed_on": "2026-11-13"
+        },
+        "1.19.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.1/",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.19.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.2/",
+          "movement_observed_on": "2026-11-13"
         }
       }
     },
@@ -356,7 +388,14 @@
         "Security findings and administrative approval gates remain unresolved",
         "Earlier map-ID and rendering-state probes retain their previous source identities"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.19.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.44 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.3/",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
     },
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",

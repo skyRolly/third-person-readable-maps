@@ -27,7 +27,9 @@ for group in manifest['groups']:
         assert not any(error in log for error in ('MixinApplyError', 'InvalidInjectionException', 'NoSuchMethodError', 'MixinTransformerError'))
         target = HERE / version
         target.mkdir(parents=True, exist_ok=True)
-        files = ('movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log')
+        files = ['movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log']
+        if (source / 'launcher-pins.json').is_file():
+            files.append('launcher-pins.json')
         for file in files:
             shutil.copyfile(source / file, target / file)
         results[version] = {'group': name, 'source_commit': row['source_commit'],
@@ -38,10 +40,12 @@ for group in manifest['groups']:
 harnesses = ['class-followup-walking-early-91.py', 'class-followup-walking-middle-92.py',
              'class-followup-walking-later-93.py', 'class-followup-walking-modern-94.py',
              'class-followup-walking-early-96.py', 'class-followup-walking-middle-97.py',
-             'class-followup-walking-later-98.py',
+             'class-followup-walking-later-98.py', 'class-followup-walking-modern-99.py',
+             'class-followup-walking-modern-100.py',
              'x11-class-followup-91.py', 'x11-class-followup-92.py',
              'x11-class-followup-93.py', 'x11-class-followup-94.py',
-             'x11-class-followup-96.py', 'x11-class-followup-97.py', 'x11-class-followup-98.py']
+             'x11-class-followup-96.py', 'x11-class-followup-97.py', 'x11-class-followup-98.py',
+             'x11-class-followup-99.py', 'x11-class-followup-100.py']
 harness_hashes = {}
 for file in harnesses:
     source = WORKSPACE / '.minecraft-test' / file
