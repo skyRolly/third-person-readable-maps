@@ -28,7 +28,7 @@ This non-publishing matrix describes proposed heads, not integrated legacy suppo
 | 1.19.2 | 1.17-1.19.2 | `fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.19.3 | 1.19.3 | `4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.19.4 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.20 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
+| 1.20 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.20.1 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 | 1.20.2 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 | 1.20.3 | 1.19.4-1.20.4 | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
@@ -42,8 +42,8 @@ This non-publishing matrix describes proposed heads, not integrated legacy suppo
 | 1.21.3 | 1.21.2-1.21.3 | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.4 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.5 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.6 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.7 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.6 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.7 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.8 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.9 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.10 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |

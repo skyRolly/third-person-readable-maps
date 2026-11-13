@@ -79,7 +79,8 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 self.assertEqual(row['artifact_sha256'], builds[group]['sha256'])
                 required = {'movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log'}
                 self.assertTrue(required <= set(row['files_sha256']))
-                self.assertLessEqual(set(row['files_sha256']) - required, {'launcher-pins.json'})
+                self.assertLessEqual(set(row['files_sha256']) - required,
+                                     {'launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png'})
                 for name, digest in row['files_sha256'].items():
                     self.assertEqual(hashlib.sha256((RUNTIME / version / name).read_bytes()).hexdigest(), digest)
                 if 'launcher-pins.json' in row['files_sha256']:
@@ -121,6 +122,28 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 self.assertGreater(row['class_count'], 0)
                 self.assertEqual(row['external_or_inherited_field_writes'], [])
                 self.assertEqual(row['external_or_inherited_nonconstructor_invokespecial'], [])
+
+    def test_tracked_tree_inventory_is_bound_to_all_product_heads(self):
+        path = ROOT / 'docs/repository-file-inventory-2026-11-13/index.json'
+        index = json.loads(path.read_text())
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        products = {group: row for group, row in index['sources'].items()
+                    if row['kind'] == 'proposed-product-head'}
+        self.assertEqual(set(products), set(refs))
+        for group, source in products.items():
+            self.assertEqual(source['commit'], refs[group]['new_head'])
+            self.assertEqual(source['mod_version'], '1.0.0')
+            self.assertTrue(source['readme_title_and_introduction_match'])
+            self.assertTrue(source['readme_branch_badge_matches'])
+            self.assertEqual(source['tracked_files'], sum(group in row['product_objects']
+                                                           for row in index['paths'].values()))
+        common = [row for row in index['paths'].values() if len(row['product_objects']) == len(products)]
+        self.assertEqual(index['product_common_paths'], len(common))
+        identical = [row for row in common
+                     if len({(v['mode'], v['type'], v['object']) for v in row['product_objects'].values()}) == 1]
+        self.assertEqual(index['product_common_identical_paths'], len(identical))
+        self.assertEqual(index['sources']['coordination-snapshot']['commit'],
+                         '28a707a1adab682cfd3984ca7b69ca80f6c00552')
 
 
 if __name__ == '__main__':

@@ -28,8 +28,9 @@ for group in manifest['groups']:
         target = HERE / version
         target.mkdir(parents=True, exist_ok=True)
         files = ['movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log']
-        if (source / 'launcher-pins.json').is_file():
-            files.append('launcher-pins.json')
+        for optional in ('launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png'):
+            if (source / optional).is_file():
+                files.append(optional)
         for file in files:
             shutil.copyfile(source / file, target / file)
         results[version] = {'group': name, 'source_commit': row['source_commit'],
