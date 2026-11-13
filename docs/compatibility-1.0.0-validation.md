@@ -40,9 +40,9 @@ This is the non-publishing proposed matrix, not integrated legacy support or a r
 | 1.21.11 | 1.21.11 | `c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.2 | 1.21.2-1.21.3 | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.3 | 1.21.2-1.21.3 | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.4 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.5 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.6 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.4 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.5 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.6 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.7 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.8 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.9 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |

@@ -52,7 +52,26 @@
         "Candidate has not been integrated or admitted to strict release configuration",
         "Security findings and administrative approval gates remain unresolved"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.21.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.5": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.6": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
     },
     "1.21.2-1.21.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
