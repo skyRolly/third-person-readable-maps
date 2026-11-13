@@ -48,8 +48,8 @@ This non-publishing matrix describes proposed heads, not integrated legacy suppo
 | 1.21.9 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.10 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 26.1.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
-| 26.1.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
+| 26.1.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 26.1.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 | 26.3 | 26.3 | `ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
 
