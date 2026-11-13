@@ -26,7 +26,20 @@
         "Candidate has not been integrated or admitted to strict release configuration",
         "Security findings and administrative approval gates remain unresolved"
       ],
-      "per_version": {}
+      "per_version": {
+        "1.21.9": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.41 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.9/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.10": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.10/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
     },
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
@@ -56,19 +69,31 @@
         "1.21.4": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.4/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.5": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.5/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.6": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.6/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.7": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.7/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.8": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.01 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.8/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         }
       }
@@ -98,13 +123,13 @@
         "1.21.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.3": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.3/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         }
       }
@@ -134,13 +159,13 @@
         "1.21": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         }
       }
@@ -170,13 +195,13 @@
         "1.20.5": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.20 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.20 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.5/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.6": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.6/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         }
       }
@@ -210,38 +235,38 @@
         "1.19.4": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.4/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         },
         "1.20": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.20.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.20.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.36 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.36 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.20.3": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.3/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.20.4": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.4/ and require independent visual assessment",
           "movement_observed_on": "2026-11-13"
         }
       }
@@ -277,50 +302,50 @@
         "1.17": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.01 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.01 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.17/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         },
         "1.17.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.17.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.18": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.18.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.18.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.19": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.19.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.19.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         }
       }
@@ -357,56 +382,56 @@
         "1.15": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         },
         "1.15.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.15.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.65 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.65 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16.3": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.3/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16.4": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.35 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.35 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.4/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.16.5": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.5/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         }
       }
@@ -435,7 +460,7 @@
         "1.19.3": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 11.87 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 11.87 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.3/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
         }
@@ -469,7 +494,7 @@
         "1.14": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.93 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.93 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12",
           "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null",
           "render_state_probe": "Controlled probe preserved seeded texture binding, active texture unit and lighting across eight calls on texture units 0 and 1"
@@ -477,25 +502,25 @@
         "1.14.1": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 14.03 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 14.03 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.1/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.14.2": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.2/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.14.3": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 9.92 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 9.92 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.3/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         },
         "1.14.4": {
           "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
           "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
-          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in the local test workspace and require visual assessment",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.4/ and require independent visual assessment",
           "movement_observed_on": "2026-11-12"
         }
       }

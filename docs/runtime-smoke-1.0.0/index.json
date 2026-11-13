@@ -2,6 +2,62 @@
   "schema": 1,
   "observed_through": "2026-11-13",
   "versions": {
+    "1.21.10": {
+      "group": "1.21.9-1.21.10",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "9a72ecfbd5c2514e31de7b0a443cf9b90654e833bcae7831d75e27f078b7319c",
+        "ending-player.dat": "5405c9a1d5a62dd15350193ff0724dc5ae9258ec9540ae73b96c70cec13c2e9a",
+        "walking-1.png": "afe7827ebde9a19a2724b69a12f26da6b19098c571f601540325f70da16874a4",
+        "walking-2.png": "c90bed523b2a80145a1154942f04296b81937ba2375724979c935f609513996b",
+        "client.log": "3d27a27a88ffd70fd1c487615b35e16076c61d018b9e45efc55e4cacaab8d649"
+      }
+    },
+    "1.21.9": {
+      "group": "1.21.9-1.21.10",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "0245bbf9c3962900576b992a907f8b9063e85690d46633a4f182c19adf593287",
+        "ending-player.dat": "aed9c2f3fceabd8b6230fc3517f746ad3463fc995f51b6a05a3cda7c43add42b",
+        "walking-1.png": "19ea26f18d872c1a281c51e5fbd3bdc50c8f4830311a9f8b54820fd79dd7b19f",
+        "walking-2.png": "e26d7e7d19a364edc247386d5d2e9b6e1f8ae9375bb9b5cfb10ec3cbc7730383",
+        "client.log": "e967c69017c7487d9e78cc4614624ba0f91e02d70f383817638880208885a3f7"
+      }
+    },
+    "1.21.8": {
+      "group": "1.21.4-1.21.8",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "b860389f6f73606fd82ecc6505c80166ec928158df87f03371a4f6835c6bfa09",
+        "ending-player.dat": "f2df31e3712b9806c249a3b8613218fcf9f6444403c545da34b0b58282ac095c",
+        "walking-1.png": "d92792b34c6414c0820a1ca5fe424bf2d52fa6c6fea4bf8d5b8865b45d818186",
+        "walking-2.png": "cc7dd2715cd299c0703b5f67d90d5f20c5462e5303c12b38b4281d2a358bc39a",
+        "client.log": "46422f2b1ddc48477826e637917ec69681133df2d148f2079a6d741af559402b"
+      }
+    },
+    "1.21.7": {
+      "group": "1.21.4-1.21.8",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "bb421c87a27b4b573c41590dff73c39ec35bcb8ba19a5678dc0702d8e5c14a96",
+        "ending-player.dat": "1f4b35cd84bad4cb0d854641beb571b763f57ea1be6dec7859528f9e0544b12c",
+        "walking-1.png": "d7315d8783d843ce89849a1e48c2e8666dc501121d2041a49d381182e0eb8048",
+        "walking-2.png": "4bea4e1259af74a04e812b75f704d40355fe52ba7f699abfe8ae585a216048dc",
+        "client.log": "a640aa715df600f8c2eeee5a4abcae5dfda40d49bb08e409308d77335636aa03"
+      }
+    },
     "1.21.6": {
       "group": "1.21.4-1.21.8",
       "source_kind": "legacy-candidate",

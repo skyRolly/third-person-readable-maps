@@ -43,10 +43,10 @@ This is the non-publishing proposed matrix, not integrated legacy support or a r
 | 1.21.4 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.5 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 1.21.6 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.7 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.8 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.9 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
-| 1.21.10 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | NOT RUN | NOT RUN | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.7 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.8 | 1.21.4-1.21.8 | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.9 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 1.21.10 | 1.21.9-1.21.10 | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |

@@ -4,10 +4,10 @@ Current proposed version: **1.0.0**. The [machine-readable inventory](legacy-ver
 
 | Minecraft | Group | Java | Static 1.0.0 | Installed 1.0.0 | Graphical 1.0.0 |
 |---|---|---:|---|---|---|
-| 1.21.10 | 1.21.9-1.21.10 | 21 | PASS | NOT RUN | NOT RUN |
-| 1.21.9 | 1.21.9-1.21.10 | 21 | PASS | NOT RUN | NOT RUN |
-| 1.21.8 | 1.21.4-1.21.8 | 21 | PASS | NOT RUN | NOT RUN |
-| 1.21.7 | 1.21.4-1.21.8 | 21 | PASS | NOT RUN | NOT RUN |
+| 1.21.10 | 1.21.9-1.21.10 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.21.9 | 1.21.9-1.21.10 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.21.8 | 1.21.4-1.21.8 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
+| 1.21.7 | 1.21.4-1.21.8 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.21.6 | 1.21.4-1.21.8 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.21.5 | 1.21.4-1.21.8 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.21.4 | 1.21.4-1.21.8 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |

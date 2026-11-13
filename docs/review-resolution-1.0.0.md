@@ -88,11 +88,15 @@ no-mod comparison. Its cause remains **inconclusive**; repeat matched captures
 with the same game, world, camera, perspective, pose, motion, renderer and frame
 timing. A later [1.20.6 candidate/no-mod comparison](foreground-comparison-1.20.6-2026-11-13/)
 did not show the large shape in four walking frames, but the runs were not
-frame-synchronized and did not reproduce the original viewpoint; its cause
-also remains **inconclusive**. Repeat the original 1.20.6 conditions and make
-matched candidate/no-mod comparisons for the separately observed 1.21.1,
-1.21.5 and 1.21.10 cases. Investigate any repeatable difference. Full graphical
-acceptance is still required on the new artifacts.
+frame-synchronized and did not reproduce the original viewpoint. Additional
+[1.21.1, 1.21.5 and 1.21.10 comparisons](foreground-comparisons-2026-11-13/)
+also did not show the large historical shape in their limited frames. Small
+green and dark-green objects were seen in both candidate and no-mod runs, but
+the runs were not synchronized and their identity and relationship to the
+original shape are unknown. Its cause remains **inconclusive**. Repeat each
+original observation with matched conditions and investigate any repeatable
+candidate/no-mod difference. Full graphical acceptance is still required on
+the new artifacts.
 
 Coordination PR #15 previously added update targets for branches containing the
 1.21.11 placeholder. The proposed configuration now targets only the three

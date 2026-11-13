@@ -15,7 +15,7 @@ and integrated; an open PR is not an integrated branch.
 | Proposed-head Linux CI | PASS | All 13 product PR heads passed `Build (ubuntu-latest)` on 2026-11-12. Repeat for changed and merged heads. |
 | Proposed-head Windows CI | PASS | All 13 product PR heads passed `Build (windows-latest)` on 2026-11-12. Repeat for changed and merged heads. |
 | Coordination CI | BLOCKED | Local tests pass; the latest hosted check fails at the live integrated-verifier prerequisite. The three maintenance PRs must be integrated after review, then their exact merged heads and security evidence recorded before rerunning the check. |
-| Installed-client startup | BLOCKED | The [48-version matrix](compatibility-1.0.0-validation.md) distinguishes fresh 1.0.0 local-world observations from untested versions; old artifact runs are historical. |
+| Installed-client startup | PENDING REVIEW | All 48 versions joined a local single-player world with their proposed 1.0.0 artifact under software rendering; see the [source- and artifact-bound matrix](compatibility-1.0.0-validation.md). The 26.2 exit timeout and 26.3 harness recovery are retained in the evidence. Independent review and checks on final integrated artifacts remain. |
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
 | Multiplayer testing | NOT RUN | Remote-player and naturally unavailable map-data behavior require a multiplayer environment. |

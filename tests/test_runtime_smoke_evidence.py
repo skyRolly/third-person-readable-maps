@@ -9,6 +9,31 @@ DIRECTORY = ROOT / 'docs/runtime-smoke-1.0.0'
 
 
 class RuntimeSmokeEvidenceTests(unittest.TestCase):
+    def test_additional_no_mod_controls_remain_separate_from_candidates(self):
+        directory = ROOT / 'docs/foreground-comparisons-2026-11-13'
+        evidence = json.loads((directory / 'index.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        groups = {group['id']: group for group in manifest['groups']}
+        self.assertEqual(hashlib.sha256((directory / 'run.py').read_bytes()).hexdigest(), evidence['runner_sha256'])
+        self.assertEqual(set(evidence['versions']), {'1.21.1', '1.21.5', '1.21.10'})
+        for version, row in evidence['versions'].items():
+            with self.subTest(version=version):
+                group = groups[row['group']]
+                self.assertIn(version, group['minecraft'])
+                self.assertEqual(row['candidate_head'], group['source_commit'])
+                self.assertEqual(row['candidate_artifact_sha256'], group['sha256'])
+                for name, digest in row['control_files_sha256'].items():
+                    self.assertEqual(hashlib.sha256((directory / version / name).read_bytes()).hexdigest(), digest)
+                control = json.loads((directory / version / 'movement.json').read_text())
+                candidate = json.loads((ROOT / row['candidate_evidence'] / 'movement.json').read_text())
+                self.assertEqual(control['paired_candidate_sha256'], candidate['candidate_sha256'])
+                self.assertEqual(control['start'], candidate['start'])
+                self.assertGreater(control['horizontal_distance'], 0.5)
+                log = (directory / version / 'client.log').read_text(errors='replace')
+                self.assertIn('MapSmokeTest joined the game', log)
+                self.assertNotIn('thirdpersonreadablemaps', log.lower())
+                self.assertIn('thirdpersonreadablemaps', (ROOT / row['candidate_evidence'] / 'client.log').read_text(errors='replace').lower())
+
     def test_1_20_6_no_mod_control_is_separate_from_the_candidate(self):
         directory = ROOT / 'docs/foreground-comparison-1.20.6-2026-11-13'
         evidence = json.loads((directory / 'index.json').read_text())
@@ -73,7 +98,8 @@ class RuntimeSmokeEvidenceTests(unittest.TestCase):
         groups = {group['id']: group for group in manifest['groups']}
         index = json.loads((DIRECTORY / 'index.json').read_text())
         self.assertEqual(index['schema'], 1)
-        self.assertTrue(index['versions'])
+        expected_versions = {version for group in manifest['groups'] for version in group['minecraft']}
+        self.assertEqual(set(index['versions']), expected_versions)
         expected_files = {'movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log'}
         for version, evidence in index['versions'].items():
             with self.subTest(version=version):
