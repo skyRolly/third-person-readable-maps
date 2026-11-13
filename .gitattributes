@@ -10,3 +10,4 @@ docs/builds-verifier-followup-2026-11-13/*-build.log -text whitespace=-blank-at-
 # Raw dependency audit logs are retained byte-for-byte as source-bound evidence.
 docs/dependency-evidence/class-linkage-2026-11-13/*.log -text whitespace=-blank-at-eol
 docs/dependency-evidence/class-linkage-proposals-2026-11-13/*.log -text whitespace=-blank-at-eol
+docs/component-map-id-item-loading-2026-11-13/**/*.log -text whitespace=-blank-at-eol

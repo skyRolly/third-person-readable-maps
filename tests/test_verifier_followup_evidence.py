@@ -80,7 +80,8 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 required = {'movement.json', 'ending-player.dat', 'walking-1.png', 'walking-2.png', 'client.log'}
                 self.assertTrue(required <= set(row['files_sha256']))
                 self.assertLessEqual(set(row['files_sha256']) - required,
-                                     {'launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png'})
+                                     {'launcher-pins.json', 'operator-note.txt', 'world-upgrade-prompt.png',
+                                      'world-upgrade-ocr.txt'})
                 for name, digest in row['files_sha256'].items():
                     self.assertEqual(hashlib.sha256((RUNTIME / version / name).read_bytes()).hexdigest(), digest)
                 if 'launcher-pins.json' in row['files_sha256']:
@@ -118,6 +119,27 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         for name, digest in row['files_sha256'].items():
             self.assertEqual(hashlib.sha256((attempt / name).read_bytes()).hexdigest(), digest)
         self.assertIn('timeouterror', (attempt / 'runner.log').read_text().lower())
+
+    def test_inconclusive_item_loading_probe_is_preserved(self):
+        directory = ROOT / 'docs/component-map-id-item-loading-2026-11-13/playerdata-only-attempt'
+        index = json.loads((directory / 'index.json').read_text())
+        self.assertTrue(index['status'].startswith('INCONCLUSIVE'))
+        for name, digest in index['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
+        self.assertIn('level.dat', index['explanation'])
+
+    def test_managed_submission_runs_do_not_imply_settings_access(self):
+        path = ROOT / 'docs/dependency-evidence/automatic-submission-2026-11-13.json'
+        index = json.loads(path.read_text())
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        self.assertEqual(set(index['runs']), set(refs))
+        self.assertIn('settings access remains unavailable', index['description'])
+        for group, run in index['runs'].items():
+            self.assertEqual(run['headSha'], refs[group]['new_head'])
+            self.assertEqual(run['workflowName'], 'Automatic Dependency Submission')
+            self.assertEqual((run['event'], run['status'], run['conclusion']), ('dynamic', 'completed', 'success'))
+        steps = [step for job in index['example_job']['jobs'] for step in job['steps']]
+        self.assertIn({'name': 'submit-dependency-snapshot', 'conclusion': 'success'}, steps)
 
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'

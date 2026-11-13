@@ -65,9 +65,10 @@ checks and evidence on the preceding heads do not certify the new sources.
    non-publishing rehearsal, then independently evaluate release authorization.
    A later owner instruction is required before draft or public release actions.
 
-GitHub-managed Automatic Dependency Submission was last observed running on
-2026-11-12; settings access remains unavailable, so its current setting has not
-been independently read back.
+GitHub-managed Automatic Dependency Submission ran successfully on all 13
+advanced product heads on [2026-11-13](dependency-evidence/automatic-submission-2026-11-13.json);
+settings access remains unavailable, so its current setting has not been
+independently read back.
 The existing administrative disposition requires the administrator to disable
 that managed submission while preserving Dependency Graph, Dependabot alerts
 and security updates; verify the setting and subsequent run history separately

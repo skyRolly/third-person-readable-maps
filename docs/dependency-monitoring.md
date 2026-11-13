@@ -144,7 +144,9 @@ findings for every branch. An integrated scheduled run is still NOT RUN.
 ## Administrative disposition
 
 Automatic Dependency Submission is **C — blocked by settings access**. It was
-still generating managed runs during this round. The exact administrator action,
+still generating managed runs during this round; [13 advanced-head runs on
+2026-11-13](dependency-evidence/automatic-submission-2026-11-13.json) completed
+successfully and an inspected run's submission step succeeded. The exact administrator action,
 feature-preservation checks, reversibility and read-back procedure are in
 [administrative controls](administrative-controls.md#automatic-dependency-submission--final-disposition-c).
 No alert or graph setting was disabled and no graph-submission success is inferred
