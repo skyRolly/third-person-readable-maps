@@ -13,7 +13,7 @@ All 42 legacy versions passed the current instruction-aware static checks agains
 | 1.19.4-1.20.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/19) | `4c78b44bd8ac1a758f3c04987530b9fda844127b` | `c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c` | 6/6 partial local-world evidence |
 | 1.20.5-1.20.6 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/18) | `44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96` | `d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a` | 2/2 partial local-world evidence |
 | 1.21-1.21.1 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/17) | `b24ed245e4630c2df87f539707dbf662bba354ac` | `89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c` | 2/2 partial local-world evidence |
-| 1.21.2-1.21.3 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/16) | `2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1` | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | 0/2 partial local-world evidence |
+| 1.21.2-1.21.3 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/16) | `2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1` | `1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75` | 2/2 partial local-world evidence |
 | 1.21.4-1.21.8 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/14) | `08f70683b93eff8d4a68dd366232c70cedd65101` | `6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e` | 0/5 partial local-world evidence |
 | 1.21.9-1.21.10 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/13) | `ec7b47fb8d87e307d33250ef8693671d8e65ab0b` | `c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a` | 0/2 partial local-world evidence |
 

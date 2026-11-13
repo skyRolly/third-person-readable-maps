@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "version": "1.0.0",
-  "release_date": "2026-11-12",
+  "release_date": "2026-11-13",
   "changes": [
     "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
   ],

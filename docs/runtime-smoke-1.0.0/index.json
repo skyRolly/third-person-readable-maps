@@ -2,6 +2,34 @@
   "schema": 1,
   "observed_through": "2026-11-13",
   "versions": {
+    "1.21.3": {
+      "group": "1.21.2-1.21.3",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "d5246cd462da2c2cdf820a9a8152487eaf98d8c8523f1a433f0cf3b215ff5c82",
+        "ending-player.dat": "a3753f3bc23fe2cac9debdf09d7db5a9e2a64cc9d806259613bbce9017554baf",
+        "walking-1.png": "a1f429d3cf6b8e15e7371acc21ebc1cf0af0f14a3405cdf082281b75beadf0b8",
+        "walking-2.png": "d276da75e6847b446f954857257974602d3e6d968c1ad5b7aa8a07da616b2942",
+        "client.log": "67df3ea23c9cf922797611fad00a65ef7f269823edce81677e0fb5e13abfc87e"
+      }
+    },
+    "1.21.2": {
+      "group": "1.21.2-1.21.3",
+      "source_kind": "legacy-candidate",
+      "candidate_head": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "e9f3a55bbec399f9eaac653ae6503ff4518d234235644a39aae459e06a93afbb",
+        "ending-player.dat": "9ab6b13a52aa8a18c04a2cd4628ce3f41ede83ea56a859a89a1cc1525e88520e",
+        "walking-1.png": "9e13ec6ddd5128dd34ace46b70ce76b2473d1984fc254d82f5ee3ad1e53168cb",
+        "walking-2.png": "0d848c665aa2dc39d2e1c4d0d33f2286dc0dba17c9502d9633f68c908054a6b6",
+        "client.log": "c4bd74d64f9f096bd059f3d909b7f9da0e6e6daf3897fbd7f9e7d9b7a2a8091c"
+      }
+    },
     "1.21.1": {
       "group": "1.21-1.21.1",
       "source_kind": "legacy-candidate",
