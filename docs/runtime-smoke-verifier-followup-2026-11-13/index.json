@@ -52,12 +52,10 @@
     "26.3"
   ],
   "pending_versions": [
-    "1.20.1",
     "1.20.2",
     "1.20.3",
     "1.20.4",
     "1.21.10",
-    "1.21.8",
     "1.21.9",
     "26.1",
     "26.1.1",
@@ -409,6 +407,19 @@
         "client.log": "04f8fdf9c54ae1d8cf06d8c253220763c60b1a2c28b854439261508b0e077314"
       }
     },
+    "1.20.1": {
+      "group": "1.19.4-1.20.4",
+      "source_commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "482d037b53f6b8f71a0f612e9df9fa7198b9b7305bf9fcb1762389e59b670248",
+        "ending-player.dat": "c46a617218dc156714630185336cdc6a85aa575800d2d48d6da7747bcf0f6bab",
+        "walking-1.png": "07e355780b2a0b7e7788280e5128c58d0b17ab4daab3255bf87f0aeb3296e3e1",
+        "walking-2.png": "b5750eaa5e8824b028d38135b4cecded99da88f66f6c257df03644b89fa719f3",
+        "client.log": "2aacaef4596edbdd2c29ca07c91afd37903d64e024c864d145ec0ae334a514ff"
+      }
+    },
     "1.20.5": {
       "group": "1.20.5-1.20.6",
       "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
@@ -551,6 +562,19 @@
         "walking-1.png": "ef1cd66165af05498323d9e45d726d6955a404b47f97b6c734b1baa2fd87a1ad",
         "walking-2.png": "ff660115310a00743b2101f726a90f45ae5c294551258d4c9d203ecb69f4e10c",
         "client.log": "2b3de8b3b48fd1332afdd798e5dfe6ce09d929ff0031ecd94463a116646df897"
+      }
+    },
+    "1.21.8": {
+      "group": "1.21.4-1.21.8",
+      "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "098aa347fba77aee4447effe0b1e47d1aedaf45368a74b91ca64ee9a1cdf48bd",
+        "ending-player.dat": "74fa2150c2a2448a098f83974694670a2be7e367d8237eb5528b0482f3962f3f",
+        "walking-1.png": "7a3f4a6c0962db425d6740b83ec5b306f0df6ca8ce1e6c7c258c6eae1b935c57",
+        "walking-2.png": "0c0be7ae4abf263d1f2eccfa15345a2391829db27ef86bf37bfb6f19bcbddeed",
+        "client.log": "d16598eb4d396eb10112e482c4a8c4161611d0add2be8731f10bb083d08ed47a"
       }
     }
   }

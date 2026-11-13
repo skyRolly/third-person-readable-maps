@@ -108,6 +108,17 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((attempt / name).read_bytes()).hexdigest(), digest)
         self.assertIn('No mixin global property service is available', (attempt / 'client.log').read_text())
 
+    def test_world_upgrade_timeout_remains_separate(self):
+        attempt = RUNTIME / '26.1-upgrade-timeout-attempt'
+        row = json.loads((attempt / 'index.json').read_text())
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(row['source_commit'], builds['26.1-26.2']['source_commit'])
+        self.assertEqual(row['artifact_sha256'], builds['26.1-26.2']['sha256'])
+        self.assertIn('NOT COMPLETED', row['result'])
+        for name, digest in row['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((attempt / name).read_bytes()).hexdigest(), digest)
+        self.assertIn('timeouterror', (attempt / 'runner.log').read_text().lower())
+
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'
         index = json.loads(path.read_text())
