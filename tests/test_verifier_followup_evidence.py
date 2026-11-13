@@ -10,6 +10,27 @@ RUNTIME = ROOT / 'docs/runtime-smoke-verifier-followup-2026-11-13'
 
 
 class VerifierFollowupEvidenceTests(unittest.TestCase):
+    def test_adjacent_version_negative_controls_match_new_sources(self):
+        directory = ROOT / 'docs/negative-verifier-followup-2026-11-13'
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0/release-manifest.json').read_text())
+        groups = {row['id']: row for row in manifest['groups']}
+        evidence = json.loads((directory / 'index.json').read_text())
+        self.assertEqual(len(evidence), 9)
+        for key, row in evidence.items():
+            with self.subTest(case=key):
+                group = row['group']
+                self.assertEqual(row['source_commit'], refs[group]['new_head'])
+                self.assertEqual(row['artifact_sha256'], builds[group]['sha256'])
+                self.assertNotIn(row['unsupported_version'], groups[group]['minecraft'])
+                self.assertNotEqual(row['exit_code'], 0)
+                self.assertTrue(row['discriminating_rejection'])
+                raw = (directory / row['log']).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), row['log_sha256'])
+                self.assertTrue(any(needle in raw for needle in (b'missing Mixin target', b'missing classes',
+                                b'missing game members', b'missing game or descriptor classes')))
+
     def test_clean_build_records_match_advanced_source_heads(self):
         refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
         evidence = json.loads((BUILDS / 'index.json').read_text())

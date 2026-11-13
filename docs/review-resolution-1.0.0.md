@@ -29,9 +29,10 @@ reproduced in `tests/test_jvm_linkage.py`; the current check rejects it. The
 interfaces, constructors, method handles, missing descriptor classes,
 libraries, Mixin target staticness and supported injection points, plus Java
 8/16/17/21/25 class files. All 13 proposed artifacts passed their actual
-version-specific game and dependency checks; nine historical adjacent-version
-negative controls were rerun against the new artifacts and rejected for
-missing targets, classes or members. Each product branch records its digest.
+version-specific game and dependency checks; nine [adjacent-version negative
+controls](negative-verifier-followup-2026-11-13/) were rerun against the
+advanced source heads and rebuilt artifacts, and rejected for missing targets,
+classes or members. Each product branch records its digest.
 
 The resolver uses the actual consuming instructions and mapped names, and
 checks exact Minecraft client and game-library artifacts against Mojang metadata.

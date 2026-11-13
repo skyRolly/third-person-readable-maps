@@ -1,0 +1,119 @@
+{
+  "1.14-1.14.4 on 1.15": {
+    "group": "1.14-1.14.4",
+    "unsupported_version": "1.15",
+    "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+    "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.14-1.14.4-on-1.15.log",
+    "log_sha256": "a0002520094bdb91dafb0593bd819a257f12d37f32ec69e61691fa8b04b5f775",
+    "tail": [
+      "API compatibility check failed: 1.15: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;)V"
+    ]
+  },
+  "1.15-1.16.5 on 1.14.4": {
+    "group": "1.15-1.16.5",
+    "unsupported_version": "1.14.4",
+    "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+    "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.15-1.16.5-on-1.14.4.log",
+    "log_sha256": "bc4fc11add26a7f0747276a00f558deed0368e636c03201ed8e445a562f7fce2",
+    "tail": [
+      "API compatibility check failed: 1.14.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    ]
+  },
+  "1.15-1.16.5 on 1.17": {
+    "group": "1.15-1.16.5",
+    "unsupported_version": "1.17",
+    "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+    "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.15-1.16.5-on-1.17.log",
+    "log_sha256": "c3dc470816f3997c14d45b6c110654420f2b3e704559d0a35a72ccd8b3dfcbb5",
+    "tail": [
+      "API compatibility check failed: 1.17: missing game members: [('field', 'net/minecraft/class_572', 'field_3390', 'Lnet/minecraft/class_630;'), ('method', 'net/minecraft/class_1806', 'method_7997', '(Lnet/minecraft/class_1799;Lnet/minecraft/class_1937;)Lnet/minecraft/class_22;'), ('method', 'net/minecraft/class_330', 'method_1773', '(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_22;ZI)V')]"
+    ]
+  },
+  "1.17-1.19.2 on 1.19.3": {
+    "group": "1.17-1.19.2",
+    "unsupported_version": "1.19.3",
+    "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+    "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.17-1.19.2-on-1.19.3.log",
+    "log_sha256": "85ea6b9a3986353331c3bca986b3655a23181dd7f4c7e96430069b77ceaf6bde",
+    "tail": [
+      "API compatibility check failed: 1.19.3: missing classes: ['net/minecraft/class_1158', 'net/minecraft/class_1159', 'net/minecraft/class_1160']"
+    ]
+  },
+  "1.19.3 on 1.19.2": {
+    "group": "1.19.3",
+    "unsupported_version": "1.19.2",
+    "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+    "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.19.3-on-1.19.2.log",
+    "log_sha256": "de2efe707299af2b91f2ec85298b79c6e2e76c1da6d61fdc1b867c43b56f1d8f",
+    "tail": [
+      "API compatibility check failed: 1.19.2: missing classes: ['net/minecraft/class_7833']"
+    ]
+  },
+  "1.19.3 on 1.19.4": {
+    "group": "1.19.3",
+    "unsupported_version": "1.19.4",
+    "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+    "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.19.3-on-1.19.4.log",
+    "log_sha256": "a9f6a92214a3fda7c55fe9bc9ca692c10e156e6cdf19ec83d93d6ce8d115bbec",
+    "tail": [
+      "API compatibility check failed: 1.19.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    ]
+  },
+  "1.21.9-1.21.10 on 1.21.8": {
+    "group": "1.21.9-1.21.10",
+    "unsupported_version": "1.21.8",
+    "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+    "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.21.9-1.21.10-on-1.21.8.log",
+    "log_sha256": "5200f4b1269c840d612bbd40251befff6e9600cbb9696874f9de84349ba56d74",
+    "tail": [
+      "API compatibility check failed: 1.21.8: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_11659;I)V"
+    ]
+  },
+  "1.21.4-1.21.8 on 1.21.9": {
+    "group": "1.21.4-1.21.8",
+    "unsupported_version": "1.21.9",
+    "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
+    "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.21.4-1.21.8-on-1.21.9.log",
+    "log_sha256": "627667f5a71e58ad7e1cb06a92a8191dd2867469f23e58adb7620e29c5920cf0",
+    "tail": [
+      "API compatibility check failed: 1.21.9: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    ]
+  },
+  "1.21.9-1.21.10 on 1.21.11": {
+    "group": "1.21.9-1.21.10",
+    "unsupported_version": "1.21.11",
+    "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+    "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+    "exit_code": 1,
+    "discriminating_rejection": true,
+    "log": "1.21.9-1.21.10-on-1.21.11.log",
+    "log_sha256": "ebec5ee71550ba95bc15ac9081310d2be9839f33d55a0bc1efd2c601bff0428d",
+    "tail": [
+      "API compatibility check failed: 1.21.11: missing Mixin target net/minecraft/class_10426.method_65577(Lnet/minecraft/class_1309;Lnet/minecraft/class_10426;Lnet/minecraft/class_10442;)V"
+    ]
+  }
+}
