@@ -234,6 +234,40 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
                 self.assertEqual(result['matches'], len(report['matches']))
                 self.assertFalse(report['resolved_needing_review'])
 
+    def test_advanced_maintenance_proposals_remain_separate(self):
+        directory = ROOT / 'docs/dependency-evidence/class-linkage-proposals-2026-11-13'
+        index = json.loads((directory / 'index.json').read_text())
+        transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        current = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-13.json').read_text())
+        previous = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
+        self.assertEqual(set(index['groups']), {'1.21.11', '26.1-26.2', '26.3'})
+        self.assertFalse(index['risk_acceptance'])
+        for filename in ('run.py', 'orchestration.log'):
+            self.assertEqual(hashlib.sha256((directory / filename).read_bytes()).hexdigest(),
+                             index[filename + '_sha256'])
+        signature = lambda m: (m['purl'], m['advisory'], m['fingerprint'],
+                               tuple(sorted(m['scopes'])), m['state'], m['failing'])
+        for group, result in index['groups'].items():
+            with self.subTest(group=group):
+                self.assertTrue(result['complete'])
+                self.assertEqual(result['exit_code'], 1)
+                self.assertEqual(result['source_sha'], transition[group]['new_head'])
+                self.assertNotEqual(result['source_sha'], current['sources'][group]['source_sha'])
+                for kind in ('snapshot', 'report', 'snapshot_log', 'audit_log'):
+                    raw = (ROOT / result[kind + '_path']).read_bytes()
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), result[kind + '_sha256'])
+                    if kind == 'snapshot':
+                        self.assertEqual(json.loads(raw)['sha'], result['source_sha'])
+                    if kind == 'report':
+                        report = json.loads(raw)
+                old = json.loads((previous / (group + '-osv.json')).read_text())
+                self.assertEqual({signature(m) for m in report['matches']},
+                                 {signature(m) for m in old['matches']})
+                self.assertEqual(report['status'], 'complete-unreviewed-maintenance-proposal')
+                self.assertFalse(report['risk_acceptance'])
+                self.assertEqual(result['matches'], result['failing'])
+                self.assertEqual(result['matches'], len(report['matches']))
+
     def test_unmerged_maintenance_proposals_remain_distinct_and_unreviewed(self):
         directory = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
         index = json.loads((directory / 'index.json').read_text())

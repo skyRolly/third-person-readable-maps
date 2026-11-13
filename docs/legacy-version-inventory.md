@@ -13,7 +13,7 @@ The current proposed version is **1.0.0**. The [machine-readable inventory](lega
 | 1.21.4 | 1.21.4-1.21.8 | 21 | PASS | NOT RUN | NOT RUN |
 | 1.21.3 | 1.21.2-1.21.3 | 21 | PASS | NOT RUN | NOT RUN |
 | 1.21.2 | 1.21.2-1.21.3 | 21 | PASS | NOT RUN | NOT RUN |
-| 1.21.1 | 1.21-1.21.1 | 21 | PASS | NOT RUN | NOT RUN |
+| 1.21.1 | 1.21-1.21.1 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.21 | 1.21-1.21.1 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.20.6 | 1.20.5-1.20.6 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |
 | 1.20.5 | 1.20.5-1.20.6 | 21 | PASS | PASS (local world) | PARTIAL diagnostic |

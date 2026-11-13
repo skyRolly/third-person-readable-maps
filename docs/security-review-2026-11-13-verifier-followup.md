@@ -33,9 +33,12 @@ remain **Further investigation**, and no residual risk is accepted.
 
 The proposed JARs were inspected again at the advanced product commits; none
 contains nested JARs or third-party class files. That observation does not
-establish that Minecraft-provided runtime dependencies are irrelevant. The
-three proposed maintenance PRs must be scanned separately from the currently
-integrated heads, and their future merged heads need new source-bound scans.
+establish that Minecraft-provided runtime dependencies are irrelevant. Fresh
+[separate scans of the three unmerged maintenance proposals](dependency-evidence/class-linkage-proposals-2026-11-13/)
+found 41, 53 and 11 failing occurrences, respectively; each matched the prior
+proposal scan's package, advisory, fingerprint, scope, state and failing flag.
+They are not added again to the 490 current-source occurrences above. Future
+merged maintenance heads need new source-bound scans.
 
 The original hosted Maintenance Dependency Audit completed its scans and
 failed on 105 known unresolved findings under the fail-closed policy. A green

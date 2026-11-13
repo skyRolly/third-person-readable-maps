@@ -61,7 +61,6 @@
     "1.20.2",
     "1.20.3",
     "1.20.4",
-    "1.21.1",
     "1.21.10",
     "1.21.11",
     "1.21.2",
@@ -390,6 +389,19 @@
         "walking-1.png": "1d60fd98d9c8727f11af6d28d6fd00af415245f6877a7bfa7563b482d38a61af",
         "walking-2.png": "654a31718ba9b30601c64583ab108bf605e3ffddeae758d8688a76d01393799f",
         "client.log": "ab28334691817c44994bcae841ea8381fb5bc58b38eb1670f3da87bc539969eb"
+      }
+    },
+    "1.21.1": {
+      "group": "1.21-1.21.1",
+      "source_commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "9da03281472057c20778ccdc24d1e9b88220b69ee991afa837fd8d489b1c4677",
+        "ending-player.dat": "a1fa7c860262e4a703eb2f6b4b49d6d9a76f9bc80a994a806c2f24531fe25743",
+        "walking-1.png": "7c653193633bb3361003ed0025675d38ff10437efcd5a3aaa68f954edf00e268",
+        "walking-2.png": "12b99283e0cced789e8285bccd0f25d3dd251d3e41e21c07278c80eeff9aa62e",
+        "client.log": "c0ef64f839097dd9c06062be9e076d7d5e14b8a75b51cf003874d10b29c439cb"
       }
     }
   }
