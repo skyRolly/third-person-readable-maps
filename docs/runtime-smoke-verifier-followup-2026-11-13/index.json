@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "status": "PARTIAL source-bound software-rendered smoke",
+  "expected_versions": [
+    "1.14",
+    "1.14.1",
+    "1.14.2",
+    "1.14.3",
+    "1.14.4",
+    "1.15",
+    "1.15.1",
+    "1.15.2",
+    "1.16",
+    "1.16.1",
+    "1.16.2",
+    "1.16.3",
+    "1.16.4",
+    "1.16.5",
+    "1.17",
+    "1.17.1",
+    "1.18",
+    "1.18.1",
+    "1.18.2",
+    "1.19",
+    "1.19.1",
+    "1.19.2",
+    "1.19.3",
+    "1.19.4",
+    "1.20",
+    "1.20.1",
+    "1.20.2",
+    "1.20.3",
+    "1.20.4",
+    "1.20.5",
+    "1.20.6",
+    "1.21",
+    "1.21.1",
+    "1.21.10",
+    "1.21.11",
+    "1.21.2",
+    "1.21.3",
+    "1.21.4",
+    "1.21.5",
+    "1.21.6",
+    "1.21.7",
+    "1.21.8",
+    "1.21.9",
+    "26.1",
+    "26.1.1",
+    "26.1.2",
+    "26.2",
+    "26.3"
+  ],
+  "pending_versions": [
+    "1.15.1",
+    "1.15.2",
+    "1.16",
+    "1.16.1",
+    "1.16.2",
+    "1.16.3",
+    "1.16.4",
+    "1.16.5",
+    "1.18",
+    "1.18.1",
+    "1.18.2",
+    "1.19",
+    "1.19.1",
+    "1.19.2",
+    "1.19.3",
+    "1.19.4",
+    "1.20",
+    "1.20.1",
+    "1.20.2",
+    "1.20.3",
+    "1.20.4",
+    "1.20.6",
+    "1.21",
+    "1.21.1",
+    "1.21.10",
+    "1.21.11",
+    "1.21.2",
+    "1.21.3",
+    "1.21.4",
+    "1.21.5",
+    "1.21.6",
+    "1.21.7",
+    "1.21.8",
+    "1.21.9",
+    "26.1",
+    "26.1.1",
+    "26.1.2",
+    "26.2",
+    "26.3"
+  ],
+  "harness_sha256": {
+    "class-followup-walking-early-91.py": "f975b7db55243ccbc37a39daefc64f1c4ecdfe69c44df39b64d4240bd4011e3d",
+    "class-followup-walking-middle-92.py": "e9979e1fdc46bdec577a2149e1afcd1e274ba7ccc5333c2c2a367040c7387810",
+    "class-followup-walking-later-93.py": "e5cfd239cc77179cb5cdb0c6fd0c39ce57c6f86272ba5ed24855ff837d370215",
+    "x11-class-followup-91.py": "62521d1a4ab42d3e1a1a4e1e294f1f5170a3d9c1231b6a74da7d2a293e358ec8",
+    "x11-class-followup-92.py": "b210b59a00be94cb61470d392acc2bc8379e9a361c08a88a3506c4de3c3f03b0",
+    "x11-class-followup-93.py": "681cd047551a1d537aba82a3fc24469adb4663ddb53294d9b84901b13dc99c9f"
+  },
+  "versions": {
+    "1.14": {
+      "group": "1.14-1.14.4",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "bbc5dcc6589a86bcefdabb797fecde47af33dc03e224bf03eb2d097f533366d2",
+        "ending-player.dat": "4f3909a4e0eae63f3462eeca169a9eab2fb674b916e018ee2b5e231b4144fa72",
+        "walking-1.png": "74f7a4fc9dfb7d7bb10e0a056659e991652ea0939f1684a2b53685203d1af26f",
+        "walking-2.png": "b1aba77e55d6fdf2b1eb6219d9c8f214eb2bd831e63ca83d6aa6294bcd49d708",
+        "client.log": "bee169b13633a0ce25c1e9cff6040e0f46e2dd34c017d5f776d6a3906d099cae"
+      }
+    },
+    "1.14.1": {
+      "group": "1.14-1.14.4",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "a77faca471b4078e386a9dc0ef3cce7d6fe7e536bda772f1f1077a0a095828ed",
+        "ending-player.dat": "f24514c36a121d517937e105f4d92c58234d808144e9d5a54616a14aadd494da",
+        "walking-1.png": "28f4007881fb2548ee6b2526a0954055e217cbdeab8fcfafcb9dba5089f11a58",
+        "walking-2.png": "503830b87d00f8321e18ffa7e58f4c36f204dcbed08f4eeaa20116303c8e1c60",
+        "client.log": "d58e941ae6747d913ddc3197f844df786da78ac5ba56c6f8efe34d1245413ea3"
+      }
+    },
+    "1.14.2": {
+      "group": "1.14-1.14.4",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "c3629e670e8cd1a46c85c05a1dbfea27153753e7f5ab5df78ad9a399fdc3f957",
+        "ending-player.dat": "bb73257645346b2f6d5e8b56cc2336580a15069e8a41e1940c01f51175f4298f",
+        "walking-1.png": "9b47351e43d45015804eb9a72dfb20c16859e007dc47087d6b19caa9d3636901",
+        "walking-2.png": "9f0fbf13487eeef6e927f2c82f1358409fd49b43c2bf2f1443c0afd4e34584bb",
+        "client.log": "cfa52df6df0313b69ceeb3b6134654f31c38eb97cbbbd57cd5a36a9cc353b56b"
+      }
+    },
+    "1.14.3": {
+      "group": "1.14-1.14.4",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "77abcbb53c6847a8c2d382c39733d8f955d4b434b7d68ebd201dddc8305a2c07",
+        "ending-player.dat": "4692eaf06733906bb0a547cd486a8ea07c1dd44cd271540e1e44e8bdd1caf082",
+        "walking-1.png": "5156c34dc2f4bfc692bd4c4cbeffc8f7b2dda68be3f8728ac5f48bd1f8d56a82",
+        "walking-2.png": "4b8ab513e7176ac152e8b2c9c9d0e79797421dcb6c38a1572b3bb7b653c0cb51",
+        "client.log": "4b860cd20ceda7dc00410efd582ff8ca47d34baa197a6737365ed27319c2fdee"
+      }
+    },
+    "1.14.4": {
+      "group": "1.14-1.14.4",
+      "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "50c9743d82595c200f403f8a730d9b8a85ce707505459c8abab97f704930913b",
+        "ending-player.dat": "8ce0d66e4aa7c10b5256dfd37c35b3f49660a165e92ae8a55eaec9d1d1d28dd4",
+        "walking-1.png": "47bfc17dbc23a02efcb5075d3fbe6f871ad37eb71f97e4767e06ce16a0245e21",
+        "walking-2.png": "199a776bbdc5460021ed30e5a7ce244b64004d46bbb6998e1a772493f746ddd6",
+        "client.log": "763d853c1e9eca904bb0bfb9eee8f44b07a76135e480fc21eaa2ab81915e17ee"
+      }
+    },
+    "1.15": {
+      "group": "1.15-1.16.5",
+      "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "70778d50f72eda794d5d52097e3e26853d1e66aca5318f950935d173235d9e6c",
+        "ending-player.dat": "295a4a61fa5009fa5bb3610a05fc42759b33931f0c15b418c3f38f2c13dc6f6a",
+        "walking-1.png": "7e99fe6e3c27a49bca972c2ab25fd002e44d5fd254efcda2734d250506d9d334",
+        "walking-2.png": "387b1405f41af8aceb0b64fab9dccbd18117a35e99d868ff2688176070558e55",
+        "client.log": "8e08ca909cf9fc4f3f6f9b6da71f3d57030ed2766840f31fed3315a3232d35e2"
+      }
+    },
+    "1.17": {
+      "group": "1.17-1.19.2",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "fea263a89f431b8f6d9329ac7fc645955c2f7b6a3a4953d8563e45562f6a6f43",
+        "ending-player.dat": "4d9124edc95ff3d295451320dcc6d9a0ef8233e4a3edf136931407d5513c95f1",
+        "walking-1.png": "8e1b0ab3170c661604ab00b8d91ab91dec0067653d0062fe9043764edb33e190",
+        "walking-2.png": "de15a32bc8f2a3ffac105385c9b9c7d16816fcc9012dcfd6192ad9a292eb23f5",
+        "client.log": "b09609aa12c5953d307601edf6a869c53d5c9f9837637e146b790ddada1a14c2"
+      }
+    },
+    "1.17.1": {
+      "group": "1.17-1.19.2",
+      "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "228075ba00537d6de8ee7eba622b15adbb314f142bd00e578235f6b042ac5f35",
+        "ending-player.dat": "37a581a7587d425cc1fa0353709cd641c0934d87860928208cbd9ac6eca8ac7b",
+        "walking-1.png": "b3200052ae4c6c3c79c98363192b361c2e71ed8fad830a81e1113f75161df267",
+        "walking-2.png": "88c9699b2cf546eeccf508483f8986183bb113689001ec000682dd9da3bbd618",
+        "client.log": "66db169c426b039dc9eebab66d07be7a652447039220da536ce5ebbeac04e519"
+      }
+    },
+    "1.20.5": {
+      "group": "1.20.5-1.20.6",
+      "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "3a461418c11cc85c3d8c4432749ab5510932ce08d70441b3891a1e141f476b73",
+        "ending-player.dat": "1f1bfe7795c9dcc91e00b39fd39b9c1cc5b2c91bf48a561789a9f73d9d62f899",
+        "walking-1.png": "93ccefb4967813efe9002eff9f2d1829dbba0373533588208210932ddcbbeb67",
+        "walking-2.png": "dd99c9a52a3661304d4a959e6fe33475f2e948d5cbc7c45a7f0827472e13fab4",
+        "client.log": "421291ce7c55253cf39bbf7e9732badd61fc83d90c890407d69a78f89c5886f6"
+      }
+    }
+  }
+}
