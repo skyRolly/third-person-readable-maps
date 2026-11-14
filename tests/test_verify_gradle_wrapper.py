@@ -146,6 +146,11 @@ class WrapperChecks(unittest.TestCase):
         self.assertLess(bat.index('python scripts\\verify_gradle_wrapper.py'), bat.index('call gradlew.bat'))
         self.assertIn('if errorlevel 1', bat)
 
+    def test_build_instructions_run_preflight_before_gradle(self):
+        readme = (ROOT/'README.md').read_text().split('## Build from source', 1)[1].split('## Validation', 1)[0]
+        self.assertLess(readme.index('python3 scripts/verify_gradle_wrapper.py'), readme.index('./gradlew '))
+        self.assertLess(readme.index('python scripts\\verify_gradle_wrapper.py'), readme.index('gradlew.bat '))
+
 
 if __name__ == '__main__':
     unittest.main()
