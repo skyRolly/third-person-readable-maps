@@ -1,8 +1,10 @@
-# 1.0.0 release-readiness gate matrix — 2026-11-13
+# 1.0.0 release-readiness gate matrix — updated 2026-11-14
 
 **Not release-ready.** Version 1.0.0 is the coordinated proposal, not a
 publication authorization. The [2026-11-04 gate history](release-readiness-2026-11-04.md)
 and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) remain intact.
+The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readable-maps/blob/1d47857ae681c5493914a032788d80e644466c02/docs/release-readiness-1.0.0.md)
+remains available at its original commit.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
 The product PR heads advanced again during the [source-head transition](source-head-transition-2026-11-13.md);
