@@ -84,6 +84,9 @@ class WrapperChecks(unittest.TestCase):
                 if key in old: raise ValueError('duplicate')
                 old[key] = value
         self.assertIn('services.gradle.org', old['distributionUrl'])
+        self.assertEqual(old['distributionSha256Sum'], self.fetch(wrapper.BASE+'gradle-9.8.2-bin.zip.sha256'))
+        self.assertEqual(hashlib.sha256(self.jar.read_bytes()).hexdigest(),
+                         self.fetch(wrapper.BASE+'gradle-9.8.2-wrapper.jar.sha256'))
         java = self.root/'ReadProperties.java'
         java.write_text('import java.io.*; import java.util.*; public class ReadProperties { '
                         'public static void main(String[] a) throws Exception { Properties p=new Properties(); '
@@ -142,6 +145,11 @@ class WrapperChecks(unittest.TestCase):
         bat = (ROOT/'Build-Windows.bat').read_text()
         self.assertLess(bat.index('python scripts\\verify_gradle_wrapper.py'), bat.index('call gradlew.bat'))
         self.assertIn('if errorlevel 1', bat)
+
+    def test_build_instructions_run_preflight_before_gradle(self):
+        readme = (ROOT/'README.md').read_text().split('## Build from source', 1)[1].split('## Validation', 1)[0]
+        self.assertLess(readme.index('python3 scripts/verify_gradle_wrapper.py'), readme.index('./gradlew '))
+        self.assertLess(readme.index('python scripts\\verify_gradle_wrapper.py'), readme.index('gradlew.bat '))
 
 
 if __name__ == '__main__':
