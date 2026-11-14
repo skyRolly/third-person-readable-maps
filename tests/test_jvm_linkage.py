@@ -634,6 +634,51 @@ class ClassFileFixtures(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'ambiguous declared libraries'):
             runtime.lookup('org/joml/Api')
 
+    def test_mutually_exclusive_platform_libraries_are_each_checked(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); lib = root/'src/org/joml'; app = root/'src/app'
+            lib.mkdir(parents=True); app.mkdir(parents=True); out = root/'classes'; out.mkdir()
+            api, caller = lib/'Api.java', app/'Caller.java'
+            api.write_text('package org.joml; public class Api { public static void run() {} }')
+            caller.write_text('package app; public class Caller { void call() { org.joml.Api.run(); } }')
+            subprocess.run([self.javac, '--release', '8', '-d', str(out), str(api), str(caller)],
+                           check=True, capture_output=True)
+            mod = linkage.parse((out/'app/Caller.class').read_bytes())
+            def library():
+                data = io.BytesIO()
+                with ZipFile(data, 'w') as z: z.write(out/'org/joml/Api.class', 'org/joml/Api.class')
+                return data.getvalue()
+            normal = library()
+            api.write_text('package org.joml; public class Api { public void run() {} }')
+            subprocess.run([self.javac, '--release', '8', '-d', str(out), str(api)],
+                           check=True, capture_output=True)
+            mac = library(); blobs = {'fixture:normal':normal, 'fixture:mac':mac}
+            def item(url, rules):
+                data = blobs[url]
+                return {'name':'org.joml:joml:1.0', 'rules':rules, 'downloads':{'artifact':{
+                    'url':url, 'sha1':hashlib.sha1(data).hexdigest(), 'size':len(data)}}}
+            metadata = {'libraries':[
+                item('fixture:normal', [{'action':'allow'}, {'action':'disallow','os':{'name':'osx'}}]),
+                item('fixture:mac', [{'action':'allow','os':{'name':'osx'}}])]}
+            runtime = game_linkage.RuntimeLibraries(metadata, lambda artifact:blobs[artifact['url']], 'fixture')
+            self.assertEqual(runtime.platforms(), ['linux', 'osx'])
+            empty = io.BytesIO()
+            with ZipFile(empty, 'w'): pass
+            with ZipFile(io.BytesIO(empty.getvalue())) as game:
+                lookup = game_linkage.make_class_lookup({mod['name']:mod}, game, {}, {}, {}, 'fixture', runtime.lookup)
+                for platform in runtime.platforms():
+                    runtime.select(platform); lookup.cache_clear()
+                    if platform == 'linux':
+                        game_linkage.verify_declared_libraries(metadata, {mod['name']:mod}, {}, lambda x:blobs[x['url']],
+                                                              'fixture', runtime_libraries=runtime, class_lookup=lookup)
+                    else:
+                        with self.assertRaisesRegex(ValueError, 'static/instance mismatch'):
+                            game_linkage.verify_declared_libraries(metadata, {mod['name']:mod}, {}, lambda x:blobs[x['url']],
+                                                                  'fixture', runtime_libraries=runtime, class_lookup=lookup)
+            metadata['libraries'][0]['rules'] = [{'action':'allow','os':{'arch':'x86'}}]
+            with self.assertRaisesRegex(ValueError, 'unsupported library OS rule'):
+                game_linkage.RuntimeLibraries(metadata, lambda x:blobs[x['url']], 'fixture').platforms()
+
     def test_inherited_game_member_and_effective_mixin_field(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); game = root/'src/net/minecraft'; app = root/'src/app'

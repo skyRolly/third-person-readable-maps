@@ -188,29 +188,67 @@ LIBRARY_PREFIXES = {
 
 
 class RuntimeLibraries:
-    """Lazy classpath of uniquely selected, integrity-checked runtime libraries."""
+    """Lazy, platform-selected classpath of integrity-checked runtime libraries."""
     def __init__(self, metadata, fetch_checked, version):
         self.metadata, self.fetch_checked, self.version = metadata, fetch_checked, version
         self._archives, self._classes = {}, {}
+        self.platform = 'linux'
+
+    def artifacts(self, prefix, platform):
+        coordinate = LIBRARY_PREFIXES[prefix]
+        artifacts = {}
+        for entry in self.metadata.get('libraries', []):
+            parts = entry.get('name', '').split(':')
+            if tuple(parts[:2]) != coordinate or len(parts) != 3:
+                continue
+            artifact = entry.get('downloads', {}).get('artifact')
+            if not artifact:
+                continue
+            allowed = 'rules' not in entry
+            if 'rules' in entry:
+                rules = entry['rules']
+                jvm.require(isinstance(rules, list), f'{self.version}: invalid library rules')
+                for rule in rules:
+                    jvm.require(isinstance(rule, dict) and set(rule) <= {'action', 'os'} and
+                                rule.get('action') in ('allow', 'disallow'),
+                                f'{self.version}: unsupported library rule')
+                    os_rule = rule.get('os', {})
+                    jvm.require(isinstance(os_rule, dict) and set(os_rule) <= {'name'} and
+                                ('name' not in os_rule or os_rule['name'] in ('linux', 'windows', 'osx')),
+                                f'{self.version}: unsupported library OS rule')
+                    if not os_rule or os_rule['name'] == platform:
+                        allowed = rule['action'] == 'allow'
+            if allowed:
+                key = (artifact['sha1'], artifact['size'])
+                artifacts.setdefault(key, artifact)
+        return artifacts
+
+    def platforms(self):
+        # Check every distinct library classpath for the three launcher OSes.
+        seen, result = set(), []
+        for platform in ('linux', 'windows', 'osx'):
+            signature = tuple((prefix, tuple(sorted(self.artifacts(prefix, platform)))) for prefix in LIBRARY_PREFIXES)
+            if signature not in seen:
+                seen.add(signature); result.append(platform)
+        return result
+
+    def select(self, platform):
+        jvm.require(platform in ('linux', 'windows', 'osx'), 'unsupported runtime platform')
+        self.platform = platform
+        self._classes.clear()
 
     def archive(self, prefix):
         from io import BytesIO
         from zipfile import ZipFile
-        if prefix not in self._archives:
-            coordinate = LIBRARY_PREFIXES[prefix]
-            artifacts = {}
-            for entry in self.metadata.get('libraries', []):
-                parts = entry.get('name', '').split(':')
-                if tuple(parts[:2]) == coordinate and len(parts) == 3:
-                    artifact = entry.get('downloads', {}).get('artifact')
-                    if artifact:
-                        key = (artifact['url'], artifact['sha1'], artifact['size'])
-                        artifacts[key] = artifact
-            jvm.require(artifacts, f'{self.version}: no declared library for {prefix}')
-            jvm.require(len(artifacts) == 1, f'{self.version}: ambiguous declared libraries for {prefix}')
-            artifact = next(iter(artifacts.values()))
-            self._archives[prefix] = (ZipFile(BytesIO(self.fetch_checked(artifact))), artifact['sha1'])
-        return self._archives[prefix]
+        artifacts = self.artifacts(prefix, self.platform)
+        jvm.require(artifacts, f'{self.version}: no declared library for {prefix} on {self.platform}')
+        jvm.require(len(artifacts) == 1,
+                    f'{self.version}: ambiguous declared libraries for {prefix} on {self.platform}')
+        key, artifact = next(iter(artifacts.items()))
+        cache_key = (prefix, key)
+        if cache_key not in self._archives:
+            self._archives[cache_key] = (ZipFile(BytesIO(self.fetch_checked(artifact))), artifact['sha1'])
+        return self._archives[cache_key]
 
     def lookup(self, name):
         if name in self._classes:
