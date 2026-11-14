@@ -1,0 +1,7 @@
+# Wrapper and linkage hardening validation — 2026-11-14
+
+The [build index](builds/index.json) binds 13 proposed commits to clean Linux builds, artifact names and hashes. The retained runner archives each source and runs the coordination-owned Wrapper preflight before Gradle. The [48-version API index](api/index.json) and [nine negative controls](negative/index.json) use the committed product verifier; the input JARs match the final clean builds byte for byte. These are bounded static checks, not full JVM or rendering proof.
+
+The [hosted checks](hosted-checks.json) record passing Linux and Windows builds on all 13 proposal heads, including the successful rerun of #21 after a diagnostic upload connection reset. GitHub checked synthetic PR merge commits; the [recorded parents and trees](hosted-pr-merge-trees.json) show each tested tree equals its proposal tree. The [artifact inventory](artifact-nest-inventory.json) examined the same JAR hashes: no current packaged class uses nest metadata or cross-class private members. The shared verifier finding remains real for future supported artifacts.
+
+The [earlier runtime observations](../../runtime-smoke-verifier-followup-2026-11-13/) retain their original source commits. Every observed JAR hash matches the new clean build, allowing an artifact-continuity statement, not a claim of new execution or approved merged-source runtime evidence. Historical runners elsewhere describe earlier operations and must not be reused as current secure build instructions.

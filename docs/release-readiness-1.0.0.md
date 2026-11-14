@@ -7,17 +7,17 @@ The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readabl
 remains available at its original commit.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
-The [current product proposal heads](version-consistency-1.0.0/current-heads.json) have advanced for Wrapper and linkage corrections. Current-head validation is being refreshed; earlier runtime observations remain bound to their original source commits.
+The [current product proposal heads](version-consistency-1.0.0/current-heads.json) have passed the bounded static sweep and hosted build checks. Earlier runtime observations remain bound to their original source commits, even where JAR hashes match.
 
 | Gate | Status | Evidence and remaining action |
 |---|---|---|
 | Coordination-only architecture | PASS | `main` owns coordination and no game Gradle project. Preserve that separation. |
 | Compatibility grouping | PENDING REVIEW | Ten proposed legacy groups plus three integrated groups cover 48 explicit versions. No new split is proposed; independent acceptance remains. |
 | Version synchronization | PENDING REVIEW | All 13 proposed product heads and the proposed coordinator use 1.0.0. The actual integrated branches remain 0.0.2 until reviewed PRs merge. |
-| Wrapper build security | PENDING REVIEW | Canonical Wrapper validation and pre-execution ordering are proposed across all product, audit and release paths. Trusted coordinator validation is separate from candidate-controlled PR CI; independent review and final hosted checks remain. |
+| Wrapper build security | PENDING REVIEW | Canonical Wrapper validation and pre-execution ordering are proposed across all product, audit and release paths. Trusted coordinator validation is separate from candidate-controlled PR CI; independent review remains; all 13 proposed product heads passed hosted builds. |
 | Static API verification | PENDING REVIEW | A final-head 48-version verifier sweep completed locally; independent review of the bounded nest, descriptor, Mixin and linkage contract remains required. |
-| Proposed-head Linux CI | PENDING REVIEW | Hosted Linux checks are running on the advanced product heads; prior successful checks are historical. |
-| Proposed-head Windows CI | PENDING REVIEW | Hosted Windows checks are running on the advanced product heads; prior successful checks are historical. |
+| Proposed-head Linux CI | PASS | All 13 proposal heads passed hosted Linux builds; see the [current check record](version-consistency-1.0.0/wrapper-hardening-2026-11-14/hosted-checks.json). Merged-head CI remains required. |
+| Proposed-head Windows CI | PASS | All 13 proposal heads passed hosted Windows builds, including the #21 rerun after an artifact upload connection reset. Merged-head CI remains required. |
 | Coordination CI | BLOCKED | Coordination tests and workflow lint now run independently of a separate live-release prerequisite job. The latter remains blocked while integrated maintenance sources lack the proposed verifier and version; strict release authorization requires both checks and rechecks the live sources. |
 | Installed-client startup | PENDING REVIEW | Prior-source local-world observations cover all 48 versions. New clean builds matched the previously tested JAR hashes; this is artifact continuity, not approved merged-source runtime evidence. |
 | Rendering-state and map-ID correctness | FAIL | Targeted legacy probes support the texture, lighting and NBT guards, but all 19 component-era game codecs coerce the tested malformed numbers to zero. A [1.21.11 local-world probe](component-map-id-item-loading-2026-11-13/host-inventory-attempt/) also observed actual item loading and displayed map-zero terrain. Other item-loading paths and a bounded, independently reviewed remedy remain open. |
@@ -36,8 +36,8 @@ The [current product proposal heads](version-consistency-1.0.0/current-heads.jso
 | Auditor access | BLOCKED | Configure and verify the read-only auditor credential through the administrator without exposing its value. |
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
-| Provenance and checksums | PENDING REVIEW | New source-bound build hashes were generated; a final candidate aggregation and eventual approved integrated-source provenance remain required. |
-| Non-publishing rehearsal | PENDING REVIEW | Repeat the candidate aggregation against the newly advanced product heads; approved integrated-head rehearsal remains NOT RUN. |
+| Provenance and checksums | PENDING REVIEW | The [candidate manifest and checksums](legacy-dry-run-1.0.0-2026-11-14/wrapper-hardening-final/) bind 13 proposal heads and artifacts; approved integrated-source provenance remains required. |
+| Non-publishing rehearsal | PENDING REVIEW | The [candidate rehearsal](legacy-dry-run-1.0.0-2026-11-14/wrapper-hardening-final/) passed 13-group aggregation and 15 negative controls; approved integrated-head rehearsal remains NOT RUN. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |

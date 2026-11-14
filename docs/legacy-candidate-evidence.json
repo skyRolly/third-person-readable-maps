@@ -2,7 +2,7 @@
   "schema": 1,
   "mod_version": "1.0.0",
   "observed_on": "2026-11-13",
-  "static_checks_observed_on": "2026-11-13",
+  "static_checks_observed_on": "2026-11-14",
   "historical_evidence": "docs/historical-0.0.2-2026-11-05/legacy-candidate-evidence.json",
   "groups": {
     "1.21.9-1.21.10": {
@@ -16,8 +16,8 @@
         "1.21.9",
         "1.21.10"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.21.9-1.21.10 on 1.21.8 rejected (exit 1): API compatibility check failed: 1.21.8: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_11659;I)V; 1.21.9-1.21.10 on 1.21.11 rejected (exit 1): API compatibility check failed: 1.21.11: missing Mixin target net/minecraft/class_10426.method_65577(Lnet/minecraft/class_1309;Lnet/minecraft/class_10426;Lnet/minecraft/class_10442;)V",
       "limitations": [
@@ -29,13 +29,13 @@
       ],
       "per_version": {
         "1.21.9": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.9/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.10": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.10/",
           "movement_observed_on": "2026-11-13"
@@ -56,8 +56,8 @@
         "1.21.7",
         "1.21.8"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.21.4-1.21.8 on 1.21.9 rejected (exit 1): API compatibility check failed: 1.21.9: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
@@ -69,31 +69,31 @@
       ],
       "per_version": {
         "1.21.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.5": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.5/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.6": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.6/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.7": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.7/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.8": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.8/",
           "movement_observed_on": "2026-11-13"
@@ -111,8 +111,8 @@
         "1.21.2",
         "1.21.3"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
@@ -124,13 +124,13 @@
       ],
       "per_version": {
         "1.21.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.3": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.36 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.3/",
           "movement_observed_on": "2026-11-13"
@@ -148,8 +148,8 @@
         "1.21",
         "1.21.1"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
@@ -161,13 +161,13 @@
       ],
       "per_version": {
         "1.21": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.81 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.1/",
           "movement_observed_on": "2026-11-13"
@@ -185,8 +185,8 @@
         "1.20.5",
         "1.20.6"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
@@ -198,13 +198,13 @@
       ],
       "per_version": {
         "1.20.5": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.5/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.6": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 14.89 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.6/",
           "movement_observed_on": "2026-11-13"
@@ -226,8 +226,8 @@
         "1.20.3",
         "1.20.4"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
@@ -239,37 +239,37 @@
       ],
       "per_version": {
         "1.19.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 8.85 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.16 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.3": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.28 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.4/",
           "movement_observed_on": "2026-11-13"
@@ -293,8 +293,8 @@
         "1.19.1",
         "1.19.2"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.17-1.19.2 on 1.19.3 rejected (exit 1): API compatibility check failed: 1.19.3: missing classes: ['net/minecraft/class_1158', 'net/minecraft/class_1159', 'net/minecraft/class_1160']",
       "limitations": [
@@ -306,49 +306,49 @@
       ],
       "per_version": {
         "1.17": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17/",
           "movement_observed_on": "2026-11-13"
         },
         "1.17.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.60 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.2/",
           "movement_observed_on": "2026-11-13"
@@ -373,8 +373,8 @@
         "1.16.4",
         "1.16.5"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.15-1.16.5 on 1.14.4 rejected (exit 1): API compatibility check failed: 1.14.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V; 1.15-1.16.5 on 1.17 rejected (exit 1): API compatibility check failed: 1.17: missing game members: [('field', 'net/minecraft/class_572', 'field_3390', 'Lnet/minecraft/class_630;'), ('method', 'net/minecraft/class_1806', 'method_7997', '(Lnet/minecraft/class_1799;Lnet/minecraft/class_1937;)Lnet/minecraft/class_22;'), ('method', 'net/minecraft/class_330', 'method_1773', '(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_22;ZI)V')]",
       "limitations": [
@@ -386,55 +386,55 @@
       ],
       "per_version": {
         "1.15": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15/",
           "movement_observed_on": "2026-11-13"
         },
         "1.15.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.15.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.87 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.3": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 15.10 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.5": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.06 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.5/",
           "movement_observed_on": "2026-11-13"
@@ -451,8 +451,8 @@
       "versions": [
         "1.19.3"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.19.3 on 1.19.2 rejected (exit 1): API compatibility check failed: 1.19.2: missing classes: ['net/minecraft/class_7833']; 1.19.3 on 1.19.4 rejected (exit 1): API compatibility check failed: 1.19.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
@@ -464,7 +464,7 @@
       ],
       "per_version": {
         "1.19.3": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.44 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.3/",
           "movement_observed_on": "2026-11-13"
@@ -485,8 +485,8 @@
         "1.14.3",
         "1.14.4"
       ],
-      "static_linkage": "PENDING: final proposal verifier sweep and exact-head CI",
-      "client_startup": "HISTORICAL: prior-source local-world observations; final artifact identity comparison pending",
+      "static_linkage": "PASS: bounded final-head packaged-JAR sweep; independent review pending",
+      "client_startup": "HISTORICAL: prior-source local-world observations used the same JAR hash; approved-source runtime acceptance NOT RUN",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.14-1.14.4 on 1.15 rejected (exit 1): API compatibility check failed: 1.15: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;)V",
       "limitations": [
@@ -498,31 +498,31 @@
       ],
       "per_version": {
         "1.14": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.71 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.1": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.2": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.3": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.38 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
+          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
           "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.49 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.4/",
           "movement_observed_on": "2026-11-13"

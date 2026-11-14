@@ -2,9 +2,9 @@
 
 All ten proposed legacy implementations remain draft PRs against placeholder `mc/*` branches. They are not integrated or release-ready. The coordinated proposed mod version is **1.0.0**; actual integrated branches remain 0.0.2 pending their separate reviewed PRs. No coordinated release has been published.
 
-The earlier 42-version instruction-aware verification predates the current proposed heads; the final sweep is pending. Historical verification was performed within the bounded contract described in the [review matrix](review-resolution-1.0.0.md). Historical local-world observations used earlier source commits; the current artifact comparison is pending. They do not establish approved-source runtime acceptance. The [current per-version inventory](legacy-version-inventory.md), [candidate evidence](legacy-candidate-evidence.json), [prior 1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) retain separate identities.
+The current heads passed the 48-version packaged-JAR sweep within the bounded contract described in the [review matrix](review-resolution-1.0.0.md). Historical local-world observations used earlier source commits; all current clean-built JAR hashes match those observations. They do not establish approved-source runtime acceptance. The [current per-version inventory](legacy-version-inventory.md), [candidate evidence](legacy-candidate-evidence.json), [prior 1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) retain separate identities.
 
-| Group | Draft PR | Proposed source HEAD | 1.0.0 JAR SHA-256 | Prior-source local-world smoke (current JAR comparison pending) |
+| Group | Draft PR | Proposed source HEAD | 1.0.0 JAR SHA-256 | Prior-source local-world smoke (same JAR hash) |
 |---|---|---|---|---|
 | 1.14-1.14.4 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/23) | `4238f7e72b6c255fa46b77773ad0a2f2dedb7956` | `e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b` | 5/5 partial local-world evidence |
 | 1.15-1.16.5 | [PR](https://github.com/skyRolly/third-person-readable-maps/pull/21) | `2ccfa1bd66fab8ee9da2555312a0fde14ab82290` | `11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c` | 9/9 partial local-world evidence |
