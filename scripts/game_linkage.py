@@ -100,8 +100,13 @@ def verify_game_instructions(mod_nodes, mixin_targets, game, forward, reverse, m
             if target and (target in mod_nodes or
                            target.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))):
                 try:
-                    jvm.require(target not in mixin_targets,
-                                'unsupported class use referencing a Mixin: ' + target)
+                    if target in mixin_targets:
+                        # Mixin rewrites a direct self CHECKCAST to its target
+                        # when merging the handler. Other Mixin type uses need
+                        # separate transformation proof and remain unsupported.
+                        jvm.require(target == name and use['name'] == target and use['operation'] == 'checkcast',
+                                    'unsupported class use referencing a Mixin: ' + target)
+                        use = dict(use, name=mixin_targets[target])
                     jvm.validate_class_use(use, caller, lookup)
                 except ValueError as exc:
                     raise ValueError(version + ': ' + str(exc) + ' from ' + name) from exc
