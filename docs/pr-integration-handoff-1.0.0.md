@@ -22,6 +22,8 @@ Coordination [#15](https://github.com/skyRolly/third-person-readable-maps/pull/1
 
 The initial fetched integrated heads were `main` `794aec0eda8e7bfaea5f5e14307766b359589d8f`, `mc/1.21.11` `177f5708727ae4c152091d185536aaa734063280`, `mc/26.1-26.2` `453cf35695cf07be4072f77895cdbafbed617870`, and `mc/26.3` `226b1de7dd4e7c2a75ec35eef1697434462e4f54`. All ten legacy maintenance targets still pointed to the 1.21.11 baseline at inspection; their actual ports are in the candidate PR heads above. Integrated product sources remain 0.0.2 while all proposed product heads use 1.0.0.
 
+The [version-consistency table](version-consistency-1.0.0/) records each current target's properties, proposed version, artifact hash and local-world smoke coverage separately.
+
 The open [Dependabot PR decisions](dependency-update-prs-2026-11-12.md) preserve #24–#30 separately; rebase or recreate as needed after target integration and rerun their checks. Repository configuration currently deletes merged head branches automatically; the candidate audit has a narrowly verified post-merge continuation and requires an explicit maintenance transition. Branch protection, source approvals and release gates remain unsatisfied.
 
 The [November 14 PR snapshot](pr-checks-2026-11-14.json) records the open PR heads, review state, checks and bot changed-file lists. Its coordination head is a point-in-time observation and may be superseded by later evidence commits.

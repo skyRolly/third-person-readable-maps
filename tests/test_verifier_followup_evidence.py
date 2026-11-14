@@ -295,6 +295,26 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
             self.assertEqual(result['protected_uses'], [])
             self.assertIn('jvm_linkage.py', result['archived_script_sha256'])
 
+    def test_version_inventory_distinguishes_targets_from_proposals(self):
+        index = json.loads((ROOT / 'docs/version-consistency-1.0.0/index.json').read_text())
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']
+        runtime = json.loads((RUNTIME / 'index.json').read_text())['versions']
+        self.assertEqual(set(index['groups']), set(refs))
+        for group, row in index['groups'].items():
+            self.assertEqual(row['target_mod_version'], '0.0.2')
+            self.assertEqual(row['proposed_mod_version'], '1.0.0')
+            self.assertEqual(row['proposed_head'], refs[group]['new_head'])
+            self.assertEqual(row['sha256'], builds[group]['sha256'])
+            self.assertEqual(row['local_world_observations'], len(row['advertised_versions']))
+            self.assertTrue(all(runtime[v]['source_commit'] == row['proposed_head'] for v in row['advertised_versions']))
+            if group in candidates:
+                self.assertEqual(row['target_minecraft_version'], '1.21.11')
+                self.assertIn('placeholder', row['target_status'])
+            else:
+                self.assertIn('integrated maintenance', row['target_status'])
+
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'
         index = json.loads(path.read_text())
