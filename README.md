@@ -61,6 +61,7 @@ namespace, both Mixin target signatures, and game symbols against all five adver
 A Gradle build does not run the Python fixture suite or the cross-version API
 verifier. For the complete local product validation, use Java 25 and Python 3;
 the wrapper and API checks require network access to Gradle, Mojang and Fabric.
+The Windows build entry point also runs the Wrapper preflight before Gradle.
 Run these commands from the repository root:
 
 ```sh
