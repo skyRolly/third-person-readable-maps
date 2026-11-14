@@ -29,7 +29,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.10+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -69,7 +69,7 @@
       "candidate_group": "1.21.9\u20131.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.10/"
@@ -92,7 +92,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.9+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -132,7 +132,7 @@
       "candidate_group": "1.21.9\u20131.21.10 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.9/"
@@ -155,7 +155,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.8+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -192,7 +192,7 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.8/"
@@ -215,7 +215,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.7+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -252,7 +252,7 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.7/"
@@ -275,7 +275,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.6+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -312,7 +312,7 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.6/"
@@ -335,7 +335,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -372,7 +372,7 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.5/"
@@ -395,7 +395,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.4+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -433,7 +433,7 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/"
@@ -456,7 +456,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.3+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -488,7 +488,7 @@
       "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 78ef3c311f2db755c87907af6d698ed4527bd2de; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.36 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.3/"
@@ -511,7 +511,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.2+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -543,7 +543,7 @@
       "candidate_group": "1.21.2\u20131.21.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 78ef3c311f2db755c87907af6d698ed4527bd2de; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.2/"
@@ -566,7 +566,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.1+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -601,7 +601,7 @@
       "candidate_group": "1.21\u20131.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.1/"
@@ -624,7 +624,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -659,7 +659,7 @@
       "candidate_group": "1.21\u20131.21.1 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 13.81 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21/"
@@ -682,7 +682,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.6+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -717,7 +717,7 @@
       "candidate_group": "1.20.5\u20131.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source c0efb70ad1e01298c96441d18bc68f0b2674d6d6; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 14.89 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.6/"
@@ -740,7 +740,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -775,7 +775,7 @@
       "candidate_group": "1.20.5\u20131.20.6 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source c0efb70ad1e01298c96441d18bc68f0b2674d6d6; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.5/"
@@ -798,7 +798,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.4+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -835,7 +835,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 9.28 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.4/"
@@ -858,7 +858,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.3+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -895,7 +895,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.3/"
@@ -918,7 +918,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -955,7 +955,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 13.16 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.2/"
@@ -978,7 +978,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.1+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1015,7 +1015,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 8.85 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.1/"
@@ -1038,7 +1038,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1075,7 +1075,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20/"
@@ -1098,7 +1098,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.4+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1135,7 +1135,7 @@
       "candidate_group": "1.19.4\u20131.20.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.4/"
@@ -1158,7 +1158,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.3+build.5",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1195,7 +1195,7 @@
       "candidate_group": "1.19.3 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 2cb3f385443e6db375eb46077d562421ed7aa4cc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.44 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.3/"
@@ -1218,7 +1218,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.2+build.28",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1255,7 +1255,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.2/"
@@ -1278,7 +1278,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.1+build.6",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1315,7 +1315,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.1/"
@@ -1338,7 +1338,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1375,7 +1375,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19/"
@@ -1398,7 +1398,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1434,7 +1434,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 13.60 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.2/"
@@ -1457,7 +1457,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18.1+build.22",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1493,7 +1493,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.1/"
@@ -1516,7 +1516,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1552,7 +1552,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18/"
@@ -1575,7 +1575,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.17.1+build.65",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1611,7 +1611,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17.1/"
@@ -1634,7 +1634,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.17+build.13",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1670,7 +1670,7 @@
       "candidate_group": "1.17\u20131.19.2 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17/"
@@ -1693,7 +1693,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.5+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1731,7 +1731,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 9.06 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.5/"
@@ -1754,7 +1754,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.4+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1792,7 +1792,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.4/"
@@ -1815,7 +1815,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.3+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1853,7 +1853,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 15.10 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.3/"
@@ -1876,7 +1876,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.2+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1914,7 +1914,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.2/"
@@ -1937,7 +1937,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.1+build.21",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1975,7 +1975,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.1/"
@@ -1998,7 +1998,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2036,7 +2036,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16/"
@@ -2059,7 +2059,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.2+build.17",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2097,7 +2097,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.87 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.2/"
@@ -2120,7 +2120,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.1+build.37",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2158,7 +2158,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.1/"
@@ -2181,7 +2181,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2219,7 +2219,7 @@
       "candidate_group": "1.15\u20131.16.5 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15/"
@@ -2242,7 +2242,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.4+build.18",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2279,7 +2279,7 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 9.49 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.4/"
@@ -2302,7 +2302,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.3+build.13",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2345,7 +2345,7 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 13.38 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.3/"
@@ -2368,7 +2368,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.2+build.7",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2411,7 +2411,7 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.2/"
@@ -2434,7 +2434,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.1+build.10",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2477,7 +2477,7 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.1/"
@@ -2500,7 +2500,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: earlier-source installed JAR joined a Linux local world; final-proposal JAR has the same SHA-256; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14+build.21",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2543,7 +2543,7 @@
       "candidate_group": "1.14\u20131.14.4 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
-      "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; clean final-proposal JAR has the same SHA-256; strict approved-source runtime evidence remains outstanding",
+      "client_startup": "HISTORICAL: prior-source local-world observation; final artifact identity comparison pending",
       "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 9.71 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14/"

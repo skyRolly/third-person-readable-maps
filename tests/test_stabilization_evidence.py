@@ -21,7 +21,7 @@ def sha256(path):
 class StabilizationEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.heads = read(ROOT / 'docs/version-consistency-1.0.0/current-heads.json')['groups']
+        cls.heads = read(VALIDATION / 'heads.json')['groups']
         cls.builds = read(VALIDATION / 'builds.json')
         cls.runtime = read(ROOT / 'docs/runtime-smoke-verifier-followup-2026-11-13/index.json')['versions']
         cls.api = read(VALIDATION / 'api.json')['results']

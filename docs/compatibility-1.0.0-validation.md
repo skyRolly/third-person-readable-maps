@@ -1,5 +1,7 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
+**Superseded snapshot:** the proposed heads have advanced. See [current source pins](version-consistency-1.0.0/current-heads.json); final-head validation is in progress.
+
 Current proposal heads are unmerged; ten legacy target branches remain placeholders. The [source and build index](version-consistency-1.0.0/stabilization-2026-11-14/) binds every clean 1.0.0 JAR, verifier run and hosted Linux/Windows check to its proposed source. The static result is limited to the documented fail-closed verifier contract.
 
 The local-world startup and walking observations below were performed on November 13 against earlier source commits, and the clean final-proposal JARs match those tested JARs byte for byte. That supports artifact continuity, but it is neither a new test nor evidence bound to an approved merged source. Full visual acceptance, hardware-GPU, multiplayer and independent review remain open. See the [historical test index](runtime-smoke-verifier-followup-2026-11-13/) and [release gates](release-readiness-1.0.0.md).

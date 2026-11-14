@@ -1,5 +1,7 @@
 # 1.0.0 cross-branch review resolution
 
+The current Wrapper, nestmate and descriptor investigation is recorded in the [review worklog](worklogs/wrapper-nest-review-2026-11-14.md). The sections below preserve prior-round observations.
+
 ## November 14 stabilization findings
 
 The [current source pins](version-consistency-1.0.0/current-heads.json) supersede

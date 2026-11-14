@@ -1,111 +1,111 @@
 {
   "schema": 1,
   "observed_on": "2026-11-14",
-  "status": "final proposal heads; clean builds, 48-version static sweep and hosted OS checks passed; review and strict runtime acceptance pending",
+  "status": "current proposed heads; final-head builds, static checks and hosted CI pending",
   "groups": {
-    "1.21.9-1.21.10": {
-      "pr": 13,
-      "old_head": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
-      "new_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
-      "branch": "candidate/mc-1.21.9-1.21.10",
-      "target": "mc/1.21.9-1.21.10",
-      "intermediate_head": "68f01af34473bf065d3ad5858825ed7508b37861"
-    },
-    "1.21.4-1.21.8": {
-      "pr": 14,
-      "old_head": "55df5055388918d5df96a3f61f6c9dc999042271",
-      "new_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
-      "branch": "candidate/mc-1.21.4-1.21.8",
-      "target": "mc/1.21.4-1.21.8",
-      "intermediate_head": "f9dfab6c83cf52ed2ee6333eb806b05601281498"
-    },
-    "1.21.2-1.21.3": {
-      "pr": 16,
-      "old_head": "78ef3c311f2db755c87907af6d698ed4527bd2de",
-      "new_head": "444cab923238eea930c5e332eff0815dbbde0e20",
-      "branch": "candidate/mc-1.21.2-1.21.3",
-      "target": "mc/1.21.2-1.21.3",
-      "intermediate_head": "ffadfd795ee262c5d1d2b0deed3287bb0426dfcf"
-    },
-    "1.21-1.21.1": {
-      "pr": 17,
-      "old_head": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
-      "new_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
-      "branch": "candidate/mc-1.21-1.21.1",
-      "target": "mc/1.21-1.21.1",
-      "intermediate_head": "12f8bd9f65d8a55f40c60b71a29e535c42ad4a91"
-    },
-    "1.20.5-1.20.6": {
-      "pr": 18,
-      "old_head": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
-      "new_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
-      "branch": "candidate/mc-1.20.5-1.20.6",
-      "target": "mc/1.20.5-1.20.6",
-      "intermediate_head": "3b8ee8306891ef5e32c9c34fc0b987b4a77d4c4e"
-    },
-    "1.19.4-1.20.4": {
-      "pr": 19,
-      "old_head": "991fc1d6d21819f642c9963f91570fb10ab40f92",
-      "new_head": "92efc418d47b45ae151440391204231570a1e7af",
-      "branch": "candidate/mc-1.19.4-1.20.4",
-      "target": "mc/1.19.4-1.20.4",
-      "intermediate_head": "85acd3ccca9d00d1ec2ad4acdd747ebd11b4438d"
-    },
-    "1.17-1.19.2": {
-      "pr": 20,
-      "old_head": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
-      "new_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
-      "branch": "candidate/mc-1.17-1.19.2",
-      "target": "mc/1.17-1.19.2",
-      "intermediate_head": "bfc0d21d6ba36b8148576a9426e08f3970ffa0e2"
+    "1.14-1.14.4": {
+      "pr": 23,
+      "old_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "new_head": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
+      "branch": "candidate/mc-1.14-1.14.4",
+      "target": "mc/1.14-1.14.4",
+      "intermediate_head": "584a75e56cb19713d6366f0c05c3860bbd0ecc59"
     },
     "1.15-1.16.5": {
       "pr": 21,
-      "old_head": "24cd97031ac91ab3595c50add83c2208f5230fbc",
-      "new_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "old_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "new_head": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
       "branch": "candidate/mc-1.15-1.16.5",
       "target": "mc/1.15-1.16.5",
-      "intermediate_head": "06669011fa32a628d38008bf0374fd0618ef90c4"
+      "intermediate_head": "481f5a6661e8d47b13255e692540d4ed6e9167c8"
+    },
+    "1.17-1.19.2": {
+      "pr": 20,
+      "old_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "new_head": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+      "branch": "candidate/mc-1.17-1.19.2",
+      "target": "mc/1.17-1.19.2",
+      "intermediate_head": "31ccb01817930fe6f0393d4f9db27b6a1a2be986"
     },
     "1.19.3": {
       "pr": 22,
-      "old_head": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
-      "new_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "old_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "new_head": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
       "branch": "candidate/mc-1.19.3",
       "target": "mc/1.19.3",
-      "intermediate_head": "b9fa23ecefdec6014d00319a848ba6d26de89484"
+      "intermediate_head": "7ef964291552aeee02ae76988f98fec08921486e"
     },
-    "1.14-1.14.4": {
-      "pr": 23,
-      "old_head": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
-      "new_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
-      "branch": "candidate/mc-1.14-1.14.4",
-      "target": "mc/1.14-1.14.4",
-      "intermediate_head": "bc0b5a9593a71ad9afc42dc688ad7f781921a79d"
+    "1.19.4-1.20.4": {
+      "pr": 19,
+      "old_head": "92efc418d47b45ae151440391204231570a1e7af",
+      "new_head": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+      "branch": "candidate/mc-1.19.4-1.20.4",
+      "target": "mc/1.19.4-1.20.4",
+      "intermediate_head": "3ca89507164dfe494e6c895f05454134c7d40a2c"
+    },
+    "1.20.5-1.20.6": {
+      "pr": 18,
+      "old_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "new_head": "ec9ba516a2000c0a83baf689ff38433790119331",
+      "branch": "candidate/mc-1.20.5-1.20.6",
+      "target": "mc/1.20.5-1.20.6",
+      "intermediate_head": "d942055d9f63526b0fb43f35ef31914fa9ea2426"
+    },
+    "1.21-1.21.1": {
+      "pr": 17,
+      "old_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "new_head": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
+      "branch": "candidate/mc-1.21-1.21.1",
+      "target": "mc/1.21-1.21.1",
+      "intermediate_head": "1b1c7f2c5fbb706dc1696c5cddddf03da2931d77"
     },
     "1.21.11": {
       "pr": 31,
-      "old_head": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
-      "new_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "old_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "new_head": "e1ca4915cac0ee52c0e92331e7548b58fa594d18",
       "branch": "maintenance/mc-1.21.11-1.0.0",
       "target": "mc/1.21.11",
-      "intermediate_head": "020ed31418eb5f743a9a6e7a6fffb2163accae27"
+      "intermediate_head": "cfdf2c2e5af8ff2e62f52e78f33271dadd3d599a"
+    },
+    "1.21.2-1.21.3": {
+      "pr": 16,
+      "old_head": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "new_head": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
+      "branch": "candidate/mc-1.21.2-1.21.3",
+      "target": "mc/1.21.2-1.21.3",
+      "intermediate_head": "423ce1f3003e6a3945a540ffcb52370bd3079c13"
+    },
+    "1.21.4-1.21.8": {
+      "pr": 14,
+      "old_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "new_head": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+      "branch": "candidate/mc-1.21.4-1.21.8",
+      "target": "mc/1.21.4-1.21.8",
+      "intermediate_head": "97fee8f2a7d05587fdd5ec78f90f177830026d5c"
+    },
+    "1.21.9-1.21.10": {
+      "pr": 13,
+      "old_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "new_head": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
+      "branch": "candidate/mc-1.21.9-1.21.10",
+      "target": "mc/1.21.9-1.21.10",
+      "intermediate_head": "bb0f9fec3a7c4ad46d4d3a519255597e66720f70"
     },
     "26.1-26.2": {
       "pr": 32,
-      "old_head": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
-      "new_head": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "old_head": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "new_head": "ec38b73e0206ab6bb49ba936f52e36ba81221d39",
       "branch": "maintenance/mc-26.1-26.2-1.0.0",
       "target": "mc/26.1-26.2",
-      "intermediate_head": "3f3dd404e92cd03afbd369235b1726762462986d"
+      "intermediate_head": "fc2edfca6e25eb5d207ba31a9d83b379cd4377b2"
     },
     "26.3": {
       "pr": 33,
-      "old_head": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
-      "new_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "old_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "new_head": "f44db59120f1695065da7d2d27e87ec30fb0ee5d",
       "branch": "maintenance/mc-26.3-1.0.0",
       "target": "mc/26.3",
-      "intermediate_head": "bca359279e47a4736e7cb677db9f14e4cce19ba2"
+      "intermediate_head": "7e9598ed2134727a817411387c37e1487a5aea1e"
     }
   }
 }

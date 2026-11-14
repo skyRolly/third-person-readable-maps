@@ -8,6 +8,8 @@ Current matches remain unresolved. The 26.2 runtime-only `netty-handler` 4.2.15.
 
 There is no repository SECURITY.md. Supported surfaces are the client-only Fabric mod and the published compatibility groups; source evidence is each branch's `build.gradle`, Fabric metadata, `ReadableMapSurface.java`, and `ReadableMapLayerMixin.java`. Those classes render maps using game APIs and contain no direct HTTP, TLS, logging-layout, native deserialization, or LZ4 entry point. This limits the mod-specific claim but does not prove that the hosting Minecraft process cannot reach an affected feature. Dependency origin is established by version manifests, not merely snapshot `relationship: direct`. Game libraries can run both in installed clients and development runs; the build does not bundle them.
 
+The [historical-game logging survey and critical disposition record](dependency-evidence/log4j-default-launcher-2026-11-14/) adds version-bound launcher configuration evidence and records 18 candidate remediation classifications; none changes the failing security gate.
+
 ## Additional static evidence
 
 [Runtime feature evidence](dependency-evidence/runtime-features.json) records a

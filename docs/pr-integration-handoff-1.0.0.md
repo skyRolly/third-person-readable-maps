@@ -1,5 +1,7 @@
 # 1.0.0 PR and integration handoff
 
+**Superseded snapshot:** the proposed heads have advanced. See [current source pins](version-consistency-1.0.0/current-heads.json); final-head validation is in progress.
+
 Observed 2026-11-14 UTC. All 14 development PRs are open drafts and none has an auto-merge request; the seven Dependabot PRs remain open. No independent submitted review was recorded in the refreshed review inventory. Automated investigation and this record do not substitute for independent human review. The [exact-head hosted check record](version-consistency-1.0.0/stabilization-2026-11-14/hosted-checks.json), [review applicability matrix](review-resolution-1.0.0.md), [48-version evidence](compatibility-1.0.0-validation.md), and [gate matrix](release-readiness-1.0.0.md) provide details.
 
 | PR | Target | Initial proposal head | Current proposal head | Review scope / finding | Hosted checks | Remaining review / dependencies |

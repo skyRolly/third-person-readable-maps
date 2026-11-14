@@ -87,7 +87,7 @@ def git(*args, check=True):
 def validate_release_verifier_files(group, files):
     required = {'scripts/verify_supported_apis.py', 'scripts/jvm_linkage.py', 'scripts/game_linkage.py',
                 'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
-                'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
+                'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py', 'tests/test_nestmate_linkage.py',
                 'tests/test_shared_verifier_sync.py'}
     require(required.issubset(files), group + ': integrated source lacks the required release API verifier')
 

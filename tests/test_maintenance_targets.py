@@ -72,7 +72,7 @@ class MaintenanceTargetTests(unittest.TestCase):
     def test_release_verifier_dependency_blocks_incomplete_source(self):
         required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py',
                     'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
-                    'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
+                    'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py', 'tests/test_nestmate_linkage.py',
                     'tests/test_shared_verifier_sync.py'}
         targets.validate_release_verifier_files('1.21.11', required)
         with self.assertRaisesRegex(ValueError, 'lacks the required'):
@@ -96,6 +96,25 @@ class MaintenanceTargetTests(unittest.TestCase):
                             ({'mod_version': '1.0.0'}, {'version': '0.0.2'})]:
             with self.subTest(props=props, metadata=item), self.assertRaisesRegex(ValueError, 'differs'):
                 targets.validate_coordinated_version('1.21.11', props, item, current)
+
+    def test_staged_maintenance_updates_keep_live_gate_failing_until_all_three(self):
+        required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py',
+                    'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
+                    'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
+                    'tests/test_nestmate_linkage.py', 'tests/test_shared_verifier_sync.py'}
+        groups = ('1.21.11', '26.1-26.2', '26.3')
+        for updated in range(4):
+            failures = []
+            for index, group in enumerate(groups):
+                files = required if index < updated else required - {'scripts/jvm_linkage.py'}
+                version = '1.0.0' if index < updated else '0.0.2'
+                try:
+                    targets.validate_release_verifier_files(group, files)
+                    targets.validate_coordinated_version(group, {'mod_version':version},
+                        {'version':'${version}'}, {'schema':1, 'version':'1.0.0'})
+                except ValueError:
+                    failures.append(group)
+            self.assertEqual(failures, list(groups[updated:]))
 
 
 if __name__ == '__main__':
