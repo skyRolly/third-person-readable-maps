@@ -41,7 +41,7 @@ java {
 }
 
 tasks.named('remapJar') {
-    archiveClassifier = "mc${project.minecraft_version}"
+    archiveClassifier = "mc${project.minecraft_group}"
 }
 
 jar {
