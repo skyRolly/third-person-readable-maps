@@ -50,7 +50,7 @@ def make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version
     @lru_cache(None)
     def lookup(name):
         if name in mod_nodes:
-            return mod_nodes[name]
+            return dict(mod_nodes[name], origin='candidate')
         # Runtime libraries retain their own namespace and are never remapped.
         if name.startswith(('org/joml/', 'org/lwjgl/')):
             return library_lookup(name) if library_lookup else None
@@ -62,6 +62,10 @@ def make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version
         node['name'] = forward.get(node['name'], node['name'])
         node['super'] = forward.get(node['super'], node['super'])
         node['interfaces'] = [forward.get(i, i) for i in node['interfaces']]
+        node['nest_host'] = forward.get(node['nest_host'], node['nest_host'])
+        if node['nest_members'] is not None:
+            node['nest_members'] = [forward.get(i, i) for i in node['nest_members']]
+        node['origin'] = 'game'
         for member in node['members']:
             member['descriptor'] = mapped_descriptor(member['descriptor'])
             key = (member['kind'], node['name'], member['name'], member['descriptor'])
@@ -93,15 +97,19 @@ def verify_game_instructions(mod_nodes, mixin_targets, game, forward, reverse, m
         caller = mixin_targets.get(name, name)
         for use in node.get('class_uses', []):
             target = jvm.class_use_name(use['name'])
-            if target and target.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')):
+            if target and (target in mod_nodes or
+                           target.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))):
                 try:
+                    jvm.require(target not in mixin_targets,
+                                'unsupported class use referencing a Mixin: ' + target)
                     jvm.validate_class_use(use, caller, lookup)
                 except ValueError as exc:
                     raise ValueError(version + ': ' + str(exc) + ' from ' + name) from exc
         for use in node['uses']:
-            jvm.require(not (use['operation'] == 'invokespecial' and use['name'] != '<init>'),
-                        version + ': unsupported non-constructor invokespecial from ' + name)
             owner = use['owner']
+            if use['operation'] == 'invokespecial' and use['name'] != '<init>':
+                jvm.require(owner == caller and (owner in mod_nodes or owner in mixin_targets.values()),
+                            version + ': unsupported non-constructor invokespecial from ' + name)
             declared_locally = owner in mod_nodes and any(
                 (member['kind'], member['name'], member['descriptor']) ==
                 (use['kind'], use['name'], use['descriptor']) for member in mod_nodes[owner]['members'])
@@ -146,9 +154,9 @@ def verify_library_instructions(mod_nodes, mixin_targets, library, prefix, versi
     @lru_cache(None)
     def local_lookup(name):
         if name in mod_nodes:
-            return mod_nodes[name]
+            return dict(mod_nodes[name], origin='candidate')
         try:
-            return jvm.parse(library.read(name + '.class'), include_code=False)
+            return dict(jvm.parse(library.read(name + '.class'), include_code=False), origin='library')
         except KeyError:
             return None
     lookup = class_lookup or local_lookup
@@ -158,7 +166,6 @@ def verify_library_instructions(mod_nodes, mixin_targets, library, prefix, versi
     for name in sorted(classes):
         node = lookup(name)
         jvm.require(node is not None, f'{version}: missing dependency class {name}')
-        jvm.require(node['access'] & 1, f'{version}: inaccessible dependency class {name}')
     verified = set()
     for name, node in mod_nodes.items():
         caller = mixin_targets.get(name, name)
@@ -256,11 +263,12 @@ class RuntimeLibraries:
         prefix = next((p for p in LIBRARY_PREFIXES if name.startswith(p)), None)
         if prefix is None:
             return None
-        archive, _ = self.archive(prefix)
+        archive, digest = self.archive(prefix)
         path = name + '.class'
         matches = [entry for entry in archive.infolist() if entry.filename == path]
         jvm.require(len(matches) <= 1, f'{self.version}: duplicate library class {name}')
-        self._classes[name] = jvm.parse(archive.read(matches[0]), include_code=False) if matches else None
+        self._classes[name] = (dict(jvm.parse(archive.read(matches[0]), include_code=False),
+                                    origin='library:' + digest) if matches else None)
         return self._classes[name]
 
 
