@@ -1,5 +1,9 @@
 # Short walking smoke: 1.21.2-1.21.3
 
+**Historical 0.0.2 evidence.** This record describes the source and artifact
+below, not a later 1.0.0 JAR. See the separately source-bound
+[1.0.0 walking observations](https://github.com/skyRolly/third-person-readable-maps/blob/64d55fb55a4c6615b935f9603496e11f6ab9403e/docs/runtime-smoke-verifier-followup-2026-11-13/README.md).
+
 These installed-client checks use the unchanged candidate JAR built from
 `84d8291e16fc14ffa3b0956404b64c9538251693`, with SHA-256 `28a15aacf531dfdb3dd51ba63b7e9cf42000e0b981d863cdc0c27bebc89523e4`, Fabric Loader 0.20.1,
 and Linux Xorg/Mesa software rendering. A copied local world was placed on
