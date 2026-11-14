@@ -263,12 +263,17 @@ def verify(mod_path, versions=None, clients=None):
             require(not missing_classes, f'{version}: missing classes: {missing_classes}')
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
             require(not missing, f'{version}: missing game members: {missing}')
-            instruction_count = game_linkage.verify_game_instructions(
-                instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version,
-                class_lookup=class_lookup)
-            library_coverage = game_linkage.verify_declared_libraries(
-                metadata, instruction_classes, mixin_targets, fetch_library, version,
-                runtime_libraries=runtime_libraries, class_lookup=class_lookup)
+            instruction_count, library_coverage = 0, []
+            for platform in runtime_libraries.platforms():
+                runtime_libraries.select(platform)
+                class_lookup.cache_clear()
+                instruction_count += game_linkage.verify_game_instructions(
+                    instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version,
+                    class_lookup=class_lookup)
+                coverage = game_linkage.verify_declared_libraries(
+                    metadata, instruction_classes, mixin_targets, fetch_library, version,
+                    runtime_libraries=runtime_libraries, class_lookup=class_lookup)
+                library_coverage.append((platform, coverage))
         print(f'{version}: dependency library checks: {library_coverage}')
         print(f'{version}: {instruction_count} JVM game member instructions verified')
         print(f'{version}: {len(injections)} Mixin descriptors, {len(classes)} classes and {len(refs)} member references verified')
