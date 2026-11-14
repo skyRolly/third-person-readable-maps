@@ -1,6 +1,7 @@
 """Exercise the intermediary packaged-JAR verifier, including Mixin injection points."""
 import hashlib
 import io
+import os
 import json
 import re
 import shutil
@@ -24,7 +25,7 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
         if not cls.javac:
             raise unittest.SkipTest('javac is required for packaged verifier fixtures')
 
-    def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None):
+    def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); support = root/'support'; support.mkdir()
             config = json.loads((ROOT/'src/main/resources/thirdpersonreadablemaps.mixins.json').read_text())
@@ -72,7 +73,8 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                                 'import org.spongepowered.asm.mixin.injection.callback.CallbackInfo; '
                                 '@Mixin(net.minecraft.class_'+str(number)+'.class) public class '+mixin_name+' { '
                                 '@Inject(method="method_'+str(number)+'", at=@At("'+injection+'")'+options+') '
-                                'private void inject(CallbackInfo ci) {} }')
+                                'private void inject(CallbackInfo ci) {' +
+                                (('Object x=this; '+mixin_name+' m=('+mixin_name+')x;') if self_cast and number==1 else '') + '} }')
                 mixin_paths.append(str(path))
             subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), *mixin_paths],
                            check=True, capture_output=True)
@@ -82,6 +84,12 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                                 'static class Member { int read(Nest n) { return n.value; } } }')
                 subprocess.run([self.javac, '--release', '21', '-d', str(out), str(nest)],
                                check=True, capture_output=True)
+                if candidate_case == 'mixin-cross':
+                    cross = root/'Cross.java'
+                    cross.write_text('package fixture; public class Cross { Object f(Object x) { '
+                                     'return (tech.rolly.thirdpersonreadablemaps.mixin.ReadableMapLayerMixin)x; } }')
+                    subprocess.run([self.javac, '--release', '21', '-classpath', str(out)+os.pathsep+str(support),
+                                    '-d', str(out), str(cross)], check=True, capture_output=True)
                 if candidate_case == 'broken':
                     member = out/'fixture/Nest$Member.class'
                     raw = member.read_bytes(); assert b'NestHost' in raw
@@ -187,6 +195,9 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
 
     def test_nestmate_and_library_descriptor_reach_packaged_entrypoint(self):
         self.fixture('HEAD', 'return;', candidate_case='valid')
+        self.fixture('HEAD', 'return;', self_cast=True)
+        with self.assertRaisesRegex(ValueError, 'unsupported class use referencing a Mixin'):
+            self.fixture('HEAD', 'return;', candidate_case='mixin-cross')
         with self.assertRaisesRegex(ValueError, 'private|nest'):
             self.fixture('HEAD', 'return;', candidate_case='broken')
         self.fixture('HEAD', 'return;', inherited='hidden')
