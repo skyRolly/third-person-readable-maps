@@ -47,8 +47,9 @@ Ordinary descriptors require referenced game and dependency classes to exist;
 they do not by themselves make a package-private type inaccessible to a caller.
 Actual class instructions, class constants, consumed method-type and
 method-handle descriptor classes are checked for accessibility, including
-candidate-owned classes. Class uses referring directly to a Mixin are outside
-the supported transformation subset and fail closed.
+candidate-owned classes. A Mixin's direct self `checkcast` is checked against
+its transformed target; other class uses referring to a Mixin are outside the
+supported transformation subset and fail closed.
 
 This is not a complete JVM bytecode verifier or a proof of every transformed
 Mixin behavior. Platform APIs rely on the configured Java `--release` target
