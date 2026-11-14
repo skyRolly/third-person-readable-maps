@@ -1,6 +1,11 @@
 @echo off
 setlocal
 pushd "%~dp0" || exit /b 1
+python scripts\verify_gradle_wrapper.py
+if errorlevel 1 (
+  popd
+  exit /b 1
+)
 call gradlew.bat --no-daemon --console=plain clean build %*
 set "build_exit=%errorlevel%"
 if "%build_exit%"=="0" echo Built Fabric mod in "%~dp0build\libs".
