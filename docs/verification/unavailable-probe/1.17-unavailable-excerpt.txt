@@ -1,0 +1,29 @@
+[10:31:19] [main/INFO]: Loading Minecraft 1.17 with Fabric Loader 0.20.1
+	- tprm_unavailable_map_probe 1.0.0
+[10:32:54] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=1
+[10:32:55] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=2
+[10:32:55] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=3
+[10:32:55] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=4
+[10:32:55] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=5
+[10:33:00] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:00] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=1
+[10:33:00] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:00] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=2
+[10:33:01] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:01] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=3
+[10:33:01] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:01] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=4
+[10:33:02] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:02] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=5
+[10:33:02] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:02] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=6
+[10:33:03] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:03] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=7
+[10:33:03] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[10:33:03] [Render thread/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=8
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:33:09] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
