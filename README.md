@@ -4,11 +4,10 @@
 
 A client-side Fabric mod that renders filled map contents on maps held in third-person view. Maps follow the holding arm, with layouts for the main hand, off hand, and occupied opposite hand, including left-handed players.
 
-Earlier `0.0.2` verification records apply only to those artifacts; the `1.0.0`
-JAR needs its own source-bound and installed-client validation.
+Verification records apply only to their recorded source, artifact and test conditions.
 
-While the target maintenance branch is still a placeholder, its branch CI badge
-reflects the 1.21.11 baseline. Review the [candidate PR checks](https://github.com/skyRolly/third-person-readable-maps/pull/20/checks) for this port.
+For an unmerged port, the branch badge shows the target branch build; review
+the [port PR checks](https://github.com/skyRolly/third-person-readable-maps/pull/20/checks) separately.
 
 ## Requirements and installation
 
@@ -16,7 +15,7 @@ Build from source, or download and extract an artifact from a successful
 [branch CI run](https://github.com/skyRolly/third-person-readable-maps/actions/workflows/ci.yml?query=branch%3Amc%2F1.17-1.19.2). CI artifacts are development builds;
 mod version `1.0.0` has not yet been publicly released.
 
-- Candidate for Minecraft **1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1 or 1.19.2** and Fabric Loader **0.20.1 or newer**.
+- Intended for Minecraft **1.17, 1.17.1, 1.18, 1.18.1, 1.18.2, 1.19, 1.19.1 or 1.19.2** and Fabric Loader **0.20.1 or newer**.
 - Java **16 or newer** for 1.17/1.17.1 and **17 or newer** for 1.18–1.19.2 to play. Fabric API is not required.
 - Copy `third-person-readable-maps-<version>-mc1.17-1.19.2.jar` into the client
   instance's `mods` directory, then launch its Fabric profile.
@@ -59,7 +58,32 @@ Port shared changes to each affected maintenance branch in separate reviewed PRs
 CI runs clean Java 25 builds on Linux and Windows, validates the Gradle wrapper,
 and checks Fabric metadata, the packaged MIT license, Java bytecode, mapping
 namespace, the required Mixin target signature, and game symbols against all eight advertised clients. It retains JARs and verification reports.
-Run the same build checks locally with `./gradlew build`.
+A Gradle build does not run the Python fixture suite or the cross-version API
+verifier. For the complete local product validation, use Java 25 and Python 3;
+the wrapper and API checks require network access to Gradle, Mojang and Fabric.
+Run these commands from the repository root:
+
+```sh
+# Linux / macOS
+python3 scripts/verify_gradle_wrapper.py
+./gradlew --no-daemon clean build
+python3 -m unittest discover -s tests
+python3 scripts/verify_supported_apis.py --jar build/libs
+```
+
+```powershell
+# Windows PowerShell
+python scripts/verify_gradle_wrapper.py
+.\Build-Windows.bat
+python -m unittest discover -s tests
+python scripts/verify_supported_apis.py --jar build/libs
+```
+
+The wrapper check compares its JAR and configured distribution checksum with
+Gradle's published checksums; Gradle verifies the downloaded distribution. CI
+also validates the wrapper using its pinned Gradle setup action. These commands
+check the packaged JAR but do not replace installed-client or graphical testing. The [linkage verification contract](docs/verification/linkage-contract.md)
+describes the supported and rejected bytecode patterns.
 
 For graphical checks, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
 on a machine with graphics support. Check filled maps in each hand, both maps,
@@ -88,7 +112,8 @@ build do not safely patch an installed game's libraries.
 
 ## Compatibility and release status
 
-`mc/1.17-1.19.2` is a proposed maintenance branch; the artifact is a candidate pending installed-client and graphical acceptance for all eight versions. Version `1.0.0` remains unreleased.
+`mc/1.17-1.19.2` targets this game group. Full graphical and independent acceptance remain
+pending. Version `1.0.0` remains unreleased.
 A coordinated release uses one `X.X.X` tag and one JAR per verified group, with
 reviewed source revisions, runtime evidence, provenance, checksums, and independent
 approvals. See the [compatibility record](https://github.com/skyRolly/third-person-readable-maps/blob/main/docs/compatibility.md)
