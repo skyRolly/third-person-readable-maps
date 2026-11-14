@@ -113,6 +113,8 @@ def verify(mod_path, versions, clients):
         require(len(handlers) == 1 and handlers[0]['descriptor'].endswith(CALLBACK + ')V') and
                 handlers[0]['annotations']['Lorg/spongepowered/asm/mixin/injection/Inject;'].get('method') == ['submitArmWithItem'],
                 'unexpected Mixin handler or injection method')
+        game_linkage.validate_mixin_semantics(mod_nodes, {mixin_name: TARGET})
+        injection_point = handlers[0]['annotations']['Lorg/spongepowered/asm/mixin/injection/Inject;']['at'][0][1]['value']
         target_descriptor = handlers[0]['descriptor'][:-len(CALLBACK + ')V')] + ')V'
         refs = set()
         for path in mod.namelist():
@@ -129,7 +131,14 @@ def verify(mod_path, versions, clients):
         data = (Path(clients) / (version + '.jar')).read_bytes() if clients else get(client['url'])
         checked(data, client['sha1'], version + ' client')
         require(len(data) == client['size'], f'{version}: client size mismatch')
+        def fetch_library(artifact):
+            data = checked(get(artifact['url']), artifact['sha1'], version + ' library')
+            require(len(data) == artifact['size'], f'{version}: library size mismatch')
+            return data
+        runtime_libraries = game_linkage.RuntimeLibraries(meta, fetch_library, version)
         with ZipFile(io.BytesIO(data)) as game:
+            class_lookup = game_linkage.make_class_lookup(mod_nodes, game, {}, {}, {}, version,
+                                                         runtime_libraries.lookup)
             @lru_cache(None)
             def game_class(owner):
                 try:
@@ -156,7 +165,7 @@ def verify(mod_path, versions, clients):
             target_node = jvm_linkage.parse(game.read(TARGET + '.class'))
             try:
                 jvm_linkage.validate_mixin_target(target_node, 'submitArmWithItem', target_descriptor, handlers[0]['access'])
-                jvm_linkage.validate_injection_point(target_node, 'submitArmWithItem', target_descriptor, 'HEAD')
+                jvm_linkage.validate_injection_point(target_node, 'submitArmWithItem', target_descriptor, injection_point)
             except ValueError as exc:
                 raise ValueError(f'{version}: {exc}') from exc
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
@@ -164,12 +173,11 @@ def verify(mod_path, versions, clients):
             classes = {c for node in mod_nodes.values() for c in node['classes']
                        if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))}
             require(not [c for c in classes if not game_class(c)], f'{version}: missing descriptor or referenced game classes')
-            count = game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {}, version)
-        def fetch_library(artifact):
-            data = checked(get(artifact['url']), artifact['sha1'], version + ' library')
-            require(len(data) == artifact['size'], f'{version}: library size mismatch')
-            return data
-        libraries = game_linkage.verify_declared_libraries(meta, mod_nodes, {mixin_name: TARGET}, fetch_library, version)
+            count = game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {}, version,
+                                                          class_lookup=class_lookup)
+            libraries = game_linkage.verify_declared_libraries(
+                meta, mod_nodes, {mixin_name: TARGET}, fetch_library, version,
+                runtime_libraries=runtime_libraries, class_lookup=class_lookup)
         print(f'{version}: Mixin target, {len(classes)} game classes, {count} game instructions, '
               f'and dependency libraries {libraries} verified')
 
