@@ -23,9 +23,9 @@ checks and evidence on the preceding heads do not certify the new sources.
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
 | Multiplayer testing | NOT RUN | Remote-player and naturally unavailable map-data behavior require a multiplayer environment. |
-| Security advisory disposition | FAIL | Known findings remain unresolved and failing. The [current individual worklist](dependency-evidence/current-security-worklist-2026-11-13.json) has no accepted risk; review each disposition and rescan approved merged heads. |
-| Dependency monitoring | BLOCKED | Placeholder Dependabot targets are removed from the proposal, and [fresh audits](security-review-2026-11-13-verifier-followup.md) pin all ten advanced candidate heads. Their findings remain unresolved; the transition to merged maintenance heads still needs independent review and fresh inventories. No risk is accepted. |
-| Effective branch protection | FAIL | On 2026-11-13 the branch API reported `protected: false` for `main` and all three existing maintenance branches; effective branch rules returned zero for each and the visible repository/parent ruleset list was empty. Administrator action and read-back are required. |
+| Security advisory disposition | FAIL | A [November 14 OSV re-query](dependency-evidence/osv-rescan-2026-11-14/) retained 490 unresolved, failing occurrences. The [individual worklist](dependency-evidence/current-security-worklist-2026-11-13.json) has no accepted risk; review each disposition and rescan approved merged heads. |
+| Dependency monitoring | BLOCKED | Placeholder Dependabot targets are removed from the proposal, and source-bound snapshots and the [November 14 re-query](dependency-evidence/osv-rescan-2026-11-14/) cover the ten advanced candidate heads. Their findings remain unresolved; the transition to merged maintenance heads still needs independent review and fresh inventories. No risk is accepted. |
+| Effective branch protection | FAIL | On [2026-11-14](admin/branch-rules-observation-2026-11-14.json) the branch API reported `protected: false` for `main` and all three existing maintenance branches; effective branch rules returned zero for each and the visible repository/parent ruleset list was empty. Administrator action and read-back are required. |
 | Independent source approvals | PENDING REVIEW | The product and coordination PRs remain draft and unmerged; eligible independent reviewers must approve the final heads. |
 | Reviewed and integrated source HEADs | PENDING REVIEW | No requested source PR was merged in this round. Integrate only after protection and independent review. |
 | Exact merged-head CI | NOT RUN | No final merged heads exist yet. Require the Linux, Windows and coordination checks on the exact resulting commits. |
@@ -65,10 +65,11 @@ checks and evidence on the preceding heads do not certify the new sources.
    non-publishing rehearsal, then independently evaluate release authorization.
    A later owner instruction is required before draft or public release actions.
 
-GitHub-managed Automatic Dependency Submission ran successfully on all 13
+The [workflow API](dependency-evidence/automatic-submission-state-2026-11-14.json)
+reported GitHub-managed Automatic Dependency Submission `active` on 2026-11-14.
+It ran successfully on all 13
 advanced product heads on [2026-11-13](dependency-evidence/automatic-submission-2026-11-13.json);
-settings access remains unavailable, so its current setting has not been
-independently read back.
+the separate settings toggle has not been independently read back.
 The existing administrative disposition requires the administrator to disable
 that managed submission while preserving Dependency Graph, Dependabot alerts
 and security updates; verify the setting and subsequent run history separately

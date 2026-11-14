@@ -206,6 +206,10 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
             self.assertEqual((run['event'], run['status'], run['conclusion']), ('dynamic', 'completed', 'success'))
         steps = [step for job in index['example_job']['jobs'] for step in job['steps']]
         self.assertIn({'name': 'submit-dependency-snapshot', 'conclusion': 'success'}, steps)
+        latest = json.loads((ROOT / 'docs/dependency-evidence/automatic-submission-state-2026-11-14.json').read_text())
+        self.assertEqual(latest['workflow']['path'], 'dynamic/dependency-graph/auto-submission')
+        self.assertEqual(latest['workflow']['state'], 'active')
+        self.assertIn('does not expose', latest['limitation'])
 
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'

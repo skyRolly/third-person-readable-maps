@@ -1,5 +1,9 @@
 # Security scan follow-up — 2026-11-13
 
+The [November 14 OSV re-query](dependency-evidence/osv-rescan-2026-11-14/)
+reused these exact source-bound snapshots and found the same unresolved
+occurrences, fingerprints and scopes. It did not re-resolve Gradle dependencies.
+
 The [ten candidate inventories and OSV reports](dependency-evidence/class-linkage-2026-11-13/)
 were generated for the advanced, unmerged product heads. Each report is bound
 to the exact candidate commit and its newly resolved Gradle snapshot; the

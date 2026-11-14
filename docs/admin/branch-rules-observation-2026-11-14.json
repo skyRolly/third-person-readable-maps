@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-11-14T06:59:35.517908+00:00",
+  "branches": {
+    "main": {
+      "head": "794aec0eda8e7bfaea5f5e14307766b359589d8f",
+      "protected": false,
+      "effective_rules_count": 0
+    },
+    "mc/1.21.11": {
+      "head": "177f5708727ae4c152091d185536aaa734063280",
+      "protected": false,
+      "effective_rules_count": 0
+    },
+    "mc/26.1-26.2": {
+      "head": "453cf35695cf07be4072f77895cdbafbed617870",
+      "protected": false,
+      "effective_rules_count": 0
+    },
+    "mc/26.3": {
+      "head": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+      "protected": false,
+      "effective_rules_count": 0
+    }
+  },
+  "settings_changed": false,
+  "visible_repository_and_parent_rulesets_count": 0
+}
