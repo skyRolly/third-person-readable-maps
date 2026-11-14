@@ -150,28 +150,48 @@ def parse(data, include_code=True):
             require(not b.buf.read(1), 'trailing BootstrapMethods bytes')
     require(not r.buf.read(1), 'trailing class bytes')
 
-    uses, class_uses, seen_constants = [], [], set()
-    def member(index, operation):
+    uses, class_uses, dynamic_sites = [], [], []
+    def descriptor_class_uses(desc, operation):
+        class_uses.extend({'name': name, 'operation': operation}
+                          for name in re.findall(r'L([^;]+);', desc))
+
+    def member(index, operation, source_kind, method_info):
         tag, owner, nt = entry(index, 9, 10, 11)
         _, name, desc = entry(nt, 12)
+        if source_kind == 'method_handle':
+            descriptor_class_uses(text(desc), 'method_handle_descriptor')
         uses.append({'kind': 'field' if tag == 9 else 'method', 'owner': class_name(owner),
                      'name': text(name), 'descriptor': text(desc), 'operation': operation,
-                     'reference_tag': tag})
+                     'reference_tag': tag, 'source_kind': source_kind,
+                     'enclosing_method': method_info['name'],
+                     'enclosing_descriptor': method_info['descriptor'],
+                     'enclosing_access': method_info['access']})
 
-    def constant(index):
+    def constant(index, method_info, seen_constants):
         if index in seen_constants: return
         seen_constants.add(index)
         item = entry(index, *range(1, 21)); tag = item[0]
         if tag == 15:
             require(item[1] in HANDLE_OPS, 'invalid method-handle kind')
-            member(item[2], HANDLE_OPS[item[1]])
+            member(item[2], HANDLE_OPS[item[1]], 'method_handle', method_info)
+        elif tag == 16:
+            descriptor_class_uses(text(item[1]), 'method_type_descriptor')
         elif tag == 7:
             class_uses.append({'name': class_name(index), 'operation': 'class_constant'})
         elif tag in (17, 18):
             require(item[1] < len(bootstrap), 'missing bootstrap method')
+            _, _, descriptor = entry(item[2], 12)
+            descriptor_class_uses(text(descriptor), 'dynamic_descriptor')
             ref, args = bootstrap[item[1]]
-            constant(ref)
-            for arg in args: constant(arg)
+            handle = entry(ref, 15)
+            _, owner, name_type = entry(handle[2], 10, 11)
+            _, bootstrap_name, bootstrap_descriptor = entry(name_type, 12)
+            dynamic_sites.append({'kind': 'constant' if tag == 17 else 'invoke',
+                                  'owner': class_name(owner), 'name': text(bootstrap_name),
+                                  'descriptor': text(bootstrap_descriptor), 'handle_kind': handle[1],
+                                  'argument_tags': [entry(arg, *range(1, 21))[0] for arg in args]})
+            constant(ref, method_info, seen_constants)
+            for arg in args: constant(arg, method_info, seen_constants)
 
     for method_info, code in code_blocks:
         for op, operands in instructions(code):
@@ -180,16 +200,16 @@ def parse(data, include_code=True):
             if op in MEMBER_OPS:
                 if op == 185:
                     require(operands[2] > 0 and operands[3] == 0, 'invalid invokeinterface operands')
-                member(struct.unpack_from('>H', operands)[0], MEMBER_OPS[op])
+                member(struct.unpack_from('>H', operands)[0], MEMBER_OPS[op], 'instruction', method_info)
             elif op in CLASS_OPS:
                 class_uses.append({'name': class_name(struct.unpack_from('>H', operands)[0]),
                                    'operation': CLASS_OPS[op]})
             elif op == 186:
                 require(operands[2:] == b'\0\0', 'invalid invokedynamic operands')
-                constant(struct.unpack_from('>H', operands)[0])
+                constant(struct.unpack_from('>H', operands)[0], method_info, set())
             elif op in (18, 19, 20):
                 index = operands[0] if op == 18 else struct.unpack_from('>H', operands)[0]
-                constant(index)
+                constant(index, method_info, set())
     classes = set()
     def add_type(value):
         if value.startswith('['): classes.update(re.findall(r'L([^;]+);', value))
@@ -202,7 +222,7 @@ def parse(data, include_code=True):
         classes.update(re.findall(r'L([^;]+);', member_info['descriptor']))
     return {'name': class_name(own), 'super': class_name(parent), 'interfaces': interfaces,
             'access': access, 'major': major, 'members': members, 'uses': uses,
-            'class_uses': class_uses, 'classes': classes,
+            'class_uses': class_uses, 'classes': classes, 'dynamic_sites': dynamic_sites,
             'annotations': class_annotations}
 
 
@@ -236,6 +256,12 @@ def is_subclass(child, parent, lookup, seen=None):
 
 
 def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
+    def hierarchy_node(class_name):
+        node = lookup(class_name)
+        require(node is not None or class_name.startswith(('java/', 'javax/')),
+                'missing superclass or interface: ' + class_name)
+        return node
+
     def own(class_name):
         node = lookup(class_name)
         if not node: return None
@@ -252,6 +278,8 @@ def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
         if found: return found
         for ancestor in node['interfaces'] + [node['super']]:
             if ancestor:
+                if hierarchy_node(ancestor) is None:
+                    continue  # Java platform linkage is covered by the declared --release target.
                 result = resolve_member(ancestor, kind, name, descriptor, lookup, seen)
                 if result: return result
         return None
@@ -267,14 +295,17 @@ def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
         parent = current['super']
         if not parent or parent in visited: break
         visited.add(parent)
+        parent_node = hierarchy_node(parent)
+        if parent_node is None:
+            break
         found = own(parent)
         if found: return found
-        current = lookup(parent)
+        current = parent_node
     candidates, seen_interfaces = [], set()
     while interfaces:
         interface = interfaces.pop()
         if interface in seen_interfaces: continue
-        seen_interfaces.add(interface); item = lookup(interface)
+        seen_interfaces.add(interface); item = hierarchy_node(interface)
         if not item: continue
         found = own(interface)
         # Static and private interface methods are not inherited.
@@ -324,7 +355,7 @@ def validate_use(use, caller, lookup):
             require(not (node['access'] & (0x0200 | 0x0400)),
                     'constructor handle cannot instantiate interface or abstract class: ' + symbol)
         if op == 'invokespecial' and name != '<init>':
-            require(owner == caller or is_subclass(caller, owner, lookup), 'invalid invokespecial owner: ' + symbol)
+            raise ValueError('unsupported non-constructor invokespecial: ' + symbol)
     require((node['access'] & 1) or owner.rpartition('/')[0] == caller.rpartition('/')[0],
             'inaccessible referenced class: ' + symbol)
     resolved = resolve_member(owner, kind, name, desc, lookup)
@@ -333,14 +364,28 @@ def validate_use(use, caller, lookup):
     flags = member['access']
     static = op in ('getstatic', 'putstatic', 'invokestatic')
     require(bool(flags & 8) == static, 'static/instance mismatch: ' + symbol)
+    if kind == 'field' and op in ('putfield', 'putstatic') and flags & 0x0010:
+        require(use.get('source_kind') == 'instruction', 'final field setter handle or unknown use: ' + symbol)
+        require(caller == declared, 'final field write outside declaring class: ' + symbol)
+        method = use.get('enclosing_method')
+        descriptor = use.get('enclosing_descriptor', '')
+        access = use.get('enclosing_access', 0)
+        if op == 'putfield':
+            require(method == '<init>' and descriptor.endswith(')V') and not (access & 8),
+                    'final instance field write outside constructor: ' + symbol)
+        else:
+            require(method == '<clinit>' and descriptor == '()V' and access & 8,
+                    'final static field write outside class initializer: ' + symbol)
     package = caller.rpartition('/')[0] == declared.rpartition('/')[0]
     if not (flags & 1):
         if flags & 2:
             require(caller == declared, 'inaccessible private member: ' + symbol)
         elif flags & 4:
             require(package or is_subclass(caller, declared, lookup), 'inaccessible protected member: ' + symbol)
-            if not package and not static and op not in ('invokespecial', 'newinvokespecial'):
-                require(is_subclass(owner, caller, lookup), 'unproven protected receiver: ' + symbol)
+            if not package and not static:
+                require(use.get('source_kind') == 'method_handle' and op not in ('invokespecial', 'newinvokespecial')
+                        and is_subclass(owner, caller, lookup),
+                        'unsupported cross-package protected receiver: ' + symbol)
         else:
             require(package, 'inaccessible package-private member: ' + symbol)
     return declared
