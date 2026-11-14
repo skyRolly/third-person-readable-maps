@@ -140,6 +140,7 @@ def parse(data, include_code=True):
                     list(attributes(c))
                     require(not c.buf.read(1), 'trailing Code attribute bytes')
     bootstrap, class_annotations = [], {}
+    nest_host, nest_members = None, None
     for attr, payload in attributes(r):
         if attr in ('RuntimeVisibleAnnotations', 'RuntimeInvisibleAnnotations'):
             class_annotations.update(annotations(payload))
@@ -148,7 +149,22 @@ def parse(data, include_code=True):
             for _ in range(b.u2()):
                 ref = b.u2(); bootstrap.append((ref, [b.u2() for _ in range(b.u2())]))
             require(not b.buf.read(1), 'trailing BootstrapMethods bytes')
+        elif attr == 'NestHost':
+            require(major >= 55 and nest_host is None and nest_members is None,
+                    'duplicate, conflicting or unsupported NestHost')
+            n = Reader(payload); nest_host = class_name(n.u2())
+            require(nest_host and not nest_host.startswith('[') and not n.buf.read(1),
+                    'invalid NestHost attribute')
+        elif attr == 'NestMembers':
+            require(major >= 55 and nest_host is None and nest_members is None,
+                    'duplicate, conflicting or unsupported NestMembers')
+            n = Reader(payload); nest_members = [class_name(n.u2()) for _ in range(n.u2())]
+            require(all(name and not name.startswith('[') for name in nest_members) and
+                    len(nest_members) == len(set(nest_members)) and not n.buf.read(1),
+                    'invalid NestMembers attribute')
     require(not r.buf.read(1), 'trailing class bytes')
+    require(nest_host != class_name(own) and (nest_members is None or class_name(own) not in nest_members),
+            'class cannot list itself as its nest host or member')
 
     uses, class_uses, dynamic_sites = [], [], []
     def descriptor_class_uses(desc, operation):
@@ -223,7 +239,7 @@ def parse(data, include_code=True):
     return {'name': class_name(own), 'super': class_name(parent), 'interfaces': interfaces,
             'access': access, 'major': major, 'members': members, 'uses': uses,
             'class_uses': class_uses, 'classes': classes, 'dynamic_sites': dynamic_sites,
-            'annotations': class_annotations}
+            'annotations': class_annotations, 'nest_host': nest_host, 'nest_members': nest_members}
 
 
 def class_use_name(name):
@@ -253,6 +269,31 @@ def is_subclass(child, parent, lookup, seen=None):
     seen.add(child); node = lookup(child)
     if not node: return False
     return any(is_subclass(a, parent, lookup, seen) for a in [node['super']] + node['interfaces'] if a)
+
+
+def same_nest(first, second, lookup):
+    """Recognize reciprocal nests within one verified runtime class origin.
+
+    This bounded model does not assume that classes in different JARs use the
+    same runtime class loader, even when their package names match.
+    """
+    def host(name):
+        node = lookup(name)
+        require(node is not None, 'missing nest class: ' + name)
+        if node.get('major', 0) < 55 or not node.get('nest_host'):
+            return name, node.get('origin')
+        host_name = node['nest_host']
+        require(host_name.rpartition('/')[0] == name.rpartition('/')[0], 'nest host in different runtime package')
+        host_node = lookup(host_name)
+        require(host_node is not None and host_node.get('major', 0) >= 55 and
+                not host_node.get('nest_host') and name in (host_node.get('nest_members') or []),
+                'missing or nonreciprocal nest host for ' + name)
+        origin = node.get('origin')
+        require(origin is not None and origin == host_node.get('origin'), 'unproven nest class origin for ' + name)
+        return host_name, origin
+    first_host, first_origin = host(first)
+    second_host, second_origin = host(second)
+    return first_host == second_host and first_origin is not None and first_origin == second_origin
 
 
 def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
@@ -354,14 +395,18 @@ def validate_use(use, caller, lookup):
         if op == 'newinvokespecial':
             require(not (node['access'] & (0x0200 | 0x0400)),
                     'constructor handle cannot instantiate interface or abstract class: ' + symbol)
-        if op == 'invokespecial' and name != '<init>':
-            raise ValueError('unsupported non-constructor invokespecial: ' + symbol)
     require((node['access'] & 1) or owner.rpartition('/')[0] == caller.rpartition('/')[0],
             'inaccessible referenced class: ' + symbol)
     resolved = resolve_member(owner, kind, name, desc, lookup)
     require(resolved is not None, 'missing member: ' + symbol)
     declared, _, member = resolved
     flags = member['access']
+    if op == 'invokespecial' and name != '<init>':
+        # Java 8 synthetic accessors may invoke a private method on their own
+        # declaring class. Other special-selection/receiver rules remain out
+        # of the supported subset.
+        require(owner == caller == declared and not interface and flags & 2,
+                'unsupported non-constructor invokespecial: ' + symbol)
     static = op in ('getstatic', 'putstatic', 'invokestatic')
     require(bool(flags & 8) == static, 'static/instance mismatch: ' + symbol)
     if kind == 'field' and op in ('putfield', 'putstatic') and flags & 0x0010:
@@ -379,7 +424,8 @@ def validate_use(use, caller, lookup):
     package = caller.rpartition('/')[0] == declared.rpartition('/')[0]
     if not (flags & 1):
         if flags & 2:
-            require(caller == declared, 'inaccessible private member: ' + symbol)
+            require(caller == declared or same_nest(caller, declared, lookup),
+                    'inaccessible private member: ' + symbol)
         elif flags & 4:
             require(package or is_subclass(caller, declared, lookup), 'inaccessible protected member: ' + symbol)
             if not package and not static:
