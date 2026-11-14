@@ -58,10 +58,10 @@ def main():
     (HERE / 'index.json').write_text(json.dumps(data, indent=2) + '\n')
     lines = ['# 1.0.0 version consistency — 2026-11-14', '',
              'The table distinguishes actual remote target properties from unmerged proposed heads. Every proposed artifact is 1.0.0; its hash was checked in the candidate rehearsal and its declared versions completed local-world startup and short walking observations. Full graphical acceptance, security dispositions and integration remain open.', '',
-             '| Target/group | Current remote Mod / Minecraft property | Proposed Mod | Proposed artifact SHA-256 | Local-world smoke |',
-             '|---|---|---|---|---|']
+             '| Target/group | Current remote Mod / Minecraft property | Proposed Mod | Proposed artifact | SHA-256 | Local-world smoke |',
+             '|---|---|---|---|---|---|']
     for group, row in rows.items():
-        lines.append(f"| [{group}]({row['pull_request']}) | {row['target_mod_version']} / {row['target_minecraft_version']} | {row['proposed_mod_version']} | `{row['sha256']}` | {row['local_world_observations']}/{len(row['advertised_versions'])} |")
+        lines.append(f"| [{group}]({row['pull_request']}) | {row['target_mod_version']} / {row['target_minecraft_version']} | {row['proposed_mod_version']} | `{row['artifact']}` | `{row['sha256']}` | {row['local_world_observations']}/{len(row['advertised_versions'])} |")
     lines += ['', 'The ten legacy targets are placeholders containing the 1.21.11 baseline, not integrated legacy ports. The three existing maintenance targets are integrated at 0.0.2. The proposed 1.0.0 heads and expected post-integration versions are not current target states. See the [source and artifact index](index.json), [48-version matrix](../compatibility-1.0.0-validation.md), and [release gates](../release-readiness-1.0.0.md).', '', 'No 1.0.0 tag, draft release or public release was created.']
     (HERE / 'README.md').write_text('\n'.join(lines) + '\n')
     print('Recorded current and proposed versions for', len(rows), 'groups')
