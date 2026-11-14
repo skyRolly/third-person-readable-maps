@@ -1,0 +1,8 @@
+Launching 1.21.4 6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e
+Traceback (most recent call last):
+  File "/tmp/tprm-mapid-112-1214-candidate.py", line 132, in <module>
+    command('/fill -5 80 -73 15 80 -33 minecraft:stone','Successfully filled',log);command('/fill -5 81 -73 15 85 -33 minecraft:air','Successfully filled',log)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tprm-mapid-112-1214-candidate.py", line 85, in command
+    raise RuntimeError('Unconfirmed command '+text)
+RuntimeError: Unconfirmed command /fill -5 80 -73 15 80 -33 minecraft:stone

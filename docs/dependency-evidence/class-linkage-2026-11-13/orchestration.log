@@ -1,0 +1,25 @@
+SNAPSHOT 1.14-1.14.4 f2b45ae6242ac44d952f7b037e0200f4a85ad128
+SNAPSHOT 1.15-1.16.5 24cd97031ac91ab3595c50add83c2208f5230fbc
+AUDIT 1.14-1.14.4 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.14-1.14.4-audit.log
+SNAPSHOT 1.17-1.19.2 d5792f245f133cdf4873b1e6ce0078c77d20a3d3
+AUDIT 1.15-1.16.5 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.15-1.16.5-audit.log
+SNAPSHOT 1.19.3 2cb3f385443e6db375eb46077d562421ed7aa4cc
+AUDIT 1.17-1.19.2 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.17-1.19.2-audit.log
+ALREADY AUDITED 1.14-1.14.4 f2b45ae6242ac44d952f7b037e0200f4a85ad128
+SNAPSHOT 1.19.3 2cb3f385443e6db375eb46077d562421ed7aa4cc
+ALREADY AUDITED 1.15-1.16.5 24cd97031ac91ab3595c50add83c2208f5230fbc
+ALREADY AUDITED 1.17-1.19.2 d5792f245f133cdf4873b1e6ce0078c77d20a3d3
+SNAPSHOT 1.19.4-1.20.4 991fc1d6d21819f642c9963f91570fb10ab40f92
+AUDIT 1.19.3 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.19.3-audit.log
+SNAPSHOT 1.20.5-1.20.6 c0efb70ad1e01298c96441d18bc68f0b2674d6d6
+AUDIT 1.19.4-1.20.4 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.19.4-1.20.4-audit.log
+SNAPSHOT 1.21-1.21.1 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514
+AUDIT 1.20.5-1.20.6 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.20.5-1.20.6-audit.log
+SNAPSHOT 1.21.2-1.21.3 78ef3c311f2db755c87907af6d698ed4527bd2de
+AUDIT 1.21-1.21.1 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.21-1.21.1-audit.log
+SNAPSHOT 1.21.4-1.21.8 55df5055388918d5df96a3f61f6c9dc999042271
+AUDIT 1.21.2-1.21.3 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.21.2-1.21.3-audit.log
+SNAPSHOT 1.21.9-1.21.10 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81
+AUDIT 1.21.4-1.21.8 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.21.4-1.21.8-audit.log
+AUDIT 1.21.9-1.21.10 exit 1 details /workspace/.tprm-dryrun/class-linkage-security/1.21.9-1.21.10-audit.log
+Finished available source-bound snapshots and OSV audits

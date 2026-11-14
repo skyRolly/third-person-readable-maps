@@ -1,0 +1,545 @@
+{
+  "schema": 1,
+  "reviewed_on": "2026-11-14",
+  "scope": "Investigator classification; no risk acceptance or production approval",
+  "records": [
+    {
+      "key": "1.14-1.14.4|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-7rjr-3q55-vv33",
+      "group": "1.14-1.14.4",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-7rjr-3q55-vv33",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.14",
+        "runtime/1.14.1",
+        "runtime/1.14.2",
+        "runtime/1.14.3",
+        "runtime/1.14.4"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.14-1.14.4-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "current_proposed_source_sha": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.14-1.14.4|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-fxph-q3j8-mv87",
+      "group": "1.14-1.14.4",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-fxph-q3j8-mv87",
+      "aliases": [
+        "CVE-2017-5645"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.14",
+        "runtime/1.14.1",
+        "runtime/1.14.2",
+        "runtime/1.14.3",
+        "runtime/1.14.4"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.14-1.14.4-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "current_proposed_source_sha": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.14-1.14.4|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-jfh8-c2jp-5v3q",
+      "group": "1.14-1.14.4",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-jfh8-c2jp-5v3q",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.14",
+        "runtime/1.14.1",
+        "runtime/1.14.2",
+        "runtime/1.14.3",
+        "runtime/1.14.4"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.14-1.14.4-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "current_proposed_source_sha": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.15-1.16.5|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-7rjr-3q55-vv33",
+      "group": "1.15-1.16.5",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-7rjr-3q55-vv33",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.15",
+        "runtime/1.15.1",
+        "runtime/1.15.2",
+        "runtime/1.16",
+        "runtime/1.16.1",
+        "runtime/1.16.2",
+        "runtime/1.16.3",
+        "runtime/1.16.4",
+        "runtime/1.16.5"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.15-1.16.5-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "current_proposed_source_sha": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.15-1.16.5|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-fxph-q3j8-mv87",
+      "group": "1.15-1.16.5",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-fxph-q3j8-mv87",
+      "aliases": [
+        "CVE-2017-5645"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.15",
+        "runtime/1.15.1",
+        "runtime/1.15.2",
+        "runtime/1.16",
+        "runtime/1.16.1",
+        "runtime/1.16.2",
+        "runtime/1.16.3",
+        "runtime/1.16.4",
+        "runtime/1.16.5"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.15-1.16.5-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "current_proposed_source_sha": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.15-1.16.5|pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1|GHSA-jfh8-c2jp-5v3q",
+      "group": "1.15-1.16.5",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "advisory": "GHSA-jfh8-c2jp-5v3q",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.15",
+        "runtime/1.15.1",
+        "runtime/1.15.2",
+        "runtime/1.16",
+        "runtime/1.16.1",
+        "runtime/1.16.2",
+        "runtime/1.16.3",
+        "runtime/1.16.4",
+        "runtime/1.16.5"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.15-1.16.5-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "current_proposed_source_sha": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.17-1.19.2|pkg:maven/io.netty/netty-handler@4.1.77.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.17-1.19.2",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "runtime/1.19",
+        "runtime/1.19.1",
+        "runtime/1.19.2"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.17-1.19.2-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "current_proposed_source_sha": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.17-1.19.2|pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-7rjr-3q55-vv33",
+      "group": "1.17-1.19.2",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "advisory": "GHSA-7rjr-3q55-vv33",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.17",
+        "runtime/1.17.1",
+        "runtime/1.18",
+        "runtime/1.18.1"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.17-1.19.2-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "current_proposed_source_sha": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.17-1.19.2|pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1|GHSA-jfh8-c2jp-5v3q",
+      "group": "1.17-1.19.2",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "advisory": "GHSA-jfh8-c2jp-5v3q",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.17",
+        "runtime/1.17.1",
+        "runtime/1.18",
+        "runtime/1.18.1"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.17-1.19.2-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Verify effective launcher logging configuration and mitigations, then obtain a compatible Minecraft-managed fix.",
+      "inventory_source_sha": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "current_proposed_source_sha": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/"
+    },
+    {
+      "key": "1.19.3|pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.3",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.19.3-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "current_proposed_source_sha": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.19.4-1.20.4|pkg:maven/io.netty/netty-handler@4.1.82.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.4-1.20.4",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.4",
+        "runtime/1.20",
+        "runtime/1.20.1"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.19.4-1.20.4-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "92efc418d47b45ae151440391204231570a1e7af",
+      "current_proposed_source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.19.4-1.20.4|pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.4-1.20.4",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "runtime/1.20.2",
+        "runtime/1.20.3",
+        "runtime/1.20.4"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.19.4-1.20.4-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "92efc418d47b45ae151440391204231570a1e7af",
+      "current_proposed_source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.20.5-1.20.6|pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.20.5-1.20.6",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.20.5",
+        "runtime/1.20.6"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.20.5-1.20.6-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "current_proposed_source_sha": "ec9ba516a2000c0a83baf689ff38433790119331",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.21-1.21.1|pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21-1.21.1",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.21",
+        "runtime/1.21.1"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.21-1.21.1-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "current_proposed_source_sha": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.21.2-1.21.3|pkg:maven/io.netty/netty-handler@4.1.97.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.2-1.21.3",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.21.2",
+        "runtime/1.21.3"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.21.2-1.21.3-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "current_proposed_source_sha": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.21.4-1.21.8|pkg:maven/io.netty/netty-handler@4.1.115.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.4-1.21.8",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.21.4"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.21.4-1.21.8-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "current_proposed_source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.21.4-1.21.8|pkg:maven/io.netty/netty-handler@4.1.118.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.4-1.21.8",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "runtime/1.21.5",
+        "runtime/1.21.6",
+        "runtime/1.21.7",
+        "runtime/1.21.8"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.21.4-1.21.8-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "current_proposed_source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    },
+    {
+      "key": "1.21.9-1.21.10|pkg:maven/io.netty/netty-handler@4.1.118.Final|GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.9-1.21.10",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "scopes": [
+        "gradle",
+        "runtime/1.21.10",
+        "runtime/1.21.9"
+      ],
+      "scanner_state": "known",
+      "scanner_disposition": "Further investigation",
+      "scanner_failing": true,
+      "report": "1.21.9-1.21.10-report.json",
+      "investigator_proposed_disposition": "Upstream-dependent remediation; applicability still requires investigation",
+      "remaining_action": "Trace reachable server-side SNI and mTLS configuration; obtain a compatible Minecraft-managed Netty fix if applicable.",
+      "inventory_source_sha": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "current_proposed_source_sha": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
+      "disposition": "Upstream-dependent",
+      "disposition_scope": "Remediation ownership only; applicability and reachability remain under investigation",
+      "risk_accepted": false,
+      "independent_review": "pending",
+      "evidence": "docs/dependency-evidence/ghsa-c4c3-2026-11-14.json"
+    }
+  ]
+}

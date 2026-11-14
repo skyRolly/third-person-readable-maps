@@ -4,9 +4,11 @@ Reviewed 2026-11-04. The [structured ledger](security-advisories.json) is the co
 
 ## Disposition and release policy
 
-All current matches are **Further investigation**, statically reviewed but unresolved. None is a demonstrated exploitable mod vulnerability, a verified non-applicability determination, or an accepted risk. Every correction to a game-owned dependency requires upstream coordination; no compatible direct mod fix was established. No overrides were applied. The ledger distinguishes Fixed, Actionable, Upstream-dependent, Not applicable, Risk accepted, Further investigation, and Resolved upstream. Risk acceptance requires an identified independent decision and reference. A reviewed record does not authorize release.
+Current matches remain unresolved. The 26.2 runtime-only `netty-handler` 4.2.15.Final occurrence of GHSA-c4c3-7fpv-j4q5 is classified **Upstream-dependent** for remediation; the other records remain **Further investigation**. Reachability of the critical occurrence is still unproven and it remains failing. None is a verified non-applicability determination or an accepted risk. No game-library overrides were applied. The ledger distinguishes Fixed, Actionable, Upstream-dependent, Not applicable, Risk accepted, Further investigation, and Resolved upstream. Risk acceptance requires an identified independent decision and reference. A reviewed record does not authorize release.
 
 There is no repository SECURITY.md. Supported surfaces are the client-only Fabric mod and the published compatibility groups; source evidence is each branch's `build.gradle`, Fabric metadata, `ReadableMapSurface.java`, and `ReadableMapLayerMixin.java`. Those classes render maps using game APIs and contain no direct HTTP, TLS, logging-layout, native deserialization, or LZ4 entry point. This limits the mod-specific claim but does not prove that the hosting Minecraft process cannot reach an affected feature. Dependency origin is established by version manifests, not merely snapshot `relationship: direct`. Game libraries can run both in installed clients and development runs; the build does not bundle them.
+
+The [historical-game logging survey and critical disposition record](dependency-evidence/log4j-default-launcher-2026-11-14/) adds version-bound launcher configuration evidence and records 18 candidate remediation classifications; none changes the failing security gate.
 
 ## Additional static evidence
 
@@ -25,6 +27,8 @@ outside it. None of these narrow negative observations justifies a game-wide
 Not applicable disposition. Specific evidence/proof gaps are attached to every
 structured record. No runtime PoC or game-wide exploitability proof is claimed.
 
+The [final-source November 14 scans](dependency-evidence/osv-rescan-2026-11-14/final-proposals/) include fresh proposal inventories and preserve the integrated-source distinction.
+
 ## Current counts
 
 | Group | Gradle packages | Runtime packages per version | Affected package/version pairs across scopes | Advisory/package/version/group matches | Unique advisories |
@@ -33,7 +37,7 @@ structured record. No runtime PoC or game-wide exploitability proof is claimed.
 | 26.1-26.2 | 84 | 26.1: 53; 26.1.1: 53; 26.1.2: 53; 26.2: 57 | 15 | 53 | 39 |
 | 26.3 | 86 | 26.3: 56 | 5 | 11 | 11 |
 
-Total: 40 unique advisories; 105 advisory/package/version/group combinations. Fixed: 0; Actionable with a verified direct compatible fix: 0; Further investigation: 105; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
+Total: 40 unique advisories; 105 advisory/package/version/group combinations. Fixed: 0; Actionable with a verified direct compatible fix: 0; Further investigation: 104; upstream-dependent remediation: 1; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
 
 The earlier 1.21.11 report counted 85 snapshot packages; the recovered hosted snapshot has 86, including `org.gradle/gradle-core@9.8.2`. The affected-package count remains 10. This correction does not erase the historical report. Runtime inventories include all listed platform variants and normalize classifier variants to a Maven advisory package.
 
@@ -391,12 +395,12 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 - `io.netty:netty-handler`: introduced 4.2.0.Final; fixed 4.2.17.Final.
 - `io.netty:netty-handler`: introduced 0; fixed 4.1.137.Final.
 
-**Disposition: Further investigation.** Identify server-side SNI routing and default SslContext privileges; client-only mod code alone does not establish game-wide non-applicability. If reachable, request a compatible upstream game fix; do not override game-managed libraries in the mod.
+**Disposition:** The `26.2` runtime-only `netty-handler` 4.2.15.Final occurrence is **Upstream-dependent** for a compatible runtime update; the other occurrences remain **Further investigation**. The [upstream advisory](https://github.com/netty/netty/security/advisories/GHSA-c4c3-7fpv-j4q5) describes fragmented ClientHello fallback and the additional conditions for an mTLS bypass, and identifies 4.2.17.Final as fixed. The [GitHub advisory API response](dependency-evidence/ghsa-c4c3-2026-11-14.json) was retrieved on November 14; its SHA-256 is `1ef10fdd35708ed6bc960f39a884c04fb8fb702a602e18b414e819a0a9e87113`. The recorded 26.2 game JAR search found no direct `SniHandler` or `AbstractSniHandler` reference, but does not cover transitive libraries, reflection, configuration or other installed components. Trace those paths; the critical occurrence remains failing and no risk is accepted.
 
 | Group | Package/version | Inventory scopes | Origin / relevance |
 | --- | --- | --- | --- |
 | 1.21.11 | `io.netty/netty-handler@4.2.7.Final` | gradle, runtime/1.21.11 | Minecraft version manifests: 1.21.11; game-supplied client runtime and development classpath |
-| 26.1-26.2 | `io.netty/netty-handler@4.2.15.Final` | runtime/26.2 | Minecraft version manifests: 26.2; game-supplied client runtime and development classpath |
+| 26.1-26.2 | `io.netty/netty-handler@4.2.15.Final` | runtime/26.2 | Minecraft 26.2 runtime manifest; the recorded Gradle inventory does not contain this version |
 | 26.1-26.2 | `io.netty/netty-handler@4.2.7.Final` | gradle, runtime/26.1, runtime/26.1.1, runtime/26.1.2 | Minecraft version manifests: 26.1, 26.1.1, 26.1.2; game-supplied client runtime and development classpath |
 | 26.3 | `io.netty/netty-handler@4.2.16.Final` | gradle, runtime/26.3 | Minecraft version manifests: 26.3; game-supplied client runtime and development classpath |
 
@@ -489,7 +493,7 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 | Group | Package/version | Inventory scopes | Origin / relevance |
 | --- | --- | --- | --- |
 | 1.21.11 | `io.netty/netty-handler@4.2.7.Final` | gradle, runtime/1.21.11 | Minecraft version manifests: 1.21.11; game-supplied client runtime and development classpath |
-| 26.1-26.2 | `io.netty/netty-handler@4.2.15.Final` | runtime/26.2 | Minecraft version manifests: 26.2; game-supplied client runtime and development classpath |
+| 26.1-26.2 | `io.netty/netty-handler@4.2.15.Final` | runtime/26.2 | Minecraft 26.2 runtime manifest; the recorded Gradle inventory does not contain this version |
 | 26.1-26.2 | `io.netty/netty-handler@4.2.7.Final` | gradle, runtime/26.1, runtime/26.1.1, runtime/26.1.2 | Minecraft version manifests: 26.1, 26.1.1, 26.1.2; game-supplied client runtime and development classpath |
 | 26.3 | `io.netty/netty-handler@4.2.16.Final` | gradle, runtime/26.3 | Minecraft version manifests: 26.3; game-supplied client runtime and development classpath |
 

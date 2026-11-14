@@ -1,0 +1,49 @@
+{
+  "observed_on": "2026-11-13",
+  "control": "Fabric 0.20.1 with empty mods directory",
+  "runner_sha256": "326ad31556a49dc80c316270a341c288f9df41a8380dd569d931aaece5d3b68e",
+  "versions": {
+    "1.21.1": {
+      "group": "1.21-1.21.1",
+      "candidate_head": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "candidate_artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "candidate_evidence": "docs/runtime-smoke-1.0.0/1.21.1/",
+      "fixture": "/workspace/.minecraft-test-left-baseline-1.21.1 (copied; not archived)",
+      "control_files_sha256": {
+        "movement.json": "6d18a25bb695edab1f5f71b249610c3a52e934ae56dc8c24a2228f02b6eafdf4",
+        "ending-player.dat": "af4a601f6e99fa25a6eaf14b07ac426ae6defd1bf6382974fa5c13cb6b214aff",
+        "walking-1.png": "9bf60bc130d0744dbf659c597390f2d5a5b423ba5efd897f33d7d792cd68850c",
+        "walking-2.png": "56bed8fbbc558d534a5e169dadb43ff84949692a6f4a6d68de033bc01bd8e21c",
+        "client.log": "b9c74c8e8e4a72188bfefb6bce7350b7a3a711bdfe025f4cd45b5e065b996854"
+      }
+    },
+    "1.21.5": {
+      "group": "1.21.4-1.21.8",
+      "candidate_head": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "candidate_artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "candidate_evidence": "docs/runtime-smoke-1.0.0/1.21.5/",
+      "fixture": "/workspace/.minecraft-test-left-baseline-1.21.5 (copied; not archived)",
+      "control_files_sha256": {
+        "movement.json": "5a2fefd3e73c6c14f70b9d6438980ab679ff7489bd09b9bb53607cfbc2a9a636",
+        "ending-player.dat": "a8e98b3036cc0f8afcf99b716c0dde4abfbe7493708c1ce385e7700a9ba9d1dd",
+        "walking-1.png": "8c064a5511dd501e3afd14a3efc43d5970805070c91598569645b3abc855f767",
+        "walking-2.png": "2f6d11a5436b21b252ecbff9885bcc03396a78560cc1605506e0774a9c399193",
+        "client.log": "96dbab48ab40e0949fb45bbaae0e78ffb4de7f7e52d222ef20b2d72fcdd62b8f"
+      }
+    },
+    "1.21.10": {
+      "group": "1.21.9-1.21.10",
+      "candidate_head": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "candidate_artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "candidate_evidence": "docs/runtime-smoke-1.0.0/1.21.10/",
+      "fixture": "/workspace/.minecraft-test-left-baseline-1.21.10 (copied; not archived)",
+      "control_files_sha256": {
+        "movement.json": "224490c141ea91f71b21746c6274dc729024a0a0d6e1786f822518c30a8596e1",
+        "ending-player.dat": "2c262acacfacb2970703122bbcd17c4d2d370202e3f884d786a3af195e3ee0e3",
+        "walking-1.png": "75abc6a858bc2b89ace1b2af1e48d8d4ada56507f096e5bcd57176b09b660e26",
+        "walking-2.png": "ab3a77692b2b402fafd8d0db3168778910f7304687469a8dc1509b9913d78b57",
+        "client.log": "0ff63d1f0cd4b024a1bd0a59e1ee068628fa61030464f748cbe52b2624786286"
+      }
+    }
+  }
+}

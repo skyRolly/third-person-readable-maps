@@ -1,0 +1,17 @@
+{
+  "minecraft": "26.3",
+  "start": [
+    5.5,
+    81,
+    -62.5
+  ],
+  "end": [
+    5.5,
+    81.0,
+    -53.22181545714785
+  ],
+  "horizontal_distance": 9.278184542852152,
+  "renderer": "Linux Xorg/Mesa software, SDL EGL",
+  "candidate_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+  "note": "One short local walking scene; screenshots require visual inspection and do not establish full acceptance. The world returned to the menu and the client was manually exited. The diagnostic waited for a save-completion log message absent in 26.3; movement was recovered from the saved player data."
+}

@@ -1,0 +1,82 @@
+{
+  "minecraft": "1.21.11",
+  "observed_on": "2026-11-13",
+  "fixture_note": "Hashes recorded after the two runs; each runner copied this local fixture before modifying the test world.",
+  "fixture_files_sha256": {
+    "saves/New World/DIM-1/data/chunks.dat": "ce309bf4ce543dc099b7fca8441d73c679fc6be72f625dbfe2c16fbeaccbf46b",
+    "saves/New World/DIM-1/data/raids.dat": "81dd44d9041bd3d904651b19d988fbc6982d143fe63f4be74f676c175b17443e",
+    "saves/New World/DIM-1/data/raids_nether.dat": "ee21519a057542a4daa1ff7e165924f7824903b70b61f2c95c0649324733c0d9",
+    "saves/New World/DIM-1/data/world_border.dat": "71afeb62066f6109207e7a5b42dfab0cd639b99eece50eb27eb222a94e8c297a",
+    "saves/New World/DIM1/data/chunks.dat": "ce309bf4ce543dc099b7fca8441d73c679fc6be72f625dbfe2c16fbeaccbf46b",
+    "saves/New World/DIM1/data/raids_end.dat": "c6eb6e6066624b174f18c11e181676c49ac6f7bba0c4abe999dfad49adc7c936",
+    "saves/New World/DIM1/data/world_border.dat": "71afeb62066f6109207e7a5b42dfab0cd639b99eece50eb27eb222a94e8c297a",
+    "saves/New World/advancements/f36d949a-12db-4676-bc41-a7b7fe97fd55.json": "fb62a6f8e2c5388b62b0132437fc433571228e5027c05b7b770bd07c7dfd513d",
+    "saves/New World/data/chunks.dat": "ce309bf4ce543dc099b7fca8441d73c679fc6be72f625dbfe2c16fbeaccbf46b",
+    "saves/New World/data/idcounts.dat": "161f706c666a2df73ed6caeafc847f22877e40d6cf3ae8c3282c9bf74cb26a31",
+    "saves/New World/data/map_0.dat": "81c09beb7a917e5812ec890b8587131b13c7bd857235cf8d00cfba9c366152a0",
+    "saves/New World/data/map_1.dat": "219c78668a19aa04968adeb3878f0a0bd4d4cef1e6baca059e6fac4aa0af7319",
+    "saves/New World/data/map_2.dat": "acfa443199f1c1a695c97b41558d9f2878c2255adfc209c06968cf2fb7e8b06f",
+    "saves/New World/data/map_3.dat": "81c09beb7a917e5812ec890b8587131b13c7bd857235cf8d00cfba9c366152a0",
+    "saves/New World/data/map_4.dat": "81c09beb7a917e5812ec890b8587131b13c7bd857235cf8d00cfba9c366152a0",
+    "saves/New World/data/raids.dat": "c6eb6e6066624b174f18c11e181676c49ac6f7bba0c4abe999dfad49adc7c936",
+    "saves/New World/data/random_sequences.dat": "5e74b2b5afe39037270527d76f8fb5feb094166b10105ded09f1d35c73dc8ca8",
+    "saves/New World/data/scoreboard.dat": "75e55e2261e5ddf47d5e73cef2c2715d605ec77aebce2c9adb664329e3bc8fa6",
+    "saves/New World/data/world_border.dat": "71afeb62066f6109207e7a5b42dfab0cd639b99eece50eb27eb222a94e8c297a",
+    "saves/New World/entities/r.-1.-1.mca": "c761384eb5483cbac57ee34b9d3d59a9bc14c94137739f2281c8089b01c3d5c4",
+    "saves/New World/entities/r.-1.0.mca": "efa78b877f2bf33a59afffe2c8c19bda2a1b528aa5b37afb9a73650c64a227ab",
+    "saves/New World/entities/r.0.-1.mca": "57461b6bf9392650a35a2cb488301f691f30c84cc8265926645995ae11b257dc",
+    "saves/New World/entities/r.0.0.mca": "90817a9a6959f8452fe55d9896fbc752d2bc20722e96a9627e84a69720fcca7c",
+    "saves/New World/icon.png": "1e3e8b45d51f677e2582ce8b09527d9c1942d94c42804be9b99d8c9011d25c78",
+    "saves/New World/level.dat": "934aaa7a0d5448aa31c9baa00b71f209603242f2bab7ab0a906d3892b43d2597",
+    "saves/New World/level.dat_old": "110e8f388b0289bc3cbdaa25f9bb54bc84ccb8a4c65adbc786a6138205640d00",
+    "saves/New World/playerdata/f36d949a-12db-4676-bc41-a7b7fe97fd55.dat": "53dd6c8b5b84a3061c995cb81de461dd2a958984a7f539b49715d79bd15212bd",
+    "saves/New World/playerdata/f36d949a-12db-4676-bc41-a7b7fe97fd55.dat_old": "53dd6c8b5b84a3061c995cb81de461dd2a958984a7f539b49715d79bd15212bd",
+    "saves/New World/poi/r.-1.-1.mca": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+    "saves/New World/poi/r.-1.0.mca": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+    "saves/New World/poi/r.0.-1.mca": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+    "saves/New World/poi/r.0.0.mca": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+    "saves/New World/region/r.-1.-1.mca": "6071967919d40ef89358fbb8b82f9542cd090b86d2fcb2b33e3c8c446e59aacb",
+    "saves/New World/region/r.-1.0.mca": "ec4a015b488d899bf41c6831f6cee8fdf9af893f0421ffcf8cd22d56f2f4bac1",
+    "saves/New World/region/r.0.-1.mca": "5f2a1d2da584b081b14731030a4e3067dbe29c6aeca48c4289fb4033e5f26af3",
+    "saves/New World/region/r.0.0.mca": "41edc458ec3d897f3b0ff8481871362460d00c7c3a5d22e9aa3ab55a19145ad2",
+    "saves/New World/session.lock": "374dcab9c13f891c24294cf803ada1145453f1bf464a57fdfb080935830539f1",
+    "saves/New World/stats/f36d949a-12db-4676-bc41-a7b7fe97fd55.json": "e6af91c0fc97fa6d71d6e8e30cf45a3de79f807c022a6a17e96f97d01891137e",
+    "options.txt": "ce8729b64c22a0c6c6a37ba49ed324cb6905481bffbb1ff007c59951134108ac"
+  },
+  "variants": {
+    "candidate": {
+      "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "paired_candidate_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "mod_installed": true,
+      "nearest_item": "minecraft:wheat_seeds",
+      "item_entities_cleared": 8,
+      "files_sha256": {
+        "before-clear.png": "6c2bd3f8c08a56b975df5958d526309fe7a862531f3a2b9f5f05141bb759a8e0",
+        "after-clear.png": "f3351d51b83bf81b6d61fdbbac0fb629800a55dbb1a2adfdffa2b45f87e721b7",
+        "client.log": "c5a8caeeb767717444f5ed30791a6d536a8cf2307bb9dd5ae1b87b476b559c4b",
+        "movement.json": "590fd3a3c68f009bfffc39c6842649003037e30dbe68bc481146d7acb7aab605",
+        "ending-player.dat": "b1c4a87e2ccccbd8aa3da5c7ed3a8697c3444fdee56698587e9d5a42379374b1",
+        "launcher-pins.json": "fdb4e506dce5efb1db26e3ee4b84b09f556a936353732723174ca976c8b8e30d",
+        "runner.log": "f29a001100aa15727fb191bae3f668d0d1025a9b3ac3251947f0c1a78c76ecde"
+      }
+    },
+    "control": {
+      "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "paired_candidate_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "mod_installed": false,
+      "nearest_item": "minecraft:wheat_seeds",
+      "item_entities_cleared": 8,
+      "files_sha256": {
+        "before-clear.png": "2c0c7a5b8374b00fabaaba717a0e21af3943ad2cc60f3d28e5465d48ab135b13",
+        "after-clear.png": "4b326422e039ae8ccec88f08b048245c6a7d6aa73976dc7f0da11bd67ec1f4b1",
+        "client.log": "3826a17fc0824bd1c3596e587ba7274cc1d088f1ab08ec0e5ee4334eeb4b516e",
+        "movement.json": "47c75226b93a700c911c5062e6327ca62ec1cbfa3a6bf2d8e8a92c587f2d4655",
+        "ending-player.dat": "e284f6e6baca8da00f791c0b45ba1dcce99f951a4a263f56e4bbd981f4ceaf02",
+        "launcher-pins.json": "fdb4e506dce5efb1db26e3ee4b84b09f556a936353732723174ca976c8b8e30d",
+        "runner.log": "e56a0f8a8ae768c0474c9274ab22255888c56865940590addb67a63141ce7659"
+      }
+    }
+  },
+  "foreground-items-104.py_sha256": "d13f20d0e5f2e7594821cce27587c4e5fdd752b524c0809d9ea1c07ba0deb43a",
+  "x11-foreground-items-104.py_sha256": "53decf0786bcca90f5b142ff35ef80443a1f29f888cd3dcd61aa07b02a5dd417"
+}

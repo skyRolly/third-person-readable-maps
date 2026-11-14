@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-13",
+  "scope": "Unmerged verifier-only PR-head updates; earlier runtime and security evidence remains bound to the previous source heads.",
+  "groups": {
+    "1.14-1.14.4": {
+      "old_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "new_head": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "branch": "candidate/mc-1.14-1.14.4",
+      "artifact_sha256_before_rebuild": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b"
+    },
+    "1.15-1.16.5": {
+      "old_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "new_head": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "branch": "candidate/mc-1.15-1.16.5",
+      "artifact_sha256_before_rebuild": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c"
+    },
+    "1.17-1.19.2": {
+      "old_head": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "new_head": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "branch": "candidate/mc-1.17-1.19.2",
+      "artifact_sha256_before_rebuild": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5"
+    },
+    "1.19.3": {
+      "old_head": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "new_head": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "branch": "candidate/mc-1.19.3",
+      "artifact_sha256_before_rebuild": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1"
+    },
+    "1.19.4-1.20.4": {
+      "old_head": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "new_head": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "branch": "candidate/mc-1.19.4-1.20.4",
+      "artifact_sha256_before_rebuild": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c"
+    },
+    "1.20.5-1.20.6": {
+      "old_head": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "new_head": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "branch": "candidate/mc-1.20.5-1.20.6",
+      "artifact_sha256_before_rebuild": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a"
+    },
+    "1.21-1.21.1": {
+      "old_head": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "new_head": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "branch": "candidate/mc-1.21-1.21.1",
+      "artifact_sha256_before_rebuild": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c"
+    },
+    "1.21.11": {
+      "old_head": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+      "new_head": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "artifact_sha256_before_rebuild": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73"
+    },
+    "1.21.2-1.21.3": {
+      "old_head": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "new_head": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "branch": "candidate/mc-1.21.2-1.21.3",
+      "artifact_sha256_before_rebuild": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75"
+    },
+    "1.21.4-1.21.8": {
+      "old_head": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "new_head": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "branch": "candidate/mc-1.21.4-1.21.8",
+      "artifact_sha256_before_rebuild": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e"
+    },
+    "1.21.9-1.21.10": {
+      "old_head": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "new_head": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "branch": "candidate/mc-1.21.9-1.21.10",
+      "artifact_sha256_before_rebuild": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a"
+    },
+    "26.1-26.2": {
+      "old_head": "d3695609e0a05ede476bf80b09bf0047868165e5",
+      "new_head": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "artifact_sha256_before_rebuild": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f"
+    },
+    "26.3": {
+      "old_head": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+      "new_head": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "artifact_sha256_before_rebuild": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559"
+    }
+  }
+}

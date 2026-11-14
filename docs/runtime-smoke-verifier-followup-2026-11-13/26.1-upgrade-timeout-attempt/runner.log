@@ -1,0 +1,17 @@
+Pruned re-downloadable assets for class-followup-modern 1.21.11 bytes 0
+Launching 1.21.11 c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73
+Captured standing-day
+Captured walking-1
+Captured walking-2
+Captured after-walk
+1.21.11 ending position [5.5, 81.0, -50.41564756784185] horizontal distance 12.084352432158148
+Completed 1.21.11
+Pruned re-downloadable assets for class-followup-modern 26.1 bytes 4307310
+Launching 26.1 703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f
+Traceback (most recent call last):
+  File "/workspace/.minecraft-test/class-followup-walking-modern-100.py", line 155, in <module>
+    wait(p,log,'MapSmokeTest joined the game',360);hotbar()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.minecraft-test/class-followup-walking-modern-100.py", line 40, in wait
+    raise TimeoutError(needle)
+TimeoutError: MapSmokeTest joined the game

@@ -1,0 +1,128 @@
+name: Legacy candidate dependency audit
+
+on:
+  schedule:
+    - cron: '41 5 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  candidates:
+    name: Select source-pinned candidates
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      has_candidates: ${{ steps.matrix.outputs.has_candidates }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Build candidate matrix
+        id: matrix
+        run: |
+          python3 scripts/audit_candidate_dependencies.py matrix > candidate-matrix.json
+          echo "matrix=$(cat candidate-matrix.json)" >> "$GITHUB_OUTPUT"
+          python3 -c 'import json; print("has_candidates=" + str(bool(json.load(open("candidate-matrix.json"))["include"])).lower())' >> "$GITHUB_OUTPUT"
+
+  audit:
+    name: Audit candidate ${{ matrix.group }}
+    needs: candidates
+    if: needs.candidates.outputs.has_candidates == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.candidates.outputs.matrix) }}
+    steps:
+      - name: Checkout coordination tools
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify candidate pin and post-merge transition
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GROUP: ${{ matrix.group }}
+          BRANCH: ${{ matrix.branch }}
+          SOURCE_SHA: ${{ matrix.sha }}
+        run: python3 scripts/verify_candidate_source.py --group "$GROUP" --branch "$BRANCH" --source-sha "$SOURCE_SHA"
+      - name: Checkout candidate source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ matrix.sha }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reject changed candidate heads
+        env:
+          EXPECTED_SHA: ${{ matrix.sha }}
+        run: test "$(git -C source rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25.0.5+8'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Verify source Wrapper using coordination policy
+        run: python3 scripts/verify_gradle_wrapper.py --root source
+      - name: Generate read-only Gradle snapshot
+        env:
+          GITHUB_DEPENDENCY_GRAPH_REF: refs/heads/${{ matrix.branch }}
+          GITHUB_DEPENDENCY_GRAPH_SHA: ${{ matrix.sha }}
+        uses: gradle/actions/dependency-submission@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        with:
+          build-root-directory: source
+          cache-provider: basic
+          cache-read-only: true
+          validate-wrappers: true
+          dependency-graph: generate-and-upload
+          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies
+          artifact-retention-days: 14
+      - name: Audit Gradle and every declared game runtime
+        env:
+          GROUP: ${{ matrix.group }}
+          BRANCH: ${{ matrix.branch }}
+          SOURCE_SHA: ${{ matrix.sha }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          snapshots=(dependency-graph-reports/*.json)
+          test "${#snapshots[@]}" -eq 1
+          python3 scripts/audit_candidate_dependencies.py audit --snapshot "${snapshots[0]}" \
+            --source source --group "$GROUP" --branch "$BRANCH" --source-sha "$SOURCE_SHA" \
+            --output candidate-dependency-audit.json
+      - name: Summarize candidate audit
+        if: always()
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          python3 - <<'PYTHON' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          from pathlib import Path
+          p = Path('candidate-dependency-audit.json')
+          print('## Candidate dependency audit: ' + os.environ['GROUP'])
+          if not p.exists():
+              print('INCOMPLETE: source pin, snapshot generation or audit failed before a report was written.')
+          else:
+              result = json.loads(p.read_text())
+              if result['status'] == 'incomplete':
+                  print('INCOMPLETE: see the retained report for the validation or API error.')
+              else:
+                  print('Source: `' + result['source_sha'] + '`; unreviewed failing matches: ' + str(len(result['matches'])))
+                  print('Previously observed matches no longer returned and needing review: ' + str(len(result['resolved_needing_review'])))
+                  print('This is candidate monitoring, not risk acceptance or release approval.')
+          PYTHON
+      - name: Upload candidate advisory report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: candidate-dependency-audit-${{ strategy.job-index }}
+          path: candidate-dependency-audit.json
+          if-no-files-found: warn
+          retention-days: 30

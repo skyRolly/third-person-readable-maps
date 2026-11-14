@@ -38,7 +38,7 @@ integration: final disposition **C (blocked)**. An administrator must disable on
 that managed submission toggle while retaining graph/alert/security-update
 features. See [administrative controls](administrative-controls.md) for exact
 observed states, payloads, reviewer prerequisites and activation/read-back steps.
-The [maintenance report](maintenance-2026-11-04.md) and [release gate matrix](release-readiness-2026-11-04.md)
+The [maintenance report](maintenance-2026-11-04.md) and [1.0.0 release gate matrix](release-readiness-1.0.0.md)
 separate proposed PR tests from integrated-source and live authorization evidence.
 
 ## The release commit and global tag
@@ -47,7 +47,10 @@ A release uses one `X.X.X` mod version and one annotated tag of exactly that
 name, without a `v` prefix. The tag points to the approved **main** commit
 containing `release/plan.json`. That plan pins a source branch and full commit for every
 compatibility group. Each JAR declares the same mod version but has a distinct
-Minecraft classifier. The plan is an attestation reviewed alongside the source;
+Minecraft classifier. The plan version must match the reviewed
+[`release/current-version.json`](../release/current-version.json); changing the
+coordinated version requires a reviewed update to that file and the example
+plan. The plan is an attestation reviewed alongside the source;
 it must reference a checked-in report for each advertised Minecraft version,
 including Java 21 runtime evidence for 1.21.11. Store each report at a simple
 `release/evidence/<name>.json` path and include that path in the plan:
@@ -86,10 +89,11 @@ unverified.
 `release/plan.example.json` is intentionally invalid: it contains zero SHAs and
 no runtime evidence. Create `release/plan.json` in a reviewed PR, using exact
 approved branch heads and a synchronized version and change list. Commit it to
-`main` through review. `0.0.2` is the first candidate because there are no
-existing tags or releases and all three branches use it; if a published identity
-appears before release, use a new version. Never move, overwrite or delete a
-published tag to repair a release; issue a new version instead.
+`main` through review. The current coordinated proposed version is `1.0.0`;
+the independently reviewed branch updates have not yet been integrated, and no
+coordinated release has been published. If a published identity appears before
+release, select a new version through review. Never move, overwrite or delete
+a published tag to repair a release; issue a new version instead.
 
 ## Validation and publication
 
@@ -162,3 +166,19 @@ assets and tag immediately before publication, but cannot eliminate this race.
 Restrict and monitor administrator, tag, release and environment permissions;
 reviewers must inspect the exact draft and reports immediately before approval.
 An existing changed draft is rejected rather than silently repaired.
+
+## Adding a reviewed legacy group
+
+`release/minecraft-runtime-requirements.json` records Mojang-declared runtimes
+and metadata provenance. Update that reviewed inventory when adding a game
+version; the plan rejects unknown versions and a mod Java target above a
+member's game runtime. Each group declares a pinned `build_jdk` and expected
+Mixin classes, and the release matrix selects that build JDK. Artifact checks
+still enforce the declared runtime bytecode, required Mixins, namespace,
+metadata, source, evidence and checksums. A build JDK can be newer than the
+runtime target.
+
+A candidate branch and static checks alone do not add release support. Add a
+reviewed group to the compatibility configuration, plan, Dependabot and OSV
+ledger only with its per-version runtime evidence and reviewed dependency
+findings. Existing unresolved findings and all authorization gates remain.

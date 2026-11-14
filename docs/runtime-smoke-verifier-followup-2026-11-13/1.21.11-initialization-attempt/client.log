@@ -1,0 +1,23 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080
+[17:28:25] [main/INFO]: Loading Minecraft 1.21.11 with Fabric Loader 0.20.1
+[17:28:25] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[17:28:25] [main/INFO]: Loading 5 mods:
+	- fabricloader 0.20.1
+	   \-- mixinextras 0.5.5
+	- java 21
+	- minecraft 1.21.11
+	- thirdpersonreadablemaps 1.0.0
+[17:28:25] [main/ERROR]: Uncaught exception in thread "main"
+org.spongepowered.asm.service.ServiceNotAvailableError: No mixin global property service is available
+	at org.spongepowered.asm.service.MixinService.initPropertyService(MixinService.java:300)
+	at org.spongepowered.asm.service.MixinService.getGlobalPropertyServiceInstance(MixinService.java:280)
+	at org.spongepowered.asm.service.MixinService.getGlobalPropertyService(MixinService.java:270)
+	at org.spongepowered.asm.launch.GlobalProperties.getService(GlobalProperties.java:108)
+	at org.spongepowered.asm.launch.GlobalProperties.get(GlobalProperties.java:121)
+	at org.spongepowered.asm.launch.MixinBootstrap.isSubsystemRegistered(MixinBootstrap.java:206)
+	at org.spongepowered.asm.launch.MixinBootstrap.start(MixinBootstrap.java:139)
+	at org.spongepowered.asm.launch.MixinBootstrap.init(MixinBootstrap.java:128)
+	at net.fabricmc.loader.impl.launch.FabricMixinBootstrap.init(FabricMixinBootstrap.java:59)
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:147)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:66)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)

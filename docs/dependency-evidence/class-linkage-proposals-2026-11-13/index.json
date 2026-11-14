@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "scanned_on": "2026-11-13",
+  "risk_acceptance": false,
+  "scope": "Unmerged maintenance proposals, not integrated maintenance branches.",
+  "groups": {
+    "1.21.11": {
+      "source_sha": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "complete": true,
+      "exit_code": 1,
+      "matches": 41,
+      "failing": 41,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior proposal scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/1.21.11-snapshot.json",
+      "snapshot_sha256": "5eaeaeda46d380bff67fdeba006631607caf8413784641e9885892d9215c2c23",
+      "report_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/1.21.11-osv.json",
+      "report_sha256": "7316d10a0b9f2d1733f967e60b423c566215dd4efab8734c9f579c5f8fa7d36f",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/1.21.11-snapshot.log",
+      "snapshot_log_sha256": "f105a5989af8e6caec24c79c8fb1800560d82242d54110c1d23fea37ddd9391a",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/1.21.11-audit.log",
+      "audit_log_sha256": "32ce8efda9916b5989ae0f8d26cc383bf7e38e8885dc8f2d1e1900b18c9e4da6"
+    },
+    "26.1-26.2": {
+      "source_sha": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "complete": true,
+      "exit_code": 1,
+      "matches": 53,
+      "failing": 53,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior proposal scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.1-26.2-snapshot.json",
+      "snapshot_sha256": "194aafa637852fcd9ab20e08355b3f6050282e7ce15ac44a0355e3407aeaea41",
+      "report_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.1-26.2-osv.json",
+      "report_sha256": "108d4c4a004963df06b228d35235ec48f0b83adc895a16f25763c23832f0fa79",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.1-26.2-snapshot.log",
+      "snapshot_log_sha256": "82dffc421bd628c2dad7430b0d756136891cb120de47d0ced5e7357c790643ff",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.1-26.2-audit.log",
+      "audit_log_sha256": "06d37f5f22de01934bb22395a4872e0e5f8453d0c0139a2e6f48b64331fd8f95"
+    },
+    "26.3": {
+      "source_sha": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "complete": true,
+      "exit_code": 1,
+      "matches": 11,
+      "failing": 11,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior proposal scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.3-snapshot.json",
+      "snapshot_sha256": "226ebbe01327e1d13d89e6700d81c4bae545b8394f1cc35689ab64021222b4be",
+      "report_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.3-osv.json",
+      "report_sha256": "657c433a5fb3a3c73eb6eae729a16ed6aec5108ccd9788fcd32cfb5aa823676f",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.3-snapshot.log",
+      "snapshot_log_sha256": "ebf101d399557df9dd709122e584b927f0860e1c4e4e2d22e28e4578c0b649ab",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-proposals-2026-11-13/26.3-audit.log",
+      "audit_log_sha256": "471c856e91af641ba6b5e722202e70cd6527daa17ef5bae04dcdea31961241a5"
+    }
+  },
+  "run.py_sha256": "99bd21c4e38afe9720a643bd4562ba933a4b2834be3c2269358cd2a8558423de",
+  "orchestration.log_sha256": "484884c15f07bdd8424be78209810182d394d49fbd506a5edaad156402aea613"
+}

@@ -1,0 +1,456 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-12",
+  "parser": {
+    "group": "26.3",
+    "source_commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+    "path": "scripts/jvm_linkage.py",
+    "sha256": "a8c17cf70c4bebcae2aee9df12902af09e431edce16ef4d2a5344d07f379e641"
+  },
+  "targets": {
+    "GHSA-xxph-c9ww-hj94": [
+      "com/google/common/collect/CompactHashMap",
+      "com/google/common/collect/CompactHashSet",
+      "com/google/common/collect/MapMakerInternalMap"
+    ],
+    "GHSA-558v-64gr-wgg4": [
+      "io/netty/handler/codec/compression/Bzip2Decoder"
+    ],
+    "GHSA-mj4r-2hfc-f8p6": [
+      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+    ],
+    "GHSA-3qp7-7mw8-wx86": [
+      "io/netty/handler/ipfilter/IpSubnetFilterRule"
+    ],
+    "GHSA-c653-97m9-rcg9": [
+      "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+    ],
+    "GHSA-x4gw-5cx5-pgmh": [
+      "io/netty/handler/ssl/SslClientHelloHandler"
+    ],
+    "GHSA-mcr4-qmvw-px4g": [
+      "net/jpountz/util/Native"
+    ],
+    "GHSA-cmp6-m4wj-q63q": [
+      "net/jpountz/lz4/LZ4Factory"
+    ],
+    "GHSA-4g8c-wm8x-jfhw": [
+      "io/netty/handler/ssl/SslHandler"
+    ],
+    "GHSA-78wr-2p64-hpwj": [
+      "org/apache/commons/io/input/XmlStreamReader"
+    ],
+    "GHSA-vqf4-7m7x-wgfc": [
+      "net/jpountz/lz4/LZ4Factory"
+    ],
+    "GHSA-4jrv-ppp4-jm57": [
+      "com/google/gson/Gson"
+    ],
+    "GHSA-p6xc-xr62-6r2g": [
+      "org/apache/logging/log4j/core/lookup/StrSubstitutor"
+    ],
+    "GHSA-7hhh-6rmp-j9qf": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-h46c-h94j-95f3": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-r7wm-3cxj-wff9": [
+      "com/fasterxml/jackson/core/JsonFactory"
+    ],
+    "GHSA-cxp5-3px4-pw24": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-j3rv-43j4-c7qm": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-rmj7-2vxq-3g9f": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-wv8q-qhhj-9h54": [
+      "com/fasterxml/jackson/databind/ObjectMapper"
+    ],
+    "GHSA-pq2g-wx69-c263": [
+      "net/minidev/json/parser/JSONParser"
+    ]
+  },
+  "groups": {
+    "1.14-1.14.4": {
+      "source_commit": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.15-1.16.5": {
+      "source_commit": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.17-1.19.2": {
+      "source_commit": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.19.3": {
+      "source_commit": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.19.4-1.20.4": {
+      "source_commit": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.20.5-1.20.6": {
+      "source_commit": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.21-1.21.1": {
+      "source_commit": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.21.11": {
+      "source_commit": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+      "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.21.2-1.21.3": {
+      "source_commit": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.21.4-1.21.8": {
+      "source_commit": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "class_files": 4,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "1.21.9-1.21.10": {
+      "source_commit": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "class_files": 4,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "26.1-26.2": {
+      "source_commit": "d3695609e0a05ede476bf80b09bf0047868165e5",
+      "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    },
+    "26.3": {
+      "source_commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+      "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "class_files": 2,
+      "external_field_writes": [],
+      "direct_class_references": {
+        "GHSA-xxph-c9ww-hj94": [],
+        "GHSA-558v-64gr-wgg4": [],
+        "GHSA-mj4r-2hfc-f8p6": [],
+        "GHSA-3qp7-7mw8-wx86": [],
+        "GHSA-c653-97m9-rcg9": [],
+        "GHSA-x4gw-5cx5-pgmh": [],
+        "GHSA-mcr4-qmvw-px4g": [],
+        "GHSA-cmp6-m4wj-q63q": [],
+        "GHSA-4g8c-wm8x-jfhw": [],
+        "GHSA-78wr-2p64-hpwj": [],
+        "GHSA-vqf4-7m7x-wgfc": [],
+        "GHSA-4jrv-ppp4-jm57": [],
+        "GHSA-p6xc-xr62-6r2g": [],
+        "GHSA-7hhh-6rmp-j9qf": [],
+        "GHSA-h46c-h94j-95f3": [],
+        "GHSA-r7wm-3cxj-wff9": [],
+        "GHSA-cxp5-3px4-pw24": [],
+        "GHSA-j3rv-43j4-c7qm": [],
+        "GHSA-rmj7-2vxq-3g9f": [],
+        "GHSA-wv8q-qhhj-9h54": [],
+        "GHSA-pq2g-wx69-c263": []
+      }
+    }
+  }
+}

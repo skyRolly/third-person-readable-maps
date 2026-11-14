@@ -1,7 +1,10 @@
 # Compatibility decision record
 
-These branches and compatibility groups are maintained; their `0.0.2`
-artifacts have not yet been published as a coordinated release.
+**Evidence dating:** Runtime and graphical observations in the original tables below concern historical 0.0.2 or earlier artifacts. They do not certify 1.0.0. See the [current 1.0.0 handoff](legacy-review-handoff.md) and [version inventory](legacy-version-inventory.md). The coordinated proposed version is 1.0.0; no coordinated release has been published.
+
+
+The 1.21.11 and 26.x groups are maintained; the older rows below describe draft
+candidates. No `0.0.2` artifact has been published as a coordinated release.
 The [Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
 listed 26.3 as the latest stable release on 2026-11-04; 26.4 was a snapshot.
 All 1.21 releases listed here require Java 21 and all listed 26.x releases require
@@ -10,10 +13,10 @@ selected and declared as the minimum for all three maintenance builds.
 
 | Minecraft | Injection/API evidence | Same candidate JAR | Runtime evidence | Decision |
 | --- | --- | --- | --- | --- |
-| 1.21, 1.21.1 | `renderArmWithItem(LivingEntity, ItemStack, ...)` | No: changed signature | Not run | Requires a port and separate verification |
-| 1.21.2, 1.21.3 | `renderArmWithItem(LivingEntityRenderState, BakedModel, ...)` | No: changed signature | Not run | Requires a port and separate verification |
-| 1.21.4–1.21.8 | `renderArmWithItem(ArmedEntityRenderState, ItemStackRenderState, ..., MultiBufferSource, ...)` | No: changed signature and rendering API | Not run | Requires a port and separate verification |
-| 1.21.9, 1.21.10 | `submitArmWithItem` lacks the 1.21.11 `ItemStack` parameter | No: changed signature | Not run | Requires a port and separate verification |
+| 1.21, 1.21.1 | `renderArmWithItem(LivingEntity, ItemStack, ...)` | One candidate for both | Both worlds and partial map smoke | Draft [#17](https://github.com/skyRolly/third-person-readable-maps/pull/17); full acceptance pending |
+| 1.21.2, 1.21.3 | `renderArmWithItem(LivingEntityRenderState, BakedModel, ...)` | One candidate for both | Both worlds and partial map smoke | Draft [#16](https://github.com/skyRolly/third-person-readable-maps/pull/16); full acceptance pending |
+| 1.21.4–1.21.8 | `renderArmWithItem(ArmedEntityRenderState, ItemStackRenderState, ..., MultiBufferSource, ...)` | One candidate for all five | All five worlds and partial map smoke | Draft [#14](https://github.com/skyRolly/third-person-readable-maps/pull/14); full acceptance pending |
+| 1.21.9, 1.21.10 | `submitArmWithItem` lacks the 1.21.11 `ItemStack` parameter | One candidate for both | Both worlds and partial map smoke | Draft [#13](https://github.com/skyRolly/third-person-readable-maps/pull/13); full acceptance pending |
 | 1.21.11 | Exact target and signature checked against mapped game classes | 1.21.11 only | Earlier 0.0.1 development-client graphical test: [PR #1](https://github.com/skyRolly/third-person-readable-maps/pull/1); the [previously tested JAR](https://github.com/skyRolly/third-person-readable-maps/pull/4) loaded and applied its Mixin on Java 21 in an installed client and joined a single-player world | Maintained in `mc/1.21.11`; full current graphical matrix remains a release gate |
 | 26.1, 26.1.1, 26.1.2, 26.2 | Same injection descriptor; these versions have `PoseStack.mulPose(Quaternionfc)` and lack 26.3’s `rotateDegrees` | One 26.1–26.2 JAR; separate from 26.3 | The identical installed Java 25 JAR loaded, applied its Mixin, and displayed map terrain in third person on all four | [Maintenance implementation #7](https://github.com/skyRolly/third-person-readable-maps/pull/7), compiled against 26.1; broader hand/arm coverage remains a release gate |
 | 26.3 | Exact target and signature checked against game classes | 26.3 only | [PR #3](https://github.com/skyRolly/third-person-readable-maps/pull/3) reports a Java 25 development-client graphical test; the [previously tested JAR](https://github.com/skyRolly/third-person-readable-maps/pull/5) loaded and applied its Mixin in an installed Java 25 client using software Vulkan | Maintained in `mc/26.3`; full current graphical matrix remains a release gate |
@@ -26,9 +29,8 @@ mod’s game member references in each actual client JAR. The 26.3 JAR calls
 `mulPose(Quaternionfc)` is absent in 26.3. The same older-group JAR was then
 installed and visually smoke-tested on each of its four declared versions. CI
 repeats version-by-version static target and member checks; it does not automate
-gameplay. Earlier releases and snapshots are deferred: the current
-rendering code already has multiple documented API boundaries, and no separate
-port or actual runtime test exists for them.
+gameplay. The legacy candidates described below add ports and partial installed-client
+smoke tests; snapshots remain outside the stable-release scope.
 
 [Fabric's 26.1 announcement](https://fabricmc.net/2026/03/14/261.html) documents
 the transition from obfuscated distributions and the remapping Loom plugin to
@@ -41,6 +43,11 @@ also replaces removed pose rotation calls while retaining their order and values
 
 | Group | Gradle execution JDK | Compiler and target | Minimum runtime | Gradle / Loom / Loader |
 | --- | --- | --- | --- | --- |
+| Legacy 1.20.5–1.21.10 candidates | Temurin 25.0.5+8 | JDK 25 with `--release 21` | Java 21 | 9.8.2 / 1.19.3 / 0.20.1 |
+| Legacy 1.19.3–1.20.4 candidates | Temurin 25.0.5+8 | JDK 25 with `--release 17` | Java 17 | 9.8.2 / 1.19.3 / 0.20.1 |
+| Legacy 1.17–1.19.2 candidate | Temurin 25.0.5+8 | JDK 25 with `--release 16` | Java 16 for 1.17; Java 17 for 1.18+ | 9.8.2 / 1.19.3 / 0.20.1 |
+| Legacy 1.14–1.14.4 candidate (Yarn 1.14.4+build.18) | Temurin 25.0.5+8 | JDK 25 with `--release 8` | Java 8 | 9.8.2 / 1.19.3 / 0.20.1 |
+| Legacy 1.15–1.16.5 candidate | Temurin 25.0.5+8 | JDK 25 with `--release 8` | Java 8 | 9.8.2 / 1.19.3 / 0.20.1 |
 | 1.21.11 | Temurin 25.0.5+8 | JDK 25 with `--release 21` | Java 21 | 9.8.2 / 1.19.3 / 0.20.1 |
 | 26.1–26.2 | Temurin 25.0.5+8 | JDK 25 with `--release 25` | Java 25 | 9.8.2 / 1.19.3 / 0.20.1 |
 | 26.3 | Temurin 25.0.5+8 | JDK 25 with `--release 25` | Java 25 | 9.8.2 / 1.19.3 / 0.20.1 |
@@ -88,3 +95,10 @@ Runtime dependency manifests are not identical across all shared-JAR versions:
 26.2 updates Netty, Log4j, Guava and others. The [monitoring record](dependency-monitoring.md)
 therefore adds per-version manifest auditing alongside the 26.1 Gradle snapshot.
 This changes monitoring, not the supported game matrix or distributable identity.
+
+## Legacy investigation
+
+The [1.14–1.21.10 inventory](legacy-version-inventory.md) and
+[grouping decisions](legacy-group-decisions.md) distinguish candidates from
+integrated support. [PR #13](https://github.com/skyRolly/third-person-readable-maps/pull/13)
+and [PRs #14 and #16–#23](legacy-group-decisions.md) contain legacy candidates. None is registered in the authoritative release configuration or security ledger.

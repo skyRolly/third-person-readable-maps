@@ -1,0 +1,72 @@
+{
+  "1.14-1.14.4": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 27,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.15-1.16.5": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 27,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.17-1.19.2": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 53,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.19.3": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 24,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.19.4-1.20.4": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 42,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.20.5-1.20.6": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 28,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.21-1.21.1": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 28,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.21.2-1.21.3": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 45,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.21.4-1.21.8": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 52,
+    "disappeared_needing_review": 0,
+    "error": null
+  },
+  "1.21.9-1.21.10": {
+    "exit_code": 1,
+    "status": "complete-unreviewed-candidate-scan",
+    "matches": 59,
+    "disappeared_needing_review": 0,
+    "error": null
+  }
+}

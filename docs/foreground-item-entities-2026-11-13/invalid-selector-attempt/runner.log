@@ -1,0 +1,9 @@
+Pruned re-downloadable assets for foreground-items-candidate 1.21.11 bytes 0
+Launching 1.21.11 c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73
+Captured before-clear
+Traceback (most recent call last):
+  File "/workspace/.minecraft-test/foreground-items-104.py", line 160, in <module>
+    command('/data get entity @e[type=minecraft:item,sort=nearest,limit=1] Item',('has the following entity data','No entity was found'),log)
+  File "/workspace/.minecraft-test/foreground-items-104.py", line 85, in command
+    raise RuntimeError('Unconfirmed command '+text)
+RuntimeError: Unconfirmed command /data get entity @e[type=minecraft:item,sort=nearest,limit=1] Item

@@ -1,0 +1,13 @@
+{
+  "observed_on": "2026-11-13",
+  "minecraft": "26.3",
+  "status": "PASS local-world startup; walking harness failed",
+  "source_kind": "maintenance-proposal",
+  "source_commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+  "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+  "renderer": "Xorg/Mesa software using SDL_VIDEO_FORCE_EGL=1",
+  "files_sha256": {
+    "client.log": "e2804162a14b60ff603bb6d62195bc528bc64d2f12005231fd524f5228f28fb1",
+    "runner.log": "38ea07587bfbcbc8f97b96a8ef8f1a2904f9ff6b452ce7e281cbfaa1af9e89a1"
+  }
+}

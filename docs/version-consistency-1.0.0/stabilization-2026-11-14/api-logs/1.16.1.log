@@ -1,0 +1,3 @@
+1.16.1: dependency library checks: [('linux', []), ('osx', [])]
+1.16.1: 98 JVM game member instructions verified
+1.16.1: 1 Mixin descriptors, 29 game classes and 41 member references verified

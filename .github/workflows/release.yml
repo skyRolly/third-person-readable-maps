@@ -45,6 +45,7 @@ jobs:
             matrix=$(python3 scripts/release.py matrix --plan release/plan.json --candidate)
           else
             test "$GITHUB_REF" = refs/heads/main
+            python3 scripts/validate_maintenance_targets.py --verify-remote --require-release-verifiers
             python3 scripts/release.py validate --plan release/plan.json
             python3 scripts/release.py verify-sources --plan release/plan.json
             matrix=$(python3 scripts/release.py matrix --plan release/plan.json)
@@ -74,22 +75,30 @@ jobs:
         with:
           ref: ${{ matrix.commit }}
           persist-credentials: false
+      - name: Checkout coordination preflight
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          path: .coordination-tools
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Verify source Wrapper using coordination policy
+        run: python3 .coordination-tools/scripts/verify_gradle_wrapper.py --root .
       - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
           distribution: temurin
-          java-version: '25.0.5+8'
+          java-version: ${{ matrix.build_jdk }}
       - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
         with:
           cache-provider: basic
           cache-read-only: true
+      - name: Verify product verifier fixtures
+        run: python3 -m unittest discover -s tests
       - name: Clean build and verify
         run: ./gradlew --no-daemon --console=plain --stacktrace --warning-mode=fail clean build
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        if: matrix.multi_version
-        with:
-          python-version: '3.15.2'
       - name: Verify every advertised Minecraft version
-        if: matrix.multi_version
         run: python3 scripts/verify_supported_apis.py --jar build/libs
       - name: Upload group artifact
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

@@ -1,0 +1,185 @@
+{
+  "minecraft": "1.21.4",
+  "status": "OBSERVED: paired copied local worlds with candidate and without Mod",
+  "source_commit": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+  "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+  "renderer": "Linux Xorg/Mesa software",
+  "selected_slot": 3,
+  "input_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": 0.5
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Long",
+      "value": 4294967296
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": "String",
+      "value": "not-a-number"
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": "NaN"
+    }
+  },
+  "saved_candidate_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "saved_control_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "limitation": "One local-world loading path and partial screenshots; not other versions, multiplayer, hardware-GPU or independent graphical acceptance.",
+  "files_sha256": {
+    "candidate/after-walk.png": "5141e01cd6005627f7fd6895c7eab46ae3a2967c47590fac59fd24aa52e6d520",
+    "candidate/client.log": "532cd767aeab50aa78bec8ed2a81065a5a154582f6f31d2733325103b1dd3eac",
+    "candidate/ending-player.dat": "6b47118dc0bf6c1e6349dd488362b36a6d7441034f3bc3e4a9ba26b481e07cc9",
+    "candidate/first-person.png": "b9c0adbed04646ca637e1ed3fe071dbcae3eaa873203448fd66525982d80069c",
+    "candidate/launcher-pins.json": "d3d29de5e4f4626d5eb3aa7f6bf28952880cf62a16411529f1970e4fbd63cef1",
+    "candidate/movement.json": "bcfb382fa0e1a304d32b8f1e2224f0f382feef9b121a4e44891318c18ded19f4",
+    "candidate/runner.log": "7dadbe12a7631832044899ffbbe852d340d3a37fb588655e26951f6b13dfb9b6",
+    "candidate/runner.py": "0a10e6a4c8767481ea50e234369741c57fcb2f43b359c85ac4822cb150e52cce",
+    "candidate/standing-day.png": "ce46fe0b9e3dcaf187457a1742e2ec8cefacdfc51474b570f1b9396a08a33d09",
+    "candidate/walking-1.png": "82d54d2118b577e4cc46c5be889b30ec46cc7ae7974bb2eede35fff86cfc89f4",
+    "candidate/walking-2.png": "06547f1692b12e3ba792333898656e37d70dda9409173d0ce0b6c89ec5598f35",
+    "control/after-walk.png": "cdb16bee20e4bf17d171f909040c6a63546f55578cdfaab6e4f7a793e66b875b",
+    "control/client.log": "7050b92ec116c83e3d6d3ddd24dcb8c36e9c66298cae713dea69b3e66a9483d5",
+    "control/ending-player.dat": "f4b6fc99ef1479db46ae2af260a1957929fe10e72d7cde8496dcc95b09e6bac8",
+    "control/first-person.png": "5142385d903eb105e525ac000d98e3683a6c6125174bd7c07b612f8ebfa6cfc7",
+    "control/launcher-pins.json": "d3d29de5e4f4626d5eb3aa7f6bf28952880cf62a16411529f1970e4fbd63cef1",
+    "control/movement.json": "0837afcc7618a81de96154c144fc0e253dd5963047dbfd13bbc39330fc4285ab",
+    "control/runner.log": "a645e44e5f39120019fde41ea8cd48d77ed2b3662f59ed17395cbdc0325f3b13",
+    "control/runner.py": "387ab5b9819b151865bae3ee0c3f392ea520263a2f939909150f657a6beb5670",
+    "control/standing-day.png": "a423ef800d7547f5415dda70a4b255c0cce23b7863d39a4c88ecafb456600c9c",
+    "control/walking-1.png": "6f90ff2fdcca18f6da5ac9df78f022e22ff378b2ec53f7be132ea89d8d9e3652",
+    "control/walking-2.png": "8a1d8b0a1f337026f4281047def0613cffe1308ff6d25ce9fc057bccbb5ed373",
+    "first-inconclusive-attempt/candidate-first-client.log": "69be8599142be783876ead7cd2ff186e080d90112b759ced8910960de1ee038f",
+    "first-inconclusive-attempt/candidate-first-progress.png": "a91d84fdefeb7b871035b591323e096198a495ddbbaa5d44bd7bb2e15c5114c8",
+    "first-inconclusive-attempt/candidate-first-runner.py": "2eebd22629a5044fc8d195fe1927d85731c39c9a2f165297dd8780f426b012fe",
+    "first-inconclusive-attempt/candidate-first-saved-player.dat": "e4b2d0ababaeafef3b6a9d4a9e591a25ede2d7f44407079becc351644a5278b7",
+    "first-inconclusive-attempt/candidate-runner.log": "12db4c9e12c410b4c727e4d5507f5dac94bb7a8e4d8b103443b5be9b8375b7f1",
+    "fixture.json": "1ed22cfa8e7b573f7f9d23958922291abd0830a67c5b469c061c00bc9a1ff7e7",
+    "input-level.dat": "4b2fc7f77de70384d5e0ac578fa2f1b480a030116d3c95d4f76430e32e7b33d7",
+    "input-map-zero.dat": "3da0d2a7921216dd09dd113a6d911cc747181517e8e14d9c46b8b2bb2961747d",
+    "input-player.dat": "997a509fb39823ab023114922bb020a42163b579ebbf0e7821e2a669cffe9869",
+    "prepare-fixture.py": "32e04f29ccb0a7fffd8d8748b17bb2ae2ce1f7d4bc5cc99aadbc56d0751bf3f2",
+    "x11-helper.py": "ae52e66e8659fe4b01b71c836d4cca4eeac8725e8f86faa44cfee225d6b972c7"
+  }
+}

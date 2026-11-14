@@ -1,0 +1,61 @@
+{
+  "minecraft": "1.21.11",
+  "status": "OBSERVED no-Mod local-world control",
+  "paired_candidate_source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+  "paired_candidate_artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+  "input_level_sha256": "e8f9d59f5058e99e6eb288bb0d7c99827acc731d7bbef89037253eba197685ad",
+  "input_player_sha256": "2466daf4c984de1ac89be62648ffbd314f26dc5ffb7470712e7c828c2134b13e",
+  "input_map_zero_sha256": "e4b17e8aaf1ac1695eb5fa52d27b65f740d867b80272f3fa502291b02f58c86f",
+  "selected_slot": 3,
+  "saved_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "files_sha256": {
+    "client.log": "be95028b597a3cf982f7ef4fa633632e92f5915d4af196df5781e611c8d31b72",
+    "ending-player.dat": "8207fe679a9beea5da2bff5f882f7b5c9c97596e0658b36c26d6c9c469ca9f0f",
+    "first-person.png": "7be3b623403bcd4745207d6b8bd31ac749cdde4cea32fa2d15e522b6aa2f295f",
+    "fixture.json": "58be777aa2c0e97e49687a38e1dc578b0ff7fb1dc31ecd9269cb35e27d38230e",
+    "launcher-pins.json": "fdb4e506dce5efb1db26e3ee4b84b09f556a936353732723174ca976c8b8e30d",
+    "movement.json": "2610558a38bc0017c7828060702db24ea8d4f9433fc30a898e4f45851020aec7",
+    "runner.log": "f797582aeaba3314190c829179f2f92f65801302a9855a7b299679c8664d5826",
+    "runner.py": "9dd989b0d2d463c71f980ca4d0982bcf5b17b471d1c3aa06198781f0c3338bd1",
+    "standing-day.png": "28aa46169d80a62f60235ee5ee2809f6c30dbc30dc63bd49ab370173ff45b628",
+    "walking-1.png": "86bb6844509bf878427ea79b8c859d11eb6f795e9bac2e3ff6d7176950cfcb68",
+    "walking-2.png": "1f614682460f7abf29b508dd55559c5a603375136568a854870a896af4f4c6fa",
+    "x11-helper.py": "64dd91a70ac236ae21c8c881ba70cd17acd34b5ab684ef1f8ca18929475d5aa3"
+  }
+}

@@ -1,0 +1,10 @@
+Pruned re-downloadable assets for class-followup-modern 1.21.11 bytes 0
+Launching 1.21.11 c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73
+Traceback (most recent call last):
+  File "/workspace/.minecraft-test/class-followup-walking-modern-99.py", line 131, in <module>
+    wait(p,log,'MapSmokeTest joined the game',360);hotbar()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.minecraft-test/class-followup-walking-modern-99.py", line 38, in wait
+    if p.poll() is not None:raise RuntimeError('Client exited before '+needle)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Client exited before MapSmokeTest joined the game

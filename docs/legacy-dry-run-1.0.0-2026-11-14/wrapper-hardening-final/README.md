@@ -1,0 +1,3 @@
+# Non-publishing candidate rehearsal — Wrapper and linkage hardening
+
+Executed using coordination code commit `de7878df0813155c1a6b868aa8ab3d4b94671a33` and the 13 exact proposed product heads in the [plan](candidate-plan.json). The 13 clean-built 1.0.0 JARs cover 48 explicit versions, matched [SHA256SUMS](SHA256SUMS), and passed candidate aggregation. The [15 negative controls](negative-controls.json) rejected invalid inputs. Builds were performed separately with the coordinator-owned preflight; this aggregation does not itself execute Gradle. This is candidate evidence, not production authorization or approved-source runtime evidence. No tag or release was created.

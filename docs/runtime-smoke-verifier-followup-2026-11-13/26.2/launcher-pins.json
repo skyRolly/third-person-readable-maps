@@ -1,0 +1,54 @@
+{
+  "source": "Fabric loader profile and Maven SHA-1 files",
+  "libraries": [
+    {
+      "coordinate": "org.ow2.asm:asm:9.10.1",
+      "url": "https://maven.fabricmc.net/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar",
+      "sha1": "ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236",
+      "sha256": "ed825d10ab1399c8c0cb669e688cf0c8c82629b4c8399b58352b68e92ca10fcb",
+      "size": 126151
+    },
+    {
+      "coordinate": "org.ow2.asm:asm-analysis:9.10.1",
+      "url": "https://maven.fabricmc.net/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar",
+      "sha1": "8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b",
+      "sha256": "dede75a21306b65974ecd8f87114ff6970f09fb794157a4ca09ab25c888c2bfc",
+      "size": 35140
+    },
+    {
+      "coordinate": "org.ow2.asm:asm-commons:9.10.1",
+      "url": "https://maven.fabricmc.net/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar",
+      "sha1": "4229e4c55fd8e01c23f9fe9884075cc628aacc50",
+      "sha256": "6d0abefb7cbf972ea16edb37ec14835372505063a45f976ab7ea889ed9497895",
+      "size": 74840
+    },
+    {
+      "coordinate": "org.ow2.asm:asm-tree:9.10.1",
+      "url": "https://maven.fabricmc.net/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar",
+      "sha1": "e244332a17564c1d1572449399a842de35881be2",
+      "sha256": "3dfb0d5b6a106cd40b5b250e39935fbf2f927f4477546a5369a3ac609cf0506b",
+      "size": 51958
+    },
+    {
+      "coordinate": "org.ow2.asm:asm-util:9.10.1",
+      "url": "https://maven.fabricmc.net/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar",
+      "sha1": "7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15",
+      "sha256": "1bb99d091fba2597dc6d51193e9bbcf0d8447e7ed96bd8f0198b18152f09655c",
+      "size": 95628
+    },
+    {
+      "coordinate": "net.fabricmc:sponge-mixin:0.17.5+mixin.0.8.7",
+      "url": "https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar",
+      "sha1": "0cef8519a91129d0c21fa03bb9378f0e8ca810e5",
+      "sha256": "03f0065023bfc3045d71bfb99872451d9ad5a0800a5a0dac34ab8c7d5c134f5d",
+      "size": 1551593
+    },
+    {
+      "coordinate": "net.fabricmc:fabric-loader:0.20.1",
+      "url": "https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.20.1/fabric-loader-0.20.1.jar",
+      "sha1": "7c7f9831e9f27b303d5d08decb5f4258a9f03296",
+      "sha256": "d0c5a082e07410aaff9de7ab196aa6b4236002870f9ba3ad5c1260fcce5110ad",
+      "size": 1988880
+    }
+  ]
+}

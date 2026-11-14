@@ -1,5 +1,21 @@
 # Administrative release controls — inspected 2026-11-04
 
+This is the dated administrative evidence, not a current release approval.
+The proposed coordinated version is now 1.0.0; see the [current gate matrix](release-readiness-1.0.0.md)
+for refreshed branch-protection observations and remaining requirements.
+
+On [2026-11-14 UTC](admin/branch-rules-observation-2026-11-14.json), read-only branch API responses still reported
+`protected: false` for `main`, `mc/1.21.11`, `mc/26.1-26.2` and `mc/26.3`.
+The effective-rules endpoint returned zero rules for each, and the visible
+repository/parent ruleset list was empty. No settings were changed. On
+2026-11-14 the [workflow API](dependency-evidence/automatic-submission-state-2026-11-14.json)
+reported GitHub-managed Automatic Dependency Submission as `active`. On
+2026-11-13 the [managed submission runs](dependency-evidence/automatic-submission-2026-11-13.json)
+completed successfully on all 13 advanced product heads; the inspected 26.3
+run shows its `submit-dependency-snapshot` step succeeded. The workflow API
+does not expose the separate settings toggle or indexed alert scope. The existing
+administrator action and independent read-back below remain necessary.
+
 No administrative setting was changed in this maintenance round. Account-level
 `permissions.admin: true` does not grant this integration every permission: the
 REST protection, secrets, alert, security-update, and code-security-configuration
