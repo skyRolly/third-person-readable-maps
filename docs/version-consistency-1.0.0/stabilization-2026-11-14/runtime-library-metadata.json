@@ -1,0 +1,3500 @@
+{
+  "1.21.10": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/b0dc919ace9cee9a91d5a6dcaa594d41a26fcb1b/1.21.10.json",
+    "metadata_sha1": "b0dc919ace9cee9a91d5a6dcaa594d41a26fcb1b",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.9": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/811c9cc308cd5b928defa6434a7975233eaa6184/1.21.9.json",
+    "metadata_sha1": "811c9cc308cd5b928defa6434a7975233eaa6184",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.8": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/17db9704e95a73d53452f07a9b472e428288defa/1.21.8.json",
+    "metadata_sha1": "17db9704e95a73d53452f07a9b472e428288defa",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.7": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/1b478ff245de95b05e3c1a1589f391ade22e1bd3/1.21.7.json",
+    "metadata_sha1": "1b478ff245de95b05e3c1a1589f391ade22e1bd3",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.6": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/4eb09bebca2356f7505e45544087d3109e8ce0e3/1.21.6.json",
+    "metadata_sha1": "4eb09bebca2356f7505e45544087d3109e8ce0e3",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.5": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/5ca2012338100e4dbfef0d2114a5fa66959ab1e5/1.21.5.json",
+    "metadata_sha1": "5ca2012338100e4dbfef0d2114a5fa66959ab1e5",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.4": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/2e024c9834568a872f8c009a97b29d8d7381d00a/1.21.4.json",
+    "metadata_sha1": "2e024c9834568a872f8c009a97b29d8d7381d00a",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/5fa4228474e3d59b829637553262b6c06c0a38cf/1.21.3.json",
+    "metadata_sha1": "5fa4228474e3d59b829637553262b6c06c0a38cf",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/5941d98532ff0c7de72bd3f514d226d66977b7f0/1.21.2.json",
+    "metadata_sha1": "5941d98532ff0c7de72bd3f514d226d66977b7f0",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/82ba6501da174a665c1787775f946487422f2432/1.21.1.json",
+    "metadata_sha1": "82ba6501da174a665c1787775f946487422f2432",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.21": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/f7840475dae7c9ca4968b8198055db8d708a162d/1.21.json",
+    "metadata_sha1": "f7840475dae7c9ca4968b8198055db8d708a162d",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.20.6": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/4dd84bf5b646a75cba5c0c5f7723eb478a2b78af/1.20.6.json",
+    "metadata_sha1": "4dd84bf5b646a75cba5c0c5f7723eb478a2b78af",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.20.5": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/8f8da4b2c80ec4be885b8a816df40734f8719b39/1.20.5.json",
+    "metadata_sha1": "8f8da4b2c80ec4be885b8a816df40734f8719b39",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "1.20.4": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/3753ef41f9540d84b13d8c203a48cc1afecc90d5/1.20.4.json",
+    "metadata_sha1": "3753ef41f9540d84b13d8c203a48cc1afecc90d5",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar",
+          "sha1": "ee8e95be0b438602038bc1f02dc5e3d011b1b216",
+          "size": 928871,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar",
+          "sha1": "4421d94af68e35dcaa31737a6fc59136a1e61b94",
+          "size": 786196,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar"
+        }
+      }
+    ]
+  },
+  "1.20.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/1e870ecef73ef6a0f2bb1e5d5073dabd588f526f/1.20.3.json",
+    "metadata_sha1": "1e870ecef73ef6a0f2bb1e5d5073dabd588f526f",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar",
+          "sha1": "ee8e95be0b438602038bc1f02dc5e3d011b1b216",
+          "size": 928871,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar",
+          "sha1": "4421d94af68e35dcaa31737a6fc59136a1e61b94",
+          "size": 786196,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar"
+        }
+      }
+    ]
+  },
+  "1.20.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/68f87c7ec41d1471493671899c28cc4202b00a11/1.20.2.json",
+    "metadata_sha1": "68f87c7ec41d1471493671899c28cc4202b00a11",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar",
+          "sha1": "ee8e95be0b438602038bc1f02dc5e3d011b1b216",
+          "size": 928871,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.2/lwjgl-opengl-3.3.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar",
+          "sha1": "4421d94af68e35dcaa31737a6fc59136a1e61b94",
+          "size": 786196,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.2/lwjgl-3.3.2.jar"
+        }
+      }
+    ]
+  },
+  "1.20.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/72ae93b0934df5541860e3e6b72cf883c74da491/1.20.1.json",
+    "metadata_sha1": "72ae93b0934df5541860e3e6b72cf883c74da491",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.20": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/b9be1f33b477eb5d39e05cb0bad77946a50d93ae/1.20.json",
+    "metadata_sha1": "b9be1f33b477eb5d39e05cb0bad77946a50d93ae",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.19.4": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/c3a51315dfc64d6729394adda6971fa00bbb9a65/1.19.4.json",
+    "metadata_sha1": "c3a51315dfc64d6729394adda6971fa00bbb9a65",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.19.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/467a2f477baeb6bf6bce8ff9fa1937762dbb726f/1.19.3.json",
+    "metadata_sha1": "467a2f477baeb6bf6bce8ff9fa1937762dbb726f",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.5",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.5/joml-1.10.5.jar",
+          "sha1": "22566d58af70ad3d72308bab63b8339906deb649",
+          "size": 712082,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.5/joml-1.10.5.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.19.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/ed548106acf3ac7e8205a6ee8fd2710facfa164f/1.19.2.json",
+    "metadata_sha1": "ed548106acf3ac7e8205a6ee8fd2710facfa164f",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.19.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/39d5e8925d37490c6f2abb2e02b8c6f1b35719df/1.19.1.json",
+    "metadata_sha1": "39d5e8925d37490c6f2abb2e02b8c6f1b35719df",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.19": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/14bbfb25fb1c1c798e3c9b9482b081a78d1f3a9d/1.19.json",
+    "metadata_sha1": "14bbfb25fb1c1c798e3c9b9482b081a78d1f3a9d",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar",
+          "sha1": "ae58664f88e18a9bb2c77b063833ca7aaec484cb",
+          "size": 724243,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.1/lwjgl-3.3.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar",
+          "sha1": "831a5533a21a5f4f81bbc51bb13e9899319b5411",
+          "size": 921563,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.1/lwjgl-opengl-3.3.1.jar"
+        }
+      }
+    ]
+  },
+  "1.18.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/334b33fcba3c9be4b7514624c965256535bd7eba/1.18.2.json",
+    "metadata_sha1": "334b33fcba3c9be4b7514624c965256535bd7eba",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.18.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/7ff864e988a2c29907154d5f9701e87e5d5e554a/1.18.1.json",
+    "metadata_sha1": "7ff864e988a2c29907154d5f9701e87e5d5e554a",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.18": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/7367ea8b7cad7c7830192441bb2846be0d2ceeac/1.18.json",
+    "metadata_sha1": "7367ea8b7cad7c7830192441bb2846be0d2ceeac",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.17.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57/1.17.1.json",
+    "metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.17": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/0d9ace8a2ecfd1f4c782786f4b985a499240ff12/1.17.json",
+    "metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16.5": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/fba9f7833e858a1257d810d21a3a9e3c967f9077/1.16.5.json",
+    "metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16.4": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/596ad61fda7612d9edf8881cf81869276bdb7f82/1.16.4.json",
+    "metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/6485dd131ef68c968041a9f6fd73094b027e42e1/1.16.3.json",
+    "metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/998d9ef5770d05c20d760dc16cf85151f35009f2/1.16.2.json",
+    "metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/54fa3af57d041d2771e66d390197b2c0288e697c/1.16.1.json",
+    "metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.16": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d21d375f9c961f0e9731d4e463306d76e77c48/1.16.json",
+    "metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.15.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d0adb8f642abe422909ede50f651b2b58a3573/1.15.2.json",
+    "metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.15.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/18c3063de87ae126b4e017121219ba802be0755b/1.15.1.json",
+    "metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.15": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/833322370ab320e77717097082effe1d124d48bd/1.15.json",
+    "metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.14.4": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/be146d5f66a3627ed0a87c234c4d8dde8ab35098/1.14.4.json",
+    "metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": [
+          {
+            "action": "allow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": [
+          {
+            "action": "allow"
+          },
+          {
+            "action": "disallow",
+            "os": {
+              "name": "osx"
+            }
+          }
+        ],
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.14.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/e21618620e02be5a14543d1d17ffdba941d09aa8/1.14.3.json",
+    "metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar",
+          "sha1": "8ad6294407e15780b43e84929c40e4c5e997972e",
+          "size": 321900,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.2",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar",
+          "sha1": "6ac5bb88b44c43ea195a570aab059f63da004cd8",
+          "size": 929780,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar"
+        }
+      }
+    ]
+  },
+  "1.14.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd/1.14.2.json",
+    "metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      }
+    ]
+  },
+  "1.14.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/183e49ba0fabb5ef8a304f8f5907fa887f40c466/1.14.1.json",
+    "metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      }
+    ]
+  },
+  "1.14": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/0fd01dd81eaa451d3130b1cf025a10f129585b10/1.14.json",
+    "metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+    "libraries": [
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar",
+          "sha1": "2bb514e444994c6fece99a21f76e0c90438e377f",
+          "size": 317748,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.2.1/lwjgl-3.2.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.2.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar",
+          "sha1": "57008c2374c5bc434b18adfef3f3653ee450ee18",
+          "size": 931322,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.2.1/lwjgl-opengl-3.2.1.jar"
+        }
+      }
+    ]
+  },
+  "1.21.11": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/812ee7fdfdf648bb872f7a1dca33718de4e786b4/1.21.11.json",
+    "metadata_sha1": "812ee7fdfdf648bb872f7a1dca33718de4e786b4",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar",
+          "sha1": "02f6b0147078396a58979125a4c947664e98293a",
+          "size": 929192,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.3.3/lwjgl-opengl-3.3.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.3.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar",
+          "sha1": "29589b5f87ed335a6c7e7ee6a5775f81f97ecb84",
+          "size": 785029,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.3.3/lwjgl-3.3.3.jar"
+        }
+      }
+    ]
+  },
+  "26.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/389f92510868468e073b7a12f19e70a7bf8684cd/26.1.json",
+    "metadata_sha1": "389f92510868468e073b7a12f19e70a7bf8684cd",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar",
+          "sha1": "830412cab823c029cda6b9729f9d2ed36cf79959",
+          "size": 937660,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar",
+          "sha1": "6105690714874b995aa7812e4f7732a21109276c",
+          "size": 1157957,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar"
+        }
+      }
+    ]
+  },
+  "26.1.1": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/63c56ca0cfc405b1679656db51c9006c43e59b1c/26.1.1.json",
+    "metadata_sha1": "63c56ca0cfc405b1679656db51c9006c43e59b1c",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar",
+          "sha1": "830412cab823c029cda6b9729f9d2ed36cf79959",
+          "size": 937660,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar",
+          "sha1": "6105690714874b995aa7812e4f7732a21109276c",
+          "size": 1157957,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar"
+        }
+      }
+    ]
+  },
+  "26.1.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json",
+    "metadata_sha1": "0bbfbdb8272531060afbba5c671fe4ed3dd6f72f",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar",
+          "sha1": "830412cab823c029cda6b9729f9d2ed36cf79959",
+          "size": 937660,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar",
+          "sha1": "6105690714874b995aa7812e4f7732a21109276c",
+          "size": 1157957,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.4.1/lwjgl-3.4.1.jar"
+        }
+      }
+    ]
+  },
+  "26.2": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/f28ad96ed5d65e2438da836144a3de15bb9cafe7/26.2.json",
+    "metadata_sha1": "f28ad96ed5d65e2438da836144a3de15bb9cafe7",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.8",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.8/joml-1.10.8.jar",
+          "sha1": "fc0a71dad90a2cf41d82a76156a0e700af8e4f8d",
+          "size": 778846,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.8/joml-1.10.8.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.4.1",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar",
+          "sha1": "830412cab823c029cda6b9729f9d2ed36cf79959",
+          "size": 937660,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.4.1/lwjgl-opengl-3.4.1.jar"
+        }
+      }
+    ]
+  },
+  "26.3": {
+    "metadata_url": "https://piston-meta.mojang.com/v1/packages/9f67e10ed013deeaad20ac3c800652765d493408/26.3.json",
+    "metadata_sha1": "9f67e10ed013deeaad20ac3c800652765d493408",
+    "libraries": [
+      {
+        "name": "org.joml:joml:1.10.9",
+        "rules": null,
+        "artifact": {
+          "path": "org/joml/joml/1.10.9/joml-1.10.9.jar",
+          "sha1": "438e036486bad66b189bff385dd07dea4f74a146",
+          "size": 814581,
+          "url": "https://libraries.minecraft.net/org/joml/joml/1.10.9/joml-1.10.9.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl-opengl:3.4.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar",
+          "sha1": "b81769ee48050f8c71e70839505f350bf9219d90",
+          "size": 953649,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl-opengl/3.4.3/lwjgl-opengl-3.4.3.jar"
+        }
+      },
+      {
+        "name": "org.lwjgl:lwjgl:3.4.3",
+        "rules": null,
+        "artifact": {
+          "path": "org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar",
+          "sha1": "7ab5265a73d8a959ed62332d546536ae6be2f0d5",
+          "size": 1255440,
+          "url": "https://libraries.minecraft.net/org/lwjgl/lwjgl/3.4.3/lwjgl-3.4.3.jar"
+        }
+      }
+    ]
+  }
+}

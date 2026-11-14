@@ -2,7 +2,7 @@
 
 **Historical snapshot:** the table below records the November 13 proposal
 heads. The [current proposed source pins](current-heads.json) have advanced;
-clean artifact comparison and final-head validation are in progress.
+the [clean final-head build and verification index](stabilization-2026-11-14/) records matching artifact hashes, 48-version static results and exact-head hosted checks. The table remains a historical observation, including its original runtime source identities.
 
 The table distinguishes actual remote target properties from unmerged proposed heads. Every proposed artifact is 1.0.0; its hash was checked in the candidate rehearsal and its declared versions completed local-world startup and short walking observations. Full graphical acceptance, security dispositions and integration remain open.
 

@@ -1,0 +1,132 @@
+{
+  "1.14-1.14.4": {
+    "source_commit": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+    "branch": "candidate/mc-1.14-1.14.4",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+    "sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+    "previous_source": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+    "previous_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+    "same_as_previous": true,
+    "log_sha256": "1ee5be90aac2fc65cb7c8041e272b88879ac38266034df7e94c383f5512a5281"
+  },
+  "1.15-1.16.5": {
+    "source_commit": "b338ed4a8717f4d861de2c69218883bce9295f47",
+    "branch": "candidate/mc-1.15-1.16.5",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+    "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+    "previous_source": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+    "previous_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+    "same_as_previous": true,
+    "log_sha256": "77a3a2a9b05a6c89b2d6778864416aa3b5ab3cccd995daf278e82e3bd7e9a174"
+  },
+  "1.17-1.19.2": {
+    "source_commit": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+    "branch": "candidate/mc-1.17-1.19.2",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+    "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+    "previous_source": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+    "previous_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+    "same_as_previous": true,
+    "log_sha256": "213a9613cc193be410f51e15a9ac85da2ad673a064aad092c2b5eb84e93473de"
+  },
+  "1.19.3": {
+    "source_commit": "1c3040e4b4ba7adc424c223269e58a8643086009",
+    "branch": "candidate/mc-1.19.3",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+    "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+    "previous_source": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+    "previous_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+    "same_as_previous": true,
+    "log_sha256": "938a764205ddae75779ba9a39177a91fda69874f2dbdaada5e5da9319dce49b6"
+  },
+  "1.19.4-1.20.4": {
+    "source_commit": "92efc418d47b45ae151440391204231570a1e7af",
+    "branch": "candidate/mc-1.19.4-1.20.4",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+    "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+    "previous_source": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+    "previous_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+    "same_as_previous": true,
+    "log_sha256": "fb2816e4562518530d1d33ba8bea04f0d99c8ed2828fea3edd7724caa69930ef"
+  },
+  "1.20.5-1.20.6": {
+    "source_commit": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+    "branch": "candidate/mc-1.20.5-1.20.6",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+    "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+    "previous_source": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+    "previous_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+    "same_as_previous": true,
+    "log_sha256": "eca026a0b2caefc4974d21986ba084a27c1207bb649867c781e0b4efa2659fbb"
+  },
+  "1.21-1.21.1": {
+    "source_commit": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+    "branch": "candidate/mc-1.21-1.21.1",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+    "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+    "previous_source": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+    "previous_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+    "same_as_previous": true,
+    "log_sha256": "745ceb714569990cc69b2447ddb16b3cabad49c9052f76cd580a0ecf414e4444"
+  },
+  "1.21.11": {
+    "source_commit": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+    "branch": "maintenance/mc-1.21.11-1.0.0",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+    "sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+    "previous_source": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+    "previous_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+    "same_as_previous": true,
+    "log_sha256": "5a57ec8cc06216294b5feb2c247a018eaa75fc2f15ad1df225861b89744fd647"
+  },
+  "1.21.2-1.21.3": {
+    "source_commit": "444cab923238eea930c5e332eff0815dbbde0e20",
+    "branch": "candidate/mc-1.21.2-1.21.3",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+    "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+    "previous_source": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+    "previous_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+    "same_as_previous": true,
+    "log_sha256": "d969caf33a7dfdffd9e8e3fe0dccc0bac0d1eb19a276e095cc321763dd5429d2"
+  },
+  "1.21.4-1.21.8": {
+    "source_commit": "052ca9744c3f8756d02aefd86f112f5476eee206",
+    "branch": "candidate/mc-1.21.4-1.21.8",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+    "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+    "previous_source": "55df5055388918d5df96a3f61f6c9dc999042271",
+    "previous_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+    "same_as_previous": true,
+    "log_sha256": "9a272e513f758457e1a84698448e734086043abed5c6565ec487f0c462f3173f"
+  },
+  "1.21.9-1.21.10": {
+    "source_commit": "90bfab52b538363eb8630145c6df23936c70ae2d",
+    "branch": "candidate/mc-1.21.9-1.21.10",
+    "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+    "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+    "previous_source": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+    "previous_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+    "same_as_previous": true,
+    "log_sha256": "cfc6af43764446ed85641bdb97f75ab142e8c9c8cabb3ac81acbc1751b08d126"
+  },
+  "26.1-26.2": {
+    "source_commit": "131f3e393e31778ed11d341830c856acc4d85a35",
+    "branch": "maintenance/mc-26.1-26.2-1.0.0",
+    "artifact": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+    "sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+    "previous_source": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+    "previous_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+    "same_as_previous": true,
+    "log_sha256": "4e03c5eabafe6837b1bf101a7ba2500cbfde9ca11171afd374075ce16d5210a0"
+  },
+  "26.3": {
+    "source_commit": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+    "branch": "maintenance/mc-26.3-1.0.0",
+    "artifact": "third-person-readable-maps-1.0.0-mc26.3.jar",
+    "sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+    "previous_source": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+    "previous_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+    "same_as_previous": true,
+    "log_sha256": "70b2a04557d2662c934b7ab0dee2e73da2f1f08bd4d490aafe3c4d4f4d82adeb"
+  }
+}

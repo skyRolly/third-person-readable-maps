@@ -1,6 +1,6 @@
 # Non-publishing 1.0.0 candidate rehearsal — 2026-11-14
 
-The [plan](candidate-plan.json) pins all ten legacy candidate heads and three
+**Historical run:** the [plan](candidate-plan.json) pins all ten legacy candidate heads and three
 separate maintenance proposal heads. The [candidate matrix](candidate-matrix.json)
 contains 13 groups and 48 unique explicit Minecraft versions. The local
 [rehearsal](rehearse.py) checked the remote source identities and aggregated
@@ -23,3 +23,5 @@ no Git tag, draft release or public release was created. The plan intentionally
 does not claim strict runtime acceptance. This local candidate aggregation is
 not production authorization; repeat it against reviewed, integrated exact
 heads after the security, graphical, administrative and approval gates pass.
+
+The [final-proposal rehearsal](stabilization-final/) uses the subsequently advanced product heads and preserves this earlier run.

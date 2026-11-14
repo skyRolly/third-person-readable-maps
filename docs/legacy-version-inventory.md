@@ -2,7 +2,7 @@
 
 **Historical validation snapshot:** the table below records the November 13
 product heads. The [current source pins](version-consistency-1.0.0/current-heads.json)
-have advanced; final-head verification and artifact comparison are in progress.
+have advanced; the [final-proposal checks](version-consistency-1.0.0/stabilization-2026-11-14/) and [current 48-version matrix](compatibility-1.0.0-validation.md) record the subsequent validation and artifact continuity.
 
 The current proposed version is **1.0.0**. The [machine-readable inventory](legacy-version-inventory.json) records Mojang metadata and current source-bound status. The prior [1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [0.0.2 evidence](historical-0.0.2-2026-11-05/) remain historical. Candidate ports are not integrated.
 

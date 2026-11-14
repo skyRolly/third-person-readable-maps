@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "observed_on": "2026-11-14",
-  "status": "proposed heads; builds, exact-head CI and source-bound evidence in progress",
+  "status": "final proposal heads; clean builds, 48-version static sweep and hosted OS checks passed; review and strict runtime acceptance pending",
   "groups": {
     "1.21.9-1.21.10": {
       "pr": 13,

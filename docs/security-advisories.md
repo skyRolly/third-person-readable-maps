@@ -25,6 +25,8 @@ outside it. None of these narrow negative observations justifies a game-wide
 Not applicable disposition. Specific evidence/proof gaps are attached to every
 structured record. No runtime PoC or game-wide exploitability proof is claimed.
 
+The [final-source November 14 scans](dependency-evidence/osv-rescan-2026-11-14/final-proposals/) include fresh proposal inventories and preserve the integrated-source distinction.
+
 ## Current counts
 
 | Group | Gradle packages | Runtime packages per version | Affected package/version pairs across scopes | Advisory/package/version/group matches | Unique advisories |
@@ -33,7 +35,7 @@ structured record. No runtime PoC or game-wide exploitability proof is claimed.
 | 26.1-26.2 | 84 | 26.1: 53; 26.1.1: 53; 26.1.2: 53; 26.2: 57 | 15 | 53 | 39 |
 | 26.3 | 86 | 26.3: 56 | 5 | 11 | 11 |
 
-Total: 40 unique advisories; 105 advisory/package/version/group combinations. Fixed: 0; Actionable with a verified direct compatible fix: 0; Further investigation: 105; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
+Total: 40 unique advisories; 105 advisory/package/version/group combinations. Fixed: 0; Actionable with a verified direct compatible fix: 0; Further investigation: 104; upstream-dependent remediation: 1; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
 
 The earlier 1.21.11 report counted 85 snapshot packages; the recovered hosted snapshot has 86, including `org.gradle/gradle-core@9.8.2`. The affected-package count remains 10. This correction does not erase the historical report. Runtime inventories include all listed platform variants and normalize classifier variants to a Maven advisory package.
 

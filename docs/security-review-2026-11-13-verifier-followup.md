@@ -32,8 +32,7 @@ distinct package/version/advisory records and 89 distinct advisory IDs.
 Individual investigation notes and previous scans remain preserved in the
 [November 12 review](security-review-2026-11-12.md), the
 [high-priority follow-up](security-high-priority-2026-11-13.md) and the
-[moderate/low review](security-moderate-low-2026-11-13.md). All dispositions
-remain **Further investigation**, and no residual risk is accepted.
+[moderate/low review](security-moderate-low-2026-11-13.md). At that observation all dispositions remained **Further investigation**. The later [final-source review](dependency-evidence/osv-rescan-2026-11-14/final-proposals/) records subsequent proposed classifications; no residual risk is accepted.
 
 A [November 14 per-occurrence ownership cross-reference](dependency-evidence/advisory-ownership-2026-11-14/)
 links each finding to the Minecraft runtime metadata that lists the coordinate

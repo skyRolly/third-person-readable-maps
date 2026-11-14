@@ -8,8 +8,7 @@ identical JVM and library resolver files. Final-field writes, inherited
 library resolution and the local-validation instructions therefore required
 the shared correction on every group. The TAIL wiring defect was confined to
 the two official-namespace 26.x entry points; the other entry points already
-passed the declared point. Exact final-head CI and the complete per-version
-verifier run are still in progress.
+passed the declared point. All 13 proposed heads now have passing hosted Linux and Windows checks; the [final artifact and 48-version verifier evidence](version-consistency-1.0.0/stabilization-2026-11-14/) is bound to those heads. Review of the bounded verification contract remains required.
 
 | Group | Final writes / inherited libraries / local instructions | TAIL wiring | Evidence reconciliation |
 |---|---|---|---|
