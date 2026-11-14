@@ -1,0 +1,1 @@
+{"required":true,"package":"mapidprobe","compatibilityLevel":"JAVA_8","client":["MapIdProbeMixin"],"injectors":{"defaultRequire":1}}
