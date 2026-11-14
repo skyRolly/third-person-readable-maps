@@ -1,5 +1,9 @@
 # 1.0.0 PR and integration handoff
 
+**Historical PR snapshot:** the product heads and CI results in the table
+below predate the current verifier correction. The [current proposed heads](version-consistency-1.0.0/current-heads.json)
+need their own build, CI and evidence refresh.
+
 Status refreshed 2026-11-14 UTC. All product and coordination PRs below are open, draft, unmerged and have no auto-merge request. Product heads passed the named hosted build jobs as recorded below and in the [exact-head check index](hosted-builds-verifier-followup-2026-11-13.json); check the current PR if any head changes. A [November 14 OSV re-query](dependency-evidence/osv-rescan-2026-11-14/) covers retained source-bound inventories for the candidates, integrated maintenance branches and separate proposed maintenance heads; findings remain unresolved. [Local-world startup and short walking observations](runtime-smoke-verifier-followup-2026-11-13/) cover all 48 versions, while full graphical acceptance remains open. The coordination head may advance with evidence-only commits and its live source-pin/verifier/version prerequisites remain blocked until the three existing maintenance PRs are independently approved and integrated, and their exact merged-head evidence is refreshed.
 
 | PR | Target | Proposed HEAD | Scope | Linux | Windows | Review / dependency |

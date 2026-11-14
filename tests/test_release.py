@@ -93,6 +93,16 @@ class ReleaseValidationTests(unittest.TestCase):
         with self.assertRaises(release.Invalid):
             self.validate()
 
+    def test_release_sources_require_exact_current_branch_heads(self):
+        def remote(command, **kwargs):
+            ref = command[-1]
+            return subprocess.CompletedProcess(command, 0, 'a'*40+'\t'+ref+'\n', '')
+        with patch.object(release.subprocess, 'run', side_effect=remote):
+            release.verify_sources(self.config, self.plan)
+            self.plan['groups']['1.21.11']['commit'] = 'b'*40
+            with self.assertRaisesRegex(release.Invalid, 'HEAD differs from the plan'):
+                release.verify_sources(self.config, self.plan)
+
     def test_all_groups_source_revisions_and_runtime_evidence_required(self):
         self.plan['groups']['26.3']['commit'] = '0' * 40
         with self.assertRaises(release.Invalid):

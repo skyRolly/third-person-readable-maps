@@ -254,7 +254,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
             self.assertEqual(len(report['matches']), source['matches'])
             if group in candidates:
                 self.assertEqual(source['source_kind'], 'candidate')
-                self.assertEqual(source['source_sha'], candidates[group]['candidate_head'])
+                self.assertEqual(source['source_sha'], candidates[group]['source_commit'])
                 self.assertEqual(report['status'], 'complete-unreviewed-candidate-scan')
             else:
                 self.assertEqual(source['source_kind'], 'integrated-maintenance')
@@ -292,7 +292,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
             with self.subTest(group=group):
                 self.assertTrue(result['complete'])
                 self.assertEqual(result['exit_code'], 1)
-                self.assertEqual(result['source_sha'], candidates[group]['candidate_head'])
+                self.assertEqual(result['source_sha'], candidates[group]['source_commit'])
                 self.assertEqual(result['source_sha'], worklist['sources'][group]['source_sha'])
                 for kind in ('snapshot', 'report', 'snapshot_log', 'audit_log'):
                     raw = (ROOT / result[kind + '_path']).read_bytes()

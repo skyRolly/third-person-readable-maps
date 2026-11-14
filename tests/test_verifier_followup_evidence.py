@@ -55,7 +55,7 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         self.assertIn('KeyboardInterrupt', (directory / 'port-parser-attempt/runner.log').read_text())
 
     def test_candidate_monitoring_pins_advanced_heads(self):
-        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        refs = json.loads((ROOT / 'docs/version-consistency-1.0.0/current-heads.json').read_text())['groups']
         evidence = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())
         rows = candidate_audit.candidate_matrix(evidence)['include']
         self.assertEqual(len(rows), 10)

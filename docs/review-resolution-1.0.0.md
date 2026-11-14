@@ -1,5 +1,60 @@
 # 1.0.0 cross-branch review resolution
 
+## November 14 stabilization findings
+
+The [current source pins](version-consistency-1.0.0/current-heads.json) supersede
+the proposed heads in the historical table below. All 13 proposals contained
+identical JVM and library resolver files. Final-field writes, inherited
+library resolution and the local-validation instructions therefore required
+the shared correction on every group. The TAIL wiring defect was confined to
+the two official-namespace 26.x entry points; the other entry points already
+passed the declared point. Exact final-head CI and the complete per-version
+verifier run are still in progress.
+
+| Group | Final writes / inherited libraries / local instructions | TAIL wiring | Evidence reconciliation |
+|---|---|---|---|
+| 1.14–1.14.4 | Shared correction | Already passed declared point | Prior runtime evidence remains source-bound; both Linux/Windows and macOS LWJGL metadata variants require checking. |
+| 1.15–1.16.5 | Shared correction | Already passed declared point | Prior runtime evidence remains source-bound. |
+| 1.17–1.19.2 | Shared correction | Already passed declared point | Preserve Java 16 bytecode and per-game runtime requirements. |
+| 1.19.3 | Shared correction | Already passed declared point | Prior runtime evidence remains source-bound. |
+| 1.19.4–1.20.4 | Shared correction | Already passed declared point | Prior runtime evidence remains source-bound. |
+| 1.20.5–1.20.6 | Shared correction | Already passed declared point | Component-era malformed-ID boundary remains open. |
+| 1.21–1.21.1 | Shared correction | Already passed declared point | Component-era malformed-ID boundary remains open. |
+| 1.21.2–1.21.3 | Shared correction | Already passed declared point | Branch-local 0.0.2 records are labeled historical and link to separately bound 1.0.0 observations. |
+| 1.21.4–1.21.8 | Shared correction | Already passed declared point | Both Mixin classes remain required; component-era boundary remains open. |
+| 1.21.9–1.21.10 | Shared correction | Already passed declared point | Both Mixin classes remain required; component-era boundary remains open. |
+| 1.21.11 | Shared correction | Already passed declared point | Earlier two-client LAN observation remains bound to its original source and JAR. |
+| 26.1–26.2 | Shared correction | Corrected entry-point wiring | Component-era malformed-ID boundary remains open. |
+| 26.3 | Shared correction | Corrected entry-point wiring | Component-era malformed-ID boundary remains open. |
+
+The supported verifier subset is documented on each product branch in
+`docs/verification/linkage-contract.md`. It rejects unproven cross-package
+protected instance instructions, non-constructor `invokespecial` uses,
+unsupported dynamic bootstraps and Mixin annotation options. The packaged
+fixtures exercise both namespace entry points, including a valid inherited
+library member, a changed final field, HEAD/TAIL and mutually exclusive
+platform library variants. Class-file method-type and method-handle descriptor
+access is checked; ordinary descriptors are not indiscriminately required to
+name accessible classes. These restrictions and fixtures are not a complete
+JVM or arbitrary Mixin transformation proof.
+
+For component-era map IDs, vanilla's codec normalizes the observed malformed
+numeric values before this renderer receives the typed component. A renderer
+cannot distinguish that resulting zero from a valid explicit zero. The Mod does
+not create data or mutate the stack to render it. A global codec intervention
+would affect unrelated behavior and has not been justified; preserving the
+current behavior is not an acceptance of every malformed-input case. Actual
+item-loading paths beyond the controlled 1.21.11 experiment, and any bounded
+earlier validation design, remain open for review.
+
+The former coordination check mixed ordinary validation with live release
+prerequisites. The proposed workflow now reports those separately; strict
+authorization requires both and rechecks live sources. The registry commit is
+an integration ancestry anchor, while the reviewed release plan retains the
+exact branch HEAD and artifact evidence. No placeholder is activated.
+
+## November 12–14 historical review
+
 This records the 2026-11-12 proposed heads and later diagnostic evidence. **A** means confirmed affected;
 **D** means a different implementation whose equivalent invariant must still
 be verified; **N** means the specific mechanism is not present, with the

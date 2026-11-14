@@ -1,5 +1,9 @@
 # Legacy stable-version inventory
 
+**Historical validation snapshot:** the table below records the November 13
+product heads. The [current source pins](version-consistency-1.0.0/current-heads.json)
+have advanced; final-head verification and artifact comparison are in progress.
+
 The current proposed version is **1.0.0**. The [machine-readable inventory](legacy-version-inventory.json) records Mojang metadata and current source-bound status. The prior [1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [0.0.2 evidence](historical-0.0.2-2026-11-05/) remain historical. Candidate ports are not integrated.
 
 | Minecraft | Group | Java | Static 1.0.0 | Installed 1.0.0 | Graphical 1.0.0 |

@@ -1,5 +1,10 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
+**Historical validation snapshot:** the rows below describe the November 13
+product heads, not the [current proposed heads](version-consistency-1.0.0/current-heads.json).
+Their runtime observations retain their original source bindings. Final-head
+static checks and clean artifact comparisons are in progress.
+
 This non-publishing matrix describes proposed heads, not integrated legacy support or a release claim. All 13 product heads passed hosted Linux and Windows checks; clean local JAR hashes are recorded below. All 48 versions joined a local world on the proposed source heads in software-rendered smoke tests. Full graphical acceptance remains unverified, and earlier source-bound observations remain [historical](runtime-smoke-1.0.0/).
 
 | Minecraft | Group | 1.0.0 artifact SHA-256 | Static | Installed startup | Graphical evidence | Remaining |

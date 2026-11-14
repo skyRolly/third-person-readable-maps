@@ -70,16 +70,23 @@ class MaintenanceTargetTests(unittest.TestCase):
                                     {'id': 'thirdpersonreadablemaps', 'depends': {'minecraft': '${minecraft_version}'}}, True)
 
     def test_release_verifier_dependency_blocks_incomplete_source(self):
-        required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py'}
+        required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py',
+                    'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
+                    'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
+                    'tests/test_shared_verifier_sync.py'}
         targets.validate_release_verifier_files('1.21.11', required)
         with self.assertRaisesRegex(ValueError, 'lacks the required'):
             targets.validate_release_verifier_files('1.21.11', required - {'scripts/jvm_linkage.py'})
 
-    def test_release_prerequisite_requires_current_reviewed_source_pin(self):
+    def test_integrated_anchor_allows_an_advancing_maintenance_head(self):
         spec = self.registry['groups']['1.21.11']
-        targets.validate_release_source_head('1.21.11', spec, spec['integrated_commit'])
-        with self.assertRaisesRegex(ValueError, 'differs from the reviewed registry pin'):
-            targets.validate_release_source_head('1.21.11', spec, 'f' * 40)
+        props = {'minecraft_version': '1.21.11', 'mod_version': '1.0.0'}
+        metadata = {'id':'thirdpersonreadablemaps', 'version':'${version}',
+                    'depends':{'minecraft':'${minecraft_version}'}}
+        targets.validate_source('1.21.11', spec, props, metadata, True)
+        targets.validate_coordinated_version('1.21.11', props, metadata, {'schema':1, 'version':'1.0.0'})
+        with self.assertRaisesRegex(ValueError, 'not an ancestor'):
+            targets.validate_source('1.21.11', spec, props, metadata, False)
 
     def test_release_prerequisite_rejects_mixed_integrated_versions(self):
         current = {'schema': 1, 'version': '1.0.0'}

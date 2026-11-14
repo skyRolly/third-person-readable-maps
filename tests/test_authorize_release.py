@@ -96,8 +96,8 @@ class AuthorizationTests(unittest.TestCase):
         checks['checks'] = [{'context': n, 'app_id': a} for n, a in self.required.items()]
         self.run['head_branch'] = 'main'
         self.run['path'] = '.github/workflows/ci.yml@main'
-        self.jobs = [dict(self.jobs[0], name='Validate coordination')]
-        self.checks = [dict(self.checks[0], name='Validate coordination')]
+        self.jobs = [dict(self.jobs[i], name=name) for i, name in enumerate(sorted(self.required))]
+        self.checks = [dict(self.checks[i], name=name) for i, name in enumerate(sorted(self.required))]
         self.pr['base']['ref'] = 'main'
         graph = {'repository': {'ref': {'name': 'main', 'target': {'oid': self.commit},
                  'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False,
@@ -110,6 +110,10 @@ class AuthorizationTests(unittest.TestCase):
             with self.assertRaises(Invalid):
                 self.authorize()
             self.jobs[0]['name'] = 'Validate coordination'
+            self.jobs[1]['conclusion'] = 'failure'
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.jobs[1]['conclusion'] = 'success'
             self.checks[0]['id'] += 1
             with self.assertRaises(Invalid):
                 self.authorize()

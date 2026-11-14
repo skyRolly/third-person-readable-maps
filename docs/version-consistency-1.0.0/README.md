@@ -1,5 +1,9 @@
 # 1.0.0 version consistency — 2026-11-14
 
+**Historical snapshot:** the table below records the November 13 proposal
+heads. The [current proposed source pins](current-heads.json) have advanced;
+clean artifact comparison and final-head validation are in progress.
+
 The table distinguishes actual remote target properties from unmerged proposed heads. Every proposed artifact is 1.0.0; its hash was checked in the candidate rehearsal and its declared versions completed local-world startup and short walking observations. Full graphical acceptance, security dispositions and integration remain open.
 
 | Target/group | Current remote Mod / Minecraft property | Proposed Mod | Proposed artifact | SHA-256 | Local-world smoke |

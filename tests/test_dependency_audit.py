@@ -1,5 +1,6 @@
 import copy
 from datetime import date
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -227,6 +228,29 @@ class AuditTests(unittest.TestCase):
             result = audit.compare(group, report['inventories'], report['findings'], ledger['advisories'], ledger, groups)
             self.assertTrue(result['failing'])  # Unresolved risk was not accepted to make CI green.
             self.assertTrue(all(m['state'] == 'known' for m in result['matches']))
+
+    def test_runtime_only_critical_upstream_disposition_remains_failing(self):
+        root = Path(__file__).resolve().parents[1]
+        group = '26.1-26.2'
+        groups = audit.read_json(root/'release/compatibility.json')['groups']
+        ledger = audit.read_json(root/'docs/security-advisories.json')
+        evidence = (root/'docs/dependency-evidence/ghsa-c4c3-2026-11-14.json').read_bytes()
+        self.assertEqual(hashlib.sha256(evidence).hexdigest(),
+                         '1ef10fdd35708ed6bc960f39a884c04fb8fb702a602e18b414e819a0a9e87113')
+        advisory = json.loads(evidence)
+        self.assertEqual(advisory['ghsa_id'], 'GHSA-c4c3-7fpv-j4q5')
+        self.assertEqual(advisory['severity'], 'critical')
+        self.assertIn('4.2.17.Final', {item['first_patched_version'] for item in advisory['vulnerabilities']})
+        report = audit.read_json(root/'docs/dependency-evidence/osv-rescan-2026-11-14/current_sources/26.1-26.2-osv.json')
+        result = audit.compare(group, report['inventories'], report['findings'], report['advisories'], ledger, groups)
+        key = group+'|pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-c4c3-7fpv-j4q5'
+        match = next(item for item in result['matches'] if item['key'] == key)
+        self.assertEqual(match['scopes'], ['runtime/26.2'])
+        self.assertEqual(match['severity'], 'CRITICAL')
+        self.assertEqual(match['disposition'], 'Upstream-dependent')
+        self.assertEqual(match['state'], 'known')
+        self.assertTrue(match['failing'])
+        self.assertTrue(result['failing'])
 
 
 if __name__ == '__main__':

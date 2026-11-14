@@ -8,7 +8,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
-      "candidate_head": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "candidate_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
       "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
@@ -16,9 +16,9 @@
         "1.21.9",
         "1.21.10"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.21.9-1.21.10 on 1.21.8 rejected (exit 1): API compatibility check failed: 1.21.8: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_11659;I)V; 1.21.9-1.21.10 on 1.21.11 rejected (exit 1): API compatibility check failed: 1.21.11: missing Mixin target net/minecraft/class_10426.method_65577(Lnet/minecraft/class_1309;Lnet/minecraft/class_10426;Lnet/minecraft/class_10442;)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -29,14 +29,14 @@
       ],
       "per_version": {
         "1.21.9": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.9/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.10": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.10/",
           "movement_observed_on": "2026-11-13"
         }
@@ -45,7 +45,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
-      "candidate_head": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "candidate_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
       "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
@@ -56,9 +56,9 @@
         "1.21.7",
         "1.21.8"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 55df5055388918d5df96a3f61f6c9dc999042271; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.21.4-1.21.8 on 1.21.9 rejected (exit 1): API compatibility check failed: 1.21.9: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -69,32 +69,32 @@
       ],
       "per_version": {
         "1.21.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.5": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.5/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.6": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.6/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.7": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.7/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.8": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 55df5055388918d5df96a3f61f6c9dc999042271; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.8/",
           "movement_observed_on": "2026-11-13"
         }
@@ -103,7 +103,7 @@
     "1.21.2-1.21.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "78ef3c311f2db755c87907af6d698ed4527bd2de",
-      "candidate_head": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "candidate_head": "444cab923238eea930c5e332eff0815dbbde0e20",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
       "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
@@ -111,9 +111,9 @@
         "1.21.2",
         "1.21.3"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 78ef3c311f2db755c87907af6d698ed4527bd2de; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -124,14 +124,14 @@
       ],
       "per_version": {
         "1.21.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 78ef3c311f2db755c87907af6d698ed4527bd2de; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 78ef3c311f2db755c87907af6d698ed4527bd2de; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.36 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.3/",
           "movement_observed_on": "2026-11-13"
         }
@@ -140,7 +140,7 @@
     "1.21-1.21.1": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
-      "candidate_head": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "candidate_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
       "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
@@ -148,9 +148,9 @@
         "1.21",
         "1.21.1"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -161,14 +161,14 @@
       ],
       "per_version": {
         "1.21": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.81 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21/",
           "movement_observed_on": "2026-11-13"
         },
         "1.21.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 7e6b43e91e9eb32788f288d6aa64aaa72ee3f514; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.1/",
           "movement_observed_on": "2026-11-13"
         }
@@ -177,7 +177,7 @@
     "1.20.5-1.20.6": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
-      "candidate_head": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "candidate_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
       "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
@@ -185,9 +185,9 @@
         "1.20.5",
         "1.20.6"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source c0efb70ad1e01298c96441d18bc68f0b2674d6d6; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -198,14 +198,14 @@
       ],
       "per_version": {
         "1.20.5": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source c0efb70ad1e01298c96441d18bc68f0b2674d6d6; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.5/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.6": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source c0efb70ad1e01298c96441d18bc68f0b2674d6d6; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 14.89 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.6/",
           "movement_observed_on": "2026-11-13"
         }
@@ -214,7 +214,7 @@
     "1.19.4-1.20.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
-      "candidate_head": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "candidate_head": "92efc418d47b45ae151440391204231570a1e7af",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
       "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
@@ -226,9 +226,9 @@
         "1.20.3",
         "1.20.4"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -239,38 +239,38 @@
       ],
       "per_version": {
         "1.19.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 8.85 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.16 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.30 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.20.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 991fc1d6d21819f642c9963f91570fb10ab40f92; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.28 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.20.4/",
           "movement_observed_on": "2026-11-13"
         }
@@ -279,7 +279,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
-      "candidate_head": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "candidate_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
       "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
@@ -293,9 +293,9 @@
         "1.19.1",
         "1.19.2"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.17-1.19.2 on 1.19.3 rejected (exit 1): API compatibility check failed: 1.19.3: missing classes: ['net/minecraft/class_1158', 'net/minecraft/class_1159', 'net/minecraft/class_1160']",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -306,50 +306,50 @@
       ],
       "per_version": {
         "1.17": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17/",
           "movement_observed_on": "2026-11-13"
         },
         "1.17.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.17.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.18.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.60 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.18.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.73 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.95 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.19.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source d5792f245f133cdf4873b1e6ce0078c77d20a3d3; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.22 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.2/",
           "movement_observed_on": "2026-11-13"
         }
@@ -358,7 +358,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
-      "candidate_head": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "candidate_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
       "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
@@ -373,9 +373,9 @@
         "1.16.4",
         "1.16.5"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.15-1.16.5 on 1.14.4 rejected (exit 1): API compatibility check failed: 1.14.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V; 1.15-1.16.5 on 1.17 rejected (exit 1): API compatibility check failed: 1.17: missing game members: [('field', 'net/minecraft/class_572', 'field_3390', 'Lnet/minecraft/class_630;'), ('method', 'net/minecraft/class_1806', 'method_7997', '(Lnet/minecraft/class_1799;Lnet/minecraft/class_1937;)Lnet/minecraft/class_22;'), ('method', 'net/minecraft/class_330', 'method_1773', '(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_22;ZI)V')]",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -386,56 +386,56 @@
       ],
       "per_version": {
         "1.15": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.52 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15/",
           "movement_observed_on": "2026-11-13"
         },
         "1.15.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.15.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.87 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.15.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.14 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.57 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.65 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 15.10 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.4/",
           "movement_observed_on": "2026-11-13"
         },
         "1.16.5": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 24cd97031ac91ab3595c50add83c2208f5230fbc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.06 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.16.5/",
           "movement_observed_on": "2026-11-13"
         }
@@ -444,16 +444,16 @@
     "1.19.3": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
-      "candidate_head": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "candidate_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
       "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
       "versions": [
         "1.19.3"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source 2cb3f385443e6db375eb46077d562421ed7aa4cc; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.19.3 on 1.19.2 rejected (exit 1): API compatibility check failed: 1.19.2: missing classes: ['net/minecraft/class_7833']; 1.19.3 on 1.19.4 rejected (exit 1): API compatibility check failed: 1.19.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -464,8 +464,8 @@
       ],
       "per_version": {
         "1.19.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source 2cb3f385443e6db375eb46077d562421ed7aa4cc; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.44 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.19.3/",
           "movement_observed_on": "2026-11-13"
         }
@@ -474,7 +474,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; NOT RELEASE READY",
       "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
-      "candidate_head": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "candidate_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
       "sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
@@ -485,9 +485,9 @@
         "1.14.3",
         "1.14.4"
       ],
-      "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
-      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
+      "static_linkage": "PENDING: final-head packaged-JAR and hosted CI verification; previous results are historical",
+      "client_startup": "HISTORICAL: local-world observations used source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head continuity awaits clean artifact comparison",
+      "graphical": "PARTIAL HISTORICAL: earlier-source walking captures; full graphical acceptance NOT RUN",
       "negative": "1.14-1.14.4 on 1.15 rejected (exit 1): API compatibility check failed: 1.15: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -498,37 +498,38 @@
       ],
       "per_version": {
         "1.14": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.71 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.1": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 11.01 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.1/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.2": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 10.79 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.2/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.3": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 13.38 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.3/",
           "movement_observed_on": "2026-11-13"
         },
         "1.14.4": {
-          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
-          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "client_startup": "HISTORICAL: installed 1.0.0 JAR joined a local world on source f2b45ae6242ac44d952f7b037e0200f4a85ad128; final-head artifact comparison pending",
+          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 9.49 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.14.4/",
           "movement_observed_on": "2026-11-13"
         }
       }
     }
   },
-  "previous_1.0.0_evidence": "docs/historical-verifier-followup-2026-11-13/legacy-candidate-evidence.json"
+  "previous_1.0.0_evidence": "docs/historical-verifier-followup-2026-11-13/legacy-candidate-evidence.json",
+  "source_identity_note": "candidate_head is the current audit source pin; source_commit and runtime observations retain the earlier source identity until fresh evidence is recorded."
 }

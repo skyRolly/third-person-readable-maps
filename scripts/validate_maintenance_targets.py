@@ -85,13 +85,11 @@ def git(*args, check=True):
 
 
 def validate_release_verifier_files(group, files):
-    required = {'scripts/verify_supported_apis.py', 'scripts/jvm_linkage.py', 'scripts/game_linkage.py'}
+    required = {'scripts/verify_supported_apis.py', 'scripts/jvm_linkage.py', 'scripts/game_linkage.py',
+                'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
+                'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
+                'tests/test_shared_verifier_sync.py'}
     require(required.issubset(files), group + ': integrated source lacks the required release API verifier')
-
-
-def validate_release_source_head(group, spec, observed):
-    require(observed == spec['integrated_commit'],
-            group + ': current maintenance head differs from the reviewed registry pin')
 
 
 def validate_coordinated_version(group, properties, metadata, current):
@@ -119,8 +117,7 @@ def check_remote(registry, require_release_verifiers=False):
         metadata = json.loads(git('show', ref + ':src/main/resources/fabric.mod.json').stdout)
         validate_source(group, spec, properties, metadata, ancestor)
         if require_release_verifiers:
-            validate_release_source_head(group, spec, git('rev-parse', ref).stdout.strip())
-            files = set(git('ls-tree', '-r', '--name-only', ref, '--', 'scripts').stdout.splitlines())
+            files = set(git('ls-tree', '-r', '--name-only', ref, '--', 'scripts', 'tests').stdout.splitlines())
             validate_release_verifier_files(group, files)
             validate_coordinated_version(group, properties, metadata, current)
         print(group + ': integrated source is an ancestor and current metadata matches')

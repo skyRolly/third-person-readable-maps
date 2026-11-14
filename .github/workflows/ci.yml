@@ -28,7 +28,21 @@ jobs:
           python-version: '3.15.2'
       - name: Test release and coordination controls
         run: python3 -m unittest discover -s tests -v
-      - name: Verify active maintenance targets against their branches
-        run: python3 scripts/validate_maintenance_targets.py --verify-remote --require-release-verifiers
       - name: Validate workflow syntax and expressions
         run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -color
+      - name: Verify active maintenance targets against their branches
+        run: python3 scripts/validate_maintenance_targets.py --verify-remote
+
+  live-release-prerequisites:
+    name: Validate live release prerequisites
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Verify live source version and required verification tools
+        run: python3 scripts/validate_maintenance_targets.py --verify-remote --require-release-verifiers

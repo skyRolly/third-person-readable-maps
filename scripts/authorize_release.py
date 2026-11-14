@@ -11,7 +11,7 @@ from release import Invalid, load_plan, require
 
 ACTIONS_APP = 15368
 BUILD_CHECKS = {'Build (ubuntu-latest)', 'Build (windows-latest)'}
-COORDINATION_CHECKS = {'Validate coordination'}
+COORDINATION_CHECKS = {'Validate coordination', 'Validate live release prerequisites'}
 
 
 def role_checks(branch):
