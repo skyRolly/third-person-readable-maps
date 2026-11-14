@@ -64,7 +64,32 @@ Port shared changes to each affected maintenance branch in separate reviewed PRs
 CI runs clean Java 25 builds on Linux and Windows, validates the Gradle wrapper,
 and checks Fabric metadata, the packaged MIT license, Java bytecode, mapping
 namespace, and the Mixin target signature. It retains JARs and verification reports.
-Run the same build checks locally with `./gradlew build`.
+A Gradle build does not run the Python fixture suite or the cross-version API
+verifier. For the complete local product validation, use Java 25 and Python 3;
+the wrapper and API checks require network access to Gradle, Mojang and Fabric.
+Run these commands from the repository root:
+
+```sh
+# Linux / macOS
+python3 scripts/verify_gradle_wrapper.py
+./gradlew --no-daemon clean build
+python3 -m unittest discover -s tests
+python3 scripts/verify_supported_apis.py --jar build/libs
+```
+
+```powershell
+# Windows PowerShell
+python scripts/verify_gradle_wrapper.py
+.\Build-Windows.bat
+python -m unittest discover -s tests
+python scripts/verify_supported_apis.py --jar build/libs
+```
+
+The wrapper check compares its JAR and configured distribution checksum with
+Gradle's published checksums; Gradle verifies the downloaded distribution. CI
+also validates the wrapper using its pinned Gradle setup action. These commands
+check the packaged JAR but do not replace installed-client or graphical testing. The [linkage verification contract](docs/verification/linkage-contract.md)
+describes the supported and rejected bytecode patterns.
 
 For graphical checks, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
 on a machine with graphics support. Check filled maps in each hand, both maps,
