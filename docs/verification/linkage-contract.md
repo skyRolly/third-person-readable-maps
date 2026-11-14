@@ -23,8 +23,8 @@ fail closed. Consumed method-type, method-handle and dynamic descriptors receive
 class-access checks. Ordinary method descriptors do not by themselves imply
 that the caller must access each named type.
 
-The verifier deliberately rejects all non-constructor `invokespecial` uses and
-cross-package protected instance instructions whose receiver would require
+The verifier deliberately rejects non-constructor `invokespecial` uses outside
+the bounded same-class private case and cross-package protected instance instructions whose receiver would require
 dataflow proof. A protected method handle is accepted only when its symbolic
 receiver is constrained to the caller or a subtype. Dynamic constants and
 unrecognized dynamic bootstraps are rejected; the supported invokedynamic form
@@ -32,6 +32,23 @@ is the standard three-argument `LambdaMetafactory.metafactory` bootstrap.
 These restrictions can reject valid programs and must be revisited before
 introducing an unsupported pattern. The fixtures include positive and negative
 cases and exercise the actual namespace-adapter entry point.
+
+Private access between Java 11+ nestmates requires parsed `NestHost` and
+`NestMembers` attributes, reciprocal host membership, the same runtime package,
+and the same verified candidate, game, or library-archive origin. The model
+deliberately rejects cross-archive nests because a common runtime class loader
+is not established. Mixin references use the transformed target as caller;
+the original Mixin's nest privileges are not transferred. Same-class private
+non-constructor `invokespecial` is supported for Java 8 compiler accessors;
+other non-constructor special selection remains unsupported. Final-field writes
+still require the declaring class and initializer, even for nestmates.
+
+Ordinary descriptors require referenced game and dependency classes to exist;
+they do not by themselves make a package-private type inaccessible to a caller.
+Actual class instructions, class constants, consumed method-type and
+method-handle descriptor classes are checked for accessibility, including
+candidate-owned classes. Class uses referring directly to a Mixin are outside
+the supported transformation subset and fail closed.
 
 This is not a complete JVM bytecode verifier or a proof of every transformed
 Mixin behavior. Platform APIs rely on the configured Java `--release` target
