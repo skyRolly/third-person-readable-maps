@@ -79,7 +79,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                                   'public void invoke() { run(); value = 1; } }')
                 subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
                                check=True, capture_output=True)
-                if inherited != 'valid':
+                if inherited in ('final', 'removed'):
                     api = root/'org/joml/Api.java'
                     member = 'public final int value = 0; public void run() {}' if inherited == 'final' else 'public int value;'
                     api.write_text('package org.joml; public class Api { '+member+' }')
@@ -107,15 +107,32 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                 if inherited:
                     z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
             library = library_buf.getvalue()
+            alternative = None
+            if inherited and inherited.startswith('platform-'):
+                api = root/'org/joml/Api.java'
+                method = '' if inherited == 'platform-missing' else 'public void run() {}'
+                api.write_text('package org.joml; public class Api { public int value; public int extra; '+method+' }')
+                subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
+                               check=True, capture_output=True)
+                alternative_buf = io.BytesIO()
+                with ZipFile(alternative_buf, 'w') as z:
+                    z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
+                alternative = alternative_buf.getvalue()
             libraries = [] if not inherited else [{'name':'org.joml:joml:1.0', 'downloads':{'artifact':{
                 'url':'https://fixture/library','sha1':hashlib.sha1(library).hexdigest(),'size':len(library)}}}]
+            if alternative is not None:
+                libraries[0]['rules'] = [{'action':'allow'}, {'action':'disallow','os':{'name':'osx'}}]
+                libraries.append({'name':'org.joml:joml:2.0', 'rules':[{'action':'allow','os':{'name':'osx'}}],
+                                  'downloads':{'artifact':{'url':'https://fixture/alternative',
+                                  'sha1':hashlib.sha1(alternative).hexdigest(),'size':len(alternative)}}})
             metadata = json.dumps({'downloads':{'client':{'url':'https://fixture/client',
                                    'sha1':hashlib.sha1(game_data).hexdigest(), 'size':len(game_data)}},
                                    'libraries':libraries}).encode()
             manifest = json.dumps({'versions':[{'id':'fixture', 'type':'release', 'url':'https://fixture/meta',
                                    'sha1':hashlib.sha1(metadata).hexdigest()}]}).encode()
             contents = {verifier.MANIFEST:manifest, 'https://fixture/meta':metadata,
-                        'https://fixture/client':game_data, 'https://fixture/library':library}
+                        'https://fixture/client':game_data, 'https://fixture/library':library,
+                        'https://fixture/alternative':alternative}
             with patch.object(verifier, 'get', side_effect=lambda url: contents[url]):
                 verifier.verify(jar, ['fixture'], None)
 
@@ -144,6 +161,11 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             self.fixture('HEAD', 'return;', inherited='removed')
         with self.assertRaisesRegex(ValueError, 'final field write'):
             self.fixture('HEAD', 'return;', inherited='final')
+
+    def test_platform_library_variants_reach_entrypoint(self):
+        self.fixture('HEAD', 'return;', inherited='platform-valid')
+        with self.assertRaisesRegex(ValueError, 'missing member'):
+            self.fixture('HEAD', 'return;', inherited='platform-missing')
 
 
 if __name__ == '__main__':

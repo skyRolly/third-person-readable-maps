@@ -173,11 +173,16 @@ def verify(mod_path, versions, clients):
             classes = {c for node in mod_nodes.values() for c in node['classes']
                        if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))}
             require(not [c for c in classes if not game_class(c)], f'{version}: missing descriptor or referenced game classes')
-            count = game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {}, version,
-                                                          class_lookup=class_lookup)
-            libraries = game_linkage.verify_declared_libraries(
-                meta, mod_nodes, {mixin_name: TARGET}, fetch_library, version,
-                runtime_libraries=runtime_libraries, class_lookup=class_lookup)
+            count, libraries = 0, []
+            for platform in runtime_libraries.platforms():
+                runtime_libraries.select(platform)
+                class_lookup.cache_clear()
+                count += game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {},
+                                                               version, class_lookup=class_lookup)
+                coverage = game_linkage.verify_declared_libraries(
+                    meta, mod_nodes, {mixin_name: TARGET}, fetch_library, version,
+                    runtime_libraries=runtime_libraries, class_lookup=class_lookup)
+                libraries.append((platform, coverage))
         print(f'{version}: Mixin target, {len(classes)} game classes, {count} game instructions, '
               f'and dependency libraries {libraries} verified')
 
