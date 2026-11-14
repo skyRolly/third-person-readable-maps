@@ -13,6 +13,47 @@ import audit_candidate_dependencies as candidate_audit
 
 
 class VerifierFollowupEvidenceTests(unittest.TestCase):
+    def test_local_multiplayer_observation_is_source_bound_and_partial(self):
+        directory = ROOT / 'docs/multiplayer-smoke-2026-11-14'
+        index = json.loads((directory / 'index.json').read_text())
+        build = json.loads((BUILDS / 'index.json').read_text())['groups']['1.21.11']
+        result = json.loads((directory / 'view-retry/result.json').read_text())
+        self.assertTrue(index['status'].startswith('PARTIAL'))
+        self.assertFalse(index['cache_instrumented'])
+        self.assertFalse(index['full_multiplayer_acceptance'])
+        for key in ('source_commit', 'artifact_sha256'):
+            expected = build['sha256'] if key == 'artifact_sha256' else build[key]
+            self.assertEqual(index[key], expected)
+            self.assertEqual(result[key], expected)
+        self.assertEqual(index['artifact'], build['artifact'])
+        self.assertIn('not instrumented', result['limitation'])
+        self.assertIn('after the run', index['fixture_sample_provenance'])
+        self.assertIn('manually', index['operator_intervention'])
+        self.assertTrue({'view-retry/observer-before-map.png', 'view-retry/observer-held-map.png',
+                         'view-retry/observer-after-map.png', 'view-retry/loopback-auth-failure.png',
+                         'edge-on-attempt/observer-after-map.png', 'port-parser-attempt/runner.log'}
+                        <= set(index['files_sha256']))
+        for name, digest in index['files_sha256'].items():
+            raw = (directory / name).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), digest, name)
+            if name.endswith('.png'):
+                self.assertTrue(raw.startswith(b'\x89PNG\r\n\x1a\n'), name)
+        host = (directory / 'view-retry/host.log').read_text(errors='replace')
+        observer = (directory / 'view-retry/observer.log').read_text(errors='replace')
+        runner = (directory / 'view-retry/runner.log').read_text()
+        for log in (host, observer):
+            self.assertIn('thirdpersonreadablemaps 1.0.0', log)
+            self.assertFalse(any(error in log for error in
+                                 ('MixinApplyError', 'InvalidInjectionException', 'NoSuchMethodError',
+                                  'MixinTransformerError')))
+        self.assertIn('MapObserver joined the game', host)
+        self.assertIn('MapObserver (/127.0.0.1:', host)
+        self.assertIn('Connecting to 127.0.0.1', observer)
+        self.assertIn('/give MapObserver minecraft:filled_map[minecraft:map_id=2]', runner)
+        self.assertIn('Captured observer-held-map', runner)
+        self.assertIn('MULTIPLAYER CAPTURE COMPLETE', runner)
+        self.assertIn('KeyboardInterrupt', (directory / 'port-parser-attempt/runner.log').read_text())
+
     def test_candidate_monitoring_pins_advanced_heads(self):
         refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
         evidence = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())

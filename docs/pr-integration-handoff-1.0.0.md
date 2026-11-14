@@ -24,6 +24,8 @@ The initial fetched integrated heads were `main` `794aec0eda8e7bfaea5f5e14307766
 
 The [version-consistency table](version-consistency-1.0.0/) records each current target's properties, proposed version, artifact hash and local-world smoke coverage separately.
 
+A [1.21.11 two-client LAN observation](multiplayer-smoke-2026-11-14/) exercised the proposed maintenance JAR and recorded a remote map before and after the observer held that map ID. It is a partial software-rendered diagnostic; it does not complete multiplayer or naturally unavailable-data acceptance.
+
 The open [Dependabot PR decisions](dependency-update-prs-2026-11-12.md) preserve #24–#30 separately; rebase or recreate as needed after target integration and rerun their checks. Repository configuration currently deletes merged head branches automatically; the candidate audit has a narrowly verified post-merge continuation and requires an explicit maintenance transition. Branch protection, source approvals and release gates remain unsatisfied.
 
 The [November 14 PR snapshot](pr-checks-2026-11-14.json) records the open PR heads, review state, checks and bot changed-file lists. Its coordination head is a point-in-time observation and may be superseded by later evidence commits.

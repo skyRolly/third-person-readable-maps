@@ -16,3 +16,5 @@ docs/dependency-evidence/osv-rescan-2026-11-14/**/*.log -text whitespace=-blank-
 docs/dependency-evidence/osv-rescan-2026-11-14/*.log -text whitespace=-blank-at-eol
 docs/protected-access-trace-2026-11-14/*.log -text whitespace=-blank-at-eol
 docs/legacy-dry-run-1.0.0-2026-11-14/*.log -text whitespace=-blank-at-eol
+# Preserve raw, checksum-bound multiplayer client and harness output.
+docs/multiplayer-smoke-2026-11-14/**/*.log -text whitespace=-blank-at-eol

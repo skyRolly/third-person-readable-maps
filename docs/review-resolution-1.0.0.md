@@ -71,7 +71,11 @@ Controlled before/after tests on the prior source heads' 1.0.0 artifacts cover [
 [1.19.3](https://github.com/skyRolly/third-person-readable-maps/blob/c3ac7d261b4289451c8b27df96fae7a316ba75ed/docs/verification/1.0.0-numeric-mapid-probe.md), and
 [1.19.4](https://github.com/skyRolly/third-person-readable-maps/blob/4c78b44bd8ac1a758f3c04987530b9fda844127b/docs/verification/1.0.0-numeric-mapid-probe.md).
 Each used a local single-player software-rendered scene; no diagnostic proves
-naturally delayed client data in multiplayer.
+naturally delayed client data in multiplayer. A later [1.21.11 two-client LAN
+observation](multiplayer-smoke-2026-11-14/) captured the remote map blank before
+the observer held the same map ID and with terrain afterward. Its client cache
+was not instrumented, so it does not establish the cause of the initial blank
+or close the naturally unavailable-data requirement.
 
 For the component-based 1.20.5 family, inspection of the SHA-1-verified
 1.20.5 client (`c6b92b2374a629f20802bb284f98a4ee790e950a`) shows `MapId`
