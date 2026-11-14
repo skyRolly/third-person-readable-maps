@@ -13,7 +13,7 @@ checks and evidence on the preceding heads do not certify the new sources.
 | Coordination-only architecture | PASS | `main` owns coordination and no game Gradle project. Preserve that separation. |
 | Compatibility grouping | PENDING REVIEW | Ten proposed legacy groups plus three integrated groups cover 48 explicit versions. No new split is proposed; independent acceptance remains. |
 | Version synchronization | PENDING REVIEW | All 13 proposed product heads and the proposed coordinator use 1.0.0. The actual integrated branches remain 0.0.2 until reviewed PRs merge. |
-| Static API verification | FAIL | The advanced product heads passed their recorded version-specific checks and controlled fixtures, but protected receiver dataflow, some `invokespecial` cases and other properties remain unproven. See the [review matrix](review-resolution-1.0.0.md). |
+| Static API verification | FAIL | The advanced product heads passed their recorded version-specific checks and controlled fixtures; an [archived-source trace](protected-access-trace-2026-11-14/) found no protected game/library member resolutions in these artifacts. General protected receiver dataflow, some `invokespecial` cases and other properties remain unproven. See the [review matrix](review-resolution-1.0.0.md). |
 | Proposed-head Linux CI | PASS | All 13 new product heads passed `Build (ubuntu-latest)` on 2026-11-13; [exact-head checks](hosted-builds-verifier-followup-2026-11-13.json) are recorded. Repeat for changed and merged heads. |
 | Proposed-head Windows CI | PASS | All 13 new product heads passed `Build (windows-latest)` on 2026-11-13; [exact-head checks](hosted-builds-verifier-followup-2026-11-13.json) are recorded. Repeat for changed and merged heads. |
 | Coordination CI | BLOCKED | Local tests pass; the latest hosted check fails at the live integrated-verifier prerequisite. The three maintenance PRs must be integrated after review, then their exact merged heads and security evidence recorded before rerunning the check. |
@@ -34,8 +34,8 @@ checks and evidence on the preceding heads do not certify the new sources.
 | Auditor access | BLOCKED | Configure and verify the read-only auditor credential through the administrator without exposing its value. |
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
-| Provenance and checksums | PENDING REVIEW | The new candidate aggregation and checksums identify all advanced product heads. Review them and repeat against final integrated, approved heads. |
-| Non-publishing rehearsal | PENDING REVIEW | The [new local 13-group rehearsal](legacy-dry-run-1.0.0.md) passed candidate aggregation and negative controls on the advanced heads. A hosted rehearsal against approved integrated heads remains NOT RUN. |
+| Provenance and checksums | PENDING REVIEW | The [November 14 candidate aggregation](legacy-dry-run-1.0.0-2026-11-14/) and checksums identify all advanced product heads. Review them and repeat against final integrated, approved heads. |
+| Non-publishing rehearsal | PENDING REVIEW | The [November 14 local 13-group rehearsal](legacy-dry-run-1.0.0-2026-11-14/) passed candidate aggregation and 15 negative controls on the advanced heads. A hosted rehearsal against approved integrated heads remains NOT RUN. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |

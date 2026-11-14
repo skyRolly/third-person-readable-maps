@@ -28,4 +28,6 @@ The [November 14 PR snapshot](pr-checks-2026-11-14.json) records the open PR hea
 
 The [tracked-tree inventory](repository-file-inventory-2026-11-13/) identifies common files, necessary group differences and retained diagnostic material at its recorded source snapshots.
 
+The [November 14 non-publishing rehearsal](legacy-dry-run-1.0.0-2026-11-14/) records the proposed source pins, candidate manifest, checksums and negative controls. It is not release authorization.
+
 The supplied review findings were investigated in the relevant PR descriptions and matrix; the component map-ID boundary and complete linkage verification remain open. A fresh review-comment and submitted-review inventory returned no existing threads to reply to; this does not substitute for independent human review. No PR was merged, no auto-merge request enabled, and no tag, draft or release was created.

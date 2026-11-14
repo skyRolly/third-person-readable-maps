@@ -236,6 +236,65 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                          '77dd5b2ce225ea11469928ac317850245a74ae78')
         self.assertFalse(index['upstream_recheck']['gradle_9.9.0']['prerelease'])
 
+    def test_november_14_candidate_rehearsal_binds_sources_and_checksums(self):
+        directory = ROOT / 'docs/legacy-dry-run-1.0.0-2026-11-14'
+        manifest_raw = (directory / 'release-manifest.json').read_bytes()
+        manifest = json.loads(manifest_raw)
+        plan = json.loads((directory / 'candidate-plan.json').read_text())
+        matrix = json.loads((directory / 'candidate-matrix.json').read_text())
+        negatives = json.loads((directory / 'negative-controls.json').read_text())
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertTrue(manifest['candidate'])
+        self.assertEqual(manifest['version'], '1.0.0')
+        self.assertEqual(manifest['coordinator_sha'], 'a8f53c353204ff6120a5daf5c3f65f703f0fe0e6')
+        self.assertEqual(len(manifest['groups']), 13)
+        self.assertEqual(len(matrix), 13)
+        versions = [v for group in manifest['groups'] for v in group['minecraft']]
+        self.assertEqual(len(versions), 48)
+        self.assertEqual(len(set(versions)), 48)
+        checksums = dict(line.split('  ', 1)[::-1] for line in (directory / 'SHA256SUMS').read_text().splitlines())
+        self.assertEqual(checksums['release-manifest.json'], hashlib.sha256(manifest_raw).hexdigest())
+        self.assertEqual(len(checksums), 14)
+        for group in manifest['groups']:
+            name = group['id']
+            self.assertEqual(group['source_commit'], refs[name]['new_head'])
+            self.assertEqual(group['branch'], refs[name]['branch'])
+            self.assertEqual(group['sha256'], builds[name]['sha256'])
+            self.assertEqual(checksums[group['artifact']], group['sha256'])
+            self.assertEqual(plan['groups'][name]['runtime_evidence'], {})
+        self.assertEqual(len(negatives), 15)
+        self.assertTrue({'missing-group', 'duplicate-artifact', 'wrong-mod-version',
+                         'missing-strict-runtime-evidence', 'candidate-publication',
+                         'changed-artifact-after-checksum', 'wrong-remote-source-commit'} <= set(negatives))
+        self.assertIn('REHEARSAL COMPLETE 13 groups; 48 versions', (directory / 'rehearsal.log').read_text())
+
+    def test_protected_access_trace_uses_all_archived_product_sources(self):
+        directory = ROOT / 'docs/protected-access-trace-2026-11-14'
+        index = json.loads((directory / 'index.json').read_text())
+        manifest = json.loads((ROOT / 'docs/legacy-dry-run-1.0.0-2026-11-14/release-manifest.json').read_text())
+        expected = {version: group['id'] for group in manifest['groups'] for version in group['minecraft']}
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(set(index['versions']), set(expected))
+        for name in ('worker.py', 'run.py', 'run.log'):
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), index[name + '_sha256'])
+        for version, row in index['versions'].items():
+            group = expected[version]
+            self.assertEqual(row['group'], group)
+            self.assertEqual(row['source_commit'], builds[group]['source_commit'])
+            self.assertEqual(row['artifact_sha256'], builds[group]['sha256'])
+            self.assertGreater(row['validated_uses'], 0)
+            self.assertEqual(row['protected_uses'], 0)
+            for suffix, label in (('.json', 'result'), ('.log', 'log')):
+                raw = (directory / (version + suffix)).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), row[label + '_sha256'])
+                if label == 'result':
+                    result = json.loads(raw)
+            self.assertEqual(result['exit_code'], 0)
+            self.assertEqual(result['source_commit'], row['source_commit'])
+            self.assertEqual(result['protected_uses'], [])
+            self.assertIn('jvm_linkage.py', result['archived_script_sha256'])
+
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'
         index = json.loads(path.read_text())

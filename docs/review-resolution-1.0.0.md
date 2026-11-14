@@ -52,7 +52,9 @@ found no `putfield` or `putstatic` instructions targeting external owners in
 the 13 packaged JARs; unsupported Mixin member annotations, including shadow
 fields, fail closed. A [fresh exact-artifact inventory](artifact-linkage-inventory-2026-11-13/)
 also found no external or inherited non-constructor `invokespecial` in these
-13 JARs. These observations do not extend the verifier to future artifacts or
+13 JARs. A separate [archived-source trace](protected-access-trace-2026-11-14/)
+found no protected game or game-library member resolutions on any of the 48
+versions under this verifier's resolution model. These observations do not extend the verifier to future artifacts or
 prove accessibility for descriptor-only classes. These limits must not be read as
 complete linkage proof.
 

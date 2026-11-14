@@ -1,5 +1,8 @@
 # Non-publishing 1.0.0 candidate rehearsal — 2026-11-13
 
+The later [November 14 rehearsal](legacy-dry-run-1.0.0-2026-11-14/) retains
+its own coordinator identity, plan, checksums and negative controls.
+
 This rehearsal uses the advanced product PR heads identified in the
 [source transition](source-head-transition-2026-11-13.md). Candidate monitoring
 and full runtime evidence remain separate, unfinished gates.

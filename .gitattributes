@@ -14,3 +14,5 @@ docs/component-map-id-item-loading-2026-11-13/**/*.log -text whitespace=-blank-a
 docs/foreground-item-entities-2026-11-13/**/*.log -text whitespace=-blank-at-eol
 docs/dependency-evidence/osv-rescan-2026-11-14/**/*.log -text whitespace=-blank-at-eol
 docs/dependency-evidence/osv-rescan-2026-11-14/*.log -text whitespace=-blank-at-eol
+docs/protected-access-trace-2026-11-14/*.log -text whitespace=-blank-at-eol
+docs/legacy-dry-run-1.0.0-2026-11-14/*.log -text whitespace=-blank-at-eol
