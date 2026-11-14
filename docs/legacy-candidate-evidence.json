@@ -69,8 +69,8 @@
       ],
       "per_version": {
         "1.21.4": {
-          "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
-          "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
+          "client_startup": "PASS: 2026-11-14 local-world map-ID probe on current proposal source and JAR; approved-source runtime acceptance NOT RUN",
+          "graphical": "PARTIAL: 2026-11-14 software-rendered map-ID probe on current proposal; full graphical acceptance NOT RUN",
           "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/",
           "movement_observed_on": "2026-11-13"
         },

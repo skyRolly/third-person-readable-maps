@@ -29,7 +29,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.10+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -92,7 +92,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.9+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -155,7 +155,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.8+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -215,7 +215,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.7+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -275,7 +275,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.6+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -335,7 +335,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -395,7 +395,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL: 2026-11-14 current-proposal local-world map-ID probe; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.4+build.8",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -433,8 +433,8 @@
       "candidate_group": "1.21.4\u20131.21.8 (candidate)",
       "artifact_status": "CANDIDATE; NOT RELEASE READY",
       "static_linkage": "PASS: bounded final-head packaged-JAR verification; independent review pending",
-      "client_startup": "HISTORICAL: prior-source local-world observation used the same JAR hash; approved-source runtime acceptance NOT RUN",
-      "graphical": "PARTIAL HISTORICAL: earlier-source walking capture; independent visual and full graphical acceptance NOT RUN",
+      "client_startup": "PASS: 2026-11-14 local-world map-ID probe on current proposal source and JAR; approved-source runtime acceptance NOT RUN",
+      "graphical": "PARTIAL: 2026-11-14 software-rendered map-ID probe on current proposal; full graphical acceptance NOT RUN",
       "fabric_global_latest_stable_loader": "0.20.1",
       "movement_diagnostic": "Local walking distance 12.08 blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/1.21.4/"
     },
@@ -456,7 +456,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.3+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -511,7 +511,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.2+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -566,7 +566,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21.1+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -624,7 +624,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.21+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -682,7 +682,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.6+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -740,7 +740,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.5+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -798,7 +798,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.4+build.3",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -858,7 +858,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.3+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -918,7 +918,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -978,7 +978,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20.1+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1038,7 +1038,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.20+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1098,7 +1098,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.4+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1158,7 +1158,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.3+build.5",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1218,7 +1218,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.2+build.28",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1278,7 +1278,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19.1+build.6",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1338,7 +1338,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.19+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1398,7 +1398,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18.2+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1457,7 +1457,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18.1+build.22",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1516,7 +1516,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.18+build.1",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1575,7 +1575,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.17.1+build.65",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1634,7 +1634,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.17+build.13",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1693,7 +1693,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.5+build.10",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1754,7 +1754,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.4+build.9",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1815,7 +1815,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.3+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1876,7 +1876,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.2+build.47",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1937,7 +1937,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16.1+build.21",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -1998,7 +1998,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.16+build.4",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2059,7 +2059,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.2+build.17",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2120,7 +2120,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15.1+build.37",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2181,7 +2181,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.15+build.2",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2242,7 +2242,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.4+build.18",
       "mapping_source": {
         "kind": "Mojang client mappings",
@@ -2302,7 +2302,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.3+build.13",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2368,7 +2368,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.2+build.7",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2434,7 +2434,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14.1+build.10",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",
@@ -2500,7 +2500,7 @@
       },
       "fabric_game_listed": true,
       "fabric_intermediary_listed": true,
-      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; final artifact comparison pending; full runtime acceptance NOT RUN",
+      "fabric_loader_runtime_verification": "PARTIAL HISTORICAL: prior-source local world; clean final JAR has the same SHA-256; full runtime acceptance NOT RUN",
       "yarn_latest_build_listed": "1.14+build.21",
       "mapping_source": {
         "kind": "Fabric Yarn v2 mappings",

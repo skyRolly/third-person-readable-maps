@@ -2,7 +2,7 @@
 
 All ten proposed legacy implementations remain draft PRs against placeholder `mc/*` branches. They are not integrated or release-ready. The coordinated proposed mod version is **1.0.0**; actual integrated branches remain 0.0.2 pending their separate reviewed PRs. No coordinated release has been published.
 
-The current heads passed the 48-version packaged-JAR sweep within the bounded contract described in the [review matrix](review-resolution-1.0.0.md). Historical local-world observations used earlier source commits; all current clean-built JAR hashes match those observations. They do not establish approved-source runtime acceptance. The [current per-version inventory](legacy-version-inventory.md), [candidate evidence](legacy-candidate-evidence.json), [prior 1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) retain separate identities.
+The current heads passed the 48-version packaged-JAR sweep within the bounded contract described in the [review matrix](review-resolution-1.0.0.md). Historical local-world observations used earlier source commits; all current clean-built JAR hashes match those observations. A later paired 1.21.4 map-ID test used the current proposed source and JAR. They do not establish approved-source runtime acceptance. The [current per-version inventory](legacy-version-inventory.md), [candidate evidence](legacy-candidate-evidence.json), [prior 1.0.0 snapshot](historical-verifier-followup-2026-11-13/) and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) retain separate identities.
 
 | Group | Draft PR | Proposed source HEAD | 1.0.0 JAR SHA-256 | Prior-source local-world smoke (same JAR hash) |
 |---|---|---|---|---|

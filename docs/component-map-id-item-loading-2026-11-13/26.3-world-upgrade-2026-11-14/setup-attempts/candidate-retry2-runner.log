@@ -1,0 +1,9 @@
+Launching 26.3 ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559
+Traceback (most recent call last):
+  File "/tmp/tprm-mapid-112-263-candidate-retry2.py", line 131, in <module>
+    wait(p,log,'MapSmokeTest joined the game',360);hotbar()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tprm-mapid-112-263-candidate-retry2.py", line 39, in wait
+    if p.poll() is not None:raise RuntimeError('Client exited before '+needle)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Client exited before MapSmokeTest joined the game

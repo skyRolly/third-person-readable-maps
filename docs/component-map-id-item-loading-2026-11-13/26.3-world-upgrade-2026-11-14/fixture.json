@@ -1,0 +1,19 @@
+{
+  "minecraft": "26.3",
+  "baseline_world": "1.21.10-era host fixture; copied before mutation; this tests world upgrade and item loading",
+  "input_level_sha256": "8f5e62abbf6fd95263fff4c859bae93949f955c76aacf1a6ecdc79d219d7d078",
+  "input_player_sha256": "508bfdb75160f1fe32449ab51eb333d3d768085647b2b1037677ad90b7b831f9",
+  "input_map_zero_sha256": "219c78668a19aa04968adeb3878f0a0bd4d4cef1e6baca059e6fac4aa0af7319",
+  "map_zero_nonblank": 15691,
+  "selected_slot": 3,
+  "slots": {
+    "1": "Int 0",
+    "2": "Int 7",
+    "3": "Double 0.5",
+    "4": "Long 4294967296",
+    "6": "String not-a-number",
+    "7": "Double NaN",
+    "8": "absent component"
+  },
+  "scope": "Controlled copied test world; no production world or item modified."
+}

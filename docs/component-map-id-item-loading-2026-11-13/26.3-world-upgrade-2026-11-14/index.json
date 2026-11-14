@@ -1,0 +1,190 @@
+{
+  "minecraft": "26.3",
+  "input_world_version": "1.21.10",
+  "status": "OBSERVED: paired copied local-world upgrades with candidate and without Mod",
+  "source_commit": "f44db59120f1695065da7d2d27e87ec30fb0ee5d",
+  "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+  "renderer": "Linux Xorg/Mesa software, SDL EGL",
+  "selected_slot": 3,
+  "input_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": 0.5
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Long",
+      "value": 4294967296
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": "String",
+      "value": "not-a-number"
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": "NaN"
+    }
+  },
+  "saved_candidate_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "saved_control_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "limitation": "One 1.21.10-to-26.3 world-upgrade and loading path with partial screenshots; not native 26.3 data, other versions, multiplayer, hardware-GPU or independent graphical acceptance.",
+  "files_sha256": {
+    "candidate/after-walk.png": "b7ecfeb7bf248dd851dc8393bed0a735104a22b5b5d3e971e754f141877553b2",
+    "candidate/client.log": "5693cb636242709cb8ff439e5c193823aacfb723f36c3cd9a1e8028c87bd4d94",
+    "candidate/ending-player.dat": "f26ec07a1ad2dc829f57f9d3c010d644f62fdf51a7f1d73147f6146bd9eea975",
+    "candidate/first-person.png": "243d29f216ab92d4926008135f0ec5b9572e7f5d204e708ea0109e3ed5d56ce2",
+    "candidate/launcher-pins.json": "96b7b288773cf7b2271e0877bfc5579b8251dc25c475ed977002b24d6712268e",
+    "candidate/movement.json": "d5e3ae9e9849a7130a82ebdd89865ca7f38119cbc0f33d59202c72fe5bac0877",
+    "candidate/runner.log": "46d1df0133fe338ffabddc6c9ed236f25bd8a714e8e651a5db0440a142c016a3",
+    "candidate/runner.py": "982bc2a5dfbf122bbe9a6454541e207852d17d178cff69e1067534dca044cbc3",
+    "candidate/standing-day.png": "f6bca29957a4a80ea1e4bfad806a9e1e8155aec24bec7f9cd496aab45cd02ed6",
+    "candidate/upgrade-complete.png": "33c29ee5a25f40e35d6abdc5aa378eb6428cf31e6c66197484ba5ff4e6adce00",
+    "candidate/upgrade-prompt.png": "de4a4607fbab59fde54e7008dedc2a9bd691b4271b3938bc7d9052882b185cfc",
+    "candidate/walking-1.png": "bb5068e7dfccba1ab85b59b16572aa9df064636a1244ddbb818cb87f141ff440",
+    "candidate/walking-2.png": "1502ca6c8e8eeb8ed97754f2bac1e5ffd1cb9841368bc2e405ab5279e4be903a",
+    "control/after-walk.png": "b42a719194e3df39bbdee51aed8e7ea5712e2a9aa11126d29fc0f2cf23025d1e",
+    "control/client.log": "2a1dae58d50f895399d0b75bade09d0cdf012cd1550dd03af17b4d896b8764de",
+    "control/ending-player.dat": "fbb95c90084956f937a53552b1b7a902d1871574e04d3df10f774050559bac1b",
+    "control/first-person.png": "243d29f216ab92d4926008135f0ec5b9572e7f5d204e708ea0109e3ed5d56ce2",
+    "control/launcher-pins.json": "96b7b288773cf7b2271e0877bfc5579b8251dc25c475ed977002b24d6712268e",
+    "control/movement.json": "83cb187b69d937349e5eeeb9b5ad9e0997c25a3cf51426060a5fab1048d34dc9",
+    "control/runner.log": "0e2d639e58cb3ee5a38c98e7b3622f42129a73d411e8b64eae726040614777d4",
+    "control/runner.py": "ee888b67ce739249dd154c0cbd294958d4a15276310fbe84ace1498c9007e77f",
+    "control/standing-day.png": "e2b5150bee3fd3e66c5e403243a2872395f55b4c5fcd33620bc9825e9644d80c",
+    "control/upgrade-complete.png": "74adb9f8a1ce46db0db07ba84f0a0d79950f4956f1d149acbb6c06a527898722",
+    "control/upgrade-prompt.png": "fc3b50d38e308baeed08f15f7422dc701413549619872595f37ba3cf59fe5ab4",
+    "control/walking-1.png": "f108150cf22357026e2af4e573cc8660054d64b057f121d553c5f5df433932a5",
+    "control/walking-2.png": "a1cbf2bc57ced6fe93b164d4b5f59426ddc1d9b245a6276fa9b1b0de4c623a0a",
+    "fixture.json": "a166774c84de66c46294ae1fbf8e61aa3d1c37a4a8d0e6fe7feb2671dabc5a84",
+    "input-level.dat": "8f5e62abbf6fd95263fff4c859bae93949f955c76aacf1a6ecdc79d219d7d078",
+    "input-map-zero.dat": "219c78668a19aa04968adeb3878f0a0bd4d4cef1e6baca059e6fac4aa0af7319",
+    "input-player.dat": "508bfdb75160f1fe32449ab51eb333d3d768085647b2b1037677ad90b7b831f9",
+    "prepare-fixture.py": "603cb0524521d6d3ed26dd14409a3f4b5f062b968a448a535cc1840e3a0a541c",
+    "setup-attempts/candidate-retry2-backend-error.png": "b1d201ae3f990160060d8a5266dd0c248044dc5a7ca142450baee22d7c57bc76",
+    "setup-attempts/candidate-retry2-client.log": "22afb74fd0ed76b511a26de227862bd532540ebe94bb864535d9d06fadd48fec",
+    "setup-attempts/candidate-retry2-runner.log": "c33bd00d842a89b2c97ef73243fbf8332c35655c8c2ef863f8277cecfa8a457e",
+    "setup-attempts/candidate-retry2-runner.py": "0bad4b896eea55a1efb93c90b2c5d3917f7881b3eaded1d4874c991cddc4f46b",
+    "setup-attempts/candidate-runner.log": "7d1c056d277bdccf7e05278f5d3f4057fbea687197abe5ae0ef71b21024a48b3",
+    "x11-helper.py": "ae52e66e8659fe4b01b71c836d4cca4eeac8725e8f86faa44cfee225d6b972c7"
+  }
+}
