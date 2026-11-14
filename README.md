@@ -20,7 +20,7 @@ does not need the mod. Mod ID: `thirdpersonreadablemaps`.
 
 ## Build from source
 
-Install a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
+Install **Python 3** and a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
 on `PATH`. CI pins Eclipse Temurin **25.0.5+8**. The committed Gradle **9.8.2**
 wrapper downloads and verifies Gradle; no separate Gradle installation is needed.
 Network access is required for Gradle, Minecraft, and Fabric dependencies.
@@ -32,11 +32,13 @@ and bytecode. Remapping Loom produces the intermediary/remapped installable JAR.
 
 ```sh
 # Linux / macOS
+python3 scripts/verify_gradle_wrapper.py
 ./gradlew --no-daemon clean build
 ```
 
 ```bat
 :: Windows Command Prompt
+python scripts\verify_gradle_wrapper.py
 gradlew.bat --no-daemon clean build
 :: Or use the entry point from any directory:
 Build-Windows.bat
@@ -53,9 +55,9 @@ Port shared changes to each affected maintenance branch in separate reviewed PRs
 CI runs clean Java 25 builds on Linux and Windows, validates the Gradle wrapper,
 and checks Fabric metadata, the packaged MIT license, Java bytecode, mapping
 namespace, and the Mixin target signature. It retains JARs and verification reports.
-Run the same build checks locally with `./gradlew build`.
+Run the Wrapper preflight before Gradle and run `python -m unittest discover -s tests` to check the preflight fixtures.
 
-For graphical checks, run `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
+For graphical checks, run the Wrapper preflight first, then `./gradlew runClient` (Windows: `.\gradlew.bat runClient`)
 on a machine with graphics support. Check filled maps in each hand, both maps,
 an occupied opposite hand, both dominant-arm settings, missing map data, arm
 movement, and unchanged first-person behavior. CI does not verify visual rendering;
