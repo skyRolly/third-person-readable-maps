@@ -1,5 +1,11 @@
 # Dependency-update PR review — 2026-11-12
 
+On [2026-11-14](pr-checks-2026-11-14.json), all seven PRs were still open,
+their recorded checks still passed on their existing bot heads, and no diff
+modified `gradle.properties`. The setup-java tag still resolved to the pinned
+commit and Gradle 9.9.0 still appeared as a non-prerelease. The conclusions
+below remain the recommended handling; rerun checks after any target update.
+
 All seven PRs below were open and mergeable at inspection. Their existing
 checks passed on their then-current bot heads, but those results do not certify
 the separate proposed 1.0.0 heads or a future merged/rebased result. None of the

@@ -35,6 +35,11 @@ Individual investigation notes and previous scans remain preserved in the
 [moderate/low review](security-moderate-low-2026-11-13.md). All dispositions
 remain **Further investigation**, and no residual risk is accepted.
 
+A [November 14 per-occurrence ownership cross-reference](dependency-evidence/advisory-ownership-2026-11-14/)
+links each finding to the Minecraft runtime metadata that lists the coordinate
+and indicates whether it also appears in the Gradle inventory. This evidence
+does not by itself establish loading, exploitability or a safe disposition.
+
 The proposed JARs were inspected again at the advanced product commits; none
 contains nested JARs or third-party class files. That observation does not
 establish that Minecraft-provided runtime dependencies are irrelevant. Fresh

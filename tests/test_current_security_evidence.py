@@ -11,6 +11,40 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_each_finding_has_source_bound_runtime_ownership_evidence(self):
+        directory = ROOT / 'docs/dependency-evidence/advisory-ownership-2026-11-14'
+        index = json.loads((directory / 'index.json').read_text())
+        scan = json.loads((ROOT / 'docs/dependency-evidence/osv-rescan-2026-11-14/index.json').read_text())
+        worklist = json.loads((ROOT / scan['disposition_worklist']).read_text())
+        expected = {}
+        for group, source in scan['current_sources'].items():
+            report = json.loads((ROOT / source['report_path']).read_text())
+            for match in report['matches']:
+                expected[group + '|' + match['purl'] + '|' + match['advisory']] = (source, report, match)
+        self.assertEqual(set(index['occurrences']), set(expected))
+        counts = {'gradle_and_runtime': 0, 'runtime_only': 0}
+        for key, row in index['occurrences'].items():
+            source, report, match = expected[key]
+            self.assertEqual(row['source_sha'], source['source_sha'])
+            self.assertEqual(row['source_kind'], source['source_kind'])
+            self.assertEqual(row['report_sha256'], source['report_sha256'])
+            self.assertEqual(row['fingerprint'], match['fingerprint'])
+            self.assertEqual(row['disposition'], 'Further investigation')
+            self.assertTrue(row['failing'])
+            self.assertFalse(row['risk_accepted'])
+            self.assertFalse(row['proposed_jar_bundles_third_party_classes_or_nested_jars'])
+            self.assertEqual(row['proposed_jar_sha256'], worklist['packaging'][row['group']]['artifact_sha256'])
+            self.assertEqual(row['gradle_scope'], 'gradle' in match['scopes'])
+            counts['gradle_and_runtime' if row['gradle_scope'] else 'runtime_only'] += 1
+            versions = {s.split('/', 1)[1] for s in match['scopes'] if s.startswith('runtime/')}
+            self.assertTrue(versions)
+            self.assertEqual(set(row['minecraft_runtime_metadata']), versions)
+            for version, metadata in row['minecraft_runtime_metadata'].items():
+                self.assertEqual(metadata['metadata_sha1'], report['runtime_manifests'][version]['sha1'])
+                self.assertEqual(metadata['metadata_url'], report['runtime_manifests'][version]['url'])
+                self.assertIn(match['purl'], report['inventories']['runtime/' + version])
+        self.assertEqual(index['scope_counts'], counts)
+
     def test_november_14_osv_requery_preserves_source_bound_findings(self):
         directory = ROOT / 'docs/dependency-evidence/osv-rescan-2026-11-14'
         index = json.loads((directory / 'index.json').read_text())

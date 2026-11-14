@@ -24,6 +24,8 @@ The initial fetched integrated heads were `main` `794aec0eda8e7bfaea5f5e14307766
 
 The open [Dependabot PR decisions](dependency-update-prs-2026-11-12.md) preserve #24–#30 separately; rebase or recreate as needed after target integration and rerun their checks. Repository configuration currently deletes merged head branches automatically; the candidate audit has a narrowly verified post-merge continuation and requires an explicit maintenance transition. Branch protection, source approvals and release gates remain unsatisfied.
 
+The [November 14 PR snapshot](pr-checks-2026-11-14.json) records the open PR heads, review state, checks and bot changed-file lists. Its coordination head is a point-in-time observation and may be superseded by later evidence commits.
+
 The [tracked-tree inventory](repository-file-inventory-2026-11-13/) identifies common files, necessary group differences and retained diagnostic material at its recorded source snapshots.
 
 The supplied review findings were investigated in the relevant PR descriptions and matrix; the component map-ID boundary and complete linkage verification remain open. A fresh review-comment and submitted-review inventory returned no existing threads to reply to; this does not substitute for independent human review. No PR was merged, no auto-merge request enabled, and no tag, draft or release was created.

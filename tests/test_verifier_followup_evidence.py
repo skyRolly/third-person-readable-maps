@@ -211,6 +211,31 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         self.assertEqual(latest['workflow']['state'], 'active')
         self.assertIn('does not expose', latest['limitation'])
 
+    def test_pr_snapshot_identifies_products_and_separate_bot_updates(self):
+        index = json.loads((ROOT / 'docs/pr-checks-2026-11-14.json').read_text())
+        refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']
+        mapping = {str(row['pull_request'].rstrip('/').split('/')[-1]): group for group, row in candidates.items()}
+        mapping.update({'31': '1.21.11', '32': '26.1-26.2', '33': '26.3'})
+        self.assertEqual(set(index['pull_requests']), {str(n) for n in range(13, 34)})
+        for number, group in mapping.items():
+            row = index['pull_requests'][number]
+            self.assertEqual(row['headRefOid'], refs[group]['new_head'])
+            self.assertEqual(row['state'], 'OPEN')
+            self.assertTrue(row['isDraft'])
+            self.assertIsNone(row['autoMergeRequest'])
+            builds = {c['name']: c['conclusion'] for c in row['checks'] if c['name'].startswith('Build (')}
+            self.assertEqual(builds, {'Build (ubuntu-latest)': 'SUCCESS', 'Build (windows-latest)': 'SUCCESS'})
+        for number in range(24, 31):
+            row = index['pull_requests'][str(number)]
+            self.assertEqual(row['state'], 'OPEN')
+            self.assertIsNone(row['autoMergeRequest'])
+            self.assertNotIn('gradle.properties', {entry['filename'] for entry in row['changed_files']})
+            self.assertTrue(row['checks'] and all(c['conclusion'] == 'SUCCESS' for c in row['checks']))
+        self.assertEqual(index['upstream_recheck']['setup_java_v6.2.0_commit'],
+                         '77dd5b2ce225ea11469928ac317850245a74ae78')
+        self.assertFalse(index['upstream_recheck']['gradle_9.9.0']['prerelease'])
+
     def test_artifact_operation_inventory_matches_proposed_sources(self):
         path = ROOT / 'docs/artifact-linkage-inventory-2026-11-13/index.json'
         index = json.loads(path.read_text())
