@@ -202,7 +202,11 @@ def verify(mod_path, versions=None, clients=None):
                         f'{version}: missing intermediary class {owner}')
                 return 'L' + reverse.get(owner, owner) + ';'
             return re.sub(r'L([^;]+);', convert, desc)
+        fetch_library = lambda artifact: checked(get(artifact['url']), artifact['sha1'], artifact['size'])
+        runtime_libraries = game_linkage.RuntimeLibraries(metadata, fetch_library, version)
         with ZipFile(io.BytesIO(data)) as game:
+            class_lookup = game_linkage.make_class_lookup(instruction_classes, game, forward, reverse,
+                                                         mapped_members, version, runtime_libraries.lookup)
             @lru_cache(None)
             def game_class(original):
                 try:
@@ -259,10 +263,11 @@ def verify(mod_path, versions=None, clients=None):
             missing = [ref for ref in sorted(refs) if not resolve(*ref)]
             require(not missing, f'{version}: missing game members: {missing}')
             instruction_count = game_linkage.verify_game_instructions(
-                instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version)
-        library_coverage = game_linkage.verify_declared_libraries(
-            metadata, instruction_classes, mixin_targets,
-            lambda artifact: checked(get(artifact['url']), artifact['sha1'], artifact['size']), version)
+                instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version,
+                class_lookup=class_lookup)
+            library_coverage = game_linkage.verify_declared_libraries(
+                metadata, instruction_classes, mixin_targets, fetch_library, version,
+                runtime_libraries=runtime_libraries, class_lookup=class_lookup)
         print(f'{version}: dependency library checks: {library_coverage}')
         print(f'{version}: {instruction_count} JVM game member instructions verified')
         libraries = [x for x in metadata['libraries'] if x['name'].startswith('org.joml:joml:')]
