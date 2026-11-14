@@ -5,8 +5,10 @@ Run `python3 -m unittest discover -s tests` and
 build. The verifier reads the packaged class files and checks each declared
 Minecraft version against its integrity-checked client, mappings and declared
 game libraries. Candidate, mapped game and selected game-library classes share
-one resolver; external library names are never Minecraft-remapped. Ambiguous
-selected library versions and duplicate library classes fail closed.
+one resolver; external library names are never Minecraft-remapped. The verifier
+checks each distinct Linux, Windows and macOS library classpath selected by the
+supported metadata OS-name rules. Unknown rule conditions, ambiguous libraries
+within one platform and duplicate library classes fail closed.
 
 The checked subset includes consumed field and method instructions, constructor
 calls, class/interface invocation kind, staticness, applicable access, field
