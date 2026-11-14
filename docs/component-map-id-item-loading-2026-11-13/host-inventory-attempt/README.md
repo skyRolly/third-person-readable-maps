@@ -24,7 +24,8 @@ harness are included.
 This confirms an item-loading path to unintended map-zero fallback on 1.21.11,
 in addition to the separate game-codec observations. This single-player probe
 does not prove the item-loading behavior of every other version or a multiplayer
-network path, and no no-Mod comparison was performed in this probe. Once the
+network path. A later [no-Mod control](../no-mod-control/) using the same input
+fixture observed the same normalization. Once the
 server or game's codec has converted a malformed serialized value to the same
 typed integer zero used by a valid item, the client renderer cannot recover the
 original value. A client-renderer-only rejection would also reject valid zero;

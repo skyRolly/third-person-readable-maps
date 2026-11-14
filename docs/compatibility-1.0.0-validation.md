@@ -1,6 +1,6 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
-This non-publishing matrix describes proposed heads, not integrated legacy support or a release claim. All 13 product heads passed hosted Linux and Windows checks; clean local JAR hashes are recorded below. New-head installed-client evidence is partial, and earlier source-bound observations remain [historical](runtime-smoke-1.0.0/).
+This non-publishing matrix describes proposed heads, not integrated legacy support or a release claim. All 13 product heads passed hosted Linux and Windows checks; clean local JAR hashes are recorded below. All 48 versions joined a local world on the proposed source heads in software-rendered smoke tests. Full graphical acceptance remains unverified, and earlier source-bound observations remain [historical](runtime-smoke-1.0.0/).
 
 | Minecraft | Group | 1.0.0 artifact SHA-256 | Static | Installed startup | Graphical evidence | Remaining |
 |---|---|---|---|---|---|---|
@@ -50,7 +50,7 @@ This non-publishing matrix describes proposed heads, not integrated legacy suppo
 | 26.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1.1 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 | 26.1.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
-| 26.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
-| 26.3 | 26.3 | `ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559` | PASS | NOT RUN | NOT RUN | New-head startup, full visual, hardware-GPU, multiplayer and independent review |
+| 26.2 | 26.1-26.2 | `703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
+| 26.3 | 26.3 | `ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559` | PASS | PASS (local world) | PARTIAL diagnostic | Full visual, hardware-GPU, multiplayer and independent review |
 
 The [new-head runtime index](runtime-smoke-verifier-followup-2026-11-13/) records exactly which local observations are complete. The [review matrix](review-resolution-1.0.0.md) records verifier limits, the component-era malformed-ID boundary and the unresolved foreground-shape investigation.

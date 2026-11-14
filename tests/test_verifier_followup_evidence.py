@@ -1,4 +1,4 @@
-"""Keep advanced-head build and partial runtime evidence source-bound."""
+"""Keep advanced-head build and smoke-test evidence source-bound."""
 import hashlib
 import json
 from pathlib import Path
@@ -59,7 +59,7 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(raw).hexdigest(), row['log_sha256'])
                 self.assertIn(b'BUILD SUCCESSFUL', raw)
 
-    def test_partial_runtime_observations_match_new_heads_and_artifacts(self):
+    def test_runtime_observations_match_new_heads_and_artifacts(self):
         refs = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
         builds = json.loads((BUILDS / 'index.json').read_text())['groups']
         manifest = json.loads((ROOT / 'docs/historical-verifier-followup-2026-11-13/release-manifest.json').read_text())
@@ -69,6 +69,8 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         self.assertEqual(set(index['expected_versions']), set(expected))
         self.assertTrue(index['versions'])
         self.assertEqual(set(index['pending_versions']), set(expected) - set(index['versions']))
+        if not index['pending_versions']:
+            self.assertTrue(index['status'].startswith('COMPLETE version coverage'))
         for name, digest in index['harness_sha256'].items():
             self.assertEqual(hashlib.sha256((RUNTIME / 'harness' / name).read_bytes()).hexdigest(), digest)
         for version, row in index['versions'].items():
@@ -148,6 +150,49 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         self.assertEqual((after['4']['tag'], after['4']['value']), ('Int', 0))
         self.assertIsNone(before['8']['value'])
         self.assertIsNone(after['8']['value'])
+
+    def test_no_mod_item_loading_control_uses_the_same_inputs(self):
+        root = ROOT / 'docs/component-map-id-item-loading-2026-11-13'
+        candidate = json.loads((root / 'host-inventory-attempt/index.json').read_text())
+        directory = root / 'no-mod-control'
+        control = json.loads((directory / 'index.json').read_text())
+        self.assertEqual(control['paired_candidate_source_commit'], candidate['source_commit'])
+        self.assertEqual(control['paired_candidate_artifact_sha256'], candidate['artifact_sha256'])
+        for name in ('level', 'player', 'map_zero'):
+            self.assertEqual(control['input_' + name + '_sha256'],
+                             candidate['files_sha256']['input-' + name.replace('_', '-') + '.dat'])
+        self.assertEqual(control['saved_inventory'], candidate['saved_inventory'])
+        for name, digest in control['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
+        log = (directory / 'client.log').read_text(errors='replace')
+        self.assertIn('Loading 4 mods:', log)
+        self.assertNotIn('thirdpersonreadablemaps', log)
+
+    def test_foreground_item_controls_retain_identity_and_failed_attempt(self):
+        directory = ROOT / 'docs/foreground-item-entities-2026-11-13'
+        index = json.loads((directory / 'index.json').read_text())
+        builds = json.loads((BUILDS / 'index.json').read_text())['groups']
+        self.assertEqual(set(index['variants']), {'candidate', 'control'})
+        for name in ('foreground-items-104.py', 'x11-foreground-items-104.py'):
+            self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(),
+                             index[name + '_sha256'])
+        for variant, row in index['variants'].items():
+            self.assertEqual(row['source_commit'], builds['1.21.11']['source_commit'])
+            self.assertEqual(row['paired_candidate_sha256'], builds['1.21.11']['sha256'])
+            self.assertEqual(row['mod_installed'], variant == 'candidate')
+            self.assertEqual(row['nearest_item'], 'minecraft:wheat_seeds')
+            self.assertEqual(row['item_entities_cleared'], 8)
+            for name, digest in row['files_sha256'].items():
+                self.assertEqual(hashlib.sha256((directory / variant / name).read_bytes()).hexdigest(), digest)
+            log = (directory / variant / 'client.log').read_text(errors='replace')
+            self.assertIn('Wheat Seeds has the following entity data', log)
+            self.assertIn('Killed 8 entities', log)
+            self.assertEqual('thirdpersonreadablemaps 1.0.0' in log, variant == 'candidate')
+        failed = directory / 'invalid-selector-attempt'
+        row = json.loads((failed / 'index.json').read_text())
+        self.assertTrue(row['status'].startswith('INCONCLUSIVE'))
+        for name, digest in row['files_sha256'].items():
+            self.assertEqual(hashlib.sha256((failed / name).read_bytes()).hexdigest(), digest)
 
     def test_managed_submission_runs_do_not_imply_settings_access(self):
         path = ROOT / 'docs/dependency-evidence/automatic-submission-2026-11-13.json'

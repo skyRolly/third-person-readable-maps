@@ -1,0 +1,17 @@
+{
+  "minecraft": "1.21.11",
+  "case": "item-loading of modified local player inventory in a copy of the 1.21.10 fixture",
+  "input_player_sha256": "2466daf4c984de1ac89be62648ffbd314f26dc5ffb7470712e7c828c2134b13e",
+  "input_map_zero_sha256": "e4b17e8aaf1ac1695eb5fa52d27b65f740d867b80272f3fa502291b02f58c86f",
+  "input_baseline_player_sha256": "53dd6c8b5b84a3061c995cb81de461dd2a958984a7f539b49715d79bd15212bd",
+  "input_slot_values": {
+    "1": "TAG_Int 0",
+    "2": "TAG_Int 7",
+    "3": "TAG_Double 0.5",
+    "4": "TAG_Long 4294967296",
+    "8": "absent map_id"
+  },
+  "map_zero_colors": "copied from map_1 terrain so map zero is visually distinguishable from a blank map",
+  "scope": "Controlled test-world mutation only; production item stacks are not modified by the mod. The integrated-server host inventory in level.dat and the playerdata inventory both contain the modified cases.",
+  "input_level_sha256": "e8f9d59f5058e99e6eb288bb0d7c99827acc731d7bbef89037253eba197685ad"
+}

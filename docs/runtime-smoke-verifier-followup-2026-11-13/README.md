@@ -9,6 +9,11 @@ them. Tests ran in copied local worlds on Linux Xorg/Mesa software rendering;
 the [harnesses](harness/) and retained-file hashes are included for inspection.
 The original world fixtures and system toolchains are not committed.
 
+All 48 advertised versions completed this source-bound local-world startup
+and short walking sweep. The 26.2 and 26.3 retries saved and exited normally;
+the earlier timeout and recovery remain separately documented as historical
+attempts. Some copied modern worlds required the recorded upgrade prompts.
+
 These observations are partial diagnostics, not full graphical acceptance,
 hardware-GPU or multiplayer validation, or independent human approval. Earlier
 1.0.0 runs on the previous source heads are kept separately in

@@ -47,6 +47,9 @@ for group, entry in current['groups'].items():
                 'movement_diagnostic': f"Local walking distance {movement['horizontal_distance']:.2f} blocks; evidence retained in docs/runtime-smoke-verifier-followup-2026-11-13/{version}/",
                 'movement_observed_on': row['observed_on']}
         by_version[version] = (group, entry, entry['per_version'].get(version, {}))
+    if len(entry['per_version']) == len(entry['versions']):
+        entry['client_startup'] = 'PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR'
+        entry['graphical'] = 'PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN'
 (DOCS / 'legacy-candidate-evidence.json').write_text(json.dumps(current, indent=2) + '\n')
 for row in inventory['versions']:
     group, entry, specific = by_version[row['minecraft']]
@@ -80,8 +83,10 @@ for group, entry in sorted(current['groups'].items()):
 lines += ['', 'Earlier controlled map-ID and 1.14 texture/lighting probes are retained with their prior source heads. All 19 component-era game codecs converted the tested malformed numeric values to zero in the [isolated codec sweep](dependency-evidence/component-mapid-codec-2026-11-13/); a [1.21.11 local-world probe](component-map-id-item-loading-2026-11-13/host-inventory-attempt/) also observed the item-loading path. Other paths and a bounded remedy remain open. Historical candidate/no-mod [foreground comparisons](foreground-comparisons-2026-11-13/) did not reproduce the large shape, but the original conditions were not reproduced and its cause remains unresolved.', '',
           'Do not activate Dependabot for a placeholder. Candidate dependency monitoring must stay source-pinned; activation, authoritative release admission, runtime acceptance, security dispositions and independent approvals are separate gates. See the [48-version matrix](compatibility-1.0.0-validation.md), [PR handoff](pr-integration-handoff-1.0.0.md) and [release gates](release-readiness-1.0.0.md).']
 (DOCS / 'legacy-review-handoff.md').write_text('\n'.join(lines) + '\n')
+coverage = ('All 48 versions joined a local world on the proposed source heads in software-rendered smoke tests.'
+            if len(runtime) == 48 else 'New-head installed-client evidence is partial.')
 lines = ['# Proposed 1.0.0 compatibility and validation matrix', '',
-         'This non-publishing matrix describes proposed heads, not integrated legacy support or a release claim. All 13 product heads passed hosted Linux and Windows checks; clean local JAR hashes are recorded below. New-head installed-client evidence is partial, and earlier source-bound observations remain [historical](runtime-smoke-1.0.0/).', '',
+         'This non-publishing matrix describes proposed heads, not integrated legacy support or a release claim. All 13 product heads passed hosted Linux and Windows checks; clean local JAR hashes are recorded below. ' + coverage + ' Full graphical acceptance remains unverified, and earlier source-bound observations remain [historical](runtime-smoke-1.0.0/).', '',
          '| Minecraft | Group | 1.0.0 artifact SHA-256 | Static | Installed startup | Graphical evidence | Remaining |', '|---|---|---|---|---|---|---|']
 for group in manifest['groups']:
     for version in group['minecraft']:

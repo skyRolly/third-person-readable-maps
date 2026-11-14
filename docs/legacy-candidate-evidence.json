@@ -17,8 +17,8 @@
         "1.21.10"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.21.9-1.21.10 on 1.21.8 rejected (exit 1): API compatibility check failed: 1.21.8: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_11659;I)V; 1.21.9-1.21.10 on 1.21.11 rejected (exit 1): API compatibility check failed: 1.21.11: missing Mixin target net/minecraft/class_10426.method_65577(Lnet/minecraft/class_1309;Lnet/minecraft/class_10426;Lnet/minecraft/class_10442;)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -57,8 +57,8 @@
         "1.21.8"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.21.4-1.21.8 on 1.21.9 rejected (exit 1): API compatibility check failed: 1.21.9: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -112,8 +112,8 @@
         "1.21.3"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -149,8 +149,8 @@
         "1.21.1"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -186,8 +186,8 @@
         "1.20.6"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -227,8 +227,8 @@
         "1.20.4"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "See the current adjacent-version negative-control index; no new case is claimed for this group",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -294,8 +294,8 @@
         "1.19.2"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.17-1.19.2 on 1.19.3 rejected (exit 1): API compatibility check failed: 1.19.3: missing classes: ['net/minecraft/class_1158', 'net/minecraft/class_1159', 'net/minecraft/class_1160']",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -374,8 +374,8 @@
         "1.16.5"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.15-1.16.5 on 1.14.4 rejected (exit 1): API compatibility check failed: 1.14.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V; 1.15-1.16.5 on 1.17 rejected (exit 1): API compatibility check failed: 1.17: missing game members: [('field', 'net/minecraft/class_572', 'field_3390', 'Lnet/minecraft/class_630;'), ('method', 'net/minecraft/class_1806', 'method_7997', '(Lnet/minecraft/class_1799;Lnet/minecraft/class_1937;)Lnet/minecraft/class_22;'), ('method', 'net/minecraft/class_330', 'method_1773', '(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_22;ZI)V')]",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -452,8 +452,8 @@
         "1.19.3"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.19.3 on 1.19.2 rejected (exit 1): API compatibility check failed: 1.19.2: missing classes: ['net/minecraft/class_7833']; 1.19.3 on 1.19.4 rejected (exit 1): API compatibility check failed: 1.19.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
@@ -486,8 +486,8 @@
         "1.14.4"
       ],
       "static_linkage": "PASS: exact-head hosted CI and instruction-aware checks on every declared version; verifier limits remain",
-      "client_startup": "NOT RUN: no new-source installed-client observation recorded for this version",
-      "graphical": "NOT RUN: full graphical acceptance of the current 1.0.0 artifact remains required",
+      "client_startup": "PASS: every declared version joined a local world with the exact proposed source and 1.0.0 JAR",
+      "graphical": "PARTIAL: walking captures exist for every declared version; full graphical acceptance NOT RUN",
       "negative": "1.14-1.14.4 on 1.15 rejected (exit 1): API compatibility check failed: 1.15: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;)V",
       "limitations": [
         "Static verification is not a complete JVM bytecode verifier or graphical acceptance",

@@ -7,4 +7,5 @@ The files, screenshot and diagnostic are retained so this result is not mistaken
 for evidence about malformed IDs. A [corrected host-inventory probe](host-inventory-attempt/)
 sets both inventory copies and retains a distinct map-zero data record. It
 observed numeric coercion and map-zero rendering in 1.21.11; its source,
-artifact, inputs, output and limits are recorded separately.
+artifact, inputs, output and limits are recorded separately. A subsequent
+[no-Mod control](no-mod-control/) observed the same item-loading result.

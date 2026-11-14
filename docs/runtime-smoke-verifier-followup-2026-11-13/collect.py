@@ -58,7 +58,9 @@ for file in harnesses:
         shutil.copyfile(source, target)
         harness_hashes[file] = hashlib.sha256(target.read_bytes()).hexdigest()
 expected = {v for group in manifest['groups'] for v in group['minecraft']}
-(HERE / 'index.json').write_text(json.dumps({'schema': 1, 'status': 'PARTIAL source-bound software-rendered smoke',
+status = ('COMPLETE version coverage for source-bound software-rendered smoke' if set(results) == expected
+          else 'PARTIAL source-bound software-rendered smoke')
+(HERE / 'index.json').write_text(json.dumps({'schema': 1, 'status': status,
                                              'expected_versions': sorted(expected),
                                              'pending_versions': sorted(expected - set(results)),
                                              'harness_sha256': harness_hashes, 'versions': results}, indent=2) + '\n')

@@ -108,7 +108,10 @@ frame-synchronized and did not reproduce the original viewpoint. Additional
 also did not show the large historical shape in their limited frames. Small
 green and dark-green objects were seen in both candidate and no-mod runs, but
 the runs were not synchronized and their identity and relationship to the
-original shape are unknown. Its cause remains **inconclusive**. Repeat each
+original shape were unknown. A later [1.21.11 dropped-item control](foreground-item-entities-2026-11-13/)
+removed particular small shapes after clearing item entities in candidate and
+no-Mod scenes; its nearest queried item was wheat seeds. It did not reproduce
+the original large shape, whose cause remains **inconclusive**. Repeat each
 original observation with matched conditions and investigate any repeatable
 candidate/no-mod difference. Full graphical acceptance is still required on
 the new artifacts.

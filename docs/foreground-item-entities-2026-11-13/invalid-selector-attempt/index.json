@@ -1,0 +1,10 @@
+{
+  "status": "INCONCLUSIVE: test helper entered braces instead of selector brackets",
+  "files_sha256": {
+    "initial-helper.py": "0bd3da365977079680a12bf0e4f63e76a12230ad69d94edad361936ba8c564ff",
+    "client.log": "cf85f9ab037221b37c7279f4ffa12736b7f798a2b427559596eb56f374245a17",
+    "before-clear.png": "02e3ede4036ba66ed678cd93f12e45290b80913a60ee8ffd2053e7179e3892ba",
+    "runner.py": "d13f20d0e5f2e7594821cce27587c4e5fdd752b524c0809d9ea1c07ba0deb43a",
+    "runner.log": "9a2a03ecff3a08d0f0b35aefc1d14faae54a057978859f9deccd8c86deee3e10"
+  }
+}

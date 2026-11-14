@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "PARTIAL source-bound software-rendered smoke",
+  "status": "COMPLETE version coverage for source-bound software-rendered smoke",
   "expected_versions": [
     "1.14",
     "1.14.1",
@@ -51,10 +51,7 @@
     "26.2",
     "26.3"
   ],
-  "pending_versions": [
-    "26.2",
-    "26.3"
-  ],
+  "pending_versions": [],
   "harness_sha256": {
     "class-followup-walking-early-91.py": "f975b7db55243ccbc37a39daefc64f1c4ecdfe69c44df39b64d4240bd4011e3d",
     "class-followup-walking-middle-92.py": "e9979e1fdc46bdec577a2149e1afcd1e274ba7ccc5333c2c2a367040c7387810",
@@ -691,6 +688,44 @@
         "world-upgrade-ocr.txt": "0d2b29702caf3016e6fc57bf17ba09eb1c9af508d358f2fb5c9d6a72ff8949e7",
         "world-upgrade-completed-prompt.png": "3d143989f3c0dc982b585679d7d41115752ee97c76fa558acc1cd1ebbc540710",
         "world-upgrade-completed-ocr.txt": "b44d221f10c268dd38831dc4f69adf5491d86eb1c5ea5ce17f7567efaabdbb92"
+      }
+    },
+    "26.2": {
+      "group": "26.1-26.2",
+      "source_commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "92f083dce46ea792f064ca83d0cf4cd297c85c4e611186b3b309c6c4007afbed",
+        "ending-player.dat": "d47f8d9d09e44d0b1623d49c5c568728d82266fc5ad0030a7cbaecfa2b19150b",
+        "walking-1.png": "0cc56f1437fd7c40f89b6207892dbe03feeb7f1c9797c9297fa85b6b3eeb0aba",
+        "walking-2.png": "e4919539e7c0faa9f216ad8990993c92350c7651afb8b9f344267e2b12163513",
+        "client.log": "b51f175108e2df0a938a315526aa717e674af36823d035c521ddb047b8ad0859",
+        "launcher-pins.json": "96b7b288773cf7b2271e0877bfc5579b8251dc25c475ed977002b24d6712268e",
+        "operator-note.txt": "b4e521b8ce9ac93d599dc7fc83fa8626649b66631fd1eefedd17e5af9741aeef",
+        "world-upgrade-prompt.png": "90481ebf47d5fdf23b09ab8c17892e59efc4028dbc8b9a7a88283fd48f055ea0",
+        "world-upgrade-ocr.txt": "a3d4434f14871a66609126359f1ea4c083762f469986be68a2964df1ef19db89",
+        "world-upgrade-completed-prompt.png": "3f7090f56af468cb8917c0b816ab682c8f5f70e9eed4cfbb47a45af0f3cfd6a3",
+        "world-upgrade-completed-ocr.txt": "81ffa385da822c92680f812567fa4e62a14f6fbf381c18432c3dbbdfd267d8ab"
+      }
+    },
+    "26.3": {
+      "group": "26.3",
+      "source_commit": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "observed_on": "2026-11-13",
+      "files_sha256": {
+        "movement.json": "8e77d37f92b5826364e63252f19321590588e68de0125788db8a0b02f1df51ce",
+        "ending-player.dat": "bba5ffc05521974a4d7c1d6d134107135e9598d66793df4b74c58c06555938c8",
+        "walking-1.png": "f5f8cb266e2d67a20ca5413cc89db46a37db58f1b286a94425752f21ba30aeb5",
+        "walking-2.png": "806109ab01f4883995d35a5dec76e5e6a8aae2705f4e654379d2609d80b216d8",
+        "client.log": "1bee1bb959b418d38787d37cd01ff71f17ea0ee2db35f25c412c3146cf94ec6b",
+        "launcher-pins.json": "96b7b288773cf7b2271e0877bfc5579b8251dc25c475ed977002b24d6712268e",
+        "operator-note.txt": "b4e521b8ce9ac93d599dc7fc83fa8626649b66631fd1eefedd17e5af9741aeef",
+        "world-upgrade-prompt.png": "cf1e1f57d9fc4ba937e47b33fcb0461732769e43bb5621f0c94850640af94cc5",
+        "world-upgrade-ocr.txt": "36a520d83ad7cd5521b132f4df5bbb8e0c0a0ef113a30878dbbd06801327a6a2",
+        "world-upgrade-completed-prompt.png": "462aae7005742fce033b265c12405bfbf321c4e2dbcb2a99ce7485bfc9e7fcaf",
+        "world-upgrade-completed-ocr.txt": "81ffa385da822c92680f812567fa4e62a14f6fbf381c18432c3dbbdfd267d8ab"
       }
     }
   }

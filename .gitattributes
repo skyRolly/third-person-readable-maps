@@ -11,3 +11,4 @@ docs/builds-verifier-followup-2026-11-13/*-build.log -text whitespace=-blank-at-
 docs/dependency-evidence/class-linkage-2026-11-13/*.log -text whitespace=-blank-at-eol
 docs/dependency-evidence/class-linkage-proposals-2026-11-13/*.log -text whitespace=-blank-at-eol
 docs/component-map-id-item-loading-2026-11-13/**/*.log -text whitespace=-blank-at-eol
+docs/foreground-item-entities-2026-11-13/**/*.log -text whitespace=-blank-at-eol
