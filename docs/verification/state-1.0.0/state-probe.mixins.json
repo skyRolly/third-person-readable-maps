@@ -1,0 +1,1 @@
+{"required":true,"package":"stateprobe","compatibilityLevel":"JAVA_8","client":["StateProbeMixin"],"injectors":{"defaultRequire":1}}

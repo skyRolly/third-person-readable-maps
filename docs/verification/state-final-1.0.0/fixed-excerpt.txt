@@ -1,0 +1,8 @@
+[13:44:23] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=0 expected_unit=33984 actual_unit=33984 expected_binding=44 actual_binding=44 expected_lighting=true actual_lighting=true
+[13:44:23] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=1 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[13:44:24] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=2 expected_unit=33985 actual_unit=33985 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[13:44:24] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=3 expected_unit=33985 actual_unit=33985 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[13:44:24] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=4 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[13:44:24] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=5 expected_unit=33984 actual_unit=33984 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false
+[13:44:24] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=6 expected_unit=33985 actual_unit=33985 expected_binding=45 actual_binding=45 expected_lighting=true actual_lighting=true
+[13:44:25] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=7 expected_unit=33985 actual_unit=33985 expected_binding=45 actual_binding=45 expected_lighting=false actual_lighting=false

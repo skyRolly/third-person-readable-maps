@@ -1,0 +1,31 @@
+[11:13:52] [main/INFO]: Loading Minecraft 1.14 with Fabric Loader 0.20.1
+	- thirdpersonreadablemaps 0.0.2
+	- tprm_mapid_probe 1.0.0
+[11:14:38] [Server thread/INFO]: MapSmokeTest joined the game
+[11:14:47] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=absent lookup=true data=true
+[11:14:47] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=empty lookup=true data=true
+[11:14:47] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=malformed lookup=true data=true
+[11:14:48] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=zero lookup=true data=true
+[11:14:48] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=nonzero lookup=true data=true
+[11:14:48] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=unavailable lookup=true data=false
+[11:14:48] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=absent lookup=true data=true
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=empty lookup=true data=true
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=malformed lookup=true data=true
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=zero lookup=true data=true
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=nonzero lookup=true data=true
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=unavailable lookup=true data=false
+[11:14:49] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=absent lookup=true data=true
+[11:14:50] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=empty lookup=true data=true
+[11:14:50] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=malformed lookup=true data=true
+[11:14:50] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=zero lookup=true data=true
+[11:14:50] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=nonzero lookup=true data=true
+[11:14:50] [main/INFO]: [STDOUT]: TPRM_MAPID_PROBE case=unavailable lookup=true data=false
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:14:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
