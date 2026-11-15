@@ -28,7 +28,7 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
             raise unittest.SkipTest('javac is required for packaged verifier fixtures')
 
     def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False,
-                hierarchy=None, mixin_helper=False):
+                hierarchy=None, mixin_helper=False, target_hierarchy='object'):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); support = root/'support'; support.mkdir()
             config = json.loads((ROOT/'src/main/resources/thirdpersonreadablemaps.mixins.json').read_text())
@@ -55,6 +55,22 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                 'game/Target1.java':'package game; public class Target1 { public void a'+target_signature+' { '+body+' } }',
                 'game/Target2.java':'package game; public class Target2 { public void b() {} }',
             }
+            declaration = {
+                'object': 'class Target1',
+                'runtime': 'class Target1 extends RuntimeException',
+                'indirect': 'class Target1 extends Base',
+                'enum': 'enum Target1',
+                'record': 'record Target1()',
+                'missing': 'class Target1',
+                'missing-parent': 'class Target1 extends Base',
+                'interface': 'interface Target1',
+            }[target_hierarchy]
+            prefix = 'INSTANCE; ' if target_hierarchy == 'enum' else ''
+            method = 'public default void a' if target_hierarchy == 'interface' else 'public void a'
+            sources['game/Target1.java'] = ('package game; public '+declaration+' { '+prefix+
+                                             method+target_signature+' { '+body+' } }')
+            if target_hierarchy in ('indirect', 'missing-parent'):
+                sources['game/Base.java'] = 'package game; public class Base extends RuntimeException {}'
             if inherited:
                 sources['org/joml/Api.java'] = 'package org.joml; public class Api { public int value; public void run() {} }'
             if inherited and inherited.startswith('hidden'):
@@ -63,7 +79,7 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
             paths = []
             for name, source in sources.items():
                 path=root/name;path.parent.mkdir(parents=True, exist_ok=True);path.write_text(source);paths.append(str(path))
-            subprocess.run([self.javac, '--release', '8', '-d', str(support), *paths],
+            subprocess.run([self.javac, '--release', '17' if target_hierarchy == 'record' else '8', '-d', str(support), *paths],
                            check=True, capture_output=True)
             out = root/'mod'; out.mkdir(); mixin_paths=[]
             for index, mixin_name in enumerate(config['client']):
@@ -139,7 +155,10 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
             game_buffer = io.BytesIO()
             with ZipFile(game_buffer, 'w') as z:
                 for name in ('Target1', 'Target2'):
-                    z.write(support/('game/'+name+'.class'), 'game/'+name+'.class')
+                    if name != 'Target1' or target_hierarchy != 'missing':
+                        z.write(support/('game/'+name+'.class'), 'game/'+name+'.class')
+                if target_hierarchy == 'indirect':
+                    z.write(support/'game/Base.class', 'game/Base.class')
                 if hierarchy_info and hierarchy_info['location'] == 'game' and hierarchy_info['variant'] != 'missing':
                     z.write(support/hierarchy_info['parent'], str(hierarchy_info['parent']))
             game_data = game_buffer.getvalue()
@@ -232,6 +251,29 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
         self.fixture('HEAD', 'return;', inherited='platform-valid')
         with self.assertRaisesRegex(ValueError, 'missing member'):
             self.fixture('HEAD', 'return;', inherited='platform-missing')
+
+    def test_default_mixin_parent_reaches_platform_derived_targets(self):
+        # These are compiled game classes, packaged and checked via verifier.verify.
+        # They exercise the static model, not an actual Mixin transformation.
+        current = verifier.game_linkage.validate_product_hierarchies
+        def previous_guard(nodes, targets, lookup, version):
+            for name, target in targets.items():
+                parent = nodes[name]['super']
+                verifier.jvm_linkage.require(
+                    verifier.jvm_linkage.is_subclass(lookup(target)['super'], parent, lookup),
+                    'previous Mixin ancestry guard')
+            return current(nodes, targets, lookup, version)
+        with patch.object(verifier.game_linkage, 'validate_product_hierarchies', side_effect=previous_guard):
+            with self.assertRaisesRegex(ValueError, 'previous Mixin ancestry guard'):
+                self.fixture('HEAD', 'return;', target_hierarchy='runtime')
+        for kind in ('object', 'runtime', 'indirect', 'enum', 'record'):
+            with self.subTest(kind=kind):
+                self.fixture('HEAD', 'return;', target_hierarchy=kind)
+        for kind, error in (('missing', 'missing Mixin target|Mixin target descriptor is missing|missing game'),
+                            ('missing-parent', 'missing direct supertype'),
+                            ('interface', 'unsupported interface Mixin target')):
+            with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, error):
+                self.fixture('HEAD', 'return;', target_hierarchy=kind)
 
     def test_hierarchy_and_mixin_helper_reach_packaged_entrypoint(self):
         # The former verifier checked only the library class's presence.
