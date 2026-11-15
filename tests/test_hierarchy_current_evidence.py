@@ -126,6 +126,8 @@ class HierarchyCurrentEvidenceTests(unittest.TestCase):
         with ZipFile(directory / 'diagnostic-agent.zip') as archive:
             self.assertEqual(hashlib.sha256(archive.read('probe-jdk.jar')).hexdigest(),
                              evidence['agent_jar_sha256'])
+            self.assertEqual(archive.read('agent-manifest-input.mf'),
+                             b'Manifest-Version: 1.0\nPremain-Class: tprm.probe.MapDataAgent\n\n')
         observer = (directory / 'observer.log').read_text()
         self.assertIn(evidence['first_unavailable'], observer)
         self.assertIn(evidence['first_available'], observer)

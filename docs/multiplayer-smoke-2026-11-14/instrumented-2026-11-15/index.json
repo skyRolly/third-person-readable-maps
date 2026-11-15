@@ -12,8 +12,7 @@
   "limitations": "No packet handler was instrumented; the diagnostic can perturb timing. This repeat does not prove the cause of the earlier uninstrumented observation, other versions, hardware GPU behavior or full multiplayer acceptance. Clients were terminated after capture.",
   "files_sha256": {
     "MapDataAgent.java": "865eb096b230852a0cc5620362ca4cb3324d11f7a4148d99e33b1537223563a9",
-    "agent-manifest.mf": "0b0b20e5c3de161a1ee49e06d42df59f5eb0ae70d90d379947b232fce550dd76",
-    "diagnostic-agent.zip": "721ad0854c28aaf1631dc4871057715a2bd2ed5b3ad8b45ad65470c9d16cd436",
+    "diagnostic-agent.zip": "1e3b874fd078057ec5a3e15f48c81b0c1e240c77800875a152e178eafc0ed4a8",
     "fixture-run.log": "d017afb4d528d6699255648066fe69871cb2c400e6b16018ae5fa508891bbf8a",
     "fixture-sources.json": "27fe56062b21a2e8b7b593e8a3fc2798d2aeb0440f801c266785282f877632bf",
     "host-held-map.png": "c52e16df5510795b84c43b2042942e9c109e35453f49475d6c4c1b30e70777ef",
