@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "observed_on": "2026-11-15",
-  "status": "current proposal pins; exact-head validation and CI in progress; historical runtime identities remain unchanged",
+  "status": "13 current proposal pins; clean Linux builds, bounded 48-version static sweep, and hosted Linux/Windows builds passed; uploaded JAR hashes matched",
   "groups": {
     "1.14-1.14.4": {
       "pr": 23,

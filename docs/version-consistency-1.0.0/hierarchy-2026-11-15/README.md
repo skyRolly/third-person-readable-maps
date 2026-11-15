@@ -1,0 +1,11 @@
+# 1.0.0 hierarchy review validation — 2026-11-15
+
+The [build index](builds.json), [48-version static sweep](static.json), [nine adjacent-version controls](negative.json), [artifact hierarchy inventory](hierarchy-inventory.json), and [combined logs](validation-logs.json) bind the observations to the exact proposed product commits. Every clean build used coordinator-controlled Wrapper verification before Gradle and produced the same artifact hash as its prior runtime-observed JAR. The sweep ran the new committed verifier against those retained prior bytes; equality with each new clean build was checked separately. No old runtime observation is relabeled as an execution of the new commit.
+
+The [hosted check index](hosted-checks.json) records both Linux and Windows job IDs, the synthetic merge checkout, its base and proposal parents, the identical proposal tree, and the uploaded archive and JAR hashes. All 26 uploaded JARs were downloaded through the GitHub artifact service, checked against the published archive digest, and matched the corresponding local clean-build JAR hash. These are PR-merge checkouts, not literal proposal commits or approved merged-source builds.
+
+The [dependency continuity index](dependency-continuity.json) records the exact previous and current source commits and the eight verifier, fixture and contract paths changed in each group. Retained dependency scans remain bound to the earlier commits. The unchanged build inputs support a limited continuity assessment; they are not a fresh dependency resolution or strict source-bound release evidence.
+
+The [security-only artifact index](security-hosted-checks.json) records Linux and Windows JARs from #34–#36: each pair is byte-identical and contains version 0.0.2. The #35 JARs also match its previous head before removal of the redundant Python setup. Archive digests were verified before inspecting the JARs.
+
+The recorded runners describe this particular Linux environment and its task-owned temporary Gradle cache. These checks do not establish full visual, hardware-GPU, multiplayer, human or approved-merged-source acceptance. Platform APIs and unsupported Mixin/JVM patterns remain limited by the branch-local linkage contract.

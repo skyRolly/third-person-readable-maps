@@ -184,9 +184,10 @@ Tag-only rulesets do not apply to branches and can coexist with legacy protectio
    administrator policy change and reapplication; it is not release approval.
    Require fresh approval after every head update. No merge is performed here.
 6. If release-plan/runtime-evidence commits advance main later, that main head
-   also needs an eligible independently approved PR merge and successful
-   `Validate coordination`. An approval on this cleanup is not approval of a
-   future release plan or arbitrary later source commits.
+   also needs an eligible independently approved PR merge and both successful,
+   app-pinned `Validate coordination` and `Validate live release prerequisites`
+   checks under the final protection policy. An approval on this cleanup is not
+   approval of a future release plan or arbitrary later source commits.
 
 ## Environments, auditor credential and tags
 

@@ -1,0 +1,18 @@
+{
+  "minecraft": "1.20.5",
+  "manifest_metadata_sha1": "a7f0d5d66b6a76ac710858ea7c63791326dc6a64",
+  "asset_index_id": "16",
+  "asset_index_sha1": "8230f92353cc11951b6011e2f153ef30fa480c85",
+  "asset_index_size": 446764,
+  "unique_objects": 3864,
+  "counts": {
+    "reused": 194,
+    "downloaded": 3670
+  },
+  "bytes": {
+    "reused": 104897279,
+    "downloaded": 555860990
+  },
+  "errors": [],
+  "storage": "task-owned /dev/shm; verified shared assets linked read-only"
+}

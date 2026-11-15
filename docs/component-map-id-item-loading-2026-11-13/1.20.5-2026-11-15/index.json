@@ -1,0 +1,187 @@
+{
+  "minecraft": "1.20.5",
+  "status": "OBSERVED: paired copied local worlds with candidate and without Mod",
+  "source_commit": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
+  "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+  "metadata_sha1": "a7f0d5d66b6a76ac710858ea7c63791326dc6a64",
+  "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+  "client_size": 26565623,
+  "renderer": "Linux Xorg/Mesa software",
+  "selected_slot": 3,
+  "input_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": 0.5
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Long",
+      "value": 4294967296
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": "String",
+      "value": "not-a-number"
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Double",
+      "value": "NaN"
+    }
+  },
+  "saved_candidate_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "saved_control_inventory": {
+    "0": {
+      "item": "minecraft:map",
+      "tag": null,
+      "value": null
+    },
+    "1": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "2": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 7
+    },
+    "3": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "4": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "5": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 4
+    },
+    "6": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    },
+    "7": {
+      "item": "minecraft:filled_map",
+      "tag": "Int",
+      "value": 0
+    },
+    "8": {
+      "item": "minecraft:filled_map",
+      "tag": null,
+      "value": null
+    }
+  },
+  "limitation": "One local-world loading path and partial screenshots; not all component-era versions, multiplayer, hardware-GPU or independent graphical acceptance.",
+  "files_sha256": {
+    "asset-evidence.json": "986b42a8168cca78365599282d4a51beab4dc95325a9e5496f62bb4f641e8220",
+    "candidate/after-walk.png": "c5cf391ced6057f02f5b78ad335cba88702a819d2a69de45d6181fc0f2a1cdc2",
+    "candidate/client.log": "7e10c4d38fb97f1b2d1755168c237bfbee96ff40f828837756f7c1c7b935e19d",
+    "candidate/ending-player.dat": "4ec2ff1db8d3802d0dff1a49328878b4b786efaa3080a7ba71260fe317c4a3ca",
+    "candidate/first-person.png": "02551bdd34ffc5ad009492a53896c05080794cc550d4850b77a000e40315ce0f",
+    "candidate/launcher-pins.json": "3fa828ad10d4202669b2a2af6c0d1f296363af150f6905c5be653886bddbdb52",
+    "candidate/movement.json": "ac87ca9c131e8a61fa93545f70794d760ef7a3c31515902461fb68a8274e0740",
+    "candidate/runner.log": "bf4f213ad995ca62aaa84de3eb32a5f202400daea7eda3e0e0d31ec3fd669758",
+    "candidate/runner.py": "a9f9f938e988eb274ebef663e0053abc9299392dc08e1f1455ce2550fd9b745c",
+    "candidate/standing-day.png": "ab3ec7f646c374254af85e39beb43c360e34b6a8933a4176766553eea7bfec5a",
+    "candidate/walking-1.png": "eda654d33521fe4fbf03649542de17d932e1e7aaf422691ae1d36c043145accb",
+    "candidate/walking-2.png": "10fec85e8e3a82a2a22927a96cc7c2e9fcd046ed5c285f9c132e8dbad771593d",
+    "control/after-walk.png": "3a4c3df51b3ad81e573ae39a2794d18ce2db8663761dc284c2377b982e55030f",
+    "control/client.log": "c3b39dd47fd59baea1981a163be969ab067abd31a1d57237015ad28f6dda98be",
+    "control/ending-player.dat": "4a71a9ecc14164dba31eb8623eb5d2c8eab103bdaf1618e90458cad289481e35",
+    "control/first-person.png": "c6ecd67d66a610e09c0268a730731feceb197c03c8f1b18fc954c68eff0e9c79",
+    "control/launcher-pins.json": "3fa828ad10d4202669b2a2af6c0d1f296363af150f6905c5be653886bddbdb52",
+    "control/movement.json": "86406d6d99c786175360c1e62fccb7b330f47afb8109ff7f08e11b811ac4809c",
+    "control/runner.log": "7ef65d3b3904b09b79ef890e37eef1265fee18d8f6112763a50cc42349e25e4a",
+    "control/runner.py": "d1da387f9c35046ae18727c5211384bb2f7df9c2d66f472db5d98e2faf933210",
+    "control/standing-day.png": "7fa3cc97ae0e14ba4a1505aa8c47ff746b9c3625112716c1629f9c37aff1e134",
+    "control/walking-1.png": "51c3d487be438e94196193c61e6bb6f8c36e6fa5d76d1907ef9a9dded8b4a7ff",
+    "control/walking-2.png": "c3f09f83a15e61ba41be71b044684acd0e76c5c8fb607971c549cb88fc3e7423",
+    "fixture.json": "cd590e92985826958a16c8b1dcebee73af530657135339be01cac503430ef5ca",
+    "input-level.dat": "cfae64e0b8214ba5fa3dced15d03ea8d64d7245c52283810a4fedb84087b6d35",
+    "input-map-zero.dat": "e5c797bb856ffbf58e525bb49df4526a40f737dcdc7392b7a0822b010c2b2943",
+    "input-player.dat": "6d44e6c97c241670075457299caa2d6e1ed9c5bc6e9e556470426457f1283079",
+    "minecraft-metadata.json": "e9e98145dd71f0a5837d1558bd9c2c97b0fd6090062eb036e9d4ad32411ee157",
+    "prepare-assets.py": "d3a6a976925f032c524ac800bc91246911de547c1154f254ae91559ef12e6cbe",
+    "prepare-fixture.py": "b5b0ad2d1fdab7df5cabc1d4a4502e51dbd912745adb7a9470c93b6b2208bb59",
+    "x11-helper.py": "e09485546d7fd2f7ecc5bed1243d727e84d57ffa9fee71be3a472eb2840f90c6",
+    "xorg.conf": "64989a5f35e4da5fad5eeafad7758bbde8b1280c1aed72c6affaff73901644ee"
+  }
+}

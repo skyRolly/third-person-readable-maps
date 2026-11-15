@@ -29,12 +29,16 @@ class ComponentMapIdEvidenceTests(unittest.TestCase):
 
     def test_paired_loading_evidence_is_bound_to_its_inputs_and_outputs(self):
         base = ROOT / 'docs/component-map-id-item-loading-2026-11-13'
-        for directory, version in (('1.21.4-2026-11-14', '1.21.4'),
+        for directory, version in (('1.20.5-2026-11-15', '1.20.5'),
+                                   ('1.21.4-2026-11-14', '1.21.4'),
+                                   ('26.3-native-format-2026-11-15', '26.3'),
                                    ('26.3-world-upgrade-2026-11-14', '26.3')):
             with self.subTest(version=version):
                 self.assert_paired_loading_evidence(base / directory, version)
         upgrade = json.loads((base / '26.3-world-upgrade-2026-11-14/index.json').read_text())
         self.assertEqual(upgrade['input_world_version'], '1.21.10')
+        native = json.loads((base / '26.3-native-format-2026-11-15/index.json').read_text())
+        self.assertEqual(native['input_world_version'], '26.3')
 
     def test_probe_and_metadata_match_recorded_observations(self):
         report = json.loads((DIRECTORY / 'results.json').read_text())
