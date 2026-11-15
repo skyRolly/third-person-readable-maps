@@ -36,7 +36,7 @@ class ClassFileFixtures(unittest.TestCase):
                             str(src/'Api.java')], check=True, capture_output=True)
         nodes = {}
         for p in initial.rglob('*.class'):
-            node = linkage.parse(p.read_bytes()); nodes[node['name']] = node
+            node = dict(linkage.parse(p.read_bytes()), origin='candidate'); nodes[node['name']] = node
         nodes['java/lang/Object'] = {'name': 'java/lang/Object', 'super': None, 'interfaces': [],
                                      'access': 1, 'members': [{'kind':'method','name':'<init>',
                                                                'descriptor':'()V','access':1}]}
@@ -478,8 +478,9 @@ class ClassFileFixtures(unittest.TestCase):
         temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
         root = Path(temp.name); math = root/'src/com/mojang/math'; app = root/'src/app'
         math.mkdir(parents=True); app.mkdir(parents=True)
-        vector = math/'Vector.java'; caller = app/'Caller.java'
+        vector = math/'Vector.java'; target = math/'Target.java'; caller = app/'Caller.java'
         vector.write_text('package com.mojang.math; public class Vector { public Vector() {} }')
+        target.write_text('package com.mojang.math; public class Target {}')
         caller.write_text('package app; public class Caller { '
                           'Class<?> literal() { return com.mojang.math.Vector.class; } '
                           'boolean test(Object x) { return x instanceof com.mojang.math.Vector; } '
@@ -487,7 +488,7 @@ class ClassFileFixtures(unittest.TestCase):
                           'Object array() { return new com.mojang.math.Vector[1]; } '
                           'Object matrix() { return new com.mojang.math.Vector[1][1]; } }')
         out = root/'classes'; out.mkdir()
-        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector), str(caller)],
+        subprocess.run([self.javac, '--release', '8', '-d', str(out), str(vector), str(target), str(caller)],
                        check=True, capture_output=True)
         mod = linkage.parse((out/'app/Caller.class').read_bytes()); archive = root/'game.jar'
         self.assertEqual({u['operation'] for u in mod['class_uses']},
@@ -495,6 +496,7 @@ class ClassFileFixtures(unittest.TestCase):
         def write_game():
             with ZipFile(archive, 'w') as z:
                 z.write(out/'com/mojang/math/Vector.class', 'com/mojang/math/Vector.class')
+                z.write(out/'com/mojang/math/Target.class', 'com/mojang/math/Target.class')
         write_game()
         with ZipFile(archive) as z:
             game_linkage.verify_game_instructions({mod['name']:mod}, {}, z, {}, {}, {}, 'fixture')
@@ -559,15 +561,16 @@ class ClassFileFixtures(unittest.TestCase):
         temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
         root = Path(temp.name); lib = root/'src/org/joml'; app = root/'src/app'
         lib.mkdir(parents=True); app.mkdir(parents=True)
-        interface, api, target, caller = lib/'I.java', lib/'Api.java', lib/'Target.java', app/'Caller.java'
+        interface, api, target, child, caller = lib/'I.java', lib/'Api.java', lib/'Target.java', lib/'TargetChild.java', app/'Caller.java'
         interface.write_text('package org.joml; public interface I { default void run() {} }')
         target.write_text('package org.joml; public class Target extends Api {}')
+        child.write_text('package org.joml; public class TargetChild extends Target {}')
         caller.write_text('package app; public class Caller extends org.joml.Target { '
                           'public void call() { run(); value = 3; } }')
         api.write_text('package org.joml; public class Api implements I { public int value; }')
         out = root/'classes'; out.mkdir()
         subprocess.run([self.javac, '--release', '8', '-d', str(out), str(interface), str(api),
-                        str(target), str(caller)], check=True, capture_output=True)
+                        str(target), str(child), str(caller)], check=True, capture_output=True)
         mod = linkage.parse((out/'app/Caller.class').read_bytes())
         inherited = [u for u in mod['uses'] if u['owner'] == 'app/Caller'
                      and u['name'] in ('run', 'value')]
@@ -575,7 +578,7 @@ class ClassFileFixtures(unittest.TestCase):
         game_bytes = io.BytesIO()
         with ZipFile(game_bytes, 'w'): pass
 
-        def archive_bytes(include=('I', 'Api', 'Target')):
+        def archive_bytes(include=('I', 'Api', 'Target', 'TargetChild')):
             data = io.BytesIO()
             with ZipFile(data, 'w') as z:
                 for name in include:
@@ -600,13 +603,13 @@ class ClassFileFixtures(unittest.TestCase):
                 return count
 
         original = archive_bytes()
-        with ZipFile(io.BytesIO(game_bytes.getvalue())) as game, self.assertRaisesRegex(ValueError, 'missing member|missing superclass'):
+        with ZipFile(io.BytesIO(game_bytes.getvalue())) as game, self.assertRaisesRegex(ValueError, 'missing member|missing .*super'):
             game_linkage.verify_game_instructions({mod['name']:mod}, {}, game, {}, {}, {}, 'fixture')
         self.assertGreaterEqual(run(original), 2)
-        self.assertGreaterEqual(run(original, {'app/Caller':'org/joml/Target'}), 2)
-        with self.assertRaisesRegex(ValueError, 'missing superclass or interface'):
+        self.assertGreaterEqual(run(original, {'app/Caller':'org/joml/TargetChild'}), 2)
+        with self.assertRaisesRegex(ValueError, 'missing superclass or interface|missing direct supertype'):
             run(archive_bytes(('I', 'Target')))
-        with self.assertRaisesRegex(ValueError, 'missing superclass or interface'):
+        with self.assertRaisesRegex(ValueError, 'missing superclass or interface|missing direct supertype'):
             run(archive_bytes(('Api', 'Target')))
         interface.write_text('package org.joml; public interface I {}')
         subprocess.run([self.javac, '--release', '8', '-d', str(out), str(interface)],
