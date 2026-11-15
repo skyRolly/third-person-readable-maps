@@ -1,6 +1,6 @@
 # 1.0.0 cross-branch review resolution
 
-The current Wrapper, nestmate and descriptor investigation is recorded in the [review worklog](worklogs/wrapper-nest-review-2026-11-14.md). The sections below preserve prior-round observations.
+The current hierarchy, effective Mixin owner and protection-policy investigation is recorded in the [review worklog](worklogs/hierarchy-review-2026-11-15.md). The earlier [Wrapper, nestmate and descriptor worklog](worklogs/wrapper-nest-review-2026-11-14.md) and the sections below preserve prior-round observations.
 
 ## November 14 stabilization findings
 

@@ -101,8 +101,13 @@ a published tag to repair a release; issue a new version instead.
    require a PR with at least one approval, stale-review dismissal, strict checks,
    administrator enforcement, no PR-review bypass actors (verified through REST or the applicable
    GraphQL branch-protection rule), no force pushes and
-   no deletions. On `main`, require `Validate coordination` from the GitHub
-   Actions app (ID 15368). On each `mc/*` branch, require both
+   no deletions. On `main`, the final policy requires both `Validate coordination`
+   and `Validate live release prerequisites` from the GitHub Actions app (ID 15368).
+   Before PR #15 is integrated, use the separately reviewed baseline payload,
+   which requires only the check available on the current main workflow; after
+   integration and successful exact-head checks, activate and read back the final
+   two-check policy. Strict release authorization remains blocked until then.
+   See [administrative controls](administrative-controls.md). On each `mc/*` branch, require both
    `Build (ubuntu-latest)` and `Build (windows-latest)` from that app. Pin
    every additional required check to its app as well. The head must be the
    merge commit of a PR into that branch with the required number of independent,

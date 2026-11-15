@@ -1,5 +1,7 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
+**Source transition:** the rows below record the November 14 sources and evidence. The [current proposal pins](version-consistency-1.0.0/current-heads.json) advanced on November 15 for verifier-only changes; their final clean builds and exact-head checks are being refreshed. Historical runtime observations keep their original source and artifact identities.
+
 The 13 product proposals are unmerged; ten legacy target branches remain placeholders. The [current validation index](version-consistency-1.0.0/wrapper-hardening-2026-11-14/) binds clean builds, the bounded 48-version static sweep and hosted checks to the proposed heads. Most runtime observations below used earlier source commits; their JAR hashes match the current clean builds. The linked 1.21.4 and 26.3 map-ID probes ran on the current proposed sources and JARs. None is approved merged-source evidence. Full graphical, hardware-GPU, multiplayer and independent acceptance remain open. See the [historical runtime index](runtime-smoke-verifier-followup-2026-11-13/index.json) and [release gates](release-readiness-1.0.0.md).
 
 | Minecraft | Group | Proposed source | Artifact SHA-256 | Static | Startup | Graphical | Remaining |

@@ -1,5 +1,11 @@
 # Security advisory ledger
 
+The [November 15 Netty review](dependency-evidence/netty-high-review-2026-11-15.json)
+records two high-severity advisories and 28 separately source-scoped occurrences,
+including candidate, integrated and unmerged-proposal observations. Remediation
+is proposed as upstream-dependent, while applicability and reachability remain
+under investigation. All scanner matches continue to fail; no risk is accepted.
+
 Reviewed 2026-11-04. The [structured ledger](security-advisories.json) is the comparison source of truth. Each key is `group|canonical Maven purl|OSV ID`; scopes distinguish Gradle resolution and each runtime manifest. Aliases are preserved rather than counted as separate advisories. Raw OSV records, including severity vectors, complete affected ranges and references, are stored once under `advisories` in that file. [Inventory evidence](dependency-evidence/) binds each source SHA and hash-verified game manifest.
 
 ## Disposition and release policy
@@ -37,7 +43,7 @@ The [final-source November 14 scans](dependency-evidence/osv-rescan-2026-11-14/f
 | 26.1-26.2 | 84 | 26.1: 53; 26.1.1: 53; 26.1.2: 53; 26.2: 57 | 15 | 53 | 39 |
 | 26.3 | 86 | 26.3: 56 | 5 | 11 | 11 |
 
-Total: 40 unique advisories; 105 advisory/package/version/group combinations. Fixed: 0; Actionable with a verified direct compatible fix: 0; Further investigation: 104; upstream-dependent remediation: 1; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
+The historical scanner ledger records 40 unique advisories and 105 integrated advisory/package/version/group combinations: 104 as further investigation and one as upstream-dependent remediation. The later proposed Netty dispositions above are separate, pending review and do not change scanner outcomes. Fixed: 0; verified direct compatible fixes: 0; formal risk acceptances: 0. All runtime-owned matches need upstream coordination if applicable. Native binaries, non-Maven advisories and unrepresented build-plugin dependencies remain coverage gaps.
 
 The earlier 1.21.11 report counted 85 snapshot packages; the recovered hosted snapshot has 86, including `org.gradle/gradle-core@9.8.2`. The affected-package count remains 10. This correction does not erase the historical report. Runtime inventories include all listed platform variants and normalize classifier variants to a Maven advisory package.
 

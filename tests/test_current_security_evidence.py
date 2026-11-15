@@ -11,6 +11,23 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_netty_followup_preserves_each_source_and_failing_match(self):
+        evidence = json.loads((ROOT / 'docs/dependency-evidence/netty-high-review-2026-11-15.json').read_text())
+        self.assertEqual({a['advisory'] for a in evidence['advisories']},
+                         {'GHSA-3qp7-7mw8-wx86', 'GHSA-c653-97m9-rcg9'})
+        self.assertEqual(sum(len(a['matches']) for a in evidence['advisories']), 28)
+        for advisory in evidence['advisories']:
+            self.assertFalse(advisory['risk_accepted'])
+            self.assertEqual(advisory['independent_review'], 'PENDING')
+            for match in advisory['matches']:
+                with self.subTest(advisory=advisory['advisory'], group=match['group'], purl=match['purl']):
+                    report = json.loads((ROOT / match['report']).read_text())
+                    self.assertEqual(report['source_sha'], match['source_sha'])
+                    self.assertTrue(match['scanner_failing'])
+                    self.assertTrue(any(item['advisory'] == advisory['advisory'] and item['purl'] == match['purl']
+                                        and item['fingerprint'] == match['fingerprint'] and item['failing']
+                                        for item in report['matches']))
+
     def test_each_finding_has_source_bound_runtime_ownership_evidence(self):
         directory = ROOT / 'docs/dependency-evidence/advisory-ownership-2026-11-14'
         index = json.loads((directory / 'index.json').read_text())

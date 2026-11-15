@@ -5,6 +5,10 @@
       {
         "context": "Validate coordination",
         "app_id": 15368
+      },
+      {
+        "context": "Validate live release prerequisites",
+        "app_id": 15368
       }
     ]
   },

@@ -73,6 +73,7 @@ class MaintenanceTargetTests(unittest.TestCase):
         required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py',
                     'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
                     'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py', 'tests/test_nestmate_linkage.py',
+                    'tests/test_hierarchy_linkage.py', 'tests/hierarchy_entrypoint_fixtures.py',
                     'tests/test_shared_verifier_sync.py'}
         targets.validate_release_verifier_files('1.21.11', required)
         with self.assertRaisesRegex(ValueError, 'lacks the required'):
@@ -101,7 +102,8 @@ class MaintenanceTargetTests(unittest.TestCase):
         required = {'scripts/verify_supported_apis.py', 'scripts/game_linkage.py', 'scripts/jvm_linkage.py',
                     'scripts/verify_gradle_wrapper.py', 'tests/test_jvm_linkage.py',
                     'tests/test_verify_entrypoint.py', 'tests/test_verify_gradle_wrapper.py',
-                    'tests/test_nestmate_linkage.py', 'tests/test_shared_verifier_sync.py'}
+                    'tests/test_nestmate_linkage.py', 'tests/test_hierarchy_linkage.py',
+                    'tests/hierarchy_entrypoint_fixtures.py', 'tests/test_shared_verifier_sync.py'}
         groups = ('1.21.11', '26.1-26.2', '26.3')
         for updated in range(4):
             failures = []

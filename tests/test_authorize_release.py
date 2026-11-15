@@ -104,6 +104,14 @@ class AuthorizationTests(unittest.TestCase):
                  'requireLastPushApproval': False, 'bypassPullRequestAllowances': {'totalCount': 0}}}}}
         with patch.object(auth, 'graphql', return_value=graph):
             self.authorize()
+            # The pre-#15 baseline is safe for protecting current main, but it
+            # must not satisfy the final two-check release authorization policy.
+            checks['contexts'] = ['Validate coordination']
+            checks['checks'] = [{'context': 'Validate coordination', 'app_id': auth.ACTIONS_APP}]
+            with self.assertRaisesRegex(Invalid, 'branch-role checks'):
+                self.authorize()
+            checks['contexts'] = sorted(self.required)
+            checks['checks'] = [{'context': n, 'app_id': a} for n, a in self.required.items()]
             # A successful build, another workflow's check, an old run, or the
             # wrong app must not substitute for this exact push job.
             self.jobs[0]['name'] = 'Build (ubuntu-latest)'

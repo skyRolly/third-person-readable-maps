@@ -44,15 +44,17 @@ The [current product proposal heads](version-consistency-1.0.0/current-heads.jso
 
 ## Safe future integration sequence
 
-1. Establish and verify effective branch protections and eligible independent
-   reviewers. Review the three separate 1.0.0 maintenance PRs and the ten legacy
-   ports. Resolve findings before any integration.
-2. After independent approval, integrate the three existing maintenance PRs,
-   verify exact merged-head Linux and Windows checks, retain the valid integration
-   ancestry anchors, and refresh their exact-source security evidence. The
-   approved release plan must separately pin the exact current source commits.
-   Recheck the proposed coordinator's live prerequisites. Review and integrate
-   coordination PR #15 without activating any legacy placeholder target.
+1. Establish and read back baseline protection and eligible independent
+   reviewers. Review the narrow 0.0.2 security PRs #34–#36 first. Protect each
+   intended legacy target before its port is integrated; protection alone does
+   not activate the placeholder or its dependency monitoring.
+2. After independent approval and owner-controlled integration of #34–#36,
+   update #31–#33 from their new bases without rewriting history, resolve the
+   documented conflicts, and obtain fresh review and exact-head checks. After
+   their integration, refresh source-bound security evidence and recheck the
+   coordinator's live prerequisites. Integrate #15 under the baseline main
+   policy, then require and read back both final main checks before any strict
+   release authorization. See [the staged protection procedure](administrative-controls.md).
 3. Integrate a reviewed legacy port only with its candidate audit covered. The
    repository currently auto-deletes merged PR branches; the candidate audit
    can continue using the exact candidate commit only while the merged target

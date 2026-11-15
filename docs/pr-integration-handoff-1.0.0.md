@@ -1,5 +1,7 @@
 # 1.0.0 PR and integration handoff
 
+**Current review, 2026-11-15:** the [hierarchy and protection worklog](worklogs/hierarchy-review-2026-11-15.md) and [current proposal pins](version-consistency-1.0.0/current-heads.json) supersede the November 14 source and CI snapshot below. Final-head builds and checks are being refreshed. The previous table remains a historical record until the new validation is complete; its PASS results apply to the heads printed in that table, not automatically to later commits.
+
 Observed 2026-11-14 UTC. The 14 broader development proposals remain drafts; the three narrow security proposals are ready for independent review, and seven Dependabot PRs are open. No independent submitted review or auto-merge request was recorded. Ready for review does not authorize a merge. The [structured PR inventory](worklogs/open-pr-inventory-2026-11-14.json) covers every open diff; historical screenshots were not individually visually re-reviewed. This technical inspection does not replace independent human review. The [review matrix](worklogs/wrapper-nest-review-2026-11-14.md), [48-version matrix](compatibility-1.0.0-validation.md), [build evidence](version-consistency-1.0.0/wrapper-hardening-2026-11-14/) and [release gates](release-readiness-1.0.0.md) retain the detailed scope.
 
 | PR | Target | Initial head this round | Proposed head at inspection | Scope and disposition | Hosted result / remaining action |
