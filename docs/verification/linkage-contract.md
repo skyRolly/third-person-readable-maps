@@ -51,6 +51,38 @@ candidate-owned classes. A Mixin's direct self `checkcast` is checked against
 its transformed target; other class uses referring to a Mixin are outside the
 supported transformation subset and fail closed.
 
+Direct candidate superclasses and superinterfaces are checked independently of
+ordinary descriptors: the class must exist, be the correct class/interface
+kind, be accessible, and not be final when extended. Duplicate interfaces,
+cycles, missing hierarchy edges and sealed supertypes are rejected. The model
+also rejects sealed candidate declarations rather than claiming to prove their
+module and permitted-subclass rules. `java/lang/Object` is the supported direct
+platform superclass for candidate classes; other direct candidate platform
+supertypes are rejected. Platform hierarchy edges within the game or libraries
+are left to the configured Java runtime. For non-public access the bounded
+runtime-package model requires matching package names and verified candidate,
+game, or single-library-archive origin; cross-archive same-package access is
+rejected when common class-loader identity is not established.
+
+Mixins are not treated as ordinary runtime subclasses. Their declared
+superclass must occur in the target's superclass ancestry, and interfaces they
+contribute are checked as accesses from the transformed target. References to
+another Mixin, unsupported platform superinterfaces and unproven transformations
+fail closed. A Java 8 private helper invoked on the same Mixin is resolved with
+the effective target as both owner and caller; a different Mixin, a collision,
+or a non-private or otherwise unsupported special invocation is still rejected.
+
+| Reference | Verification within this contract | Boundary |
+|---|---|---|
+| Ordinary descriptor | Required game/library class exists | Descriptor alone is not an access to its type. |
+| Class instruction, constant, method type/handle descriptor | Existence and applicable class access | Platform APIs rely on the Java target and JVM. |
+| Candidate superclass or superinterface | Existence, kind, access, finality, ancestry/cycle and supported sealing | Non-Object candidate platform supertypes and sealed hierarchies are rejected. |
+| Mixin superclass and contributed interface | Target ancestry and effective-target access | Arbitrary Mixin hierarchy and interface targets are unsupported. |
+| Field, method, constructor or handle | Resolution, owner/member access, staticness and invocation kind | Unproven special selection and protected receiver dataflow fail closed. |
+| Final field write | Effective declaring class and initializer context | Setter handles and unproven contexts fail closed. |
+| Private nestmate access | Reciprocal metadata, package and verified origin | Cross-archive nest identity is not assumed. |
+| Supported dynamic bootstrap | Known LambdaMetafactory form and consumed references | Other dynamic bootstraps and runtime-generated linkage are rejected or unproven. |
+
 This is not a complete JVM bytecode verifier or a proof of every transformed
 Mixin behavior. Platform APIs rely on the configured Java `--release` target
 and the runtime JVM; Fabric/Mixin callback internals rely on the declared
