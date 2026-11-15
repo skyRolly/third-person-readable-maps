@@ -92,6 +92,35 @@ class HierarchyModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'unsupported Mixin platform superinterface'):
             game.validate_product_hierarchies({'app/Mixin':mixin}, {'app/Mixin':'game/Target'}, nodes.get, 'fixture')
 
+    def test_default_object_does_not_bypass_target_hierarchy_checks(self):
+        mixin = node('app/Mixin')
+        base = node('game/Base', parent='java/lang/RuntimeException', origin='game')
+        target = node('game/Target', parent='game/Base', origin='game')
+        nodes = {n['name']: n for n in (mixin, base, target)}
+        def validate():
+            game.validate_product_hierarchies({'app/Mixin': mixin},
+                                              {'app/Mixin': 'game/Target'}, nodes.get, 'fixture')
+        validate()
+        # Other users of is_subclass must not gain speculative platform ancestry.
+        self.assertFalse(jvm.is_subclass('java/lang/RuntimeException', 'java/lang/Object', nodes.get))
+        mixin['super'] = 'game/Base'; validate()
+        mixin['super'] = 'java/lang/Exception'
+        with self.assertRaisesRegex(ValueError, 'not in target ancestry'): validate()
+        mixin['super'] = 'java/lang/Object'; del nodes['game/Base']
+        with self.assertRaisesRegex(ValueError, 'missing direct supertype'): validate()
+        nodes['game/Base'] = base; base['super'] = 'game/Target'
+        with self.assertRaisesRegex(ValueError, 'cyclic hierarchy'): validate()
+        base['super'] = 'java/lang/Object'; base['access'] = 0x0201
+        with self.assertRaisesRegex(ValueError, 'class/interface mismatch'): validate()
+        base['access'] = 0; target['name'] = 'other/Target'
+        with self.assertRaisesRegex(ValueError, 'identity mismatch'): validate()
+        target['name'] = 'game/Target'; base['origin'] = 'library:other'
+        with self.assertRaisesRegex(ValueError, 'inaccessible direct supertype'): validate()
+        target['access'] = 0x0201
+        with self.assertRaisesRegex(ValueError, 'unsupported interface Mixin target'): validate()
+        del nodes['game/Target']
+        with self.assertRaisesRegex(ValueError, 'missing Mixin target'): validate()
+
     def test_compiled_private_helpers_and_cross_mixin_restrictions(self):
         javac, java = shutil.which('javac'), shutil.which('java')
         if not javac or not java: self.skipTest('JDK required')

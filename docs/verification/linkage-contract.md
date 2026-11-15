@@ -71,6 +71,13 @@ another Mixin, unsupported platform superinterfaces and unproven transformations
 fail closed. A Java 8 private helper invoked on the same Mixin is resolved with
 the effective target as both owner and caller; a different Mixin, a collision,
 or a non-private or otherwise unsupported special invocation is still rejected.
+The default `java/lang/Object` superclass is accepted after the target and all
+reachable non-platform hierarchy edges have been validated, even when the
+target ancestry crosses a platform superclass. Other explicit superclass
+relationships must be established by the bounded lookup; unresolvable platform
+ancestry is not assumed. Platform class validity remains the runtime JVM's
+responsibility. Enum and record fixtures exercise only this static hierarchy
+model, not a claim that every transformation of those targets is supported.
 
 | Reference | Verification within this contract | Boundary |
 |---|---|---|
