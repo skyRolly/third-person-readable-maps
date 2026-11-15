@@ -1,0 +1,19 @@
+{
+  "javac": "javac 25.0.5",
+  "entrypoints": {
+    "intermediary": {
+      "group": "1.21.11",
+      "source_commit": "03f500e1ea528084024406ed1b85ace18fcf5be3",
+      "log": "fixture-intermediary.log",
+      "log_sha256": "9c20d661f978ee4f3a44ed69870f710e5f1393ce7b67d20e677f4fab73758bd4",
+      "scope": "actual packaged verifier path; JVM control for inherited platform method; static Mixin model only"
+    },
+    "official": {
+      "group": "26.3",
+      "source_commit": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
+      "log": "fixture-official.log",
+      "log_sha256": "c98b6dfcd2d9a95faa8956458318cfa7e173b5cc6e0c57ec12c58658b13a0061",
+      "scope": "actual packaged verifier path; JVM control for inherited platform method; static Mixin model only"
+    }
+  }
+}

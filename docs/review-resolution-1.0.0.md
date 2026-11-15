@@ -1,6 +1,13 @@
 # 1.0.0 cross-branch review resolution
 
-The current hierarchy, effective Mixin owner and protection-policy investigation is recorded in the [review worklog](worklogs/hierarchy-review-2026-11-15.md). The earlier [Wrapper, nestmate and descriptor worklog](worklogs/wrapper-nest-review-2026-11-14.md) and the sections below preserve prior-round observations.
+The [current platform hierarchy and evidence worklog](worklogs/platform-hierarchy-evidence-2026-11-15.md) records this round's findings and exact proposed sources. The [prior hierarchy and Mixin review](worklogs/hierarchy-review-2026-11-15.md), [Wrapper and nestmate review](worklogs/wrapper-nest-review-2026-11-14.md), and sections below retain their dated observations.
+
+| Finding | Affected | Unaffected | Correction and evidence |
+|---|---|---|---|
+| Default Object-based Mixin ancestry, reported on #20 | All 13 1.0.0 proposals shared the same resolver. Both namespace adapters invoke it. | The three 0.0.2 security PRs and integrated sources do not contain this shared verifier; no crash of a current artifact follows from the false rejection. | Validate the target and non-platform hierarchy first; treat the default Object parent locally as valid without broadening `is_subclass`. Compiled packaged fixtures exercise intermediary and official entry points, with negative target and hierarchy controls. Enum/record fixtures model static hierarchy only. |
+| Dated hierarchy evidence depended on mutable current heads | Coordination #15 | Dated records and their original source and artifact identities remain unchanged. | Historical checks use their own dated plan; a separate current-selection validator checks source, artifact, continuity and observation scope. |
+| Local shared digest tables did not establish cross-branch equivalence | All 13 proposed verifier copies | The 0.0.2 security patches retain their separate Wrapper scope. | The coordinator compares actual files at the 13 pinned commits, with separate namespace-fixture variants; this is an equivalence check, not independent approval or a security boundary against a coordinated malicious change. |
+| Inherited platform member behind a non-platform symbolic owner | All 13 shared verification paths | Direct platform-owned references remain delegated to the configured JVM; no current artifact failure is established. | A compiled game subclass can legally inherit `getMessage` from `RuntimeException`, yet both packaged adapters reject that game-owned reference because platform member metadata is outside the resolver. This remains an explicit, tested fail-closed supported-subset restriction; it is not a general platform linkage proof. |
 
 ## November 14 stabilization findings
 
@@ -10,7 +17,7 @@ identical JVM and library resolver files. Final-field writes, inherited
 library resolution and the local-validation instructions therefore required
 the shared correction on every group. The TAIL wiring defect was confined to
 the two official-namespace 26.x entry points; the other entry points already
-passed the declared point. All 13 proposed heads now have passing hosted Linux and Windows checks; the [final artifact and 48-version verifier evidence](version-consistency-1.0.0/stabilization-2026-11-14/) is bound to those heads. Review of the bounded verification contract remains required.
+passed the declared point. The [November 14 artifact and 48-version verifier evidence](version-consistency-1.0.0/stabilization-2026-11-14/) remains bound to that round's heads. Review of the bounded verification contract remains required.
 
 | Group | Final writes / inherited libraries / local instructions | TAIL wiring | Evidence reconciliation |
 |---|---|---|---|

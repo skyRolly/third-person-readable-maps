@@ -1,6 +1,7 @@
-"""Keep current hierarchy-review claims tied to their actual source and logs."""
+"""Keep the dated hierarchy-review observations tied to their original inputs."""
 import hashlib
 import json
+import ast
 from pathlib import Path
 import unittest
 from zipfile import ZipFile
@@ -10,27 +11,26 @@ EVIDENCE = ROOT / 'docs/version-consistency-1.0.0/hierarchy-2026-11-15'
 REHEARSAL = ROOT / 'docs/legacy-dry-run-1.0.0-2026-11-14/hierarchy-2026-11-15'
 
 
-class HierarchyCurrentEvidenceTests(unittest.TestCase):
-    def test_builds_and_static_checks_bind_all_current_sources(self):
-        heads = json.loads((ROOT / 'docs/version-consistency-1.0.0/current-heads.json').read_text())['groups']
+class HierarchyHistoricalEvidenceTests(unittest.TestCase):
+    def test_builds_and_static_checks_bind_historical_sources(self):
+        plan = json.loads((REHEARSAL / 'candidate-plan.json').read_text())['groups']
         builds = json.loads((EVIDENCE / 'builds.json').read_text())
         static = json.loads((EVIDENCE / 'static.json').read_text())['results']
         inventory = json.loads((EVIDENCE / 'hierarchy-inventory.json').read_text())['groups']
         logs = json.loads((EVIDENCE / 'validation-logs.json').read_text())
         config = json.loads((REHEARSAL / 'candidate-compatibility.json').read_text())['groups']
-        self.assertEqual(set(heads), set(builds))
-        self.assertEqual(set(heads), set(inventory))
-        self.assertEqual(set(heads), set(config))
-        self.assertEqual(len(heads), 13)
+        self.assertEqual(set(plan), set(builds))
+        self.assertEqual(set(plan), set(inventory))
+        self.assertEqual(set(plan), set(config))
+        self.assertEqual(len(plan), 13)
         expected = {(group, version) for group, row in config.items() for version in row['minecraft']}
         self.assertEqual(len(expected), 48)
         self.assertEqual({(row['group'], row['version']) for row in static}, expected)
         self.assertEqual(len(static), len(expected))
         for group, row in builds.items():
             with self.subTest(group=group):
-                self.assertEqual(row['source_commit'], heads[group]['new_head'])
-                self.assertTrue(row['same_as_previous'])
-                self.assertEqual(row['sha256'], row['previous_sha256'])
+                self.assertEqual(row['source_commit'], plan[group]['commit'])
+                self.assertEqual(row['same_as_previous'], row['sha256'] == row['previous_sha256'])
                 self.assertEqual(inventory[group]['candidate_source'], row['source_commit'])
                 self.assertEqual(inventory[group]['artifact_sha256'], row['sha256'])
                 log = logs['builds'][group].encode()
@@ -59,6 +59,19 @@ class HierarchyCurrentEvidenceTests(unittest.TestCase):
         self.assertEqual(len(controls), 18)
         self.assertTrue({'candidate-publication', 'missing-static-evidence', 'failed-static-evidence',
                          'missing-wrapper-preflight-evidence'} <= set(controls))
+        tree = ast.parse((REHEARSAL / 'rehearse.py').read_text())
+        harness_controls = set()
+        for call in ast.walk(tree):
+            if (isinstance(call, ast.Call) and isinstance(call.func, ast.Name) and
+                    call.func.id == 'reject' and len(call.args) >= 2 and
+                    isinstance(call.args[0], ast.Constant) and
+                    any(isinstance(node, ast.Name) and node.id == 'verify_candidate_evidence'
+                        for node in ast.walk(call.args[1]))):
+                harness_controls.add(call.args[0].value)
+        self.assertEqual(harness_controls, {'missing-static-evidence', 'failed-static-evidence',
+                                            'missing-wrapper-preflight-evidence'})
+        self.assertIn('checks by this harness, not new claims about the production aggregator',
+                      (REHEARSAL / 'README.md').read_text())
         plan = json.loads((REHEARSAL / 'candidate-plan.json').read_text())
         self.assertEqual(plan['version'], '1.0.0')
         for group, row in builds.items():

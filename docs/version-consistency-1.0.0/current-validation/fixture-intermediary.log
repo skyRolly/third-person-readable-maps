@@ -1,0 +1,21 @@
+test_default_mixin_parent_reaches_platform_derived_targets (test_verify_entrypoint.IntermediaryEntrypointFixtures.test_default_mixin_parent_reaches_platform_derived_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 30.342s
+
+OK
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptors, 0 classes and 0 member references verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptors, 0 classes and 0 member references verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptors, 0 classes and 0 member references verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptors, 0 classes and 0 member references verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptors, 0 classes and 0 member references verified

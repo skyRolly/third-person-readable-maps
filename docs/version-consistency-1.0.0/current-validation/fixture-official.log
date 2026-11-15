@@ -1,0 +1,11 @@
+test_default_mixin_parent_reaches_platform_derived_targets (test_verify_entrypoint.OfficialEntrypointFixtures.test_default_mixin_parent_reaches_platform_derived_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 32.377s
+
+OK
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified

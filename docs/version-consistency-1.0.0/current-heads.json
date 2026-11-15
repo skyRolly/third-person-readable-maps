@@ -1,124 +1,137 @@
 {
   "schema": 1,
   "observed_on": "2026-11-15",
-  "status": "13 current proposal pins; clean Linux builds, bounded 48-version static sweep, and hosted Linux/Windows builds passed; uploaded JAR hashes matched",
+  "status": "Current proposed sources; candidate validation and approval do not authorize release.",
   "groups": {
     "1.14-1.14.4": {
       "pr": 23,
-      "old_head": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
-      "new_head": "a795f4dc8065000ae4d03e1552481e7918221465",
+      "old_head": "a795f4dc8065000ae4d03e1552481e7918221465",
+      "new_head": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
       "branch": "candidate/mc-1.14-1.14.4",
       "target": "mc/1.14-1.14.4",
-      "intermediate_head": "584a75e56cb19713d6366f0c05c3860bbd0ecc59",
-      "previous_round_old_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5"
+      "previous_round_old_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "namespace": "intermediary",
+      "intermediate_head": "468ea4fa427939860a5e862cd28f607fc704ee15"
     },
     "1.15-1.16.5": {
       "pr": 21,
-      "old_head": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
-      "new_head": "ae4c0786f5babb3c5fdb5a64573f1024ccde7870",
+      "old_head": "ae4c0786f5babb3c5fdb5a64573f1024ccde7870",
+      "new_head": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
       "branch": "candidate/mc-1.15-1.16.5",
       "target": "mc/1.15-1.16.5",
-      "intermediate_head": "481f5a6661e8d47b13255e692540d4ed6e9167c8",
-      "previous_round_old_head": "b338ed4a8717f4d861de2c69218883bce9295f47"
+      "previous_round_old_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "namespace": "intermediary",
+      "intermediate_head": "702e538627311acf70c33da99f2520befa844d48"
     },
     "1.17-1.19.2": {
       "pr": 20,
-      "old_head": "4ed3f218eea65b6fb4feb676dc381128daaae019",
-      "new_head": "55c20451c8e9176c3e3886df8bc8929f3801da0b",
+      "old_head": "55c20451c8e9176c3e3886df8bc8929f3801da0b",
+      "new_head": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
       "branch": "candidate/mc-1.17-1.19.2",
       "target": "mc/1.17-1.19.2",
-      "intermediate_head": "31ccb01817930fe6f0393d4f9db27b6a1a2be986",
-      "previous_round_old_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1"
+      "previous_round_old_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "namespace": "intermediary",
+      "intermediate_head": "9adb3019707a44d2e1f7f3e91fce27ed13c462db"
     },
     "1.19.3": {
       "pr": 22,
-      "old_head": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
-      "new_head": "37c6809247fe8cd280e211ad36ca4403432b0c05",
+      "old_head": "37c6809247fe8cd280e211ad36ca4403432b0c05",
+      "new_head": "b0353abf9dc93b774a4fcd2e94c98040fd643813",
       "branch": "candidate/mc-1.19.3",
       "target": "mc/1.19.3",
-      "intermediate_head": "7ef964291552aeee02ae76988f98fec08921486e",
-      "previous_round_old_head": "1c3040e4b4ba7adc424c223269e58a8643086009"
+      "previous_round_old_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "namespace": "intermediary",
+      "intermediate_head": "0fb00e7104ecb25457161d1039bce8da37b177c2"
     },
     "1.19.4-1.20.4": {
       "pr": 19,
-      "old_head": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
-      "new_head": "76f0952bb6b27a5af82b4127eb847babe4d134f7",
+      "old_head": "76f0952bb6b27a5af82b4127eb847babe4d134f7",
+      "new_head": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
       "branch": "candidate/mc-1.19.4-1.20.4",
       "target": "mc/1.19.4-1.20.4",
-      "intermediate_head": "3ca89507164dfe494e6c895f05454134c7d40a2c",
-      "previous_round_old_head": "92efc418d47b45ae151440391204231570a1e7af"
+      "previous_round_old_head": "92efc418d47b45ae151440391204231570a1e7af",
+      "namespace": "intermediary",
+      "intermediate_head": "1764b2b42a47e9fc7421f9a512b848ff46ed629f"
     },
     "1.20.5-1.20.6": {
       "pr": 18,
-      "old_head": "ec9ba516a2000c0a83baf689ff38433790119331",
-      "new_head": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
+      "old_head": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
+      "new_head": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca",
       "branch": "candidate/mc-1.20.5-1.20.6",
       "target": "mc/1.20.5-1.20.6",
-      "intermediate_head": "d942055d9f63526b0fb43f35ef31914fa9ea2426",
-      "previous_round_old_head": "18ed6883c2717332c53dfe07b2f284174b3daad0"
+      "previous_round_old_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "namespace": "intermediary",
+      "intermediate_head": "e599cd6475c99fd5acbbe0d03810df5e9c72886a"
     },
     "1.21-1.21.1": {
       "pr": 17,
-      "old_head": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
-      "new_head": "c9a63a72f67c469b302bb99ec34502efb900b03c",
+      "old_head": "c9a63a72f67c469b302bb99ec34502efb900b03c",
+      "new_head": "e80def340550064cbc8ec7250b6b588c2ece1a43",
       "branch": "candidate/mc-1.21-1.21.1",
       "target": "mc/1.21-1.21.1",
-      "intermediate_head": "1b1c7f2c5fbb706dc1696c5cddddf03da2931d77",
-      "previous_round_old_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2"
+      "previous_round_old_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "namespace": "intermediary",
+      "intermediate_head": "5bad610b9ee1fef6508c1095206cc76d5ba83fdb"
     },
     "1.21.11": {
       "pr": 31,
-      "old_head": "e1ca4915cac0ee52c0e92331e7548b58fa594d18",
-      "new_head": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
+      "old_head": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
+      "new_head": "03f500e1ea528084024406ed1b85ace18fcf5be3",
       "branch": "maintenance/mc-1.21.11-1.0.0",
       "target": "mc/1.21.11",
-      "intermediate_head": "cfdf2c2e5af8ff2e62f52e78f33271dadd3d599a",
-      "previous_round_old_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259"
+      "previous_round_old_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "namespace": "intermediary",
+      "intermediate_head": "31db35f31ac984e0dc1ccb77e5dc467e1e917ed4"
     },
     "1.21.2-1.21.3": {
       "pr": 16,
-      "old_head": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
-      "new_head": "557d55ff7f6fcbc63c4e2ae596df05cee02af040",
+      "old_head": "557d55ff7f6fcbc63c4e2ae596df05cee02af040",
+      "new_head": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb",
       "branch": "candidate/mc-1.21.2-1.21.3",
       "target": "mc/1.21.2-1.21.3",
-      "intermediate_head": "423ce1f3003e6a3945a540ffcb52370bd3079c13",
-      "previous_round_old_head": "444cab923238eea930c5e332eff0815dbbde0e20"
+      "previous_round_old_head": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "namespace": "intermediary",
+      "intermediate_head": "f878ccda37c99fcc10b98bdd8ee81049d8c14c42"
     },
     "1.21.4-1.21.8": {
       "pr": 14,
-      "old_head": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
-      "new_head": "db33c8bd0afc8c0e4d0a658e580ae4329ea3d40f",
+      "old_head": "db33c8bd0afc8c0e4d0a658e580ae4329ea3d40f",
+      "new_head": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
       "branch": "candidate/mc-1.21.4-1.21.8",
       "target": "mc/1.21.4-1.21.8",
-      "intermediate_head": "97fee8f2a7d05587fdd5ec78f90f177830026d5c",
-      "previous_round_old_head": "052ca9744c3f8756d02aefd86f112f5476eee206"
+      "previous_round_old_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "namespace": "intermediary",
+      "intermediate_head": "d3b19c21804f6bb077834eebd20f5bb87c43cc2f"
     },
     "1.21.9-1.21.10": {
       "pr": 13,
-      "old_head": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
-      "new_head": "832667c27967226478ac11d2728061c04915577e",
+      "old_head": "832667c27967226478ac11d2728061c04915577e",
+      "new_head": "d20a2f0f25f5d680c5092379790d5b724282641d",
       "branch": "candidate/mc-1.21.9-1.21.10",
       "target": "mc/1.21.9-1.21.10",
-      "intermediate_head": "bb0f9fec3a7c4ad46d4d3a519255597e66720f70",
-      "previous_round_old_head": "90bfab52b538363eb8630145c6df23936c70ae2d"
+      "previous_round_old_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "namespace": "intermediary",
+      "intermediate_head": "7e4f70e1778915b36dfb58fda8885a64c2c3f652"
     },
     "26.1-26.2": {
       "pr": 32,
-      "old_head": "ec38b73e0206ab6bb49ba936f52e36ba81221d39",
-      "new_head": "11aca8017655fbea4bb735bbc53a661835f4d699",
+      "old_head": "11aca8017655fbea4bb735bbc53a661835f4d699",
+      "new_head": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
       "branch": "maintenance/mc-26.1-26.2-1.0.0",
       "target": "mc/26.1-26.2",
-      "intermediate_head": "fc2edfca6e25eb5d207ba31a9d83b379cd4377b2",
-      "previous_round_old_head": "131f3e393e31778ed11d341830c856acc4d85a35"
+      "previous_round_old_head": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "namespace": "official",
+      "intermediate_head": "17553377c2f620caf0ed582a3f645c613ce3c2f0"
     },
     "26.3": {
       "pr": 33,
-      "old_head": "f44db59120f1695065da7d2d27e87ec30fb0ee5d",
-      "new_head": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
+      "old_head": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
+      "new_head": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
       "branch": "maintenance/mc-26.3-1.0.0",
       "target": "mc/26.3",
-      "intermediate_head": "7e9598ed2134727a817411387c37e1487a5aea1e",
-      "previous_round_old_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d"
+      "previous_round_old_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "namespace": "official",
+      "intermediate_head": "272ed96ac02b5f7e9eb6ef0b9a759a860205e107"
     }
   }
 }

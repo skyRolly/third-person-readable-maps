@@ -11,6 +11,27 @@ import audit_dependencies as audit
 
 
 class CurrentSecurityEvidenceTests(unittest.TestCase):
+    def test_source_bound_advisory_dispositions_preserve_failing_occurrences(self):
+        directory = ROOT / 'docs/dependency-evidence/advisory-dispositions'
+        for path in directory.glob('*.json'):
+            review = json.loads(path.read_text())
+            self.assertEqual(review['schema'], 1)
+            self.assertFalse(review['risk_accepted'])
+            self.assertEqual(review['independent_review'], 'PENDING')
+            self.assertTrue(review['occurrences'])
+            for item in review['occurrences']:
+                with self.subTest(review=path.name, group=item['group'], purl=item['purl']):
+                    raw = (ROOT/item['report']).read_bytes()
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), item['report_sha256'])
+                    report = json.loads(raw)
+                    self.assertEqual(report['source_sha'], item['source_sha'])
+                    self.assertFalse(item['risk_accepted'])
+                    self.assertTrue(item['failing'])
+                    self.assertTrue(any(match['advisory'] == review['advisory'] and
+                                        match['purl'] == item['purl'] and
+                                        match['fingerprint'] == item['fingerprint'] and match['failing']
+                                        for match in report['matches']))
+
     def test_netty_followup_preserves_each_source_and_failing_match(self):
         evidence = json.loads((ROOT / 'docs/dependency-evidence/netty-high-review-2026-11-15.json').read_text())
         self.assertEqual({a['advisory'] for a in evidence['advisories']},
@@ -250,11 +271,11 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
 
     def test_complete_current_scans_match_sources_and_individual_worklist(self):
         worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-13.json').read_text())
-        candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']
-        registry = json.loads((ROOT / 'release/maintenance-targets.json').read_text())['groups']
         self.assertFalse(worklist['risk_acceptance'])
         self.assertEqual(worklist['missing_or_stale_groups'], [])
-        self.assertEqual(set(worklist['sources']), set(candidates) | set(registry))
+        # This dated worklist describes its own scan scope, not the mutable
+        # candidate and integrated-maintenance registries at some future date.
+        self.assertEqual(len(worklist['sources']), 13)
         expected, indexed = set(), set()
         for group, source in worklist['sources'].items():
             for key in ('snapshot', 'report'):
@@ -269,13 +290,10 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
             self.assertEqual(snapshot['ref'], source['snapshot_ref'])
             self.assertEqual(report['source_sha'], source['source_sha'])
             self.assertEqual(len(report['matches']), source['matches'])
-            if group in candidates:
-                self.assertEqual(source['source_kind'], 'candidate')
-                self.assertEqual(source['source_sha'], candidates[group]['source_commit'])
+            if source['source_kind'] == 'candidate':
                 self.assertEqual(report['status'], 'complete-unreviewed-candidate-scan')
             else:
                 self.assertEqual(source['source_kind'], 'integrated-maintenance')
-                self.assertEqual(source['source_sha'], registry[group]['integrated_commit'])
                 self.assertEqual(report['status'], 'complete')
             for match in report['matches']:
                 advisory = report['advisories'][match['advisory']]
@@ -295,10 +313,9 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
     def test_advanced_candidate_scans_preserve_findings_and_provenance(self):
         directory = ROOT / 'docs/dependency-evidence/class-linkage-2026-11-13'
         index = json.loads((directory / 'index.json').read_text())
-        worklist = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-13.json').read_text())
         previous = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
-        candidates = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())['groups']
-        self.assertEqual(set(index['groups']), set(candidates))
+        transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
+        self.assertEqual(len(index['groups']), 10)
         self.assertFalse(index['risk_acceptance'])
         for filename in ('run-resumed.py', 'orchestration.log'):
             self.assertEqual(hashlib.sha256((directory / filename).read_bytes()).hexdigest(),
@@ -309,8 +326,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
             with self.subTest(group=group):
                 self.assertTrue(result['complete'])
                 self.assertEqual(result['exit_code'], 1)
-                self.assertEqual(result['source_sha'], candidates[group]['source_commit'])
-                self.assertEqual(result['source_sha'], worklist['sources'][group]['source_sha'])
+                self.assertEqual(result['source_sha'], transition[group]['new_head'])
                 for kind in ('snapshot', 'report', 'snapshot_log', 'audit_log'):
                     raw = (ROOT / result[kind + '_path']).read_bytes()
                     self.assertEqual(hashlib.sha256(raw).hexdigest(), result[kind + '_sha256'])
@@ -329,7 +345,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
         directory = ROOT / 'docs/dependency-evidence/class-linkage-proposals-2026-11-13'
         index = json.loads((directory / 'index.json').read_text())
         transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
-        current = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-13.json').read_text())
+        prior = json.loads((ROOT / 'docs/dependency-evidence/current-security-worklist-2026-11-12.json').read_text())
         previous = ROOT / 'docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12'
         self.assertEqual(set(index['groups']), {'1.21.11', '26.1-26.2', '26.3'})
         self.assertFalse(index['risk_acceptance'])
@@ -343,7 +359,7 @@ class CurrentSecurityEvidenceTests(unittest.TestCase):
                 self.assertTrue(result['complete'])
                 self.assertEqual(result['exit_code'], 1)
                 self.assertEqual(result['source_sha'], transition[group]['new_head'])
-                self.assertNotEqual(result['source_sha'], current['sources'][group]['source_sha'])
+                self.assertNotEqual(result['source_sha'], prior['sources'][group]['source_sha'])
                 for kind in ('snapshot', 'report', 'snapshot_log', 'audit_log'):
                     raw = (ROOT / result[kind + '_path']).read_bytes()
                     self.assertEqual(hashlib.sha256(raw).hexdigest(), result[kind + '_sha256'])
