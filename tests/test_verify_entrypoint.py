@@ -71,6 +71,8 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                                              method+target_signature+' { '+body+' } }')
             if target_hierarchy in ('indirect', 'missing-parent'):
                 sources['game/Base.java'] = 'package game; public class Base extends RuntimeException {}'
+            if candidate_case == 'platform-inherited':
+                sources['net/minecraft/class_1.java'] = 'package net.minecraft; public class class_1 extends RuntimeException {}'
             if inherited:
                 sources['org/joml/Api.java'] = 'package org.joml; public class Api { public int value; public void run() {} }'
             if inherited and inherited.startswith('hidden'):
@@ -99,7 +101,17 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                 mixin_paths.append(str(path))
             subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), *mixin_paths],
                            check=True, capture_output=True)
-            if candidate_case:
+            if candidate_case == 'platform-inherited':
+                caller = root/'PlatformCaller.java'
+                caller.write_text('package fixture; public class PlatformCaller { '
+                                  'public String invoke(net.minecraft.class_1 t) { return t.getMessage(); } '
+                                  'public static void main(String[] a) { '
+                                  'new PlatformCaller().invoke(new net.minecraft.class_1()); } }')
+                subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
+                               check=True, capture_output=True)
+                subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                                'fixture.PlatformCaller'], check=True, capture_output=True)
+            elif candidate_case:
                 nest = root/'Nest.java'
                 nest.write_text('package fixture; public class Nest { private int value; '
                                 'static class Member { int read(Nest n) { return n.value; } } }')
@@ -274,6 +286,10 @@ class IntermediaryEntrypointFixtures(unittest.TestCase):
                             ('interface', 'unsupported interface Mixin target')):
             with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, error):
                 self.fixture('HEAD', 'return;', target_hierarchy=kind)
+        # A game-owned symbolic owner can resolve a platform member on the JVM.
+        # The bounded resolver has no platform metadata, so it must fail closed.
+        with self.assertRaisesRegex(ValueError, 'missing (?:member|game (?:members|references)).*getMessage'):
+            self.fixture('HEAD', 'return;', target_hierarchy='runtime', candidate_case='platform-inherited')
 
     def test_hierarchy_and_mixin_helper_reach_packaged_entrypoint(self):
         # The former verifier checked only the library class's presence.
