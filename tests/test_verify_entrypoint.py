@@ -101,7 +101,17 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             out = root/'mod'; out.mkdir()
             subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(mixin)],
                            check=True, capture_output=True)
-            if candidate_case:
+            if candidate_case == 'platform-inherited':
+                caller = root/'PlatformCaller.java'
+                caller.write_text('package fixture; public class PlatformCaller { '
+                                  'public String invoke(net.minecraft.client.renderer.entity.layers.ItemInHandLayer t) '
+                                  '{ return t.getMessage(); } public static void main(String[] a) { '
+                                  'new PlatformCaller().invoke(new net.minecraft.client.renderer.entity.layers.ItemInHandLayer()); } }')
+                subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
+                               check=True, capture_output=True)
+                subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                                'fixture.PlatformCaller'], check=True, capture_output=True)
+            elif candidate_case:
                 nest = root/'Nest.java'
                 nest.write_text('package fixture; public class Nest { private int value; '
                                 'static class Member { int read(Nest n) { return n.value; } } }')
@@ -270,6 +280,10 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                             ('interface', 'unsupported interface Mixin target')):
             with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, error):
                 self.fixture('HEAD', 'return;', target_hierarchy=kind)
+        # A game-owned symbolic owner can resolve a platform member on the JVM.
+        # The bounded resolver has no platform metadata, so it must fail closed.
+        with self.assertRaisesRegex(ValueError, 'missing (?:member|game (?:members|references)).*getMessage'):
+            self.fixture('HEAD', 'return;', target_hierarchy='runtime', candidate_case='platform-inherited')
 
     def test_hierarchy_and_mixin_helper_reach_packaged_entrypoint(self):
         # Reproduce the prior presence-only hierarchy verification.

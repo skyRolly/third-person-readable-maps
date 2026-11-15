@@ -13,11 +13,11 @@ CANONICAL = {
     'scripts/verify_gradle_wrapper.py': '2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481',
     'tests/test_verify_gradle_wrapper.py': 'e99e2dd2e5e4c361a7ad0db4168fd3c1e423461bf4314456197107fa28138d65',
     'tests/test_nestmate_linkage.py': '870e107ecb86a0ec97c85eed3b69509f92c66461ddf904170c4bc2f3548af235',
-    'docs/verification/linkage-contract.md': '99d45ad06c1ecbdec21ebda85c541bd68931734f77524ac209be586dabde3869',
+    'docs/verification/linkage-contract.md': 'e740d027479c6505502ca8aecdf5a5c31d48eabeeb8cd69f0a02070b7f64eee4',
 }
 ADAPTERS = {
-    'intermediary': '2c5f04a22e7a37c7558c46e32a3c58e05bf48e2b59a1df3b59fcbf2541edcfd4',
-    'official': '2662a4e0ad9779ec1a8f17ea22fbd55eabd203858556bf581ec88873322d6de6',
+    'intermediary': '759293fd0f8e1d6926feb01171af4b862c2614ce3b096c4459e6a3bd3b9c14cc',
+    'official': 'f9ae0d42d50243c82b60d578723c8a369c1747bb8ae0edac227782d8716a8c10',
 }
 
 
