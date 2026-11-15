@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/version-consistency-1.0.0/hierarchy-2026-11-15'
@@ -110,6 +111,30 @@ class HierarchyCurrentEvidenceTests(unittest.TestCase):
                 self.assertRegex(windows['archive_sha256'], r'^[0-9a-f]{64}$')
         self.assertEqual(rows['35']['artifacts']['Linux']['artifact_sha256'],
                          rows['35-previous']['artifacts']['Linux']['artifact_sha256'])
+
+    def test_instrumented_lan_repeat_keeps_its_scope_and_provenance(self):
+        directory = ROOT / 'docs/multiplayer-smoke-2026-11-14/instrumented-2026-11-15'
+        evidence = json.loads((directory / 'index.json').read_text())
+        build = json.loads((EVIDENCE / 'builds.json').read_text())['1.21.11']
+        self.assertEqual(evidence['source_commit'], build['source_commit'])
+        self.assertEqual(evidence['artifact_sha256'], build['sha256'])
+        self.assertIn('observer-only Java agent', evidence['mode'])
+        self.assertIn('No packet handler was instrumented', evidence['limitations'])
+        for name, digest in evidence['files_sha256'].items():
+            with self.subTest(file=name):
+                self.assertEqual(hashlib.sha256((directory / name).read_bytes()).hexdigest(), digest)
+        with ZipFile(directory / 'diagnostic-agent.zip') as archive:
+            self.assertEqual(hashlib.sha256(archive.read('probe-jdk.jar')).hexdigest(),
+                             evidence['agent_jar_sha256'])
+        observer = (directory / 'observer.log').read_text()
+        self.assertIn(evidence['first_unavailable'], observer)
+        self.assertIn(evidence['first_available'], observer)
+        self.assertLess(observer.index(evidence['first_unavailable']), observer.index(evidence['first_available']))
+        self.assertIn('id=class_9209[id=2]', evidence['first_unavailable'])
+        self.assertIn('data_available=false', evidence['first_unavailable'])
+        self.assertIn('data_available=true', evidence['first_available'])
+        self.assertIn(evidence['host_give'], (directory / 'host.log').read_text())
+        self.assertEqual(evidence['host_give'][:10], evidence['first_available'][:10])
 
 
 if __name__ == '__main__':

@@ -1,0 +1,15 @@
+Using existing launcher inputs
+Started host
+Confirmed command /fill -5 80 -73 15 80 -33 minecraft:stone
+Confirmed command /fill -5 81 -73 15 85 -33 minecraft:air
+Confirmed command /time set day
+Confirmed command /setblock 5 82 -66 minecraft:stone
+Published local test LAN port 45775
+Started observer
+Traceback (most recent call last):
+  File "/tmp/tprm-lan-probe-runner.py", line 70, in <module>
+    wait_for(hostlog,'MapObserver joined the game',420,host);hotbar(115)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tprm-lan-probe-runner.py", line 28, in wait_for
+    time.sleep(2)
+KeyboardInterrupt
