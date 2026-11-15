@@ -14,7 +14,9 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
+sys.path.insert(0, str(ROOT/'tests'))
 import verify_supported_apis as verifier
+import hierarchy_entrypoint_fixtures as hierarchy_fixtures
 
 
 class OfficialEntrypointFixtures(unittest.TestCase):
@@ -35,7 +37,8 @@ class OfficialEntrypointFixtures(unittest.TestCase):
         if classpath: command += ['-classpath', str(classpath)]
         subprocess.run(command+[str(path)], check=True, capture_output=True)
 
-    def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False):
+    def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False,
+                hierarchy=None, mixin_helper=False):
         with tempfile.TemporaryDirectory(dir=self.root) as directory:
             root = Path(directory); support = root/'support'; support.mkdir()
             sources = {
@@ -71,10 +74,12 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                              'import org.spongepowered.asm.mixin.injection.*; '
                              'import org.spongepowered.asm.mixin.injection.callback.CallbackInfo; '
                              'import net.minecraft.client.renderer.entity.layers.ItemInHandLayer; '
-                             '@Mixin(ItemInHandLayer.class) public class ReadableMapLayerMixin { '
+                             '@Mixin(ItemInHandLayer.class) public class ReadableMapLayerMixin { ' +
+                             ('private void helper() {} ' if mixin_helper else '') +
                              '@Inject(method="submitArmWithItem", at=@At("'+point+'")'+extra+') '
                              'private void inject(CallbackInfo ci) {' +
-                             ('Object x=this; ReadableMapLayerMixin m=(ReadableMapLayerMixin)x;' if self_cast else '') + '} }')
+                             ('Object x=this; ReadableMapLayerMixin m=(ReadableMapLayerMixin)x;' if self_cast else '') +
+                             ('helper();' if mixin_helper else '') + '} }')
             out = root/'mod'; out.mkdir()
             subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(mixin)],
                            check=True, capture_output=True)
@@ -114,10 +119,13 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                     api.write_text('package org.joml; public class Api { '+member+' }')
                     subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
                                    check=True, capture_output=True)
+            hierarchy_info = hierarchy_fixtures.prepare(root, support, out, self.javac, hierarchy) if hierarchy else None
             game_buf = io.BytesIO()
             with ZipFile(game_buf, 'w') as z:
                 path = 'net/minecraft/client/renderer/entity/layers/ItemInHandLayer.class'
                 z.write(support/path, path)
+                if hierarchy_info and hierarchy_info['location'] == 'game' and hierarchy_info['variant'] != 'missing':
+                    z.write(support/hierarchy_info['parent'], str(hierarchy_info['parent']))
             game_data = game_buf.getvalue()
             props = (ROOT/'gradle.properties').read_text()
             declared = '26.3' if 'minecraft_version=26.3' in props else ['26.1']
@@ -134,12 +142,18 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                 if candidate_case:
                     for item in sorted((out/'fixture').glob('*.class')):
                         z.write(item, 'fixture/'+item.name)
+                if hierarchy_info:
+                    z.write(out/hierarchy_info['probe'], str(hierarchy_info['probe']))
+                    if hierarchy_info['location'] == 'candidate' and hierarchy_info['variant'] != 'missing':
+                        z.write(out/hierarchy_info['parent'], str(hierarchy_info['parent']))
             library_buf = io.BytesIO()
             with ZipFile(library_buf, 'w') as z:
                 if inherited:
                     z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
                     if inherited == 'hidden':
                         z.write(support/'org/joml/Hidden.class', 'org/joml/Hidden.class')
+                if hierarchy_info and hierarchy_info['location'] == 'library' and hierarchy_info['variant'] != 'missing':
+                    z.write(support/hierarchy_info['parent'], str(hierarchy_info['parent']))
             library = library_buf.getvalue()
             alternative = None
             if inherited and inherited.startswith('platform-'):
@@ -152,7 +166,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                 with ZipFile(alternative_buf, 'w') as z:
                     z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
                 alternative = alternative_buf.getvalue()
-            libraries = [] if not inherited else [{'name':'org.joml:joml:1.0', 'downloads':{'artifact':{
+            libraries = [] if not (inherited or (hierarchy_info and hierarchy_info['location'] == 'library')) else [{'name':'org.joml:joml:1.0', 'downloads':{'artifact':{
                 'url':'https://fixture/library','sha1':hashlib.sha1(library).hexdigest(),'size':len(library)}}}]
             if alternative is not None:
                 libraries[0]['rules'] = [{'action':'allow'}, {'action':'disallow','os':{'name':'osx'}}]
@@ -211,6 +225,30 @@ class OfficialEntrypointFixtures(unittest.TestCase):
         self.fixture('HEAD', 'return;', inherited='platform-valid')
         with self.assertRaisesRegex(ValueError, 'missing member'):
             self.fixture('HEAD', 'return;', inherited='platform-missing')
+
+    def test_hierarchy_and_mixin_helper_reach_packaged_entrypoint(self):
+        # Reproduce the prior presence-only hierarchy verification.
+        with patch.object(verifier.game_linkage, 'validate_product_hierarchies', return_value=None):
+            self.fixture('HEAD', 'return;', hierarchy='library-interface-hidden')
+        for spec in ('library-interface-hidden', 'game-interface-hidden', 'candidate-interface-hidden',
+                     'library-class-hidden', 'game-class-hidden', 'library-interface-kind',
+                     'library-class-final', 'library-interface-sealed', 'library-interface-missing'):
+            with self.subTest(spec=spec), self.assertRaisesRegex(ValueError, 'supertype|final class|dependency class'):
+                self.fixture('HEAD', 'return;', hierarchy=spec)
+        for spec in ('library-interface-public', 'game-class-public', 'candidate-interface-samepackage'):
+            with self.subTest(spec=spec): self.fixture('HEAD', 'return;', hierarchy=spec)
+        original = verifier.game_linkage.verify_game_instructions
+        def previous_guard(nodes, targets, *args, **kwargs):
+            for name, node in nodes.items():
+                caller = targets.get(name, name)
+                for use in node['uses']:
+                    if use['operation'] == 'invokespecial' and use['name'] != '<init>':
+                        verifier.jvm_linkage.require(use['owner'] == caller, 'previous owner guard')
+            return original(nodes, targets, *args, **kwargs)
+        with patch.object(verifier.game_linkage, 'verify_game_instructions', side_effect=previous_guard):
+            with self.assertRaisesRegex(ValueError, 'previous owner guard'):
+                self.fixture('HEAD', 'return;', mixin_helper=True)
+        self.fixture('HEAD', 'return;', mixin_helper=True)
 
 
 if __name__ == '__main__':
