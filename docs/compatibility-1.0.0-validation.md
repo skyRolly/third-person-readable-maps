@@ -1,6 +1,6 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
-The [current evidence selection](version-consistency-1.0.0/current-evidence.json) tracks the proposed sources. A 48-version static sweep passed against earlier JAR bytes; final-source clean builds and hosted checks are in progress. The hashes below identify the earlier runtime-observed artifacts until that comparison completes. The 1.20.5 and 26.3 paired loading probes retain their original earlier source identities, as do all other runtime observations; they are not fresh executions on the current sources. Full graphical, hardware-GPU, multiplayer, owner and approved-merged-source acceptance remain open.
+The [current evidence selection](version-consistency-1.0.0/current-evidence.json) binds the 13 clean builds and bounded 48-version static sweep to the proposed sources. All 13 JARs match the earlier runtime-observed bytes. The [hosted check index](version-consistency-1.0.0/current-validation/hosted-checks.json) records the successful final-source jobs and their tested trees. The 1.20.5 and 26.3 paired loading probes retain their original earlier source identities, as do all other runtime observations; they are not fresh executions on the current sources. Full graphical, hardware-GPU, multiplayer, owner and approved-merged-source acceptance remain open.
 
 The 13 product proposals remain unmerged; ten legacy target branches are placeholders.
 

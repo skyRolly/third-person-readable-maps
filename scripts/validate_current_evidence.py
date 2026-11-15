@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import release
 
 ROOT = Path(__file__).resolve().parents[1]
 COMMIT = re.compile(r'^[0-9a-f]{40}$')
@@ -162,6 +163,8 @@ def validate(heads, versions, selection, load, read_blob=None):
         results = load(hosted['record'])['groups']
         require(set(results) == set(rows), 'hosted check group mismatch')
         for group, result in results.items():
+            for key in ('base_sha', 'merge_sha', 'head_tree', 'merge_tree'):
+                checked_id(result.get(key), COMMIT, group + ': invalid hosted ' + key)
             require(result['head_sha'] == rows[group]['source_commit'] and
                     result['head_tree'] == result['merge_tree'] and
                     set(result['checks']) == {'ubuntu-latest', 'windows-latest'},
@@ -170,6 +173,7 @@ def validate(heads, versions, selection, load, read_blob=None):
                 checked_id(check['archive_sha256'], DIGEST, group + ': invalid archive hash')
                 require(rows[group]['build']['state'] == 'observed' and check['conclusion'] == 'SUCCESS' and
                         check['checkout_merge_sha'] == result['merge_sha'] and
+                        isinstance(check['run_attempt'], int) and check['run_attempt'] > 0 and
                         check['artifact_sha256'] == rows[group]['build']['artifact_sha256'] and
                         check['archive_and_jar_verified'], group + ': hosted artifact or checkout mismatch')
     rehearsal = selection.get('candidate_rehearsal', {'state': 'pending'})
@@ -187,7 +191,24 @@ def validate(heads, versions, selection, load, read_blob=None):
         items = {item['id']: item for item in manifest['groups']}
         require(len(items) == len(manifest['groups']) and set(items) == set(rows) == set(plan['groups']),
                 'candidate rehearsal group mismatch')
-        checksums = read_blob(rehearsal['checksums']).decode()
+        config_path = index['candidate_compatibility_record']
+        require(hashlib.sha256(read_blob(config_path)).hexdigest() == index['candidate_compatibility_sha256'],
+                'candidate rehearsal compatibility configuration changed')
+        config = load(config_path)
+        require(set(config['groups']) == set(rows), 'candidate rehearsal compatibility group mismatch')
+        matrix = (json.dumps(release.matrix(config, plan), indent=2) + '\n').encode()
+        require(hashlib.sha256(matrix).hexdigest() == index['candidate_matrix_sha256'],
+                'candidate rehearsal matrix mismatch')
+        checksum_lines = read_blob(rehearsal['checksums']).decode().splitlines()
+        checksums = {}
+        for line in checksum_lines:
+            parts = line.split('  ', 1)
+            require(len(parts) == 2 and parts[1] not in checksums, 'invalid or duplicate rehearsal checksum')
+            checked_id(parts[0], DIGEST, 'invalid rehearsal checksum digest')
+            checksums[parts[1]] = parts[0]
+        require(set(checksums) == {item['artifact'] for item in items.values()} | {'release-manifest.json'} and
+                checksums['release-manifest.json'] == hashlib.sha256(read_blob(rehearsal['manifest'])).hexdigest(),
+                'candidate rehearsal checksum inventory mismatch')
         for group, item in items.items():
             build = rows[group]['build']
             require(build['state'] == 'observed', group + ': candidate rehearsal lacks a current build')
@@ -199,7 +220,10 @@ def validate(heads, versions, selection, load, read_blob=None):
                     item['sha256'] == build['artifact_sha256'] and item['minecraft'] == versions[group] and
                     item['namespace'] == heads[group]['namespace'] and
                     item['artifact'] == metadata['artifact'] and item['java'] == metadata['java'] and
-                    item['sha256'] + '  ' + item['artifact'] in checksums,
+                    config['groups'][group]['minecraft'] == versions[group] and
+                    config['groups'][group]['namespace'] == item['namespace'] and
+                    config['groups'][group]['java'] == item['java'] and
+                    checksums[item['artifact']] == item['sha256'],
                     group + ': candidate rehearsal source or artifact mismatch')
         for path, digest in index['coordinator_code_sha256'].items():
             require(hashlib.sha256(read_blob(path)).hexdigest() == digest,

@@ -7,13 +7,22 @@
     "1.14-1.14.4": {
       "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "a795f4dc8065000ae4d03e1552481e7918221465",
+        "previous_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -26,13 +35,22 @@
     "1.15-1.16.5": {
       "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "ae4c0786f5babb3c5fdb5a64573f1024ccde7870",
+        "previous_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -45,13 +63,22 @@
     "1.17-1.19.2": {
       "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "55c20451c8e9176c3e3886df8bc8929f3801da0b",
+        "previous_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -64,13 +91,22 @@
     "1.19.3": {
       "source_commit": "b0353abf9dc93b774a4fcd2e94c98040fd643813",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "37c6809247fe8cd280e211ad36ca4403432b0c05",
+        "previous_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -83,13 +119,22 @@
     "1.19.4-1.20.4": {
       "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "76f0952bb6b27a5af82b4127eb847babe4d134f7",
+        "previous_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -102,13 +147,22 @@
     "1.20.5-1.20.6": {
       "source_commit": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
+        "previous_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -121,13 +175,22 @@
     "1.21-1.21.1": {
       "source_commit": "e80def340550064cbc8ec7250b6b588c2ece1a43",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "c9a63a72f67c469b302bb99ec34502efb900b03c",
+        "previous_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -140,13 +203,22 @@
     "1.21.11": {
       "source_commit": "03f500e1ea528084024406ed1b85ace18fcf5be3",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
+        "previous_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -159,13 +231,22 @@
     "1.21.2-1.21.3": {
       "source_commit": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "557d55ff7f6fcbc63c4e2ae596df05cee02af040",
+        "previous_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -178,13 +259,22 @@
     "1.21.4-1.21.8": {
       "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "db33c8bd0afc8c0e4d0a658e580ae4329ea3d40f",
+        "previous_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -197,13 +287,22 @@
     "1.21.9-1.21.10": {
       "source_commit": "d20a2f0f25f5d680c5092379790d5b724282641d",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "832667c27967226478ac11d2728061c04915577e",
+        "previous_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -216,13 +315,22 @@
     "26.1-26.2": {
       "source_commit": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "11aca8017655fbea4bb735bbc53a661835f4d699",
+        "previous_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -235,13 +343,22 @@
     "26.3": {
       "source_commit": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
       "build": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
+        "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/hierarchy-2026-11-15/builds.json",
+        "previous_source": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
+        "previous_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+        "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
-        "state": "pending"
+        "state": "observed",
+        "record": "docs/version-consistency-1.0.0/current-validation/static.json"
       },
       "runtime": {
-        "state": "pending"
+        "state": "historical-same-artifact",
+        "record": "docs/runtime-smoke-verifier-followup-2026-11-13/index.json"
       },
       "security": {
         "state": "retained",
@@ -253,17 +370,25 @@
     }
   },
   "negative_controls": {
-    "state": "pending"
+    "state": "observed",
+    "record": "docs/version-consistency-1.0.0/current-validation/negative.json"
   },
   "mod_version": "1.0.0",
   "candidate_rehearsal": {
-    "state": "pending"
+    "state": "observed",
+    "index": "docs/version-consistency-1.0.0/current-validation/rehearsal/index.json",
+    "manifest": "docs/version-consistency-1.0.0/current-validation/rehearsal/release-manifest.json",
+    "plan": "docs/version-consistency-1.0.0/current-validation/rehearsal/candidate-plan.json",
+    "checksums": "docs/version-consistency-1.0.0/current-validation/rehearsal/SHA256SUMS",
+    "controls": "docs/version-consistency-1.0.0/current-validation/rehearsal/negative-controls.json"
   },
   "hosted_checks": {
-    "state": "pending"
+    "state": "observed",
+    "record": "docs/version-consistency-1.0.0/current-validation/hosted-checks.json"
   },
   "entrypoint_fixtures": {
     "state": "observed",
     "record": "docs/version-consistency-1.0.0/current-validation/fixture-entrypoints.json"
-  }
+  },
+  "validation_logs": "docs/version-consistency-1.0.0/current-validation/validation-logs.json"
 }

@@ -39,7 +39,7 @@ verification documentation, and their local digest manifests.
 
 The former rule rejected compiled targets directly or indirectly extending `RuntimeException`, and enum and record targets, in both actual packaged verifier paths; an ordinary Object-derived target passed. The correction treats only the default Object Mixin parent specially, after target and reachable non-platform hierarchy validation. Explicit non-Object ancestry still requires the existing bounded lookup; `is_subclass`, protected access and unresolved platform ancestry were not broadened. Missing targets and non-platform parents, interface targets, cycles, inaccessible supertypes, wrong-kind supertypes and unrelated explicit parents remain rejected. Enum and record fixtures establish only the static hierarchy model, not general transformation correctness. The production adapter fixtures reproduce the prior guard and exercise both namespace variants.
 
-All 13 sources now carry the same shared fix, contract and regression fixtures. The 1.14, 1.21.11 and 26.3 representative complete Python suites passed (62, 59 and 59 tests before the final three added negative cases); the final focused packaged-entry-point fixtures passed for both adapter types. Hosted Linux and Windows CI passed for the preceding intermediate heads; the additional fixture-only heads have queued new checks. The current 48-version static sweep and nine adjacent-version rejections have passed against earlier JAR bytes. Final-source clean builds and hosted artifact checks are in progress; earlier runtime observations remain historical.
+All 13 sources now carry the same shared fix, contract and regression fixtures. The 1.14, 1.21.11 and 26.3 representative complete Python suites passed (62, 59 and 59 tests before the final three added negative cases); the final focused packaged-entry-point fixtures passed for both adapter types. Hosted Linux and Windows CI passed for all 13 final proposals. The [current validation](../version-consistency-1.0.0/current-validation/) records 13 final-source clean builds, 48 static checks, nine adjacent-version rejections, synthetic-merge checkouts, run attempts and all 26 verified archive and JAR hashes. All clean JAR hashes equal their earlier runtime-observed artifacts; runtime observations remain historical.
 
 | Group | PR | Initial source | Current proposed source |
 |---|---|---|---|
@@ -59,6 +59,12 @@ All 13 sources now carry the same shared fix, contract and regression fixtures. 
 
 The previous 0.0.2 maintenance sources and security-only PRs do not contain this shared verifier. Their older verifier contracts are distinct; no current runtime failure is inferred. The 0.0.2 patches retain their independently reviewable scope. A fresh read-only conflict simulation produced the following hypothetical resolved trees by taking the proposed 1.0.0 README and workflow at the two conflicting paths. The Wrapper verifier, its tests and Windows entry point are identical in each pair. No merge was performed.
 
+The Wrapper verifier itself is blob `cb0122a0de2f` on all 13 final product
+sources, all three security-only sources and the coordinator. This common
+identity does not turn a candidate-controlled check into an independent
+defense against malicious candidate changes; trusted coordinator and release
+paths retain their separate preflight and least-privilege boundaries.
+
 | Security PR → product PR | Resolved tree equals product tree |
 |---|---|
 | #34 → #31 | `b4b0bb2fd2f19e36208530bc6dfac0954c14773a` |
@@ -67,7 +73,7 @@ The previous 0.0.2 maintenance sources and security-only PRs do not contain this
 
 The dated hierarchy test now validates the dated candidate plan rather than `current-heads.json`. Dated security scans likewise compare their own source-bound records instead of the evolving maintenance registry. The generic [current evidence validator](../../scripts/validate_current_evidence.py) checks source, JAR and log identities, continuity, static coverage, hosted checkouts, the candidate rehearsal, retained scan scope and pending conditions; it cannot authorize a release. The [cross-branch comparison](../../scripts/check_shared_verifier_sync.py) reads the actual pinned Git blobs, not merely each branch’s self-declared digest table. A clean public fetch of the 13 pinned commits passed. It is an equivalence check at the selected pins, not proof of independent review or live branch identity.
 
-The preceding non-publishing rehearsal aggregated 13 artifacts covering 48 versions and rejected 15 existing controls plus three separately identified harness controls. A final-source rehearsal is pending; no candidate result is strict release authorization. Changes from each retained security scan source to the current product source contain only the linkage scripts, fixtures and contract; the current index retains each actual scan source. This is dependency-input continuity, not a fresh resolution or a new scan.
+The current non-publishing rehearsal aggregated 13 final-source artifacts covering 48 versions and rejected 15 existing controls plus three separately identified harness controls. The release-code commit and hashes are recorded; no candidate result is strict release authorization. Changes from each retained security scan source to the current product source contain only the linkage scripts, fixtures and contract; the current index retains each actual scan source. This is dependency-input continuity, not a fresh resolution or a new scan.
 
 ## Product, security and integration decisions
 
@@ -77,10 +83,28 @@ The [critical Netty TLS review](../dependency-evidence/advisory-dispositions/net
 
 At refresh all 14 target branches reported unprotected, visible rulesets were empty and no human PR approval was returned. GitHub-managed Automatic Dependency Submission remained active; its settings toggle requires administrator action and read-back. On the last completed #15 run at `55ec2b1b733d37b5921296e3313f67d1ae907fc1`, ordinary coordination validation succeeded and the live prerequisite failed because integrated 1.21.11 lacks the release verifier. The staged baseline/final protection policy and security-first integration sequence remain appropriate; checks against simulated merged trees do not change the live status.
 
-The refreshed collaborator list returned two accounts; visibility or technical
-write access is not an owner appointment or submitted independent approval.
+The subsequent coordinator code commit `ef0934f76034bda684895bc148a82b68cbca4973`
+passed its ordinary hosted job in [push run 43768829898](https://github.com/skyRolly/third-person-readable-maps/actions/runs/43768829898), including 163 tests, actionlint, the pinned-copy comparison and active maintenance registry validation. Its separate live job failed with the same missing 1.21.11 release verifier. The PR run and any later evidence-update head must be checked separately; this is not a live release pass.
+
+On the final fixture-only product heads, #22's first hosted Linux attempt in
+[run 43767933332](https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767933332)
+failed during Gradle dependency resolution because the upstream repository
+returned HTTP 429 for `org.ow2:ow2:1.5.1`. The local clean build passed.
+The rerun of that workflow completed successfully for both Linux and Windows;
+the original failed attempt remains part of the history and is not a passing
+check.
+
+The refreshed collaborator list returned owner `skyRolly` and `ZDN-1942` with
+write access. The development PRs are authored by `skyRolly`, so `ZDN-1942` is
+technically eligible to review them; write access is not an owner appointment
+or a submitted independent approval.
 The environments API returned zero visible environments. Auditor-secret and
 security-alert settings returned HTTP 403, and the tag-protection endpoint
 returned HTTP 404, which does not establish whether another tag ruleset exists.
 An administrator must inspect and read back the actual environment, credential,
 tag and managed-submission controls. No browser settings surface was available.
+
+After the final product CI and artifact checks passed, the 13 product PRs were
+marked ready for independent review. This is neither an approval nor permission
+to merge; the security-first base updates and all release gates remain. The
+coordinator PR's live status should be checked after its final ordinary CI.

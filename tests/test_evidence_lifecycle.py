@@ -133,6 +133,45 @@ class EvidenceLifecycleTests(unittest.TestCase):
         row['static'] = {'state':'observed'}
         with self.assertRaisesRegex(ValueError, 'require an observed artifact'): self.validate()
 
+    def test_candidate_rehearsal_checks_manifest_checksums_and_code(self):
+        self.heads['g']['branch'] = 'candidate/mc-g'
+        self.files['plan'] = {'version':'1.0.0', 'groups':{'g':{'commit':self.current,
+                                                               'source_branch':'candidate/mc-g'}}}
+        self.files['manifest'] = {'candidate':True, 'version':'1.0.0', 'coordinator_sha':self.old,
+                                  'groups':[{'id':'g', 'branch':'candidate/mc-g', 'source_commit':self.current,
+                                             'sha256':self.digest, 'artifact':'fixture.jar', 'java':8,
+                                             'namespace':'intermediary', 'minecraft':['v1','v2']}]}
+        self.files['config'] = {'groups':{'g':{'minecraft':['v1','v2'], 'namespace':'intermediary',
+                                                'java':8, 'build_jdk':'fixture'}}}
+        self.blobs.update({'manifest':json.dumps(self.files['manifest']).encode(), 'release.py':b'release',
+                           'config':json.dumps(self.files['config']).encode(), 'base-runner':b'old-input',
+                           'rehearsal/rehearsal.log':b'complete'})
+        matrix = (json.dumps(evidence.release.matrix(self.files['config'], self.files['plan']), indent=2)+'\n').encode()
+        self.files['rehearsal/index.json'] = {
+            'candidate':True, 'authorizes_release':False, 'coordinator_code_commit':self.old,
+            'coordinator_code_sha256':{'release.py':hashlib.sha256(b'release').hexdigest()},
+            'runner_base':'base-runner', 'runner_base_sha256':hashlib.sha256(b'old-input').hexdigest(),
+            'runner_substitutions':{'old':'new'}, 'runner_sha256':hashlib.sha256(b'new-input').hexdigest(),
+            'candidate_compatibility_record':'config',
+            'candidate_compatibility_sha256':hashlib.sha256(self.blobs['config']).hexdigest(),
+            'candidate_matrix_sha256':hashlib.sha256(matrix).hexdigest(),
+            'log_sha256':hashlib.sha256(b'complete').hexdigest(),
+            'harness_controls':['missing-static-evidence','failed-static-evidence','missing-wrapper-preflight-evidence'],
+            'other_controls':1}
+        self.files['controls'] = {name:'rejected' for name in
+                                  ('missing-static-evidence','failed-static-evidence',
+                                   'missing-wrapper-preflight-evidence','production-control')}
+        self.blobs['checksums'] = (self.digest+'  fixture.jar\n'+
+                                   hashlib.sha256(self.blobs['manifest']).hexdigest()+'  release-manifest.json\n').encode()
+        self.selection['candidate_rehearsal'] = {'state':'observed', 'index':'rehearsal/index.json',
+                                                  'manifest':'manifest', 'plan':'plan',
+                                                  'checksums':'checksums', 'controls':'controls'}
+        self.validate()
+        original = self.blobs['checksums']; self.blobs['checksums'] = original.replace(self.digest.encode(), self.changed.encode())
+        with self.assertRaisesRegex(ValueError, 'candidate rehearsal source or artifact mismatch'): self.validate()
+        self.blobs['checksums'] = original; self.blobs['release.py'] = b'changed'
+        with self.assertRaisesRegex(ValueError, 'coordinator code changed'): self.validate()
+
     def test_checked_in_current_selection_is_consistent(self):
         heads = evidence.read('docs/version-consistency-1.0.0/current-heads.json')['groups']
         candidates = evidence.read('docs/legacy-candidate-evidence.json')['groups']

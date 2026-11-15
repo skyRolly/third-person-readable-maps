@@ -1,0 +1,551 @@
+{
+  "observed_on": "2026-11-15",
+  "groups": {
+    "1.17-1.19.2": {
+      "pr": 20,
+      "head_sha": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "ab051c00e30a7d54dc5d17abfda09e68d353777c",
+      "merge_tree": "55f3822d7471362e79ea6f314cb2bbdb0952a7ad",
+      "head_tree": "55f3822d7471362e79ea6f314cb2bbdb0952a7ad",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767934087",
+          "job_id": "132977121490",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:20:40Z",
+          "job_completed_at": "2026-11-15T22:23:21Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767934087/job/132977121490",
+          "checkout_merge_sha": "ab051c00e30a7d54dc5d17abfda09e68d353777c",
+          "archive_artifact_id": 14182984515,
+          "archive_created_at": "2026-11-15T22:23:16Z",
+          "archive_sha256": "c4922894edd0e6d27bff9b5e6e2c44f6791966ebc46a7bd8ac737352d14fea63",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+          "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767934087",
+          "job_id": "132977121801",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:19:18Z",
+          "job_completed_at": "2026-11-15T22:22:12Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767934087/job/132977121801",
+          "checkout_merge_sha": "ab051c00e30a7d54dc5d17abfda09e68d353777c",
+          "archive_artifact_id": 14183561043,
+          "archive_created_at": "2026-11-15T22:22:07Z",
+          "archive_sha256": "13519ef40c2332ba4bf384c68f0b659b8bb1870435e70768859980b09effcd45",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+          "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.14-1.14.4": {
+      "pr": 23,
+      "head_sha": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "fa6fcafee7a6bca0f497f9f303e02fb50367d822",
+      "merge_tree": "fa8fe04cdb1f521ac474a9e9c8e2ce20a553f234",
+      "head_tree": "fa8fe04cdb1f521ac474a9e9c8e2ce20a553f234",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767928716",
+          "job_id": "132977104533",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:20:04Z",
+          "job_completed_at": "2026-11-15T22:23:22Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767928716/job/132977104533",
+          "checkout_merge_sha": "fa6fcafee7a6bca0f497f9f303e02fb50367d822",
+          "archive_artifact_id": 14183835566,
+          "archive_created_at": "2026-11-15T22:23:18Z",
+          "archive_sha256": "077d754b140644716c81cab16c659c1a47e07c858b51f53ed2c5d76ca95fb053",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+          "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767928716",
+          "job_id": "132977104817",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:21:57Z",
+          "job_completed_at": "2026-11-15T22:25:57Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767928716/job/132977104817",
+          "checkout_merge_sha": "fa6fcafee7a6bca0f497f9f303e02fb50367d822",
+          "archive_artifact_id": 14183293859,
+          "archive_created_at": "2026-11-15T22:25:51Z",
+          "archive_sha256": "de431d0761cc2a771b03061cffd95abdc4e530a0d35b3b4eeb68c3489807755c",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+          "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.15-1.16.5": {
+      "pr": 21,
+      "head_sha": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "aaf67a75595cc725b81c89b33f8948309ceec16a",
+      "merge_tree": "0c02c46f4749c877d0cce2426a173353873cefa8",
+      "head_tree": "0c02c46f4749c877d0cce2426a173353873cefa8",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767930093",
+          "job_id": "132977109759",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:23:01Z",
+          "job_completed_at": "2026-11-15T22:25:53Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767930093/job/132977109759",
+          "checkout_merge_sha": "aaf67a75595cc725b81c89b33f8948309ceec16a",
+          "archive_artifact_id": 14183816214,
+          "archive_created_at": "2026-11-15T22:25:49Z",
+          "archive_sha256": "45dd5c749ac073c7dd4870199881f92f02e91c118a4193401d1ae8a91c73befa",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+          "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767930093",
+          "job_id": "132977109734",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:25:42Z",
+          "job_completed_at": "2026-11-15T22:29:54Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767930093/job/132977109734",
+          "checkout_merge_sha": "aaf67a75595cc725b81c89b33f8948309ceec16a",
+          "archive_artifact_id": 14183194893,
+          "archive_created_at": "2026-11-15T22:29:49Z",
+          "archive_sha256": "2195af7c593ee2e366b2ca1a509f7f09c0e3f8fe47778993d783e34b0587641d",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+          "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.19.3": {
+      "pr": 22,
+      "head_sha": "b0353abf9dc93b774a4fcd2e94c98040fd643813",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "57ed984010b40f5d5db13441df5245721223da35",
+      "merge_tree": "46471a2417676671dab482b40b65270670c400fb",
+      "head_tree": "46471a2417676671dab482b40b65270670c400fb",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767933332",
+          "job_id": "132981509259",
+          "run_attempt": 2,
+          "job_started_at": "2026-11-15T22:27:17Z",
+          "job_completed_at": "2026-11-15T22:30:21Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767933332/job/132981509259",
+          "checkout_merge_sha": "57ed984010b40f5d5db13441df5245721223da35",
+          "archive_artifact_id": 14184041084,
+          "archive_created_at": "2026-11-15T22:30:16Z",
+          "archive_sha256": "57b2a76afbfd84c3aa9cf7a6656a0f2b5db0052392d011df9d4a23effdf8b463",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+          "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767933332",
+          "job_id": "132981511357",
+          "run_attempt": 2,
+          "job_started_at": "2026-11-15T22:20:01Z",
+          "job_completed_at": "2026-11-15T22:24:04Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767933332/job/132981511357",
+          "checkout_merge_sha": "57ed984010b40f5d5db13441df5245721223da35",
+          "archive_artifact_id": 14183506529,
+          "archive_created_at": "2026-11-15T22:23:58Z",
+          "archive_sha256": "ab7d6c29c99f69c44a116913cf643a9db84b3dde5e64ddd64fcb6a89922e809a",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+          "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.19.4-1.20.4": {
+      "pr": 19,
+      "head_sha": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "4c0ebfc07df61345af33bb259b36e36602e31e95",
+      "merge_tree": "ef50c63e2cc6e2567db494d6b7d5b745e9a7b505",
+      "head_tree": "ef50c63e2cc6e2567db494d6b7d5b745e9a7b505",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767935661",
+          "job_id": "132977126835",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:26:19Z",
+          "job_completed_at": "2026-11-15T22:28:51Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767935661/job/132977126835",
+          "checkout_merge_sha": "4c0ebfc07df61345af33bb259b36e36602e31e95",
+          "archive_artifact_id": 14183397454,
+          "archive_created_at": "2026-11-15T22:28:47Z",
+          "archive_sha256": "c1b964b7c3899e7d21ecfa0a5dc4b753b7b8f40ee96e5941d1cfa2f1b7756e93",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+          "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767935661",
+          "job_id": "132977126640",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:24:58Z",
+          "job_completed_at": "2026-11-15T22:29:13Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767935661/job/132977126640",
+          "checkout_merge_sha": "4c0ebfc07df61345af33bb259b36e36602e31e95",
+          "archive_artifact_id": 14183661604,
+          "archive_created_at": "2026-11-15T22:29:06Z",
+          "archive_sha256": "7b155c7d84905c90d4867ee7d5a23178c9c69f2cb25c6899a76dba8469b6f9eb",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+          "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.20.5-1.20.6": {
+      "pr": 18,
+      "head_sha": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "d22d49134b8d47d94b1440a986a9e4498eaa42f4",
+      "merge_tree": "6866ed7df46b75e2ecab74a2dda84e515e999e1d",
+      "head_tree": "6866ed7df46b75e2ecab74a2dda84e515e999e1d",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767936895",
+          "job_id": "132977130871",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:22:14Z",
+          "job_completed_at": "2026-11-15T22:25:50Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767936895/job/132977130871",
+          "checkout_merge_sha": "d22d49134b8d47d94b1440a986a9e4498eaa42f4",
+          "archive_artifact_id": 14183293841,
+          "archive_created_at": "2026-11-15T22:25:45Z",
+          "archive_sha256": "9a0e8358027a27a4567347dc8547d90f55b2a951c0b802f19258f5e030050323",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+          "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767936895",
+          "job_id": "132977130929",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:23:13Z",
+          "job_completed_at": "2026-11-15T22:26:35Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767936895/job/132977130929",
+          "checkout_merge_sha": "d22d49134b8d47d94b1440a986a9e4498eaa42f4",
+          "archive_artifact_id": 14183089974,
+          "archive_created_at": "2026-11-15T22:26:30Z",
+          "archive_sha256": "a2c601324bc37e7cfe3f329d8c07440e9e93e0fad64113c6cc268ffc153ee2e0",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+          "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.21-1.21.1": {
+      "pr": 17,
+      "head_sha": "e80def340550064cbc8ec7250b6b588c2ece1a43",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "800286a39482fc0845a4bad46c0d3206b754145f",
+      "merge_tree": "5c8277e866188ef72bed1ff8669d6d3b70e904b1",
+      "head_tree": "5c8277e866188ef72bed1ff8669d6d3b70e904b1",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767939676",
+          "job_id": "132977139264",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:23:32Z",
+          "job_completed_at": "2026-11-15T22:26:20Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767939676/job/132977139264",
+          "checkout_merge_sha": "800286a39482fc0845a4bad46c0d3206b754145f",
+          "archive_artifact_id": 14183237541,
+          "archive_created_at": "2026-11-15T22:26:14Z",
+          "archive_sha256": "8be37a8a0f28bfb99a14b65b2309545f710da3c06cf1b9cad24527bb4d835c85",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+          "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767939676",
+          "job_id": "132977139521",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:25:58Z",
+          "job_completed_at": "2026-11-15T22:30:27Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767939676/job/132977139521",
+          "checkout_merge_sha": "800286a39482fc0845a4bad46c0d3206b754145f",
+          "archive_artifact_id": 14183382629,
+          "archive_created_at": "2026-11-15T22:30:20Z",
+          "archive_sha256": "224afa224538c8a17bdee90136615ef6153454350c57b162a1350bbc6f1ea35f",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+          "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.21.11": {
+      "pr": 31,
+      "head_sha": "03f500e1ea528084024406ed1b85ace18fcf5be3",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "dc7b914e1f3b78ea08e3ff5594bc2af01832319a",
+      "merge_tree": "b4b0bb2fd2f19e36208530bc6dfac0954c14773a",
+      "head_tree": "b4b0bb2fd2f19e36208530bc6dfac0954c14773a",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767941791",
+          "job_id": "132977145737",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:21:33Z",
+          "job_completed_at": "2026-11-15T22:23:21Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767941791/job/132977145737",
+          "checkout_merge_sha": "dc7b914e1f3b78ea08e3ff5594bc2af01832319a",
+          "archive_artifact_id": 14183376753,
+          "archive_created_at": "2026-11-15T22:23:17Z",
+          "archive_sha256": "3ce47ea26999c9c6f91d4e499c1b0ad9092766a630ee26dff0984a15111d2c8c",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+          "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767941791",
+          "job_id": "132977146024",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:12:47Z",
+          "job_completed_at": "2026-11-15T22:16:23Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767941791/job/132977146024",
+          "checkout_merge_sha": "dc7b914e1f3b78ea08e3ff5594bc2af01832319a",
+          "archive_artifact_id": 14182848730,
+          "archive_created_at": "2026-11-15T22:16:17Z",
+          "archive_sha256": "990925713f2b022267eea62557cd06fbc0640f49329a626cea8ff4bc71aced19",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+          "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.21.2-1.21.3": {
+      "pr": 16,
+      "head_sha": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "709b67e75180275d761a3bedbb8fb7e3899011db",
+      "merge_tree": "5763efce149c2fbbddace9dbcf1bade0076f74e3",
+      "head_tree": "5763efce149c2fbbddace9dbcf1bade0076f74e3",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767943283",
+          "job_id": "132977150943",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:20:00Z",
+          "job_completed_at": "2026-11-15T22:23:12Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767943283/job/132977150943",
+          "checkout_merge_sha": "709b67e75180275d761a3bedbb8fb7e3899011db",
+          "archive_artifact_id": 14183496461,
+          "archive_created_at": "2026-11-15T22:23:07Z",
+          "archive_sha256": "714fbe0f737c3312fa8891f8d926023cb20d931b7d14f00589fa6329dc3b2d84",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+          "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767943283",
+          "job_id": "132977150756",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:15:42Z",
+          "job_completed_at": "2026-11-15T22:19:59Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767943283/job/132977150756",
+          "checkout_merge_sha": "709b67e75180275d761a3bedbb8fb7e3899011db",
+          "archive_artifact_id": 14183720137,
+          "archive_created_at": "2026-11-15T22:19:53Z",
+          "archive_sha256": "2ab90bdbf16c807d9aad4e751b9ef92335be31cfac8694217008595ff7016802",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+          "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.21.4-1.21.8": {
+      "pr": 14,
+      "head_sha": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "d04193018aaeb63af44b7301b39e8365a97f10a4",
+      "merge_tree": "817788c6f09181383f1ac9b4a4e5c77b99169162",
+      "head_tree": "817788c6f09181383f1ac9b4a4e5c77b99169162",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767946407",
+          "job_id": "132977160446",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:25:32Z",
+          "job_completed_at": "2026-11-15T22:28:45Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767946407/job/132977160446",
+          "checkout_merge_sha": "d04193018aaeb63af44b7301b39e8365a97f10a4",
+          "archive_artifact_id": 14184125530,
+          "archive_created_at": "2026-11-15T22:28:41Z",
+          "archive_sha256": "dd4c37c48095c239778546171ae4c1a0c25671901040a5a8b9b1df344a520755",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+          "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767946407",
+          "job_id": "132977160415",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:26:22Z",
+          "job_completed_at": "2026-11-15T22:30:46Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767946407/job/132977160415",
+          "checkout_merge_sha": "d04193018aaeb63af44b7301b39e8365a97f10a4",
+          "archive_artifact_id": 14183522271,
+          "archive_created_at": "2026-11-15T22:30:41Z",
+          "archive_sha256": "f011722681cc9d089da99a943f9a24d6d220391cacc84d9e1c066e226e5be1ce",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+          "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "1.21.9-1.21.10": {
+      "pr": 13,
+      "head_sha": "d20a2f0f25f5d680c5092379790d5b724282641d",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "bef5f2b695ddb495370774f5d98007b32b813fb1",
+      "merge_tree": "5ac12befa5ee7d14a588b583b03c95f691c99f7a",
+      "head_tree": "5ac12befa5ee7d14a588b583b03c95f691c99f7a",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767949037",
+          "job_id": "132977169014",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:25:12Z",
+          "job_completed_at": "2026-11-15T22:27:58Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767949037/job/132977169014",
+          "checkout_merge_sha": "bef5f2b695ddb495370774f5d98007b32b813fb1",
+          "archive_artifact_id": 14183692028,
+          "archive_created_at": "2026-11-15T22:27:54Z",
+          "archive_sha256": "85617c9fa7a6cb38db86cfe505dd987efa83a69d8722a8b04d96e81d15d3941a",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+          "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767949037",
+          "job_id": "132977168938",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:26:24Z",
+          "job_completed_at": "2026-11-15T22:30:40Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767949037/job/132977168938",
+          "checkout_merge_sha": "bef5f2b695ddb495370774f5d98007b32b813fb1",
+          "archive_artifact_id": 14183527375,
+          "archive_created_at": "2026-11-15T22:30:34Z",
+          "archive_sha256": "c555545fe2960c4924b4e9bdf42e90ccd73ad996e8810e10476df1986fbd0090",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+          "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "26.1-26.2": {
+      "pr": 32,
+      "head_sha": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
+      "base_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+      "merge_sha": "52bdddbddbe69f4ac8ec602d4984c04253e1153e",
+      "merge_tree": "5fd3e5f76aa76f0b9a95e922c15b358eab17b03e",
+      "head_tree": "5fd3e5f76aa76f0b9a95e922c15b358eab17b03e",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767951075",
+          "job_id": "132977175115",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:26:37Z",
+          "job_completed_at": "2026-11-15T22:28:43Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767951075/job/132977175115",
+          "checkout_merge_sha": "52bdddbddbe69f4ac8ec602d4984c04253e1153e",
+          "archive_artifact_id": 14183244453,
+          "archive_created_at": "2026-11-15T22:28:40Z",
+          "archive_sha256": "df9ac32ec3b7623cb93bd9f7eddb04dc00aa104ff4f95b804194c08988ceb992",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+          "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767951075",
+          "job_id": "132977174959",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:22:11Z",
+          "job_completed_at": "2026-11-15T22:25:56Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767951075/job/132977174959",
+          "checkout_merge_sha": "52bdddbddbe69f4ac8ec602d4984c04253e1153e",
+          "archive_artifact_id": 14183840979,
+          "archive_created_at": "2026-11-15T22:25:50Z",
+          "archive_sha256": "1c3128fce9ccf0a07c9e2a7e427f7f2081e9323862de4820d8a99b6a35ec4216",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+          "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+          "archive_and_jar_verified": true
+        }
+      }
+    },
+    "26.3": {
+      "pr": 33,
+      "head_sha": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
+      "base_sha": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+      "merge_sha": "0d5b7b5b4e10ec14f3f0d21d98b5c6efaa840696",
+      "merge_tree": "110044c96c655d06f2152f8bf47c1572ce7078d5",
+      "head_tree": "110044c96c655d06f2152f8bf47c1572ce7078d5",
+      "checks": {
+        "ubuntu-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767951657",
+          "job_id": "132977176753",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:17:10Z",
+          "job_completed_at": "2026-11-15T22:19:23Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767951657/job/132977176753",
+          "checkout_merge_sha": "0d5b7b5b4e10ec14f3f0d21d98b5c6efaa840696",
+          "archive_artifact_id": 14183386273,
+          "archive_created_at": "2026-11-15T22:19:18Z",
+          "archive_sha256": "76eace26b43a6f618fc71023173b9303b524d90463dee238b66bc3719e3014c3",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc26.3.jar",
+          "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+          "archive_and_jar_verified": true
+        },
+        "windows-latest": {
+          "conclusion": "SUCCESS",
+          "run_id": "43767951657",
+          "job_id": "132977177027",
+          "run_attempt": 1,
+          "job_started_at": "2026-11-15T22:26:58Z",
+          "job_completed_at": "2026-11-15T22:29:19Z",
+          "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43767951657/job/132977177027",
+          "checkout_merge_sha": "0d5b7b5b4e10ec14f3f0d21d98b5c6efaa840696",
+          "archive_artifact_id": 14183826034,
+          "archive_created_at": "2026-11-15T22:29:15Z",
+          "archive_sha256": "485213a54e82701877c64e7498eb6d9b3560d2c5c891b52e67b27b9d3131e1dd",
+          "artifact_filename": "third-person-readable-maps-1.0.0-mc26.3.jar",
+          "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+          "archive_and_jar_verified": true
+        }
+      }
+    }
+  }
+}
