@@ -78,6 +78,11 @@ relationships must be established by the bounded lookup; unresolvable platform
 ancestry is not assumed. Platform class validity remains the runtime JVM's
 responsibility. Enum and record fixtures exercise only this static hierarchy
 model, not a claim that every transformation of those targets is supported.
+The bounded resolver does not load platform class metadata. A member reference
+whose symbolic owner is a game, library or candidate class, but whose only
+declaration lies in an unresolved platform superclass or interface, therefore
+fails closed as a missing member or game reference even when the JVM could resolve it. Direct
+platform-owned references remain delegated to the configured Java runtime.
 
 | Reference | Verification within this contract | Boundary |
 |---|---|---|
