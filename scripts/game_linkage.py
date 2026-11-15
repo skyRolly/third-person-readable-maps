@@ -95,7 +95,12 @@ def validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version):
             jvm.require(parent is not None and parent not in mixins,
                         'unsupported Mixin superclass: ' + str(parent))
             jvm.validate_hierarchy_edge(target_node, parent, False, lookup)
-            jvm.require(jvm.is_subclass(target_node.get('super'), parent, lookup),
+            # The target and its reachable non-platform hierarchy were checked
+            # above. Every supported class target ultimately extends Object,
+            # including when the chain crosses a JVM-provided platform class.
+            # Do not broaden is_subclass: other callers need proven ancestry.
+            jvm.require(parent == 'java/lang/Object' or
+                        jvm.is_subclass(target_node.get('super'), parent, lookup),
                         'Mixin superclass is not in target ancestry: ' + parent)
             interfaces = node.get('interfaces', [])
             jvm.require(len(interfaces) == len(set(interfaces)), 'duplicate Mixin superinterface: ' + name)
