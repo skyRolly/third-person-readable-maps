@@ -65,6 +65,8 @@ def make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version
         node['nest_host'] = forward.get(node['nest_host'], node['nest_host'])
         if node['nest_members'] is not None:
             node['nest_members'] = [forward.get(i, i) for i in node['nest_members']]
+        if node['permitted_subclasses'] is not None:
+            node['permitted_subclasses'] = [forward.get(i, i) for i in node['permitted_subclasses']]
         node['origin'] = 'game'
         for member in node['members']:
             member['descriptor'] = mapped_descriptor(member['descriptor'])
@@ -74,10 +76,45 @@ def make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version
     return lookup
 
 
+def validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version):
+    """Check candidate class hierarchies and supported Mixin contributions."""
+    mixins = set(mixin_targets)
+    for name, node in mod_nodes.items():
+        try:
+            jvm.require(node.get('permitted_subclasses') is None,
+                        'unsupported sealed candidate class: ' + name)
+            if name not in mixins:
+                jvm.validate_hierarchy(name, lookup, forbidden=mixins)
+                continue
+            target = mixin_targets[name]
+            target_node = lookup(target)
+            jvm.require(target_node is not None, 'missing Mixin target: ' + target)
+            jvm.require(not target_node['access'] & 0x0200, 'unsupported interface Mixin target: ' + target)
+            jvm.validate_hierarchy(target, lookup, forbidden=mixins)
+            parent = node.get('super')
+            jvm.require(parent is not None and parent not in mixins,
+                        'unsupported Mixin superclass: ' + str(parent))
+            jvm.validate_hierarchy_edge(target_node, parent, False, lookup)
+            jvm.require(jvm.is_subclass(target_node.get('super'), parent, lookup),
+                        'Mixin superclass is not in target ancestry: ' + parent)
+            interfaces = node.get('interfaces', [])
+            jvm.require(len(interfaces) == len(set(interfaces)), 'duplicate Mixin superinterface: ' + name)
+            for interface in interfaces:
+                jvm.require(interface not in mixins, 'unsupported Mixin interface: ' + interface)
+                jvm.require(not interface.startswith(('java/', 'javax/')),
+                            'unsupported Mixin platform superinterface: ' + interface)
+                resolved = jvm.validate_hierarchy_edge(target_node, interface, True, lookup)
+                if resolved is not None:
+                    jvm.validate_hierarchy(interface, lookup, forbidden=mixins)
+        except ValueError as exc:
+            raise ValueError(version + ': ' + str(exc) + ' from ' + name) from exc
+
+
 def verify_game_instructions(mod_nodes, mixin_targets, game, forward, reverse, mapped_members, version,
                              class_lookup=None):
     validate_mixin_semantics(mod_nodes, mixin_targets)
     lookup = class_lookup or make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version)
+    validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version)
     lambda_descriptor = ('(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;'
                          'Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;'
                          'Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;')
@@ -113,7 +150,8 @@ def verify_game_instructions(mod_nodes, mixin_targets, game, forward, reverse, m
         for use in node['uses']:
             owner = use['owner']
             if use['operation'] == 'invokespecial' and use['name'] != '<init>':
-                jvm.require(owner == caller and (owner in mod_nodes or owner in mixin_targets.values()),
+                effective_owner = mixin_targets.get(owner, owner)
+                jvm.require(effective_owner == caller and (owner in mod_nodes or owner in mixin_targets.values()),
                             version + ': unsupported non-constructor invokespecial from ' + name)
             declared_locally = owner in mod_nodes and any(
                 (member['kind'], member['name'], member['descriptor']) ==
