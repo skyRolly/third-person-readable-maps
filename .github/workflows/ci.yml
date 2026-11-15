@@ -48,9 +48,6 @@ jobs:
         working-directory: ${{ runner.temp }}
         shell: pwsh
         run: '& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all'
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.15.2'
       - name: Verify APIs in every declared Minecraft version
         run: python scripts/verify_supported_apis.py --jar build/libs
       - name: Test static verification
