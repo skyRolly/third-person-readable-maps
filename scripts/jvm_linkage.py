@@ -140,7 +140,7 @@ def parse(data, include_code=True):
                     list(attributes(c))
                     require(not c.buf.read(1), 'trailing Code attribute bytes')
     bootstrap, class_annotations = [], {}
-    nest_host, nest_members = None, None
+    nest_host, nest_members, permitted_subclasses = None, None, None
     for attr, payload in attributes(r):
         if attr in ('RuntimeVisibleAnnotations', 'RuntimeInvisibleAnnotations'):
             class_annotations.update(annotations(payload))
@@ -162,6 +162,13 @@ def parse(data, include_code=True):
             require(all(name and not name.startswith('[') for name in nest_members) and
                     len(nest_members) == len(set(nest_members)) and not n.buf.read(1),
                     'invalid NestMembers attribute')
+        elif attr == 'PermittedSubclasses':
+            require(major >= 61 and permitted_subclasses is None,
+                    'duplicate or unsupported PermittedSubclasses')
+            p = Reader(payload); permitted_subclasses = [class_name(p.u2()) for _ in range(p.u2())]
+            require(all(name and not name.startswith('[') for name in permitted_subclasses) and
+                    len(permitted_subclasses) == len(set(permitted_subclasses)) and not p.buf.read(1),
+                    'invalid PermittedSubclasses attribute')
     require(not r.buf.read(1), 'trailing class bytes')
     require(nest_host != class_name(own) and (nest_members is None or class_name(own) not in nest_members),
             'class cannot list itself as its nest host or member')
@@ -239,7 +246,8 @@ def parse(data, include_code=True):
     return {'name': class_name(own), 'super': class_name(parent), 'interfaces': interfaces,
             'access': access, 'major': major, 'members': members, 'uses': uses,
             'class_uses': class_uses, 'classes': classes, 'dynamic_sites': dynamic_sites,
-            'annotations': class_annotations, 'nest_host': nest_host, 'nest_members': nest_members}
+            'annotations': class_annotations, 'nest_host': nest_host, 'nest_members': nest_members,
+            'permitted_subclasses': permitted_subclasses}
 
 
 def class_use_name(name):
@@ -250,16 +258,79 @@ def class_use_name(name):
     return None
 
 
+def same_runtime_package(first, second, lookup):
+    if first.rpartition('/')[0] != second.rpartition('/')[0]: return False
+    if first == second: return True
+    a, b = lookup(first), lookup(second)
+    return bool(a and b and a.get('origin') is not None and a.get('origin') == b.get('origin'))
+
+
 def validate_class_use(use, caller, lookup):
     name = class_use_name(use['name'])
     if name is None: return
     node = lookup(name)
     require(node is not None, 'missing referenced class: ' + name)
-    require((node['access'] & 1) or name.rpartition('/')[0] == caller.rpartition('/')[0],
+    require((node['access'] & 1) or same_runtime_package(name, caller, lookup),
             'inaccessible referenced class: ' + name)
     if use['operation'] == 'new':
         require(not use['name'].startswith('[') and not (node['access'] & (0x0200 | 0x0400)),
                 'cannot instantiate interface or abstract class: ' + name)
+
+
+def validate_hierarchy_edge(child, parent, is_interface, lookup):
+    """Validate one direct, non-platform hierarchy edge in its runtime context."""
+    name = child['name']
+    require(parent and not parent.startswith('['), 'invalid direct supertype for ' + name)
+    if parent.startswith(('java/', 'javax/')):
+        # Candidate hierarchy use of arbitrary platform types is outside this
+        # bounded model. Platform parents of game/library classes are checked
+        # by the game's selected JVM; Object is the ordinary candidate root.
+        require(child.get('origin') != 'candidate' or
+                (parent == 'java/lang/Object' and not is_interface),
+                'unsupported candidate platform supertype: ' + parent)
+        require(parent != 'java/lang/Object' or not is_interface,
+                'Object cannot be a superinterface')
+        return None
+    node = lookup(parent)
+    require(node is not None, 'missing direct supertype: ' + parent)
+    require(bool(node['access'] & 0x0200) == is_interface,
+            'supertype class/interface mismatch: ' + parent)
+    same_package = parent.rpartition('/')[0] == name.rpartition('/')[0]
+    same_origin = child.get('origin') is not None and child.get('origin') == node.get('origin')
+    require((node['access'] & 1) or (same_package and same_origin),
+            'inaccessible direct supertype: ' + parent)
+    if not is_interface:
+        require(not node['access'] & 0x0010, 'cannot extend final class: ' + parent)
+    # The verifier does not model modules/class-loader identity sufficiently
+    # to prove the complete sealed hierarchy contract; reject it explicitly.
+    require(node.get('permitted_subclasses') is None, 'unsupported sealed supertype: ' + parent)
+    return node
+
+
+def validate_hierarchy(start, lookup, forbidden=()):
+    """Check supported reachable hierarchy edges and reject cycles."""
+    done, active = set(), set()
+
+    def visit(name):
+        require(name not in active, 'cyclic hierarchy: ' + name)
+        if name in done: return
+        node = lookup(name)
+        require(node is not None, 'missing hierarchy class: ' + name)
+        require(node['name'] == name, 'hierarchy class identity mismatch: ' + name)
+        active.add(name)
+        parent = node.get('super')
+        interfaces = node.get('interfaces', [])
+        require(parent is not None, 'missing superclass declaration: ' + name)
+        require(not (node['access'] & 0x0200) or parent == 'java/lang/Object',
+                'interface must declare Object as superclass: ' + name)
+        require(len(interfaces) == len(set(interfaces)), 'duplicate superinterface: ' + name)
+        for supertype, is_interface in [(parent, False)] + [(item, True) for item in interfaces]:
+            require(supertype not in forbidden, 'unsupported hierarchy reference to a Mixin: ' + supertype)
+            target = validate_hierarchy_edge(node, supertype, is_interface, lookup)
+            if target is not None: visit(supertype)
+        active.remove(name); done.add(name)
+
+    visit(start)
 
 
 def is_subclass(child, parent, lookup, seen=None):
@@ -395,7 +466,7 @@ def validate_use(use, caller, lookup):
         if op == 'newinvokespecial':
             require(not (node['access'] & (0x0200 | 0x0400)),
                     'constructor handle cannot instantiate interface or abstract class: ' + symbol)
-    require((node['access'] & 1) or owner.rpartition('/')[0] == caller.rpartition('/')[0],
+    require((node['access'] & 1) or same_runtime_package(owner, caller, lookup),
             'inaccessible referenced class: ' + symbol)
     resolved = resolve_member(owner, kind, name, desc, lookup)
     require(resolved is not None, 'missing member: ' + symbol)
@@ -421,7 +492,7 @@ def validate_use(use, caller, lookup):
         else:
             require(method == '<clinit>' and descriptor == '()V' and access & 8,
                     'final static field write outside class initializer: ' + symbol)
-    package = caller.rpartition('/')[0] == declared.rpartition('/')[0]
+    package = same_runtime_package(caller, declared, lookup)
     if not (flags & 1):
         if flags & 2:
             require(caller == declared or same_nest(caller, declared, lookup),
