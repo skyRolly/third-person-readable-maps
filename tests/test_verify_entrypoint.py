@@ -38,7 +38,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
         subprocess.run(command+[str(path)], check=True, capture_output=True)
 
     def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False,
-                hierarchy=None, mixin_helper=False):
+                hierarchy=None, mixin_helper=False, target_hierarchy='object'):
         with tempfile.TemporaryDirectory(dir=self.root) as directory:
             root = Path(directory); support = root/'support'; support.mkdir()
             sources = {
@@ -58,6 +58,24 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                     'package net.minecraft.client.renderer.entity.layers; public class ItemInHandLayer { '
                     'public void submitArmWithItem'+target_signature+' { '+body+' } }',
             }
+            declaration = {
+                'object': 'class ItemInHandLayer',
+                'runtime': 'class ItemInHandLayer extends RuntimeException',
+                'indirect': 'class ItemInHandLayer extends Base',
+                'enum': 'enum ItemInHandLayer',
+                'record': 'record ItemInHandLayer()',
+                'missing': 'class ItemInHandLayer',
+                'missing-parent': 'class ItemInHandLayer extends Base',
+                'interface': 'interface ItemInHandLayer',
+            }[target_hierarchy]
+            prefix = 'INSTANCE; ' if target_hierarchy == 'enum' else ''
+            method = 'public default void submitArmWithItem' if target_hierarchy == 'interface' else 'public void submitArmWithItem'
+            sources['net/minecraft/client/renderer/entity/layers/ItemInHandLayer.java'] = (
+                'package net.minecraft.client.renderer.entity.layers; public '+declaration+' { '+prefix+
+                method+target_signature+' { '+body+' } }')
+            if target_hierarchy in ('indirect', 'missing-parent'):
+                sources['net/minecraft/client/renderer/entity/layers/Base.java'] = (
+                    'package net.minecraft.client.renderer.entity.layers; public class Base extends RuntimeException {}')
             if inherited:
                 sources['org/joml/Api.java'] = 'package org.joml; public class Api { public int value; public void run() {} }'
             if inherited and inherited.startswith('hidden'):
@@ -66,7 +84,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             paths = []
             for name, source in sources.items():
                 path = root/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_text(source); paths.append(str(path))
-            subprocess.run([self.javac, '--release', '8', '-d', str(support), *paths],
+            subprocess.run([self.javac, '--release', '17' if target_hierarchy == 'record' else '8', '-d', str(support), *paths],
                            check=True, capture_output=True)
             mixin = root/'ReadableMapLayerMixin.java'
             mixin.write_text('package tech.rolly.thirdpersonreadablemaps.mixin; '
@@ -123,7 +141,11 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             game_buf = io.BytesIO()
             with ZipFile(game_buf, 'w') as z:
                 path = 'net/minecraft/client/renderer/entity/layers/ItemInHandLayer.class'
-                z.write(support/path, path)
+                if target_hierarchy != 'missing':
+                    z.write(support/path, path)
+                if target_hierarchy == 'indirect':
+                    path = 'net/minecraft/client/renderer/entity/layers/Base.class'
+                    z.write(support/path, path)
                 if hierarchy_info and hierarchy_info['location'] == 'game' and hierarchy_info['variant'] != 'missing':
                     z.write(support/hierarchy_info['parent'], str(hierarchy_info['parent']))
             game_data = game_buf.getvalue()
@@ -225,6 +247,29 @@ class OfficialEntrypointFixtures(unittest.TestCase):
         self.fixture('HEAD', 'return;', inherited='platform-valid')
         with self.assertRaisesRegex(ValueError, 'missing member'):
             self.fixture('HEAD', 'return;', inherited='platform-missing')
+
+    def test_default_mixin_parent_reaches_platform_derived_targets(self):
+        # These are compiled game classes, packaged and checked via verifier.verify.
+        # They exercise the static model, not an actual Mixin transformation.
+        current = verifier.game_linkage.validate_product_hierarchies
+        def previous_guard(nodes, targets, lookup, version):
+            for name, target in targets.items():
+                parent = nodes[name]['super']
+                verifier.jvm_linkage.require(
+                    verifier.jvm_linkage.is_subclass(lookup(target)['super'], parent, lookup),
+                    'previous Mixin ancestry guard')
+            return current(nodes, targets, lookup, version)
+        with patch.object(verifier.game_linkage, 'validate_product_hierarchies', side_effect=previous_guard):
+            with self.assertRaisesRegex(ValueError, 'previous Mixin ancestry guard'):
+                self.fixture('HEAD', 'return;', target_hierarchy='runtime')
+        for kind in ('object', 'runtime', 'indirect', 'enum', 'record'):
+            with self.subTest(kind=kind):
+                self.fixture('HEAD', 'return;', target_hierarchy=kind)
+        for kind, error in (('missing', 'missing Mixin target|Mixin target descriptor is missing|missing game'),
+                            ('missing-parent', 'missing direct supertype'),
+                            ('interface', 'unsupported interface Mixin target')):
+            with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, error):
+                self.fixture('HEAD', 'return;', target_hierarchy=kind)
 
     def test_hierarchy_and_mixin_helper_reach_packaged_entrypoint(self):
         # Reproduce the prior presence-only hierarchy verification.
