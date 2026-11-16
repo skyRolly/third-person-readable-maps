@@ -213,30 +213,6 @@ def verify(mod_path, versions=None, clients=None):
                     return read_class(game.read(original + '.class'))
                 except KeyError:
                     return None
-            def resolve(kind, owner, member, desc, seen=None):
-                seen = seen or set()
-                if owner in seen:
-                    return False
-                seen.add(owner)
-                if owner in mod_classes:
-                    node = mod_classes[owner]
-                    if any((m['kind'], m['name'], m['descriptor']) == (kind, member, desc) for m in node['members']):
-                        return True
-                    return any(resolve(kind, ancestor, member, desc, seen) for ancestor in [node['super']] + node['interfaces'] if ancestor)
-                original = reverse.get(owner, owner)
-                node = game_class(original)
-                if node is None:
-                    return False
-                mapped_name = mapped_members.get((kind, owner, member, desc))
-                if mapped_name is None and not (member.startswith('method_') or member.startswith('field_')):
-                    mapped_name = member
-                original_desc = to_original(desc)
-                if mapped_name is not None and any((m['kind'], m['name'], m['descriptor']) == (kind, mapped_name, original_desc) for m in node['members']):
-                    return True
-                if member in ('<init>', '<clinit>'):
-                    return False
-                return any(resolve(kind, forward.get(ancestor, ancestor), member, desc, seen)
-                           for ancestor in [node['super']] + node['interfaces'] if ancestor)
             for target, name, desc, access, point in injections:
                 require(target in reverse, f'{version}: missing Mixin target {target}')
                 node = game_class(reverse[target]); original_name = mapped_members.get(('method', target, name, desc))
@@ -260,12 +236,13 @@ def verify(mod_path, versions=None, clients=None):
                            if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
             missing_classes = [c for c in sorted(classes) if not game_class(reverse.get(c, c))]
             require(not missing_classes, f'{version}: missing classes: {missing_classes}')
-            missing = [ref for ref in sorted(refs) if not resolve(*ref)]
-            require(not missing, f'{version}: missing game members: {missing}')
             instruction_count, library_coverage = 0, []
             for platform in runtime_libraries.platforms():
                 runtime_libraries.select(platform)
                 class_lookup.cache_clear()
+                missing = [ref for ref in sorted(refs) if not game_linkage.resolve_game_reference(
+                    *ref, class_lookup, instruction_classes, mixin_targets)]
+                require(not missing, f'{version}: missing game members on {platform}: {missing}')
                 instruction_count += game_linkage.verify_game_instructions(
                     instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version,
                     class_lookup=class_lookup)

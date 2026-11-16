@@ -9,6 +9,10 @@ one resolver; external library names are never Minecraft-remapped. The verifier
 checks each distinct Linux, Windows and macOS library classpath selected by the
 supported metadata OS-name rules. Unknown rule conditions, ambiguous libraries
 within one platform and duplicate library classes fail closed.
+The preliminary constant-pool member check uses that same selected composite
+classpath, so a reference whose game-owned symbolic owner inherits a member
+from a runtime library is resolved on every applicable platform. Consumed
+instructions still receive the separate access, kind and staticness checks.
 
 The checked subset includes consumed field and method instructions, constructor
 calls, class/interface invocation kind, staticness, applicable access, field
