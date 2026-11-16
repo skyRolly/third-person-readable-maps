@@ -1,4 +1,4 @@
-# 1.0.0 release-readiness gate matrix — updated 2026-11-15
+# 1.0.0 release-readiness gate matrix — updated 2026-11-16
 
 **Not release-ready.** Version 1.0.0 is the coordinated proposal, not a
 publication authorization. The [2026-11-04 gate history](release-readiness-2026-11-04.md)
@@ -7,20 +7,20 @@ The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readabl
 remains available at its original commit.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
-The [current evidence selection](version-consistency-1.0.0/current-evidence.json) binds 13 clean builds and the 48-version static sweep to current proposal heads. All 13 JARs match earlier runtime-observed hashes; all final-source hosted jobs passed. Earlier observations retain their original source commits; they are not new approved-source runtime executions.
+The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final clean-build, CI and rehearsal evidence is being refreshed. The 1.14 correction changes the JAR; its earlier runtime observations remain historical and cannot establish current-artifact acceptance.
 
 | Gate | Status | Evidence and remaining action |
 |---|---|---|
 | Coordination-only architecture | PASS | `main` owns coordination and no game Gradle project. Preserve that separation. |
 | Compatibility grouping | PENDING REVIEW | Ten proposed legacy groups and proposals for three existing maintenance groups cover 48 explicit versions. No new split is proposed; independent acceptance remains. |
 | Version synchronization | PENDING REVIEW | All 13 proposed product heads and the proposed coordinator use 1.0.0. The actual integrated branches remain 0.0.2 until reviewed PRs merge. |
-| Wrapper build security | PENDING REVIEW | Canonical Wrapper validation and pre-execution ordering are proposed across product, audit and release paths. Trusted coordinator validation is separate from candidate-controlled PR CI; independent review remains; all final-source hosted builds passed. |
+| Wrapper build security | PENDING REVIEW | Canonical preflight remains in place. Final-head hosted runs and independent review are pending. |
 | Verification implementation | PENDING REVIEW | Discriminating JVM and packaged-entry-point fixtures cover the shared corrections. The bounded contract explicitly rejects unproven platform-member inheritance and other unsupported patterns; independent review remains required. |
-| Current artifact static compatibility | PASS | The final verifier passed all 48 advertised versions on the 13 clean-built JARs within its documented bounded contract. This does not establish runtime or graphical acceptance. |
-| Proposed-head Linux CI | PASS | All 13 final proposal PR merge checkouts passed; the [tested trees, attempts and downloaded JAR hashes](version-consistency-1.0.0/current-validation/hosted-checks.json) match the proposal trees and clean builds. Merged-head CI remains required. |
-| Proposed-head Windows CI | PASS | All 13 final proposal PR merge checkouts passed and the downloaded JAR hashes match their clean builds. Merged-head CI remains required. |
+| Current artifact static compatibility | PENDING REVIEW | The corrected verifier has completed the 48-version sweep; final clean-artifact identity and source-bound evidence are being reconciled. |
+| Proposed-head Linux CI | NOT RUN | New proposed heads are queued for Linux CI; previous-head passes do not certify them. |
+| Proposed-head Windows CI | NOT RUN | New proposed heads are queued for Windows CI; previous-head passes do not certify them. |
 | Coordination CI | BLOCKED | Coordination tests and workflow lint now run independently of a separate live-release prerequisite job. The latter remains blocked while integrated maintenance sources lack the proposed verifier and version; strict release authorization requires both checks and rechecks the live sources. |
-| Installed-client startup | PENDING REVIEW | Prior-source local-world observations cover all 48 versions. All 13 current clean JARs match those earlier artifacts. The paired 1.20.5 and 26.3 probes retain their earlier source identities. None is approved merged-source runtime evidence. |
+| Installed-client startup | PENDING REVIEW | Earlier local-world observations retain their original source and artifact identities. The corrected 1.14 JAR has a targeted instrumented software-GL diagnostic; full current-artifact and approved-source acceptance remains open. |
 | Rendering-state and map-ID correctness | PENDING REVIEW | Targeted legacy probes support the texture, lighting and NBT guards. All 19 component-era codecs normalize the tested malformed numbers to zero before rendering; paired candidate/no-Mod loading controls found matching behavior. No additional Mod-specific discrepancy is established by those controls. Remaining synchronization, graphical and independent acceptance requirements are tracked separately. |
 | Owner acceptance of map-ID contract | PENDING REVIEW | The proposed contract preserves the typed ID supplied by Minecraft, including valid zero; owner review and any decision about broader decoding changes remain outstanding. |
 | Foreground anomaly investigation | BLOCKED | A [dropped-item control](foreground-item-entities-2026-11-13/) explains particular small shapes in one 1.21.11 scene. The large historical shape did not recur in limited candidate/no-mod comparisons; its original conditions were not reproduced and its cause remains unresolved. |
@@ -38,8 +38,8 @@ The [current evidence selection](version-consistency-1.0.0/current-evidence.json
 | Auditor access | BLOCKED | Configure and verify the read-only auditor credential through the administrator without exposing its value. |
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
-| Provenance and checksums | PENDING REVIEW | The [current candidate manifest and checksums](version-consistency-1.0.0/current-validation/rehearsal/) bind 13 proposed sources and artifacts; approved integrated-source provenance remains required. |
-| Non-publishing rehearsal | PENDING REVIEW | The [current candidate rehearsal](version-consistency-1.0.0/current-validation/rehearsal/) passed 13-group aggregation with 15 existing controls and three harness controls. The latter are not production-aggregator checks. Approved integrated-head rehearsal remains NOT RUN. |
+| Provenance and checksums | PENDING REVIEW | Previous candidate provenance is historical; final proposed-source and artifact evidence is being refreshed. |
+| Non-publishing rehearsal | NOT RUN | A fresh rehearsal is required for the updated proposal sources and changed 1.14 artifact; prior rehearsal remains historical. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |

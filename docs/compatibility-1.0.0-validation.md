@@ -1,10 +1,10 @@
 # Proposed 1.0.0 compatibility and validation matrix
 
-The [current evidence selection](version-consistency-1.0.0/current-evidence.json) binds the 13 clean builds and bounded 48-version static sweep to the proposed sources. All 13 JARs match the earlier runtime-observed bytes. The [hosted check index](version-consistency-1.0.0/current-validation/hosted-checks.json) records the successful final-source jobs and their tested trees. The 1.20.5 and 26.3 paired loading probes retain their original earlier source identities, as do all other runtime observations; they are not fresh executions on the current sources. Full graphical, hardware-GPU, multiplayer, owner and approved-merged-source acceptance remain open.
+The table below records the previous verified product heads and artifact hashes while the [current evidence selection](version-consistency-1.0.0/current-evidence.json) is refreshed for the new proposals. The corrected 1.14 JAR differs from the previous runtime-tested artifact; its historical rows do not constitute current-artifact acceptance. See the [late-review worklog](worklogs/late-review-2026-11-16.md) for the targeted current-artifact diagnostic and pending validation.
 
 The 13 product proposals remain unmerged; ten legacy target branches are placeholders.
 
-| Minecraft | Group | Proposed source | Artifact SHA-256 | Static | Startup | Graphical | Remaining |
+| Minecraft | Group | Previous verified source (historical until refreshed) | Artifact SHA-256 | Static | Startup | Graphical | Remaining |
 |---|---|---|---|---|---|---|---|
 | 1.14 | 1.14-1.14.4 | [`fd498ecb3a4d`](https://github.com/skyRolly/third-person-readable-maps/commit/fd498ecb3a4dbc09ec458d4b004ee18afb84267c) | `e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b` | PASS (bounded) | Historical [local world](runtime-smoke-verifier-followup-2026-11-13/1.14/), source `f2b45ae6242a`, same JAR | PARTIAL historical | Full visual, hardware-GPU, multiplayer, approved-source evidence, review |
 | 1.14.1 | 1.14-1.14.4 | [`fd498ecb3a4d`](https://github.com/skyRolly/third-person-readable-maps/commit/fd498ecb3a4dbc09ec458d4b004ee18afb84267c) | `e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b` | PASS (bounded) | Historical [local world](runtime-smoke-verifier-followup-2026-11-13/1.14.1/), source `f2b45ae6242a`, same JAR | PARTIAL historical | Full visual, hardware-GPU, multiplayer, approved-source evidence, review |
