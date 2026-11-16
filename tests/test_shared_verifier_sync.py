@@ -6,18 +6,18 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
     'scripts/jvm_linkage.py': '7a2f83acb42d2549f8471818265de3a69d4791a6584d6766e34eb10d65253a10',
-    'scripts/game_linkage.py': 'df0fbab44bfd48221eff71a5ab43a1a44a67a1d38a54fbff70986f75ceab9186',
+    'scripts/game_linkage.py': '366d421a34c52e125587aa0a9bbb5d311cf98cb6e2ee1a8b4bb46d811ad4e814',
     'tests/test_jvm_linkage.py': '9146a19a30c49cfaaaa36a411a641d31a9a261b6720eb0ca50e4573fb4918bea',
     'tests/test_hierarchy_linkage.py': '5a0d46b2b2139cc917bc1a07af55d3eb551648eb9ab980d9df0134b66d81e018',
     'tests/hierarchy_entrypoint_fixtures.py': '4ec6751f1576c570921b8dea896d38535af8f0591c4adaf14165c9c23f16ac88',
     'scripts/verify_gradle_wrapper.py': '2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481',
     'tests/test_verify_gradle_wrapper.py': 'e99e2dd2e5e4c361a7ad0db4168fd3c1e423461bf4314456197107fa28138d65',
     'tests/test_nestmate_linkage.py': '870e107ecb86a0ec97c85eed3b69509f92c66461ddf904170c4bc2f3548af235',
-    'docs/verification/linkage-contract.md': 'e740d027479c6505502ca8aecdf5a5c31d48eabeeb8cd69f0a02070b7f64eee4',
+    'docs/verification/linkage-contract.md': 'fcaa278b8a6ee2a7848fe9aa18801daac8ecace6379d10e31903a78ff84c89f8',
 }
 ADAPTERS = {
-    'intermediary': '759293fd0f8e1d6926feb01171af4b862c2614ce3b096c4459e6a3bd3b9c14cc',
-    'official': 'f9ae0d42d50243c82b60d578723c8a369c1747bb8ae0edac227782d8716a8c10',
+    'intermediary': '4b93019ab84f0ed7bfa057436c943080f90194e7a8c91179171512c00de5feb7',
+    'official': '159ecdbb63e288a8252ee8e286754f7c9003cb872eba3043f513df642e829758',
 }
 
 

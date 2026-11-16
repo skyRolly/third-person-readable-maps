@@ -38,7 +38,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
         subprocess.run(command+[str(path)], check=True, capture_output=True)
 
     def fixture(self, point, body, extra='', target_signature='()', inherited=None, candidate_case=None, self_cast=False,
-                hierarchy=None, mixin_helper=False, target_hierarchy='object'):
+                hierarchy=None, mixin_helper=False, target_hierarchy='object', game_inherited=None):
         with tempfile.TemporaryDirectory(dir=self.root) as directory:
             root = Path(directory); support = root/'support'; support.mkdir()
             sources = {
@@ -76,6 +76,11 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             if target_hierarchy in ('indirect', 'missing-parent'):
                 sources['net/minecraft/client/renderer/entity/layers/Base.java'] = (
                     'package net.minecraft.client.renderer.entity.layers; public class Base extends RuntimeException {}')
+            if game_inherited:
+                sources['org/joml/Api.java'] = 'package org.joml; public class Api { public int value; public void run() {} }'
+                sources['net/minecraft/client/renderer/entity/layers/ItemInHandLayer.java'] = (
+                    'package net.minecraft.client.renderer.entity.layers; public class ItemInHandLayer extends org.joml.Api { '
+                    'public void submitArmWithItem'+target_signature+' { '+body+' } }')
             if inherited:
                 sources['org/joml/Api.java'] = 'package org.joml; public class Api { public int value; public void run() {} }'
             if inherited and inherited.startswith('hidden'):
@@ -147,6 +152,32 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                     api.write_text('package org.joml; public class Api { '+member+' }')
                     subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
                                    check=True, capture_output=True)
+            if game_inherited:
+                caller = root/'GameCaller.java'
+                caller.write_text('package fixture; public class GameCaller { '
+                                  'public void invoke(net.minecraft.client.renderer.entity.layers.ItemInHandLayer t) '
+                                  '{ t.run(); t.value = 1; } public static void main(String[] a) { '
+                                  'new GameCaller().invoke(new net.minecraft.client.renderer.entity.layers.ItemInHandLayer()); } }')
+                subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
+                               check=True, capture_output=True)
+                subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                                'fixture.GameCaller'], check=True, capture_output=True)
+                if game_inherited in ('removed', 'static', 'private', 'field-removed', 'field-static', 'field-private'):
+                    method = {'removed':'', 'static':'public static void run() {}',
+                              'private':'private void run() {}'}.get(game_inherited, 'public void run() {}')
+                    field = {'field-removed':'', 'field-static':'public static int value;',
+                             'field-private':'private int value;'}.get(game_inherited, 'public int value;')
+                    api = root/'org/joml/Api.java'
+                    api.write_text('package org.joml; public class Api { '+field+method+' }')
+                    subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
+                                   check=True, capture_output=True)
+                    result = subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                                             'fixture.GameCaller'], capture_output=True, text=True)
+                    expected = ('NoSuchMethodError' if game_inherited == 'removed' else
+                                'NoSuchFieldError' if game_inherited == 'field-removed' else
+                                'IllegalAccessError' if game_inherited in ('private', 'field-private') else
+                                'IncompatibleClassChangeError')
+                    assert result.returncode != 0 and expected in result.stderr, result.stderr
             hierarchy_info = hierarchy_fixtures.prepare(root, support, out, self.javac, hierarchy) if hierarchy else None
             game_buf = io.BytesIO()
             with ZipFile(game_buf, 'w') as z:
@@ -174,13 +205,15 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                 if candidate_case:
                     for item in sorted((out/'fixture').glob('*.class')):
                         z.write(item, 'fixture/'+item.name)
+                if game_inherited:
+                    z.write(out/'fixture/GameCaller.class', 'fixture/GameCaller.class')
                 if hierarchy_info:
                     z.write(out/hierarchy_info['probe'], str(hierarchy_info['probe']))
                     if hierarchy_info['location'] == 'candidate' and hierarchy_info['variant'] != 'missing':
                         z.write(out/hierarchy_info['parent'], str(hierarchy_info['parent']))
             library_buf = io.BytesIO()
             with ZipFile(library_buf, 'w') as z:
-                if inherited:
+                if inherited or game_inherited:
                     z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
                     if inherited == 'hidden':
                         z.write(support/'org/joml/Hidden.class', 'org/joml/Hidden.class')
@@ -188,9 +221,9 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                     z.write(support/hierarchy_info['parent'], str(hierarchy_info['parent']))
             library = library_buf.getvalue()
             alternative = None
-            if inherited and inherited.startswith('platform-'):
+            if (inherited and inherited.startswith('platform-')) or game_inherited == 'platform-missing':
                 api = root/'org/joml/Api.java'
-                method = '' if inherited == 'platform-missing' else 'public void run() {}'
+                method = '' if inherited == 'platform-missing' or game_inherited == 'platform-missing' else 'public void run() {}'
                 api.write_text('package org.joml; public class Api { public int value; public int extra; '+method+' }')
                 subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
                                check=True, capture_output=True)
@@ -198,7 +231,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                 with ZipFile(alternative_buf, 'w') as z:
                     z.write(support/'org/joml/Api.class', 'org/joml/Api.class')
                 alternative = alternative_buf.getvalue()
-            libraries = [] if not (inherited or (hierarchy_info and hierarchy_info['location'] == 'library')) else [{'name':'org.joml:joml:1.0', 'downloads':{'artifact':{
+            libraries = [] if not (inherited or game_inherited or (hierarchy_info and hierarchy_info['location'] == 'library')) else [{'name':'org.joml:joml:1.0', 'downloads':{'artifact':{
                 'url':'https://fixture/library','sha1':hashlib.sha1(library).hexdigest(),'size':len(library)}}}]
             if alternative is not None:
                 libraries[0]['rules'] = [{'action':'allow'}, {'action':'disallow','os':{'name':'osx'}}]
@@ -252,6 +285,12 @@ class OfficialEntrypointFixtures(unittest.TestCase):
             self.fixture('HEAD', 'return;', inherited='removed')
         with self.assertRaisesRegex(ValueError, 'final field write'):
             self.fixture('HEAD', 'return;', inherited='final')
+
+    def test_game_owned_reference_inherits_runtime_library_members(self):
+        self.fixture('HEAD', 'return;', game_inherited='valid')
+        for case in ('removed', 'static', 'private', 'field-removed', 'field-static', 'field-private', 'platform-missing'):
+            with self.subTest(case=case), self.assertRaisesRegex(ValueError, 'missing|static|inaccessible|private'):
+                self.fixture('HEAD', 'return;', game_inherited=case)
 
     def test_platform_library_variants_reach_entrypoint(self):
         self.fixture('HEAD', 'return;', inherited='platform-valid')
