@@ -12,6 +12,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
+import org.lwjgl.opengl.GL14;
 
 /** Draws both faces and available map data in the current hand transform. */
 public final class ReadableMapSurface {
@@ -43,6 +44,14 @@ public final class ReadableMapSurface {
         }
         // Follow the 1.14 first-person map renderer's lighting and texture path.
         boolean lightingWasEnabled = GL11.glIsEnabled(GL11.GL_LIGHTING);
+        boolean blendWasEnabled = GL11.glIsEnabled(GL11.GL_BLEND);
+        boolean alphaTestWasEnabled = GL11.glIsEnabled(GL11.GL_ALPHA_TEST);
+        int blendSrcRgb = GL11.glGetInteger(GL14.GL_BLEND_SRC_RGB);
+        int blendDstRgb = GL11.glGetInteger(GL14.GL_BLEND_DST_RGB);
+        int blendSrcAlpha = GL11.glGetInteger(GL14.GL_BLEND_SRC_ALPHA);
+        int blendDstAlpha = GL11.glGetInteger(GL14.GL_BLEND_DST_ALPHA);
+        float[] color = new float[4];
+        GL11.glGetFloatv(GL11.GL_CURRENT_COLOR, color);
         int activeTexture = GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE);
         int boundTexture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
         GlStateManager.disableLighting();
@@ -63,12 +72,23 @@ public final class ReadableMapSurface {
             if (data != null) client.gameRenderer.getMapRenderer().draw(data, false);
         } finally {
             try {
-                // Use the state manager so its texture cache follows OpenGL.
-                GlStateManager.activeTexture(activeTexture);
-                GlStateManager.bindTexture(boundTexture);
+                // The 1.14 map renderer changes blending, alpha testing and
+                // sometimes the current color. Restore the caller's state.
+                GlStateManager.blendFuncSeparate(blendSrcRgb, blendDstRgb, blendSrcAlpha, blendDstAlpha);
+                if (blendWasEnabled) GlStateManager.enableBlend();
+                else GlStateManager.disableBlend();
+                if (alphaTestWasEnabled) GlStateManager.enableAlphaTest();
+                else GlStateManager.disableAlphaTest();
+                GlStateManager.color4f(color[0], color[1], color[2], color[3]);
             } finally {
-                if (lightingWasEnabled) GlStateManager.enableLighting();
-                else GlStateManager.disableLighting();
+                try {
+                    // Use the state manager so its texture cache follows OpenGL.
+                    GlStateManager.activeTexture(activeTexture);
+                    GlStateManager.bindTexture(boundTexture);
+                } finally {
+                    if (lightingWasEnabled) GlStateManager.enableLighting();
+                    else GlStateManager.disableLighting();
+                }
             }
         }
     }
