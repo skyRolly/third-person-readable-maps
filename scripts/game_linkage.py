@@ -76,6 +76,20 @@ def make_class_lookup(mod_nodes, game, forward, reverse, mapped_members, version
     return lookup
 
 
+def resolve_game_reference(kind, owner, name, descriptor, lookup, mod_nodes, mixin_targets):
+    """Resolve a constant-pool game reference on the selected runtime classpath.
+
+    This presence check does not replace instruction/access validation. Mixin
+    references to inherited target members use their transformed owner, while
+    locally declared Mixin members retain their original owner until overlay.
+    """
+    if owner in mixin_targets and not any(
+            (m['kind'], m['name'], m['descriptor']) == (kind, name, descriptor)
+            for m in mod_nodes[owner]['members']):
+        owner = mixin_targets[owner]
+    return jvm.resolve_member(owner, kind, name, descriptor, lookup) is not None
+
+
 def validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version):
     """Check candidate class hierarchies and supported Mixin contributions."""
     mixins = set(mixin_targets)
