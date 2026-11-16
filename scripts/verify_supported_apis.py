@@ -145,20 +145,6 @@ def verify(mod_path, versions, clients):
                     return parse_class(game.read(owner + '.class'))
                 except KeyError:
                     return None
-            def resolve(kind, owner, member, descriptor, seen=None):
-                seen = seen or set()
-                if owner in seen:
-                    return False
-                seen.add(owner)
-                node = game_class(owner)
-                if node is None:
-                    return False
-                if (kind, member, descriptor) in node['members']:
-                    return True
-                if member in ('<init>', '<clinit>'):
-                    return False
-                return any(resolve(kind, ancestor, member, descriptor, seen)
-                           for ancestor in [node['super']] + node['interfaces'] if ancestor)
             target = game_class(TARGET)
             require(target and ('method', 'submitArmWithItem', target_descriptor) in target['members'],
                     f'{version}: Mixin target descriptor is missing')
@@ -168,8 +154,6 @@ def verify(mod_path, versions, clients):
                 jvm_linkage.validate_injection_point(target_node, 'submitArmWithItem', target_descriptor, injection_point)
             except ValueError as exc:
                 raise ValueError(f'{version}: {exc}') from exc
-            missing = [ref for ref in sorted(refs) if not resolve(*ref)]
-            require(not missing, f'{version}: missing game references: {missing}')
             classes = {c for node in mod_nodes.values() for c in node['classes']
                        if c.startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/'))}
             require(not [c for c in classes if not game_class(c)], f'{version}: missing descriptor or referenced game classes')
@@ -177,6 +161,9 @@ def verify(mod_path, versions, clients):
             for platform in runtime_libraries.platforms():
                 runtime_libraries.select(platform)
                 class_lookup.cache_clear()
+                missing = [ref for ref in sorted(refs) if not game_linkage.resolve_game_reference(
+                    *ref, class_lookup, mod_nodes, {mixin_name: TARGET})]
+                require(not missing, f'{version}: missing game references on {platform}: {missing}')
                 count += game_linkage.verify_game_instructions(mod_nodes, {mixin_name: TARGET}, game, {}, {}, {},
                                                                version, class_lookup=class_lookup)
                 coverage = game_linkage.verify_declared_libraries(
