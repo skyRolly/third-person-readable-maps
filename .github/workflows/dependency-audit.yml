@@ -158,21 +158,25 @@ jobs:
           out.mkdir(parents=True)
           index = {'schema': 1, 'coordination_sha': '01ba93db13d977e3bb0bf3400a6e373d35ff14e7',
                    'candidate_run': 44940017926, 'integrated_run': 44940018290, 'files': []}
-          for kind in ('candidate', 'integrated'):
-              for path in sorted((root / kind).rglob('*.json')):
-                  raw = path.read_bytes()
-                  data = json.loads(raw)
-                  # Store the raw bytes, including formatting; no old files are modified.
-                  target = out / kind / path.parent.name / (path.name + '.gz')
-                  target.parent.mkdir(parents=True, exist_ok=True)
-                  target.write_bytes(gzip.compress(raw, mtime=0))
-                  index['files'].append({'path': str(target), 'sha256_uncompressed': hashlib.sha256(raw).hexdigest(),
-                                         'sha256_gzip': hashlib.sha256(target.read_bytes()).hexdigest(),
-                                         'source_sha': data.get('source_sha', data.get('sha')),
-                                         'status': data.get('status')})
-          assert sum(x['path'].endswith('/candidate-dependency-audit.json.gz') for x in index['files']) == 10
-          assert sum(x['path'].endswith('/dependency-audit.json.gz') for x in index['files']) == 3
-          (out / 'archive-index.json').write_text(json.dumps(index, indent=2) + '\n')
+          try:
+              for kind in ('candidate', 'integrated'):
+                  for path in sorted((root / kind).rglob('*.json')):
+                      raw = path.read_bytes()
+                      data = json.loads(raw)
+                      # Store the raw bytes, including formatting; no old files are modified.
+                      target = out / kind / path.parent.name / (path.name + '.gz')
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      target.write_bytes(gzip.compress(raw, mtime=0))
+                      index['files'].append({'path': str(target), 'sha256_uncompressed': hashlib.sha256(raw).hexdigest(),
+                                             'sha256_gzip': hashlib.sha256(target.read_bytes()).hexdigest(),
+                                             'source_sha': data.get('source_sha', data.get('sha')),
+                                             'status': data.get('status')})
+              assert sum(x['path'].endswith('/candidate-dependency-audit.json.gz') for x in index['files']) == 10
+              assert sum(x['path'].endswith('/dependency-audit.json.gz') for x in index['files']) == 3
+              (out / 'archive-index.json').write_text(json.dumps(index, indent=2) + '\n')
+          except Exception:
+              import traceback
+              (out / 'ERROR.txt').write_text(traceback.format_exc() + '\n' + '\n'.join(str(p) for p in root.rglob('*.json')))
           PY
       - name: Commit evidence to its own branch
         run: |
