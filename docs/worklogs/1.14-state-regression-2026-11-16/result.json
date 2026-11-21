@@ -1,0 +1,17 @@
+{
+  "old": {
+    "jar_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+    "samples": 8,
+    "samples_sha256": "f88ee8e7e4ab909535ff0fdeca82ad207e28ab00be70f9a524e48c7b0e5b1903"
+  },
+  "fixed": {
+    "jar_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
+    "samples": 8,
+    "samples_sha256": "59b124ad6d62e94815350177c09e0178228d24fe60fdc8f3a90837ded051308d"
+  },
+  "scope": "1.14 local world; Linux Xorg dummy display with Mesa software GL; test-only Mixin instrumentation; no hardware GPU or independent graphical acceptance",
+  "probe_sha256": "96b2bdbe7994bce6a5b8de5109118452d7a5590340a07c459824bb88096d62d2",
+  "old_source": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
+  "fixed_source_note": "The preview artifact is byte-identical to the independently clean-built artifact from the final proposed source; the diagnostic ran on the preview bytes.",
+  "fixed_source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e"
+}

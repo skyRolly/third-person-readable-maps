@@ -1,0 +1,3 @@
+1.21.7: dependency library checks: [('org/joml/', 2, 'fc0a71dad90a2cf41d82a76156a0e700af8e4f8d')]
+1.21.7: 44 JVM game member instructions verified
+1.21.7: 2 Mixin descriptors, 32 classes, 44 game and 2 JOML references verified

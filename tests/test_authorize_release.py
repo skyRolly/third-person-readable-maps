@@ -96,20 +96,32 @@ class AuthorizationTests(unittest.TestCase):
         checks['checks'] = [{'context': n, 'app_id': a} for n, a in self.required.items()]
         self.run['head_branch'] = 'main'
         self.run['path'] = '.github/workflows/ci.yml@main'
-        self.jobs = [dict(self.jobs[0], name='Validate coordination')]
-        self.checks = [dict(self.checks[0], name='Validate coordination')]
+        self.jobs = [dict(self.jobs[i], name=name) for i, name in enumerate(sorted(self.required))]
+        self.checks = [dict(self.checks[i], name=name) for i, name in enumerate(sorted(self.required))]
         self.pr['base']['ref'] = 'main'
         graph = {'repository': {'ref': {'name': 'main', 'target': {'oid': self.commit},
                  'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False,
                  'requireLastPushApproval': False, 'bypassPullRequestAllowances': {'totalCount': 0}}}}}
         with patch.object(auth, 'graphql', return_value=graph):
             self.authorize()
+            # The pre-#15 baseline is safe for protecting current main, but it
+            # must not satisfy the final two-check release authorization policy.
+            checks['contexts'] = ['Validate coordination']
+            checks['checks'] = [{'context': 'Validate coordination', 'app_id': auth.ACTIONS_APP}]
+            with self.assertRaisesRegex(Invalid, 'branch-role checks'):
+                self.authorize()
+            checks['contexts'] = sorted(self.required)
+            checks['checks'] = [{'context': n, 'app_id': a} for n, a in self.required.items()]
             # A successful build, another workflow's check, an old run, or the
             # wrong app must not substitute for this exact push job.
             self.jobs[0]['name'] = 'Build (ubuntu-latest)'
             with self.assertRaises(Invalid):
                 self.authorize()
             self.jobs[0]['name'] = 'Validate coordination'
+            self.jobs[1]['conclusion'] = 'failure'
+            with self.assertRaises(Invalid):
+                self.authorize()
+            self.jobs[1]['conclusion'] = 'success'
             self.checks[0]['id'] += 1
             with self.assertRaises(Invalid):
                 self.authorize()

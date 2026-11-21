@@ -1,0 +1,3 @@
+1.14: dependency library checks: [('linux', [('org/lwjgl/opengl/', 2, '57008c2374c5bc434b18adfef3f3653ee450ee18')])]
+1.14: 48 JVM game member instructions verified
+1.14: 1 Mixin descriptor(s), 27 game classes, 43 game member references and 2 LWJGL reference(s) across 1 library variant(s) verified

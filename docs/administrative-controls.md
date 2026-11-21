@@ -1,5 +1,29 @@
 # Administrative release controls — inspected 2026-11-04
 
+This is the dated administrative evidence, not a current release approval.
+The proposed coordinated version is now 1.0.0; see the [current gate matrix](release-readiness-1.0.0.md)
+for refreshed branch-protection observations and remaining requirements.
+
+On [2026-11-15](admin/branch-rules-observation-2026-11-15.json), branch API
+read-back reported `protected: false` for all 14 target branches: `main`, the
+three integrated maintenance branches, and all ten legacy placeholders. The
+visible effective rules and repository/parent ruleset inventory were empty.
+Detailed legacy protection endpoints remain inaccessible to this credential;
+no setting was changed. Every target needs independently reviewed, app-pinned
+checks and protection before its port can be integrated.
+
+On [2026-11-14 UTC](admin/branch-rules-observation-2026-11-14.json), read-only branch API responses still reported
+`protected: false` for `main`, `mc/1.21.11`, `mc/26.1-26.2` and `mc/26.3`.
+The effective-rules endpoint returned zero rules for each, and the visible
+repository/parent ruleset list was empty. No settings were changed. On
+2026-11-14 the [workflow API](dependency-evidence/automatic-submission-state-2026-11-14.json)
+reported GitHub-managed Automatic Dependency Submission as `active`. On
+2026-11-13 the [managed submission runs](dependency-evidence/automatic-submission-2026-11-13.json)
+completed successfully on all 13 advanced product heads; the inspected 26.3
+run shows its `submit-dependency-snapshot` step succeeded. The workflow API
+does not expose the separate settings toggle or indexed alert scope. The existing
+administrator action and independent read-back below remain necessary.
+
 No administrative setting was changed in this maintenance round. Account-level
 `permissions.admin: true` does not grant this integration every permission: the
 REST protection, secrets, alert, security-update, and code-security-configuration
@@ -62,10 +86,11 @@ and [environment reviewers](https://docs.github.com/en/actions/reference/workflo
 
 | Control | Scope | Initial state | Desired state | Final state | Evidence / blocker |
 | --- | --- | --- | --- | --- | --- |
-| Legacy branch protection | main | Missing | Enforced PR review and coordination check | BLOCKED: unchanged | Branch `protected: false`, GraphQL `branchProtectionRule: null`; protection REST 403 |
+| Legacy branch protection | main | Missing | Enforced PR review and staged baseline/final coordination checks | BLOCKED: unchanged | Branch `protected: false`, GraphQL `branchProtectionRule: null`; protection REST 403 |
 | Legacy branch protection | mc/1.21.11 | Missing | Enforced PR review and both build checks | BLOCKED: unchanged | Same three observations |
 | Legacy branch protection | mc/26.1-26.2 | Missing | Enforced PR review and both build checks | BLOCKED: unchanged | Same three observations |
 | Legacy branch protection | mc/26.3 | Missing | Enforced PR review and both build checks | BLOCKED: unchanged | Same three observations |
+| Legacy branch protection | Ten legacy placeholders | Missing | Protect each intended target before its reviewed port is integrated | BLOCKED: unchanged | November 15 branch API reports all ten `protected: false`; see the [target inventory](legacy-candidate-evidence.json) and current branch observations above |
 | Effective branch rulesets | All four branches | None | Use supported legacy protection unless verifier is extended | Verified empty; no change | Ruleset inventory and each effective branch-rules endpoint returned `[]` |
 | Required checks | All four branches | Not enforced | Strict, app-pinned checks below | BLOCKED: not configured | Actual CI job names verified; protection missing |
 | Eligible independent source reviewers | All four branches | Historical Write access was misclassified as triage-only | Eligible, independent, available and owner-authorized reviewer | PENDING REVIEW: ZDN-1942 is potentially eligible; not appointed | Historical and fresh reads report Write; account differs from author/commit identities; independence/availability/owner authorization and actual approval remain unverified |
@@ -106,23 +131,35 @@ Tag-only rulesets do not apply to branches and can coexist with legacy protectio
    for another account needs separate owner authorization. The owner must
    retain an authorized administrator recovery path for broken checks; recovery
    is an auditable administrative policy change, not a release bypass.
-2. Confirm current `ci.yml` produces `Validate coordination` on main and exactly
-   `Build (ubuntu-latest)` and `Build (windows-latest)` on each maintenance branch,
-   published by GitHub Actions app **15368**. Inspect current push jobs/check runs,
-   not only similarly named PR jobs. The baseline runs are recorded in the
-   maintenance report. No required check is being invented for this cleanup.
+2. Confirm current `ci.yml` produces `Validate coordination` on main. The final
+   coordinator adds `Validate live release prerequisites`; both must be required
+   from GitHub Actions app **15368** for strict release authorization. Confirm
+   each intended maintenance target's PR produces `Build (ubuntu-latest)` and
+   `Build (windows-latest)` from the same app, including the ten placeholders.
+   A placeholder's baseline push workflow still targets 1.21.11: confirm the
+   port PR's actual checks before requiring them, and do not treat the baseline
+   as a legacy implementation. Inspect exact push and PR runs, not names alone.
 3. With a separately authorized credential that can read/write Administration,
    read the current protection again. If it is still absent and there are no
    effective branch rulesets, apply the reviewed payloads below. If policy has
    changed, reconcile it instead of overwriting stronger requirements.
 
    ```sh
+   # Before PR #15 is integrated, require the current main check:
    gh api --method PUT repos/skyRolly/third-person-readable-maps/branches/main/protection \
-     --input docs/admin/branch-protection-main.json
-   # Run once for each of mc%2F1.21.11, mc%2F26.1-26.2, mc%2F26.3:
+     --input docs/admin/branch-protection-main-baseline.json
+   # Apply the maintenance payload to each intended target only after its
+   # corresponding PR produces the two exact app-pinned build checks:
    gh api --method PUT 'repos/skyRolly/third-person-readable-maps/branches/mc%2F1.21.11/protection' \
      --input docs/admin/branch-protection-maintenance.json
    ```
+
+   Repeat the maintenance read-back for `mc/26.1-26.2`, `mc/26.3`, and the
+   ten targets listed in [the candidate inventory](legacy-candidate-evidence.json).
+   Protection does not activate a port or its dependency-update target. Before
+   integrating any port, verify its independently reviewed PR and both checks
+   on its actual target; if those checks are unavailable, fix the workflow and
+   keep the port blocked rather than bypassing review or checks.
 
    These are prepared payloads, **not applied configuration**. They require one
    independent approval, stale-review dismissal, administrator enforcement,
@@ -136,16 +173,21 @@ Tag-only rulesets do not apply to branches and can coexist with legacy protectio
    and repository/parent rulesets again. Verify write access for the independent
    reviewer and an owner-operated recovery path. Do not exercise force-push,
    deletion, or bypass to test enforcement.
-5. Have the independent reviewer inspect and approve the final heads of the
-   maintenance PRs and the coordination PR. Merge only through the owner’s
-   normal review process. Codex leaves them open. If a PR is updated or rebased,
-   require fresh approval. After each merge, require successful push CI on the
-   exact new maintenance/main head. Existing unreviewed merge commits cannot be
-   retroactively authorized by adding a review after merge.
+5. Have the independent reviewer inspect the security-only PRs #34–#36 first,
+   then the updated 1.0.0 maintenance PRs #31–#33 and coordination #15. After
+   the three reviewed maintenance upgrades are integrated and their exact-head
+   checks and live prerequisites pass, integrate #15 through the baseline main
+   protection. Once its exact merged-head push run has both successful jobs,
+   an administrator applies `docs/admin/branch-protection-main.json` and reads
+   back both app-pinned checks. Until that final read-back strict release
+   authorization must fail. A genuinely broken check requires an auditable
+   administrator policy change and reapplication; it is not release approval.
+   Require fresh approval after every head update. No merge is performed here.
 6. If release-plan/runtime-evidence commits advance main later, that main head
-   also needs an eligible independently approved PR merge and successful
-   `Validate coordination`. An approval on this cleanup is not approval of a
-   future release plan or arbitrary later source commits.
+   also needs an eligible independently approved PR merge and both successful,
+   app-pinned `Validate coordination` and `Validate live release prerequisites`
+   checks under the final protection policy. An approval on this cleanup is not
+   approval of a future release plan or arbitrary later source commits.
 
 ## Environments, auditor credential and tags
 

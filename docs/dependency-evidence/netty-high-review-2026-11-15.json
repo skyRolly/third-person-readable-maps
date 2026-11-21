@@ -1,0 +1,466 @@
+{
+  "observed_on": "2026-11-15",
+  "scope": "Reassessment of retained November 14 source-bound snapshots; this is not a new dependency resolution or risk acceptance.",
+  "evidence": "No direct Netty, IpSubnetFilterRule, SslContextBuilder or X509TrustManager references in the 13 proposal source/build files, and no io/netty classes bundled in the previously built 1.0.0 JARs. Game and build dependencies may still invoke vulnerable paths; effective runtime configuration and reachability remain unproven.",
+  "remediation": "The versions are supplied through game/runtime or build dependency graphs; request compatible upstream remediation or separately evaluate a supported fix. Do not force a game-managed override merely to suppress matches.",
+  "advisories": [
+    {
+      "advisory": "GHSA-3qp7-7mw8-wx86",
+      "cve": "CVE-2026-44249",
+      "url": "https://github.com/advisories/GHSA-3qp7-7mw8-wx86",
+      "severity": "high",
+      "summary": "Netty has an IPv6 Subnet Filter Bypass via Incorrect Comparator Masking",
+      "description": "### Summary\nAn attacker can bypass IPv6 subnet rules due to an incorrect masking operation in IpSubnetFilterRule.compareTo(). Valid public IP addresses can bypass the restrictions.\n\n### Details\n`io.netty.handler.ipfilter.IpSubnetFilterRule#compareTo(java.net.InetSocketAddress)` method performs a bitwise AND between the incoming IP address and the configured networkAddress, instead of the subnetMask.\n\n### Impact\nAccess Control Bypass. Attacker can bypass IpSubnetFilter IPv6 access controls.",
+      "affected_ranges": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "io.netty:netty-handler"
+          },
+          "vulnerable_version_range": ">= 4.2.0.Final, <= 4.2.14.Final",
+          "first_patched_version": "4.2.15.Final",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "io.netty:netty-handler"
+          },
+          "vulnerable_version_range": "<= 4.1.134.Final",
+          "first_patched_version": "4.1.135.Final",
+          "vulnerable_functions": []
+        }
+      ],
+      "disposition": "Proposed upstream-dependent remediation; applicability and reachability require further investigation",
+      "risk_accepted": false,
+      "independent_review": "PENDING",
+      "matches": [
+        {
+          "group": "1.21.11",
+          "source_kind": "integrated-maintenance",
+          "source_sha": "177f5708727ae4c152091d185536aaa734063280",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/final-proposals/1.21.11-integrated-report.json"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_kind": "integrated-maintenance",
+          "source_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/final-proposals/26.1-26.2-integrated-report.json"
+        },
+        {
+          "group": "1.17-1.19.2",
+          "source_kind": "candidate",
+          "source_sha": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+          "scopes": [
+            "runtime/1.19",
+            "runtime/1.19.1",
+            "runtime/1.19.2"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.17-1.19.2-report.json"
+        },
+        {
+          "group": "1.19.3",
+          "source_kind": "candidate",
+          "source_sha": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.19.3"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.3-report.json"
+        },
+        {
+          "group": "1.19.4-1.20.4",
+          "source_kind": "candidate",
+          "source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.19.4",
+            "runtime/1.20",
+            "runtime/1.20.1"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.4-1.20.4-report.json"
+        },
+        {
+          "group": "1.19.4-1.20.4",
+          "source_kind": "candidate",
+          "source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "runtime/1.20.2",
+            "runtime/1.20.3",
+            "runtime/1.20.4"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.4-1.20.4-report.json"
+        },
+        {
+          "group": "1.20.5-1.20.6",
+          "source_kind": "candidate",
+          "source_sha": "ec9ba516a2000c0a83baf689ff38433790119331",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.20.5-1.20.6-report.json"
+        },
+        {
+          "group": "1.21-1.21.1",
+          "source_kind": "candidate",
+          "source_sha": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21-1.21.1-report.json"
+        },
+        {
+          "group": "1.21.2-1.21.3",
+          "source_kind": "candidate",
+          "source_sha": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.2-1.21.3-report.json"
+        },
+        {
+          "group": "1.21.4-1.21.8",
+          "source_kind": "candidate",
+          "source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.4"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.4-1.21.8-report.json"
+        },
+        {
+          "group": "1.21.4-1.21.8",
+          "source_kind": "candidate",
+          "source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "scopes": [
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.4-1.21.8-report.json"
+        },
+        {
+          "group": "1.21.9-1.21.10",
+          "source_kind": "candidate",
+          "source_sha": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.9-1.21.10-report.json"
+        },
+        {
+          "group": "1.21.11",
+          "source_kind": "maintenance-proposal",
+          "source_sha": "e1ca4915cac0ee52c0e92331e7548b58fa594d18",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/maintenance-proposals/1.21.11-proposal-report.json"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_kind": "maintenance-proposal",
+          "source_sha": "ec38b73e0206ab6bb49ba936f52e36ba81221d39",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/maintenance-proposals/26.1-26.2-proposal-report.json"
+        }
+      ]
+    },
+    {
+      "advisory": "GHSA-c653-97m9-rcg9",
+      "cve": "CVE-2026-50010",
+      "url": "https://github.com/advisories/GHSA-c653-97m9-rcg9",
+      "severity": "high",
+      "summary": "Netty: Wrapping plain trust manager silently disables hostname verification",
+      "description": "SimpleTrustManagerFactory.engineGetTrustManagers() and related paths wrap any user-supplied plain X509TrustManager in X509TrustManagerWrapper, which extends X509ExtendedTrustManager but implements the 3-arg checkServerTrusted(chain, authType, SSLEngine) by discarding the SSLEngine and calling the 2-arg delegate. Because the object now IS an X509ExtendedTrustManager, neither SunJSSE's internal AbstractTrustManagerWrapper nor Netty's own OpenSslX509TrustManagerWrapper will re-wrap it to add endpoint-identification. Consequently, even though Netty 4.2 sets endpointIdentificationAlgorithm=\"HTTPS\" by default, a client built with `SslContextBuilder.forClient().trustManager(somePlainX509TrustManager)` performs no hostname verification at all.",
+      "affected_ranges": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "io.netty:netty-handler"
+          },
+          "vulnerable_version_range": ">= 4.2.0.Final, < 4.2.15.Final",
+          "first_patched_version": "4.2.15.Final",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "io.netty:netty-handler"
+          },
+          "vulnerable_version_range": "<= 4.1.134.Final",
+          "first_patched_version": "4.1.135.Final",
+          "vulnerable_functions": []
+        }
+      ],
+      "disposition": "Proposed upstream-dependent remediation; applicability and reachability require further investigation",
+      "risk_accepted": false,
+      "independent_review": "PENDING",
+      "matches": [
+        {
+          "group": "1.21.11",
+          "source_kind": "integrated-maintenance",
+          "source_sha": "177f5708727ae4c152091d185536aaa734063280",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/final-proposals/1.21.11-integrated-report.json"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_kind": "integrated-maintenance",
+          "source_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/final-proposals/26.1-26.2-integrated-report.json"
+        },
+        {
+          "group": "1.17-1.19.2",
+          "source_kind": "candidate",
+          "source_sha": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+          "scopes": [
+            "runtime/1.19",
+            "runtime/1.19.1",
+            "runtime/1.19.2"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.17-1.19.2-report.json"
+        },
+        {
+          "group": "1.19.3",
+          "source_kind": "candidate",
+          "source_sha": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.19.3"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.3-report.json"
+        },
+        {
+          "group": "1.19.4-1.20.4",
+          "source_kind": "candidate",
+          "source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.19.4",
+            "runtime/1.20",
+            "runtime/1.20.1"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.4-1.20.4-report.json"
+        },
+        {
+          "group": "1.19.4-1.20.4",
+          "source_kind": "candidate",
+          "source_sha": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "runtime/1.20.2",
+            "runtime/1.20.3",
+            "runtime/1.20.4"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.19.4-1.20.4-report.json"
+        },
+        {
+          "group": "1.20.5-1.20.6",
+          "source_kind": "candidate",
+          "source_sha": "ec9ba516a2000c0a83baf689ff38433790119331",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.20.5-1.20.6-report.json"
+        },
+        {
+          "group": "1.21-1.21.1",
+          "source_kind": "candidate",
+          "source_sha": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21-1.21.1-report.json"
+        },
+        {
+          "group": "1.21.2-1.21.3",
+          "source_kind": "candidate",
+          "source_sha": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.2-1.21.3-report.json"
+        },
+        {
+          "group": "1.21.4-1.21.8",
+          "source_kind": "candidate",
+          "source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.4"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.4-1.21.8-report.json"
+        },
+        {
+          "group": "1.21.4-1.21.8",
+          "source_kind": "candidate",
+          "source_sha": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "scopes": [
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.4-1.21.8-report.json"
+        },
+        {
+          "group": "1.21.9-1.21.10",
+          "source_kind": "candidate",
+          "source_sha": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/1.21.9-1.21.10-report.json"
+        },
+        {
+          "group": "1.21.11",
+          "source_kind": "maintenance-proposal",
+          "source_sha": "e1ca4915cac0ee52c0e92331e7548b58fa594d18",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/maintenance-proposals/1.21.11-proposal-report.json"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_kind": "maintenance-proposal",
+          "source_sha": "ec38b73e0206ab6bb49ba936f52e36ba81221d39",
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+          "scanner_failing": true,
+          "report": "docs/dependency-evidence/osv-rescan-2026-11-14/wrapper-hardening/maintenance-proposals/26.1-26.2-proposal-report.json"
+        }
+      ]
+    }
+  ]
+}

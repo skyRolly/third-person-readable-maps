@@ -1,0 +1,13 @@
+{
+  "observed_on": "2026-11-12",
+  "minecraft": "26.3",
+  "status": "blocked: software graphics backends unavailable",
+  "source_kind": "maintenance-proposal",
+  "source_commit": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+  "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+  "files_sha256": {
+    "client.log": "9c17de6e2fd14d43c15665c08b6639674362313a69ceddd79fcdd8701f55e65b",
+    "runner.log": "8aa70f9a613c644273e33cf76b5b56ba3127fc176a16216a5c876d261bef8f8f",
+    "backend-error.png": "b1d201ae3f990160060d8a5266dd0c248044dc5a7ca142450baee22d7c57bc76"
+  }
+}

@@ -1,0 +1,2207 @@
+{
+  "schema": 1,
+  "retrieved_on": "2026-11-12",
+  "source": "https://api.osv.dev",
+  "advisories": {
+    "GHSA-c4c3-7fpv-j4q5": {
+      "id": "GHSA-c4c3-7fpv-j4q5",
+      "summary": "Netty: SNI Routing Bypass via Fragmented TLS ClientHello Causing Fallback to Default SslContext",
+      "details": "### Summary\nA fragmented TLS ClientHello whose handshake header spans multiple records makes Netty silently fall back to the default SslContext; where per-SNI selection is the sole mTLS gate, an unauthenticated attacker can bypass the route's mTLS requirement.\n\n### Details\nIn `io.netty.handler.ssl.SslClientHelloHandler#decode` the guard that should wait for the 4-byte handshake header checks the wrong offset - it ignores the 5-byte record header that precedes it - and therefore never fires:\n\n```java\nif (handshakeLength == -1) {\n    if (readerIndex + 4 > endOffset) {\n        // Need more data to read HandshakeType and handshakeLength (4 bytes)\n        return;\n    }\n```\n\nWhen the first record's payload is < 4 bytes, `handshakeLength = in.getUnsignedMedium(readerIndex + SslUtils.SSL_RECORD_HEADER_LENGTH + 1);` leads to `IndexOutOfBoundsException `. That is caught by the generic `catch (Exception)` block, which calls `select(ctx, null)` - this is the default `SslContext`. Fallback to default on parse failure is a problem when per-SNI selection is the sole mTLS gate.\n\n### Impact\nSNI routing bypass. Escalates to an unauthenticated mTLS bypass only when:\n- mTLS is enforced solely via per-SNI SslContext (clientAuth=REQUIRE)\n- the default/fallback SslContext is permissive (clientAuth=NONE/OPTIONAL)\n- no secondary peer-certificate verification exists at the application layer.",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "modified": "2026-09-08T18:27:48.571082951Z",
+      "published": "2026-09-08T18:16:14Z",
+      "database_specific": {
+        "github_reviewed": true,
+        "github_reviewed_at": "2026-09-08T18:16:14Z",
+        "nvd_published_at": "2026-08-19T21:17:37Z",
+        "cwe_ids": [
+          "CWE-475",
+          "CWE-754"
+        ],
+        "severity": "CRITICAL"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/security/advisories/GHSA-c4c3-7fpv-j4q5"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75595"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17213"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/pull/17217"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/1b5abc6443b63726c72cdd285af2feb7ddbb8ff7"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/commit/9e0519239108a69b7e9bbc5e9182ee139a0d7961"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/netty/netty"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.1.137.Final"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/netty/netty/releases/tag/netty-4.2.17.Final"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "4.2.0.Final"
+                },
+                {
+                  "fixed": "4.2.17.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.2.0.Final",
+            "4.2.1.Final",
+            "4.2.10.Final",
+            "4.2.11.Final",
+            "4.2.12.Final",
+            "4.2.13.Final",
+            "4.2.14.Final",
+            "4.2.15.Final",
+            "4.2.16.Final",
+            "4.2.2.Final",
+            "4.2.3.Final",
+            "4.2.4.Final",
+            "4.2.5.Final",
+            "4.2.6.Final",
+            "4.2.7.Final",
+            "4.2.8.Final",
+            "4.2.9.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.2.16.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-c4c3-7fpv-j4q5/GHSA-c4c3-7fpv-j4q5.json"
+          }
+        },
+        {
+          "package": {
+            "name": "io.netty:netty-handler",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/io.netty/netty-handler"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "4.1.137.Final"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "4.0.0.Alpha1",
+            "4.0.0.Alpha2",
+            "4.0.0.Alpha3",
+            "4.0.0.Alpha4",
+            "4.0.0.Alpha5",
+            "4.0.0.Alpha6",
+            "4.0.0.Alpha7",
+            "4.0.0.Alpha8",
+            "4.0.0.Beta1",
+            "4.0.0.Beta2",
+            "4.0.0.Beta3",
+            "4.0.0.CR1",
+            "4.0.0.CR2",
+            "4.0.0.CR3",
+            "4.0.0.CR4",
+            "4.0.0.CR5",
+            "4.0.0.CR6",
+            "4.0.0.CR7",
+            "4.0.0.CR8",
+            "4.0.0.CR9",
+            "4.0.0.Final",
+            "4.0.1.Final",
+            "4.0.10.Final",
+            "4.0.11.Final",
+            "4.0.12.Final",
+            "4.0.13.Final",
+            "4.0.14.Beta1",
+            "4.0.14.Final",
+            "4.0.15.Final",
+            "4.0.16.Final",
+            "4.0.17.Final",
+            "4.0.18.Final",
+            "4.0.19.Final",
+            "4.0.2.Final",
+            "4.0.20.Final",
+            "4.0.21.Final",
+            "4.0.22.Final",
+            "4.0.23.Final",
+            "4.0.24.Final",
+            "4.0.25.Final",
+            "4.0.26.Final",
+            "4.0.27.Final",
+            "4.0.28.Final",
+            "4.0.29.Final",
+            "4.0.3.Final",
+            "4.0.30.Final",
+            "4.0.31.Final",
+            "4.0.32.Final",
+            "4.0.33.Final",
+            "4.0.34.Final",
+            "4.0.35.Final",
+            "4.0.36.Final",
+            "4.0.37.Final",
+            "4.0.38.Final",
+            "4.0.39.Final",
+            "4.0.4.Final",
+            "4.0.40.Final",
+            "4.0.41.Final",
+            "4.0.42.Final",
+            "4.0.43.Final",
+            "4.0.44.Final",
+            "4.0.45.Final",
+            "4.0.46.Final",
+            "4.0.47.Final",
+            "4.0.48.Final",
+            "4.0.49.Final",
+            "4.0.5.Final",
+            "4.0.50.Final",
+            "4.0.51.Final",
+            "4.0.52.Final",
+            "4.0.53.Final",
+            "4.0.54.Final",
+            "4.0.55.Final",
+            "4.0.56.Final",
+            "4.0.6.Final",
+            "4.0.7.Final",
+            "4.0.8.Final",
+            "4.0.9.Final",
+            "4.1.0.Beta1",
+            "4.1.0.Beta2",
+            "4.1.0.Beta3",
+            "4.1.0.Beta4",
+            "4.1.0.Beta5",
+            "4.1.0.Beta6",
+            "4.1.0.Beta7",
+            "4.1.0.Beta8",
+            "4.1.0.CR1",
+            "4.1.0.CR2",
+            "4.1.0.CR3",
+            "4.1.0.CR4",
+            "4.1.0.CR5",
+            "4.1.0.CR6",
+            "4.1.0.CR7",
+            "4.1.0.Final",
+            "4.1.1.Final",
+            "4.1.10.Final",
+            "4.1.100.Final",
+            "4.1.101.Final",
+            "4.1.102.Final",
+            "4.1.103.Final",
+            "4.1.104.Final",
+            "4.1.105.Final",
+            "4.1.106.Final",
+            "4.1.107.Final",
+            "4.1.108.Final",
+            "4.1.109.Final",
+            "4.1.11.Final",
+            "4.1.110.Final",
+            "4.1.111.Final",
+            "4.1.112.Final",
+            "4.1.113.Final",
+            "4.1.114.Final",
+            "4.1.115.Final",
+            "4.1.116.Final",
+            "4.1.117.Final",
+            "4.1.118.Final",
+            "4.1.119.Final",
+            "4.1.12.Final",
+            "4.1.120.Final",
+            "4.1.121.Final",
+            "4.1.122.Final",
+            "4.1.123.Final",
+            "4.1.124.Final",
+            "4.1.125.Final",
+            "4.1.126.Final",
+            "4.1.127.Final",
+            "4.1.128.Final",
+            "4.1.129.Final",
+            "4.1.13.Final",
+            "4.1.130.Final",
+            "4.1.131.Final",
+            "4.1.132.Final",
+            "4.1.133.Final",
+            "4.1.134.Final",
+            "4.1.135.Final",
+            "4.1.136.Final",
+            "4.1.14.Final",
+            "4.1.15.Final",
+            "4.1.16.Final",
+            "4.1.17.Final",
+            "4.1.18.Final",
+            "4.1.19.Final",
+            "4.1.2.Final",
+            "4.1.20.Final",
+            "4.1.21.Final",
+            "4.1.22.Final",
+            "4.1.23.Final",
+            "4.1.24.Final",
+            "4.1.25.Final",
+            "4.1.26.Final",
+            "4.1.27.Final",
+            "4.1.28.Final",
+            "4.1.29.Final",
+            "4.1.3.Final",
+            "4.1.30.Final",
+            "4.1.31.Final",
+            "4.1.32.Final",
+            "4.1.33.Final",
+            "4.1.34.Final",
+            "4.1.35.Final",
+            "4.1.36.Final",
+            "4.1.37.Final",
+            "4.1.38.Final",
+            "4.1.39.Final",
+            "4.1.4.Final",
+            "4.1.40.Final",
+            "4.1.41.Final",
+            "4.1.42.Final",
+            "4.1.43.Final",
+            "4.1.44.Final",
+            "4.1.45.Final",
+            "4.1.46.Final",
+            "4.1.47.Final",
+            "4.1.48.Final",
+            "4.1.49.Final",
+            "4.1.5.Final",
+            "4.1.50.Final",
+            "4.1.51.Final",
+            "4.1.52.Final",
+            "4.1.53.Final",
+            "4.1.54.Final",
+            "4.1.55.Final",
+            "4.1.56.Final",
+            "4.1.57.Final",
+            "4.1.58.Final",
+            "4.1.59.Final",
+            "4.1.6.Final",
+            "4.1.60.Final",
+            "4.1.61.Final",
+            "4.1.62.Final",
+            "4.1.63.Final",
+            "4.1.64.Final",
+            "4.1.65.Final",
+            "4.1.66.Final",
+            "4.1.67.Final",
+            "4.1.68.Final",
+            "4.1.69.Final",
+            "4.1.7.Final",
+            "4.1.70.Final",
+            "4.1.71.Final",
+            "4.1.72.Final",
+            "4.1.73.Final",
+            "4.1.74.Final",
+            "4.1.75.Final",
+            "4.1.76.Final",
+            "4.1.77.Final",
+            "4.1.78.Final",
+            "4.1.79.Final",
+            "4.1.8.Final",
+            "4.1.80.Final",
+            "4.1.81.Final",
+            "4.1.82.Final",
+            "4.1.83.Final",
+            "4.1.84.Final",
+            "4.1.85.Final",
+            "4.1.86.Final",
+            "4.1.87.Final",
+            "4.1.88.Final",
+            "4.1.89.Final",
+            "4.1.9.Final",
+            "4.1.90.Final",
+            "4.1.91.Final",
+            "4.1.92.Final",
+            "4.1.93.Final",
+            "4.1.94.Final",
+            "4.1.95.Final",
+            "4.1.96.Final",
+            "4.1.97.Final",
+            "4.1.98.Final",
+            "4.1.99.Final"
+          ],
+          "database_specific": {
+            "last_known_affected_version_range": "<= 4.1.136.Final",
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/09/GHSA-c4c3-7fpv-j4q5/GHSA-c4c3-7fpv-j4q5.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "GHSA-jfh8-c2jp-5v3q": {
+      "id": "GHSA-jfh8-c2jp-5v3q",
+      "summary": "Remote code injection in Log4j",
+      "details": "# Summary\n\nLog4j versions prior to 2.16.0 are subject to a remote code execution vulnerability via the ldap JNDI parser.\nAs per [Apache's Log4j security guide](https://logging.apache.org/log4j/2.x/security.html): Apache Log4j2 <=2.14.1 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.16.0, this behavior has been disabled by default.\n\nLog4j version 2.15.0 contained an earlier fix for the vulnerability, but that patch did not disable attacker-controlled JNDI lookups in all situations. For more information, see the `Updated advice for version 2.16.0` section of this advisory.\n\n# Impact\n\nLogging untrusted or user controlled data with a vulnerable version of Log4J may result in Remote Code Execution (RCE) against your application. This includes untrusted data included in logged errors such as exception traces, authentication failures, and other unexpected vectors of user controlled input. \n\n# Affected versions\n\nAny Log4J version prior to v2.15.0 is affected to this specific issue.\n\nThe v1 branch of Log4J which is considered End Of Life (EOL) is vulnerable to other RCE vectors so the recommendation is to still update to 2.16.0 where possible.\n\n## Security releases\nAdditional backports of this fix have been made available in versions 2.3.1, 2.12.2, and 2.12.3\n\n## Affected packages\nOnly the `org.apache.logging.log4j:log4j-core` package is directly affected by this vulnerability. The `org.apache.logging.log4j:log4j-api` should be kept at the same version as the `org.apache.logging.log4j:log4j-core` package to ensure compatability if in use.\n\n# Remediation Advice\n\n## Updated advice for version 2.16.0\n\nThe Apache Logging Services team provided updated mitigation advice upon the release of version 2.16.0, which [disables JNDI by default and completely removes support for message lookups](https://logging.apache.org/log4j/2.x/changes-report.html#a2.16.0).\nEven in version 2.15.0, lookups used in layouts to provide specific pieces of context information will still recursively resolve, possibly triggering JNDI lookups. This problem is being tracked as [CVE-2021-45046](https://nvd.nist.gov/vuln/detail/CVE-2021-45046). More information is available on the [GitHub Security Advisory for CVE-2021-45046](https://github.com/advisories/GHSA-7rjr-3q55-vv33).\n\nUsers who want to avoid attacker-controlled JNDI lookups but cannot upgrade to 2.16.0 must [ensure that no such lookups resolve to attacker-provided data and ensure that the the JndiLookup class is not loaded](https://issues.apache.org/jira/browse/LOG4J2-3221).\n\nPlease note that Log4J v1 is End Of Life (EOL) and will not receive patches for this issue. Log4J v1 is also vulnerable to other RCE vectors and we recommend you migrate to Log4J 2.16.0 where possible.",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "modified": "2025-10-22T19:37:02.616807Z",
+      "published": "2021-12-10T00:40:56Z",
+      "database_specific": {
+        "severity": "CRITICAL",
+        "github_reviewed": true,
+        "github_reviewed_at": "2021-12-10T00:40:41Z",
+        "nvd_published_at": "2021-12-10T10:15:00Z",
+        "cwe_ids": [
+          "CWE-20",
+          "CWE-400",
+          "CWE-502",
+          "CWE-917"
+        ]
+      },
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-44228"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/pull/608"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/github/advisory-database/pull/5501"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://packetstormsecurity.com/files/165673/UniFi-Network-Application-Unauthenticated-Log4Shell-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://packetstormsecurity.com/files/167794/Open-Xchange-App-Suite-7.10.x-Cross-Site-Scripting-Command-Injection.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://packetstormsecurity.com/files/167917/MobileIron-Log4Shell-Remote-Command-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://packetstormsecurity.com/files/171626/AD-Manager-Plus-7122-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032"
+        },
+        {
+          "type": "WEB",
+          "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://seclists.org/fulldisclosure/2022/Dec/2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://seclists.org/fulldisclosure/2022/Jul/11"
+        },
+        {
+          "type": "WEB",
+          "url": "https://seclists.org/fulldisclosure/2022/Mar/23"
+        },
+        {
+          "type": "WEB",
+          "url": "https://security.netapp.com/advisory/ntap-20211210-0007"
+        },
+        {
+          "type": "WEB",
+          "url": "https://support.apple.com/kb/HT213189"
+        },
+        {
+          "type": "WEB",
+          "url": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://twitter.com/kurtseifried/status/1469345530182455296"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.bentley.com/en/common-vulnerability-exposure/be-2022-0001"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2021-44228"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.debian.org/security/2021/dsa-5020"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00646.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.kb.cert.org/vuls/id/930724"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.nu11secur1ty.com/2021/12/cve-2021-44228.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/alert-cve-2021-44228.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuapr2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujan2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-661247.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-714170.pdf"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://github.com/advisories/GHSA-7rjr-3q55-vv33"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/logging-log4j2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/cisagov/log4j-affected-db"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/cisagov/log4j-affected-db/blob/develop/SOFTWARE-LIST.md"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/nu11secur1ty/CVE-mitre/tree/main/CVE-2021-44228"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/tangxiaofeng7/apache-log4j-poc"
+        },
+        {
+          "type": "WEB",
+          "url": "https://issues.apache.org/jira/browse/LOG4J2-3198"
+        },
+        {
+          "type": "WEB",
+          "url": "https://issues.apache.org/jira/browse/LOG4J2-3201"
+        },
+        {
+          "type": "WEB",
+          "url": "https://issues.apache.org/jira/browse/LOG4J2-3214"
+        },
+        {
+          "type": "WEB",
+          "url": "https://issues.apache.org/jira/browse/LOG4J2-3221"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.debian.org/debian-lts-announce/2021/12/msg00007.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/M5CSVUNV4HWZZXGOKNSK6L7RPM7BOKIB"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VU57UJDCFIASIO35GC55JMKSRXJMCDFM"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/M5CSVUNV4HWZZXGOKNSK6L7RPM7BOKIB"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/VU57UJDCFIASIO35GC55JMKSRXJMCDFM"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/changes-report.html#a2.15.0"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/manual/lookups.html#JndiLookup"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/manual/migration.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/security.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://msrc-blog.microsoft.com/2021/12/11/microsofts-response-to-cve-2021-44228-apache-log4j2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165225/Apache-Log4j2-2.14.1-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165260/VMware-Security-Advisory-2021-0028.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165261/Apache-Log4j2-2.14.1-Information-Disclosure.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165270/Apache-Log4j2-2.14.1-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165281/Log4j2-Log4Shell-Regexes.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165282/Log4j-Payload-Generator.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165306/L4sh-Log4j-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165307/Log4j-Remote-Code-Execution-Word-Bypassing.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165311/log4j-scan-Extensive-Scanner.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165371/VMware-Security-Advisory-2021-0028.4.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165532/Log4Shell-HTTP-Header-Injection.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165642/VMware-vCenter-Server-Unauthenticated-Log4Shell-JNDI-Injection-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/165673/UniFi-Network-Application-Unauthenticated-Log4Shell-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/167794/Open-Xchange-App-Suite-7.10.x-Cross-Site-Scripting-Command-Injection.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/167917/MobileIron-Log4Shell-Remote-Command-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://packetstormsecurity.com/files/171626/AD-Manager-Plus-7122-Remote-Code-Execution.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://seclists.org/fulldisclosure/2022/Dec/2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://seclists.org/fulldisclosure/2022/Jul/11"
+        },
+        {
+          "type": "WEB",
+          "url": "http://seclists.org/fulldisclosure/2022/Mar/23"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/10/1"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/10/2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/10/3"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/13/1"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/13/2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/14/4"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2021/12/15/3"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.13.0"
+                },
+                {
+                  "fixed": "2.15.0"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.13.0",
+            "2.13.1",
+            "2.13.2",
+            "2.13.3",
+            "2.14.0",
+            "2.14.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0-beta9"
+                },
+                {
+                  "fixed": "2.3.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0",
+            "2.0-beta9",
+            "2.0-rc1",
+            "2.0-rc2",
+            "2.0.1",
+            "2.0.2",
+            "2.1",
+            "2.2",
+            "2.3"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.4"
+                },
+                {
+                  "fixed": "2.12.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.10.0",
+            "2.11.0",
+            "2.11.1",
+            "2.11.2",
+            "2.12.0",
+            "2.12.1",
+            "2.4",
+            "2.4.1",
+            "2.5",
+            "2.6",
+            "2.6.1",
+            "2.6.2",
+            "2.7",
+            "2.8",
+            "2.8.1",
+            "2.8.2",
+            "2.9.0",
+            "2.9.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "com.guicedee.services:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/com.guicedee.services/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "1.2.1.2-jre17"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.0.10.0",
+            "1.0.10.0-jre13",
+            "1.0.10.0-jre14",
+            "1.0.10.1",
+            "1.0.10.1-jre14",
+            "1.0.10.3",
+            "1.0.10.3-jre14",
+            "1.0.10.4",
+            "1.0.10.4-jre12",
+            "1.0.10.4-jre13",
+            "1.0.10.4-jre14",
+            "1.0.11.0-jre14",
+            "1.0.11.2-jre14",
+            "1.0.11.5",
+            "1.0.11.5-jre12",
+            "1.0.11.5-jre14",
+            "1.0.11.6-jre14",
+            "1.0.11.7",
+            "1.0.11.7-jre12",
+            "1.0.11.7-jre14",
+            "1.0.12.0",
+            "1.0.12.0-jre12",
+            "1.0.12.0-jre13",
+            "1.0.12.0-jre14",
+            "1.0.12.0-jre8",
+            "1.0.12.1",
+            "1.0.12.1-jre12",
+            "1.0.12.1-jre14",
+            "1.0.12.2",
+            "1.0.12.2-jre12",
+            "1.0.12.2-jre14",
+            "1.0.12.3",
+            "1.0.12.3-jre12",
+            "1.0.12.3-jre13",
+            "1.0.12.3-jre14",
+            "1.0.12.4",
+            "1.0.12.4-jre12",
+            "1.0.12.4-jre13",
+            "1.0.12.4-jre14",
+            "1.0.12.4-jre8",
+            "1.0.12.5",
+            "1.0.12.5-jre14",
+            "1.0.13.0",
+            "1.0.13.0-jre12",
+            "1.0.13.0-jre13",
+            "1.0.13.0-jre14",
+            "1.0.13.0-jre8",
+            "1.0.13.1",
+            "1.0.13.1-jre13",
+            "1.0.13.1-jre14",
+            "1.0.13.1-jre8",
+            "1.0.13.2",
+            "1.0.13.2-jre12",
+            "1.0.13.2-jre13",
+            "1.0.13.2-jre14",
+            "1.0.13.2-jre8",
+            "1.0.13.3",
+            "1.0.13.3-jre14",
+            "1.0.13.4",
+            "1.0.13.4-jre12",
+            "1.0.13.4-jre13",
+            "1.0.13.4-jre14",
+            "1.0.13.5",
+            "1.0.13.5-jre12",
+            "1.0.13.5-jre14",
+            "1.0.13.5-jre8",
+            "1.0.14.0-RC1-jre14",
+            "1.0.14.0-RC1-jre8",
+            "1.0.14.1",
+            "1.0.14.1-jre12",
+            "1.0.14.1-jre13",
+            "1.0.14.1-jre14",
+            "1.0.14.1-jre8",
+            "1.0.14.3-jre8",
+            "1.0.14.4-jre14",
+            "1.0.14.4-jre8",
+            "1.0.15.1",
+            "1.0.15.1-jre12",
+            "1.0.15.1-jre13",
+            "1.0.15.1-jre14",
+            "1.0.15.1-jre8",
+            "1.0.15.2",
+            "1.0.15.2-jre12",
+            "1.0.15.2-jre14",
+            "1.0.15.2-jre8",
+            "1.0.15.3-jre14",
+            "1.0.15.3-jre8",
+            "1.0.15.4",
+            "1.0.15.4-jre14",
+            "1.0.15.4-jre8",
+            "1.0.15.5",
+            "1.0.15.5-jre14",
+            "1.0.15.5-jre8",
+            "1.0.16.0",
+            "1.0.16.0-jre14",
+            "1.0.16.0-jre8",
+            "1.0.17.0",
+            "1.0.17.0-jre14",
+            "1.0.17.1",
+            "1.0.17.1-jre14",
+            "1.0.17.1-jre8",
+            "1.0.18.0",
+            "1.0.18.0-jre14",
+            "1.0.18.0-jre15",
+            "1.0.18.0-jre8",
+            "1.0.18.1",
+            "1.0.18.1-jre14",
+            "1.0.18.1-jre15",
+            "1.0.18.1-jre8",
+            "1.0.19.0",
+            "1.0.19.0-jre14",
+            "1.0.19.0-jre15",
+            "1.0.19.1",
+            "1.0.19.1-jre12",
+            "1.0.19.1-jre13",
+            "1.0.19.1-jre14",
+            "1.0.19.1-jre15",
+            "1.0.19.1-jre8",
+            "1.0.19.10",
+            "1.0.19.10-jre12",
+            "1.0.19.10-jre14",
+            "1.0.19.10-jre15",
+            "1.0.19.10-jre8",
+            "1.0.19.11",
+            "1.0.19.11-jre14",
+            "1.0.19.11-jre8",
+            "1.0.19.12-jre14",
+            "1.0.19.12-jre8",
+            "1.0.19.13",
+            "1.0.19.13-jre14",
+            "1.0.19.13-jre15",
+            "1.0.19.13-jre8",
+            "1.0.19.2",
+            "1.0.19.2-jre13",
+            "1.0.19.2-jre14",
+            "1.0.19.2-jre15",
+            "1.0.19.2-jre8",
+            "1.0.19.3",
+            "1.0.19.3-jre13",
+            "1.0.19.3-jre14",
+            "1.0.19.3-jre15",
+            "1.0.19.3-jre8",
+            "1.0.19.4",
+            "1.0.19.4-jre14",
+            "1.0.19.4-jre15",
+            "1.0.19.4-jre8",
+            "1.0.19.5",
+            "1.0.19.5-jre14",
+            "1.0.19.5-jre15",
+            "1.0.19.5-jre8",
+            "1.0.19.6",
+            "1.0.19.6-jre14",
+            "1.0.19.6-jre8",
+            "1.0.19.7-jre14",
+            "1.0.19.7-jre8",
+            "1.0.19.8-jre8",
+            "1.0.19.9",
+            "1.0.19.9-jre13",
+            "1.0.19.9-jre14",
+            "1.0.19.9-jre15",
+            "1.0.19.9-jre8",
+            "1.0.2.15",
+            "1.0.2.15-jre13",
+            "1.0.2.16-jre13",
+            "1.0.2.17-jre13",
+            "1.0.2.18",
+            "1.0.2.18-jre12",
+            "1.0.2.18-jre13",
+            "1.0.20.0",
+            "1.0.20.0-jre14",
+            "1.0.20.0-jre15",
+            "1.0.20.0-jre8",
+            "1.0.20.1",
+            "1.0.20.1-jre14",
+            "1.0.20.1-jre15",
+            "1.0.20.1-jre8",
+            "1.0.20.2",
+            "1.0.20.2-jre14",
+            "1.0.20.2-jre15",
+            "1.0.20.2-jre8",
+            "1.0.3.1-jre13",
+            "1.0.3.2",
+            "1.0.3.2-jre13",
+            "1.0.3.3",
+            "1.0.3.3-jre12",
+            "1.0.3.3-jre13",
+            "1.0.4.1-jre13",
+            "1.0.4.2",
+            "1.0.4.2-jre13",
+            "1.0.4.3-jre13",
+            "1.0.4.4",
+            "1.0.4.4-jre13",
+            "1.0.5.0",
+            "1.0.5.0-jre13",
+            "1.0.5.1",
+            "1.0.5.1-jre12",
+            "1.0.5.1-jre13",
+            "1.0.5.2",
+            "1.0.5.2-jre12",
+            "1.0.5.2-jre13",
+            "1.0.5.3",
+            "1.0.5.3-jre12",
+            "1.0.5.3-jre13",
+            "1.0.5.4-jre13",
+            "1.0.5.4-jre14",
+            "1.0.5.5",
+            "1.0.5.5-jre12",
+            "1.0.5.5-jre13",
+            "1.0.5.5-jre14",
+            "1.0.6.1",
+            "1.0.6.1-jre12",
+            "1.0.6.1-jre13",
+            "1.0.6.1-jre14",
+            "1.0.6.2",
+            "1.0.6.2-jre12",
+            "1.0.6.2-jre13",
+            "1.0.6.2-jre14",
+            "1.0.6.3",
+            "1.0.6.3-jre12",
+            "1.0.6.3-jre13",
+            "1.0.6.3-jre14",
+            "1.0.6.4-jre14",
+            "1.0.6.5",
+            "1.0.6.5-jre12",
+            "1.0.6.5-jre13",
+            "1.0.6.5-jre14",
+            "1.0.6.7",
+            "1.0.6.7-jre14",
+            "1.0.7.0",
+            "1.0.7.0-jre12",
+            "1.0.7.0-jre13",
+            "1.0.7.0-jre14",
+            "1.0.7.1",
+            "1.0.7.1-jre13",
+            "1.0.7.1-jre14",
+            "1.0.7.10",
+            "1.0.7.10-jre13",
+            "1.0.7.10-jre14",
+            "1.0.7.11",
+            "1.0.7.11-jre14",
+            "1.0.7.12",
+            "1.0.7.12-jre12",
+            "1.0.7.12-jre13",
+            "1.0.7.12-jre14",
+            "1.0.7.2-jre14",
+            "1.0.7.3",
+            "1.0.7.3-jre13",
+            "1.0.7.3-jre14",
+            "1.0.7.4",
+            "1.0.7.4-jre14",
+            "1.0.7.5",
+            "1.0.7.5-jre14",
+            "1.0.7.6",
+            "1.0.7.6-jre14",
+            "1.0.7.9",
+            "1.0.7.9-jre14",
+            "1.0.8.1",
+            "1.0.8.1-jre14",
+            "1.0.8.12",
+            "1.0.8.12-jre12",
+            "1.0.8.12-jre14",
+            "1.0.8.16",
+            "1.0.8.16-jre14",
+            "1.0.8.18",
+            "1.0.8.18-jre14",
+            "1.0.8.2",
+            "1.0.8.2-jre13",
+            "1.0.8.2-jre14",
+            "1.0.8.3",
+            "1.0.8.3-jre13",
+            "1.0.8.3-jre14",
+            "1.0.8.4",
+            "1.0.8.4-jre12",
+            "1.0.8.4-jre13",
+            "1.0.8.4-jre14",
+            "1.0.8.5",
+            "1.0.8.5-jre12",
+            "1.0.8.5-jre13",
+            "1.0.8.5-jre14",
+            "1.0.8.6-jre14",
+            "1.0.9.0",
+            "1.0.9.0-jre14",
+            "1.0.9.1",
+            "1.0.9.1-jre14",
+            "1.0.9.10",
+            "1.0.9.10-jre14",
+            "1.0.9.11",
+            "1.0.9.11-jre14",
+            "1.0.9.13",
+            "1.0.9.13-jre14",
+            "1.0.9.14",
+            "1.0.9.14-jre14",
+            "1.0.9.2",
+            "1.0.9.2-jre14",
+            "1.0.9.3-jre14",
+            "1.0.9.4-jre14",
+            "1.0.9.5-jre14",
+            "1.0.9.7-jre14",
+            "1.1.0.0-jre15",
+            "1.1.0.1",
+            "1.1.0.1-jre14",
+            "1.1.0.1-jre15",
+            "1.1.0.2",
+            "1.1.0.2-jre14",
+            "1.1.0.2-jre15",
+            "1.1.0.3",
+            "1.1.0.3-jre14",
+            "1.1.0.3-jre15",
+            "1.1.0.3-jre8",
+            "1.1.0.4-jre14",
+            "1.1.0.4-jre15",
+            "1.1.0.4-jre8",
+            "1.1.0.5-jre14",
+            "1.1.0.5-jre15",
+            "1.1.0.6",
+            "1.1.0.6-jre14",
+            "1.1.0.6-jre15",
+            "1.1.0.7",
+            "1.1.0.7-jre14",
+            "1.1.0.7-jre15",
+            "1.1.0.7-jre8",
+            "1.1.0.8-SNAPSHOT-jre14",
+            "1.1.1.0",
+            "1.1.1.0-SNAPSHOT-jre14",
+            "1.1.1.0-SNAPSHOT-jre15",
+            "1.1.1.0-SNAPSHOT-jre8",
+            "1.1.1.0-jre14",
+            "1.1.1.0-jre15",
+            "1.1.1.0-jre8",
+            "1.1.1.1-SP1",
+            "1.1.1.1-jre14-SP1",
+            "1.1.1.1-jre15-SP1",
+            "1.1.1.2",
+            "1.1.1.2-jre14",
+            "1.1.1.2-jre15",
+            "1.1.1.3",
+            "1.1.1.3-jre14",
+            "1.1.1.3-jre15",
+            "1.1.1.3-jre16",
+            "1.1.1.3-jre8",
+            "1.1.1.4",
+            "1.1.1.4-jre14",
+            "1.1.1.4-jre15",
+            "1.1.1.4-jre16",
+            "1.1.1.4-jre8",
+            "1.1.1.5-jre15",
+            "1.1.1.7",
+            "1.1.1.7-jre15",
+            "1.1.1.7-jre16",
+            "1.1.1.7-jre8",
+            "1.1.1.8-jre15",
+            "1.1.1.8-jre16",
+            "1.1.1.9-jre15",
+            "1.1.1.9-jre16",
+            "1.2.0.0-jre16",
+            "1.2.0.1-jre11",
+            "1.2.0.1-jre15",
+            "1.2.0.1-jre16",
+            "1.2.0.2-jre16",
+            "1.2.0.3-jre17-rc1",
+            "1.2.1.1-jre17",
+            "1.2.1.2-jre17"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.xbib.elasticsearch:log4j",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.xbib.elasticsearch/log4j"
+          },
+          "versions": [
+            "6.3.2.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "uk.co.nichesolutions.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/uk.co.nichesolutions.logging.log4j/log4j-core"
+          },
+          "versions": [
+            "2.6.3-CUSTOM"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.8.0"
+                },
+                {
+                  "fixed": "1.9.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.8.3",
+            "1.8.4",
+            "1.8.5",
+            "1.8.6",
+            "1.8.7",
+            "1.9.0",
+            "1.9.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.10.0"
+                },
+                {
+                  "fixed": "1.10.8"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.10.5",
+            "1.10.6",
+            "1.10.7"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.11.0"
+                },
+                {
+                  "fixed": "1.11.10"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.11.4",
+            "1.11.5",
+            "1.11.6",
+            "1.11.7",
+            "1.11.8",
+            "1.11.9"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.0.11"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.0.10",
+            "2.0.2",
+            "2.0.3",
+            "2.0.4",
+            "2.0.5",
+            "2.0.6",
+            "2.0.7",
+            "2.0.8",
+            "2.0.9"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-jfh8-c2jp-5v3q/GHSA-jfh8-c2jp-5v3q.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H"
+        }
+      ]
+    },
+    "GHSA-7rjr-3q55-vv33": {
+      "id": "GHSA-7rjr-3q55-vv33",
+      "summary": "Incomplete fix for Apache Log4j vulnerability",
+      "details": "# Impact\n\nThe fix to address [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) in Apache Log4j 2.15.0 was incomplete in certain non-default configurations. This could allow attackers with control over Thread Context Map (MDC) input data when the logging configuration uses a non-default Pattern Layout with either a Context Lookup (for example, $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data using a JNDI Lookup pattern resulting in a remote code execution (RCE) attack. \n\n## Affected packages\nOnly the `org.apache.logging.log4j:log4j-core` package is directly affected by this vulnerability. The `org.apache.logging.log4j:log4j-api` should be kept at the same version as the `org.apache.logging.log4j:log4j-core` package to ensure compatability if in use.\n\n# Mitigation\n\nLog4j 2.16.0 fixes this issue by removing support for message lookup patterns and disabling JNDI functionality by default. This issue can be mitigated in prior releases (< 2.16.0) by removing the JndiLookup class from the classpath (example: zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class).\n\nLog4j 2.15.0 restricts JNDI LDAP lookups to localhost by default. Note that previous mitigations involving configuration such as to set the system property `log4j2.formatMsgNoLookups` to `true` do NOT mitigate this specific vulnerability.",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "modified": "2026-10-02T20:30:05.438504645Z",
+      "published": "2021-12-14T18:01:28Z",
+      "database_specific": {
+        "severity": "CRITICAL",
+        "github_reviewed": true,
+        "github_reviewed_at": "2021-12-14T17:55:00Z",
+        "nvd_published_at": "2021-12-14T19:15:00Z",
+        "cwe_ids": [
+          "CWE-502",
+          "CWE-917"
+        ]
+      },
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-45046"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujul2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujan2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuapr2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/alert-cve-2021-44228.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.openwall.com/lists/oss-security/2021/12/18/1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.openwall.com/lists/oss-security/2021/12/15/3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.openwall.com/lists/oss-security/2021/12/14/4"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.kb.cert.org/vuls/id/930724"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00646.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.debian.org/security/2021/dsa-5022"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.cve.org/CVERecord?id=CVE-2021-44228"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2021-45046"
+        },
+        {
+          "type": "WEB",
+          "url": "https://security.gentoo.org/glsa/202310-16"
+        },
+        {
+          "type": "WEB",
+          "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd"
+        },
+        {
+          "type": "WEB",
+          "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2021-0032"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/security.html#CVE-2021-45046"
+        },
+        {
+          "type": "WEB",
+          "url": "https://logging.apache.org/log4j/2.x/security.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SIG7FZULMNK2XF6FZRU4VWYDQXNMUGAJ"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/EOKPQGV24RRBBI4TBZUDQMM4MEH7MXCY"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/apache/logging-log4j2/compare/rel/2.3...rel/2.3.1"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-714170.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-661247.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-479842.pdf"
+        },
+        {
+          "type": "WEB",
+          "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-397453.pdf"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.13.0"
+                },
+                {
+                  "fixed": "2.16.0"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.13.0",
+            "2.13.1",
+            "2.13.2",
+            "2.13.3",
+            "2.14.0",
+            "2.14.1",
+            "2.15.0"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.4.0"
+                },
+                {
+                  "fixed": "2.12.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.10.0",
+            "2.11.0",
+            "2.11.1",
+            "2.11.2",
+            "2.12.0",
+            "2.12.1",
+            "2.4",
+            "2.4.1",
+            "2.5",
+            "2.6",
+            "2.6.1",
+            "2.6.2",
+            "2.7",
+            "2.8",
+            "2.8.1",
+            "2.8.2",
+            "2.9.0",
+            "2.9.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.8.0"
+                },
+                {
+                  "fixed": "1.9.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.8.3",
+            "1.8.4",
+            "1.8.5",
+            "1.8.6",
+            "1.8.7",
+            "1.9.0",
+            "1.9.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.10.0"
+                },
+                {
+                  "fixed": "1.10.8"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.10.5",
+            "1.10.6",
+            "1.10.7"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.11.0"
+                },
+                {
+                  "fixed": "1.11.11"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.11.0",
+            "1.11.1",
+            "1.11.10",
+            "1.11.2",
+            "1.11.3",
+            "1.11.4",
+            "1.11.5",
+            "1.11.6",
+            "1.11.7",
+            "1.11.8",
+            "1.11.9"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.ops4j.pax.logging:pax-logging-log4j2",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.ops4j.pax.logging/pax-logging-log4j2"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.0.12"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.0.10",
+            "2.0.11",
+            "2.0.2",
+            "2.0.3",
+            "2.0.4",
+            "2.0.5",
+            "2.0.6",
+            "2.0.7",
+            "2.0.8",
+            "2.0.9"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.3.1"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0",
+            "2.0-alpha1",
+            "2.0-alpha2",
+            "2.0-beta1",
+            "2.0-beta2",
+            "2.0-beta3",
+            "2.0-beta4",
+            "2.0-beta5",
+            "2.0-beta6",
+            "2.0-beta7",
+            "2.0-beta8",
+            "2.0-beta9",
+            "2.0-rc1",
+            "2.0-rc2",
+            "2.0.1",
+            "2.0.2",
+            "2.1",
+            "2.2",
+            "2.3"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2021/12/GHSA-7rjr-3q55-vv33/GHSA-7rjr-3q55-vv33.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ]
+    },
+    "GHSA-fxph-q3j8-mv87": {
+      "id": "GHSA-fxph-q3j8-mv87",
+      "summary": "Deserialization of Untrusted Data in Log4j",
+      "details": "In Apache Log4j 2.x before 2.8.2, when using the TCP socket server or UDP socket server to receive serialized log events from another application, a specially crafted binary payload can be sent that, when deserialized, can execute arbitrary code.",
+      "aliases": [
+        "CVE-2017-5645"
+      ],
+      "modified": "2024-03-14T05:19:26.806656Z",
+      "published": "2020-01-06T18:43:38Z",
+      "database_specific": {
+        "severity": "CRITICAL",
+        "github_reviewed": true,
+        "github_reviewed_at": "2019-12-27T22:02:28Z",
+        "nvd_published_at": "2017-04-17T21:59:00Z",
+        "cwe_ids": [
+          "CWE-502"
+        ]
+      },
+      "references": [
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5645"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/technetwork/security-advisory/cpuoct2019-5072832.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rd5dbeee4808c0f2b9b51479b50de3cc6adb1072c332a200d9107f13e@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rcbb79023a7c8494cb389cd3d95420fa9e0d531ece0b780b8c1f99422@%3Ccommits.doris.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rca24a281000fb681d7e26e5c031a21eb4b0593a7735f781b53dae4e2@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rc1eaed7f7d774d5d02f66e49baced31e04827a1293d61a70bd003ca7@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rbfa7a0742be4981a3f9356a23d0e1a5f2e1eabde32a1a3d8e41420f8@%3Cgithub.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rb1b29aee737e1c37fe1d48528cb0febac4f5deed51f5412e6fdfe2bf@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/raedd12dc24412b3780432bf202a2618a21a727788543e5337a458ead@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/ra9a682bc0a8dff1c5cefdef31c7c25f096d9121207cf2d74e2fc563d@%3Ccommits.logging.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/ra38785cfc0e7f17f8e24bebf775dd032c033fadcaea29e5bc9fffc60@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r9d5c1b558a15d374bd5abd2d3ae3ca7e50e796a0efdcf91e9c5b4cdd@%3Cgithub.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r94b5aae09c4bcff5d06cf641be17b00bd83ba7e10cad737bf16a1b8f@%3Cgithub.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r7bcdc710857725c311b856c0b82cee6207178af5dcde1bd43d289826@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r746fbc3fc13aee292ae6851f7a5080f592fa3a67b983c6887cdb1fc5@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r681b4432d0605f327b68b9f8a42662993e699d04614de4851c35ffd1@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r61590890edcc64140e0c606954b29a063c3d08a2b41d447256d51a78@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r4b25538be50126194cc646836c718b1a4d8f71bd9c912af5b59134ad@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r3d666e4e8905157f3c046d31398b04f2bfd4519e31f266de108c6919@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r3a85514a518f3080ab1fc2652cfe122c2ccf67cfb32356acb1b08fe8@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/technetwork/security-advisory/cpujul2019-5072835.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/technetwork/security-advisory/cpujan2019-5072801.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/technetwork/security-advisory/cpuapr2019-5072813.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuoct2021.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuoct2020.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujul2020.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujan2022.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujan2021.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpujan2020.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuapr2020.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://www.oracle.com/security-alerts/cpuApr2021.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://security.netapp.com/advisory/ntap-20181107-0002"
+        },
+        {
+          "type": "WEB",
+          "url": "https://security.netapp.com/advisory/ntap-20180726-0002"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rf2567488cfc9212b42e34c6393cfa1c14e30e4838b98dda84d71041f@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rf1bbc0ea4a9f014cf94df9a12a6477d24a27f52741dbc87f2fd52ff2@%3Cissues.geode.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/re8c21ed9dd218c217d242ffa90778428e446b082b5e1c29f567e8374@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rdec0d8ac1f03e6905b0de2df1d5fcdb98b94556e4f6cccf7519fdb26@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/rdbd579dc223f06af826d7de340218ee2f80d8b43fa7e4decb2a63f44@%3Cgithub.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2019:1545"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:3400"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:3399"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:3244"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2889"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2888"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2811"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2810"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2809"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2808"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2638"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2637"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2636"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2635"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2633"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:2423"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:1802"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:1801"
+        },
+        {
+          "type": "WEB",
+          "url": "https://access.redhat.com/errata/RHSA-2017:1417"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r3784834e80df2f284577a5596340fb84346c91a2dea6a073e65e3397@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r2ff63f210842a3c5e42f03a35d8f3a345134d073c80a04077341c211@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r2ce8d26154bea939536e6cf27ed02d3192bf5c5d04df885a80fe89b3@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r23369fd603eb6d62d3b883a0a28d12052dcbd1d6d531137124cd7f83@%3Cgithub.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r1b103833cb5bc8466e24ff0ecc5e75b45a705334ab6a444e64e840a0@%3Cissues.bookkeeper.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r18f1c010b554a3a2d761e8ffffd8674fd4747bcbcf16c643d708318c@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/r0831e2e52a390758ce39a6193f82c11c295175adce6e6307de28c287@%3Cissues.beam.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/eea03d504b36e8f870e8321d908e1def1addda16adda04327fe7c125@%3Cdev.logging.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/e8fb7d76a244ee997ba4b217d6171227f7c2521af8c7c5b16cba27bc@%3Cdev.logging.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/9317fd092b257a0815434b116a8af8daea6e920b6673f4fd5583d5fe@%3Ccommits.druid.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/8ab32b4c9f1826f20add7c40be08909de9f58a89dc1de9c09953f5ac@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/84cc4266238e057b95eb95dfd8b29d46a2592e7672c12c92f68b2917@%3Cannounce.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/6114ce566200d76e3cc45c521a62c2c5a4eac15738248f58a99f622c@%3Cissues.activemq.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/479471e6debd608c837b9815b76eab24676657d4444fcfd5ef96d6e6@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/44491fb9cc19acc901f7cff34acb7376619f15638439416e3e14761c@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/277b4b5c2b0e06a825ccec565fa65bd671f35a4d58e3e2ec5d0618e1@%3Cdev.tika.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://lists.apache.org/thread.html/0dcca05274d20ef2d72584edcf8c917bbb13dbbd7eb35cae909d02e9@%3Cdev.logging.apache.org%3E"
+        },
+        {
+          "type": "WEB",
+          "url": "https://issues.apache.org/jira/browse/LOG4J2-1863"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/apache/logging-log4j2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.openwall.com/lists/oss-security/2019/12/19/2"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.securityfocus.com/bid/97702"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.securitytracker.com/id/1040200"
+        },
+        {
+          "type": "WEB",
+          "url": "http://www.securitytracker.com/id/1041294"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0"
+                },
+                {
+                  "fixed": "2.8.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0",
+            "2.0.1",
+            "2.0.2",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.3.1",
+            "2.3.2",
+            "2.4",
+            "2.4.1",
+            "2.5",
+            "2.6",
+            "2.6.1",
+            "2.6.2",
+            "2.7",
+            "2.8",
+            "2.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2020/01/GHSA-fxph-q3j8-mv87/GHSA-fxph-q3j8-mv87.json"
+          }
+        },
+        {
+          "package": {
+            "name": "org.apache.logging.log4j:log4j-core",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.logging.log4j/log4j-core"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0"
+                },
+                {
+                  "fixed": "2.8.2"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "2.0",
+            "2.0.1",
+            "2.0.2",
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.3.1",
+            "2.3.2",
+            "2.4",
+            "2.4.1",
+            "2.5",
+            "2.6",
+            "2.6.1",
+            "2.6.2",
+            "2.7",
+            "2.8",
+            "2.8.1"
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2020/01/GHSA-fxph-q3j8-mv87/GHSA-fxph-q3j8-mv87.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ]
+    }
+  }
+}

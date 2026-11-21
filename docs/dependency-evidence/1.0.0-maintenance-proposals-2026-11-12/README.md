@@ -1,0 +1,3 @@
+# 1.0.0 maintenance proposal dependency scans
+
+These source-bound local Gradle snapshots and OSV reports describe the exact unmerged maintenance PR heads, not the authoritative `mc/*` branches. The [index](index.json) binds each report and snapshot to its source SHA, branch and SHA-256. Snapshot generation used the pinned Gradle Actions dependency-graph init scripts, forced dependency resolution and `--refresh-dependencies`; the [proposal audit](../../../scripts/audit_maintenance_proposal.py) compared scoped Gradle/runtime inventories with the reviewed maintenance ledger. All proposal matches and disappeared findings remain unreviewed and failing; no risk is accepted. These records do not replace scheduled maintenance monitoring or approval of merged source.

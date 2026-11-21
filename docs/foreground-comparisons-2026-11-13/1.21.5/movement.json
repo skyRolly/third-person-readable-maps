@@ -1,0 +1,17 @@
+{
+  "minecraft": "1.21.5",
+  "start": [
+    5.5,
+    81,
+    -62.5
+  ],
+  "end": [
+    5.5,
+    81.0,
+    -53.005956388739705
+  ],
+  "horizontal_distance": 9.494043611260295,
+  "renderer": "Linux Xorg/Mesa software",
+  "paired_candidate_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+  "note": "No-mod control: the candidate JAR was not installed; one short local walking scene does not establish visual acceptance."
+}

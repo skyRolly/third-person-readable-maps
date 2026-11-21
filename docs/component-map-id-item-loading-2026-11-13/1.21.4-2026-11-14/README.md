@@ -1,0 +1,7 @@
+# Paired 1.21.4 component map-ID loading probe — 2026-11-14
+
+A copied 1.21.4 local world was seeded in both host and player inventories with explicit integer IDs 0 and 7, double 0.5, long 4294967296, a string, double NaN, and a missing component. The selected item was the fractional case; map zero contained 15,691 nonblank terrain pixels. [Inputs](fixture.json), saved inventories, screenshots, launcher-library pins and exact runners are retained and hashed in [index.json](index.json). The candidate used the current 1.0.0 proposal JAR; the separate control installed no Mod.
+
+Both runs joined and saved. In both saved inventories, explicit zero and seven remained unchanged, the fractional, overflow and NaN values became integer zero, and the missing component stayed missing. The string produced the game's `Not a number` loading error; the saved slot contained a filled map with no map-ID component. The candidate's first-person and partial third-person captures show the seeded map-zero terrain for the formerly fractional item; the control's first-person capture shows the same terrain. These are controlled software-rendered observations, not complete graphical acceptance or proof of multiplayer behavior.
+
+The [first attempt](first-inconclusive-attempt/) joined but its harness stopped because the already-prepared test platform returned `No blocks were filled` instead of the expected success phrase. Its logs and capture are historical; the completed retry accepted both outcomes and used a fresh copy of the same input. No production world or item was changed.

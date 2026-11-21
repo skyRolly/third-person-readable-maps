@@ -38,6 +38,8 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.15.2'
+      - name: Verify source Wrapper using coordination policy
+        run: python3 scripts/verify_gradle_wrapper.py --root source
       - name: Generate read-only Gradle dependency snapshot
         env:
           GITHUB_DEPENDENCY_GRAPH_REF: refs/heads/${{ matrix.branch }}
@@ -63,6 +65,12 @@ jobs:
           test "${#snapshots[@]}" -eq 1
           test "$(git -C source rev-parse HEAD)" = "$SOURCE_SHA"
           python3 scripts/audit_dependencies.py --snapshot "${snapshots[0]}" --branch "$BRANCH" --source-sha "$SOURCE_SHA" --output dependency-audit.json
+      - name: Query upstream Gradle build-tool advisories
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+        run: python3 scripts/audit_gradle_tool.py --root source --source-sha "$SOURCE_SHA" --output gradle-tool-audit.json
       - name: Summarize audit status
         if: always()
         env:
@@ -83,15 +91,27 @@ jobs:
               else:
                   for state in ("new", "changed", "known"):
                       print(state + ": " + str(sum(m["state"] == state for m in r["matches"])))
-                  print("Resolved: " + str(len(r["resolved"])))
-                  print("Unresolved/failing: " + str(sum(m["failing"] for m in r["matches"])))
+                  print("Reviewed resolved: " + str(len(r["resolved"])))
+                  print("Disappeared and needing review: " + str(len(r["resolved_needing_review"])))
+                  print("Unresolved/failing current matches: " + str(sum(m["failing"] for m in r["matches"])))
                   print("Known findings remain visible in the full artifact; this is not release approval.")
+          q = Path("gradle-tool-audit.json")
+          if not q.exists():
+              print("Gradle upstream advisory check: INCOMPLETE; no report was produced.")
+          else:
+              tool = json.loads(q.read_text())
+              if tool['status'] != 'complete':
+                  print("Gradle upstream advisory check: INCOMPLETE; see retained report.")
+              else:
+                  print("Gradle " + tool['gradle_version'] + " upstream advisory matches: " + str(len(tool['advisories'])))
           PYTHON
       - name: Upload advisory report
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dependency-audit-${{ strategy.job-index }}
-          path: dependency-audit.json
+          path: |
+            dependency-audit.json
+            gradle-tool-audit.json
           if-no-files-found: warn
           retention-days: 30

@@ -1,0 +1,243 @@
+{
+  "scanned_on": "2026-11-13",
+  "snapshot_note": "Reused exact source-bound 2026-11-12 Gradle snapshots; OSV queried again, not a fresh Gradle resolution.",
+  "groups": {
+    "1.14-1.14.4": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.14-1.14.4-snapshot.json",
+      "snapshot_sha256": "7e2bee9928d261373cce0356f5a29e0fcdaf6b4473c09c17831301e63e749912",
+      "report_sha256": "d335b0f72923552ebae1f5f24ee15ccac183a5fbcebca070bf7b658ed30196e3",
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.14-1.14.4-audit.log",
+      "log_sha256": "a1dbd6301ae50d2cb37ab3439c0b7f0b05a9c35c70560abd975e5c734b51bdf8",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.15-1.16.5": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.15-1.16.5-snapshot.json",
+      "snapshot_sha256": "23a384c70c3df3641cbe3416d847f84008036aa902f9af4f8920330b3b981c0e",
+      "report_sha256": "c2d9cde35505c3ff2034db1897d4f44d5650e3da940477a823ea8016c12e6d61",
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.15-1.16.5-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.15-1.16.5-audit.log",
+      "log_sha256": "1ea7588ba653b9e7eb9bd6395090746cf7cedb525c29d12f35ac94bb3869012a",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.17-1.19.2": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.17-1.19.2-snapshot.json",
+      "snapshot_sha256": "3af18bef1e653f35ea810ed7b4bb3d66d6aeea3dde021eedfa25add7b1f52788",
+      "report_sha256": "bebeebd4ae44dbd2af35bb8b6363e3f6710fdf376344677f27232b2d3ecac4f1",
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "failing": 53,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.17-1.19.2-audit.log",
+      "log_sha256": "2095ec0874d12e38db3edce1ec8ad0c9d594d0305b92958945f3a02dd3728b51",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.19.3": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.3-snapshot.json",
+      "snapshot_sha256": "fcd2fd6eda9452f0b5906652000f20b7efc2964ba5be84b9421afeb19f5b1624",
+      "report_sha256": "5f26e61d3fdc8639fe773b9f48eb9b5e18f2b9ea5fcc8b14eb9221b36eb6c149",
+      "matches": 24,
+      "states": {
+        "known": 24
+      },
+      "failing": 24,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.19.3-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.19.3-audit.log",
+      "log_sha256": "9fb6c082f85a07e69ec274745fd8dcc3f021f734c332dc933562847610d08717",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.19.4-1.20.4": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.19.4-1.20.4-snapshot.json",
+      "snapshot_sha256": "491cc9c3c3a000e15b02c064a723a235e1129dff0b6ff6802ef1be6e8ac4f7aa",
+      "report_sha256": "f0e2c9c4c73340a0d0e77c86325a92cf74c9ee5e25e43a970d9543c3aa3f59d2",
+      "matches": 42,
+      "states": {
+        "known": 42
+      },
+      "failing": 42,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.19.4-1.20.4-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.19.4-1.20.4-audit.log",
+      "log_sha256": "f214b8df53070f6de5594358d3912fa969bb1988df1d7faeab1d91510e3eca0c",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.20.5-1.20.6": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.20.5-1.20.6-snapshot.json",
+      "snapshot_sha256": "262b4fbd6f23151874b6b1875c521286db2e6f5b61bd9db846b3f73d25084c5b",
+      "report_sha256": "7a9eac9445c7780f105546544ad04441832915a048779660785b4e329b3b9532",
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.20.5-1.20.6-audit.log",
+      "log_sha256": "e4b366846936e2d4ce98fa09e6ac1841a8cc287588fb57a7dee6567771b36ab6",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.21-1.21.1": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21-1.21.1-snapshot.json",
+      "snapshot_sha256": "f1a633576c737806009c073561d50d8ca41a8c57c143c3a445daf4f2b19ac3cd",
+      "report_sha256": "838898b847be51180abf75b3451ff01ca805950419887066f7c5c2060076a58b",
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21-1.21.1-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21-1.21.1-audit.log",
+      "log_sha256": "9836ca4e6ae3c6f109c703004b3487a4efdb851feeba23a87afcdb2ec3202ac9",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.21.11": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "source_kind": "integrated-maintenance",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-snapshot.json",
+      "snapshot_sha256": "780e35de8e608f838b385a37d2225ec3546fd3279257a53fcd99f4baa5f93e9c",
+      "report_sha256": "694799ecc00c047477c1259127ea2ec264c2f464e0a381309615441723b6b87f",
+      "matches": 41,
+      "states": {
+        "known": 41
+      },
+      "failing": 41,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.11-audit.log",
+      "log_sha256": "c4ff9391ea8b7df4844abd8e702673d51b00019330d022cc429d513d4f2f5945",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.21.2-1.21.3": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.2-1.21.3-snapshot.json",
+      "snapshot_sha256": "847eb971edb85aed230eff0e5f78cf566230db584f54c62e954f3d23c1189481",
+      "report_sha256": "0dfb5369275c60d8135ff874a922ba239f4c2e6e0dfbb987da4d58ca02d1d525",
+      "matches": 45,
+      "states": {
+        "known": 44,
+        "changed": 1
+      },
+      "failing": 45,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.2-1.21.3-audit.log",
+      "log_sha256": "27c82079a2f93569fcac3d3131fa9efb77763a033d1b78b83c4a1dd6e6920ca2",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.21.4-1.21.8": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.4-1.21.8-snapshot.json",
+      "snapshot_sha256": "bd4ba636cd65c99290520a5c5837e20471e0b155d451143d030339eeca623ae0",
+      "report_sha256": "c2a99a7edf45047b4aca9ee4381074098bfd69db41373f3dcc5758b12bf99d02",
+      "matches": 52,
+      "states": {
+        "known": 51,
+        "changed": 1
+      },
+      "failing": 52,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.4-1.21.8-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.4-1.21.8-audit.log",
+      "log_sha256": "980cd5cdf1c53c7dcf20f28ac071dd96b1448e27daad0a51f7352b774a64b79f",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "1.21.9-1.21.10": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "source_kind": "candidate",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.9-1.21.10-snapshot.json",
+      "snapshot_sha256": "34a878de31bff87838aac76bc08645506bc32061be3da5f55ec63dc27b024f64",
+      "report_sha256": "c5442539cc44f32d77119bafbaec6e5d89e9fd933be109834b6c5f6d4f69be5d",
+      "matches": 59,
+      "states": {
+        "known": 58,
+        "changed": 1
+      },
+      "failing": 59,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.9-1.21.10-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/1.21.9-1.21.10-audit.log",
+      "log_sha256": "de8aec3407433f6c601c28314c839d92c02ffef0a5482c19116ac73675c6fc33",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "26.1-26.2": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+      "source_kind": "integrated-maintenance",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-snapshot.json",
+      "snapshot_sha256": "daf19551ad29f991ee5a6fbffe778d278691f94ff5b3d697315a6dfb158d3eba",
+      "report_sha256": "789150eec59633e8e791ad51392753d1b2df1438caffed46360641533d79ae41",
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "failing": 53,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/26.1-26.2-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/26.1-26.2-audit.log",
+      "log_sha256": "e51a06446ae644a127e4a643597c930cf0bf898a97f3d227132ed68b1b2c5d20",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    },
+    "26.3": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+      "source_kind": "integrated-maintenance",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-snapshot.json",
+      "snapshot_sha256": "9eeaeff081df58262ce30e83abfe7caa38bbffdc89ce5761db3da3faf80729fc",
+      "report_sha256": "2b7f25a69f95e72d386e8703c3f0a14a024a649c0a5948e86102d00cd1efb2f0",
+      "matches": 11,
+      "states": {
+        "known": 11
+      },
+      "failing": 11,
+      "report_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/26.3-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-osv-rescan-2026-11-13/26.3-audit.log",
+      "log_sha256": "b9f0450828ea16e486fd1decd3fac6f9db23e7f5cd703f6f42c738f332afd39a",
+      "comparison_with_2026_11_12": "same matches, fingerprints, states and failing flags"
+    }
+  }
+}

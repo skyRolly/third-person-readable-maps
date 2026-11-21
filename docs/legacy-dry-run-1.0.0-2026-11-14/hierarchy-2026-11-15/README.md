@@ -1,0 +1,5 @@
+# 1.0.0 non-publishing candidate rehearsal — 2026-11-15
+
+This [candidate plan](candidate-plan.json) aggregated 13 artifacts covering 48 explicit Minecraft versions, with exact proposal commits and the artifact identities in [SHA256SUMS](SHA256SUMS) and [release-manifest.json](release-manifest.json). The coordinator code commit was `19195e6cf04088fff5ce754090a8fc2c465d68b8`. The local JARs are retained in the task workspace; this record preserves their identities, not copies of distributable files.
+
+The [runner](rehearse.py) checked the independent build and 48-version static evidence before invoking candidate aggregation. The [18 negative controls](negative-controls.json) include the existing 15 aggregation/authorization controls and three rehearsal-harness checks for missing or failed static evidence and missing Wrapper-preflight evidence. Those last three are checks by this harness, not new claims about the production aggregator. Strict production authorization, source approval and live prerequisites remain separate and unsatisfied. No tag or release was created.

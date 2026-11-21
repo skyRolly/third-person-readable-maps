@@ -1,0 +1,17 @@
+{
+  "minecraft": "26.2",
+  "start": [
+    5.5,
+    81,
+    -62.5
+  ],
+  "end": [
+    5.5,
+    81.0,
+    -51.279083841474474
+  ],
+  "horizontal_distance": 11.220916158525526,
+  "renderer": "Linux Xorg/Mesa software",
+  "candidate_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+  "note": "One short local walking scene; screenshots require visual inspection and do not establish full acceptance. The world was saved and closed; the diagnostic then timed out exiting the client menu and terminated the client. Movement was recovered from the saved player file."
+}

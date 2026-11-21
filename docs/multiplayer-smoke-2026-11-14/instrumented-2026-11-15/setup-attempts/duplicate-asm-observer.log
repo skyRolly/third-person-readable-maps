@@ -1,0 +1,7 @@
+TPRM_MAP_PROBE agent_started
+Exception in thread "main" java.lang.ExceptionInInitializerError
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+Caused by: java.lang.IllegalStateException: duplicate ASM classes found on classpath: jar:file:/workspace/.minecraft-test/libraries/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar!/org/objectweb/asm/ClassReader.class, jar:file:/dev/shm/tprm-lan-agent/probe.jar!/org/objectweb/asm/ClassReader.class
+	at net.fabricmc.loader.impl.util.LoaderUtil.verifyClasspath(LoaderUtil.java:83)
+	at net.fabricmc.loader.impl.launch.knot.Knot.<clinit>(Knot.java:330)
+	... 1 more

@@ -1,0 +1,14 @@
+{
+  "version": "26.1",
+  "exit_code": 0,
+  "validated_uses": 97,
+  "protected_uses": [],
+  "group": "26.1-26.2",
+  "source_commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+  "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+  "archived_script_sha256": {
+    "game_linkage.py": "aaf4a6a935252e20f999b5f04cd0d3d373c4724dea66f049107e84df23b6b954",
+    "jvm_linkage.py": "c44f686231bffaff26a09fd230ca3c7ce2dd0ad8d30fee95336b7024c137865e",
+    "verify_supported_apis.py": "d63dcc57c94b7b3fa70b7d190eec0ca02966456521a91eeec4a97a2026eb9733"
+  }
+}

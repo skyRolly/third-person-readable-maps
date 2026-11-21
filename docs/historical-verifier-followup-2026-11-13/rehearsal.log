@@ -1,0 +1,32 @@
+All pinned commits match their source branch heads.
+Validated 13 artifacts for 1.0.0 (candidate=True)
+third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar: OK
+third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar: OK
+third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar: OK
+third-person-readable-maps-1.0.0-mc1.19.3.jar: OK
+third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar: OK
+third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar: OK
+third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar: OK
+third-person-readable-maps-1.0.0-mc1.21.11.jar: OK
+third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar: OK
+third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar: OK
+third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar: OK
+third-person-readable-maps-1.0.0-mc26.1-26.2.jar: OK
+third-person-readable-maps-1.0.0-mc26.3.jar: OK
+release-manifest.json: OK
+REJECTED missing-group plan must contain every configured group exactly once
+REJECTED wrong-mod-version plan version differs from coordinated current version
+REJECTED wrong-candidate-source 1.14-1.14.4: source must be its maintenance branch or its own non-publishing candidate branch
+REJECTED missing-strict-runtime-evidence 1.21.11: missing version-by-version runtime evidence
+REJECTED candidate-publication release manifest version or candidate flag is invalid
+REJECTED duplicate-artifact 1.14-1.14.4: expected exactly one JAR, found 2
+REJECTED wrong-game-metadata 1.14-1.14.4: wrong dependency metadata
+REJECTED wrong-namespace 1.14-1.14.4: wrong namespace or build target
+REJECTED mixed-0.0.2-and-1.0.0-artifacts 1.14-1.14.4: wrong mod identity, version, or environment
+REJECTED wrong-artifact-classifier 1.14-1.14.4: unexpected JAR filename: third-person-readable-maps-1.0.0-mcWRONG.jar
+REJECTED duplicate-game-version 1.14-1.14.4: invalid explicit Minecraft versions or compilation target
+REJECTED overlapping-game-version 1.14-1.14.4: Minecraft versions overlap another group
+REJECTED strict-rejects-candidate-config
+REJECTED changed-artifact-after-checksum
+REJECTED wrong-remote-source-commit 1.14-1.14.4: source branch is missing or its HEAD differs from the plan
+REHEARSAL COMPLETE 13 groups; 48 versions; coordinator e9f13f113b04dbd6939bc124ed739213bf624ab7

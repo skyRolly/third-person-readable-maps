@@ -1,0 +1,2 @@
+Automated OCR recognized the world-upgrade prompt on a copied local test world and selected the continue button; the original fixture was untouched. The screenshot and OCR output were retained before the click.
+An OCR sidecar recognized the completed-upgrade join prompt on the copied test world and selected Yes; the screenshot and OCR output were retained.

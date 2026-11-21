@@ -1,0 +1,28 @@
+{
+  "candidate": true,
+  "authorizes_release": false,
+  "coordinator_code_commit": "15264589fa6a7e8ad9f62cc2d3977be84e6cce87",
+  "coordinator_code_sha256": {
+    "scripts/release.py": "071213a3f00eda4fc94316cb1e5c67e76895eafa7429aaeee7da198ec0a4ffc8",
+    "scripts/release_github.py": "2fb37ad4f166743082d78cd44ba12d87cbf63b94979af53095901b0f89a4eb1b",
+    "release/current-version.json": "77cbd795932bd2c48bb1bcb3d3cb462cc36ed1e8d76074c2d20f9d9d21dda615"
+  },
+  "runner_base": "docs/legacy-dry-run-1.0.0-2026-11-14/hierarchy-2026-11-15/rehearse.py",
+  "runner_base_sha256": "d99988c461c8cc12d0537b8dcb227569313d44c20e566affeb213da3f4789577",
+  "runner_sha256": "b9ada8c3be615f44fe8b6b58a82c2be4fc7665fd7e14d3be5e0bfc6d53670ac4",
+  "runner_substitutions": {
+    "hierarchy-final-builds-20261115": "late-review-final-builds-20261116",
+    "hierarchy-final-api-20261115": "late-review-final-api-20261116"
+  },
+  "harness_controls": [
+    "missing-static-evidence",
+    "failed-static-evidence",
+    "missing-wrapper-preflight-evidence"
+  ],
+  "other_controls": 15,
+  "log_sha256": "b2cbd1ec76329210edca6f383a3ca145b6c8fba0719362ed2082e337eafc49d1",
+  "scope": "Non-publishing candidate aggregation; not strict release authorization or approved integrated-source rehearsal.",
+  "candidate_compatibility_record": "docs/legacy-dry-run-1.0.0-2026-11-14/hierarchy-2026-11-15/candidate-compatibility.json",
+  "candidate_compatibility_sha256": "7964647b689799a5bba7378ded64fe3364df2aa568710561f62e9b99716202b7",
+  "candidate_matrix_sha256": "8321be02b3d9b9bb3fdc742d5f441d29dfd5a65d224cfbc17a62905aa7bfd5ca"
+}

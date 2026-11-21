@@ -6,7 +6,8 @@ imperative wording is historical, not unfinished game-build migration work.
 The current [maintenance report](maintenance-2026-11-04.md),
 [monitoring record](dependency-monitoring.md), and [administrative inventory](administrative-controls.md)
 supersede its preliminary configuration and advisory status. Main is coordination-only;
-all three game branches are established and 0.0.2 remains unreleased.
+all three game branches are established. Their integrated 0.0.2 sources remain
+unreleased; separate review PRs propose the coordinated 1.0.0 version.
 
 Decision based on the repository state inspected on 2026-11-04: `main` was
 `3844e9bc0295f71cae64224cbfd6a2c36afb56f0`; the maintained heads were

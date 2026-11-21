@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "version": "1.0.0",
+  "release_date": "2026-11-15",
+  "changes": [
+    "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+  ],
+  "known_limitations": [
+    "Non-publishing candidate rehearsal; runtime, security, review and administrative gates remain open"
+  ],
+  "groups": {
+    "1.21.11": {
+      "source_branch": "maintenance/mc-1.21.11-1.0.0",
+      "commit": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "26.1-26.2": {
+      "source_branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "26.3": {
+      "source_branch": "maintenance/mc-26.3-1.0.0",
+      "commit": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21.9-1.21.10": {
+      "source_branch": "candidate/mc-1.21.9-1.21.10",
+      "commit": "1287668b7932362ce8962c15ed993aa9798df183",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21.4-1.21.8": {
+      "source_branch": "candidate/mc-1.21.4-1.21.8",
+      "commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21.2-1.21.3": {
+      "source_branch": "candidate/mc-1.21.2-1.21.3",
+      "commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21-1.21.1": {
+      "source_branch": "candidate/mc-1.21-1.21.1",
+      "commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.20.5-1.20.6": {
+      "source_branch": "candidate/mc-1.20.5-1.20.6",
+      "commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.19.4-1.20.4": {
+      "source_branch": "candidate/mc-1.19.4-1.20.4",
+      "commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.17-1.19.2": {
+      "source_branch": "candidate/mc-1.17-1.19.2",
+      "commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.15-1.16.5": {
+      "source_branch": "candidate/mc-1.15-1.16.5",
+      "commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.19.3": {
+      "source_branch": "candidate/mc-1.19.3",
+      "commit": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.14-1.14.4": {
+      "source_branch": "candidate/mc-1.14-1.14.4",
+      "commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "verified_changes": [
+        "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
+      ],
+      "runtime_evidence": {}
+    }
+  }
+}

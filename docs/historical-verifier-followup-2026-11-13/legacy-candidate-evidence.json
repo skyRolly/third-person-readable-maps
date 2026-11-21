@@ -1,0 +1,529 @@
+{
+  "schema": 1,
+  "mod_version": "1.0.0",
+  "observed_on": "2026-11-13",
+  "static_checks_observed_on": "2026-11-12",
+  "historical_evidence": "docs/historical-0.0.2-2026-11-05/legacy-candidate-evidence.json",
+  "groups": {
+    "1.21.9-1.21.10": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "candidate_head": "ec7b47fb8d87e307d33250ef8693671d8e65ab0b",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+      "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "versions": [
+        "1.21.9",
+        "1.21.10"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.21.9-1.21.10 on 1.21.8 rejected (exit 1): API compatibility check failed: 1.21.8: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_11659;I)V; 1.21.9-1.21.10 on 1.21.11 rejected (exit 1): API compatibility check failed: 1.21.11: missing Mixin target net/minecraft/class_10426.method_65577(Lnet/minecraft/class_1309;Lnet/minecraft/class_10426;Lnet/minecraft/class_10442;)V",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.21.9": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.41 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.9/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.10": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.10/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.21.4-1.21.8": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "candidate_head": "08f70683b93eff8d4a68dd366232c70cedd65101",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+      "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "versions": [
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.21.4-1.21.8 on 1.21.9 rejected (exit 1): API compatibility check failed: 1.21.9: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_10426;Lnet/minecraft/class_10444;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.21.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.4/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.5": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.5/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.6": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.6/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.7": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.7/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.8": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.01 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.8/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.21.2-1.21.3": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "candidate_head": "2f7f902dc2d1ca62ed6e7f628db8ef1c367586c1",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+      "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "versions": [
+        "1.21.2",
+        "1.21.3"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "Historical adjacent-version negative checks are retained in the 0.0.2 archive; see the 1.0.0 review record for reruns",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.21.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.3/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.21-1.21.1": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "candidate_head": "b24ed245e4630c2df87f539707dbf662bba354ac",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+      "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "versions": [
+        "1.21",
+        "1.21.1"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "Historical adjacent-version negative checks are retained in the 0.0.2 archive; see the 1.0.0 review record for reruns",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.21": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.21.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.85 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.21.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.20.5-1.20.6": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "candidate_head": "44bd44301fbfc11e9f5eefe63a1eb2d04e8b0c96",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+      "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "versions": [
+        "1.20.5",
+        "1.20.6"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "Historical adjacent-version negative checks are retained in the 0.0.2 archive; see the 1.0.0 review record for reruns",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.20.5": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.20 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.5/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        },
+        "1.20.6": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.63 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.6/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.19.4-1.20.4": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "candidate_head": "4c78b44bd8ac1a758f3c04987530b9fda844127b",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+      "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "versions": [
+        "1.19.4",
+        "1.20",
+        "1.20.1",
+        "1.20.2",
+        "1.20.3",
+        "1.20.4"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "Historical adjacent-version negative checks are retained in the 0.0.2 archive; see the 1.0.0 review record for reruns",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.19.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.4/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        },
+        "1.20": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.06 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.20.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.79 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.20.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.36 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.20.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.3/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.20.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.20.4/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-13"
+        }
+      }
+    },
+    "1.17-1.19.2": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "candidate_head": "96060a2c1c5267eae102f24cf3a78d6646d4dbce",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+      "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "versions": [
+        "1.17",
+        "1.17.1",
+        "1.18",
+        "1.18.1",
+        "1.18.2",
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.17-1.19.2 on 1.19.3 rejected (exit 1): API compatibility check failed: 1.19.3: missing classes: ['net/minecraft/class_1158', 'net/minecraft/class_1159', 'net/minecraft/class_1160']",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.17": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.01 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.17/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        },
+        "1.17.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.71 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.17.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.18": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.18.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.18.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.14 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.18.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.19": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.19.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.19.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        }
+      }
+    },
+    "1.15-1.16.5": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "candidate_head": "7bf2ae372fac4d6e478f3a523db963886e05900f",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+      "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "versions": [
+        "1.15",
+        "1.15.1",
+        "1.15.2",
+        "1.16",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.15-1.16.5 on 1.14.4 rejected (exit 1): API compatibility check failed: 1.14.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V; 1.15-1.16.5 on 1.17 rejected (exit 1): API compatibility check failed: 1.17: missing game members: [('field', 'net/minecraft/class_572', 'field_3390', 'Lnet/minecraft/class_630;'), ('method', 'net/minecraft/class_1806', 'method_7997', '(Lnet/minecraft/class_1799;Lnet/minecraft/class_1937;)Lnet/minecraft/class_22;'), ('method', 'net/minecraft/class_330', 'method_1773', '(Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;Lnet/minecraft/class_22;ZI)V')]",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.15": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        },
+        "1.15.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.15.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.15.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.49 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.28 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.65 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.44 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.3/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.35 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.4/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.16.5": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.22 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.16.5/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        }
+      }
+    },
+    "1.19.3": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "candidate_head": "c3ac7d261b4289451c8b27df96fae7a316ba75ed",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+      "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "versions": [
+        "1.19.3"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.19.3 on 1.19.2 rejected (exit 1): API compatibility check failed: 1.19.2: missing classes: ['net/minecraft/class_7833']; 1.19.3 on 1.19.4 rejected (exit 1): API compatibility check failed: 1.19.4: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.19.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 11.87 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.19.3/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null"
+        }
+      }
+    },
+    "1.14-1.14.4": {
+      "status": "CANDIDATE; NOT RELEASE READY",
+      "source_commit": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "candidate_head": "341d33664272c2a19aa419e3d33f01b1954df991",
+      "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+      "sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "versions": [
+        "1.14",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4"
+      ],
+      "static_linkage": "PASS: current instruction-aware verifier against every declared version; see branch static verification record",
+      "client_startup": "NOT RUN: installed 1.0.0 JAR has not been tested on this version",
+      "graphical": "NOT RUN: full graphical acceptance of the 1.0.0 JAR remains required",
+      "negative": "1.14-1.14.4 on 1.15 rejected (exit 1): API compatibility check failed: 1.15: missing Mixin target net/minecraft/class_989.method_4192(Lnet/minecraft/class_1309;Lnet/minecraft/class_1799;Lnet/minecraft/class_809$class_811;Lnet/minecraft/class_1306;)V",
+      "limitations": [
+        "Static verification is not a complete JVM bytecode verifier or graphical acceptance",
+        "Independent human visual acceptance, hardware-GPU and multiplayer testing remain outstanding",
+        "Candidate has not been integrated or admitted to strict release configuration",
+        "Security findings and administrative approval gates remain unresolved"
+      ],
+      "per_version": {
+        "1.14": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.93 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12",
+          "map_identity_probe": "Controlled copied-stack test: explicit zero and nonzero resolved; absent, fractional, non-finite and out-of-range identity did not look up map zero; unavailable ID returned null",
+          "render_state_probe": "Controlled probe preserved seeded texture binding, active texture unit and lighting across eight calls on texture units 0 and 1"
+        },
+        "1.14.1": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 14.03 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.1/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.14.2": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 10.57 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.2/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.14.3": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 9.92 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.3/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        },
+        "1.14.4": {
+          "client_startup": "PASS: installed 1.0.0 JAR joined a local world using Fabric 0.20.1, the required Java runtime, and Linux Xorg/Mesa software rendering",
+          "graphical": "PARTIAL: automated walking screenshots captured; independent visual assessment and full graphical acceptance NOT RUN",
+          "movement_diagnostic": "Local walking distance 8.84 blocks; screenshots retained in docs/runtime-smoke-1.0.0/1.14.4/ and require independent visual assessment",
+          "movement_observed_on": "2026-11-12"
+        }
+      }
+    }
+  }
+}

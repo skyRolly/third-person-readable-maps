@@ -1,5 +1,6 @@
 import copy
 from datetime import date
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import audit_dependencies as audit
+import audit_candidate_dependencies as candidate_audit
 from release import Invalid
 
 TODAY = date(2026, 11, 4)
@@ -73,7 +75,8 @@ class AuditTests(unittest.TestCase):
         result = self.compare()
         self.assertEqual(result['matches'][0]['state'], 'new')
         self.assertTrue(result['failing'])
-        self.assertEqual(result['resolved'], [self.ledger['records'][0]['key']])
+        self.assertEqual(result['resolved'], [])
+        self.assertEqual(result['resolved_needing_review'], [self.ledger['records'][0]['key']])
 
     def test_new_affected_compatibility_group_has_no_implicit_review(self):
         new_group = '26.3'
@@ -100,12 +103,33 @@ class AuditTests(unittest.TestCase):
                 self.assertTrue(self.compare()['failing'])
                 self.advisory.clear(); self.advisory.update(original)
 
-    def test_resolved_finding_is_reported_not_deleted(self):
+    def test_disappeared_finding_requires_review_and_is_not_deleted(self):
         self.findings = {}
         result = self.compare()
-        self.assertFalse(result['failing'])
-        self.assertEqual(result['resolved'], [self.ledger['records'][0]['key']])
+        self.assertTrue(result['failing'])
+        self.assertEqual(result['resolved'], [])
+        self.assertEqual(result['resolved_needing_review'], [self.ledger['records'][0]['key']])
         self.assertEqual(len(self.ledger['records']), 1)
+
+    def test_resolution_review_binds_source_and_complete_inventory(self):
+        self.findings = {}
+        record = self.ledger['records'][0]
+        record['disposition'] = 'Fixed'
+        record['resolution_review'] = {'source_sha': 'a' * 40,
+            'inventory_sha256': audit.inventory_fingerprint(self.inventories),
+            'reviewed_by': 'independent-reviewer', 'evidence_reference': 'reviewed report'}
+        def compare(sha):
+            return audit.compare(self.group, self.inventories, self.findings, self.advisories,
+                                 self.ledger, self.groups, TODAY, source_sha=sha)
+        reviewed = compare('a' * 40)
+        self.assertFalse(reviewed['failing'])
+        self.assertEqual(reviewed['resolved'], [record['key']])
+        self.assertEqual(reviewed['resolved_needing_review'], [])
+        self.assertTrue(compare('b' * 40)['failing'])
+        self.inventories['gradle'].append('pkg:maven/example/another@1.0')
+        self.assertTrue(compare('a' * 40)['failing'])
+        record['resolution_review']['reviewed_by'] = ''
+        with self.assertRaises(Invalid): compare('a' * 40)
 
     def test_missing_or_incomplete_advisory_data_fails(self):
         for value in [None, {}, {'id': 'GHSA-example', 'modified': '2026-11-04'}]:
@@ -159,6 +183,41 @@ class AuditTests(unittest.TestCase):
         self.ledger['reviewed_on'] = '2026-01-01'
         with self.assertRaises(Invalid): audit.load_ledger(self.ledger, self.groups, TODAY)
 
+    def test_candidate_scans_keep_every_match_unreviewed_and_source_bound(self):
+        root = Path(__file__).resolve().parents[1]
+        reports = sorted((root / 'docs/dependency-evidence').glob('legacy-candidate*osv-2026-11-05.json'))
+        self.assertTrue(reports)
+        evidence = audit.read_json(root / 'docs/legacy-candidate-evidence.json')
+        candidates = evidence['groups']
+        baseline = candidate_audit.load_baseline(audit.read_json(candidate_audit.BASELINE), evidence,
+                                                 today=date(2026, 11, 5))
+        seen = set()
+        for path in reports:
+            report = audit.read_json(path)
+            self.assertEqual(report['status'], 'complete-unreviewed-candidate-scan')
+            self.assertFalse(report['risk_acceptance'])
+            for group, entry in report['groups'].items():
+                self.assertNotIn(group, seen)
+                seen.add(group)
+                self.assertEqual(entry['ref'], 'refs/pull/' + candidates[group]['pull_request'].rsplit('/', 1)[-1] + '/merge')
+                self.assertRegex(entry['source_sha'], r'^[a-f0-9]{40}$')
+                self.assertEqual(entry['source_sha'], baseline[group]['source_sha'])
+                self.assertIn('gradle', entry['inventories'])
+                self.assertEqual(set(entry['runtime_manifests']),
+                                 {s.removeprefix('runtime/') for s in entry['inventories'] if s.startswith('runtime/')})
+                queried = set().union(*map(set, entry['inventories'].values()))
+                expected = {(purl, identifier) for purl, ids in report['findings'].items()
+                            if purl in queried for identifier in ids}
+                self.assertEqual(expected, {(m['purl'], m['advisory']) for m in entry['matches']})
+                for match in entry['matches']:
+                    self.assertEqual(match['key'], audit.identity(group, match['purl'], match['advisory']))
+                    self.assertEqual(match['fingerprint'], audit.advisory_fingerprint(report['advisories'][match['advisory']]))
+                    self.assertEqual(match['scopes'], sorted(k for k, v in entry['inventories'].items() if match['purl'] in v))
+                    self.assertTrue(match['failing'])
+                    self.assertEqual(match['review_status'], 'awaiting investigation')
+                    self.assertEqual(match['disposition'], 'Further investigation')
+        self.assertEqual(seen, set(candidates))
+
     def test_checked_in_ledger_covers_configured_inventories(self):
         root = Path(__file__).resolve().parents[1]
         groups = audit.read_json(root / 'release/compatibility.json')['groups']
@@ -169,6 +228,29 @@ class AuditTests(unittest.TestCase):
             result = audit.compare(group, report['inventories'], report['findings'], ledger['advisories'], ledger, groups)
             self.assertTrue(result['failing'])  # Unresolved risk was not accepted to make CI green.
             self.assertTrue(all(m['state'] == 'known' for m in result['matches']))
+
+    def test_runtime_only_critical_upstream_disposition_remains_failing(self):
+        root = Path(__file__).resolve().parents[1]
+        group = '26.1-26.2'
+        groups = audit.read_json(root/'release/compatibility.json')['groups']
+        ledger = audit.read_json(root/'docs/security-advisories.json')
+        evidence = (root/'docs/dependency-evidence/ghsa-c4c3-2026-11-14.json').read_bytes()
+        self.assertEqual(hashlib.sha256(evidence).hexdigest(),
+                         '1ef10fdd35708ed6bc960f39a884c04fb8fb702a602e18b414e819a0a9e87113')
+        advisory = json.loads(evidence)
+        self.assertEqual(advisory['ghsa_id'], 'GHSA-c4c3-7fpv-j4q5')
+        self.assertEqual(advisory['severity'], 'critical')
+        self.assertIn('4.2.17.Final', {item['first_patched_version'] for item in advisory['vulnerabilities']})
+        report = audit.read_json(root/'docs/dependency-evidence/osv-rescan-2026-11-14/current_sources/26.1-26.2-osv.json')
+        result = audit.compare(group, report['inventories'], report['findings'], report['advisories'], ledger, groups)
+        key = group+'|pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-c4c3-7fpv-j4q5'
+        match = next(item for item in result['matches'] if item['key'] == key)
+        self.assertEqual(match['scopes'], ['runtime/26.2'])
+        self.assertEqual(match['severity'], 'CRITICAL')
+        self.assertEqual(match['disposition'], 'Upstream-dependent')
+        self.assertEqual(match['state'], 'known')
+        self.assertTrue(match['failing'])
+        self.assertTrue(result['failing'])
 
 
 if __name__ == '__main__':

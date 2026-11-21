@@ -115,11 +115,27 @@ def load_ledger(value, groups, today=None):
                 set(scopes) <= set(value['inventories'][group]), 'invalid reviewed scopes')
         if record['disposition'] == 'Risk accepted':
             require(record.get('acceptance_reference') and record.get('accepted_by'), 'risk acceptance lacks authorization')
+        resolution = record.get('resolution_review')
+        if resolution is not None:
+            require(isinstance(resolution, dict) and set(resolution) ==
+                    {'source_sha', 'inventory_sha256', 'reviewed_by', 'evidence_reference'} and
+                    record['review_status'] == 'reviewed' and record['disposition'] in ('Fixed', 'Resolved upstream') and
+                    isinstance(resolution['source_sha'], str) and re.fullmatch(r'[a-f0-9]{40}', resolution['source_sha']) and
+                    isinstance(resolution['inventory_sha256'], str) and re.fullmatch(r'[a-f0-9]{64}', resolution['inventory_sha256']) and
+                    all(isinstance(resolution[k], str) and resolution[k].strip()
+                        for k in ('reviewed_by', 'evidence_reference')), 'invalid resolution review')
         index[key] = record
     return index
 
 
-def compare(group, inventories, findings, advisories, ledger, groups, today=None):
+def inventory_fingerprint(inventories):
+    """Stable digest of the complete scoped package inventory, excluding job timestamps."""
+    canonical_inventory = {scope: sorted(packages) for scope, packages in inventories.items()}
+    raw = json.dumps(canonical_inventory, sort_keys=True, separators=(',', ':')).encode('utf-8')
+    return hashlib.sha256(raw).hexdigest()
+
+
+def compare(group, inventories, findings, advisories, ledger, groups, today=None, source_sha=None):
     index = load_ledger(ledger, groups, today)
     require(set(inventories) == set(ledger['inventories'][group]), 'incomplete dependency inventory scopes')
     for scope, purls in inventories.items():
@@ -153,9 +169,22 @@ def compare(group, inventories, findings, advisories, ledger, groups, today=None
             current[key] = {'key': key, 'purl': purl, 'advisory': identifier, 'scopes': scopes,
                             'state': state, 'disposition': disposition, 'failing': failing,
                             'severity': severity, 'fingerprint': fingerprint}
-    resolved = sorted(key for key, record in index.items() if record['group'] == group and key not in current)
-    return {'matches': list(current.values()), 'resolved': resolved,
-            'failing': any(x['failing'] for x in current.values())}
+    absent = sorted(key for key, record in index.items() if record['group'] == group and key not in current)
+    fingerprint = inventory_fingerprint(inventories)
+    resolved = []
+    pending = []
+    for key in absent:
+        record = index[key]
+        review = record.get('resolution_review') or {}
+        if (record['review_status'] == 'reviewed' and record['disposition'] in ('Fixed', 'Resolved upstream') and
+                source_sha is not None and review.get('source_sha') == source_sha and
+                review.get('inventory_sha256') == fingerprint):
+            resolved.append(key)
+        else:
+            pending.append(key)
+    return {'matches': list(current.values()), 'resolved': resolved, 'resolved_needing_review': pending,
+            'inventory_sha256': fingerprint,
+            'failing': bool(pending) or any(x['failing'] for x in current.values())}
 
 
 def audit(snapshot, branch, source_sha, ledger, groups):
@@ -173,7 +202,7 @@ def audit(snapshot, branch, source_sha, ledger, groups):
     advisories = {}
     for identifier in sorted({i for ids in findings.values() for i in ids}):
         advisories[identifier] = get_json('https://api.osv.dev/v1/vulns/' + quote(identifier, safe=''))
-    comparison = compare(group, inventories, findings, advisories, ledger, groups)
+    comparison = compare(group, inventories, findings, advisories, ledger, groups, source_sha=source_sha)
     return {'schema': 1, 'status': 'complete', 'branch': branch, 'source_sha': source_sha,
             'scanned_on': date.today().isoformat(), 'inventories': inventories,
             'runtime_manifests': evidence, 'findings': findings, 'advisories': advisories, **comparison}
@@ -190,7 +219,8 @@ def main():
         report = audit(read_json(args.snapshot), args.branch, args.source_sha,
                        read_json(args.ledger), read_json(args.config)['groups'])
         counts = {state: sum(m['state'] == state for m in report['matches']) for state in ('new', 'changed', 'known')}
-        print(f"{args.branch} at {args.source_sha}: {counts}; resolved: {len(report['resolved'])}; "
+        print(f"{args.branch} at {args.source_sha}: {counts}; reviewed resolved: {len(report['resolved'])}; "
+              f"disappeared needing review: {len(report['resolved_needing_review'])}; "
               f"unresolved/failing matches: {sum(m['failing'] for m in report['matches'])}")
         for match in report['matches']:
             print(f"{match['state']} | {match['key']} | {match['severity']} | {match['disposition']}")

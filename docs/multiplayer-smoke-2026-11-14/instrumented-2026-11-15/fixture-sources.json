@@ -1,0 +1,8 @@
+{
+  "net/minecraft/class_1799.java": "package net.minecraft; public class class_1799 { public class_9209 id=new class_9209(); }\n",
+  "net/minecraft/class_1806.java": "package net.minecraft; public class class_1806 { public static class_22 result; public static class_22 method_8001(class_1799 s,class_1937 w){return result;} }\n",
+  "net/minecraft/class_1937.java": "package net.minecraft; public class class_1937 {}\n",
+  "net/minecraft/class_22.java": "package net.minecraft; public class class_22 {}\n",
+  "net/minecraft/class_9209.java": "package net.minecraft; public class class_9209 { public String toString(){return \"MapId[id=2]\";} }\n",
+  "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.java": "package tech.rolly.thirdpersonreadablemaps; import net.minecraft.*; public class ReadableMapSurface { public static void submitReadableMap(Object a,Object b,class_1799 stack,int n,boolean c,boolean d){ class_1937 level=null; class_9209 id=stack.id; class_22 data=class_1806.method_8001(stack,level); if(data!=null) System.out.print(\"\"); } public static void main(String[] args){class_1799 s=new class_1799();submitReadableMap(null,null,s,0,false,false);class_1806.result=new class_22();submitReadableMap(null,null,s,0,false,false);} }\n"
+}

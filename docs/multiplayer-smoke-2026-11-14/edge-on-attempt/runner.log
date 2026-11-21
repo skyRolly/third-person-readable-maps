@@ -1,0 +1,14 @@
+Installing cached launcher inputs
+Started host
+Confirmed command /fill -5 80 -73 15 80 -33 minecraft:stone
+Confirmed command /fill -5 81 -73 15 85 -33 minecraft:air
+Confirmed command /time set day
+Published local test LAN port 37045
+Started observer
+Confirmed command /tp MapSmokeTest 5.5 81 -62.5 180 0
+Confirmed command /tp MapObserver 5.5 81 -67.5 0 0
+Captured observer-before-map
+Captured host-held-map
+Confirmed command /give MapObserver minecraft:filled_map[minecraft:map_id=2]
+Captured observer-after-map
+MULTIPLAYER CAPTURE COMPLETE

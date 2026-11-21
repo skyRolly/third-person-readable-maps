@@ -1,0 +1,20 @@
+{
+  "minecraft": "26.3",
+  "input_world_version": "26.3",
+  "baseline_world": "Previously upgraded no-Mod control world, saved by 26.3; this run loads native-format 26.3 player data without a world upgrade",
+  "input_level_sha256": "e3c07def21e76c136be36f3eec457f6b7174b1eff38f1a851d5db7ee8898457e",
+  "input_player_sha256": "ddfd907b97af2d3ff8894df68f42017b22502fa92572b06d7ebf8ac8bbddfe23",
+  "input_map_zero_sha256": "6fef53d6da94ce6e17eaf8c0c0d45c57f2a6ce5603195961418033e848c3fc3a",
+  "map_zero_nonblank": 16249,
+  "selected_slot": 3,
+  "slots": {
+    "1": "Int 0",
+    "2": "Int 7",
+    "3": "Double 0.5",
+    "4": "Long 4294967296",
+    "6": "String not-a-number",
+    "7": "Double NaN",
+    "8": "absent component"
+  },
+  "scope": "Controlled copied test world; no production world or item modified."
+}

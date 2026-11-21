@@ -1,0 +1,4 @@
+TPRM_MAP_PROBE agent_started
+TPRM_MAP_PROBE transformed_readable_map_surface lookup_count=1
+TPRM_MAP_PROBE data_available=false id=MapId[id=2]
+TPRM_MAP_PROBE data_available=true id=MapId[id=2]

@@ -1,0 +1,810 @@
+{
+  "note": "The coordination head is a point-in-time observation; subsequent evidence-only commits require fresh exact-head checks. Bot PRs remain separate.",
+  "observed_at_utc": "2026-11-14T07:02:16.287812+00:00",
+  "pull_requests": {
+    "13": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.9-1.21.10",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425689680/job/131886434379",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425689680/job/131886434454",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425689680/job/131886433966",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.21.9-1.21.10",
+      "headRefOid": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 13,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/13"
+    },
+    "14": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.4-1.21.8",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425691294/job/131886437790",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425691294/job/131886438138",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425691294/job/131886438289",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.21.4-1.21.8",
+      "headRefOid": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 14,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/14"
+    },
+    "15": {
+      "autoMergeRequest": null,
+      "baseRefName": "main",
+      "checks": [
+        {
+          "conclusion": "FAILURE",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43569008716/job/132369074133",
+          "name": "Validate coordination",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "FAILURE",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43569004859/job/132369062950",
+          "name": "Validate coordination",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "coordination/legacy-expansion",
+      "headRefOid": "11cd465cfa004c8d996ec01faea218ae0f9696b8",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 15,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/15"
+    },
+    "16": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.2-1.21.3",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425681179/job/131886406326",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425681179/job/131886406138",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425681179/job/131886405854",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.21.2-1.21.3",
+      "headRefOid": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 16,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/16"
+    },
+    "17": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21-1.21.1",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425675235/job/131886388786",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425675235/job/131886388349",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425675235/job/131886388694",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.21-1.21.1",
+      "headRefOid": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 17,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/17"
+    },
+    "18": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.20.5-1.20.6",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425669260/job/131886371696",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425669260/job/131886371629",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425669260/job/131886371417",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.20.5-1.20.6",
+      "headRefOid": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 18,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/18"
+    },
+    "19": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.19.4-1.20.4",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425668287/job/131886367963",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425668287/job/131886367782",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425668287/job/131886367445",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.19.4-1.20.4",
+      "headRefOid": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 19,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/19"
+    },
+    "20": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.17-1.19.2",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425657050/job/131886334210",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425657050/job/131886334256",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425657050/job/131886333891",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.17-1.19.2",
+      "headRefOid": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 20,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/20"
+    },
+    "21": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.15-1.16.5",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425653606/job/131886322940",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425653606/job/131886323150",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425653606/job/131886323304",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.15-1.16.5",
+      "headRefOid": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 21,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/21"
+    },
+    "22": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.19.3",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425661112/job/131886348126",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425661112/job/131886348092",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425661112/job/131886347765",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.19.3",
+      "headRefOid": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 22,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/22"
+    },
+    "23": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.14-1.14.4",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425650575/job/131886311853",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425650575/job/131886311605",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425650575/job/131886311970",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "candidate/mc-1.14-1.14.4",
+      "headRefOid": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 23,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/23"
+    },
+    "24": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.3",
+      "changed_files": [
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": ".github/workflows/ci.yml",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815555389/job/129827622250",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815555389/job/129827621987",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815555389/job/129827621748",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/github_actions/mc/26.3/actions/setup-java-6.2.0",
+      "headRefOid": "96152a65082721a02f91bb0047bfd91bd97a518c",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 24,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/24"
+    },
+    "25": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.11",
+      "changed_files": [
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": ".github/workflows/ci.yml",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815554864/job/129827621254",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815554864/job/129827621108",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815554864/job/129827620747",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/github_actions/mc/1.21.11/actions/setup-java-6.2.0",
+      "headRefOid": "7e807adbb84b91de6c4d058011a841b07adf0113",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 25,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/25"
+    },
+    "26": {
+      "autoMergeRequest": null,
+      "baseRefName": "main",
+      "changed_files": [
+        {
+          "additions": 1,
+          "deletions": 1,
+          "filename": ".github/workflows/dependency-audit.yml",
+          "status": "modified"
+        },
+        {
+          "additions": 1,
+          "deletions": 1,
+          "filename": ".github/workflows/release.yml",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815559089/job/129827633517",
+          "name": "Validate coordination",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/github_actions/actions/setup-java-6.2.0",
+      "headRefOid": "72dcea6fe330fccc1eb0b52dcc18e70f2950c04c",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 26,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/26"
+    },
+    "27": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.1-26.2",
+      "changed_files": [
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": ".github/workflows/ci.yml",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815557283/job/129827628227",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815557283/job/129827628439",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815557283/job/129827627854",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/github_actions/mc/26.1-26.2/actions/setup-java-6.2.0",
+      "headRefOid": "f5b8b285cb58e92aef5c6db0e6b868ed881326a4",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 27,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/27"
+    },
+    "28": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.11",
+      "changed_files": [
+        {
+          "additions": 0,
+          "deletions": 0,
+          "filename": "gradle/wrapper/gradle-wrapper.jar",
+          "status": "modified"
+        },
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": "gradle/wrapper/gradle-wrapper.properties",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815597438/job/129827762671",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815597438/job/129827762704",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815597438/job/129827762230",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/gradle/mc/1.21.11/gradle-wrapper-9.9.0",
+      "headRefOid": "4dbe04e21400fae66bc4ee427e1113aaf7cb9bfe",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 28,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/28"
+    },
+    "29": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.3",
+      "changed_files": [
+        {
+          "additions": 0,
+          "deletions": 0,
+          "filename": "gradle/wrapper/gradle-wrapper.jar",
+          "status": "modified"
+        },
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": "gradle/wrapper/gradle-wrapper.properties",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815598189/job/129827764729",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815598189/job/129827765063",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815598189/job/129827765002",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/gradle/mc/26.3/gradle-wrapper-9.9.0",
+      "headRefOid": "0222fe307921b7c142690281f54f1aeeb0274641",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 29,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/29"
+    },
+    "30": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.1-26.2",
+      "changed_files": [
+        {
+          "additions": 0,
+          "deletions": 0,
+          "filename": "gradle/wrapper/gradle-wrapper.jar",
+          "status": "modified"
+        },
+        {
+          "additions": 2,
+          "deletions": 2,
+          "filename": "gradle/wrapper/gradle-wrapper.properties",
+          "status": "modified"
+        }
+      ],
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815600556/job/129827772440",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815600556/job/129827773026",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/42815600556/job/129827772781",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "dependabot/gradle/mc/26.1-26.2/gradle-wrapper-9.9.0",
+      "headRefOid": "29efff69b706e0c270dea6dfd70d8c9c8193a826",
+      "isDraft": false,
+      "mergeable": "MERGEABLE",
+      "number": 30,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/30"
+    },
+    "31": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/1.21.11",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425678186/job/131886397415",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425678186/job/131886397192",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425678186/job/131886397213",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "maintenance/mc-1.21.11-1.0.0",
+      "headRefOid": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 31,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/31"
+    },
+    "32": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.1-26.2",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425697273/job/131886455965",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425697273/job/131886455869",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425697273/job/131886455455",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "maintenance/mc-26.1-26.2-1.0.0",
+      "headRefOid": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 32,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/32"
+    },
+    "33": {
+      "autoMergeRequest": null,
+      "baseRefName": "mc/26.3",
+      "checks": [
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425702121/job/131886471161",
+          "name": "Build (ubuntu-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425702121/job/131886470702",
+          "name": "Build (windows-latest)",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        },
+        {
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425702121/job/131886470322",
+          "name": "Resolve and inspect dependency graph",
+          "status": "COMPLETED",
+          "workflowName": "CI"
+        }
+      ],
+      "headRefName": "maintenance/mc-26.3-1.0.0",
+      "headRefOid": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 33,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/pull/33"
+    }
+  },
+  "upstream_recheck": {
+    "gradle_9.9.0": {
+      "draft": false,
+      "html_url": "https://github.com/gradle/gradle/releases/tag/v9.9.0",
+      "prerelease": false,
+      "published_at": "2026-11-06T17:17:32Z",
+      "tag_name": "v9.9.0"
+    },
+    "setup_java_v6.2.0_commit": "77dd5b2ce225ea11469928ac317850245a74ae78"
+  }
+}

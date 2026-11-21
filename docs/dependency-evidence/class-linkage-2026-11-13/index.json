@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "scanned_on": "2026-11-13",
+  "risk_acceptance": false,
+  "scope": "Fresh Gradle inventories and OSV queries for ten unmerged candidate heads.",
+  "groups": {
+    "1.14-1.14.4": {
+      "source_sha": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "branch": "candidate/mc-1.14-1.14.4",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.14-1.14.4-snapshot.json",
+      "snapshot_sha256": "0b2e64bfe05ad19a68555fbd985870a604939b59ee0f90e45f9a82add06c6ef3",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.14-1.14.4-osv.json",
+      "report_sha256": "63abca1ea4e6b366a889335d529bd508edb76ff5cb73c7886fdae678bad2ee03",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.14-1.14.4-snapshot.log",
+      "snapshot_log_sha256": "e5811f54b0e14c49971d0e333a8a44ba27aee8596ec65d43e136c7d88b59156b",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.14-1.14.4-audit.log",
+      "audit_log_sha256": "75304baa5a15b65b684cc6c17dfda81db293106874e1a862b925219be0440370"
+    },
+    "1.15-1.16.5": {
+      "source_sha": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "branch": "candidate/mc-1.15-1.16.5",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.15-1.16.5-snapshot.json",
+      "snapshot_sha256": "cc82601638c0a20e887fa7f8fcf95ea4ad4e41cf8da66578b2e09f886a0e795c",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.15-1.16.5-osv.json",
+      "report_sha256": "c8be690cde61f3c2b2d8d629816ddd0e4ce76ebadb65783ac98d7673e922dfbc",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.15-1.16.5-snapshot.log",
+      "snapshot_log_sha256": "c6243a009fe0efcb735d7eb35a8c79f010e05b9d0e5bce70d83e484a48298dce",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.15-1.16.5-audit.log",
+      "audit_log_sha256": "c936dd41ecef9892fd1703532e366cf7acc7af07855282790772cb1d8a9f208f"
+    },
+    "1.17-1.19.2": {
+      "source_sha": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "branch": "candidate/mc-1.17-1.19.2",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "failing": 53,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.17-1.19.2-snapshot.json",
+      "snapshot_sha256": "2a885f4d045fd913fe9218aa5ac3215d961fe12e1795761b926c2284a1b88621",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.17-1.19.2-osv.json",
+      "report_sha256": "d9d3d19564c44390d146bd9c15c70bae9b88cc8c60c4582f4ccf352851e36e5b",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.17-1.19.2-snapshot.log",
+      "snapshot_log_sha256": "cde04f98ca00e879ece5ae0213a2a5a4073b204f4bbea79ed681981c8430c3f6",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.17-1.19.2-audit.log",
+      "audit_log_sha256": "17f481a097a74b1ecc30e8a4d66a42e936f7a9bfe470d65f8f45dd70b79428ad"
+    },
+    "1.19.3": {
+      "source_sha": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "branch": "candidate/mc-1.19.3",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 24,
+      "states": {
+        "known": 24
+      },
+      "failing": 24,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.3-snapshot.json",
+      "snapshot_sha256": "a1167ccd717f2d5ff2f62052d386327d595aff5ab89faa1271906ef22d04d906",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.3-osv.json",
+      "report_sha256": "9f3f0ae4baebf646c4d25cad5a7a942581c3e6d803202cbace5ec99cf53ec1d8",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.3-snapshot.log",
+      "snapshot_log_sha256": "9dfb95402969f16e9d185cfe4a3d8ee11a3a9485062204ef7fbbb2d4409c6d36",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.3-audit.log",
+      "audit_log_sha256": "67ff4cd83ca055fe6ca53bccc3dad698d5d2db8c9d577bc0fb17e99e6e04689f"
+    },
+    "1.19.4-1.20.4": {
+      "source_sha": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "branch": "candidate/mc-1.19.4-1.20.4",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 42,
+      "states": {
+        "known": 42
+      },
+      "failing": 42,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.4-1.20.4-snapshot.json",
+      "snapshot_sha256": "8342172b1f045b134bc8189f09537da1ed1a9b2b1e53bb441b24baa3a16c761f",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.4-1.20.4-osv.json",
+      "report_sha256": "2be4eb35d36ff6d938981a15d0b0dca5cf2eec8e78d482c7d775e3ac62ca7ad1",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.4-1.20.4-snapshot.log",
+      "snapshot_log_sha256": "02b26a47f2825b641870ba963384e427d65ab7defdf3d3d26548a25b955997e5",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.19.4-1.20.4-audit.log",
+      "audit_log_sha256": "f299afe2889355a45cf1433445522e1ec01adba35703d3d88754471517503164"
+    },
+    "1.20.5-1.20.6": {
+      "source_sha": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "branch": "candidate/mc-1.20.5-1.20.6",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.20.5-1.20.6-snapshot.json",
+      "snapshot_sha256": "5c3d9c9940969eff78d9970ca3eb4fde5966684b01f328608ae5a7e81f057306",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.20.5-1.20.6-osv.json",
+      "report_sha256": "e12a331087dbeea37fb55341d25ab7d0a9f5ff61dfde8dc2f5248316c378db53",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.20.5-1.20.6-snapshot.log",
+      "snapshot_log_sha256": "2ad4fc61e942def44aa73601bf06a921c8964f763ec539056eec794a45918c95",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.20.5-1.20.6-audit.log",
+      "audit_log_sha256": "8b46fac90bbe04c88c500e3162fdd4673a5cb4a273451c7740008be899ed7c0c"
+    },
+    "1.21-1.21.1": {
+      "source_sha": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "branch": "candidate/mc-1.21-1.21.1",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21-1.21.1-snapshot.json",
+      "snapshot_sha256": "fdbb859b43e2f0e63af4ac766f6d190e03bd49cb3d8af34637eafb8f7d17ae01",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21-1.21.1-osv.json",
+      "report_sha256": "091906eeeaa1eac74726cddf37a2dc33edd27fb1a82a1a3a619881c1a5b5ee8d",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21-1.21.1-snapshot.log",
+      "snapshot_log_sha256": "94f4755463ccff9e886fdaa579c5d31951255cdb85c9b0c3f2fca7578118701e",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21-1.21.1-audit.log",
+      "audit_log_sha256": "2738495a65c366232d6ecdf1d89e3124e0ac6ca8bea2039db9f27e842a89e5e6"
+    },
+    "1.21.2-1.21.3": {
+      "source_sha": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "branch": "candidate/mc-1.21.2-1.21.3",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 45,
+      "states": {
+        "known": 44,
+        "changed": 1
+      },
+      "failing": 45,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.2-1.21.3-snapshot.json",
+      "snapshot_sha256": "1904227d830c6853f70026bb615ab098028c3a25414ee74e031648b623dcb5f1",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.2-1.21.3-osv.json",
+      "report_sha256": "2c536dba08b8d5b8aa13fef03f87516e75c195f938c620ab764bc9595a27e91b",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.2-1.21.3-snapshot.log",
+      "snapshot_log_sha256": "970980797873e7784f5fe7b2453f772de125601d43727f3e9c7f219169216911",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.2-1.21.3-audit.log",
+      "audit_log_sha256": "b8e8197e3b6a859a6749d6600498d97b29ead2bddf6417a75fe18276d9034478"
+    },
+    "1.21.4-1.21.8": {
+      "source_sha": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "branch": "candidate/mc-1.21.4-1.21.8",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 52,
+      "states": {
+        "known": 51,
+        "changed": 1
+      },
+      "failing": 52,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.4-1.21.8-snapshot.json",
+      "snapshot_sha256": "46afdb0f87a12fd8d073bafd71af01120e820aac06d976a737d292a34067572f",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.4-1.21.8-osv.json",
+      "report_sha256": "0c3ea9e5a3829103b96ae098be1d326dce32bb9863e833ec059f80f8a840773c",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.4-1.21.8-snapshot.log",
+      "snapshot_log_sha256": "79b0ee2631a54d904880f70b697b893d14da116fa58525c6f03aba3eefc165dd",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.4-1.21.8-audit.log",
+      "audit_log_sha256": "b6aa6819eeeff239a9aca36b151bc47bcd1cd7e873c83fb230557b49b98a3589"
+    },
+    "1.21.9-1.21.10": {
+      "source_sha": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "branch": "candidate/mc-1.21.9-1.21.10",
+      "exit_code": 1,
+      "complete": true,
+      "matches": 59,
+      "states": {
+        "known": 58,
+        "changed": 1
+      },
+      "failing": 59,
+      "comparison": "same package, advisory, fingerprint, scopes, state and failing flag as prior scan",
+      "snapshot_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.9-1.21.10-snapshot.json",
+      "snapshot_sha256": "7d3769902df8063cf798e230d7675ebfe7afa0f1b37fb19df6e487ca4244144f",
+      "report_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.9-1.21.10-osv.json",
+      "report_sha256": "cc5176a87ee25aaaa2c17f7fc7c3b157d1b68765e1d94b3fbe97c55cf5a1c5a6",
+      "snapshot_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.9-1.21.10-snapshot.log",
+      "snapshot_log_sha256": "d071c54b8945c4841f73f4f4901593e34a29077818fea5262326e6f0bbb72d02",
+      "audit_log_path": "docs/dependency-evidence/class-linkage-2026-11-13/1.21.9-1.21.10-audit.log",
+      "audit_log_sha256": "d0ec3c16f6d61be14fc0f37bc5efb17b9bbef037bc3b6cb01279513a84c04303"
+    }
+  },
+  "run-resumed.py_sha256": "d4f912754f1bcd4e8488628020fa10b22592efcbbe031c46462759b23904fc56",
+  "orchestration.log_sha256": "cd4a046d0fe6fa3ae472870034bf76318e842137cf90287112d14bc73feb00b3"
+}

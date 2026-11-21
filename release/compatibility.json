@@ -4,26 +4,47 @@
     "1.21.11": {
       "branch": "mc/1.21.11",
       "target": "1.21.11",
-      "minecraft": ["1.21.11"],
+      "minecraft": [
+        "1.21.11"
+      ],
       "java": 21,
       "loader": "0.20.1",
-      "namespace": "intermediary"
+      "namespace": "intermediary",
+      "build_jdk": "25.0.5+8",
+      "mixins": [
+        "ReadableMapLayerMixin"
+      ]
     },
     "26.1-26.2": {
       "branch": "mc/26.1-26.2",
       "target": "26.1",
-      "minecraft": ["26.1", "26.1.1", "26.1.2", "26.2"],
+      "minecraft": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2"
+      ],
       "java": 25,
       "loader": "0.20.1",
-      "namespace": "official"
+      "namespace": "official",
+      "build_jdk": "25.0.5+8",
+      "mixins": [
+        "ReadableMapLayerMixin"
+      ]
     },
     "26.3": {
       "branch": "mc/26.3",
       "target": "26.3",
-      "minecraft": ["26.3"],
+      "minecraft": [
+        "26.3"
+      ],
       "java": 25,
       "loader": "0.20.1",
-      "namespace": "official"
+      "namespace": "official",
+      "build_jdk": "25.0.5+8",
+      "mixins": [
+        "ReadableMapLayerMixin"
+      ]
     }
   }
 }

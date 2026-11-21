@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "version": "0.0.2",
+  "release_date": "2026-11-05",
+  "changes": [
+    "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+  ],
+  "known_limitations": [
+    "Candidate dry run; incomplete graphical, review, branch-protection and security evidence"
+  ],
+  "groups": {
+    "1.21.11": {
+      "source_branch": "mc/1.21.11",
+      "commit": "177f5708727ae4c152091d185536aaa734063280",
+      "verified_changes": [
+        "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+      ],
+      "runtime_evidence": {}
+    },
+    "26.1-26.2": {
+      "source_branch": "mc/26.1-26.2",
+      "commit": "453cf35695cf07be4072f77895cdbafbed617870",
+      "verified_changes": [
+        "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+      ],
+      "runtime_evidence": {}
+    },
+    "26.3": {
+      "source_branch": "mc/26.3",
+      "commit": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+      "verified_changes": [
+        "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21.4-1.21.8": {
+      "source_branch": "candidate/mc-1.21.4-1.21.8",
+      "commit": "29eb883a55992a623b7ba34e349bdcb6fee7c4c2",
+      "verified_changes": [
+        "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+      ],
+      "runtime_evidence": {}
+    },
+    "1.21.9-1.21.10": {
+      "source_branch": "candidate/mc-1.21.9-1.21.10",
+      "commit": "9c96b661713ac83fa09c0b8fc26c1bf3a62f8053",
+      "verified_changes": [
+        "Preserve coordinated mod version 0.0.2 and the readable-map contract"
+      ],
+      "runtime_evidence": {}
+    }
+  }
+}

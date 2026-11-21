@@ -1,0 +1,19 @@
+{
+  "minecraft": "1.20.5",
+  "baseline_world": "1.20.5 left-hand baseline, copied before mutation",
+  "input_level_sha256": "cfae64e0b8214ba5fa3dced15d03ea8d64d7245c52283810a4fedb84087b6d35",
+  "input_player_sha256": "6d44e6c97c241670075457299caa2d6e1ed9c5bc6e9e556470426457f1283079",
+  "input_map_zero_sha256": "e5c797bb856ffbf58e525bb49df4526a40f737dcdc7392b7a0822b010c2b2943",
+  "map_zero_nonblank": 15691,
+  "selected_slot": 3,
+  "slots": {
+    "1": "Int 0",
+    "2": "Int 7",
+    "3": "Double 0.5",
+    "4": "Long 4294967296",
+    "6": "String not-a-number",
+    "7": "Double NaN",
+    "8": "absent component"
+  },
+  "scope": "Controlled copied test world; no production world or item modified."
+}

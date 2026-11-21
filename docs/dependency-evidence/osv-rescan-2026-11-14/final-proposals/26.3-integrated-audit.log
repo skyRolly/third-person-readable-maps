@@ -1,0 +1,12 @@
+mc/26.3 at 226b1de7dd4e7c2a75ec35eef1697434462e4f54: {'new': 0, 'changed': 0, 'known': 11}; reviewed resolved: 0; disappeared needing review: 0; unresolved/failing matches: 11
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-343h-94h5-c4wr | LOW | Further investigation
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-4v53-57pg-c464 | MODERATE | Further investigation
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-6cx8-rjf8-pr8g | MODERATE | Further investigation
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-gm45-99xc-r7wv | MODERATE | Further investigation
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-mcr4-qmvw-px4g | HIGH | Further investigation
+known | 26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-xx22-p4ch-683r | MODERATE | Further investigation
+known | 26.3|pkg:maven/com.google.guava/guava@33.6.0-jre|GHSA-xxph-c9ww-hj94 | HIGH | Further investigation
+known | 26.3|pkg:maven/io.netty/netty-codec-http@4.2.16.Final|GHSA-8c42-7qj2-3j46 | MODERATE | Further investigation
+known | 26.3|pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-c4c3-7fpv-j4q5 | CRITICAL | Further investigation
+known | 26.3|pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-fccg-mwvh-qqg4 | MODERATE | Further investigation
+known | 26.3|pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0|GHSA-qv9r-c865-cp47 | MODERATE | Further investigation

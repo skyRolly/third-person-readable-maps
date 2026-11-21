@@ -1,0 +1,216 @@
+{
+  "observed_on": "2026-11-13",
+  "description": "GitHub-managed dynamic workflow runs; settings access remains unavailable. Successful execution does not establish current settings or alert indexing.",
+  "runs": {
+    "1.14-1.14.4": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:29:53Z",
+      "databaseId": 43425642099,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.14-1.14.4",
+      "headSha": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425642099",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.15-1.16.5": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:29:54Z",
+      "databaseId": 43425645619,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.15-1.16.5",
+      "headSha": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425645619",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.17-1.19.2": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:29:55Z",
+      "databaseId": 43425648185,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.17-1.19.2",
+      "headSha": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425648185",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.19.3": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:29:57Z",
+      "databaseId": 43425652057,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.19.3",
+      "headSha": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425652057",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.19.4-1.20.4": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:29:58Z",
+      "databaseId": 43425654977,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.19.4-1.20.4",
+      "headSha": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425654977",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.20.5-1.20.6": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:00Z",
+      "databaseId": 43425659344,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.20.5-1.20.6",
+      "headSha": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425659344",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.21-1.21.1": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:01Z",
+      "databaseId": 43425660957,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.21-1.21.1",
+      "headSha": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425660957",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.21.11": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:03Z",
+      "databaseId": 43425666584,
+      "event": "dynamic",
+      "headBranch": "maintenance/mc-1.21.11-1.0.0",
+      "headSha": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425666584",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.21.2-1.21.3": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:05Z",
+      "databaseId": 43425671481,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.21.2-1.21.3",
+      "headSha": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425671481",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.21.4-1.21.8": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:06Z",
+      "databaseId": 43425674721,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.21.4-1.21.8",
+      "headSha": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425674721",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "1.21.9-1.21.10": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:07Z",
+      "databaseId": 43425677850,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.21.9-1.21.10",
+      "headSha": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425677850",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "26.1-26.2": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:09Z",
+      "databaseId": 43425682941,
+      "event": "dynamic",
+      "headBranch": "maintenance/mc-26.1-26.2-1.0.0",
+      "headSha": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425682941",
+      "workflowName": "Automatic Dependency Submission"
+    },
+    "26.3": {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:10Z",
+      "databaseId": 43425685928,
+      "event": "dynamic",
+      "headBranch": "maintenance/mc-26.3-1.0.0",
+      "headSha": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425685928",
+      "workflowName": "Automatic Dependency Submission"
+    }
+  },
+  "example_job": {
+    "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425685928",
+    "jobs": [
+      {
+        "name": "submit-gradle",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "checkout",
+            "conclusion": "success"
+          },
+          {
+            "name": "setup-ecosystem",
+            "conclusion": "success"
+          },
+          {
+            "name": "configure-gradle-memory",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "log-toolchain-versions",
+            "conclusion": "success"
+          },
+          {
+            "name": "check-cache-strategy",
+            "conclusion": "success"
+          },
+          {
+            "name": "configure-cache",
+            "conclusion": "success"
+          },
+          {
+            "name": "validate-project",
+            "conclusion": "success"
+          },
+          {
+            "name": "submit-dependency-snapshot",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post submit-dependency-snapshot",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post configure-cache",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post setup-ecosystem",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post checkout",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  }
+}

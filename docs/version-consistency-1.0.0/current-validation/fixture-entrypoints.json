@@ -1,0 +1,19 @@
+{
+  "javac": "javac 25.0.5",
+  "entrypoints": {
+    "intermediary": {
+      "group": "1.14-1.14.4",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "log": "fixture-intermediary.log",
+      "log_sha256": "167d2b802d75abc0f165ef5fc6f9d2b7cb33bed262f0705c8687bc7e3cff966f",
+      "scope": "actual packaged verifier path; JVM positive and invalid library replacement controls; static Mixin model only"
+    },
+    "official": {
+      "group": "26.1-26.2",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "log": "fixture-official.log",
+      "log_sha256": "d1984e24d7b29c89f090b0b22f4aa30f504703b84b37138c66488461f51a627c",
+      "scope": "actual packaged verifier path; JVM positive and invalid library replacement controls; static Mixin model only"
+    }
+  }
+}
