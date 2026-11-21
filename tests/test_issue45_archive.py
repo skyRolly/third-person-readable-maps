@@ -15,6 +15,9 @@ class Issue45ArchiveTests(unittest.TestCase):
         index = json.loads((archive_dir / 'finding-index.json').read_text())
         self.assertEqual(archive['schema'], 1)
         self.assertEqual(index['schema'], 1)
+        for field in ('candidate_run', 'integrated_run'):
+            self.assertIsInstance(archive[field], int)
+            self.assertGreater(archive[field], 0)
         self.assertIs(index['risk_acceptance'], False)
         self.assertIsInstance(index['reports'], dict)
         self.assertIsInstance(index['records'], list)
@@ -45,6 +48,7 @@ class Issue45ArchiveTests(unittest.TestCase):
                 role = 'tool'
                 self.assertEqual(document['source_sha'], item['source_sha'], relative)
                 self.assertEqual(document['status'], item['status'], relative)
+                self.assertEqual(document['status'], 'complete', relative)
                 self.assertEqual(document['gradle_version'], '9.9.2', relative)
                 self.assertEqual(document['advisories'], [], relative)
                 self.assertIs(document['failing'], False)
@@ -53,6 +57,9 @@ class Issue45ArchiveTests(unittest.TestCase):
                 self.assertTrue(relative.endswith('.json.gz'))
                 role = 'snapshot'
                 self.assertEqual(document['sha'], item['source_sha'], relative)
+                self.assertIsInstance(document.get('job'), dict, relative)
+                declared_run = archive['candidate_run'] if source_kind == 'candidate' else archive['integrated_run']
+                self.assertEqual(str(document['job'].get('id')), str(declared_run), relative)
             self.assertNotIn(role, trio, f'duplicate {role}: {source_key}')
             trio[role] = {'path': relative, 'data': document, 'sha256': item['sha256_uncompressed']}
 
@@ -127,7 +134,7 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.archive_dir = self.root / 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2'
         self.archive_dir.mkdir(parents=True)
-        self.archive = {'schema': 1, 'files': []}
+        self.archive = {'schema': 1, 'candidate_run': 1234, 'integrated_run': 5678, 'files': []}
         self.index = {'schema': 1, 'risk_acceptance': False, 'reports': {}, 'records': []}
         for kind, group, source_sha in [('candidate', '1.14-1.14.4', 'a' * 40),
                                         ('integrated', '1.21.11', 'b' * 40)]:
@@ -148,7 +155,9 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
                                'source_kind': kind, 'risk_acceptance': False})
             tool = {'source_sha': source_sha, 'status': 'complete', 'gradle_version': '9.9.2',
                     'advisories': [], 'failing': False}
-            snapshot = {'sha': source_sha, 'ref': f'refs/heads/{branch}', 'version': 0}
+            snapshot = {'sha': source_sha, 'ref': f'refs/heads/{branch}', 'version': 0,
+                        'job': {'id': str(self.archive['candidate_run'] if kind == 'candidate'
+                                          else self.archive['integrated_run'])}}
             prefix = f'{kind}/dependency-audit-0'
             report_name = 'candidate-dependency-audit.json.gz' if kind == 'candidate' else 'dependency-audit.json.gz'
             report_path = self._store(f'{prefix}/{report_name}', report, source_sha, report['status'])
@@ -200,6 +209,27 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
 
     def test_modified_snapshot_ref_is_rejected_even_after_rehash(self):
         self._edit_artifact('candidate/dependency-graph-reports/snapshot.json.gz', 'ref', 'refs/heads/unrelated')
+        with self.assertRaises(AssertionError):
+            self.verify_archive(self.root, self.archive_dir)
+
+    def test_incomplete_gradle_tool_rejected_even_if_manifest_agrees(self):
+        ending = 'candidate/dependency-audit-0/gradle-tool-audit.json.gz'
+        self._edit_artifact(ending, 'status', 'incomplete')
+        entry = next(x for x in self.archive['files'] if x['path'].endswith(ending))
+        entry['status'] = 'incomplete'
+        self._write_indexes()
+        with self.assertRaises(AssertionError):
+            self.verify_archive(self.root, self.archive_dir)
+
+    def test_snapshot_from_different_run_rejected_even_after_rehash(self):
+        self._edit_artifact('candidate/dependency-graph-reports/snapshot.json.gz',
+                            'job', {'id': str(self.archive['candidate_run'] + 1)})
+        with self.assertRaises(AssertionError):
+            self.verify_archive(self.root, self.archive_dir)
+
+    def test_changed_declared_run_rejected(self):
+        self.archive['integrated_run'] += 1
+        self._write_indexes()
         with self.assertRaises(AssertionError):
             self.verify_archive(self.root, self.archive_dir)
 
