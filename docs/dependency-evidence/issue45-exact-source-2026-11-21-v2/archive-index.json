@@ -1,0 +1,281 @@
+{
+  "schema": 1,
+  "coordination_sha": "01ba93db13d977e3bb0bf3400a6e373d35ff14e7",
+  "candidate_run": 44940017926,
+  "integrated_run": 44940018290,
+  "files": [
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce",
+      "sha256_gzip": "5b9bd452c4f940f369a29d67dc5e08db1ad24a80fc16a8aa7636546549b2d763",
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "6137c9e6a7ebabc3130581363b31de627cf2a05b83fcf180bf711d6f707c7460",
+      "sha256_gzip": "74310e9600543827acb0b448faa3a264d3d8005af812ffcf211322ea85c38652",
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e",
+      "sha256_gzip": "2ec08e821b2f3c6347313a1133d71de9496061d41f05f89639df962d0b56e66b",
+      "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "7ed520c4e3ee6f35d462d30801fcb59d1ab7f45e64e3a6f39c5a68461d1a7d3d",
+      "sha256_gzip": "038ec36c36c23826bb5c076e4a09838996fb29afa974e4bab2dc4cbe524a5fd5",
+      "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7",
+      "sha256_gzip": "16c4a70d86aff0ad0354c980ac32a3e38dc1f017d34db4242f9c0a373f2f4c0d",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "1e3db9dc450273d12018354c87cb4bb57902d68be6602fae3e29888211e6bb9e",
+      "sha256_gzip": "97720c52af0c33dafbcd8d98d636a4e051ceef1023195e33ea85cbdf671a9bcc",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-3/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "1d56b5a18354e989352546d101630cb3ca2146e72f559040c77d5ca2e5186291",
+      "sha256_gzip": "8a12680ea31676c96b85bc7a36d6ac235a8d4a7987902a3e8d7947724b4ef8a7",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-3/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "4a664a73479646d9517235794cdcede9f781ba8fb03a742ec7e3c61c46c3f9eb",
+      "sha256_gzip": "3024b9e155062513b2c1bc67b64456468a8ddf948c49502bf5b46cc310f797ce",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "69fe050c810c4b6dfdbe1d747c722d788fc862a0be40b7c2dca765fd561728c0",
+      "sha256_gzip": "4e3aa44a7aa1477626fe26aa51ffd29618ca8f3777b0bb54a2006609076680a2",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "5457ae6ec212d48b44b42cdb18a1c8146624791892e68d7c3f0a4a8b6d00b394",
+      "sha256_gzip": "8075b4ff37aa44540b4a18d70ff36309e886cbe22c0803b428bb442ea84fdcaa",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0",
+      "sha256_gzip": "aff02e947fe0082bda34b3d5de8126cd0e5826e15a3e59d3c111ed0df9938d25",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "80c6584a02eb5f290e17c5cb313c0e7c8cef0c9417e70780aa32ef88e4f102a5",
+      "sha256_gzip": "f3a1547f7784cf8a123872d01fd664db64f8202a8d396b3223cb4c06244b13f3",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231",
+      "sha256_gzip": "571365511239d0d48579e5a78c632f19c8a57bcc725a5d7e26923605e817df8c",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "34c2118ec5ad02bba29b2143e36915a570ecfd97888cce6956af8084c7f0e4d3",
+      "sha256_gzip": "7eb95b4f25e99a84cc4cb2a0a1b28ef653cf635e6b18e74f26783624a6ed2f93",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a",
+      "sha256_gzip": "ede7c8a4da26bdac0bd6ee9b61e4f1301feb74fa0c33a700e4873b7a77c66f98",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "c1b42a63231af9d71b4071711b006ba3a8b4ae85efd060755b086ec922945338",
+      "sha256_gzip": "8db085f5f122fed5a3a1c62f107f992062404108ed00ea425ea11d8a4851de9d",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9",
+      "sha256_gzip": "39239e27df95173b26c13e1263633f9a7555246e8abf440c62b20b8259ab9ab2",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "c2beac30c554102a342522165903a06f963a36b38c17334365a12e5b773488d7",
+      "sha256_gzip": "62a1145875b48827def567429103f65c9587b1d2e9bf113e572d24e15da44ac9",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+      "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7",
+      "sha256_gzip": "713f1003f23ecedcc6be5bf056fdd96ce7998483856c7c30625ddef43a0bc091",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "status": "complete-unreviewed-candidate-scan"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "de1d4b4e640c22f2a692cc8aef48a8fb4f2fba195f9c9c21cbefcfcd9b7c2d07",
+      "sha256_gzip": "3030aa90cd9501506a9910d1f630d6743cf3dbafb481bb9d69656e7f26f6bdd6",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-114-1144-candidatemc-114-1144-b6f7632af554a0e51c7d8c421c17adc893cc1379.json.gz",
+      "sha256_uncompressed": "1f59735a9cf5b81677ff82af17dfd7f1656daf22c36db6d3c45e426ec4660f1c",
+      "sha256_gzip": "21b774612e89a23ae8f6265a875a3b410004e92839dc0c10fff60581ddd3d665",
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-115-1165-candidatemc-115-1165-4231b420749db2bbab3cf3e3a7825fc2516511d9.json.gz",
+      "sha256_uncompressed": "25372389a9883552010899fd11ab92a9e6273d00648ce67bb4c6463a339f4ca0",
+      "sha256_gzip": "f2da68c8070a4da8fdce286ccf697b5593a5c4406f3d08cfbae7df42810cb138",
+      "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-117-1192-candidatemc-117-1192-06b350856605011c1549d51d6edd3d351c5021c0.json.gz",
+      "sha256_uncompressed": "7c4f6c3b34a41e4ec58ede9518742219c673ea88b93269204143ec0675faa5b1",
+      "sha256_gzip": "92a0f9b4356680b6a3cdb4bfbd48666b13446d152eee0873b7124a16d60eff4a",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1193-candidatemc-1193-a9cd58a4efdb5e9505006bb62914a89e19df0d71.json.gz",
+      "sha256_uncompressed": "d2ddae35341d3b7a9a0dbaada3a50c2eedd1a1004d97e370a149901ae6e5f965",
+      "sha256_gzip": "29b762317cb2f18c4be7bc5234e85e3b4b91aac31cc9f10f0f45063f1f023545",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1194-1204-candidatemc-1194-1204-9326fbbbdfa79d54512b655282c53739d3a4be25.json.gz",
+      "sha256_uncompressed": "5ae1d3ebbf0657c04849e87c3bab254e195e4c9f079208a95a8e357775f0ec0b",
+      "sha256_gzip": "b5e4ed1f559626624f86d4ae9812404623950eff24b18747c77b4410700e1492",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1205-1206-candidatemc-1205-1206-aa64abb6fd47c0a634dad03fb445634f3715a624.json.gz",
+      "sha256_uncompressed": "4045059537f248282ecbb27d1ed625453ddb7f20845574cf15dd05ff55ef7b07",
+      "sha256_gzip": "08169f467cc965c9631d5e164b729c4571bf795403b08d03389cc8d3030211ce",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-121-1211-candidatemc-121-1211-a62780429512a4e4072b56348e06059d127cfb1d.json.gz",
+      "sha256_uncompressed": "d31698919879f0c97622c89575179d1ae1796dfc3d528f759c6815e742e6d101",
+      "sha256_gzip": "62c6f1107b05f680a273bc8208ae74d829b5354131d2174c1e53d2a15bb7ed97",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1212-1213-candidatemc-1212-1213-d823a91c96b9bc80446116b44cd7568c70048c0d.json.gz",
+      "sha256_uncompressed": "7c8fcc2bdee4117002f2085c75bd82abd69f93469f3ac9b94c78dbebf82d5d4d",
+      "sha256_gzip": "bea31a90aae4728d6df372375327e4c10ad955fe483b9e47658d58810057a30f",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1214-1218-candidatemc-1214-1218-f63e12da0ccbf70acb41393211c864b057f5cd7c.json.gz",
+      "sha256_uncompressed": "148b5a380c4221bd0c556f1c2812ac4f5d0bf68b4f16c66d5f46eb4dfd7b9250",
+      "sha256_gzip": "5e0105c741e6a2613ed4f6ce9eabffcf37ee99e6f7aac99cb2fd95bbf848dd1c",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1219-12110-candidatemc-1219-12110-5dd5d433fd785bf51f13827babf51a76d09f7cdb.json.gz",
+      "sha256_uncompressed": "abadc3f7f589bb04f4d9774da1f47d9c5927538b81b856e138a8e35dc1d90958",
+      "sha256_gzip": "5ef4a1f06ed4af376469ccdeecc595c2a32347475af6daefb1d07ba5d155addc",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+      "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46",
+      "sha256_gzip": "d165dfb37c5cff9bd331ccb96c1160b9cf01a64c31dd33f25dca4708eb4e65a3",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "b3b046ba631d3db4dc0e92a19912140d79dd8f456b65e063a925a7a5a7a74cc8",
+      "sha256_gzip": "ab0b0c751fa5e6e829e1d864698b8b43a41fe1ec5260524b1376e4fd7cb1a1cb",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+      "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618",
+      "sha256_gzip": "b3b5e82ea21f89b22ca414b1d803d3040b19275fa7abc562b36382912c3dfb6d",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "ddcb85fb4840dc2c83c1e1e6fbb6d59d5ebe4647e2d1fbe706625bc7771060c3",
+      "sha256_gzip": "e2df17900fd63f14939ea4ec68e1b5e2402c3010a8c40f04202b19543bf38291",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+      "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd",
+      "sha256_gzip": "62052bbc53ec30f8bc489e3e7a95b0d29c79d8ab7e59776e4e978c86354db38b",
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/gradle-tool-audit.json.gz",
+      "sha256_uncompressed": "3d66616c899751f649ef37409b2654df6319a403167b24b8585c667221d1771a",
+      "sha256_gzip": "f693350e1b2af5907198029ee19a651059e1e4bd4071e811bf3fe992cf8fe5ec",
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "status": "complete"
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-graph-reports/maintenance_dependency_audit-audit-mc12111.json.gz",
+      "sha256_uncompressed": "162ddd4fee03a3c0ed1676a24c500accf6500ac84a2a500fbb995c4d56c005cc",
+      "sha256_gzip": "4af2229225a27b9b295025c62d25ae29f82a4272ac65190360a62208f437537d",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-graph-reports/maintenance_dependency_audit-audit-mc261-262.json.gz",
+      "sha256_uncompressed": "3dc50e8fe81b6ff7c512172cf570ff53a7b7c9543cfd7f220b964dfdacedc0a1",
+      "sha256_gzip": "e371677e941590a910d9e8780cceb62bf829e9fbf476431176e6cb3353b3b914",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "status": null
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-graph-reports/maintenance_dependency_audit-audit-mc263.json.gz",
+      "sha256_uncompressed": "ce4dedf4475d5c495c9d09177e097516c68fa516e159469d8987e72c21781f8f",
+      "sha256_gzip": "0d08f9ea53b2ef5e60a743cfe3300aa95fb7ad3ec09689a21acfb92cb15f8613",
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "status": null
+    }
+  ]
+}
