@@ -31,7 +31,7 @@ class WrapperChecks(unittest.TestCase):
         self.fetch = lambda url: self.jar_hash if url.endswith('-wrapper.jar.sha256') else 'a'*64
 
     def test_current_and_dependabot_canonical_versions(self):
-        for version in ('9.8.2', '9.9.0'):
+        for version in ('9.8.2', '9.9.0', '9.9.1', '9.9.2'):
             with self.subTest(version=version):
                 self.props.write_text(canonical(version))
                 self.assertEqual(wrapper.verify(self.root, self.fetch), version)
@@ -106,7 +106,7 @@ class WrapperChecks(unittest.TestCase):
                         'System.out.println(p.getProperty("distributionUrl")); '
                         'System.out.println(p.getProperty("distributionSha256Sum")); }}')
         subprocess.run(['javac','--release','8',str(java)],check=True,capture_output=True)
-        for version in ('9.8.2','9.9.0'):
+        for version in ('9.8.2','9.9.0','9.9.1','9.9.2'):
             self.props.write_text(canonical(version))
             checked = wrapper.canonical_properties(self.props.read_bytes())
             actual = subprocess.check_output(['java','-cp',str(self.root),'PropertiesOracle',str(self.props)],text=True).splitlines()
