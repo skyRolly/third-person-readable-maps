@@ -1,0 +1,324 @@
+{
+  "observed_on": "2026-11-16",
+  "scope": "Historical late-review validation of the prior 9.8.2 product heads; not the later 9.9.2 sources. Runtime and security acceptance remain separate.",
+  "groups": {
+    "1.14-1.14.4": {
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+      "sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
+      "build_log_sha256": "0eb1c7deb34c27a4b880e8ed4fb55e69480bda8ab6bfe9a81756039714bb0426",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797969165",
+          "job_id": "133071044407",
+          "run_attempt": 1,
+          "checkout_merge_sha": "8d1266e6017f802974e316efa37dcf1b17534035",
+          "archive_sha256": "d9df4130dc547ef1fcaca3e6e4b60224d47990e46830460ca342770b7a88a6aa",
+          "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde"
+        },
+        "windows-latest": {
+          "run_id": "43797969165",
+          "job_id": "133071044403",
+          "run_attempt": 1,
+          "checkout_merge_sha": "8d1266e6017f802974e316efa37dcf1b17534035",
+          "archive_sha256": "4c616ab69ebc4972b0e1482b3a43fd0eec50c0b91a476bbcfb3f9c5d6811bc1d",
+          "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde"
+        }
+      }
+    },
+    "1.15-1.16.5": {
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+      "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "build_log_sha256": "512994770540bb34aab5e647ad8661c01a1741c145a03a3463d4df5280bf893f",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797967607",
+          "job_id": "133071039659",
+          "run_attempt": 1,
+          "checkout_merge_sha": "18c641e3c4781cd738b5bc4c0ba2de0452bf9ef5",
+          "archive_sha256": "4b73fe752502bd6a8f0b73f81d3cf311c2e3b99c0a856f78057aa91bd2bd7fbd",
+          "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c"
+        },
+        "windows-latest": {
+          "run_id": "43797967607",
+          "job_id": "133071039445",
+          "run_attempt": 1,
+          "checkout_merge_sha": "18c641e3c4781cd738b5bc4c0ba2de0452bf9ef5",
+          "archive_sha256": "020d19224e9098b94560c2d376836eb10e38959910f53ca2192cc2b51f5a7726",
+          "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c"
+        }
+      }
+    },
+    "1.17-1.19.2": {
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+      "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "build_log_sha256": "c6c3954457dfc1769fd623b7642094848ce4b70c19993f0c3fdf4ad3003cab98",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797969783",
+          "job_id": "133071046394",
+          "run_attempt": 1,
+          "checkout_merge_sha": "b4806de7e6a52e8096bc68e48e5173c713970e2a",
+          "archive_sha256": "429bc7a7c61285667aaceb9d754a28437a35cbcaeabd23fa0374493a5236dc91",
+          "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5"
+        },
+        "windows-latest": {
+          "run_id": "43797969783",
+          "job_id": "133071046492",
+          "run_attempt": 1,
+          "checkout_merge_sha": "b4806de7e6a52e8096bc68e48e5173c713970e2a",
+          "archive_sha256": "3b8b60ea49254e9b84899ae90c1909410dff767a9df4151a05e7431142c855da",
+          "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5"
+        }
+      }
+    },
+    "1.19.3": {
+      "source_commit": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+      "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "build_log_sha256": "50fbed8c9a2889b799902d7f1d3b9df8e08b1ca18cc6f04d329bae21445c10ab",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797968012",
+          "job_id": "133071040312",
+          "run_attempt": 1,
+          "checkout_merge_sha": "586361ea594bfffab993432f8776f3ca05fa0035",
+          "archive_sha256": "b2a8bebd7eff986eba045a0efeba24ac8f1f2f836a8e4f5e2955e69d847018cf",
+          "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1"
+        },
+        "windows-latest": {
+          "run_id": "43797968012",
+          "job_id": "133071040119",
+          "run_attempt": 1,
+          "checkout_merge_sha": "586361ea594bfffab993432f8776f3ca05fa0035",
+          "archive_sha256": "09d8cf549d9251351506819657b3cfc002a638b2cf69d3baa5b4ea8c5088d203",
+          "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1"
+        }
+      }
+    },
+    "1.19.4-1.20.4": {
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+      "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "build_log_sha256": "86bfd4b3438711b10e9cd4a1dc1f5eaa8552ee3a48d652a17e45677a11eb5d41",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797973781",
+          "job_id": "133071059170",
+          "run_attempt": 1,
+          "checkout_merge_sha": "ffb7787220cf8efb7261877f202f9e17f4d9ef6b",
+          "archive_sha256": "fcfbcfdb707d3da280ee3b6475aecceb5dcd1f5a64934041cbe5ac4e4c66ad85",
+          "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c"
+        },
+        "windows-latest": {
+          "run_id": "43797973781",
+          "job_id": "133071059137",
+          "run_attempt": 1,
+          "checkout_merge_sha": "ffb7787220cf8efb7261877f202f9e17f4d9ef6b",
+          "archive_sha256": "cd8f65b81ffe3b092e6f7e8740fef163ee5d65d5c0b8da3b817a47b97211c2fb",
+          "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c"
+        }
+      }
+    },
+    "1.20.5-1.20.6": {
+      "source_commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+      "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "build_log_sha256": "bdf71f80d4bea20f7c9f60331471fbaca23b2b828dff990decb96536f1845c05",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797975618",
+          "job_id": "133071065218",
+          "run_attempt": 1,
+          "checkout_merge_sha": "b908a03a589b230f5b57e293c99aff39cd9d6483",
+          "archive_sha256": "4fae8dbb62b6c8944d21a8a0b28872c06c5d34c20f03f5c68d653fa3c4aa5b6d",
+          "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a"
+        },
+        "windows-latest": {
+          "run_id": "43797975618",
+          "job_id": "133071065440",
+          "run_attempt": 1,
+          "checkout_merge_sha": "b908a03a589b230f5b57e293c99aff39cd9d6483",
+          "archive_sha256": "d72fd331091d9e39f9981b52bb92dc11be4ac62f59b5024d65e65cf6ded3829e",
+          "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a"
+        }
+      }
+    },
+    "1.21-1.21.1": {
+      "source_commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+      "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "build_log_sha256": "2987cba7291c8a1e9eaa318e2cfc9a754cecd50256c4b6658f576ae3d5f62c7f",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797971402",
+          "job_id": "133071051622",
+          "run_attempt": 1,
+          "checkout_merge_sha": "1e2f7ffb0a89c617e92b398e1ddbb0f48c63f7cf",
+          "archive_sha256": "ae90e691adb26b776178ced84a989e84ebe919a82b09e06d97503521c0a5dbc9",
+          "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c"
+        },
+        "windows-latest": {
+          "run_id": "43797971402",
+          "job_id": "133071051521",
+          "run_attempt": 1,
+          "checkout_merge_sha": "1e2f7ffb0a89c617e92b398e1ddbb0f48c63f7cf",
+          "archive_sha256": "3d90491648461ee128f2bd770b1418d47da4af4b9830e1b229f951e5f6e2d115",
+          "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c"
+        }
+      }
+    },
+    "1.21.11": {
+      "source_commit": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+      "sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "build_log_sha256": "92b4ab7db3e7a7447f4ba1145f950add4a98c6bd6d5b366739f2f8196a8408e4",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797971676",
+          "job_id": "133071052537",
+          "run_attempt": 1,
+          "checkout_merge_sha": "7e402f6407d9607a66c36e464143b94975e4fdfa",
+          "archive_sha256": "46e7f8bb53ba96e15637c6dd862aa17b7244865ca9170bf323605c4dec4ab776",
+          "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73"
+        },
+        "windows-latest": {
+          "run_id": "43797971676",
+          "job_id": "133071052430",
+          "run_attempt": 1,
+          "checkout_merge_sha": "7e402f6407d9607a66c36e464143b94975e4fdfa",
+          "archive_sha256": "c3465a007f3abbf84136db355d42b4f4997ff13e3f13bb3633c3461aa38b677d",
+          "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73"
+        }
+      }
+    },
+    "1.21.2-1.21.3": {
+      "source_commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+      "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "build_log_sha256": "896acfad3c6f6638dff00ab7bb534e3072b8202f25ccde5d570465740589579f",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797975350",
+          "job_id": "133071064554",
+          "run_attempt": 1,
+          "checkout_merge_sha": "d726ce561f065c2a2afec6c58ca99dd324aa2388",
+          "archive_sha256": "abf51dfcbddcf1430864fd97554c905a46ed8fdb1429160517be4198a4097eb5",
+          "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75"
+        },
+        "windows-latest": {
+          "run_id": "43797975350",
+          "job_id": "133071064584",
+          "run_attempt": 1,
+          "checkout_merge_sha": "d726ce561f065c2a2afec6c58ca99dd324aa2388",
+          "archive_sha256": "04b205f1f0b74559fe6615fae65a0749d3f9a085fafbbadf1db8f7aae82355a2",
+          "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75"
+        }
+      }
+    },
+    "1.21.4-1.21.8": {
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+      "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "build_log_sha256": "06edd84aa4d05783e3a082aaf01c8207e197480f2324e956f1b72e4c19c1daf4",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797976378",
+          "job_id": "133071067496",
+          "run_attempt": 1,
+          "checkout_merge_sha": "00c843b10d1c4c8cde03331cd3f9212574ccf5fc",
+          "archive_sha256": "5acb27fb06fcf98dbc6bcd56fde0ec3f8275f5404f14d38d76824e3badb8fb13",
+          "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e"
+        },
+        "windows-latest": {
+          "run_id": "43797976378",
+          "job_id": "133071067761",
+          "run_attempt": 1,
+          "checkout_merge_sha": "00c843b10d1c4c8cde03331cd3f9212574ccf5fc",
+          "archive_sha256": "d86ec10fe341e02e4dbe3533823edcb71ca9201696723e221b63ed495a105f0c",
+          "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e"
+        }
+      }
+    },
+    "1.21.9-1.21.10": {
+      "source_commit": "1287668b7932362ce8962c15ed993aa9798df183",
+      "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+      "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "build_log_sha256": "a4c1f899ccf6e20ec53fae943f2212290a940307b7eb9cd9d7db53da61746111",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797977241",
+          "job_id": "133071070305",
+          "run_attempt": 1,
+          "checkout_merge_sha": "779d447bbb27320a81fe7a05db4f734dddd867b1",
+          "archive_sha256": "e1788bdfe4c3d0da2e7c1fb0d0c4ba681a8d9d60f42bb199cda54fe798f28293",
+          "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a"
+        },
+        "windows-latest": {
+          "run_id": "43797977241",
+          "job_id": "133071070582",
+          "run_attempt": 1,
+          "checkout_merge_sha": "779d447bbb27320a81fe7a05db4f734dddd867b1",
+          "archive_sha256": "b09e4e3f28b6df476ef1e572af01ccd95df5eb99354e8158341ed95feabc9c40",
+          "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a"
+        }
+      }
+    },
+    "26.1-26.2": {
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "artifact": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+      "sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "build_log_sha256": "f36da934e8b8fc87ebad27034c2f4d47df417ef57308b0045c6ff5a360baf090",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797978158",
+          "job_id": "133071073188",
+          "run_attempt": 1,
+          "checkout_merge_sha": "c0a715cb91a1026d413c108e660fd11120d205bd",
+          "archive_sha256": "71934f582d26922c8be3e229a0e753daa3c22427c995965f611574b1e428d273",
+          "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f"
+        },
+        "windows-latest": {
+          "run_id": "43797978158",
+          "job_id": "133071073514",
+          "run_attempt": 1,
+          "checkout_merge_sha": "c0a715cb91a1026d413c108e660fd11120d205bd",
+          "archive_sha256": "d3ab0ad940c570eb93c75c244154e4bf2ad745a1bd83dba952f125b3cad82b56",
+          "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f"
+        }
+      }
+    },
+    "26.3": {
+      "source_commit": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "artifact": "third-person-readable-maps-1.0.0-mc26.3.jar",
+      "sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "build_log_sha256": "923021ea8bbcd134a22a662b4feabcff45b7ff2aa788030a6492a39e813afe13",
+      "hosted_checks": {
+        "ubuntu-latest": {
+          "run_id": "43797978112",
+          "job_id": "133071072792",
+          "run_attempt": 1,
+          "checkout_merge_sha": "6c0cbc4a60efe4d5b6accad25b68ecbdbf1731aa",
+          "archive_sha256": "0b295ea1f4ed7ba1b6f11bdcd1f09a46c0ed0fa888485b35899c4036639308c8",
+          "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559"
+        },
+        "windows-latest": {
+          "run_id": "43797978112",
+          "job_id": "133071073127",
+          "run_attempt": 1,
+          "checkout_merge_sha": "6c0cbc4a60efe4d5b6accad25b68ecbdbf1731aa",
+          "archive_sha256": "b0fb15b9e09b30c6b3449a80d58fbe2aa3917cb1a049afb451e062bb7ebc82d5",
+          "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559"
+        }
+      }
+    }
+  },
+  "static_versions": 48,
+  "static_passed": 48,
+  "adjacent_controls": 9,
+  "adjacent_controls_rejected": 9,
+  "raw_validation_logs_sha256": "8380ae9a437d2141ed3a65b28924153c7d5962c3b7681f6b643aae417f7d019f",
+  "artifact_archives": "Hosted job and archive identities below; raw local build/static logs retained in the task workspace."
+}

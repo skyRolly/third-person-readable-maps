@@ -1,0 +1,45 @@
+{
+  "observed_at_utc": "2026-11-14T06:58:36.351231+00:00",
+  "workflow": {
+    "id": 406179824,
+    "name": "Automatic Dependency Submission",
+    "path": "dynamic/dependency-graph/auto-submission",
+    "state": "active",
+    "created_at": "2026-11-03T20:32:59.000Z",
+    "updated_at": "2026-11-03T20:32:59.000Z",
+    "html_url": "https://github.com/skyRolly/third-person-readable-maps/actions/workflows/dependency-graph/auto-submission"
+  },
+  "latest_runs": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:10Z",
+      "databaseId": 43425685928,
+      "event": "dynamic",
+      "headBranch": "maintenance/mc-26.3-1.0.0",
+      "headSha": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425685928"
+    },
+    {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:09Z",
+      "databaseId": 43425682941,
+      "event": "dynamic",
+      "headBranch": "maintenance/mc-26.1-26.2-1.0.0",
+      "headSha": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425682941"
+    },
+    {
+      "conclusion": "success",
+      "createdAt": "2026-11-13T12:30:07Z",
+      "databaseId": 43425677850,
+      "event": "dynamic",
+      "headBranch": "candidate/mc-1.21.9-1.21.10",
+      "headSha": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "status": "completed",
+      "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/43425677850"
+    }
+  ],
+  "limitation": "Workflow API state does not expose the separate repository setting or prove dependency-graph alert indexing."
+}

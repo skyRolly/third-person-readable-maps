@@ -1,0 +1,560 @@
+{
+  "schema": 1,
+  "checked_on": "2026-11-12",
+  "source": "Mojang version manifest and SHA-1-verified version metadata",
+  "scope": "default client logging configuration only; launchers, other mods and execution paths may differ",
+  "versions": {
+    "1.21.10": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/1dcba28d18f2f8d1ac8611bf1c4d6273e8891f4c/1.21.10.json",
+      "metadata_sha1": "1dcba28d18f2f8d1ac8611bf1c4d6273e8891f4c",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.9": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/1b06d2917e16b01b311a74e6e3abf644f390249c/1.21.9.json",
+      "metadata_sha1": "1b06d2917e16b01b311a74e6e3abf644f390249c",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.8": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/7493ff7be80f54b68cd7a9a9cdfb5a1392aaa1a1/1.21.8.json",
+      "metadata_sha1": "7493ff7be80f54b68cd7a9a9cdfb5a1392aaa1a1",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.7": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/48c9b004f6add2f9dca3cca46cb036d1bed91cb4/1.21.7.json",
+      "metadata_sha1": "48c9b004f6add2f9dca3cca46cb036d1bed91cb4",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.6": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/207b4f08c3f45142111bfc385be1fb6ac29a35df/1.21.6.json",
+      "metadata_sha1": "207b4f08c3f45142111bfc385be1fb6ac29a35df",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.5": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/deed2dfe12bd2f6dd3397178c68ce07d0a8f2604/1.21.5.json",
+      "metadata_sha1": "deed2dfe12bd2f6dd3397178c68ce07d0a8f2604",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/87fcc1eec25874d12bca737d6579a247ce2d2746/1.21.4.json",
+      "metadata_sha1": "87fcc1eec25874d12bca737d6579a247ce2d2746",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.24.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/2d0db50acd45be754ca0d4b2a0b0f7fb93a121b3/1.21.3.json",
+      "metadata_sha1": "2d0db50acd45be754ca0d4b2a0b0f7fb93a121b3",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/5b8e9f8a64f481c92f4c715db4faf496849b2c3a/1.21.2.json",
+      "metadata_sha1": "5b8e9f8a64f481c92f4c715db4faf496849b2c3a",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "1.21.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/9aa86ea608c3ec777dcdc09e6c5a06c85b53599e/1.21.1.json",
+      "metadata_sha1": "9aa86ea608c3ec777dcdc09e6c5a06c85b53599e",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.21": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/4fc7dfb1d245736485d1f0e9c7a41c0273ad8638/1.21.json",
+      "metadata_sha1": "4fc7dfb1d245736485d1f0e9c7a41c0273ad8638",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.6": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/f218f389b6a159ac30b44a3adf9a8700ed42f397/1.20.6.json",
+      "metadata_sha1": "f218f389b6a159ac30b44a3adf9a8700ed42f397",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.5": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/a7f0d5d66b6a76ac710858ea7c63791326dc6a64/1.20.5.json",
+      "metadata_sha1": "a7f0d5d66b6a76ac710858ea7c63791326dc6a64",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.22.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/bd984a42a9b403c620eae6cd77a1095850ca4479/1.20.4.json",
+      "metadata_sha1": "bd984a42a9b403c620eae6cd77a1095850ca4479",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/b1023e33c4c35e8cb72127c7b4745236fa47b9d4/1.20.3.json",
+      "metadata_sha1": "b1023e33c4c35e8cb72127c7b4745236fa47b9d4",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/2b1c2be7cf1d1137b77716962b71e147b614c50c/1.20.2.json",
+      "metadata_sha1": "2b1c2be7cf1d1137b77716962b71e147b614c50c",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/3ecf2cab995685d345a257326ba72192b7911250/1.20.1.json",
+      "metadata_sha1": "3ecf2cab995685d345a257326ba72192b7911250",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.20": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/a645b4aeda8c8d2a7b12550ecc91de5ba3a8d5e1/1.20.json",
+      "metadata_sha1": "a645b4aeda8c8d2a7b12550ecc91de5ba3a8d5e1",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.19.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/509d363de59da2f2350fee270f11ace8a9412948/1.19.4.json",
+      "metadata_sha1": "509d363de59da2f2350fee270f11ace8a9412948",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.19.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/5a447c52810ced5a8535b5f635f6bc63c94df64e/1.19.3.json",
+      "metadata_sha1": "5a447c52810ced5a8535b5f635f6bc63c94df64e",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.19.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.19.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/ed548106acf3ac7e8205a6ee8fd2710facfa164f/1.19.2.json",
+      "metadata_sha1": "ed548106acf3ac7e8205a6ee8fd2710facfa164f",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.17.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.19.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/39d5e8925d37490c6f2abb2e02b8c6f1b35719df/1.19.1.json",
+      "metadata_sha1": "39d5e8925d37490c6f2abb2e02b8c6f1b35719df",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.17.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.19": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/14bbfb25fb1c1c798e3c9b9482b081a78d1f3a9d/1.19.json",
+      "metadata_sha1": "14bbfb25fb1c1c798e3c9b9482b081a78d1f3a9d",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.17.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.18.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/334b33fcba3c9be4b7514624c965256535bd7eba/1.18.2.json",
+      "metadata_sha1": "334b33fcba3c9be4b7514624c965256535bd7eba",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.17.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.18.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/7ff864e988a2c29907154d5f9701e87e5d5e554a/1.18.1.json",
+      "metadata_sha1": "7ff864e988a2c29907154d5f9701e87e5d5e554a",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.18": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/7367ea8b7cad7c7830192441bb2846be0d2ceeac/1.18.json",
+      "metadata_sha1": "7367ea8b7cad7c7830192441bb2846be0d2ceeac",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.17.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57/1.17.1.json",
+      "metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.17": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/0d9ace8a2ecfd1f4c782786f4b985a499240ff12/1.17.json",
+      "metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16.5": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/fba9f7833e858a1257d810d21a3a9e3c967f9077/1.16.5.json",
+      "metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/596ad61fda7612d9edf8881cf81869276bdb7f82/1.16.4.json",
+      "metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/6485dd131ef68c968041a9f6fd73094b027e42e1/1.16.3.json",
+      "metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/998d9ef5770d05c20d760dc16cf85151f35009f2/1.16.2.json",
+      "metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/54fa3af57d041d2771e66d390197b2c0288e697c/1.16.1.json",
+      "metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.16": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d21d375f9c961f0e9731d4e463306d76e77c48/1.16.json",
+      "metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.15.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d0adb8f642abe422909ede50f651b2b58a3573/1.15.2.json",
+      "metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.15.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/18c3063de87ae126b4e017121219ba802be0755b/1.15.1.json",
+      "metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.15": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/833322370ab320e77717097082effe1d124d48bd/1.15.json",
+      "metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.14.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/be146d5f66a3627ed0a87c234c4d8dde8ab35098/1.14.4.json",
+      "metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.14.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e21618620e02be5a14543d1d17ffdba941d09aa8/1.14.3.json",
+      "metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.14.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd/1.14.2.json",
+      "metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.14.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/183e49ba0fabb5ef8a304f8f5907fa887f40c466/1.14.1.json",
+      "metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.14": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/0fd01dd81eaa451d3130b1cf025a10f129585b10/1.14.json",
+      "metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521"
+      }
+    },
+    "1.21.11": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/812ee7fdfdf648bb872f7a1dca33718de4e786b4/1.21.11.json",
+      "metadata_sha1": "812ee7fdfdf648bb872f7a1dca33718de4e786b4",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.25.2"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "26.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/389f92510868468e073b7a12f19e70a7bf8684cd/26.1.json",
+      "metadata_sha1": "389f92510868468e073b7a12f19e70a7bf8684cd",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.25.2"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "26.1.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/63c56ca0cfc405b1679656db51c9006c43e59b1c/26.1.1.json",
+      "metadata_sha1": "63c56ca0cfc405b1679656db51c9006c43e59b1c",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.25.2"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "26.1.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json",
+      "metadata_sha1": "0bbfbdb8272531060afbba5c671fe4ed3dd6f72f",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.25.2"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "26.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/f28ad96ed5d65e2438da836144a3de15bb9cafe7/26.2.json",
+      "metadata_sha1": "f28ad96ed5d65e2438da836144a3de15bb9cafe7",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.26.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    },
+    "26.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/9f67e10ed013deeaad20ac3c800652765d493408/26.3.json",
+      "metadata_sha1": "9f67e10ed013deeaad20ac3c800652765d493408",
+      "log4j_core_coordinates": [
+        "org.apache.logging.log4j:log4j-core:2.26.0"
+      ],
+      "logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "config_sha1": "39384bd14c0606d812afec88d8aff595b2587dd9"
+      }
+    }
+  },
+  "configs": {
+    "39384bd14c0606d812afec88d8aff595b2587dd9": {
+      "id": "client-1.21.2.xml",
+      "url": "https://piston-data.mojang.com/v1/objects/39384bd14c0606d812afec88d8aff595b2587dd9/client-1.21.2.xml",
+      "sha1": "39384bd14c0606d812afec88d8aff595b2587dd9",
+      "sha256": "4a73b65f9ba949bdc90d408d49edc984ff7841759b45c86c3e54febe646d7279",
+      "size": 1073,
+      "path": "log4j-config-2026-11-12/39384bd14c0606d812afec88d8aff595b2587dd9.xml",
+      "mentions_nolookups": true,
+      "mentions_context_lookup": false,
+      "mentions_context_pattern": false
+    },
+    "bd65e7d2e3c237be76cfbef4c2405033d7f91521": {
+      "id": "client-1.12.xml",
+      "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml",
+      "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+      "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "size": 888,
+      "path": "log4j-config-2026-11-12/bd65e7d2e3c237be76cfbef4c2405033d7f91521.xml",
+      "mentions_nolookups": true,
+      "mentions_context_lookup": false,
+      "mentions_context_pattern": false
+    }
+  }
+}

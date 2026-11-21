@@ -1,0 +1,306 @@
+{
+  "description": "Retained prior JAR bytes, linked to current proposal only where subsequent clean build confirms identical SHA-256. Does not prove runtime compatibility.",
+  "groups": {
+    "1.14-1.14.4": {
+      "candidate_source": "a795f4dc8065000ae4d03e1552481e7918221465",
+      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "artifact_source": "4238f7e72b6c255fa46b77773ad0a2f2dedb7956",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.15-1.16.5": {
+      "candidate_source": "ae4c0786f5babb3c5fdb5a64573f1024ccde7870",
+      "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "artifact_source": "2ccfa1bd66fab8ee9da2555312a0fde14ab82290",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.17-1.19.2": {
+      "candidate_source": "55c20451c8e9176c3e3886df8bc8929f3801da0b",
+      "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "artifact_source": "4ed3f218eea65b6fb4feb676dc381128daaae019",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.19.3": {
+      "candidate_source": "37c6809247fe8cd280e211ad36ca4403432b0c05",
+      "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "artifact_source": "685cd693b4fa49c4bfae38f01c16389ba8df1a2b",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.19.4-1.20.4": {
+      "candidate_source": "76f0952bb6b27a5af82b4127eb847babe4d134f7",
+      "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "artifact_source": "8ea00a53fc0ac0a01ed08ccfb0e381db67ad3fe6",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.20.5-1.20.6": {
+      "candidate_source": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
+      "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "artifact_source": "ec9ba516a2000c0a83baf689ff38433790119331",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.21-1.21.1": {
+      "candidate_source": "c9a63a72f67c469b302bb99ec34502efb900b03c",
+      "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "artifact_source": "78084b69ff0a1eba937c3f6315e29aa8217a86ef",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.21.11": {
+      "candidate_source": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
+      "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "artifact_source": "e1ca4915cac0ee52c0e92331e7548b58fa594d18",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.21.2-1.21.3": {
+      "candidate_source": "557d55ff7f6fcbc63c4e2ae596df05cee02af040",
+      "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "artifact_source": "38d2ebdc7092e3335aebb9dc8017867cbb0e842d",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.21.4-1.21.8": {
+      "candidate_source": "db33c8bd0afc8c0e4d0a658e580ae4329ea3d40f",
+      "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "artifact_source": "7fba2607ceb3c3688df5e0c4e4420459c151530c",
+      "classes": 4,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapHands",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ArmedEntityRenderStateMixin",
+          "super": "java/lang/Object",
+          "interfaces": [
+            "tech/rolly/thirdpersonreadablemaps/ReadableMapHands"
+          ],
+          "mixin": true
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "1.21.9-1.21.10": {
+      "candidate_source": "832667c27967226478ac11d2728061c04915577e",
+      "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "artifact_source": "9f3624b38216cc42607facf1ba45a8fb1fac2f1c",
+      "classes": 4,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapHands",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ArmedEntityRenderStateMixin",
+          "super": "java/lang/Object",
+          "interfaces": [
+            "tech/rolly/thirdpersonreadablemaps/ReadableMapHands"
+          ],
+          "mixin": true
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/class_3887",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "26.1-26.2": {
+      "candidate_source": "11aca8017655fbea4bb735bbc53a661835f4d699",
+      "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "artifact_source": "ec38b73e0206ab6bb49ba936f52e36ba81221d39",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/client/renderer/entity/layers/RenderLayer",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    },
+    "26.3": {
+      "candidate_source": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
+      "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "artifact_source": "f44db59120f1695065da7d2d27e87ec30fb0ee5d",
+      "classes": 2,
+      "hierarchies": [
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface",
+          "super": "java/lang/Object",
+          "interfaces": [],
+          "mixin": false
+        },
+        {
+          "name": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin",
+          "super": "net/minecraft/client/renderer/entity/layers/RenderLayer",
+          "interfaces": [],
+          "mixin": true
+        }
+      ],
+      "mixin_nonconstructor_invokespecial": []
+    }
+  }
+}

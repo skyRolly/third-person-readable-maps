@@ -1,0 +1,11 @@
+{
+  "minecraft": "1.21.11",
+  "source_commit": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+  "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+  "result": "FAILED before local-world join",
+  "failure": "Fabric reported no Mixin global property service. Subsequent validation of the downloaded loader and Mixin JARs did not reproduce corruption; cause remains unconfirmed.",
+  "files_sha256": {
+    "client.log": "2975b8ae1183ce756d4fcd8f6ce7cb86c82b09696c021bf5c29e071b22063358",
+    "runner.log": "72e02aac4d8c514f0fe69780d4aa2da5dabf87df0cff5a9cdb19cfead8d3495c"
+  }
+}

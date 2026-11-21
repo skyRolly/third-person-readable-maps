@@ -1,0 +1,85 @@
+{
+  "observed_on": "2026-11-15",
+  "prs": {
+    "34": {
+      "head": "8500c17c2a69fca3515469c48495dc038b186f50",
+      "run_id": "43634793869",
+      "artifacts": {
+        "Linux": {
+          "id": 14129771603,
+          "archive_sha256": "485ceb5293466059064bf9ea14611891b31ff8da243e89d26d28ba2a0f420776",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc1.21.11.jar",
+          "artifact_sha256": "18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930",
+          "mod_version": "0.0.2"
+        },
+        "Windows": {
+          "id": 14129686927,
+          "archive_sha256": "5e3c2da4bf0ddf3797d06338e187fbecd4970180d1b2bcfdbc87b375d2359eec",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc1.21.11.jar",
+          "artifact_sha256": "18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930",
+          "mod_version": "0.0.2"
+        }
+      }
+    },
+    "35": {
+      "head": "ceac175977fc8edd4369ce530566630604b181be",
+      "run_id": "43700721223",
+      "artifacts": {
+        "Windows": {
+          "id": 14156635476,
+          "archive_sha256": "8bc9f75e01102dc0cc1e381c066e6a14c66af7874454954f58d58fcdf0b344c7",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "artifact_sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "mod_version": "0.0.2"
+        },
+        "Linux": {
+          "id": 14156321352,
+          "archive_sha256": "e9a73fb0867a413c601a2122b4116f69e1423d8dec6d4831cddd294e691cefbd",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "artifact_sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "mod_version": "0.0.2"
+        }
+      }
+    },
+    "36": {
+      "head": "a484da2d0ceda48b54ce0c4cd77ae037a68c84f4",
+      "run_id": "43634799240",
+      "artifacts": {
+        "Linux": {
+          "id": 14130245300,
+          "archive_sha256": "825e5acf126ee8322ada888adbe87deb8949942dddbbee32939cd017886537ea",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.3.jar",
+          "artifact_sha256": "9f3bc6a3ee4477a3e7cc0f0ebb4c2ff25785ac3f608761f2dc502765f23e2e69",
+          "mod_version": "0.0.2"
+        },
+        "Windows": {
+          "id": 14128509922,
+          "archive_sha256": "4dce0613c15d4b74cdd920542810583a67adbacd0e7ad413193bda5cef68fa15",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.3.jar",
+          "artifact_sha256": "9f3bc6a3ee4477a3e7cc0f0ebb4c2ff25785ac3f608761f2dc502765f23e2e69",
+          "mod_version": "0.0.2"
+        }
+      }
+    },
+    "35-previous": {
+      "head": "f03d59cedb136fdf53bebd24a9f0a9b07b87bce2",
+      "run_id": "43634796368",
+      "artifacts": {
+        "Linux": {
+          "id": 14130185417,
+          "archive_sha256": "0b6d80f8ddaf401c795b9066ca5fa839c0afc3ea599dacb0ae292e823db3e514",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "artifact_sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "mod_version": "0.0.2"
+        },
+        "Windows": {
+          "id": 14129109957,
+          "archive_sha256": "d40be284470b885884d8b864da8eb8b8a127af52c9e8e953ab8522bc5e189d56",
+          "artifact_filename": "third-person-readable-maps-0.0.2-mc26.1-26.2.jar",
+          "artifact_sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+          "mod_version": "0.0.2"
+        }
+      }
+    }
+  }
+}

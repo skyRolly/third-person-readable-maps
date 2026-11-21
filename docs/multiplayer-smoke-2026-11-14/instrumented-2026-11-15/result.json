@@ -1,0 +1,16 @@
+{
+  "minecraft": "1.21.11",
+  "mode": "local two-client LAN, integrated server",
+  "source_commit": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
+  "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+  "host": "MapSmokeTest",
+  "observer": "MapObserver",
+  "local_port": 45073,
+  "renderer": "Linux Xorg/Mesa software",
+  "events": [
+    "host joined copied world",
+    "observer joined LAN",
+    "observer photographed remote map before and after holding map ID 2"
+  ],
+  "limitation": "The observer process used a diagnostic Java agent to log the Mod renderer map-ID/data lookup; packet delivery was not directly instrumented. This is not full multiplayer acceptance. Clients were terminated after capture."
+}

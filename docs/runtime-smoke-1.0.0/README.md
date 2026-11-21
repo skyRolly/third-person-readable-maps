@@ -1,0 +1,5 @@
+# 1.0.0 local walking smoke evidence
+
+These are source- and artifact-identified installed-client observations in copied local worlds on Linux Xorg/Mesa software rendering. Each row retains the movement measurement, saved ending player data, two actual walking frames and the full client log. The [index](index.json) identifies each observation date in UTC, legacy candidate or maintenance proposal source, artifact and file SHA-256; a maintenance proposal is not the current remote maintenance branch. The frames and a positive local movement distance are partial diagnostics; they are not full graphical, hardware-GPU, multiplayer or independent human acceptance. The user-facing map may be partly occluded in a frame. The existing branch-specific probes cover different state and map-ID cases.
+
+The [archived diagnostic harnesses](harness/) use Minecraft Launcher Lib, cached Mojang/Fabric artifacts, an X11 display and copied test-world fixtures that are not included. The original historical 0.0.2 reports retain their own earlier source and artifacts.

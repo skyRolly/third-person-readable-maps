@@ -1,0 +1,12 @@
+{
+  "minecraft": "26.1",
+  "source_commit": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+  "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+  "result": "NOT COMPLETED: timed out waiting for local-world join after an upgrade prompt",
+  "files_sha256": {
+    "client.log": "2835bbf16df1284d30f90d27beed1df5d383edc0e314638f986c0bedb4c702cd",
+    "operator-note.txt": "6cb1a7d138ede05e7de8834b75003c34f93879acc4b28525b052e7136fd395cd",
+    "world-upgrade-prompt.png": "f9486143f3877e04f24105e9e94b01dda7c5b97e59b40bc30bc77db58d4b46dc",
+    "runner.log": "a7ced68dd752debc4ebb9c798f261f31b5e861f41f17bf74f8d87a35e4ede2e1"
+  }
+}

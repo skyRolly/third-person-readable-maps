@@ -1,0 +1,2 @@
+Automated OCR recognized the world-upgrade prompt on a copied local test world and selected the continue button; the original fixture was untouched. The screenshot and OCR output were retained before the click.
+After the upgrade completed, a second prompt asked whether to join the copied world. The operator captured it and selected Yes at 2026-11-13 17:51 UTC.

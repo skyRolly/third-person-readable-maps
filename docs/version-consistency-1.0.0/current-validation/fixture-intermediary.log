@@ -1,0 +1,59 @@
+........
+----------------------------------------------------------------------
+Ran 8 tests in 163.175s
+
+OK
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 5 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 1 game classes, 3 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [('org/joml/', 0, '91b91f0e389f1b9a67965aead6d15d49a29e3617')])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [('org/joml/', 0, '7e05a9f38dba9a399e5e41bad737d11d8cd91101')])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 1 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 1 game classes, 1 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 1 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [('org/joml/', 1, '296d9488d4e76bb98b27540a8c30adfa11a24719')])]
+fixture: 2 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 1 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [('org/joml/', 1, 'da9eb7247f98131c2ceaa502a2c2dcd300123ebc')])]
+fixture: 0 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified
+fixture: dependency library checks: [('linux', [('org/joml/', 1, '832b4685cdb240afcf445c49ffa678ff96e19d19')]), ('osx', [('org/joml/', 1, '4017b1dd2406c781f59d7ffa74a9c9c160c02ad5')])]
+fixture: 4 JVM game member instructions verified
+fixture: 1 Mixin descriptor(s), 0 game classes, 0 game member references and 0 LWJGL reference(s) across 0 library variant(s) verified

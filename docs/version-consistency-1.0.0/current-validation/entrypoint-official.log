@@ -1,0 +1,24 @@
+........
+----------------------------------------------------------------------
+Ran 8 tests in 275.084s
+
+OK
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 1 game classes, 5 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, '62e385d7b06feb12a27701fa64e2876ac2e59084')])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, 'c9c2ae8bf6f6828d8fe24729697fe5223769be75')])] verified
+fixture: Mixin target, 1 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 2 game instructions, and dependency libraries [('linux', [('org/joml/', 1, 'ddf2fbc6c02967302def4858eb77872e8428849a')])] verified
+fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '838015437027809d1be09d251c77f3fe9c67c895')])] verified
+fixture: Mixin target, 0 game classes, 4 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '07b905f1c6325b17202c8b87ddf09246b415442c')]), ('osx', [('org/joml/', 1, '4dd2ccc8a4946e399f611912f79e7e9c542bd63e')])] verified

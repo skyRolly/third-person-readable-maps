@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-14",
+  "status": "final proposal heads; clean builds, 48-version static sweep and hosted OS checks passed; review and strict runtime acceptance pending",
+  "groups": {
+    "1.21.9-1.21.10": {
+      "pr": 13,
+      "old_head": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
+      "new_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "branch": "candidate/mc-1.21.9-1.21.10",
+      "target": "mc/1.21.9-1.21.10",
+      "intermediate_head": "68f01af34473bf065d3ad5858825ed7508b37861"
+    },
+    "1.21.4-1.21.8": {
+      "pr": 14,
+      "old_head": "55df5055388918d5df96a3f61f6c9dc999042271",
+      "new_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "branch": "candidate/mc-1.21.4-1.21.8",
+      "target": "mc/1.21.4-1.21.8",
+      "intermediate_head": "f9dfab6c83cf52ed2ee6333eb806b05601281498"
+    },
+    "1.21.2-1.21.3": {
+      "pr": 16,
+      "old_head": "78ef3c311f2db755c87907af6d698ed4527bd2de",
+      "new_head": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "branch": "candidate/mc-1.21.2-1.21.3",
+      "target": "mc/1.21.2-1.21.3",
+      "intermediate_head": "ffadfd795ee262c5d1d2b0deed3287bb0426dfcf"
+    },
+    "1.21-1.21.1": {
+      "pr": 17,
+      "old_head": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
+      "new_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "branch": "candidate/mc-1.21-1.21.1",
+      "target": "mc/1.21-1.21.1",
+      "intermediate_head": "12f8bd9f65d8a55f40c60b71a29e535c42ad4a91"
+    },
+    "1.20.5-1.20.6": {
+      "pr": 18,
+      "old_head": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
+      "new_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "branch": "candidate/mc-1.20.5-1.20.6",
+      "target": "mc/1.20.5-1.20.6",
+      "intermediate_head": "3b8ee8306891ef5e32c9c34fc0b987b4a77d4c4e"
+    },
+    "1.19.4-1.20.4": {
+      "pr": 19,
+      "old_head": "991fc1d6d21819f642c9963f91570fb10ab40f92",
+      "new_head": "92efc418d47b45ae151440391204231570a1e7af",
+      "branch": "candidate/mc-1.19.4-1.20.4",
+      "target": "mc/1.19.4-1.20.4",
+      "intermediate_head": "85acd3ccca9d00d1ec2ad4acdd747ebd11b4438d"
+    },
+    "1.17-1.19.2": {
+      "pr": 20,
+      "old_head": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
+      "new_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "branch": "candidate/mc-1.17-1.19.2",
+      "target": "mc/1.17-1.19.2",
+      "intermediate_head": "bfc0d21d6ba36b8148576a9426e08f3970ffa0e2"
+    },
+    "1.15-1.16.5": {
+      "pr": 21,
+      "old_head": "24cd97031ac91ab3595c50add83c2208f5230fbc",
+      "new_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "branch": "candidate/mc-1.15-1.16.5",
+      "target": "mc/1.15-1.16.5",
+      "intermediate_head": "06669011fa32a628d38008bf0374fd0618ef90c4"
+    },
+    "1.19.3": {
+      "pr": 22,
+      "old_head": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
+      "new_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "branch": "candidate/mc-1.19.3",
+      "target": "mc/1.19.3",
+      "intermediate_head": "b9fa23ecefdec6014d00319a848ba6d26de89484"
+    },
+    "1.14-1.14.4": {
+      "pr": 23,
+      "old_head": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
+      "new_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "branch": "candidate/mc-1.14-1.14.4",
+      "target": "mc/1.14-1.14.4",
+      "intermediate_head": "bc0b5a9593a71ad9afc42dc688ad7f781921a79d"
+    },
+    "1.21.11": {
+      "pr": 31,
+      "old_head": "b79f5061bae6caacb8c083f5fb90a1754ea32b9e",
+      "new_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "target": "mc/1.21.11",
+      "intermediate_head": "020ed31418eb5f743a9a6e7a6fffb2163accae27"
+    },
+    "26.1-26.2": {
+      "pr": 32,
+      "old_head": "1d888cf76ba985fd8587a931d6c88c20d22ae691",
+      "new_head": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "target": "mc/26.1-26.2",
+      "intermediate_head": "3f3dd404e92cd03afbd369235b1726762462986d"
+    },
+    "26.3": {
+      "pr": 33,
+      "old_head": "f59d2add2d5a7eba16cd5b5fe72a36e18c29746c",
+      "new_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "target": "mc/26.3",
+      "intermediate_head": "bca359279e47a4736e7cb677db9f14e4cce19ba2"
+    }
+  }
+}

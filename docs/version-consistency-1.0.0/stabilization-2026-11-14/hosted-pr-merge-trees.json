@@ -1,0 +1,161 @@
+{
+  "observed_on": "2026-11-14",
+  "groups": {
+    "1.21.9-1.21.10": {
+      "pr": 13,
+      "head_sha": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "e7609b1370cd21bd69733a0db6a196440c0010ee",
+      "merge_tree": "c30709bca0767bb8c5d1aeeb6d7bc6f5c37165cb",
+      "head_tree": "c30709bca0767bb8c5d1aeeb6d7bc6f5c37165cb",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "90bfab52b538363eb8630145c6df23936c70ae2d"
+      ]
+    },
+    "1.21.4-1.21.8": {
+      "pr": 14,
+      "head_sha": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "42bc5a8b929260251e87506092fc5219b0274ad3",
+      "merge_tree": "e69649a6053b890f03d2d09384a95bae84842089",
+      "head_tree": "e69649a6053b890f03d2d09384a95bae84842089",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "052ca9744c3f8756d02aefd86f112f5476eee206"
+      ]
+    },
+    "1.21.2-1.21.3": {
+      "pr": 16,
+      "head_sha": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "08015162270f34df2f1627740d42b7a8224b25a9",
+      "merge_tree": "abe6496cd4f8e1510f76b93641e338db6ef0f40d",
+      "head_tree": "abe6496cd4f8e1510f76b93641e338db6ef0f40d",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "444cab923238eea930c5e332eff0815dbbde0e20"
+      ]
+    },
+    "1.21-1.21.1": {
+      "pr": 17,
+      "head_sha": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "c231e79ab7fd73d5ad3d756d9e859d55e8dd78e5",
+      "merge_tree": "d7c201c07c5e260f0b7e2342113b123f86c6a4a2",
+      "head_tree": "d7c201c07c5e260f0b7e2342113b123f86c6a4a2",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2"
+      ]
+    },
+    "1.20.5-1.20.6": {
+      "pr": 18,
+      "head_sha": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "dcd50301b50505cb8fa2a71ade2036d1e94a4f4f",
+      "merge_tree": "b6e9d5e7477fa15be5b167892f758d36ec2b3fe1",
+      "head_tree": "b6e9d5e7477fa15be5b167892f758d36ec2b3fe1",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "18ed6883c2717332c53dfe07b2f284174b3daad0"
+      ]
+    },
+    "1.19.4-1.20.4": {
+      "pr": 19,
+      "head_sha": "92efc418d47b45ae151440391204231570a1e7af",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "fbb69180e280ae88f7fdcd21754b377a6c57491c",
+      "merge_tree": "29a955fab7f8a0d13b55b20a59ae3faa3b7a848d",
+      "head_tree": "29a955fab7f8a0d13b55b20a59ae3faa3b7a848d",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "92efc418d47b45ae151440391204231570a1e7af"
+      ]
+    },
+    "1.17-1.19.2": {
+      "pr": 20,
+      "head_sha": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "3e9ea4007166b62f00ed201cd035d047f955260b",
+      "merge_tree": "1c337d547c4604a8c2e9c66dad4ffafae76594db",
+      "head_tree": "1c337d547c4604a8c2e9c66dad4ffafae76594db",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1"
+      ]
+    },
+    "1.15-1.16.5": {
+      "pr": 21,
+      "head_sha": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "83e28190e0b4d0c1ec32d73d620c7bc2385b6b09",
+      "merge_tree": "1f9ab18d2b17f7a035aaa3135efd877711f5cccd",
+      "head_tree": "1f9ab18d2b17f7a035aaa3135efd877711f5cccd",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "b338ed4a8717f4d861de2c69218883bce9295f47"
+      ]
+    },
+    "1.19.3": {
+      "pr": 22,
+      "head_sha": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "8825168a75a0f3bdcca2b6312eb8017c0e1e3067",
+      "merge_tree": "9955259019009c5b5e180058cd366cfb5501d650",
+      "head_tree": "9955259019009c5b5e180058cd366cfb5501d650",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "1c3040e4b4ba7adc424c223269e58a8643086009"
+      ]
+    },
+    "1.14-1.14.4": {
+      "pr": 23,
+      "head_sha": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "9432c3a05f83682fd4bb40a1db744097885d67a0",
+      "merge_tree": "39c2232cdcbe910ed7d81c8fc8c5364312fdb343",
+      "head_tree": "39c2232cdcbe910ed7d81c8fc8c5364312fdb343",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "093d88dbb9c513b29d6cf89ff716ff715401d1d5"
+      ]
+    },
+    "1.21.11": {
+      "pr": 31,
+      "head_sha": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+      "merge_sha": "5a58b099de62b9a55a00b634e375047b4c18511f",
+      "merge_tree": "cf99df215889ce12a9764cbe4b0085ea44111ef6",
+      "head_tree": "cf99df215889ce12a9764cbe4b0085ea44111ef6",
+      "merge_parents": [
+        "177f5708727ae4c152091d185536aaa734063280",
+        "0a816406e3a2822381a34cc3adc43b1a91eb2259"
+      ]
+    },
+    "26.1-26.2": {
+      "pr": 32,
+      "head_sha": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "base_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+      "merge_sha": "dbe0f5b2326208e162ce0fb7ad3cbb1a1d6bc0ab",
+      "merge_tree": "1527adfbd8321d85bfa810a19cce6dedea64fc24",
+      "head_tree": "1527adfbd8321d85bfa810a19cce6dedea64fc24",
+      "merge_parents": [
+        "453cf35695cf07be4072f77895cdbafbed617870",
+        "131f3e393e31778ed11d341830c856acc4d85a35"
+      ]
+    },
+    "26.3": {
+      "pr": 33,
+      "head_sha": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "base_sha": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+      "merge_sha": "620012bb78eb32d405389f0d9eb2afb00370824f",
+      "merge_tree": "e44774565766454a71fb0bcfc94b38cd00ee0978",
+      "head_tree": "e44774565766454a71fb0bcfc94b38cd00ee0978",
+      "merge_parents": [
+        "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+        "0969f10cbbab5a19bb4a209e07e1f3a7f612768d"
+      ]
+    }
+  }
+}

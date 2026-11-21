@@ -1,0 +1,257 @@
+{
+  "groups": "historical Log4j candidate matches",
+  "versions": {
+    "1.14": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/0fd01dd81eaa451d3130b1cf025a10f129585b10/1.14.json",
+      "metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.14.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/183e49ba0fabb5ef8a304f8f5907fa887f40c466/1.14.1.json",
+      "metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.14.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd/1.14.2.json",
+      "metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.14.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e21618620e02be5a14543d1d17ffdba941d09aa8/1.14.3.json",
+      "metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.14.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/be146d5f66a3627ed0a87c234c4d8dde8ab35098/1.14.4.json",
+      "metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.15": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/833322370ab320e77717097082effe1d124d48bd/1.15.json",
+      "metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.15.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/18c3063de87ae126b4e017121219ba802be0755b/1.15.1.json",
+      "metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.15.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d0adb8f642abe422909ede50f651b2b58a3573/1.15.2.json",
+      "metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e9d21d375f9c961f0e9731d4e463306d76e77c48/1.16.json",
+      "metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/54fa3af57d041d2771e66d390197b2c0288e697c/1.16.1.json",
+      "metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16.2": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/998d9ef5770d05c20d760dc16cf85151f35009f2/1.16.2.json",
+      "metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16.3": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/6485dd131ef68c968041a9f6fd73094b027e42e1/1.16.3.json",
+      "metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16.4": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/596ad61fda7612d9edf8881cf81869276bdb7f82/1.16.4.json",
+      "metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.16.5": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/fba9f7833e858a1257d810d21a3a9e3c967f9077/1.16.5.json",
+      "metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.17": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/0d9ace8a2ecfd1f4c782786f4b985a499240ff12/1.17.json",
+      "metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.17.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57/1.17.1.json",
+      "metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.18": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/7367ea8b7cad7c7830192441bb2846be0d2ceeac/1.18.json",
+      "metadata_sha1": "7367ea8b7cad7c7830192441bb2846be0d2ceeac",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    },
+    "1.18.1": {
+      "metadata_url": "https://piston-meta.mojang.com/v1/packages/7ff864e988a2c29907154d5f9701e87e5d5e554a/1.18.1.json",
+      "metadata_sha1": "7ff864e988a2c29907154d5f9701e87e5d5e554a",
+      "logging_argument": "-Dlog4j.configurationFile=${path}",
+      "config": {
+        "id": "client-1.12.xml",
+        "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+        "size": 888,
+        "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+      },
+      "config_sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "contains_nolookups": true,
+      "contains_legacy_xml_layout": true
+    }
+  }
+}

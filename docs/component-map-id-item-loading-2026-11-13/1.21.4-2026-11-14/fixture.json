@@ -1,0 +1,19 @@
+{
+  "minecraft": "1.21.4",
+  "baseline_world": "foreground-1214-candidate, copied before mutation",
+  "input_level_sha256": "4b2fc7f77de70384d5e0ac578fa2f1b480a030116d3c95d4f76430e32e7b33d7",
+  "input_player_sha256": "997a509fb39823ab023114922bb020a42163b579ebbf0e7821e2a669cffe9869",
+  "input_map_zero_sha256": "3da0d2a7921216dd09dd113a6d911cc747181517e8e14d9c46b8b2bb2961747d",
+  "map_zero_nonblank": 15691,
+  "selected_slot": 3,
+  "slots": {
+    "1": "Int 0",
+    "2": "Int 7",
+    "3": "Double 0.5",
+    "4": "Long 4294967296",
+    "6": "String not-a-number",
+    "7": "Double NaN",
+    "8": "absent component"
+  },
+  "scope": "Controlled copied test world; no production world or item modified."
+}

@@ -1,0 +1,462 @@
+{
+  "schema": 1,
+  "scanned_on": "2026-11-14",
+  "risk_acceptance": false,
+  "candidate_snapshot_origin": "Exact-head hosted CI dependency graph; fresh Gradle resolution",
+  "proposal_snapshot_origin": "Separate exact-head local Gradle resolution; hosted CI graph retained independently",
+  "integrated_snapshot_origin": "Retained exact-source snapshot, fresh OSV re-query; no fresh Gradle resolution",
+  "groups": {
+    "1.14-1.14.4": {
+      "source_kind": "candidate",
+      "source_sha": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
+      "branch": "candidate/mc-1.14-1.14.4",
+      "pr": 23,
+      "hosted_run": "43606176709",
+      "hosted_artifact_id": 14118233590,
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.14-1.14.4-snapshot.json",
+          "sha256": "eb1ed53300b9c147be9358cb6eadcb46d77c07500bfa8946a4b861dacf83e34f"
+        },
+        "scan_report": {
+          "path": "1.14-1.14.4-report.json",
+          "sha256": "176777a8d75d4b7485c1e5951431519026a1d812dcffd26aa90097703181b07c"
+        },
+        "scan_log": {
+          "path": "1.14-1.14.4-audit.log",
+          "sha256": "1b252bcaa2b7434aabb52f5ed22b22f040d163512741f544aa9689b141cd9195"
+        }
+      }
+    },
+    "1.15-1.16.5": {
+      "source_kind": "candidate",
+      "source_sha": "b338ed4a8717f4d861de2c69218883bce9295f47",
+      "branch": "candidate/mc-1.15-1.16.5",
+      "pr": 21,
+      "hosted_run": "43606179138",
+      "hosted_artifact_id": 14118462016,
+      "matches": 27,
+      "states": {
+        "known": 27
+      },
+      "failing": 27,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.15-1.16.5-snapshot.json",
+          "sha256": "e219dedbf8938666f3539719183e903bb1ef87797406791ca52c61ed02b0f9b7"
+        },
+        "scan_report": {
+          "path": "1.15-1.16.5-report.json",
+          "sha256": "0335e3fd6558123c09dbd85ee8301638cab9892738f684a0d5186f349802fb3e"
+        },
+        "scan_log": {
+          "path": "1.15-1.16.5-audit.log",
+          "sha256": "ae61f647ca01969b3bd13b05c19731fa0aab1fe30023398019aefbe3ee8d89f2"
+        }
+      }
+    },
+    "1.17-1.19.2": {
+      "source_kind": "candidate",
+      "source_sha": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
+      "branch": "candidate/mc-1.17-1.19.2",
+      "pr": 20,
+      "hosted_run": "43606180124",
+      "hosted_artifact_id": 14118535788,
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "failing": 53,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.17-1.19.2-snapshot.json",
+          "sha256": "89389927cd6176aba276c443e9148fd2c0b1be852c4f0bb6b505d412f5dd767e"
+        },
+        "scan_report": {
+          "path": "1.17-1.19.2-report.json",
+          "sha256": "90f7cc6d777d228fb279a8b60f0bf858a40d2de2ea895b6091a8c6c8c3d334ff"
+        },
+        "scan_log": {
+          "path": "1.17-1.19.2-audit.log",
+          "sha256": "4b495f9f185fceb61fec996dbcdab05c42a0b3a8794a80163053ad4974b72e22"
+        }
+      }
+    },
+    "1.19.3": {
+      "source_kind": "candidate",
+      "source_sha": "1c3040e4b4ba7adc424c223269e58a8643086009",
+      "branch": "candidate/mc-1.19.3",
+      "pr": 22,
+      "hosted_run": "43606182518",
+      "hosted_artifact_id": 14117459815,
+      "matches": 24,
+      "states": {
+        "known": 24
+      },
+      "failing": 24,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.19.3-snapshot.json",
+          "sha256": "a75b2bbd1b78eaed1e5718d5ae80768d4c1b6ce401218bb833a33eb2d97a2a83"
+        },
+        "scan_report": {
+          "path": "1.19.3-report.json",
+          "sha256": "fc96bc8ec1228bc43b95ba6afd04a67b63ebcea7a9082ad5759d3723b8ede46d"
+        },
+        "scan_log": {
+          "path": "1.19.3-audit.log",
+          "sha256": "29f7a4f26fddb1669a4d65f5efcfc0cc4c8b11ee0d70d3aca3206c249ff02afa"
+        }
+      }
+    },
+    "1.19.4-1.20.4": {
+      "source_kind": "candidate",
+      "source_sha": "92efc418d47b45ae151440391204231570a1e7af",
+      "branch": "candidate/mc-1.19.4-1.20.4",
+      "pr": 19,
+      "hosted_run": "43606183685",
+      "hosted_artifact_id": 14118490782,
+      "matches": 42,
+      "states": {
+        "known": 42
+      },
+      "failing": 42,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.19.4-1.20.4-snapshot.json",
+          "sha256": "9cf6efdad219be359256106c3193b88e65677e5f15212ea5fefdc2a471d6828f"
+        },
+        "scan_report": {
+          "path": "1.19.4-1.20.4-report.json",
+          "sha256": "8cf9d2c76aab640c956cc454a4162a2a73b18d5816cabfbe6edb9c6243114f71"
+        },
+        "scan_log": {
+          "path": "1.19.4-1.20.4-audit.log",
+          "sha256": "6e0ed71393ad2d19bb86ada2f056a7cb78ce71f53b1cec9560743812ce02e744"
+        }
+      }
+    },
+    "1.20.5-1.20.6": {
+      "source_kind": "candidate",
+      "source_sha": "18ed6883c2717332c53dfe07b2f284174b3daad0",
+      "branch": "candidate/mc-1.20.5-1.20.6",
+      "pr": 18,
+      "hosted_run": "43606185852",
+      "hosted_artifact_id": 14118800352,
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.20.5-1.20.6-snapshot.json",
+          "sha256": "90780f269e9fbe066689bf8985a7e91c203cec57b8ae6c150a496d85e33060c3"
+        },
+        "scan_report": {
+          "path": "1.20.5-1.20.6-report.json",
+          "sha256": "e95032679f17159ece7cb3bbb524928e5025956e5e5cd3930aa543e5ef4b0ff2"
+        },
+        "scan_log": {
+          "path": "1.20.5-1.20.6-audit.log",
+          "sha256": "09e5703a30a9f0f8a216243397616b5516fe812e749ceb3b0abea92b28466d4c"
+        }
+      }
+    },
+    "1.21-1.21.1": {
+      "source_kind": "candidate",
+      "source_sha": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
+      "branch": "candidate/mc-1.21-1.21.1",
+      "pr": 17,
+      "hosted_run": "43606187651",
+      "hosted_artifact_id": 14118398370,
+      "matches": 28,
+      "states": {
+        "known": 28
+      },
+      "failing": 28,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.21-1.21.1-snapshot.json",
+          "sha256": "4340a4879efc590ea21348e2403d84ea185e805bfe8cfe85557ccd0602b0271f"
+        },
+        "scan_report": {
+          "path": "1.21-1.21.1-report.json",
+          "sha256": "b0e7605db38bb0b18ed98e57b02b50d8748674f3fb6a57f58ab5ce5f3379d115"
+        },
+        "scan_log": {
+          "path": "1.21-1.21.1-audit.log",
+          "sha256": "f6cc393aa3c934eacc934d3d55b5559f898f47debe4f4e155bd9d27e99d11056"
+        }
+      }
+    },
+    "1.21.11": {
+      "source_kind": "unmerged-maintenance-proposal",
+      "source_sha": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "pr": 31,
+      "hosted_run": "43606189389",
+      "hosted_artifact_id": 14118457216,
+      "matches": 41,
+      "states": {
+        "known": 41
+      },
+      "failing": 41,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": null,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.21.11-snapshot.json",
+          "sha256": "9f31649280ad71267260b97b4963f44c9dcc6b0f7c4773e3b325f4a16e94dfc7"
+        },
+        "local_resolved_snapshot": {
+          "path": "1.21.11-local-snapshot.json",
+          "sha256": "88887cd468dd850f26b097ca612c04e0d1b05300e3a7b4f79a795f5727811422"
+        },
+        "resolution_log": {
+          "path": "1.21.11-local-snapshot.log",
+          "sha256": "5af3044bc197b35ff04d103cc95a494693ee8944309897c75ce7d862b8f8e7f7"
+        },
+        "scan_report": {
+          "path": "1.21.11-proposal-report.json",
+          "sha256": "abc9565b76771ab9535ffa7ff2ab6525fe8dc5b2814cd323312711a9b4d7c901"
+        },
+        "scan_log": {
+          "path": "1.21.11-proposal-audit.log",
+          "sha256": "32ce8efda9916b5989ae0f8d26cc383bf7e38e8885dc8f2d1e1900b18c9e4da6"
+        }
+      },
+      "integrated_maintenance": {
+        "source_sha": "177f5708727ae4c152091d185536aaa734063280",
+        "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/1.21.11-snapshot.json",
+        "snapshot_sha256": "780e35de8e608f838b385a37d2225ec3546fd3279257a53fcd99f4baa5f93e9c",
+        "snapshot_reused": true,
+        "matches": 41,
+        "failing": 41,
+        "report": {
+          "path": "1.21.11-integrated-report.json",
+          "sha256": "fa3ef6c27242f141513d1fa5eb804bd52580ddb981337bcf480e1fd4883b7d90"
+        },
+        "log": {
+          "path": "1.21.11-integrated-audit.log",
+          "sha256": "c4ff9391ea8b7df4844abd8e702673d51b00019330d022cc429d513d4f2f5945"
+        }
+      }
+    },
+    "1.21.2-1.21.3": {
+      "source_kind": "candidate",
+      "source_sha": "444cab923238eea930c5e332eff0815dbbde0e20",
+      "branch": "candidate/mc-1.21.2-1.21.3",
+      "pr": 16,
+      "hosted_run": "43606190016",
+      "hosted_artifact_id": 14118119419,
+      "matches": 45,
+      "states": {
+        "known": 44,
+        "changed": 1
+      },
+      "failing": 45,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.21.2-1.21.3-snapshot.json",
+          "sha256": "7f97a0459dac33893e6ede4c28a195067110511e87605fc34a904510574b3fae"
+        },
+        "scan_report": {
+          "path": "1.21.2-1.21.3-report.json",
+          "sha256": "88bc094762c94185d4ca91844be308e77132813cd2993d75e66d6290f3b29702"
+        },
+        "scan_log": {
+          "path": "1.21.2-1.21.3-audit.log",
+          "sha256": "d2cf72e77b84d82f9ddbf6b14dca23846cacf24da6dcfd6f2b050a918983324f"
+        }
+      }
+    },
+    "1.21.4-1.21.8": {
+      "source_kind": "candidate",
+      "source_sha": "052ca9744c3f8756d02aefd86f112f5476eee206",
+      "branch": "candidate/mc-1.21.4-1.21.8",
+      "pr": 14,
+      "hosted_run": "43606193105",
+      "hosted_artifact_id": 14118825002,
+      "matches": 52,
+      "states": {
+        "known": 51,
+        "changed": 1
+      },
+      "failing": 52,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.21.4-1.21.8-snapshot.json",
+          "sha256": "0a24993b1547e8fc0be02d5a2de31e22e65e28eb88cb3439b7972b769bb646f1"
+        },
+        "scan_report": {
+          "path": "1.21.4-1.21.8-report.json",
+          "sha256": "d558950fdcc31afe5812de3d9a9c4f242963b7a01fbf9851243b419ac162c103"
+        },
+        "scan_log": {
+          "path": "1.21.4-1.21.8-audit.log",
+          "sha256": "d56c1d00a9a9f2bbbae8327bc6f715dd0f22a0e581daf652d87861467cfb3c68"
+        }
+      }
+    },
+    "1.21.9-1.21.10": {
+      "source_kind": "candidate",
+      "source_sha": "90bfab52b538363eb8630145c6df23936c70ae2d",
+      "branch": "candidate/mc-1.21.9-1.21.10",
+      "pr": 13,
+      "hosted_run": "43606194987",
+      "hosted_artifact_id": 14118199121,
+      "matches": 59,
+      "states": {
+        "known": 58,
+        "changed": 1
+      },
+      "failing": 59,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": true,
+      "files": {
+        "hosted_snapshot": {
+          "path": "1.21.9-1.21.10-snapshot.json",
+          "sha256": "7aa5a2bc79eb7fd9e4f30c158b41c63a064b2a5ffb1b59f645a0a634680dc4ac"
+        },
+        "scan_report": {
+          "path": "1.21.9-1.21.10-report.json",
+          "sha256": "0ba7a3204cdf6f53ff92d77fc517d431ab6de7cc55bbea615884eec2b260b787"
+        },
+        "scan_log": {
+          "path": "1.21.9-1.21.10-audit.log",
+          "sha256": "985c9c2a5aacbe32acb66b33b1dd5bef489626d708248cc9be638d499629ca80"
+        }
+      }
+    },
+    "26.1-26.2": {
+      "source_kind": "unmerged-maintenance-proposal",
+      "source_sha": "131f3e393e31778ed11d341830c856acc4d85a35",
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "pr": 32,
+      "hosted_run": "43606197617",
+      "hosted_artifact_id": 14118158050,
+      "matches": 53,
+      "states": {
+        "known": 53
+      },
+      "failing": 53,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": null,
+      "files": {
+        "hosted_snapshot": {
+          "path": "26.1-26.2-snapshot.json",
+          "sha256": "6756d39728d2b0149ce79e30788f1461e6ee8d73d0b26225842a138aed5d759c"
+        },
+        "local_resolved_snapshot": {
+          "path": "26.1-26.2-local-snapshot.json",
+          "sha256": "053073e91d02385c5aabfd6cb41ca4b09d8dbfab5cd43cc085d8c15398e9b502"
+        },
+        "resolution_log": {
+          "path": "26.1-26.2-local-snapshot.log",
+          "sha256": "55df18d97e6d9e3f7e10e59d07fe679ab1d0fc9ab8162fab5a9e12b0410a7894"
+        },
+        "scan_report": {
+          "path": "26.1-26.2-proposal-report.json",
+          "sha256": "699ec6d03d1cf2de1c7a9f08a2856a6f509f382a0565fa245f1a08bfcaa95588"
+        },
+        "scan_log": {
+          "path": "26.1-26.2-proposal-audit.log",
+          "sha256": "06d37f5f22de01934bb22395a4872e0e5f8453d0c0139a2e6f48b64331fd8f95"
+        }
+      },
+      "integrated_maintenance": {
+        "source_sha": "453cf35695cf07be4072f77895cdbafbed617870",
+        "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/26.1-26.2-snapshot.json",
+        "snapshot_sha256": "daf19551ad29f991ee5a6fbffe778d278691f94ff5b3d697315a6dfb158d3eba",
+        "snapshot_reused": true,
+        "matches": 53,
+        "failing": 53,
+        "report": {
+          "path": "26.1-26.2-integrated-report.json",
+          "sha256": "097080d6a98c93ab738dcdb2001ca91f2fdbdce2b684f6bb85bec3bb122ef800"
+        },
+        "log": {
+          "path": "26.1-26.2-integrated-audit.log",
+          "sha256": "404a6030e6004b430ae52ebe7fec47f6544ddc316974455849e2226f2cd5ab4f"
+        }
+      }
+    },
+    "26.3": {
+      "source_kind": "unmerged-maintenance-proposal",
+      "source_sha": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "pr": 33,
+      "hosted_run": "43606198925",
+      "hosted_artifact_id": 14117724073,
+      "matches": 11,
+      "states": {
+        "known": 11
+      },
+      "failing": 11,
+      "resolved_needing_review": 0,
+      "same_finding_signatures_as_previous_requery": null,
+      "files": {
+        "hosted_snapshot": {
+          "path": "26.3-snapshot.json",
+          "sha256": "f569141d98e5bd6c1eb9d3f7632430704cbce4bac9e48310124162d0a2d13bf0"
+        },
+        "local_resolved_snapshot": {
+          "path": "26.3-local-snapshot.json",
+          "sha256": "d345bfd86814b674ffd0d6dbe0fc1a62c5a77cc5c723e7ad3c5b5bef18b23c8d"
+        },
+        "resolution_log": {
+          "path": "26.3-local-snapshot.log",
+          "sha256": "752a993367a893fb17a536ac9e4a6c8500a3c2558bc4987bf808618bd729804c"
+        },
+        "scan_report": {
+          "path": "26.3-proposal-report.json",
+          "sha256": "cfe2562c8009cc964fa2ec3f1c7714bc4c632cd35b216392734796352e793393"
+        },
+        "scan_log": {
+          "path": "26.3-proposal-audit.log",
+          "sha256": "471c856e91af641ba6b5e722202e70cd6527daa17ef5bae04dcdea31961241a5"
+        }
+      },
+      "integrated_maintenance": {
+        "source_sha": "226b1de7dd4e7c2a75ec35eef1697434462e4f54",
+        "snapshot_path": "docs/dependency-evidence/1.0.0-2026-11-12/26.3-snapshot.json",
+        "snapshot_sha256": "9eeaeff081df58262ce30e83abfe7caa38bbffdc89ce5761db3da3faf80729fc",
+        "snapshot_reused": true,
+        "matches": 11,
+        "failing": 11,
+        "report": {
+          "path": "26.3-integrated-report.json",
+          "sha256": "e63f322d9225ea9e18cf71036be964df7bacb19effaad8aa8afa39a163334823"
+        },
+        "log": {
+          "path": "26.3-integrated-audit.log",
+          "sha256": "b9f0450828ea16e486fd1decd3fac6f9db23e7f5cd703f6f42c738f332afd39a"
+        }
+      }
+    }
+  }
+}

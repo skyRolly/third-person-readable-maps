@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "groups": {
+    "1.21.11": {
+      "branch": "mc/1.21.11",
+      "target": "1.21.11",
+      "minecraft": ["1.21.11"],
+      "integrated_commit": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "26.1-26.2": {
+      "branch": "mc/26.1-26.2",
+      "target": "26.1",
+      "minecraft": ["26.1", "26.1.1", "26.1.2", "26.2"],
+      "integrated_commit": "453cf35695cf07be4072f77895cdbafbed617870"
+    },
+    "26.3": {
+      "branch": "mc/26.3",
+      "target": "26.3",
+      "minecraft": ["26.3"],
+      "integrated_commit": "226b1de7dd4e7c2a75ec35eef1697434462e4f54"
+    }
+  }
+}

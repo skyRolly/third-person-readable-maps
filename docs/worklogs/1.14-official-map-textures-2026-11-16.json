@@ -1,0 +1,52 @@
+[
+  {
+    "version": "1.14",
+    "metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+    "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+    "client_size": 18796546,
+    "map_texture_assets": {
+      "assets/minecraft/textures/map/map_icons.png": "687597fbee57bb1ea17179da7bcde2ac3b6957445e70dbb86633b8debcca22c5",
+      "assets/minecraft/textures/map/map_background.png": "14a3f8b71365de9459c332e29400b966b365ccc28517aae886f65b15b9f56955"
+    }
+  },
+  {
+    "version": "1.14.1",
+    "metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+    "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+    "client_size": 18814947,
+    "map_texture_assets": {
+      "assets/minecraft/textures/map/map_icons.png": "687597fbee57bb1ea17179da7bcde2ac3b6957445e70dbb86633b8debcca22c5",
+      "assets/minecraft/textures/map/map_background.png": "14a3f8b71365de9459c332e29400b966b365ccc28517aae886f65b15b9f56955"
+    }
+  },
+  {
+    "version": "1.14.2",
+    "metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+    "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+    "client_size": 18794327,
+    "map_texture_assets": {
+      "assets/minecraft/textures/map/map_icons.png": "687597fbee57bb1ea17179da7bcde2ac3b6957445e70dbb86633b8debcca22c5",
+      "assets/minecraft/textures/map/map_background.png": "14a3f8b71365de9459c332e29400b966b365ccc28517aae886f65b15b9f56955"
+    }
+  },
+  {
+    "version": "1.14.3",
+    "metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+    "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+    "client_size": 18813147,
+    "map_texture_assets": {
+      "assets/minecraft/textures/map/map_icons.png": "687597fbee57bb1ea17179da7bcde2ac3b6957445e70dbb86633b8debcca22c5",
+      "assets/minecraft/textures/map/map_background.png": "14a3f8b71365de9459c332e29400b966b365ccc28517aae886f65b15b9f56955"
+    }
+  },
+  {
+    "version": "1.14.4",
+    "metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+    "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+    "client_size": 25191691,
+    "map_texture_assets": {
+      "assets/minecraft/textures/map/map_icons.png": "687597fbee57bb1ea17179da7bcde2ac3b6957445e70dbb86633b8debcca22c5",
+      "assets/minecraft/textures/map/map_background.png": "14a3f8b71365de9459c332e29400b966b365ccc28517aae886f65b15b9f56955"
+    }
+  }
+]

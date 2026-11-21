@@ -1,0 +1,14 @@
+{
+  "status": "INCONCLUSIVE \u2014 host inventory loaded from unmodified level.dat",
+  "explanation": "The playerdata file contained the altered numeric map IDs, while the integrated-server host inventory in level.dat still contained the original IDs. The saved inventory matches level.dat, so this attempt cannot establish malformed-ID behavior.",
+  "files_sha256": {
+    "input-player.dat": "2466daf4c984de1ac89be62648ffbd314f26dc5ffb7470712e7c828c2134b13e",
+    "client.log": "480e6415d529507c161b22fdbe9355e5670a9ad6852fe897f485e031a0013a34",
+    "input-level.dat": "934aaa7a0d5448aa31c9baa00b71f209603242f2bab7ab0a906d3892b43d2597",
+    "standing-day.png": "13bf2fb46a93795ee6e4728bacea0710c698fede57c06e62cbae39cb52523761",
+    "ending-player.dat": "cfcdedbc1cc468e7eef79cc7211ec37815911a009fb29ea199363037287b0dcb",
+    "movement.json": "a7a7079daa4b4f5c5f2763524009a1a4b666466f084b8986e6682e622c3cf573",
+    "runner.py": "1bcd8053c5d03043b2538c33f77943dfe98cec239f1b3613140191e7178e5a08",
+    "runner.log": "4dc54d5ce7c7161f59a411a0caccb49cbdb0d524fd760d2c64d1fd31ea586950"
+  }
+}

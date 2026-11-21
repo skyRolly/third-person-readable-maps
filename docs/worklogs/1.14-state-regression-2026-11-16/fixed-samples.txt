@@ -1,0 +1,8 @@
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=0 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=1 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=2 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=3 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=4 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=5 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:47] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=6 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true
+[03:24:48] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=7 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true

@@ -1,0 +1,41 @@
+{
+  "observed_on": "2026-11-21",
+  "prs": {
+    "34": {
+      "group": "1.21.11",
+      "previous_source": "8500c17c2a69fca3515469c48495dc038b186f50",
+      "previous_sha256": "18e3a8dbd461b4bad2711cfe14282b96797f13bebabc8a2b644b6f482a27f930",
+      "current_source": "b8cc4a8bb7416736096571567bd148485d9475db",
+      "current_sha256": "eb159533f58e25ce782a341f6433b3b4c9ca0b22c68b1670a81495da016d6506",
+      "changed_entries": [
+        "META-INF/MANIFEST.MF"
+      ],
+      "previous_archive_verified": true,
+      "difference": "Fabric-Gradle-Version manifest attribute only; every other uncompressed entry identical"
+    },
+    "35": {
+      "group": "26.1-26.2",
+      "previous_source": "ceac175977fc8edd4369ce530566630604b181be",
+      "previous_sha256": "75c244ef6440ff2622d8617a5c60288b956d1a1d80956a233e13bac1ced9c554",
+      "current_source": "91086a22cca9d68f3e5e79d4a76c564f2d490402",
+      "current_sha256": "7c7c1933e00864977c058c9033c715d488697fcc5031534730d0b4e2cc20d5db",
+      "changed_entries": [
+        "META-INF/MANIFEST.MF"
+      ],
+      "previous_archive_verified": true,
+      "difference": "Fabric-Gradle-Version manifest attribute only; every other uncompressed entry identical"
+    },
+    "36": {
+      "group": "26.3",
+      "previous_source": "a484da2d0ceda48b54ce0c4cd77ae037a68c84f4",
+      "previous_sha256": "9f3bc6a3ee4477a3e7cc0f0ebb4c2ff25785ac3f608761f2dc502765f23e2e69",
+      "current_source": "eabdeb561e8f776cace8e5efdf737c888893a531",
+      "current_sha256": "ab03d73b03170edf4277fbd148663ccfff3b98fb510bef85e7bac888fc03ac85",
+      "changed_entries": [
+        "META-INF/MANIFEST.MF"
+      ],
+      "previous_archive_verified": true,
+      "difference": "Fabric-Gradle-Version manifest attribute only; every other uncompressed entry identical"
+    }
+  }
+}

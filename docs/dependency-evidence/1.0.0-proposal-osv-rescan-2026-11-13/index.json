@@ -1,0 +1,51 @@
+{
+  "scanned_on": "2026-11-13",
+  "snapshot_note": "Reused exact unmerged proposal snapshots from 2026-11-12; no new Gradle resolution.",
+  "groups": {
+    "1.21.11": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "1c78a4c5488133cf041520dad1b97e5ef0de3f30",
+      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "snapshot_sha256": "358529325a85b2b22eeef3972a5ddb9fc6bfebae40dedeacd29ec3318ae4e585",
+      "report_sha256": "864bbd507565faa954fc574895e57d964a0d67e432b967c512a50115a6703d6b",
+      "matches": 41,
+      "failing": 41,
+      "same_as_previous": true,
+      "report_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/1.21.11-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/1.21.11-audit.log",
+      "log_sha256": "32ce8efda9916b5989ae0f8d26cc383bf7e38e8885dc8f2d1e1900b18c9e4da6",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12/1.21.11-snapshot.json"
+    },
+    "26.1-26.2": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "d3695609e0a05ede476bf80b09bf0047868165e5",
+      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "snapshot_sha256": "7440330c421ccc4fd343731386d2fff853b603c567af17dc9139e6fcd637e0ce",
+      "report_sha256": "4c203d2ec249f01d297754685b0d0dc23b39fe7215817c1d65de7b58adfcc659",
+      "matches": 53,
+      "failing": 53,
+      "same_as_previous": true,
+      "report_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/26.1-26.2-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/26.1-26.2-audit.log",
+      "log_sha256": "06d37f5f22de01934bb22395a4872e0e5f8453d0c0139a2e6f48b64331fd8f95",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12/26.1-26.2-snapshot.json"
+    },
+    "26.3": {
+      "exit_code": 1,
+      "complete": true,
+      "source_sha": "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+      "branch": "maintenance/mc-26.3-1.0.0",
+      "snapshot_sha256": "91b32945938d8a5ccb5fe34b635986b23d7835e9da9790ee7a60109a2b74c959",
+      "report_sha256": "9e04c34b01c9d4c199058854e22cb95c49ea67e63713fa140aff3b979166b508",
+      "matches": 11,
+      "failing": 11,
+      "same_as_previous": true,
+      "report_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/26.3-osv.json",
+      "log_path": "docs/dependency-evidence/1.0.0-proposal-osv-rescan-2026-11-13/26.3-audit.log",
+      "log_sha256": "471c856e91af641ba6b5e722202e70cd6527daa17ef5bae04dcdea31961241a5",
+      "snapshot_path": "docs/dependency-evidence/1.0.0-maintenance-proposals-2026-11-12/26.3-snapshot.json"
+    }
+  }
+}

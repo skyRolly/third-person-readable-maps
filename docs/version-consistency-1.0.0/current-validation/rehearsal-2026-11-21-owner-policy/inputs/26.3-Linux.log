@@ -1,0 +1,542 @@
+Build (ubuntu-latest)	Set up job	﻿2026-11-21T16:56:57.3893191Z Current runner version: '2.338.2'
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3930185Z ##[group]Runner Image Provisioner
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3931568Z Hosted Compute Agent
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3932681Z Version: 20261111.635
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3933858Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3935325Z Build Date: 2026-11-11T01:49:01Z
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3936612Z Worker ID: {555bec2c-4d0c-49fe-a60c-d847abf14566}
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3937939Z Region: eastus2
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3939367Z Cloud: Azure
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3940417Z ##[endgroup]
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3942990Z ##[group]Operating System
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3944105Z Ubuntu
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3945062Z 26.04.1
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3945954Z LTS
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3946900Z ##[endgroup]
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3947879Z ##[group]Runner Image
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3948867Z Image: ubuntu-26.04
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3950174Z Version: 20261116.202.1
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3952037Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3955233Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3957127Z ##[endgroup]
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3959387Z ##[group]GITHUB_TOKEN Permissions
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3962322Z Contents: read
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3963317Z Metadata: read
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3964475Z ##[endgroup]
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3968058Z Secret source: Actions
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3970104Z Cache mode: write
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.3971773Z Prepare workflow directory
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.4523678Z Prepare all required actions
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.4597969Z Getting action download info
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.6411118Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:57.7728768Z Download action repository 'actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880' (SHA:d1374f8ac74474200d16ef8ecee22c7ae7a51880)
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:58.0799485Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:58.1998897Z Download action repository 'gradle/actions@8da46b539cd8fe6ab27ca75128919a18d757604c' (SHA:8da46b539cd8fe6ab27ca75128919a18d757604c)
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:58.8582513Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+Build (ubuntu-latest)	Set up job	2026-11-21T16:56:59.1063164Z Complete job name: Build (ubuntu-latest)
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-11-21T16:56:59.2237839Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2239791Z with:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2240593Z   persist-credentials: false
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2241682Z   repository: skyRolly/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2250302Z   token: ***
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2251092Z   ssh-strict: true
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2251875Z   ssh-user: git
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2252629Z   clean: true
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2253431Z   sparse-checkout-cone-mode: true
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2254441Z   fetch-depth: 1
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2255223Z   fetch-tags: false
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2256019Z   show-progress: true
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2256837Z   lfs: false
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2257584Z   submodules: false
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2258395Z   set-safe-directory: true
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2259618Z   allow-unsafe-pr-checkout: false
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.2260894Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7035806Z Syncing repository: skyRolly/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7061034Z ##[group]Getting Git version info
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7064289Z Working directory is '/home/runner/work/third-person-readable-maps/third-person-readable-maps'
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7068524Z [command]/usr/bin/git version
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7070295Z git version 2.56.1
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7075038Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7083891Z Temporarily overriding HOME='/home/runner/work/_temp/a7e915cf-3194-40aa-ab0a-cc6184e30133' before making global git config changes
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7089205Z Adding repository directory to the temporary git global config as a safe directory
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7093955Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/third-person-readable-maps/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7245382Z Deleting the contents of '/home/runner/work/third-person-readable-maps/third-person-readable-maps'
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7250364Z ##[group]Determining repository object format
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7253318Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7255570Z ##[group]Initializing the repository
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7258684Z [command]/usr/bin/git init /home/runner/work/third-person-readable-maps/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7362471Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7366145Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7369953Z hint: to use in all of your new repositories, which will suppress this warning,
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7372794Z hint: call:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7374374Z hint:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7376237Z hint: 	git config --global init.defaultBranch <name>
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7378466Z hint:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7380844Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7384242Z hint: 'development'. The just-created branch can be renamed via this command:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7387092Z hint:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7388556Z hint: 	git branch -m <name>
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7390799Z hint:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7393022Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7397323Z Initialized empty Git repository in /home/runner/work/third-person-readable-maps/third-person-readable-maps/.git/
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7402563Z [command]/usr/bin/git remote add origin https://github.com/skyRolly/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7458769Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7461001Z ##[group]Disabling automatic garbage collection
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7462411Z [command]/usr/bin/git config --local gc.auto 0
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7493773Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7496563Z ##[group]Setting up auth
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7498529Z Removing SSH command configuration
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7501229Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7537724Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8098730Z Removing HTTP extra header
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8103628Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8138429Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8406058Z Removing includeIf entries pointing to credentials config files
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8410382Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8451464Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8722394Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8762121Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git.path /home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8795205Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8830395Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8863760Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8894602Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8896289Z ##[group]Fetching the repository
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8900512Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +38bac1c010250838b47f6f16f98a5ced5e0d7b8a:refs/remotes/origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1380273Z From https://github.com/skyRolly/third-person-readable-maps
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1381895Z  * [new ref]         38bac1c010250838b47f6f16f98a5ced5e0d7b8a -> origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1390163Z [command]/usr/bin/git branch --list --remote origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1416672Z   origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1424781Z [command]/usr/bin/git rev-parse refs/remotes/origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1448792Z 38bac1c010250838b47f6f16f98a5ced5e0d7b8a
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1453763Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1454798Z ##[group]Determining the checkout info
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1459668Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1467420Z [command]/usr/bin/git sparse-checkout disable
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1696297Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1720054Z ##[group]Checking out the ref
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1721172Z [command]/usr/bin/git checkout --progress --force -B mc/26.3 refs/remotes/origin/mc/26.3
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1813930Z Switched to a new branch 'mc/26.3'
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1820941Z branch 'mc/26.3' set up to track 'origin/mc/26.3'.
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1827030Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1872712Z [command]/usr/bin/git log -1 --format=%H
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1899365Z 38bac1c010250838b47f6f16f98a5ced5e0d7b8a
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1908655Z ##[group]Removing auth
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1909728Z Removing SSH command configuration
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1912541Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1946281Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2219660Z Removing HTTP extra header
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2223493Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2257210Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2527670Z Removing includeIf entries pointing to credentials config files
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2530188Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2558229Z includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2560293Z includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2561851Z includeif.gitdir:/github/workspace/.git.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2562910Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2568871Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2593759Z /home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2606013Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-6d050afb\-25cc\-4758\-a094\-e90a0568ac69\.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2641567Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2670694Z /home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2680455Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-6d050afb\-25cc\-4758\-a094\-e90a0568ac69\.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2747328Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2774773Z /github/runner_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2784172Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-6d050afb\-25cc\-4758\-a094\-e90a0568ac69\.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2819629Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2842279Z /github/runner_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2851557Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-6d050afb\-25cc\-4758\-a094\-e90a0568ac69\.config
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2884775Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.3150553Z Removing credentials config '/home/runner/work/_temp/git-credentials-6d050afb-25cc-4758-a094-e90a0568ac69.config'
+Build (ubuntu-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.3160049Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	﻿2026-11-21T16:57:00.3541320Z ##[group]Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3541923Z with:
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3542262Z   distribution: temurin
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3542651Z   java-version: 25.0.5+8
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3543012Z   java-package: jdk
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3543356Z   check-latest: false
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3543714Z   force-download: false
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3544061Z   set-default: true
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3544392Z   server-id: github
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3544767Z   mvn-repositories-include-central: true
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3545226Z   mvn-repositories-prioritize-central: true
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3545669Z   overwrite-settings: true
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3546041Z   cache-read-only: false
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3546394Z   job-status: success
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3548917Z   token: ***
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3549435Z   show-download-progress: false
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3549843Z   problem-matcher: false
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.3550209Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4279560Z ##[group]Installed distributions
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4358567Z Resolved Java 25.0.5+8 from tool-cache
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4359723Z Setting Java 25.0.5+8 as the default
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4367517Z 
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4367973Z Java configuration:
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4368598Z   Distribution: temurin
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4369267Z   Version: 25.0.5+8
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4370039Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4370558Z 
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4371043Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4393238Z Creating settings.xml with server-id: github
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4398671Z Creating toolchains.xml for JDK version 25.0.5+8 from temurin
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4402303Z Writing to /home/runner/.m2/settings.xml
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4412311Z Writing to /home/runner/.m2/toolchains.xml
+Build (ubuntu-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:00.4420052Z Configured MAVEN_ARGS to include -ntp to suppress Maven transfer progress logs. Set 'show-download-progress: true' to keep the download progress output.
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-11-21T16:57:00.4682021Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4682996Z with:
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4683575Z   python-version: 3.15.2
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4684487Z   check-latest: false
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4689288Z   token: ***
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4690179Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4691236Z   update-environment: true
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4692009Z   allow-prereleases: false
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4692962Z   freethreaded: false
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4693637Z env:
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4694495Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4695709Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4696725Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.4697471Z ##[endgroup]
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.5924854Z ##[group]Installed versions
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.5981304Z Successfully set up CPython (3.15.2)
+Build (ubuntu-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:00.5982632Z ##[endgroup]
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	﻿2026-11-21T16:57:00.6160484Z ##[group]Run python scripts/verify_gradle_wrapper.py
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6161489Z [36;1mpython scripts/verify_gradle_wrapper.py[0m
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6454607Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6455113Z env:
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6455590Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6456259Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6456784Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6457210Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6457770Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6458320Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6458847Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6459628Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6460156Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:00.6460678Z ##[endgroup]
+Build (ubuntu-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:01.8430889Z Verified Gradle 9.9.2 wrapper checksums
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	﻿2026-11-21T16:57:01.8764982Z ##[group]Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8765509Z with:
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8765718Z   cache-provider: basic
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8765963Z   cache-read-only: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8766198Z   cache-disabled: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8766422Z   cache-write-only: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8766665Z   cache-overwrite-existing: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8766928Z   cache-cleanup: on-success
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8767213Z   gradle-home-cache-includes: caches
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	notifications
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8767547Z   add-job-summary: always
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8767805Z   add-job-summary-as-pr-comment: never
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8768100Z   dependency-graph: disabled
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8768420Z   dependency-graph-report-dir: dependency-graph-reports
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8768797Z   dependency-graph-continue-on-failure: true
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8769367Z   build-scan-publish: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8769642Z   validate-wrappers: true
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8769897Z   allow-snapshot-wrappers: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8770229Z   gradle-home-cache-strict-match: false
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8770560Z   workflow-job-context: {
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	  "os": "ubuntu-latest"
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	}
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8773170Z   github-token: ***
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8773401Z env:
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8773695Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8774184Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8774574Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8774848Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8775278Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8775736Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8776125Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8776523Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8776951Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:01.8777490Z ##[endgroup]
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:03.7250460Z Merged default JDK locations into /home/runner/.m2/toolchains.xml
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:03.7255944Z Basic Caching: This build uses the basic open-source caching provider. For faster builds and advanced features, consider switching to the Enhanced Caching provider. See https://github.com/gradle/actions/blob/main/DISTRIBUTION.md for details.
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:03.8545383Z Cache hit for: setup-java-Linux-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:04.9090129Z Received 268435456 of 448332147 (59.9%), 256.0 MBs/sec
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:05.4708955Z Received 448332147 of 448332147 (100.0%), 273.7 MBs/sec
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:05.4710401Z Cache Size: ~428 MB (448332147 B)
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:05.4788055Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9243ec81-1d3e-47f6-b126-430e9916e3fb/cache.tzst -P -C /home/runner/work/third-person-readable-maps/third-person-readable-maps --use-compress-program unzstd
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.3875030Z Cache restored successfully
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.4060588Z Basic caching restored from cache key: setup-java-Linux-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.5458600Z Fetched 6 of 6 checksums
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.5461061Z ##[group]All Gradle Wrapper jars are valid
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.5462334Z ✓ Found known Gradle Wrapper JAR files:
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.5463467Z   621008afc4f5d59357fcf06ffa644dd5aade5e091bdc363742710445f73cdaf8 gradle/wrapper/gradle-wrapper.jar
+Build (ubuntu-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:06.5468537Z ##[endgroup]
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	﻿2026-11-21T16:57:06.5640604Z ##[group]Run ./gradlew --no-daemon --console=plain --stacktrace --warning-mode=all clean build
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5641326Z [36;1m./gradlew --no-daemon --console=plain --stacktrace --warning-mode=all clean build[0m
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5675002Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5675257Z env:
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5675570Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5676102Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5676489Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5676769Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5677189Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5677620Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5678000Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5678374Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5678790Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5679480Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5679804Z   GRADLE_USER_HOME: /home/runner/.gradle
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5680094Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5680537Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5681038Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5681374Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:06.5681642Z ##[endgroup]
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8858966Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8861613Z Welcome to Gradle 9.9.2!
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8862026Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8862658Z Here are the highlights of this release:
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8869807Z  - Performance improvements for Kotlin DSL compilation
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8870554Z  - Test filtering for non-method JUnit Platform tests
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8871136Z  - Wrapper settings preserved on upgrade
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8871542Z  - Predefined groups in the Problems API
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8871770Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8872019Z For more details see https://docs.gradle.org/9.9.2/release-notes.html
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:07.8872375Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:08.1871407Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:11.2852891Z Daemon will be stopped at the end of the build 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:16.6861257Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:16.6862076Z > Configure project :
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:16.6862784Z Fabric Loom: 1.19.3
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:18.6870141Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:18.6900119Z > Task :clean UP-TO-DATE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:20.7853135Z > Task :compileJava
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.0853002Z > Task :processResources
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.0861578Z > Task :classes
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.0862238Z > Task :processIncludeJars
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2852985Z > Task :compileTestJava NO-SOURCE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2880154Z > Task :jar
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2880613Z > Task :processTestResources NO-SOURCE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2881130Z > Task :assemble
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2881529Z > Task :testClasses UP-TO-DATE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2881987Z > Task :test NO-SOURCE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.2882415Z > Task :validateAccessWidener NO-SOURCE
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.3859770Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.3873431Z > Task :verifyMixinTarget
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.3901888Z Verified net/minecraft/client/renderer/entity/layers/ItemInHandLayer.submitArmWithItem(Lnet/minecraft/client/renderer/entity/state/ArmedEntityRenderState;Lnet/minecraft/client/renderer/item/ItemStackRenderState;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/HumanoidArm;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4852435Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4853125Z > Task :verifyModJar
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4853685Z Verified distributable: third-person-readable-maps-1.0.0-mc26.3.jar
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4854760Z Minecraft 26.3, Java 25, client-only, official namespace, MIT license, required Mixin
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4855229Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4855433Z > Task :check
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4855752Z > Task :build
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4856735Z gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1795280233794.json
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4858934Z 
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4863937Z BUILD SUCCESSFUL in 14s
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.4864492Z 7 actionable tasks: 6 executed, 1 up-to-date
+Build (ubuntu-latest)	Clean build and verify mod (Linux)	2026-11-21T16:57:21.5267743Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.9.2/userguide/configuration_cache_enabling.html
+Build (ubuntu-latest)	Test static verification	﻿2026-11-21T16:57:21.8507806Z ##[group]Run python -m unittest discover -s tests
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8508225Z [36;1mpython -m unittest discover -s tests[0m
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8540718Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8540972Z env:
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8541286Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8541792Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8542174Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8542445Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8542875Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8543302Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8543672Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8544039Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8544429Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8544827Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8545132Z   GRADLE_USER_HOME: /home/runner/.gradle
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8545413Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8545854Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8546334Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8546652Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:57:21.8546914Z ##[endgroup]
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4467621Z ............................................................
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4468337Z ----------------------------------------------------------------------
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4469437Z Ran 60 tests in 143.730s
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4469838Z 
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4469963Z OK
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4470633Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4471760Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4472838Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4473914Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4474949Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4475978Z fixture: Mixin target, 1 game classes, 5 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4477034Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4478092Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4479338Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4480684Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, '3e0c1bed1ef10dfe0ebd18ea2996737ea8a4dca9')])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4482361Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, '2359aef943eee4269bfd37c036e19b1124ef21b0')])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4483802Z fixture: Mixin target, 1 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4484925Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4486052Z fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4487459Z fixture: Mixin target, 0 game classes, 2 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '38e9f458450154476682a2675ca257090b055374')])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4489324Z fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4490423Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4491802Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 1, 'a0999b0b0a45509b26b88bb34217d84c29905394')])] verified
+Build (ubuntu-latest)	Test static verification	2026-11-21T16:59:46.4493885Z fixture: Mixin target, 0 game classes, 4 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '86bfb0c4d89c70c061f01c907488ad62246670f6')]), ('osx', [('org/joml/', 1, 'cf9e254a15a3b8c0586201c5d69dabd421296c53')])] verified
+Build (ubuntu-latest)	Verify packaged game and library APIs	﻿2026-11-21T16:59:46.4688318Z ##[group]Run python scripts/verify_supported_apis.py --jar build/libs
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4688870Z [36;1mpython scripts/verify_supported_apis.py --jar build/libs[0m
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4721851Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4722108Z env:
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4722420Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4722948Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4723339Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4723617Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4724040Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4724463Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4724839Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4725219Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4725779Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4726169Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4726472Z   GRADLE_USER_HOME: /home/runner/.gradle
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4726768Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4727215Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4727692Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4728006Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:46.4728276Z ##[endgroup]
+Build (ubuntu-latest)	Verify packaged game and library APIs	2026-11-21T16:59:47.0712535Z 26.3: Mixin target, 31 game classes, 44 game instructions, and dependency libraries [('linux', [])] verified
+Build (ubuntu-latest)	Upload distributable mod	﻿2026-11-21T16:59:47.0915979Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0916420Z with:
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0916659Z   name: third-person-readable-maps-Linux
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0916981Z   path: build/libs/*-mc26.3.jar
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0917238Z   if-no-files-found: error
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0917475Z   retention-days: 14
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0917693Z   compression-level: 6
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0917917Z   overwrite: false
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0918130Z   include-hidden-files: false
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0918366Z   archive: true
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0918556Z env:
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0918855Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0919675Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0920070Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0920346Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0920782Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0921226Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0921602Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0921985Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0922361Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0922727Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0923038Z   GRADLE_USER_HOME: /home/runner/.gradle
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0923327Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0923775Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0924253Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0924570Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.0924830Z ##[endgroup]
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.2382202Z With the provided path, there will be 1 file uploaded
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.2388379Z Artifact name is valid!
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.2389163Z Root directory input is valid!
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.4283841Z Uploading artifact: third-person-readable-maps-Linux.zip
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.4325245Z Beginning upload of artifact content to blob storage
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.5125994Z Uploaded bytes 6705
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.5297603Z Finished uploading artifact content to blob storage!
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.5299571Z SHA256 digest of uploaded artifact is cac485531f3de0c72921db232f678a2a5eeaec49d6027c4a094d099127652711
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.5301038Z Finalizing artifact upload
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.8528289Z Artifact third-person-readable-maps-Linux successfully finalized. Artifact ID 14716236667
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.8530235Z Artifact third-person-readable-maps-Linux has been successfully uploaded! Final size is 6705 bytes. Artifact ID is 14716236667
+Build (ubuntu-latest)	Upload distributable mod	2026-11-21T16:59:47.8533339Z Artifact download URL: https://github.com/skyRolly/third-person-readable-maps/actions/runs/44927302601/artifacts/14716236667
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	﻿2026-11-21T16:59:47.8681795Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8682234Z with:
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8682439Z   name: diagnostics-Linux
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8682754Z   path: build/reports/
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	build/test-results/
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	hs_err_pid*.log
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8683270Z   if-no-files-found: ignore
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8683513Z   retention-days: 7
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8683737Z   compression-level: 6
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8683958Z   overwrite: false
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8684179Z   include-hidden-files: false
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8684425Z   archive: true
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8684622Z env:
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8684936Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8685440Z   JAVA_HOME_25_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.5-8/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8685832Z   MAVEN_ARGS: -ntp
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8686113Z   pythonLocation: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8686543Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib/pkgconfig
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8686996Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8687383Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8687772Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.15.2/x64
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8688158Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.15.2/x64/lib
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8688536Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8688851Z   GRADLE_USER_HOME: /home/runner/.gradle
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8689441Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8689910Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8690406Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8690741Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:47.8691013Z ##[endgroup]
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.0190021Z With the provided path, there will be 2 files uploaded
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.0199582Z Artifact name is valid!
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.0200347Z Root directory input is valid!
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.1941880Z Uploading artifact: diagnostics-Linux.zip
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.1982717Z Beginning upload of artifact content to blob storage
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.2741746Z Uploaded bytes 677
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.2909943Z Finished uploading artifact content to blob storage!
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.2911077Z SHA256 digest of uploaded artifact is e7ac038cea3935f56dfbdfa21d425ab2a23f7679454cb5eb8ca9e7338a2454ea
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.2912150Z Finalizing artifact upload
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.6986307Z Artifact diagnostics-Linux successfully finalized. Artifact ID 14716236668
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.6987798Z Artifact diagnostics-Linux has been successfully uploaded! Final size is 677 bytes. Artifact ID is 14716236668
+Build (ubuntu-latest)	Upload verification reports and failure diagnostics	2026-11-21T16:59:48.6992740Z Artifact download URL: https://github.com/skyRolly/third-person-readable-maps/actions/runs/44927302601/artifacts/14716236668
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	﻿2026-11-21T16:59:48.7268386Z Post job cleanup.
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0002480Z In post-action step
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0011646Z Basic Caching: This build uses the basic open-source caching provider. For faster builds and advanced features, consider switching to the Enhanced Caching provider. See https://github.com/gradle/actions/blob/main/DISTRIBUTION.md for details.
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0015375Z Basic caching restored entry with key `setup-java-Linux-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95`. Save was skipped.
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0017857Z ##[group]Generating Job Summary
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0024439Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0024460Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0024631Z <table>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0024965Z     <tr>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0025369Z         <th>Gradle Root Project</th>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0025871Z         <th>Requested Tasks</th>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0026378Z         <th>Gradle Version</th>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0026849Z         <th>Build Outcome</th>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0027555Z         <th>Build&nbsp;Scan®</th>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0028069Z     </tr>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0028391Z     <tr>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0028762Z         <td>third-person-readable-maps</td>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0029489Z         <td>clean build</td>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0029959Z         <td align='center'>9.9.2</td>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0030840Z         <td align='center'>:white_check_mark:</td>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0032253Z         <td><a href="https://scans.gradle.com" rel="nofollow" target="_blank"><img src="https://img.shields.io/badge/Not%20published-lightgrey" alt="Build Scan not published" /></a></td>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0033564Z     </tr>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0033907Z </table>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0034087Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0034263Z ============================
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0034867Z <h4>Gradle State Caching - 🛡️ Basic</h4>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0035225Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0036640Z **[Basic Caching](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#basic-caching)** uses the basic open-source caching provider. For faster builds and advanced features, consider the **[Enhanced Caching](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#enhanced-caching)** provider.
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0037830Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0037922Z <details>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0038258Z <summary>Entries: 1 restored, 0 saved - Expand for more details</summary>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0038565Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0039711Z [Cache was enabled](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#caching-build-state-between-jobs) — Gradle User Home was restored from the cache and saved for use by subsequent jobs.
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0040530Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0040618Z <pre>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0040827Z Entry: Gradle User Home
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0041388Z     Requested Key : setup-java-Linux-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0042259Z     Restored  Key : setup-java-Linux-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0042841Z               Size: 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0043061Z               Time: 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0043304Z               (Entry restored: exact match found)
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0043616Z     Saved     Key : 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0043823Z               Size: 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0044038Z               Time: 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0044301Z               (Entry not saved: entry with key already exists)
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0044627Z </pre>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0044816Z </details>
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0044930Z 
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0062199Z ##[endgroup]
+Build (ubuntu-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:59:49.0065265Z Completed post-action step
+Build (ubuntu-latest)	Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-11-21T16:59:49.0172407Z Post job cleanup.
+Build (ubuntu-latest)	Post Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	﻿2026-11-21T16:59:49.1527552Z Post job cleanup.
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-11-21T16:59:49.2523873Z Post job cleanup.
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3496502Z [command]/usr/bin/git version
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3544909Z git version 2.56.1
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3586469Z Temporarily overriding HOME='/home/runner/work/_temp/fd9f2c01-5c3c-454c-b7c0-918602d1581c' before making global git config changes
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3587869Z Adding repository directory to the temporary git global config as a safe directory
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3592407Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/third-person-readable-maps/third-person-readable-maps
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3627180Z Removing SSH command configuration
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3635303Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3676095Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3993707Z Removing HTTP extra header
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.3999203Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.4039726Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.4348964Z Removing includeIf entries pointing to credentials config files
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.4355458Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (ubuntu-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:59:49.4393518Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (ubuntu-latest)	Complete job	﻿2026-11-21T16:59:49.4812925Z Cleaning up orphan processes

@@ -1,0 +1,456 @@
+{
+  "version" : 0,
+  "job" : {
+    "id" : "local-20261112",
+    "correlator" : "snapshot"
+  },
+  "sha" : "fb8acf5d10592382c20b48f60b2fe224d65aacb0",
+  "ref" : "refs/heads/maintenance/mc-26.3-1.0.0",
+  "detector" : {
+    "name" : "GitHub Dependency Graph Gradle Plugin",
+    "version" : "1.5.1",
+    "url" : "https://github.com/gradle/github-dependency-graph-gradle-plugin"
+  },
+  "manifests" : {
+    "snapshot" : {
+      "name" : "snapshot",
+      "resolved" : {
+        "net.fabricmc:fabric-loom:1.19.3" : {
+          "package_url" : "pkg:maven/net.fabricmc/fabric-loom@1.19.3?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ "com.google.code.gson:gson:2.14.0", "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-analysis:9.10.1", "org.ow2.asm:asm-commons:9.10.1", "org.ow2.asm:asm-tree:9.10.1", "org.ow2.asm:asm-util:9.10.1", "net.fabricmc:stitch:0.6.2", "net.fabricmc:tiny-remapper:0.15.0", "net.fabricmc:class-tweaker:0.3.0", "net.fabricmc:mapping-io:0.8.0", "net.fabricmc:lorenz-tiny:4.0.2", "net.fabricmc:mercury:0.4.3", "net.fabricmc:mercurymixin:0.2.2", "net.fabricmc.unpick:unpick:3.0.0-beta.13", "net.fabricmc.unpick:unpick-format-utils:3.0.0-beta.13", "org.jetbrains.kotlin:kotlin-metadata-jvm:2.4.10" ]
+        },
+        "com.google.code.gson:gson:2.14.0" : {
+          "package_url" : "pkg:maven/com.google.code.gson/gson@2.14.0?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "direct",
+          "dependencies" : [ "com.google.errorprone:error_prone_annotations:2.48.0" ]
+        },
+        "com.google.errorprone:error_prone_annotations:2.48.0" : {
+          "package_url" : "pkg:maven/com.google.errorprone/error_prone_annotations@2.48.0?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "org.ow2.asm:asm:9.10.1" : {
+          "package_url" : "pkg:maven/org.ow2.asm/asm@9.10.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.ow2.asm:asm-analysis:9.10.1" : {
+          "package_url" : "pkg:maven/org.ow2.asm/asm-analysis@9.10.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ "org.ow2.asm:asm-tree:9.10.1" ]
+        },
+        "org.ow2.asm:asm-tree:9.10.1" : {
+          "package_url" : "pkg:maven/org.ow2.asm/asm-tree@9.10.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ "org.ow2.asm:asm:9.10.1" ]
+        },
+        "org.ow2.asm:asm-commons:9.10.1" : {
+          "package_url" : "pkg:maven/org.ow2.asm/asm-commons@9.10.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-tree:9.10.1" ]
+        },
+        "org.ow2.asm:asm-util:9.10.1" : {
+          "package_url" : "pkg:maven/org.ow2.asm/asm-util@9.10.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-tree:9.10.1", "org.ow2.asm:asm-analysis:9.10.1" ]
+        },
+        "net.fabricmc:stitch:0.6.2" : {
+          "package_url" : "pkg:maven/net.fabricmc/stitch@0.6.2?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-commons:9.10.1", "org.ow2.asm:asm-tree:9.10.1", "org.ow2.asm:asm-util:9.10.1", "net.fabricmc:tiny-mappings-parser:0.3.0+build.17" ]
+        },
+        "net.fabricmc:tiny-mappings-parser:0.3.0+build.17" : {
+          "package_url" : "pkg:maven/net.fabricmc/tiny-mappings-parser@0.3.0%2Bbuild.17?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:tiny-remapper:0.15.0" : {
+          "package_url" : "pkg:maven/net.fabricmc/tiny-remapper@0.15.0?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.ow2.asm:asm-tree:9.10.1", "org.ow2.asm:asm-util:9.10.1", "net.fabricmc:mapping-io:0.8.0", "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-commons:9.10.1" ]
+        },
+        "net.fabricmc:mapping-io:0.8.0" : {
+          "package_url" : "pkg:maven/net.fabricmc/mapping-io@0.8.0?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:class-tweaker:0.3.0" : {
+          "package_url" : "pkg:maven/net.fabricmc/class-tweaker@0.3.0?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-commons:9.10.1", "org.ow2.asm:asm-tree:9.10.1", "net.fabricmc:tiny-remapper:0.15.0" ]
+        },
+        "net.fabricmc:lorenz-tiny:4.0.2" : {
+          "package_url" : "pkg:maven/net.fabricmc/lorenz-tiny@4.0.2?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:mercury:0.4.3" : {
+          "package_url" : "pkg:maven/net.fabricmc/mercury@0.4.3?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.cadixdev:at:0.1.0-rc1", "org.cadixdev:lorenz:0.5.7" ]
+        },
+        "org.cadixdev:at:0.1.0-rc1" : {
+          "package_url" : "pkg:maven/org.cadixdev/at@0.1.0-rc1?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.cadixdev:bombe:0.3.4" ]
+        },
+        "org.cadixdev:bombe:0.3.4" : {
+          "package_url" : "pkg:maven/org.cadixdev/bombe@0.3.4?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "org.cadixdev:lorenz:0.5.7" : {
+          "package_url" : "pkg:maven/org.cadixdev/lorenz@0.5.7?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.cadixdev:bombe:0.3.4" ]
+        },
+        "net.fabricmc:mercurymixin:0.2.2" : {
+          "package_url" : "pkg:maven/net.fabricmc/mercurymixin@0.2.2?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "net.fabricmc:mercury:0.4.3" ]
+        },
+        "net.fabricmc.unpick:unpick:3.0.0-beta.13" : {
+          "package_url" : "pkg:maven/net.fabricmc.unpick/unpick@3.0.0-beta.13?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.ow2.asm:asm-commons:9.10.1", "org.ow2.asm:asm-util:9.10.1", "net.fabricmc.unpick:unpick-format-utils:3.0.0-beta.13", "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-tree:9.10.1" ]
+        },
+        "net.fabricmc.unpick:unpick-format-utils:3.0.0-beta.13" : {
+          "package_url" : "pkg:maven/net.fabricmc.unpick/unpick-format-utils@3.0.0-beta.13?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "indirect",
+          "dependencies" : [ "org.ow2.asm:asm-commons:9.10.1", "org.ow2.asm:asm-util:9.10.1", "org.ow2.asm:asm:9.10.1", "org.ow2.asm:asm-tree:9.10.1" ]
+        },
+        "org.jetbrains.kotlin:kotlin-metadata-jvm:2.4.10" : {
+          "package_url" : "pkg:maven/org.jetbrains.kotlin/kotlin-metadata-jvm@2.4.10?repository_url=https%3A%2F%2Fplugins.gradle.org%2Fm2",
+          "relationship" : "indirect",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:fabric-loader:0.20.1" : {
+          "package_url" : "pkg:maven/net.fabricmc/fabric-loader@0.20.1?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.jetbrains:annotations:26.0.2" : {
+          "package_url" : "pkg:maven/org.jetbrains/annotations@26.0.2",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:cfr:0.2.2" : {
+          "package_url" : "pkg:maven/net.fabricmc/cfr@0.2.2?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:sponge-mixin:0.17.5+mixin.0.8.7" : {
+          "package_url" : "pkg:maven/net.fabricmc/sponge-mixin@0.17.5%2Bmixin.0.8.7?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.github.llamalad7:mixinextras-fabric:0.5.5" : {
+          "package_url" : "pkg:maven/io.github.llamalad7/mixinextras-fabric@0.5.5?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "at.yawk.lz4:lz4-java:1.10.1" : {
+          "package_url" : "pkg:maven/at.yawk.lz4/lz4-java@1.10.1?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.azure:azure-json:1.4.0" : {
+          "package_url" : "pkg:maven/com.azure/azure-json@1.4.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.github.oshi:oshi-core:6.9.0" : {
+          "package_url" : "pkg:maven/com.github.oshi/oshi-core@6.9.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.google.guava:failureaccess:1.0.3" : {
+          "package_url" : "pkg:maven/com.google.guava/failureaccess@1.0.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.google.guava:guava:33.6.0-jre" : {
+          "package_url" : "pkg:maven/com.google.guava/guava@33.6.0-jre?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.ibm.icu:icu4j:78.3" : {
+          "package_url" : "pkg:maven/com.ibm.icu/icu4j@78.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.microsoft.azure:msal4j:1.24.1" : {
+          "package_url" : "pkg:maven/com.microsoft.azure/msal4j@1.24.1?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:authlib:10.0.77" : {
+          "package_url" : "pkg:maven/com.mojang/authlib@10.0.77?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:blocklist:1.0.10" : {
+          "package_url" : "pkg:maven/com.mojang/blocklist@1.0.10?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:brigadier:1.3.11" : {
+          "package_url" : "pkg:maven/com.mojang/brigadier@1.3.11?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:datafixerupper:10.0.21" : {
+          "package_url" : "pkg:maven/com.mojang/datafixerupper@10.0.21?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:jtracy:1.14.38" : {
+          "package_url" : "pkg:maven/com.mojang/jtracy@1.14.38?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:logging:1.7.12" : {
+          "package_url" : "pkg:maven/com.mojang/logging@1.7.12?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:patchy:2.2.10" : {
+          "package_url" : "pkg:maven/com.mojang/patchy@2.2.10?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "com.mojang:text2speech:1.19.12" : {
+          "package_url" : "pkg:maven/com.mojang/text2speech@1.19.12?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "commons-codec:commons-codec:1.22.0" : {
+          "package_url" : "pkg:maven/commons-codec/commons-codec@1.22.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "commons-io:commons-io:2.20.0" : {
+          "package_url" : "pkg:maven/commons-io/commons-io@2.20.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-buffer:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-buffer@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-codec-base:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-codec-base@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-codec-compression:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-codec-compression@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-codec-http:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-codec-http@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-common:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-common@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-handler:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-handler@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-resolver:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-resolver@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport-classes-epoll:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport-classes-epoll@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport-classes-kqueue:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport-classes-kqueue@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport-native-epoll:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport-native-epoll@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport-native-unix-common:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport-native-unix-common@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "it.unimi.dsi:fastutil:8.5.18" : {
+          "package_url" : "pkg:maven/it.unimi.dsi/fastutil@8.5.18?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.java.dev.jna:jna-platform:5.17.0" : {
+          "package_url" : "pkg:maven/net.java.dev.jna/jna-platform@5.17.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.java.dev.jna:jna:5.17.0" : {
+          "package_url" : "pkg:maven/net.java.dev.jna/jna@5.17.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.sf.jopt-simple:jopt-simple:5.0.4" : {
+          "package_url" : "pkg:maven/net.sf.jopt-simple/jopt-simple@5.0.4?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.apache.commons:commons-compress:1.28.0" : {
+          "package_url" : "pkg:maven/org.apache.commons/commons-compress@1.28.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.apache.commons:commons-lang3:3.20.0" : {
+          "package_url" : "pkg:maven/org.apache.commons/commons-lang3@3.20.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.apache.logging.log4j:log4j-api:2.26.0" : {
+          "package_url" : "pkg:maven/org.apache.logging.log4j/log4j-api@2.26.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.apache.logging.log4j:log4j-core:2.26.0" : {
+          "package_url" : "pkg:maven/org.apache.logging.log4j/log4j-core@2.26.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0" : {
+          "package_url" : "pkg:maven/org.apache.logging.log4j/log4j-slf4j2-impl@2.26.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.jcraft:jorbis:0.0.17" : {
+          "package_url" : "pkg:maven/org.jcraft/jorbis@0.0.17?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.joml:joml:1.10.9" : {
+          "package_url" : "pkg:maven/org.joml/joml@1.10.9?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.jspecify:jspecify:1.0.0" : {
+          "package_url" : "pkg:maven/org.jspecify/jspecify@1.0.0?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-freetype:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-freetype@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-jemalloc:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-jemalloc@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-openal:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-openal@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-opengl:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-opengl@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-sdl:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-sdl@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-shaderc:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-shaderc@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-spvc:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-spvc@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-stb:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-stb@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-vma:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-vma@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl-vulkan:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl-vulkan@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.lwjgl:lwjgl:3.4.3" : {
+          "package_url" : "pkg:maven/org.lwjgl/lwjgl@3.4.3?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.slf4j:slf4j-api:2.0.17" : {
+          "package_url" : "pkg:maven/org.slf4j/slf4j-api@2.0.17?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.minecraft:minecraft-merged-deobf:26.3" : {
+          "package_url" : "pkg:maven/net.minecraft/minecraft-merged-deobf@26.3?repository_url=file%3A%2Fhome%2Fagent%2F.gradle%2Fcaches%2Ffabric-loom%2FminecraftMaven",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "io.netty:netty-transport-native-kqueue:4.2.16.Final" : {
+          "package_url" : "pkg:maven/io.netty/netty-transport-native-kqueue@4.2.16.Final?repository_url=https%3A%2F%2Flibraries.minecraft.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:dev-launch-injector:0.2.1+build.8" : {
+          "package_url" : "pkg:maven/net.fabricmc/dev-launch-injector@0.2.1%2Bbuild.8?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "net.fabricmc:fabric-log4j-util:1.0.2" : {
+          "package_url" : "pkg:maven/net.fabricmc/fabric-log4j-util@1.0.2?repository_url=https%3A%2F%2Fmaven.fabricmc.net",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.vineflower:vineflower:1.12.0" : {
+          "package_url" : "pkg:maven/org.vineflower/vineflower@1.12.0",
+          "relationship" : "direct",
+          "dependencies" : [ ]
+        },
+        "org.gradle:gradle-core:9.8.2" : {
+          "package_url" : "pkg:maven/org.gradle/gradle-core@9.8.2",
+          "relationship" : "direct",
+          "scope" : "development",
+          "dependencies" : [ ]
+        }
+      },
+      "file" : {
+        "source_location" : "settings.gradle"
+      }
+    }
+  },
+  "scanned" : "2026-11-12T18:15:21Z"
+}

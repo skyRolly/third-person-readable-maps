@@ -1,0 +1,3 @@
+Run python -m unittest discover -s tests
+Ran 60 tests in 111.848s
+OK

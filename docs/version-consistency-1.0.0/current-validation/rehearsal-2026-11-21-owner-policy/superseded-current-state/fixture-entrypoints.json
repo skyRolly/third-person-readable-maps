@@ -1,0 +1,20 @@
+{
+  "entrypoints": {
+    "intermediary": {
+      "group": "1.14-1.14.4",
+      "source_commit": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "tests": 8,
+      "log": "entrypoint-intermediary.log",
+      "log_sha256": "7ef347ec6ca793de05ab808f8996e94b2cf50f0cee2f0706071446b5ec56a593",
+      "credentials_stripped": true
+    },
+    "official": {
+      "group": "26.1-26.2",
+      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "tests": 8,
+      "log": "entrypoint-official.log",
+      "log_sha256": "c88c82e3f24378272a45459e22b211757a12788110f2111e0fb083341b4ad5b2",
+      "credentials_stripped": true
+    }
+  }
+}
