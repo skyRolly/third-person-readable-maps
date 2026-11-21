@@ -74,6 +74,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SOURCE_SHA: ${{ steps.source.outputs.sha }}
         run: python3 scripts/audit_gradle_tool.py --root source --source-sha "$SOURCE_SHA" --output gradle-tool-audit.json
+      - name: Export audit evidence to job log for recovery
+        if: always()
+        run: |
+          python3 - <<'PYCODE'
+          import base64, gzip, json
+          from pathlib import Path
+          files = [Path('dependency-audit.json'), Path('gradle-tool-audit.json'), *Path('dependency-graph-reports').glob('*.json')]
+          payload = {p.name: json.loads(p.read_text()) for p in files if p.is_file()}
+          data = base64.b64encode(gzip.compress(json.dumps(payload, separators=(',', ':')).encode(), mtime=0)).decode()
+          for i in range(0, len(data), 2000):
+              print('ISSUE45_EVIDENCE_V1:' + data[i:i+2000])
+          PYCODE
       - name: Summarize audit status
         if: always()
         env:
