@@ -1,0 +1,8 @@
+[21:54:10] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=true actual=true
+[21:54:10] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=false actual=false
+[21:54:13] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=true actual=true
+[21:54:13] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=false actual=false
+[21:54:14] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=true actual=true
+[21:54:14] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=false actual=false
+[21:54:15] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=true actual=true
+[21:54:17] [main/INFO]: [STDOUT]: TPRM_LIGHTING_PROBE expected=false actual=false

@@ -1,0 +1,5 @@
+1.14: 1 Mixin descriptor(s), 22 game classes, 38 game member references and 1 LWJGL reference(s) across 1 library variant(s) verified
+1.14.1: 1 Mixin descriptor(s), 22 game classes, 38 game member references and 1 LWJGL reference(s) across 1 library variant(s) verified
+1.14.2: 1 Mixin descriptor(s), 22 game classes, 38 game member references and 1 LWJGL reference(s) across 1 library variant(s) verified
+1.14.3: 1 Mixin descriptor(s), 22 game classes, 38 game member references and 1 LWJGL reference(s) across 1 library variant(s) verified
+1.14.4: 1 Mixin descriptor(s), 22 game classes, 38 game member references and 1 LWJGL reference(s) across 2 library variant(s) verified

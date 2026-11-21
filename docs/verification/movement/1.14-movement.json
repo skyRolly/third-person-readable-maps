@@ -1,0 +1,47 @@
+{
+  "minecraft": "1.14",
+  "start": [
+    5.5,
+    81,
+    -62.5
+  ],
+  "end": [
+    5.5,
+    81.0,
+    -52.30000001192093
+  ],
+  "horizontal_distance": 10.199999988079071,
+  "renderer": "Linux Xorg/Mesa software",
+  "candidate_sha256": "839f0982d11c0a0f95199e1486f7ece203acb7fe8f3e2dd309e9edec214ce5a5",
+  "captures": {
+    "standing-day": {
+      "blue_pixels": 583,
+      "head_pixels": 1500
+    },
+    "walking-1": {
+      "blue_pixels": 668,
+      "head_pixels": 1500
+    },
+    "walking-2": {
+      "blue_pixels": 1126,
+      "head_pixels": 1470
+    },
+    "walking-3": {
+      "blue_pixels": 50,
+      "head_pixels": 1500
+    },
+    "after-walk": {
+      "blue_pixels": 50,
+      "head_pixels": 1500
+    },
+    "sneaking": {
+      "blue_pixels": 190,
+      "head_pixels": 1500
+    },
+    "night": {
+      "blue_pixels": 0,
+      "head_pixels": 1500
+    }
+  },
+  "note": "Local screenshot smoke; per-pose visual evidence and independent acceptance require review."
+}

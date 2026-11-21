@@ -1,0 +1,35 @@
+[03:28:15] [main/INFO]: Loading Minecraft 1.14 with Fabric Loader 0.20.1
+	- tprm_unavailable_map_probe 1.0.0
+[03:29:58] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=1
+[03:29:58] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=2
+[03:29:58] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=3
+[03:29:58] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=4
+[03:29:58] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=5
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=1
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=2
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=3
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=4
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:02] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=5
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=6
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=7
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:30:03] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=8
+[03:30:04] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=6
+[03:30:04] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=7
+[03:30:04] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=8
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:30:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved

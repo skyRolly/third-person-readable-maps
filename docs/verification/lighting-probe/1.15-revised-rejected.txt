@@ -1,0 +1,18 @@
+ScriptEngineManager providers.next(): javax.script.ScriptEngineFactory: Provider jdk.nashorn.api.scripting.NashornScriptEngineFactory not found
+[21:58:04] [main/INFO]: Loading Minecraft 1.15 with Fabric Loader 0.20.1
+[21:58:04] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[21:58:07] [main/WARN]: Mod resolution failed
+[21:58:07] [main/INFO]: Immediate reason: [HARD_DEP_INCOMPATIBLE_PRESELECTED thirdpersonreadablemaps 0.0.2 {depends minecraft @ [1.14 || 1.14.1 || 1.14.2 || 1.14.3 || 1.14.4]}, ROOT_FORCELOAD_SINGLE thirdpersonreadablemaps 0.0.2]
+[21:58:07] [main/INFO]: Reason: [HARD_DEP thirdpersonreadablemaps 0.0.2 {depends minecraft @ [1.14 || 1.14.1 || 1.14.2 || 1.14.3 || 1.14.4]}]
+[21:58:07] [main/INFO]: Fix: add [], remove [], replace [[minecraft 1.15] -> add:minecraft 1.14.4 ([[1.14,1.14], [1.14.1,1.14.1], [1.14.2,1.14.2], [1.14.3,1.14.3], [1.14.4,1.14.4]])]
+[21:58:07] [main/ERROR]: Incompatible mods found!
+net.fabricmc.loader.impl.FormattedException: Some of your mods are incompatible with the game or each other!
+A potential solution has been determined, this may resolve your problem:
+	 - Replace 'Minecraft' (minecraft) 1.15 with version 1.14, version 1.14.1, version 1.14.2, version 1.14.3 or version 1.14.4.
+More details:
+	 - Mod 'Third Person Readable Maps' (thirdpersonreadablemaps) 0.0.2 requires version 1.14, version 1.14.1, version 1.14.2, version 1.14.3 or version 1.14.4 of 'Minecraft' (minecraft), but only the wrong version is present: 1.15!
+	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:51) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:207) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:142) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:66) [fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) [fabric-loader-0.20.1.jar:?]
