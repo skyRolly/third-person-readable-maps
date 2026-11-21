@@ -182,6 +182,67 @@ def validate():
                     fail('Commons Compress client reference evidence mismatch for ' + target)
             if occurrence.get('dependency_owner') != 'Minecraft runtime manifest':
                 fail('Commons Compress dependency owner is not source-bound to Minecraft')
+    expected_realms = {
+        '1.14': '1.14.14', '1.14.1': '1.14.15',
+        '1.14.2': '1.14.16', '1.14.3': '1.14.17',
+    }
+    runtime_rows = commons.get('additional_runtime_library_callers', [])
+    if {row['minecraft_version'] for row in runtime_rows} != set(expected_realms):
+        fail('Mojang Realms TAR caller observations do not cover Minecraft 1.14.0-1.14.3')
+    for observation in runtime_rows:
+        version = observation['minecraft_version']
+        coordinate = 'com.mojang:realms:' + expected_realms[version]
+        matches = [row for row in high_family['libraries']
+                   if coordinate in row.get('coordinates', []) and version in row.get('versions', [])]
+        if len(matches) != 1:
+            fail('Mojang Realms runtime artifact missing for Minecraft ' + version)
+        library = matches[0]
+        artifact = library['artifact']
+        if observation['coordinate'] != coordinate or observation['artifact'] != artifact or \
+                observation['artifact_sha256'] != library['sha256'] or \
+                observation['literal_reference_matches'] != library['literal_reference_matches'].get(
+                    'org/apache/commons/compress/archivers/tar/TarArchiveInputStream', []):
+            fail('Mojang Realms caller artifact/reference mismatch for Minecraft ' + version)
+        if observation['literal_reference_matches'] != ['realms/c.class'] or \
+                observation['class_sha256'] != 'f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0':
+            fail('Mojang Realms TAR class identity mismatch for Minecraft ' + version)
+        if not DIGEST.fullmatch(observation.get('artifact_sha256', '')) or \
+                not all(DIGEST.fullmatch(row.get('sha256', ''))
+                        for row in observation.get('related_call_path_classes', [])):
+            fail('Mojang Realms artifact or caller class hash is incomplete for Minecraft ' + version)
+    tar_finding = next(row for row in commons['findings']
+                       if row['advisory_id'] == 'GHSA-xqfj-vm6h-2x34')
+    for occurrence in tar_finding['occurrences']:
+        expected_versions = set(occurrence['minecraft_versions']) & set(expected_realms)
+        actual_observations = occurrence.get('runtime_library_vulnerable_api_reference_observations', [])
+        if {row['minecraft_version'] for row in actual_observations} != expected_versions:
+            fail('Mojang Realms callsite coverage mismatch for ' + occurrence['group'])
+        for observation in actual_observations:
+            runtime = next(row for row in runtime_rows
+                           if row['minecraft_version'] == observation['minecraft_version'])
+            for field in ('coordinate', 'artifact', 'artifact_sha256', 'literal_reference_matches',
+                          'class_sha256', 'class_path'):
+                if observation.get(field) != runtime.get(field):
+                    fail('Mojang Realms source-bound observation mismatch for ' + field)
+    if set(commons['reachability_scope']['tar_parser_reference_versions']) != \
+            set(commons['package']['runtime_minecraft_versions']):
+        fail('combined client and Mojang Realms TAR reference version list mismatch')
+    client_versions = set(commons['reachability_scope']['game_client_tar_parser_reference_versions'])
+    runtime_versions = set(commons['reachability_scope']['realms_runtime_library_tar_parser_reference_versions'])
+    expected_runtime_versions = set(expected_realms)
+    expected_client_versions = set(commons['package']['runtime_minecraft_versions']) - expected_runtime_versions
+    if runtime_versions != expected_runtime_versions or client_versions != expected_client_versions or \
+            set(commons['reachability_scope']['game_client_versions_without_direct_tar_parser_reference']) != expected_runtime_versions:
+        fail('client versus Mojang Realms TAR caller scope mismatch')
+    tar_api = 'org/apache/commons/compress/archivers/tar/TarArchiveInputStream'
+    for version in expected_client_versions:
+        game = high_family['games'].get(version)
+        if game is None or not game['literal_reference_matches'].get(tar_api):
+            fail('expected game-client TAR parser caller missing for Minecraft ' + version)
+    for version in expected_runtime_versions:
+        game = high_family['games'].get(version)
+        if game is None or game['literal_reference_matches'].get(tar_api):
+            fail('unexpected game-client TAR parser literal for Minecraft ' + version)
     if evidence.get('targeted_high_occurrences') != 23:
         fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):

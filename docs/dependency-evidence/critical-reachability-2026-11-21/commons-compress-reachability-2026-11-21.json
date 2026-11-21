@@ -51,7 +51,7 @@
     "version": "0.152",
     "distribution_url": "https://repo.maven.apache.org/maven2/org/benf/cfr/0.152/cfr-0.152.jar",
     "sha256": "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2",
-    "notes": "Used only for local inspection of pinned client classes. Decompiled source was not committed."
+    "notes": "CFR 0.152 was used for local inspection of pinned Minecraft client classes and the exact Mojang Realms 1.14.17 runtime JAR. Decompiled source was not committed. The Realm TAR downloader, UI caller, and server-result caller class files were hash-checked in all four 1.14.14-1.14.17 artifacts."
   },
   "code_path_examples": [
     {
@@ -103,8 +103,7 @@
     }
   ],
   "reachability_scope": {
-    "tar_parser_reference_versions": [],
-    "affected_versions_without_direct_tar_parser_reference": [
+    "tar_parser_reference_versions": [
       "1.14",
       "1.14.1",
       "1.14.2",
@@ -122,9 +121,35 @@
       "1.17",
       "1.17.1"
     ],
+    "game_client_tar_parser_reference_versions": [
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1"
+    ],
+    "realms_runtime_library_tar_parser_reference_versions": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3"
+    ],
+    "game_client_versions_without_direct_tar_parser_reference": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3"
+    ],
     "7z_direct_reference_versions": [],
     "zip_archive_input_stream_direct_reference_versions": [],
-    "scope_limit": "These are literal references from exact client binaries, not exhaustive launcher, dependency call-graph, reflection, plugin, or installed-mod path analyses."
+    "scope_limit": "The TAR caller list combines literal references in the exact game-client binaries and the exact Mojang Realms 1.14.14-1.14.17 runtime JARs. It does not prove every caller, launcher/plugin path, reflective path, or arbitrary installed-mod path."
   },
   "findings": [
     {
@@ -244,7 +269,133 @@
           "disposition": "Further investigation",
           "failing": true,
           "risk_accepted": false,
-          "release_blocking": true
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "coordinate": "com.mojang:realms:1.14.14",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.14/realms-1.14.14.jar",
+                "sha1": "93a4cea4eeb81b0d8c042fe46977e670f3b036ac",
+                "size": 6364649,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.14/realms-1.14.14.jar"
+              },
+              "artifact_sha256": "8cd1aa97e0bf73e242b6043762fe1d03f67b4ebfe719c0ca5084483c9f90b953",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "coordinate": "com.mojang:realms:1.14.15",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.15/realms-1.14.15.jar",
+                "sha1": "b414341661ed1b32899beb9787f08927ffee634f",
+                "size": 6364656,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.15/realms-1.14.15.jar"
+              },
+              "artifact_sha256": "006e59c077a9128afc9591b9d1f12b6f387985d92aad18ddec99fea862b73ec6",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "coordinate": "com.mojang:realms:1.14.16",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.16/realms-1.14.16.jar",
+                "sha1": "c471ed4220097ec622a6b035395a5ad4abedec9e",
+                "size": 6364656,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.16/realms-1.14.16.jar"
+              },
+              "artifact_sha256": "84da4f9047616ece911914ecbbc51c7eb60a16f5ce76bde9b94061eebd3ffcf4",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "coordinate": "com.mojang:realms:1.14.17",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.17/realms-1.14.17.jar",
+                "sha1": "34fe59f43058b2565905b2f073149e709ec9f3ba",
+                "size": 6364655,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.17/realms-1.14.17.jar"
+              },
+              "artifact_sha256": "55981b2784d25d480c2106670713a4e48721fc4fd3dba681dd09c9c71c7260ce",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            }
+          ]
         },
         {
           "source_kind": "candidate",
@@ -412,7 +563,8 @@
           "disposition": "Further investigation",
           "failing": true,
           "risk_accepted": false,
-          "release_blocking": true
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": []
         },
         {
           "source_kind": "candidate",
@@ -475,17 +627,18 @@
           "disposition": "Further investigation",
           "failing": true,
           "risk_accepted": false,
-          "release_blocking": true
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": []
         }
       ],
       "vulnerable_api_or_class": "org/apache/commons/compress/archivers/tar/TarArchiveInputStream",
-      "actual_call_path": "In Minecraft 1.14.4 and 1.15\u20131.17.1 client binaries, Mojang-mapped com.mojang.realmsclient.client.FileDownload downloads the server-returned WorldDownload.downloadLink into a temporary backup.tar.gz, then untarGzipArchive constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and copies each entry. The Realms API request route is worlds/{worldId}/slot/{slotId}/download. CFR 0.152 decompilation was checked against the exact Mojang client artifact and mappings for 1.14.4 and 1.17.1; the pinned client constant-pool scan records matching caller classes for all applicable versions.",
-      "effective_configuration": "This route is reached through the optional, user-initiated Realms world-download screen; it is not a background parse on ordinary client startup. The URL and archive response are supplied through the Realms API/download flow. The service-generated tar metadata and a hostile Realm member\u2019s ability to control exploit-specific header fields were not established.",
-      "reachability_finding": "The vulnerable TAR parser path is present and receives network-downloaded Realms backup bytes in the exact affected client versions 1.14.4, 1.15\u20131.17.1. The affected library is 1.8.1. This confirms component reachability behind an explicit download action, but the exploit precondition\u2014attacker control of a malformed TAR entry with the inconsistent lengths needed for CVE-2021-35517\u2014remains unverified. In 1.14.0\u20131.14.3 the package is affected but no direct TarArchiveInputStream reference was found.",
+      "actual_call_path": "The exact Minecraft 1.14, 1.14.1, 1.14.2, and 1.14.3 runtime manifests include Mojang Realms 1.14.14-1.14.17. In these JARs, realms/ab obtains a WorldDownload and opens the download UI; realms/ah starts a worker that calls realms/c with WorldDownload.downloadLink. realms/c performs an HTTP GET, downloads the gzip TAR, then constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. These three caller class hashes match across all four JARs. In Minecraft 1.14.4 and 1.15-1.17.1 the equivalent path is present directly in the exact client binary as Mojang-mapped com.mojang.realmsclient.client.FileDownload. CFR inspection of the exact Mojang artifacts was performed for 1.14.17 Realms, 1.14.4 client, and 1.17.1 client; the source-bound literal reference scan covers every listed version.",
+      "effective_configuration": "The Realms world-backup download path is an optional UI action; it does not execute on ordinary client startup. The Realms API returns a WorldDownload containing a downloadLink, and that response body is downloaded and parsed as a gzip TAR. The exact malformed TAR header control required to trigger CVE-2021-35517 was not established.",
+      "reachability_finding": "The affected Commons Compress 1.8.1 TAR parser is reachable on the optional Realms world-download path in every affected package version from Minecraft 1.14 through 1.17.1: the first four versions call it from the Mojang com.mojang:realms runtime JAR, while 1.14.4-1.17.1 call it from the client binary. This confirms component reachability, not exploitability. The required attacker control over malformed TAR metadata and the resulting DoS impact remain unverified; this is not a non-applicability finding.",
       "verified_mitigation": "No mod-controlled mitigation was identified. The game owns Commons Compress; the mod does not declare or bundle this library and no runtime override was made.",
       "compatible_remediation": "The authoritative advisory lists Commons Compress 1.21 as first patched for this package range. Minecraft versions with the affected 1.8.1 manifest need a game-side, compatibility-tested library update; no mod-side override is supported.",
-      "remaining_uncertainty": "The Realm server creates the archive. No controlled experiment established whether a Realm owner can cause server output to contain the malformed TAR metadata required by the advisory. No end-to-end Realms backup test or isolated CVE reproducer against 1.8.1 and 1.21 was run. The tar extraction destination also uses entry names to construct paths; path normalization and archive-entry control need separate security review.",
-      "confidence": "High for exact package/source versions and the observed vanilla client class references; high for the 1.14.4/1.17.1 mapped call chain; low for attacker control of the server-generated TAR header and resulting exploitability.",
+      "remaining_uncertainty": "The Realm server creates the archive. No controlled experiment established whether a Realm owner can cause server output to contain the inconsistent TAR metadata required by CVE-2021-35517. No end-to-end Realms backup test or isolated reproducer against exact Commons Compress 1.8.1 and fixed 1.21 was run. The TAR extraction destination uses entry names to construct save paths; path normalization and archive-entry control need a separate security review.",
+      "confidence": "High for exact package and runtime artifact identities and presence of the TAR parser path across Minecraft 1.14-1.17.1; high for the decompiled 1.14.17/1.14.4/1.17.1 invocation paths and identical 1.14.x Realm caller classes; low for attacker control of server-generated TAR headers and exploitability.",
       "disposition": "Further investigation",
       "release_blocking": true,
       "risk_accepted": false,
@@ -493,9 +646,9 @@
       "reviewer": "Codex automated technical investigation; independent human review pending",
       "review_date": "2026-11-21",
       "follow_up_requirements": [
-        "Establish, using a safe mock or Mojang-supplied test Realm, whether a Realm owner can control the TAR size/length fields that trigger CVE-2021-35517.",
-        "Reproduce the upstream TAR DoS with exact Commons Compress 1.8.1 under a resource-limited isolated process, and compare with fixed 1.21.",
-        "Review the Realms TAR entry extraction path for traversal and enforce normalized containment upstream if vulnerable.",
+        "Establish with a safe mock or Mojang-supplied test Realm whether a Realm owner can control the TAR size/length fields that trigger CVE-2021-35517.",
+        "Reproduce the upstream TAR denial-of-service with exact Commons Compress 1.8.1 in a resource-limited isolated process, then compare with fixed 1.21.",
+        "Review the Realms TAR extraction path for traversal and enforce normalized containment upstream if vulnerable.",
         "Request Mojang to update the game-owned Commons Compress runtime on affected versions; do not override it in this mod."
       ]
     },
@@ -1631,5 +1784,131 @@
         ]
       }
     ]
-  }
+  },
+  "additional_runtime_library_callers": [
+    {
+      "minecraft_version": "1.14",
+      "coordinate": "com.mojang:realms:1.14.14",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.14/realms-1.14.14.jar",
+        "sha1": "93a4cea4eeb81b0d8c042fe46977e670f3b036ac",
+        "size": 6364649,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.14/realms-1.14.14.jar"
+      },
+      "artifact_sha256": "8cd1aa97e0bf73e242b6043762fe1d03f67b4ebfe719c0ca5084483c9f90b953",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.1",
+      "coordinate": "com.mojang:realms:1.14.15",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.15/realms-1.14.15.jar",
+        "sha1": "b414341661ed1b32899beb9787f08927ffee634f",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.15/realms-1.14.15.jar"
+      },
+      "artifact_sha256": "006e59c077a9128afc9591b9d1f12b6f387985d92aad18ddec99fea862b73ec6",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.2",
+      "coordinate": "com.mojang:realms:1.14.16",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.16/realms-1.14.16.jar",
+        "sha1": "c471ed4220097ec622a6b035395a5ad4abedec9e",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.16/realms-1.14.16.jar"
+      },
+      "artifact_sha256": "84da4f9047616ece911914ecbbc51c7eb60a16f5ce76bde9b94061eebd3ffcf4",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.3",
+      "coordinate": "com.mojang:realms:1.14.17",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.17/realms-1.14.17.jar",
+        "sha1": "34fe59f43058b2565905b2f073149e709ec9f3ba",
+        "size": 6364655,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.17/realms-1.14.17.jar"
+      },
+      "artifact_sha256": "55981b2784d25d480c2106670713a4e48721fc4fd3dba681dd09c9c71c7260ce",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    }
+  ]
 }

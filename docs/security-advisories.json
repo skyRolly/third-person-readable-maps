@@ -15178,7 +15178,7 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "73335392ac50dd6311ef9e4d523dbf4a675afd4befe3e497f10852fb9a0d5c66",
+    "sha256": "2f7ce48c6233b04b7243595f070b5c9fe755397304f03ba19c0e0ecdf46ce91a",
     "review_date": "2026-11-21",
     "security_clearance": false,
     "risk_accepted": false,

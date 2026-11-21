@@ -147,3 +147,12 @@ names in those Gradle processes; it does not prove absence of every possible
 credential source or sandbox untrusted build code. Credentialed API checks use
 separate steps, and the read-only job token and runner artifact infrastructure
 are separate from the historical local write-capable token.
+
+
+## Commons Compress Realms library correction — 2026-11-21
+
+A follow-up scan of the exact Minecraft runtime libraries found that the earlier client-only TAR caller statement was incomplete for Minecraft 1.14–1.14.3. The exact official version manifests map those clients to Mojang Realms 1.14.14, 1.14.15, 1.14.16, and 1.14.17 respectively. Each artifact matched its manifest SHA-1 and size and the recorded SHA-256. All four contain `realms/c.class` with a literal `TarArchiveInputStream` reference; the extraction class SHA-256 is `f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0`. Related downloader and caller classes `realms/ah.class` and `realms/ab.class` were also hash-checked and are byte-identical across the four artifacts.
+
+CFR 0.152 inspection of the exact 1.14.17 Realms JAR confirmed the path: `realms/ab` obtains a `WorldDownload` and opens the download UI; `realms/ah` starts the download worker; `realms/c` uses `WorldDownload.downloadLink`, issues an HTTP GET, downloads the gzip TAR, constructs `GzipCompressorInputStream` and `TarArchiveInputStream`, calls `getNextTarEntry`, and extracts entries. The earlier 1.14.4 and 1.17.1 client traces cover the next versions, so source-bound component reachability is now established for Minecraft 1.14–1.17.1 behind an optional Realms download action.
+
+This corrects the reachability scope only. It does not establish that a Realm owner controls the malformed TAR metadata required by CVE-2021-35517, and no isolated exact-version reproducer or end-to-end test has been run. The finding remains **Further investigation**, blocking, and game-managed. No dependency override or source fix was applied. The 490 archived advisory occurrences and all severity counts are unchanged.
