@@ -4,6 +4,7 @@
   "package": "tech.rolly.thirdpersonreadablemaps.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "ArmedEntityRenderStateMixin",
     "ReadableMapLayerMixin"
   ],
   "injectors": {

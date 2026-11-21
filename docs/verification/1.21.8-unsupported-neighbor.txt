@@ -1,0 +1,17 @@
+[17:04:05] [main/INFO]: Loading Minecraft 1.21.8 with Fabric Loader 0.20.1
+[17:04:05] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[17:04:06] [main/WARN]: Mod resolution failed
+[17:04:06] [main/INFO]: Immediate reason: [HARD_DEP_INCOMPATIBLE_PRESELECTED thirdpersonreadablemaps 0.0.2 {depends minecraft @ [1.21.9 || 1.21.10]}, ROOT_FORCELOAD_SINGLE thirdpersonreadablemaps 0.0.2]
+[17:04:06] [main/INFO]: Reason: [HARD_DEP thirdpersonreadablemaps 0.0.2 {depends minecraft @ [1.21.9 || 1.21.10]}]
+[17:04:06] [main/INFO]: Fix: add [], remove [], replace [[minecraft 1.21.8] -> add:minecraft 1.21.10 ([[1.21.9,1.21.9], [1.21.10,1.21.10]])]
+[17:04:06] [main/ERROR]: Incompatible mods found!
+net.fabricmc.loader.impl.FormattedException: Some of your mods are incompatible with the game or each other!
+A potential solution has been determined, this may resolve your problem:
+	 - Replace 'Minecraft' (minecraft) 1.21.8 with version 1.21.9 or version 1.21.10.
+More details:
+	 - Mod 'Third Person Readable Maps' (thirdpersonreadablemaps) 0.0.2 requires version 1.21.9 or version 1.21.10 of 'Minecraft' (minecraft), but only the wrong version is present: 1.21.8!
+	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:51) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:207) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:142) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:66) [fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) [fabric-loader-0.20.1.jar:?]
