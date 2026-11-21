@@ -8,11 +8,13 @@ missing evidence as pending. Strict production authorization is separate.
 import argparse
 import gzip
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import re
 import sys
 import zlib
+from zipfile import ZipFile, BadZipFile
 import release
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -276,6 +278,35 @@ def validate(heads, versions, selection, load, read_blob=None):
                     config['groups'][group]['java'] == item['java'] and
                     checksums[item['artifact']] == item['sha256'],
                     group + ': candidate rehearsal source or artifact mismatch')
+        input_record = index.get('input_record')
+        if input_record is not None:
+            input_raw = read_blob(input_record)
+            require(hashlib.sha256(input_raw).hexdigest() == index.get('input_record_sha256'),
+                    'candidate rehearsal artifact input record changed')
+            inputs = json.loads(input_raw)
+            input_groups = inputs.get('groups')
+            require(inputs.get('schema') == 1 and isinstance(input_groups, dict) and set(input_groups) == set(items),
+                    'candidate rehearsal artifact input groups mismatch')
+            for group, record in input_groups.items():
+                checked_id(record.get('archive_sha256'), DIGEST, group + ': invalid input archive digest')
+                checked_id(record.get('artifact_sha256'), DIGEST, group + ': invalid input artifact digest')
+                require(record.get('source_commit') == rows[group]['source_commit'] and
+                        record.get('artifact_sha256') == items[group]['sha256'] and
+                        isinstance(record.get('run_id'), int) and record['run_id'] > 0 and
+                        isinstance(record.get('artifact_id'), int) and record['artifact_id'] > 0 and
+                        record.get('archive_and_jar_verified') is True,
+                        group + ': artifact archive identity differs from selected build')
+                archive = read_blob(record['archive_path'])
+                require(hashlib.sha256(archive).hexdigest() == record['archive_sha256'],
+                        group + ': source artifact archive digest mismatch')
+                try:
+                    with ZipFile(BytesIO(archive)) as zipped:
+                        names = [name for name in zipped.namelist() if name.endswith('.jar')]
+                        require(names == [items[group]['artifact']] and
+                                hashlib.sha256(zipped.read(names[0])).hexdigest() == record['artifact_sha256'],
+                                group + ': source artifact archive content mismatch')
+                except (BadZipFile, KeyError, OSError, IndexError) as exc:
+                    raise ValueError(group + ': source artifact archive is invalid') from exc
         for path, digest in index['coordinator_code_sha256'].items():
             require(hashlib.sha256(read_blob(path)).hexdigest() == digest,
                     'candidate rehearsal coordinator code changed: ' + path)

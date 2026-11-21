@@ -13,6 +13,13 @@ checkout/artifact records, and the non-publishing rehearsal are reconciled by
 never authorize release. The rehearsal's harness controls are distinct from
 production aggregator controls.
 
+The prior rehearsal index and its November 21 inputs are retained unchanged.
+The owner-policy refresh in `rehearsal-2026-11-21-owner-policy/` separately
+retains the exact hosted Linux archives, verifies their source and artifact
+digests, and records a fresh non-publishing aggregation against the updated
+coordinator code. The mutable evidence selection points to that refresh; the
+archived rehearsal remains historical provenance.
+
 The Gradle 9.9.2 update changes the distribution and the JAR manifest version
 field. Fresh source-bound dependency resolutions and advisory scans are being
 collected. Earlier OSV reports and runtime observations retain their original

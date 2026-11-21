@@ -1,14 +1,42 @@
 """Keep the non-publishing rehearsal's retained manifest and checksums consistent."""
 import hashlib
 import json
+from io import BytesIO
 from pathlib import Path
 import unittest
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / 'docs/legacy-dry-run-1.0.0'
 
 
 class CandidateRehearsalEvidenceTests(unittest.TestCase):
+    def test_current_rehearsal_is_source_bound_and_keeps_historical_snapshot(self):
+        selection = json.loads((ROOT / 'docs/version-consistency-1.0.0/current-evidence.json').read_text())
+        fresh = ROOT / selection['candidate_rehearsal']['index'].rsplit('/', 1)[0]
+        index = json.loads((fresh / 'index.json').read_text())
+        old = ROOT / 'docs/version-consistency-1.0.0/current-validation/rehearsal'
+        historical = json.loads((old / 'index.json').read_text())
+        workflow_sha = hashlib.sha256((ROOT / '.github/workflows/release.yml').read_bytes()).hexdigest()
+        self.assertNotEqual(historical['coordinator_code_sha256']['.github/workflows/release.yml'], workflow_sha)
+        self.assertEqual(index['coordinator_code_sha256']['.github/workflows/release.yml'], workflow_sha)
+        self.assertEqual(index['authorizes_release'], False)
+        self.assertEqual(index['candidate'], True)
+        inputs_raw = (fresh / index['input_record'].split('/')[-1]).read_bytes()
+        self.assertEqual(hashlib.sha256(inputs_raw).hexdigest(), index['input_record_sha256'])
+        inputs = json.loads(inputs_raw)['groups']
+        manifest = json.loads((fresh / 'release-manifest.json').read_text())
+        groups = {row['id']: row for row in manifest['groups']}
+        self.assertEqual(set(inputs), set(groups))
+        for group, row in inputs.items():
+            with self.subTest(group=group):
+                archive = (ROOT / row['archive_path']).read_bytes()
+                self.assertEqual(hashlib.sha256(archive).hexdigest(), row['archive_sha256'])
+                with ZipFile(BytesIO(archive)) as zipped:
+                    self.assertEqual(zipped.namelist(), [groups[group]['artifact']])
+                    self.assertEqual(hashlib.sha256(zipped.read(groups[group]['artifact'])).hexdigest(),
+                                     groups[group]['sha256'])
+
     def test_new_product_ci_results_match_transition_heads(self):
         transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']
         evidence = json.loads((ROOT / 'docs/hosted-builds-verifier-followup-2026-11-13.json').read_text())['groups']
