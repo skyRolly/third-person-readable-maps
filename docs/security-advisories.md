@@ -1,5 +1,7 @@
 # Security advisory ledger
 
+The [2026-11-21 exact-source finding index](dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json) and [investigation follow-up](worklogs/issue-45-security-followup-2026-11-21.md) preserve current candidate and integrated scans separately. All 385 candidate and 105 integrated matches remain failing; the structured ledger's historical dispositions below are unchanged. No risk is accepted.
+
 The [November 15 Netty review](dependency-evidence/netty-high-review-2026-11-15.json)
 records two high-severity advisories and 28 separately source-scoped occurrences,
 including candidate, integrated and unmerged-proposal observations. Remediation

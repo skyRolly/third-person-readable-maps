@@ -82,7 +82,10 @@ jobs:
           cache-read-only: true
           validate-wrappers: true
           dependency-graph: generate-and-upload
-          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies
+          # Generation/upload needs no GitHub API token. Do not pass the action's
+          # default token through to the Gradle subprocess via its input environment.
+          github-token: ''
+          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies --init-script ${{ github.workspace }}/.github/gradle/no-github-credentials.init.gradle
           artifact-retention-days: 14
       - name: Audit Gradle and every declared game runtime
         env:
