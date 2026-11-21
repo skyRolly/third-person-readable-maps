@@ -51,8 +51,11 @@ jobs:
           cache-read-only: true
           validate-wrappers: true
           dependency-graph: generate-and-upload
+          # Generation/upload needs no GitHub API token. Do not pass the action's
+          # default token through to the Gradle subprocess via its input environment.
+          github-token: ''
           # Re-resolve cached Loom mappings so the detector observes intermediary too.
-          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies
+          additional-arguments: --no-daemon --console=plain --stacktrace --refresh-dependencies --init-script ${{ github.workspace }}/.github/gradle/no-github-credentials.init.gradle
           artifact-retention-days: 14
       - name: Query OSV for snapshot packages
         env:
