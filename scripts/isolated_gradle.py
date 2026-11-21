@@ -39,7 +39,7 @@ def main():
         home = Path(directory)
         (home / 'tmp').mkdir()
         try:
-            return subprocess.call([str(wrapper), *gradle_args], cwd=root,
+            return subprocess.call([str(wrapper), *gradle_args, '--no-daemon'], cwd=root,
                                    env=build_environment(os.environ, home))
         except OSError as exc:
             print(f'Unable to run Gradle wrapper: {exc}', file=sys.stderr)

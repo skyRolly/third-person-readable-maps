@@ -1,5 +1,7 @@
 # Dependency monitoring and coverage
 
+The [2026-11-21 source-bound scan archive and worklist](worklogs/issue-45-security-followup-2026-11-21.md) records the current candidate and integrated runs separately. It preserves original reports, snapshots and checksums without replacing prior baselines. The current reports retain 385 candidate and 105 integrated failing matches.
+
 Verified on 2026-11-04 against the initial maintained heads recorded in the
 [maintenance report](maintenance-2026-11-04.md). Proposed maintenance PRs do not
 change dependency versions or build resolution. Their hosted results must be

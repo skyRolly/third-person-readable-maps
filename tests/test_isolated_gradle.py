@@ -25,7 +25,7 @@ class IsolatedGradleTests(unittest.TestCase):
             wrapper = root / 'gradlew'
             wrapper.write_text('#!/bin/sh\n[ -z "${GH_TOKEN+x}" ] || exit 9\n'
                                '[ "$HOME/.gradle" = "$GRADLE_USER_HOME" ] || exit 10\n'
-                               '[ "$1" = "clean" ] && [ "$2" = "build" ]\n')
+                               '[ "$1" = "clean" ] && [ "$2" = "build" ] && [ "$3" = "--no-daemon" ]\n')
             wrapper.chmod(0o755)
             env = dict(os.environ, GH_TOKEN='test-only-secret')
             result = subprocess.run([sys.executable, str(ROOT / 'scripts/isolated_gradle.py'),
