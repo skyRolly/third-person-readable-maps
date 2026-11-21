@@ -154,7 +154,7 @@ jobs:
           import gzip, hashlib, json, os
           from pathlib import Path
           root = Path(os.environ['RUNNER_TEMP'])
-          out = Path('docs/dependency-evidence/issue45-exact-source-2026-11-21')
+          out = Path('docs/dependency-evidence/issue45-exact-source-2026-11-21-v2')
           out.mkdir(parents=True)
           index = {'schema': 1, 'coordination_sha': '01ba93db13d977e3bb0bf3400a6e373d35ff14e7',
                    'candidate_run': 44940017926, 'integrated_run': 44940018290, 'files': []}
@@ -181,9 +181,9 @@ jobs:
       - name: Commit evidence to its own branch
         run: |
           set -euo pipefail
-          git switch -c evidence/issue45-exact-source-2026-11-21
+          git switch -c evidence/issue45-exact-source-2026-11-21-v2
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/dependency-evidence/issue45-exact-source-2026-11-21
+          git add docs/dependency-evidence/issue45-exact-source-2026-11-21-v2
           git commit -m 'Preserve exact-source Issue 45 audit artifacts'
-          git push origin evidence/issue45-exact-source-2026-11-21
+          git push origin evidence/issue45-exact-source-2026-11-21-v2
