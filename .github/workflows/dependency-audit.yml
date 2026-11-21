@@ -130,3 +130,56 @@ jobs:
             gradle-tool-audit.json
           if-no-files-found: warn
           retention-days: 30
+
+  recover:
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: diagnostic/issue-45-audit-export
+      - name: Download completed audit artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download 44940017926 --dir "$RUNNER_TEMP/candidate"
+          gh run download 44940018290 --dir "$RUNNER_TEMP/integrated"
+      - name: Preserve the original reports and snapshots
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import gzip, hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          out = Path('docs/dependency-evidence/issue45-exact-source-2026-11-21')
+          out.mkdir(parents=True)
+          index = {'schema': 1, 'coordination_sha': '01ba93db13d977e3bb0bf3400a6e373d35ff14e7',
+                   'candidate_run': 44940017926, 'integrated_run': 44940018290, 'files': []}
+          for kind in ('candidate', 'integrated'):
+              for path in sorted((root / kind).rglob('*.json')):
+                  raw = path.read_bytes()
+                  data = json.loads(raw)
+                  # Store the raw bytes, including formatting; no old files are modified.
+                  target = out / kind / path.parent.name / (path.name + '.gz')
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(gzip.compress(raw, mtime=0))
+                  index['files'].append({'path': str(target), 'sha256_uncompressed': hashlib.sha256(raw).hexdigest(),
+                                         'sha256_gzip': hashlib.sha256(target.read_bytes()).hexdigest(),
+                                         'source_sha': data.get('source_sha', data.get('sha')),
+                                         'status': data.get('status')})
+          assert sum(x['path'].endswith('/candidate-dependency-audit.json.gz') for x in index['files']) == 10
+          assert sum(x['path'].endswith('/dependency-audit.json.gz') for x in index['files']) == 3
+          (out / 'archive-index.json').write_text(json.dumps(index, indent=2) + '\n')
+          PY
+      - name: Commit evidence to its own branch
+        run: |
+          set -euo pipefail
+          git switch -c evidence/issue45-exact-source-2026-11-21
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/dependency-evidence/issue45-exact-source-2026-11-21
+          git commit -m 'Preserve exact-source Issue 45 audit artifacts'
+          git push origin evidence/issue45-exact-source-2026-11-21
