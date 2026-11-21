@@ -1,5 +1,6 @@
 """Current candidate evidence can advance without rewriting old observations."""
 import copy
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -91,6 +92,16 @@ class EvidenceLifecycleTests(unittest.TestCase):
         row['build']['artifact_sha256'] = self.digest; row['static'] = {'state':'pending'}
         self.assertIn('g: static verification', self.validate())
 
+    def test_continuity_can_use_a_grouped_historical_index(self):
+        self.files['historical-index'] = {'groups': self.files['previous']}
+        build = self.selection['groups']['g']['build']
+        build['previous_record'] = 'historical-index'
+        build['previous_record_field'] = 'groups'
+        self.validate()
+        build['previous_record_field'] = 'unexpected'
+        with self.assertRaisesRegex(ValueError, 'invalid historical build index'):
+            self.validate()
+
     def test_historical_runtime_cannot_be_relabelled_fresh(self):
         self.selection['groups']['g']['runtime']['state'] = 'fresh'
         with self.assertRaisesRegex(ValueError, 'cannot be relabeled fresh'): self.validate()
@@ -117,6 +128,37 @@ class EvidenceLifecycleTests(unittest.TestCase):
         self.assertNotIn('g: current-source security resolution', self.validate())
         self.blobs['resolution.log'] = b'not the recorded run'
         with self.assertRaisesRegex(ValueError, 'resolution evidence hash mismatch'): self.validate()
+
+    def test_bundled_fresh_audit_checks_source_scope_and_failing_status(self):
+        self.heads['g']['branch'] = 'candidate/mc-g'
+        snapshot = json.dumps({'sha':self.current, 'ref':'refs/heads/candidate/mc-g'})
+        report = json.dumps({'source_sha':self.current, 'group':'g', 'risk_acceptance':False,
+                             'snapshot_ref':'refs/heads/candidate/mc-g',
+                             'status':'complete-unreviewed-candidate-scan',
+                             'matches':[{'failing':True}], 'resolved_needing_review':[]})
+        log, audit_log = 'Verified Gradle wrapper checksums\nBUILD SUCCESSFUL', 'unresolved findings'
+        entry = {'snapshot':snapshot, 'report':report, 'resolution_log':log, 'audit_log':audit_log,
+                 'resolution':{'source_commit':self.current, 'kind':'fresh-gradle-resolution', 'audit_exit':1,
+                               'snapshot_sha256':hashlib.sha256(snapshot.encode()).hexdigest(),
+                               'log_sha256':hashlib.sha256(log.encode()).hexdigest(),
+                               'report_sha256':hashlib.sha256(report.encode()).hexdigest(),
+                               'audit_log_sha256':hashlib.sha256(audit_log.encode()).hexdigest()}}
+        security = self.selection['groups']['g']['security']
+        security.update(state='fresh-resolution', source_commit=self.current, bundle='bundle',
+                        resolution_kind='fresh-gradle-resolution')
+        def write_bundle():
+            self.blobs['bundle'] = gzip.compress(json.dumps({'schema':1, 'groups':{'g':entry}}).encode(), mtime=0)
+            security['bundle_sha256'] = hashlib.sha256(self.blobs['bundle']).hexdigest()
+        write_bundle()
+        self.assertNotIn('g: current-source security resolution', self.validate())
+        entry['resolution']['audit_exit'] = 0; write_bundle()
+        with self.assertRaisesRegex(ValueError, 'does not reflect unresolved findings'): self.validate()
+        entry['resolution']['audit_exit'] = 1; entry['resolution_log'] = log + ' modified'; write_bundle()
+        with self.assertRaisesRegex(ValueError, 'resolution evidence hash mismatch'): self.validate()
+        entry['resolution_log'] = log; entry['snapshot'] = snapshot.replace('candidate/mc-g', 'candidate/other'); write_bundle()
+        with self.assertRaisesRegex(ValueError, 'snapshot branch mismatch'): self.validate()
+        self.blobs['bundle'] += b'corrupt'
+        with self.assertRaises((ValueError, OSError)): self.validate()
 
     def test_logs_and_continuity_references_are_checked(self):
         self.files['logs']['static']['v1'] = 'altered'

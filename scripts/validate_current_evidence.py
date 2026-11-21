@@ -6,11 +6,13 @@ that the mutable selection describes the selected current sources and reports
 missing evidence as pending. Strict production authorization is separate.
 """
 import argparse
+import gzip
 import hashlib
 import json
 from pathlib import Path
 import re
 import sys
+import zlib
 import release
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +36,7 @@ def validate(heads, versions, selection, load, read_blob=None):
     rows = selection.get('groups')
     require(isinstance(rows, dict) and set(rows) == set(heads) == set(versions), 'current group mismatch')
     pending = []
+    security_bundles = {}
     for group, row in sorted(rows.items()):
         source = row.get('source_commit')
         checked_id(source, COMMIT, group + ': invalid source commit')
@@ -66,7 +69,13 @@ def validate(heads, versions, selection, load, read_blob=None):
             require(continuity in ('same', 'different', 'not-compared'), group + ': invalid continuity state')
             if continuity != 'not-compared':
                 previous = build['previous_sha256']; checked_id(previous, DIGEST, group + ': invalid previous hash')
-                prior = load(build['previous_record'])[group]
+                prior = load(build['previous_record'])
+                field = build.get('previous_record_field')
+                if field is not None:
+                    require(field == 'groups' and isinstance(prior, dict) and isinstance(prior.get(field), dict),
+                            group + ': invalid historical build index')
+                    prior = prior[field]
+                prior = prior[group]
                 require(prior['sha256'] == previous and prior['source_commit'] == build['previous_source'],
                         group + ': continuity reference does not match historical build')
                 require((digest == previous) == (continuity == 'same'), group + ': incorrect continuity claim')
@@ -102,22 +111,64 @@ def validate(heads, versions, selection, load, read_blob=None):
             pending.append(group + ': security inventory')
         else:
             scanned = security['source_commit']; checked_id(scanned, COMMIT, group + ': invalid scanned source')
-            report = load(security['report'])
+            bundle_path = security.get('bundle')
+            if bundle_path:
+                require(security['state'] == 'fresh-resolution' and read_blob is not None,
+                        group + ': bundled security evidence requires a fresh resolution')
+                checked_id(security.get('bundle_sha256'), DIGEST, group + ': invalid security bundle hash')
+                if bundle_path not in security_bundles:
+                    raw = read_blob(bundle_path)
+                    try:
+                        decoded = json.loads(gzip.decompress(raw))
+                    except (OSError, EOFError, zlib.error, ValueError) as exc:
+                        raise ValueError(group + ': invalid security bundle') from exc
+                    security_bundles[bundle_path] = (hashlib.sha256(raw).hexdigest(), decoded)
+                digest, bundle = security_bundles[bundle_path]
+                require(digest == security['bundle_sha256'] and bundle.get('schema') == 1,
+                        group + ': security bundle integrity mismatch')
+                entry = bundle['groups'][group]
+                report = json.loads(entry['report'])
+            else:
+                report = load(security['report'])
             require(report['source_sha'] == scanned, group + ': security report source mismatch')
             require(security.get('risk_accepted') is False, group + ': risk acceptance requires separate owner approval')
             if security['state'] == 'fresh-resolution':
                 require(scanned == source and security.get('resolution_kind') == 'fresh-gradle-resolution',
                         group + ': OSV re-query is not a fresh dependency resolution')
-                snapshot = load(security['snapshot'])
+                if bundle_path:
+                    snapshot_bytes = entry['snapshot'].encode()
+                    log_bytes = entry['resolution_log'].encode()
+                    snapshot = json.loads(snapshot_bytes)
+                    resolution = entry['resolution']
+                    require(report.get('group') == group and report.get('risk_acceptance') is False and
+                            report.get('status') in ('complete-unreviewed-candidate-scan',
+                                                     'complete-unreviewed-maintenance-proposal'),
+                            group + ': incomplete or incorrectly scoped security report')
+                    require(snapshot.get('ref') == report.get('snapshot_ref') == 'refs/heads/' + heads[group]['branch'],
+                            group + ': dependency snapshot branch mismatch')
+                    require(isinstance(report.get('matches'), list) and
+                            all(isinstance(x, dict) for x in report['matches']) and
+                            resolution.get('audit_exit') == (1 if any(x.get('failing') for x in report['matches'])
+                                                             or report.get('resolved_needing_review') else 0),
+                            group + ': audit result does not reflect unresolved findings')
+                    require(b'BUILD SUCCESSFUL' in log_bytes and b'Verified Gradle ' in log_bytes,
+                            group + ': dependency resolution or wrapper preflight was not successful')
+                    require(hashlib.sha256(entry['report'].encode()).hexdigest() == resolution.get('report_sha256') and
+                            hashlib.sha256(entry['audit_log'].encode()).hexdigest() == resolution.get('audit_log_sha256'),
+                            group + ': security report or audit log hash mismatch')
+                else:
+                    snapshot = load(security['snapshot'])
+                    resolution = load(security['resolution_record'])
+                    require(read_blob is not None, group + ': dependency resolution needs integrity checks')
+                    snapshot_bytes = read_blob(security['snapshot'])
+                    log_bytes = read_blob(resolution['log'])
                 require(snapshot['sha'] == source, group + ': dependency snapshot source mismatch')
-                resolution = load(security['resolution_record'])
                 require(resolution.get('source_commit') == source and
                         resolution.get('kind') == 'fresh-gradle-resolution', group + ': missing resolution evidence')
                 checked_id(resolution.get('log_sha256'), DIGEST, group + ': invalid resolution log hash')
                 checked_id(resolution.get('snapshot_sha256'), DIGEST, group + ': invalid snapshot hash')
-                require(read_blob is not None and
-                        hashlib.sha256(read_blob(resolution['log'])).hexdigest() == resolution['log_sha256'] and
-                        hashlib.sha256(read_blob(security['snapshot'])).hexdigest() == resolution['snapshot_sha256'],
+                require(hashlib.sha256(log_bytes).hexdigest() == resolution['log_sha256'] and
+                        hashlib.sha256(snapshot_bytes).hexdigest() == resolution['snapshot_sha256'],
                         group + ': dependency resolution evidence hash mismatch')
             else:
                 require(security.get('resolution_kind') != 'fresh-gradle-resolution',
