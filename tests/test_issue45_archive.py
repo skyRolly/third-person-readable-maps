@@ -229,15 +229,26 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
             self.verify_archive(self.root, self.archive_dir)
 
     def test_boolean_run_ids_are_rejected(self):
-        for field in ('candidate_run', 'integrated_run'):
-            for value in (True, False):
-                with self.subTest(field=field, value=value):
-                    self.archive[field] = value
-                    self._write_indexes()
-                    with self.assertRaises(AssertionError):
-                        self.verify_archive(self.root, self.archive_dir)
-                    self.archive[field] = 1234 if field == 'candidate_run' else 5678
-        self._write_indexes()
+        for field, kind, original in (('candidate_run', 'candidate', 1234),
+                                      ('integrated_run', 'integrated', 5678)):
+            snapshot_path = kind + '/dependency-graph-reports/snapshot.json.gz'
+            with self.subTest(field=field, value=True):
+                self.archive[field] = True
+                # Make the forged snapshot agree with str(True), including refreshed
+                # gzip and raw hashes. The former isinstance(int) check accepts this.
+                self._edit_artifact(snapshot_path, 'job', {'id': 'True'})
+                self.assertEqual(str(self.archive[field]), 'True')
+                with self.assertRaisesRegex(AssertionError, field):
+                    self.verify_archive(self.root, self.archive_dir)
+                self.archive[field] = original
+                self._edit_artifact(snapshot_path, 'job', {'id': str(original)})
+            with self.subTest(field=field, value=False):
+                self.archive[field] = False
+                self._write_indexes()
+                with self.assertRaises(AssertionError):
+                    self.verify_archive(self.root, self.archive_dir)
+                self.archive[field] = original
+                self._write_indexes()
 
     def test_string_run_ids_are_rejected(self):
         for field in ('candidate_run', 'integrated_run'):
