@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+  File "/usr/lib/python3.14/pathlib/__init__.py", line 778, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/pathlib/__init__.py", line 772, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-114-1144-candidatemc-114-1144-b6f7632af554a0e51c7d8c421c17adc893cc1379.json'
+
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc261-262.json
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc263.json
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc12111.json
+/home/runner/work/_temp/_github_workflow/event.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1212-1213-candidatemc-1212-1213-d823a91c96b9bc80446116b44cd7568c70048c0d.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-121-1211-candidatemc-121-1211-a62780429512a4e4072b56348e06059d127cfb1d.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1193-candidatemc-1193-a9cd58a4efdb5e9505006bb62914a89e19df0d71.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-117-1192-candidatemc-117-1192-06b350856605011c1549d51d6edd3d351c5021c0.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1194-1204-candidatemc-1194-1204-9326fbbbdfa79d54512b655282c53739d3a4be25.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-114-1144-candidatemc-114-1144-b6f7632af554a0e51c7d8c421c17adc893cc1379.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1214-1218-candidatemc-1214-1218-f63e12da0ccbf70acb41393211c864b057f5cd7c.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1219-12110-candidatemc-1219-12110-5dd5d433fd785bf51f13827babf51a76d09f7cdb.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1205-1206-candidatemc-1205-1206-aa64abb6fd47c0a634dad03fb445634f3715a624.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-115-1165-candidatemc-115-1165-4231b420749db2bbab3cf3e3a7825fc2516511d9.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-7/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-6/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-0/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-1/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-9/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-5/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-3/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-3/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-4/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-2/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json
+/home/runner/work/_temp/candidate/candidate-dependency-audit-8/gradle-tool-audit.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-115-1165-candidatemc-115-1165-4231b420749db2bbab3cf3e3a7825fc2516511d9.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-115-1165-candidatemc-115-1165-4231b420749db2bbab3cf3e3a7825fc2516511d9.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1205-1206-candidatemc-1205-1206-aa64abb6fd47c0a634dad03fb445634f3715a624.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1205-1206-candidatemc-1205-1206-aa64abb6fd47c0a634dad03fb445634f3715a624.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1219-12110-candidatemc-1219-12110-5dd5d433fd785bf51f13827babf51a76d09f7cdb.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1219-12110-candidatemc-1219-12110-5dd5d433fd785bf51f13827babf51a76d09f7cdb.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1214-1218-candidatemc-1214-1218-f63e12da0ccbf70acb41393211c864b057f5cd7c.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1214-1218-candidatemc-1214-1218-f63e12da0ccbf70acb41393211c864b057f5cd7c.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-114-1144-candidatemc-114-1144-b6f7632af554a0e51c7d8c421c17adc893cc1379.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-114-1144-candidatemc-114-1144-b6f7632af554a0e51c7d8c421c17adc893cc1379.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1194-1204-candidatemc-1194-1204-9326fbbbdfa79d54512b655282c53739d3a4be25.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1194-1204-candidatemc-1194-1204-9326fbbbdfa79d54512b655282c53739d3a4be25.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-117-1192-candidatemc-117-1192-06b350856605011c1549d51d6edd3d351c5021c0.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-117-1192-candidatemc-117-1192-06b350856605011c1549d51d6edd3d351c5021c0.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1193-candidatemc-1193-a9cd58a4efdb5e9505006bb62914a89e19df0d71.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1193-candidatemc-1193-a9cd58a4efdb5e9505006bb62914a89e19df0d71.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-121-1211-candidatemc-121-1211-a62780429512a4e4072b56348e06059d127cfb1d.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-121-1211-candidatemc-121-1211-a62780429512a4e4072b56348e06059d127cfb1d.json
+/home/runner/work/_temp/candidate/dependency-graph_legacy_candidate_dependency_audit-audit-1212-1213-candidatemc-1212-1213-d823a91c96b9bc80446116b44cd7568c70048c0d.json/dependency-graph-reports/legacy_candidate_dependency_audit-audit-1212-1213-candidatemc-1212-1213-d823a91c96b9bc80446116b44cd7568c70048c0d.json
+/home/runner/work/_temp/integrated/dependency-audit-0/dependency-audit.json
+/home/runner/work/_temp/integrated/dependency-audit-0/gradle-tool-audit.json
+/home/runner/work/_temp/integrated/dependency-audit-2/dependency-audit.json
+/home/runner/work/_temp/integrated/dependency-audit-2/gradle-tool-audit.json
+/home/runner/work/_temp/integrated/dependency-audit-1/dependency-audit.json
+/home/runner/work/_temp/integrated/dependency-audit-1/gradle-tool-audit.json
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc12111.json/dependency-graph-reports/maintenance_dependency_audit-audit-mc12111.json
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc263.json/dependency-graph-reports/maintenance_dependency_audit-audit-mc263.json
+/home/runner/work/_temp/integrated/dependency-graph_maintenance_dependency_audit-audit-mc261-262.json/dependency-graph-reports/maintenance_dependency_audit-audit-mc261-262.json
