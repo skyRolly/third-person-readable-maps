@@ -1,0 +1,6 @@
+RUN /workspace python3 /tmp/tprm-record-short-walk.py 1.19 terrain-both
+Traceback (most recent call last):
+  File "/tmp/tprm-record-short-walk.py", line 17, in <module>
+    s=report.read_text();heading=f'## {v}';assert heading not in s;verdict='Map terrain is visible in both walking frames.' if review=='terrain-both' else 'The walking frames are retained for visual review.'
+                                                  ^^^^^^^^^^^^^^^^
+AssertionError
