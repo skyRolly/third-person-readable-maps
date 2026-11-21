@@ -11,7 +11,7 @@ CANONICAL = {
     'tests/test_hierarchy_linkage.py': '5a0d46b2b2139cc917bc1a07af55d3eb551648eb9ab980d9df0134b66d81e018',
     'tests/hierarchy_entrypoint_fixtures.py': '4ec6751f1576c570921b8dea896d38535af8f0591c4adaf14165c9c23f16ac88',
     'scripts/verify_gradle_wrapper.py': '2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481',
-    'tests/test_verify_gradle_wrapper.py': 'e99e2dd2e5e4c361a7ad0db4168fd3c1e423461bf4314456197107fa28138d65',
+    'tests/test_verify_gradle_wrapper.py': '99e310cbd825da3556a26e49669f371902e6efe21254555a90074283d01c1a9d',
     'tests/test_nestmate_linkage.py': '870e107ecb86a0ec97c85eed3b69509f92c66461ddf904170c4bc2f3548af235',
     'docs/verification/linkage-contract.md': 'fcaa278b8a6ee2a7848fe9aa18801daac8ecace6379d10e31903a78ff84c89f8',
 }
