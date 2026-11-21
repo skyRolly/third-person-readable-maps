@@ -283,11 +283,13 @@ def validate(heads, versions, selection, load, read_blob=None):
         require(hashlib.sha256(base).hexdigest() == index['runner_base_sha256'], 'rehearsal runner base changed')
         runner = base
         substitutions = index['runner_substitutions']
-        require(isinstance(substitutions, dict) and bool(substitutions), 'missing rehearsal runner substitutions')
+        require(isinstance(substitutions, dict), 'invalid rehearsal runner substitutions')
         for old, new in substitutions.items():
             require(isinstance(old, str) and isinstance(new, str) and old and new and old.encode() in runner,
                     'invalid rehearsal runner substitution')
             runner = runner.replace(old.encode(), new.encode())
+        require(bool(substitutions) or index['runner_sha256'] == index['runner_base_sha256'],
+                'unsubstituted rehearsal runner digest mismatch')
         require(hashlib.sha256(runner).hexdigest() == index['runner_sha256'], 'rehearsal runner mismatch')
         log_path = str(Path(rehearsal['index']).parent/'rehearsal.log')
         require(hashlib.sha256(read_blob(log_path)).hexdigest() == index['log_sha256'], 'rehearsal log hash mismatch')

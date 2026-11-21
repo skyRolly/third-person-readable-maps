@@ -209,6 +209,10 @@ class EvidenceLifecycleTests(unittest.TestCase):
                                                   'manifest':'manifest', 'plan':'plan',
                                                   'checksums':'checksums', 'controls':'controls'}
         self.validate()
+        index = self.files['rehearsal/index.json']
+        index['runner_substitutions'] = {}
+        index['runner_sha256'] = index['runner_base_sha256']
+        self.validate()
         original = self.blobs['checksums']; self.blobs['checksums'] = original.replace(self.digest.encode(), self.changed.encode())
         with self.assertRaisesRegex(ValueError, 'candidate rehearsal source or artifact mismatch'): self.validate()
         self.blobs['checksums'] = original; self.blobs['release.py'] = b'changed'
