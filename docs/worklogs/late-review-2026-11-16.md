@@ -139,3 +139,13 @@ failed because the integrated 1.21.11 source lacks the required 1.0.0 release
 API verifier. The final live check must be read at the actual PR head. The
 security, owner map-ID decision, independent review, administrator protections,
 strict approved-source runtime and publication gates remain open.
+
+A fresh [administrator read-back](../admin/branch-rules-observation-2026-11-21.json)
+reports all 14 targets unprotected, no visible repository/parent rulesets or
+release environments, no releases, and managed Automatic Dependency
+Submission active. No administrative setting was changed. The 17 development
+and security PRs were marked ready for independent review; no approval or
+merge was supplied. After independently downloading the three prior hosted
+0.0.2 security artifacts, an [entry-level comparison](../version-consistency-1.0.0/current-validation/security-artifact-content-comparison.json)
+found only the `Fabric-Gradle-Version` manifest field changed in the new
+security JARs. Their artifact hashes remain distinct.

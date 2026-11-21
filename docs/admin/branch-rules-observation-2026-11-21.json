@@ -1,0 +1,113 @@
+{
+  "observed_at": "2026-11-21T13:59:18.053528+00:00",
+  "branches": {
+    "main": {
+      "accessible": true,
+      "protected": false,
+      "sha": "794aec0eda8e7bfaea5f5e14307766b359589d8f"
+    },
+    "mc/1.14-1.14.4": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.15-1.16.5": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.17-1.19.2": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.19.3": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.19.4-1.20.4": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.20.5-1.20.6": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.21-1.21.1": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.21.11": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.21.2-1.21.3": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.21.4-1.21.8": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/1.21.9-1.21.10": {
+      "accessible": true,
+      "protected": false,
+      "sha": "177f5708727ae4c152091d185536aaa734063280"
+    },
+    "mc/26.1-26.2": {
+      "accessible": true,
+      "protected": false,
+      "sha": "453cf35695cf07be4072f77895cdbafbed617870"
+    },
+    "mc/26.3": {
+      "accessible": true,
+      "protected": false,
+      "sha": "226b1de7dd4e7c2a75ec35eef1697434462e4f54"
+    }
+  },
+  "rulesets": {
+    "accessible": true,
+    "value": []
+  },
+  "environments": {
+    "accessible": true,
+    "value": {
+      "total_count": 0,
+      "names": []
+    }
+  },
+  "releases": {
+    "accessible": true,
+    "value": []
+  },
+  "workflows": {
+    "accessible": true,
+    "value": [
+      {
+        "id": 407044865,
+        "name": "Maintenance dependency audit",
+        "path": ".github/workflows/dependency-audit.yml",
+        "state": "active"
+      },
+      {
+        "id": 406181250,
+        "name": "Dependabot Updates",
+        "path": "dynamic/dependabot/dependabot-updates",
+        "state": "active"
+      },
+      {
+        "id": 406179824,
+        "name": "Automatic Dependency Submission",
+        "path": "dynamic/dependency-graph/auto-submission",
+        "state": "active"
+      }
+    ]
+  }
+}

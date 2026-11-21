@@ -4,6 +4,8 @@ This is the dated administrative evidence, not a current release approval.
 The proposed coordinated version is now 1.0.0; see the [current gate matrix](release-readiness-1.0.0.md)
 for refreshed branch-protection observations and remaining requirements.
 
+The [2026-11-21 read-back](admin/branch-rules-observation-2026-11-21.json) again reports all 14 targets unprotected, no visible repository/parent rulesets or release environments, no releases, and the GitHub-managed Automatic Dependency Submission workflow active. The separate settings toggle, auditor credential and effective administrative defaults remain inaccessible or unverified; no settings were changed.
+
 On [2026-11-15](admin/branch-rules-observation-2026-11-15.json), branch API
 read-back reported `protected: false` for all 14 target branches: `main`, the
 three integrated maintenance branches, and all ten legacy placeholders. The
