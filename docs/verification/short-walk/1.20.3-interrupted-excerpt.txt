@@ -1,0 +1,18 @@
+[11:16:53] [Render thread/INFO]: [System] [CHAT] Successfully filled 518 block(s)
+[11:16:57] [Server thread/INFO]: [MapSmokeTest: Successfully filled 1913 block(s)]
+[11:16:57] [Render thread/INFO]: [System] [CHAT] Successfully filled 1913 block(s)
+[11:17:00] [Server thread/INFO]: [MapSmokeTest: Teleported MapSmokeTest to 5.500000, 81.000000, -62.500000]
+[11:17:00] [Render thread/INFO]: [System] [CHAT] Teleported MapSmokeTest to 5.500000, 81.000000, -62.500000
+[11:17:04] [Server thread/INFO]: [MapSmokeTest: Set the time to 1000]
+[11:17:04] [Render thread/INFO]: [System] [CHAT] Set the time to 1000
+[11:17:05] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 4407ms or 88 ticks behind
+[11:17:13] [Server thread/INFO]: Saving and pausing game...
+[11:17:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[11:17:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[11:17:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[11:17:14] [Server thread/INFO]: MapSmokeTest lost connection: Disconnected
+[11:17:14] [Server thread/INFO]: MapSmokeTest left the game
+[11:17:14] [Server thread/INFO]: Stopping singleplayer server as player logged out
+[11:17:14] [Server thread/INFO]: Stopping server
+[11:17:14] [Server thread/INFO]: Saving players
+[11:17:14] [Server thread/INFO]: Saving worlds
