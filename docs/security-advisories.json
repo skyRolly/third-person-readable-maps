@@ -15178,11 +15178,12 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "960ba4aec2efee545cdd49450d973fc5599b91d509b83718e43f4901e0413704",
+    "sha256": "73335392ac50dd6311ef9e4d523dbf4a675afd4befe3e497f10852fb9a0d5c66",
     "review_date": "2026-11-21",
     "security_clearance": false,
     "risk_accepted": false,
     "all_in_scope_occurrences_remain_failing": true,
-    "updated_integrated_occurrence_records": 9
+    "updated_integrated_occurrence_records": 9,
+    "targeted_high_occurrences": 23
   }
 }

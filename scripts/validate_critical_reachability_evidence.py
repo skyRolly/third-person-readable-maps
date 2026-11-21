@@ -20,6 +20,10 @@ TARGET_COUNTS = {
     'GHSA-fxph-q3j8-mv87': 2,
     'GHSA-pwqr-wmgm-9rr8': 3,
     'GHSA-mcr4-qmvw-px4g': 8,
+    'GHSA-xqfj-vm6h-2x34': 3,
+    'GHSA-7hfm-57qf-j43q': 3,
+    'GHSA-crv7-7245-f45f': 3,
+    'GHSA-mc84-pj99-q6hh': 3,
 }
 
 
@@ -137,6 +141,49 @@ def validate():
         if item.get('sha256_uncompressed'):
             if hashlib.sha256(gzip.decompress(path.read_bytes())).hexdigest() != item['sha256_uncompressed']:
                 fail('uncompressed evidence hash mismatch: ' + item['path'])
+    commons_path = BASE / 'commons-compress-reachability-2026-11-21.json'
+    commons = load(commons_path)
+    if commons['source_provenance']['finding_index']['sha256'] != raw_hash(ARCHIVE / 'finding-index.json'):
+        fail('Commons Compress reachability record is not bound to the finding index')
+    high_family_path = BASE / 'high-family-inspection.json.gz'
+    if commons['source_provenance']['high_family_inspection']['sha256'] != raw_hash(high_family_path):
+        fail('Commons Compress record has stale high-family evidence')
+    high_family = json.loads(gzip.decompress(high_family_path.read_bytes()))
+    compress = [row for row in high_family['libraries']
+                if 'org.apache.commons:commons-compress:1.8.1' in row.get('coordinates', [])]
+    if len(compress) != 1 or commons['package']['sha256'] != compress[0]['sha256'] or \
+            commons['package']['sha1'] != compress[0]['artifact']['sha1']:
+        fail('Commons Compress artifact identity mismatch')
+    expected_sources = {(row['source_kind'], row['group'], row['source_sha'])
+                        for row in finding_index['records']}
+    build_sources = commons['build_gradle_control_assessment']['sources']
+    actual_build_sources = {(row['source_kind'], row['group'], row['source_sha'])
+                            for row in build_sources}
+    if actual_build_sources != expected_sources or any(
+            not re.fullmatch(r'[0-9a-f]{40}', row.get('build_gradle_blob_sha', ''))
+            for row in build_sources):
+        fail('Commons Compress build.gradle source bindings mismatch')
+    for row in build_sources:
+        declarations = ' '.join(row['dependency_declarations']).lower()
+        if any(token in declarations for token in ('commons-compress', 'netty', 'log4j', 'jackson', 'guava', 'lz4')):
+            fail('source build.gradle declares a focused game-managed library')
+    if set(row['advisory_id'] for row in commons['findings']) != {
+            'GHSA-xqfj-vm6h-2x34', 'GHSA-7hfm-57qf-j43q',
+            'GHSA-crv7-7245-f45f', 'GHSA-mc84-pj99-q6hh'}:
+        fail('Commons Compress focused advisory set mismatch')
+    if any(seen.get(row['advisory_id']) != row for row in commons['findings']):
+        fail('Commons Compress record differs from source-bound dispositions')
+    for finding in commons['findings']:
+        target = finding['vulnerable_api_or_class']
+        for occurrence in finding['occurrences']:
+            for observation in occurrence['client_vulnerable_api_reference_observations']:
+                game = high_family['games'].get(observation['minecraft_version'])
+                if game is None or observation['classes'] != game['literal_reference_matches'].get(target, []):
+                    fail('Commons Compress client reference evidence mismatch for ' + target)
+            if occurrence.get('dependency_owner') != 'Minecraft runtime manifest':
+                fail('Commons Compress dependency owner is not source-bound to Minecraft')
+    if evidence.get('targeted_high_occurrences') != 23:
+        fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):
         fail('component probe report hash mismatch')
 

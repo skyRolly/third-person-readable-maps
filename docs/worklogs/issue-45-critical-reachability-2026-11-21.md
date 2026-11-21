@@ -129,6 +129,40 @@ conditions for imported or user-selected LZ4 region files and the local race
 remain to be verified. All eight findings remain **Further investigation** and
 blocking; no library override was applied.
 
+### Additional High: Apache Commons Compress
+
+The finding index contains four High Commons Compress advisories at version
+1.8.1 in three candidate source groups: GHSA-7hfm-57qf-j43q (7Z excessive
+iteration), GHSA-crv7-7245-f45f (7Z length inconsistency), GHSA-mc84-pj99-q6hh
+(ZIP length inconsistency), and GHSA-xqfj-vm6h-2x34 (TAR length inconsistency,
+CVE-2021-35517). Each affects three source-group occurrences, adding 12
+focused High occurrences to the reachability evidence. Upstream lists 1.21 as
+the first patched Commons Compress version for these affected ranges. The game
+manifest owns 1.8.1; none of the ten legacy `build.gradle` files declares this
+library directly, and no override was made.
+
+Exact-client bytecode inspection found no direct references to `SevenZFile` or
+`ZipArchiveInputStream` for the 7Z and ZIP findings. This is not a
+non-applicability decision: call graphs through other libraries, reflection,
+launcher additions, and arbitrary installed mods remain unexamined.
+
+The TAR finding has a concrete first-party path. In the 1.14.4 and 1.17.1
+Mojang clients, hash-verified and locally decompiled `FileDownload` code reads
+`WorldDownload.downloadLink` from the Realms API, downloads it as a temporary
+`.tar.gz`, then calls `GzipCompressorInputStream` and
+`TarArchiveInputStream.getNextTarEntry()` while extracting a world backup.
+Exact client constant-pool inspection also found this API in 1.15–1.17.1; no
+direct call was found for 1.14.0–1.14.3. The action requires an explicit Realms
+world download, but whether a Realm owner can cause the service-generated TAR
+to contain the malformed length fields needed for CVE-2021-35517 is not
+verified. The archive extraction code also uses entry names to construct paths;
+path containment requires a separate review and is not classified here.
+
+All four advisory dispositions remain **Further investigation**, failing and
+release-blocking. A compatible Minecraft-side update to Commons Compress is
+required if the confirmed TAR path is exploitable; no mod-controlled mitigation
+is available from the inspected source.
+
 ## Credential and integration status
 
 The historical repository-write-capable `GH_TOKEN` exposure remains unresolved.
@@ -152,7 +186,9 @@ remains a separate graphical, hardware-GPU, and multiplayer acceptance gate.
 - Exact-source archive and all 490 finding report hashes/source identities: verified.
 - 13 current source heads and Gradle 9.9.2 Wrapper checks: verified.
 - Component reachability suite: 28/28 expected local-only results on Linux.
-- `python3 scripts/validate_critical_reachability_evidence.py`: passed.
+- `python3 scripts/validate_critical_reachability_evidence.py`: passed after the
+  Commons Compress expansion; it validates all 490 source-bound inventory
+  records and keeps 45 focused Critical/High occurrences blocking.
 - `python3 -m unittest discover -s tests -v`: 185 passed after the evidence validator, ledger, documentation, and workflow changes.
 - `python3 scripts/validate_current_evidence.py`: returned `PENDING` for runtime observations and selected current integrated security inventories. This remains a separate release/readiness blocker.
 - Local workflow lint could not run because this environment's `/usr/bin/go` rejects `go run` (`Go: Unknown option: run`); the repository CI actionlint step will check the workflow on the PR.
