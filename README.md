@@ -26,7 +26,7 @@ does not need the mod. Mod ID: `thirdpersonreadablemaps`.
 ## Build from source
 
 Install **Python 3** and a **Java 25 JDK**, with `JAVA_HOME` pointing to it or its `bin` directory
-on `PATH`. CI pins Eclipse Temurin **25.0.5+8**. The committed Gradle **9.8.2**
+on `PATH`. CI pins Eclipse Temurin **25.0.5+8**. The committed Gradle **9.9.2**
 wrapper downloads and verifies Gradle; no separate Gradle installation is needed.
 Network access is required for Gradle, Minecraft, and Fabric dependencies.
 Fabric Loom **1.19.3** and Fabric Loader **0.20.1** are pinned in `gradle.properties`.
