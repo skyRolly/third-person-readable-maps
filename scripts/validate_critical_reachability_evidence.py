@@ -243,6 +243,101 @@ def validate():
         game = high_family['games'].get(version)
         if game is None or game['literal_reference_matches'].get(tar_api):
             fail('unexpected game-client TAR parser literal for Minecraft ' + version)
+    log4j_path = BASE / 'log4j-chat-input-reachability-2026-11-21.json'
+    log4j = load(log4j_path)
+    if log4j.get('security_clearance') is not False or log4j.get('risk_accepted') is not False or \
+            log4j.get('release_blocking') is not True:
+        fail('Log4j chat-path evidence must remain unresolved and blocking')
+    if set(log4j.get('advisory_ids', [])) != {
+            'GHSA-jfh8-c2jp-5v3q', 'GHSA-7rjr-3q55-vv33', 'GHSA-fxph-q3j8-mv87'}:
+        fail('Log4j chat-path advisory scope mismatch')
+    if log4j['source_provenance']['finding_index']['sha256'] != raw_hash(ARCHIVE / 'finding-index.json') or \
+            log4j['source_provenance']['high_family_inspection']['sha256'] != raw_hash(high_family_path):
+        fail('Log4j chat-path observation is not bound to exact source/artifact indexes')
+    chat_probe_path = BASE / 'log4j-chat-parameter-probes-2026-11-21.json'
+    chat_probe = load(chat_probe_path)
+    if log4j['source_provenance']['new_parameterized_chat_probe_report']['sha256'] != raw_hash(chat_probe_path) or \
+            chat_probe.get('passed') is not True or len(chat_probe.get('cases', [])) != 34:
+        fail('parameterized Log4j chat probe report is missing or incomplete')
+    expected_chat_cases = {
+        '2.8.1-launcher-chat-jndi': 0,
+        '2.8.1-launcher-chat-jndi-core-first': 0,
+        '2.8.1-1.14.4-embedded.xml-chat-jndi': 0,
+        '2.8.1-1.14.4-embedded.xml-chat-jndi-core-first': 2,
+        '2.14.1-launcher-chat-jndi': 0,
+        '2.14.1-1.18.1-embedded.xml-chat-jndi': 2,
+    }
+    actual_chat_cases = {row['name']: row for row in chat_probe['cases'] if 'chat-jndi' in row['name']}
+    if set(actual_chat_cases) != set(expected_chat_cases):
+        fail('parameterized chat JNDI probe case set mismatch')
+    for name, calls in expected_chat_cases.items():
+        row = actual_chat_cases[name]
+        if row.get('passed') is not True or row.get('observed', {}).get('NO_NETWORK_CONTEXT_CALLS') != calls:
+            fail('parameterized chat JNDI probe result mismatch for ' + name)
+    if log4j.get('parameterized_chat_probe', {}).get('all_expected_results_passed') is not True:
+        fail('Log4j chat-path summary does not retain its blocking local probe results')
+    expected_log4j_groups = {(row['group'], row['source_sha']) for row in finding_index['records']
+                             if row['advisory'] == 'GHSA-jfh8-c2jp-5v3q' and row['source_kind'] == 'candidate'}
+    actual_log4j_groups = {(row['group'], row['source_sha']) for row in log4j['source_group_bindings']}
+    if actual_log4j_groups != expected_log4j_groups:
+        fail('Log4j chat-path source group/SHA coverage mismatch')
+    for row in log4j['source_group_bindings']:
+        binding = indexed.get(('GHSA-jfh8-c2jp-5v3q', row['group'], 'candidate', row['purl']))
+        if binding is None or row['source_sha'] != binding['source_sha'] or \
+                row['package_version'] != row['purl'].rsplit('@', 1)[1] or \
+                row['dependency_artifact_sha256'] != next(
+                    occurrence['dependency_artifact_sha256']
+                    for occurrence in seen['GHSA-jfh8-c2jp-5v3q']['occurrences']
+                    if occurrence['group'] == row['group']):
+            fail('Log4j chat-path dependency owner/version evidence mismatch')
+        expected_advisories = sorted(record['advisory'] for record in finding_index['records']
+                                     if record['source_kind'] == 'candidate' and
+                                     record['group'] == row['group'] and record['source_sha'] == row['source_sha'] and
+                                     record['advisory'] in ('GHSA-jfh8-c2jp-5v3q',
+                                                            'GHSA-7rjr-3q55-vv33',
+                                                            'GHSA-fxph-q3j8-mv87'))
+        if row['advisory_occurrences'] != expected_advisories:
+            fail('Log4j chat-path advisory binding mismatch for ' + row['group'])
+    for sample in log4j['exact_client_code_path_samples']:
+        version = sample['minecraft_version']
+        game = high_family['games'].get(version)
+        if game is None or sample['client_sha256'] != game['client_sha256'] or \
+                sample['version_metadata_sha1'] != game['metadata_sha1'] or \
+                sample['official_version_metadata_logging'] != game['logging']['client'] or \
+                sample['embedded_log4j2_xml_sha256'] != game['embedded_log4j2_sha256']:
+            fail('Log4j client/version metadata binding mismatch for Minecraft ' + version)
+        group = sample['source_group']
+        source_row = next((row for row in log4j['source_group_bindings'] if row['group'] == group), None)
+        if source_row is None or sample['source_sha'] != source_row['source_sha'] or \
+                sample['source_kind'] != source_row['source_kind']:
+            fail('Log4j client observation source binding mismatch for Minecraft ' + version)
+        coordinate = sample['log4j_core_coordinate']
+        library = [row for row in high_family['libraries']
+                   if coordinate in row.get('coordinates', []) and version in row.get('versions', [])]
+        if len(library) != 1 or sample['log4j_core_artifact'] != library[0]['artifact'] or \
+                sample['log4j_core_sha256'] != library[0]['sha256']:
+            fail('Log4j Core manifest artifact binding mismatch for Minecraft ' + version)
+        patchy = [row for row in high_family['libraries']
+                  if sample['patchy_coordinate'] in row.get('coordinates', []) and
+                  version in row.get('versions', [])]
+        if len(patchy) != 1 or sample['patchy_artifact'] != patchy[0]['artifact'] or \
+                sample['patchy_sha256'] != patchy[0]['sha256'] or \
+                sample['manifest_runtime_library_order'] != game['relevant_library_order']:
+            fail('Log4j Patchy/classpath evidence mismatch for Minecraft ' + version)
+        if {row['role'] for row in sample['class_observations']} != {'packet', 'listener', 'chat_component'} or \
+                any(not DIGEST.fullmatch(row.get('class_sha256', '')) for row in sample['class_observations']):
+            fail('Log4j chat caller class hashes are incomplete for Minecraft ' + version)
+    for advisory in ('GHSA-jfh8-c2jp-5v3q', 'GHSA-7rjr-3q55-vv33', 'GHSA-fxph-q3j8-mv87'):
+        finding = seen[advisory]
+        references = finding.get('supplemental_source_bound_evidence', [])
+        if references != [{'path': log4j_path.relative_to(ROOT).as_posix(), 'sha256': raw_hash(log4j_path)}]:
+            fail('Log4j finding lacks current supplemental chat-path evidence for ' + advisory)
+    run_reference = evidence.get('log4j_chat_input_probe_run', {})
+    if run_reference.get('path') != chat_probe_path.relative_to(ROOT).as_posix() or \
+            run_reference.get('sha256') != raw_hash(chat_probe_path) or \
+            run_reference.get('observations') != 34 or run_reference.get('parameterized_chat_cases') != 6 or \
+            run_reference.get('all_passed') is not True or run_reference.get('security_clearance') is not False:
+        fail('source-bound Log4j chat probe reference mismatch')
     if evidence.get('targeted_high_occurrences') != 23:
         fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):

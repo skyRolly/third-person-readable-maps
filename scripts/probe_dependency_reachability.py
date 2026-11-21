@@ -202,8 +202,12 @@ def run_experiments(cache, java_home, download):
                 expected_calls = 2 if core == '2.14.1' and not literal else 0
                 execute(prefix + '-jndi', 'JndiLookupProbe', normal,
                         {'NO_NETWORK_CONTEXT_CALLS': expected_calls}, configuration)
+                execute(prefix + '-chat-jndi', 'ChatJndiProbe', normal,
+                        {'NO_NETWORK_CONTEXT_CALLS': expected_calls}, configuration)
                 if core == '2.8.1':
                     execute(prefix + '-core-first', 'JndiLookupProbe', list(reversed(normal)),
+                            {'NO_NETWORK_CONTEXT_CALLS': 0 if literal else 2}, configuration)
+                    execute(prefix + '-chat-jndi-core-first', 'ChatJndiProbe', list(reversed(normal)),
                             {'NO_NETWORK_CONTEXT_CALLS': 0 if literal else 2}, configuration)
         context_coordinates = ['com.mojang:patchy:2.1.6', 'org.apache.logging.log4j:log4j-api:2.14.1',
                                'org.apache.logging.log4j:log4j-core:2.14.1']

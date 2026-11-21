@@ -1,0 +1,1270 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-21T23:23:48.204958+00:00",
+  "status": "complete",
+  "security_clearance": false,
+  "purpose": "Component-level reachability experiments with local synthetic inputs. Advisory gates remain separate.",
+  "java_version": "openjdk version \"21.0.12.1\" 2026-08-18\nOpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)",
+  "specification": {
+    "schema": 1,
+    "minecraft_metadata": {
+      "1.14.4": {
+        "url": "https://piston-meta.mojang.com/v1/packages/be146d5f66a3627ed0a87c234c4d8dde8ab35098/1.14.4.json",
+        "sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098"
+      },
+      "1.18.1": {
+        "url": "https://piston-meta.mojang.com/v1/packages/2acae2f1f84120846115c6e24810791cafa791d1/1.18.1.json",
+        "sha1": "2acae2f1f84120846115c6e24810791cafa791d1"
+      },
+      "1.21.11": {
+        "url": "https://piston-meta.mojang.com/v1/packages/a969d96978af7b52dba8df44e177f48ec4ebe0d8/1.21.11.json",
+        "sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8"
+      },
+      "26.2": {
+        "url": "https://piston-meta.mojang.com/v1/packages/cf103b8fab4900562221bf7f23b72725dd9a914a/26.2.json",
+        "sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a"
+      },
+      "1.21.9": {
+        "url": "https://piston-meta.mojang.com/v1/packages/61826f3fa6b54439cac19731be4305bb2f388c78/1.21.9.json",
+        "sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      }
+    },
+    "artifacts": {
+      "com.mojang:patchy:1.3.9": {
+        "url": "https://libraries.minecraft.net/com/mojang/patchy/1.3.9/patchy-1.3.9.jar",
+        "sha1": "eb8bb7b66fa0e2152b1b40b3856e82f7619439ee",
+        "size": 23581,
+        "sha256": "79f5a9d8c788489d3375cb77cc826a905e261e50d23f31b94c2d5f2b92ad3dc6",
+        "minecraft": "1.14.4"
+      },
+      "org.apache.logging.log4j:log4j-api:2.8.1": {
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar",
+        "sha1": "e801d13612e22cad62a3f4f3fe7fdbe6334a8e72",
+        "size": 228859,
+        "sha256": "1205ab764b1326f7d96d99baa4a4e12614599bf3d735790947748ee116511fa2",
+        "minecraft": "1.14.4"
+      },
+      "org.apache.logging.log4j:log4j-core:2.8.1": {
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar",
+        "sha1": "4ac28ff2f1ddf05dae3043a190451e8c46b73c31",
+        "size": 1402925,
+        "sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+        "minecraft": "1.14.4"
+      },
+      "com.mojang:patchy:2.1.6": {
+        "url": "https://libraries.minecraft.net/com/mojang/patchy/2.1.6/patchy-2.1.6.jar",
+        "sha1": "ce112c16c6275fdfff2d30208533ec906a191f71",
+        "size": 10090,
+        "sha256": "302c68c244f0f8c13e186f9201030b21fc99c302f30e41d4ed8e8d31276faf1f",
+        "minecraft": "1.18.1"
+      },
+      "org.apache.logging.log4j:log4j-api:2.14.1": {
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+        "sha1": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+        "size": 300365,
+        "sha256": "8caf58db006c609949a0068110395a33067a2bad707c3da35e959c0473f9a916",
+        "minecraft": "1.18.1"
+      },
+      "org.apache.logging.log4j:log4j-core:2.14.1": {
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+        "sha1": "9141212b8507ab50a45525b545b39d224614528b",
+        "size": 1745700,
+        "sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+        "minecraft": "1.18.1"
+      },
+      "io.netty:netty-buffer:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.2.7.Final/netty-buffer-4.2.7.Final.jar",
+        "sha1": "5555ff561643bf2f8430fb57c24403c0efe15994",
+        "size": 373323,
+        "sha256": "b81613c8ed22b1cc39eccf2a28bd0c1d4561fb2e5e542061617ef4ce1d228bf5",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-codec-base:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-base/4.2.7.Final/netty-codec-base-4.2.7.Final.jar",
+        "sha1": "915e381ebabcf115f1c7ff7032d55c48afb50210",
+        "size": 152980,
+        "sha256": "6360415b7c87160afcde5e7d4946c35539b9f043e8166c91a7fff95cc6067d9f",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-codec-compression:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+        "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+        "size": 182886,
+        "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-codec-http:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar",
+        "sha1": "b734c108854099c421fd94d92d9f865e4d4da853",
+        "size": 683327,
+        "sha256": "2984dd38420a61c4dd68fcacc51ffc528eb46f73f7795cdafdb3a4d6fcb76862",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-common:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-common/4.2.7.Final/netty-common-4.2.7.Final.jar",
+        "sha1": "11aa30df26af4fca3239ac1917f303a280f301e1",
+        "size": 789111,
+        "sha256": "2345bc0ed5843fa57aa49eba67529485c3a1d420fcf0429324c8220c7a80e9a6",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-handler:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+        "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "size": 581349,
+        "sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-resolver:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.2.7.Final/netty-resolver-4.2.7.Final.jar",
+        "sha1": "5f3e5ef8de03992cd4fb46960dc0085ec1a12a12",
+        "size": 38454,
+        "sha256": "7e4d569867e6c08437fb21a220ea01c294b0e38f01149b683c895a1bcd928438",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-transport:4.2.7.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.2.7.Final/netty-transport-4.2.7.Final.jar",
+        "sha1": "83ea548981d0d8c4a98027cc1a6f9624f902e142",
+        "size": 562559,
+        "sha256": "aadc6fb05c14fb789368ca3f854721549c72f6c0d81798bbccf9de1bb716892b",
+        "minecraft": "1.21.11"
+      },
+      "io.netty:netty-buffer:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.2.15.Final/netty-buffer-4.2.15.Final.jar",
+        "sha1": "2beb620803bf871cda2dd5d46b8f831e8015dd34",
+        "size": 371912,
+        "sha256": "1361fd9c9ba85b9831cf54a1b2e45ddc3ce34a768931726c099d3f5ef0efe4a3",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-codec-base:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-base/4.2.15.Final/netty-codec-base-4.2.15.Final.jar",
+        "sha1": "e97149fdd5fb04858efa90e314651c8d700dc68b",
+        "size": 152914,
+        "sha256": "2c6d39d7270628b8cfc3166fbd7a93d595958e59c461bc32ddb383c8c91bf811",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-codec-compression:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar",
+        "sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+        "size": 183091,
+        "sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-codec-http:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.2.15.Final/netty-codec-http-4.2.15.Final.jar",
+        "sha1": "e611826aa054371bb9a17f27bdb05755a4cac5f0",
+        "size": 674986,
+        "sha256": "76ae57e87af37b3c4107140f50b9244b1456163a6a225510838f7c5a4458ec22",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-common:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-common/4.2.15.Final/netty-common-4.2.15.Final.jar",
+        "sha1": "7222492c1af9c2d4d78d521eea340a619e242fda",
+        "size": 818260,
+        "sha256": "78206aa7f6d197caa926291408c01889b6b910ca0f74017d3fcbdaccf9562959",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-handler:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.15.Final/netty-handler-4.2.15.Final.jar",
+        "sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+        "size": 586442,
+        "sha256": "99b59e4bea72220d2aed52df8baf37d97431b06ade0b135226cdf73168975eab",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-resolver:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.2.15.Final/netty-resolver-4.2.15.Final.jar",
+        "sha1": "b961a16d379b508b473e064ba06842bba280f4e3",
+        "size": 32977,
+        "sha256": "24318497f2a3a645964fed418f48879ba11365cab8e1f8d66c47fa7da15ef19a",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-transport:4.2.15.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.2.15.Final/netty-transport-4.2.15.Final.jar",
+        "sha1": "a000c3a6196ee40207b73ac619dcb339409dd62f",
+        "size": 549606,
+        "sha256": "9fb671e96651066cf1a28dad3f1382c7c99df5b8326d4a214d9a375b311f8dc1",
+        "minecraft": "26.2"
+      },
+      "io.netty:netty-buffer:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-buffer/4.1.118.Final/netty-buffer-4.1.118.Final.jar",
+        "sha1": "7022990af1e0d449f9d5322035899745e19735c5",
+        "size": 339045,
+        "sha256": "0eea4e8666a9636a28722661d8ba5fa8564477e75fec6dd2ff3e324e361f8b3c",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-codec:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+        "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+        "size": 355199,
+        "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-codec-http:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.1.118.Final/netty-codec-http-4.1.118.Final.jar",
+        "sha1": "eda08a71294afe78c779b85fd696bc13491507a8",
+        "size": 674362,
+        "sha256": "09822d785e9a794838031ddd5346cf419b30c036a981c2e277a062bea884174b",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-common:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-common/4.1.118.Final/netty-common-4.1.118.Final.jar",
+        "sha1": "4bb0f9899146484fa89f7b9bc27389d5b8e2ecde",
+        "size": 719225,
+        "sha256": "65cce901ecf0f9d6591cc7750772614ab401a84415dc9aec9da4d046f0f9a77c",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-handler:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size": 580162,
+        "sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-resolver:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-resolver/4.1.118.Final/netty-resolver-4.1.118.Final.jar",
+        "sha1": "28c378c19c1779eca1104b400452627f3ebc4aea",
+        "size": 37842,
+        "sha256": "3170c225972c18b6850d28add60db15bb28d83c4e3d5b686ca220e0bd7273c8a",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-transport:4.1.118.Final": {
+        "url": "https://libraries.minecraft.net/io/netty/netty-transport/4.1.118.Final/netty-transport-4.1.118.Final.jar",
+        "sha1": "5a27232e5d08218722d94ca14f0b1b4576e7711c",
+        "size": 521428,
+        "sha256": "ab3751e717daef9c8d91e4d74728a48730bd8530b72e2466b222b2ea3fb07db9",
+        "verified_against": "Mojang 1.21.9 version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "io.netty:netty-buffer:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.137.Final/netty-buffer-4.1.137.Final.jar",
+        "sha1": "e048dbf1e7e5077b36cf7c1a6417f2ddfbcc59f6",
+        "size": 365383,
+        "sha256": "f474b14c7734f15e0540394cb6f39d67777b7581a42919e4ac89d253d4efd929",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.137.Final/netty-buffer-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-codec:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.137.Final/netty-codec-4.1.137.Final.jar",
+        "sha1": "8f678378e027d567b270afd8552e68e4b460c4dc",
+        "size": 360116,
+        "sha256": "9987b6a660b0a6b1f0d791485dae33180b3d1c63687c006fe6d3fd025e9e3798",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.137.Final/netty-codec-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-codec-http:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.137.Final/netty-codec-http-4.1.137.Final.jar",
+        "sha1": "a0525968e918c2ca2f6e7f3b66c35de1542a09a5",
+        "size": 692573,
+        "sha256": "0535bb5a736472bef5c948d15eb273c4ab9f796656fc7c5d6b982ad92bddbd49",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.137.Final/netty-codec-http-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-common:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.137.Final/netty-common-4.1.137.Final.jar",
+        "sha1": "4ec7a33ef9a11da3f5a2cd5fa8e1d41732dd1968",
+        "size": 740314,
+        "sha256": "d31926b01adcc07af86f5e27b81b6d6c115df17d366e835d1fc3f5a1924e7e52",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.137.Final/netty-common-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-handler:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.137.Final/netty-handler-4.1.137.Final.jar",
+        "sha1": "ac2cfd0501b38d1749cff5f40c6b7bc4ddf6d477",
+        "size": 588804,
+        "sha256": "d0e4c6ee4779f59f6ab2fb5d388e4f57147c82270164b37945764bb9bda96a44",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.137.Final/netty-handler-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-resolver:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.137.Final/netty-resolver-4.1.137.Final.jar",
+        "sha1": "a34345634d7e21946257d4afd2d0c44ff2b15b6b",
+        "size": 37907,
+        "sha256": "b4cf2aeedd9fc7c8c439bbfe574f63cfe5b83392e88bbc07ca0e8424b7cff955",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.137.Final/netty-resolver-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "io.netty:netty-transport:4.1.137.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.137.Final/netty-transport-4.1.137.Final.jar",
+        "sha1": "8a4a3d0e953076c63c15eac6d0d1a5f5856cae16",
+        "size": 521982,
+        "sha256": "6251adc2a2921572382732a2db188d4f4f2251fd6ebb49c5d44bbf33d6bfb1a7",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.137.Final/netty-transport-4.1.137.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar for upstream fixed release"
+      },
+      "org.lz4:lz4-java:1.8.0": {
+        "url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+        "sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+        "size": 682804,
+        "sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "minecraft": "1.21.9",
+        "verified_against": "Mojang version manifest",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+      },
+      "at.yawk.lz4:lz4-java:1.8.1": {
+        "url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar",
+        "sha1": "1f30a180ee04ccd53339a716aec13cae60a013b5",
+        "size": 683071,
+        "sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0",
+        "minecraft": "1.21.11",
+        "verified_against": "Mojang version manifest",
+        "minecraft_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8"
+      },
+      "at.yawk.lz4:lz4-java:1.10.1": {
+        "url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar",
+        "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+        "size": 910232,
+        "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+        "minecraft": "26.2",
+        "verified_against": "Mojang version manifest",
+        "minecraft_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a"
+      },
+      "at.yawk.lz4:lz4-java:1.11.4": {
+        "url": "https://repo.maven.apache.org/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar",
+        "sha1": "a27ccbac6c886771d3db36f91b144950bdb5082a",
+        "size": 899910,
+        "sha256": "58c8e0b813960d2a248e050c353baea73139b48a2ffc55382d42c69707e17325",
+        "checksum_url": "https://repo.maven.apache.org/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; advisory-patched release"
+      },
+      "io.netty:netty-buffer:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.2.17.Final/netty-buffer-4.2.17.Final.jar",
+        "sha1": "daba397ff4ce7b22f6ac1e1f419e6e7754c135be",
+        "size": 378264,
+        "sha256": "0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.2.17.Final/netty-buffer-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-codec-base:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-base/4.2.17.Final/netty-codec-base-4.2.17.Final.jar",
+        "sha1": "7034de26b574322f365c790b9d6eb0634edab854",
+        "size": 155357,
+        "sha256": "3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-base/4.2.17.Final/netty-codec-base-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-codec-compression:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-compression/4.2.17.Final/netty-codec-compression-4.2.17.Final.jar",
+        "sha1": "ac6829387c962174e2efbcc94e833c9524ca1459",
+        "size": 237078,
+        "sha256": "425b287a1f36986a5c8edd76379a49decdf99d284f3454f3fa607a073bfb2c18",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-compression/4.2.17.Final/netty-codec-compression-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-codec-http:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.2.17.Final/netty-codec-http-4.2.17.Final.jar",
+        "sha1": "67610763a8f351161a9bad705a83e9a96a49e92f",
+        "size": 679207,
+        "sha256": "a5bde91ac82ab90579df6559c0bd7ea6ae37460e3f18116ab4122194283b3669",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.2.17.Final/netty-codec-http-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-common:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-common/4.2.17.Final/netty-common-4.2.17.Final.jar",
+        "sha1": "57fa9e9af0bf70530e2fe1c8c8d6138f9167cf7a",
+        "size": 820948,
+        "sha256": "502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-common/4.2.17.Final/netty-common-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-handler:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.2.17.Final/netty-handler-4.2.17.Final.jar",
+        "sha1": "ed53dae90d09306b42bc886fa292510abdf5c5dc",
+        "size": 588756,
+        "sha256": "4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.2.17.Final/netty-handler-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-resolver:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.2.17.Final/netty-resolver-4.2.17.Final.jar",
+        "sha1": "6cba9d93bb06297cef0b7ac34e3873b6a25b4e3b",
+        "size": 32977,
+        "sha256": "7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.2.17.Final/netty-resolver-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      },
+      "io.netty:netty-transport:4.2.17.Final": {
+        "url": "https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.2.17.Final/netty-transport-4.2.17.Final.jar",
+        "sha1": "34335dc106caa0aefc242900d38ade65c8de64f4",
+        "size": 549857,
+        "sha256": "d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc",
+        "checksum_url": "https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.2.17.Final/netty-transport-4.2.17.Final.jar.sha256",
+        "verified_against": "Maven Central SHA-256 sidecar; upstream Netty SNI fix"
+      }
+    },
+    "configurations": {
+      "synthetic-context.xml": {
+        "path": "tests/fixtures/critical_reachability/synthetic-context.xml",
+        "sha256": "b82d16d1df156f1165ebc89d4d28812791c991deb0d547264fa607723ea5f8b8"
+      },
+      "1.18.1-embedded.xml": {
+        "path": "tests/fixtures/critical_reachability/1.18.1-embedded.xml",
+        "sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9"
+      },
+      "1.14.4-embedded.xml": {
+        "path": "tests/fixtures/critical_reachability/1.14.4-embedded.xml",
+        "sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a"
+      },
+      "launcher": {
+        "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/client-1.12.xml",
+        "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4"
+      }
+    }
+  },
+  "runner_sha256": "b940ad70eabe7a61a7e30158e9c2cf7eb2313cd30866f5d4e172f1eb405d3dff",
+  "harness_sha256": {
+    "tests/fixtures/critical_reachability/ChatJndiProbe.java": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb",
+    "tests/fixtures/critical_reachability/EnvironmentProbe.java": "05f9da5eba88a32a9881136d36bad910424261405f3927b74ac9879cae6671d0",
+    "tests/fixtures/critical_reachability/JndiLookupProbe.java": "25f064c9c5b36107336fb3b2ca7822962c8d88df26229406bc3e15ca1f25cf2b",
+    "tests/fixtures/critical_reachability/LogLookupProbe.java": "0b95e2ab7f157e0ed86471119459fb7f28cfcd1d9516053507a733a146700c4a",
+    "tests/fixtures/critical_reachability/Lz4NativeProbe.java": "9befff023ac2b8dfb89f5a9e262032b944b1753cf90cdc686d8430a56e7f392a",
+    "tests/fixtures/critical_reachability/NettyChunkProbe.java": "571319631a6139ce70b788eae27faa05b3283f0e63389368f4ba19dc359bf675",
+    "tests/fixtures/critical_reachability/NettySniProbe.java": "6da537a3652f43fc5a5b59087bf68769216a0bcbd0505c99895687818faab877",
+    "tests/fixtures/critical_reachability/NoNetworkContextFactory.java": "2253c050700882add9a04adc8b47685ac6d6683d63706eeb3c5f2489e7420b57",
+    "tests/fixtures/critical_reachability/ThreadContextProbe.java": "b8cd9b857cbb4187aa9bacde8fd9e6055b5215db6d452b8c4aa0622447760021"
+  },
+  "cases": [
+    {
+      "name": "credential-environment",
+      "main": "EnvironmentProbe",
+      "coordinates_in_order": [],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "CREDENTIAL_NAMES_PRESENT": 0
+      },
+      "observed": {
+        "CREDENTIAL_NAMES_PRESENT": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "CREDENTIAL_NAMES_PRESENT=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-launcher-message",
+      "main": "LogLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "expanded_stdout": false,
+        "literal_stdout": true,
+        "expanded_file": false,
+        "literal_file": true
+      },
+      "observed": {
+        "expanded_stdout": false,
+        "literal_stdout": true,
+        "expanded_file": false,
+        "literal_file": true
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n  <log4j:Event logger=\"issue45.lookup.probe\" timestamp=\"1795303418363\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[BEFORE_${sys:issue45.safe.marker}_AFTER]]></log4j:Message>\n  </log4j:Event>\nPROBE_FINISHED\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-launcher-jndi",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n  <log4j:Event logger=\"issue45.jndi.probe\" timestamp=\"1795303418734\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-launcher-chat-jndi",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n  <log4j:Event logger=\"issue45.chat.probe\" timestamp=\"1795303419113\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[[CHAT] BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-launcher-core-first",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "org.apache.logging.log4j:log4j-core:2.8.1",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "com.mojang:patchy:1.3.9"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/4ac28ff2f1ddf05dae3043a190451e8c46b73c31\n  <log4j:Event logger=\"issue45.jndi.probe\" timestamp=\"1795303419454\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-launcher-chat-jndi-core-first",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "org.apache.logging.log4j:log4j-core:2.8.1",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "com.mojang:patchy:1.3.9"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/4ac28ff2f1ddf05dae3043a190451e8c46b73c31\n  <log4j:Event logger=\"issue45.chat.probe\" timestamp=\"1795303419811\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[[CHAT] BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-1.14.4-embedded.xml-message",
+      "main": "LogLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "1.14.4-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "expanded_stdout": true,
+        "literal_stdout": false,
+        "expanded_file": true,
+        "literal_file": false
+      },
+      "observed": {
+        "expanded_stdout": true,
+        "literal_stdout": false,
+        "expanded_file": true,
+        "literal_file": false
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n2026-11-21 23:23:40,041 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:40,108 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n[23:23:40] [main/INFO]: BEFORE_LOCAL_LOOKUP_EXPANDED_AFTER\nPROBE_FINISHED\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-1.14.4-embedded.xml-jndi",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "1.14.4-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n2026-11-21 23:23:40,408 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:40,471 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n[23:23:40] [main/INFO]: BEFORE_${jndi:local}_AFTER\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-1.14.4-embedded.xml-chat-jndi",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:1.3.9",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "org.apache.logging.log4j:log4j-core:2.8.1"
+      ],
+      "configuration": "1.14.4-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/eb8bb7b66fa0e2152b1b40b3856e82f7619439ee\n2026-11-21 23:23:40,815 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:40,874 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n[23:23:40] [main/INFO]: [CHAT] BEFORE_${jndi:local}_AFTER\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-1.14.4-embedded.xml-core-first",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "org.apache.logging.log4j:log4j-core:2.8.1",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "com.mojang:patchy:1.3.9"
+      ],
+      "configuration": "1.14.4-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/4ac28ff2f1ddf05dae3043a190451e8c46b73c31\n2026-11-21 23:23:41,150 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:41,208 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n2026-11-21 23:23:41,316 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:137)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:132)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:112)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:1988)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1960)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1297)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:41,317 main ERROR An exception occurred processing Appender SysOut java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@33990a0c] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:114)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:1988)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1960)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1297)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:41,318 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:137)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:132)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:112)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:218)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:1988)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1960)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1297)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:41,319 main ERROR An exception occurred processing Appender File java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@33990a0c] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:114)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:218)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:1988)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1960)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1297)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\nNO_NETWORK_CONTEXT_CALLS=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.8.1-1.14.4-embedded.xml-chat-jndi-core-first",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "org.apache.logging.log4j:log4j-core:2.8.1",
+        "org.apache.logging.log4j:log4j-api:2.8.1",
+        "com.mojang:patchy:1.3.9"
+      ],
+      "configuration": "1.14.4-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/4ac28ff2f1ddf05dae3043a190451e8c46b73c31\n2026-11-21 23:23:41,533 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:41,575 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n2026-11-21 23:23:41,660 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:137)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:132)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:112)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2005)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1876)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1421)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:41,661 main ERROR An exception occurred processing Appender SysOut java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@37654521] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:114)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2005)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1876)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1421)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:41,662 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:137)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:132)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:112)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:218)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2005)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1876)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1421)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:41,663 main ERROR An exception occurred processing Appender File java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@37654521] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:114)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:53)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:183)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1054)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:976)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:872)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:427)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:127)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:333)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:232)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:217)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:57)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:177)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:170)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:161)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:218)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:448)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:433)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:417)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:403)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:63)\n\tat org.apache.logging.log4j.core.Logger.logMessage(Logger.java:146)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2091)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2005)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1876)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1421)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\nNO_NETWORK_CONTEXT_CALLS=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-launcher-message",
+      "main": "LogLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "expanded_stdout": false,
+        "literal_stdout": true,
+        "expanded_file": false,
+        "literal_file": true
+      },
+      "observed": {
+        "expanded_stdout": false,
+        "literal_stdout": true,
+        "expanded_file": false,
+        "literal_file": true
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n  <log4j:Event logger=\"issue45.lookup.probe\" timestamp=\"1795303422106\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[BEFORE_${sys:issue45.safe.marker}_AFTER]]></log4j:Message>\n  </log4j:Event>\nPROBE_FINISHED\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-launcher-jndi",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n  <log4j:Event logger=\"issue45.jndi.probe\" timestamp=\"1795303422533\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-launcher-chat-jndi",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n  <log4j:Event logger=\"issue45.chat.probe\" timestamp=\"1795303423046\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[[CHAT] BEFORE_${jndi:local}_AFTER]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-1.18.1-embedded.xml-message",
+      "main": "LogLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "1.18.1-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "expanded_stdout": true,
+        "literal_stdout": false,
+        "expanded_file": true,
+        "literal_file": false
+      },
+      "observed": {
+        "expanded_stdout": true,
+        "literal_stdout": false,
+        "expanded_file": true,
+        "literal_file": false
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n2026-11-21 23:23:43,314 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:43,373 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n[23:23:43] [main/INFO]: BEFORE_LOCAL_LOOKUP_EXPANDED_AFTER\nPROBE_FINISHED\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-1.18.1-embedded.xml-jndi",
+      "main": "JndiLookupProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "1.18.1-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n2026-11-21 23:23:43,701 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:43,762 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n2026-11-21 23:23:43,844 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:43,845 main ERROR An exception occurred processing Appender SysOut java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6c1a5b54] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:43,847 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:251)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\n2026-11-21 23:23:43,847 main ERROR An exception occurred processing Appender File java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6c1a5b54] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:251)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat JndiLookupProbe.main(JndiLookupProbe.java:10)\n\nNO_NETWORK_CONTEXT_CALLS=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "2.14.1-1.18.1-embedded.xml-chat-jndi",
+      "main": "ChatJndiProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "1.18.1-embedded.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 2
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "LOOKUP_CLASS_SOURCE=file:<artifact-cache>/9141212b8507ab50a45525b545b39d224614528b\n2026-11-21 23:23:44,115 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND\n2026-11-21 23:23:44,185 main ERROR Unable to locate appender \"ServerGuiConsole\" for logger config \"root\"\n2026-11-21 23:23:44,310 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2034)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1899)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1444)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:44,312 main ERROR An exception occurred processing Appender SysOut java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6c1a5b54] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2034)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1899)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1444)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:44,313 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:251)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2034)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1899)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1444)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\n2026-11-21 23:23:44,315 main ERROR An exception occurred processing Appender File java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6c1a5b54] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.MessagePatternConverter.format(MessagePatternConverter.java:132)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender.append(RollingRandomAccessFileAppender.java:251)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2034)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1899)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1444)\n\tat ChatJndiProbe.main(ChatJndiProbe.java:13)\n\nNO_NETWORK_CONTEXT_CALLS=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "context-launcher-False",
+      "main": "ThreadContextProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "  <log4j:Event logger=\"issue45.context.probe\" timestamp=\"1795303424784\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[safe message]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "context-launcher-True",
+      "main": "ThreadContextProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "launcher",
+      "formatMsgNoLookups": true,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "  <log4j:Event logger=\"issue45.context.probe\" timestamp=\"1795303425231\" level=\"INFO\" thread=\"main\">\n    <log4j:Message><![CDATA[safe message]]></log4j:Message>\n  </log4j:Event>\nNO_NETWORK_CONTEXT_CALLS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "context-synthetic-context.xml-False",
+      "main": "ThreadContextProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "synthetic-context.xml",
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 1
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "2026-11-21 23:23:45,744 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1042)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.LiteralPatternConverter.format(LiteralPatternConverter.java:60)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat ThreadContextProbe.main(ThreadContextProbe.java:10)\n\n2026-11-21 23:23:45,750 main ERROR An exception occurred processing Appender C java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6d4e5011] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1042)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.LiteralPatternConverter.format(LiteralPatternConverter.java:60)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat ThreadContextProbe.main(ThreadContextProbe.java:10)\n\nNO_NETWORK_CONTEXT_CALLS=1\n",
+      "stderr": ""
+    },
+    {
+      "name": "context-synthetic-context.xml-True",
+      "main": "ThreadContextProbe",
+      "coordinates_in_order": [
+        "com.mojang:patchy:2.1.6",
+        "org.apache.logging.log4j:log4j-api:2.14.1",
+        "org.apache.logging.log4j:log4j-core:2.14.1"
+      ],
+      "configuration": "synthetic-context.xml",
+      "formatMsgNoLookups": true,
+      "expected": {
+        "NO_NETWORK_CONTEXT_CALLS": 1
+      },
+      "observed": {
+        "NO_NETWORK_CONTEXT_CALLS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "2026-11-21 23:23:46,220 main ERROR Error creating JNDI InitialContext. javax.naming.NamingException: Synthetic context refuses all lookups; no network provider used\n\tat NoNetworkContextFactory.getInitialContext(NoNetworkContextFactory.java:9)\n\tat java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:520)\n\tat java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)\n\tat java.naming/javax.naming.InitialContext.init(InitialContext.java:236)\n\tat java.naming/javax.naming.InitialContext.<init>(InitialContext.java:208)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:180)\n\tat org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory.createManager(JndiManager.java:175)\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:113)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1042)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.LiteralPatternConverter.format(LiteralPatternConverter.java:60)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat ThreadContextProbe.main(ThreadContextProbe.java:10)\n\n2026-11-21 23:23:46,228 main ERROR An exception occurred processing Appender C java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.net.JndiManager$JndiManagerFactory@6d4e5011] unable to create manager for [org.apache.logging.log4j.core.net.JndiManager] with data [null]\n\tat org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:115)\n\tat org.apache.logging.log4j.core.net.JndiManager.getDefaultManager(JndiManager.java:53)\n\tat org.apache.logging.log4j.core.lookup.JndiLookup.lookup(JndiLookup.java:55)\n\tat org.apache.logging.log4j.core.lookup.Interpolator.lookup(Interpolator.java:221)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.resolveVariable(StrSubstitutor.java:1110)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1033)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:1042)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.substitute(StrSubstitutor.java:912)\n\tat org.apache.logging.log4j.core.lookup.StrSubstitutor.replace(StrSubstitutor.java:467)\n\tat org.apache.logging.log4j.core.pattern.LiteralPatternConverter.format(LiteralPatternConverter.java:60)\n\tat org.apache.logging.log4j.core.pattern.PatternFormatter.format(PatternFormatter.java:38)\n\tat org.apache.logging.log4j.core.layout.PatternLayout$PatternSerializer.toSerializable(PatternLayout.java:344)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.toText(PatternLayout.java:244)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:229)\n\tat org.apache.logging.log4j.core.layout.PatternLayout.encode(PatternLayout.java:59)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.directEncodeEvent(AbstractOutputStreamAppender.java:197)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.tryAppend(AbstractOutputStreamAppender.java:190)\n\tat org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender.append(AbstractOutputStreamAppender.java:181)\n\tat org.apache.logging.log4j.core.config.AppenderControl.tryCallAppender(AppenderControl.java:156)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender0(AppenderControl.java:129)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppenderPreventRecursion(AppenderControl.java:120)\n\tat org.apache.logging.log4j.core.config.AppenderControl.callAppender(AppenderControl.java:84)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.callAppenders(LoggerConfig.java:540)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.processLogEvent(LoggerConfig.java:498)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:481)\n\tat org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:456)\n\tat org.apache.logging.log4j.core.config.AwaitCompletionReliabilityStrategy.log(AwaitCompletionReliabilityStrategy.java:82)\n\tat org.apache.logging.log4j.core.Logger.log(Logger.java:161)\n\tat org.apache.logging.log4j.spi.AbstractLogger.tryLogMessage(AbstractLogger.java:2205)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageTrackRecursion(AbstractLogger.java:2159)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessageSafely(AbstractLogger.java:2142)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logMessage(AbstractLogger.java:2017)\n\tat org.apache.logging.log4j.spi.AbstractLogger.logIfEnabled(AbstractLogger.java:1983)\n\tat org.apache.logging.log4j.spi.AbstractLogger.info(AbstractLogger.java:1320)\n\tat ThreadContextProbe.main(ThreadContextProbe.java:10)\n\nNO_NETWORK_CONTEXT_CALLS=1\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-chunk-4.1.118.Final",
+      "main": "NettyChunkProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.1.118.Final",
+        "io.netty:netty-codec-http:4.1.118.Final",
+        "io.netty:netty-codec:4.1.118.Final",
+        "io.netty:netty-common:4.1.118.Final",
+        "io.netty:netty-handler:4.1.118.Final",
+        "io.netty:netty-resolver:4.1.118.Final",
+        "io.netty:netty-transport:4.1.118.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "ACCEPTED_REQUESTS": 2,
+        "FAILED_REQUESTS": 0,
+        "SMUGGLED_REQUESTS": 1
+      },
+      "observed": {
+        "ACCEPTED_REQUESTS": 2,
+        "FAILED_REQUESTS": 0,
+        "SMUGGLED_REQUESTS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "ACCEPTED_REQUESTS=2\nFAILED_REQUESTS=0\nSMUGGLED_REQUESTS=1\nOUTBOUND_MESSAGES=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-chunk-4.1.137.Final",
+      "main": "NettyChunkProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.1.137.Final",
+        "io.netty:netty-codec-http:4.1.137.Final",
+        "io.netty:netty-codec:4.1.137.Final",
+        "io.netty:netty-common:4.1.137.Final",
+        "io.netty:netty-handler:4.1.137.Final",
+        "io.netty:netty-resolver:4.1.137.Final",
+        "io.netty:netty-transport:4.1.137.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "ACCEPTED_REQUESTS": 0,
+        "FAILED_REQUESTS": 1,
+        "SMUGGLED_REQUESTS": 0
+      },
+      "observed": {
+        "ACCEPTED_REQUESTS": 0,
+        "FAILED_REQUESTS": 1,
+        "SMUGGLED_REQUESTS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "ACCEPTED_REQUESTS=0\nFAILED_REQUESTS=1\nSMUGGLED_REQUESTS=0\nOUTBOUND_MESSAGES=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-chunk-4.2.7.Final",
+      "main": "NettyChunkProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.2.7.Final",
+        "io.netty:netty-codec-base:4.2.7.Final",
+        "io.netty:netty-codec-compression:4.2.7.Final",
+        "io.netty:netty-codec-http:4.2.7.Final",
+        "io.netty:netty-common:4.2.7.Final",
+        "io.netty:netty-handler:4.2.7.Final",
+        "io.netty:netty-resolver:4.2.7.Final",
+        "io.netty:netty-transport:4.2.7.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "ACCEPTED_REQUESTS": 2,
+        "FAILED_REQUESTS": 0,
+        "SMUGGLED_REQUESTS": 1
+      },
+      "observed": {
+        "ACCEPTED_REQUESTS": 2,
+        "FAILED_REQUESTS": 0,
+        "SMUGGLED_REQUESTS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "ACCEPTED_REQUESTS=2\nFAILED_REQUESTS=0\nSMUGGLED_REQUESTS=1\nOUTBOUND_MESSAGES=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-chunk-4.2.15.Final",
+      "main": "NettyChunkProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.2.15.Final",
+        "io.netty:netty-codec-base:4.2.15.Final",
+        "io.netty:netty-codec-compression:4.2.15.Final",
+        "io.netty:netty-codec-http:4.2.15.Final",
+        "io.netty:netty-common:4.2.15.Final",
+        "io.netty:netty-handler:4.2.15.Final",
+        "io.netty:netty-resolver:4.2.15.Final",
+        "io.netty:netty-transport:4.2.15.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "ACCEPTED_REQUESTS": 0,
+        "FAILED_REQUESTS": 1,
+        "SMUGGLED_REQUESTS": 0
+      },
+      "observed": {
+        "ACCEPTED_REQUESTS": 0,
+        "FAILED_REQUESTS": 1,
+        "SMUGGLED_REQUESTS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "ACCEPTED_REQUESTS=0\nFAILED_REQUESTS=1\nSMUGGLED_REQUESTS=0\nOUTBOUND_MESSAGES=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-sni-4.1.118.Final",
+      "main": "NettySniProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.1.118.Final",
+        "io.netty:netty-codec-http:4.1.118.Final",
+        "io.netty:netty-codec:4.1.118.Final",
+        "io.netty:netty-common:4.1.118.Final",
+        "io.netty:netty-handler:4.1.118.Final",
+        "io.netty:netty-resolver:4.1.118.Final",
+        "io.netty:netty-transport:4.1.118.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "observed": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-sni-4.1.137.Final",
+      "main": "NettySniProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.1.137.Final",
+        "io.netty:netty-codec-http:4.1.137.Final",
+        "io.netty:netty-codec:4.1.137.Final",
+        "io.netty:netty-common:4.1.137.Final",
+        "io.netty:netty-handler:4.1.137.Final",
+        "io.netty:netty-resolver:4.1.137.Final",
+        "io.netty:netty-transport:4.1.137.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "FIRST_FRAGMENT_FALLBACKS": 0,
+        "FINAL_FALLBACKS": 0,
+        "HOST_SELECTIONS": 1
+      },
+      "observed": {
+        "FIRST_FRAGMENT_FALLBACKS": 0,
+        "FINAL_FALLBACKS": 0,
+        "HOST_SELECTIONS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "FIRST_FRAGMENT_FALLBACKS=0\nFINAL_FALLBACKS=0\nHOST_SELECTIONS=1\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-sni-4.2.7.Final",
+      "main": "NettySniProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.2.7.Final",
+        "io.netty:netty-codec-base:4.2.7.Final",
+        "io.netty:netty-codec-compression:4.2.7.Final",
+        "io.netty:netty-codec-http:4.2.7.Final",
+        "io.netty:netty-common:4.2.7.Final",
+        "io.netty:netty-handler:4.2.7.Final",
+        "io.netty:netty-resolver:4.2.7.Final",
+        "io.netty:netty-transport:4.2.7.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "observed": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-sni-4.2.15.Final",
+      "main": "NettySniProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.2.15.Final",
+        "io.netty:netty-codec-base:4.2.15.Final",
+        "io.netty:netty-codec-compression:4.2.15.Final",
+        "io.netty:netty-codec-http:4.2.15.Final",
+        "io.netty:netty-common:4.2.15.Final",
+        "io.netty:netty-handler:4.2.15.Final",
+        "io.netty:netty-resolver:4.2.15.Final",
+        "io.netty:netty-transport:4.2.15.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "observed": {
+        "FIRST_FRAGMENT_FALLBACKS": 1,
+        "FINAL_FALLBACKS": 1,
+        "HOST_SELECTIONS": 0
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n",
+      "stderr": ""
+    },
+    {
+      "name": "netty-sni-4.2.17.Final",
+      "main": "NettySniProbe",
+      "coordinates_in_order": [
+        "io.netty:netty-buffer:4.2.17.Final",
+        "io.netty:netty-codec-base:4.2.17.Final",
+        "io.netty:netty-codec-compression:4.2.17.Final",
+        "io.netty:netty-codec-http:4.2.17.Final",
+        "io.netty:netty-common:4.2.17.Final",
+        "io.netty:netty-handler:4.2.17.Final",
+        "io.netty:netty-resolver:4.2.17.Final",
+        "io.netty:netty-transport:4.2.17.Final"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "FIRST_FRAGMENT_FALLBACKS": 0,
+        "FINAL_FALLBACKS": 0,
+        "HOST_SELECTIONS": 1
+      },
+      "observed": {
+        "FIRST_FRAGMENT_FALLBACKS": 0,
+        "FINAL_FALLBACKS": 0,
+        "HOST_SELECTIONS": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "FIRST_FRAGMENT_FALLBACKS=0\nFINAL_FALLBACKS=0\nHOST_SELECTIONS=1\n",
+      "stderr": ""
+    },
+    {
+      "name": "lz4-native-1.8.0",
+      "main": "Lz4NativeProbe",
+      "coordinates_in_order": [
+        "org.lz4:lz4-java:1.8.0"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "observed": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "lz4-native-1.8.1",
+      "main": "Lz4NativeProbe",
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.8.1"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "observed": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "lz4-native-1.10.1",
+      "main": "Lz4NativeProbe",
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.10.1"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "observed": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "lz4-native-1.11.4",
+      "main": "Lz4NativeProbe",
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.11.4"
+      ],
+      "configuration": null,
+      "formatMsgNoLookups": false,
+      "expected": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "TEMP_LOCK_FILES": 0,
+        "TEMP_PREFIX_FILES": 1
+      },
+      "observed": {
+        "NATIVE_LOADED_BEFORE": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "TEMP_LOCK_FILES": 0,
+        "TEMP_PREFIX_FILES": 1,
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1
+      },
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=0\nTEMP_PREFIX_FILES=1\n",
+      "stderr": ""
+    }
+  ],
+  "passed": true
+}
