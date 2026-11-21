@@ -16,7 +16,8 @@ class Issue45ArchiveTests(unittest.TestCase):
         self.assertEqual(archive['schema'], 1)
         self.assertEqual(index['schema'], 1)
         for field in ('candidate_run', 'integrated_run'):
-            self.assertIsInstance(archive[field], int)
+            # bool is a subclass of int in Python, but JSON true/false are not run IDs.
+            self.assertIs(type(archive[field]), int, field)
             self.assertGreater(archive[field], 0)
         self.assertIs(index['risk_acceptance'], False)
         self.assertIsInstance(index['reports'], dict)
@@ -226,6 +227,27 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
                             'job', {'id': str(self.archive['candidate_run'] + 1)})
         with self.assertRaises(AssertionError):
             self.verify_archive(self.root, self.archive_dir)
+
+    def test_boolean_run_ids_are_rejected(self):
+        for field in ('candidate_run', 'integrated_run'):
+            for value in (True, False):
+                with self.subTest(field=field, value=value):
+                    self.archive[field] = value
+                    self._write_indexes()
+                    with self.assertRaises(AssertionError):
+                        self.verify_archive(self.root, self.archive_dir)
+                    self.archive[field] = 1234 if field == 'candidate_run' else 5678
+        self._write_indexes()
+
+    def test_string_run_ids_are_rejected(self):
+        for field in ('candidate_run', 'integrated_run'):
+            with self.subTest(field=field):
+                self.archive[field] = str(self.archive[field])
+                self._write_indexes()
+                with self.assertRaises(AssertionError):
+                    self.verify_archive(self.root, self.archive_dir)
+                self.archive[field] = 1234 if field == 'candidate_run' else 5678
+        self._write_indexes()
 
     def test_changed_declared_run_rejected(self):
         self.archive['integrated_run'] += 1
