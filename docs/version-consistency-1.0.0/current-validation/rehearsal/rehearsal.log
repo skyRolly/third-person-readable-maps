@@ -32,4 +32,4 @@ REJECTED wrong-remote-source-commit 1.14-1.14.4: source branch is missing or its
 REJECTED missing-static-evidence missing or duplicate static verification evidence
 REJECTED failed-static-evidence failed or mismatched static verification evidence
 REJECTED missing-wrapper-preflight-evidence missing Wrapper preflight evidence
-REHEARSAL COMPLETE 13 groups; 48 versions; coordinator ef0934f76034bda684895bc148a82b68cbca4973
+REHEARSAL COMPLETE 13 groups; 48 versions; coordinator 15264589fa6a7e8ad9f62cc2d3977be84e6cce87

@@ -7,13 +7,14 @@ The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readabl
 remains available at its original commit.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
-The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final clean-build, CI and rehearsal evidence is being refreshed. The 1.14 correction changes the JAR; its earlier runtime observations remain historical and cannot establish current-artifact acceptance.
+The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final clean-build, CI and rehearsal evidence is being refreshed. All 13 JAR hashes change with the Gradle 9.9.2 manifest update; the 1.14 JAR also contains a rendering-state correction. Earlier runtime observations retain their original artifact identities and do not establish exact-current-artifact acceptance.
 
 | Gate | Status | Evidence and remaining action |
 |---|---|---|
 | Coordination-only architecture | PASS | `main` owns coordination and no game Gradle project. Preserve that separation. |
 | Compatibility grouping | PENDING REVIEW | Ten proposed legacy groups and proposals for three existing maintenance groups cover 48 explicit versions. No new split is proposed; independent acceptance remains. |
 | Version synchronization | PENDING REVIEW | All 13 proposed product heads and the proposed coordinator use 1.0.0. The actual integrated branches remain 0.0.2 until reviewed PRs merge. |
+| Local credential exposure assessment | PENDING REVIEW | The first local 9.9.2 compatibility and initial final builds inherited a repository-write-capable `GH_TOKEN`. No release-auditor credential was present; no literal token appeared in the captured logs, but disclosure by other means was not ruled out. Subsequent build subprocesses strip credentials. The credential owner should assess and rotate or revoke it if appropriate. |
 | Wrapper build security | PENDING REVIEW | Canonical preflight remains in place. Final-head hosted runs and independent review are pending. |
 | Verification implementation | PENDING REVIEW | Discriminating JVM and packaged-entry-point fixtures cover the shared corrections. The bounded contract explicitly rejects unproven platform-member inheritance and other unsupported patterns; independent review remains required. |
 | Current artifact static compatibility | PENDING REVIEW | The corrected verifier has completed the 48-version sweep; final clean-artifact identity and source-bound evidence are being reconciled. |

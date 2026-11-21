@@ -1,150 +1,150 @@
 {
   "schema": 1,
-  "observed_on": "2026-11-16",
+  "observed_on": "2026-11-21",
   "status": "Current proposed sources; candidate validation and approval do not authorize release.",
   "groups": {
     "1.14-1.14.4": {
       "pr": 23,
       "old_head": "a795f4dc8065000ae4d03e1552481e7918221465",
-      "new_head": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "new_head": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
       "branch": "candidate/mc-1.14-1.14.4",
       "target": "mc/1.14-1.14.4",
       "previous_round_old_head": "093d88dbb9c513b29d6cf89ff716ff715401d1d5",
       "namespace": "intermediary",
       "intermediate_head": "468ea4fa427939860a5e862cd28f607fc704ee15",
-      "previous_head": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c"
+      "previous_head": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e"
     },
     "1.15-1.16.5": {
       "pr": 21,
       "old_head": "ae4c0786f5babb3c5fdb5a64573f1024ccde7870",
-      "new_head": "dda66b117900a896afb9cdd99f757acd32becb5c",
+      "new_head": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
       "branch": "candidate/mc-1.15-1.16.5",
       "target": "mc/1.15-1.16.5",
       "previous_round_old_head": "b338ed4a8717f4d861de2c69218883bce9295f47",
       "namespace": "intermediary",
       "intermediate_head": "702e538627311acf70c33da99f2520befa844d48",
-      "previous_head": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044"
+      "previous_head": "dda66b117900a896afb9cdd99f757acd32becb5c"
     },
     "1.17-1.19.2": {
       "pr": 20,
       "old_head": "55c20451c8e9176c3e3886df8bc8929f3801da0b",
-      "new_head": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+      "new_head": "06b350856605011c1549d51d6edd3d351c5021c0",
       "branch": "candidate/mc-1.17-1.19.2",
       "target": "mc/1.17-1.19.2",
       "previous_round_old_head": "d8dfc8b6b0c843af4609cc3d9ae305c7db5a42f1",
       "namespace": "intermediary",
       "intermediate_head": "9adb3019707a44d2e1f7f3e91fce27ed13c462db",
-      "previous_head": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f"
+      "previous_head": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4"
     },
     "1.19.3": {
       "pr": 22,
       "old_head": "37c6809247fe8cd280e211ad36ca4403432b0c05",
-      "new_head": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+      "new_head": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
       "branch": "candidate/mc-1.19.3",
       "target": "mc/1.19.3",
       "previous_round_old_head": "1c3040e4b4ba7adc424c223269e58a8643086009",
       "namespace": "intermediary",
       "intermediate_head": "0fb00e7104ecb25457161d1039bce8da37b177c2",
-      "previous_head": "b0353abf9dc93b774a4fcd2e94c98040fd643813"
+      "previous_head": "7a4133a61874833ce2947ff0754799a8824fd7ab"
     },
     "1.19.4-1.20.4": {
       "pr": 19,
       "old_head": "76f0952bb6b27a5af82b4127eb847babe4d134f7",
-      "new_head": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+      "new_head": "9326fbbbdfa79d54512b655282c53739d3a4be25",
       "branch": "candidate/mc-1.19.4-1.20.4",
       "target": "mc/1.19.4-1.20.4",
       "previous_round_old_head": "92efc418d47b45ae151440391204231570a1e7af",
       "namespace": "intermediary",
       "intermediate_head": "1764b2b42a47e9fc7421f9a512b848ff46ed629f",
-      "previous_head": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037"
+      "previous_head": "871301e06298de8e10e7d459b1a0dc7aa14f11e3"
     },
     "1.20.5-1.20.6": {
       "pr": 18,
       "old_head": "43aa1c678d7e8d1d44c286f937c9ce2929ae0722",
-      "new_head": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+      "new_head": "aa64abb6fd47c0a634dad03fb445634f3715a624",
       "branch": "candidate/mc-1.20.5-1.20.6",
       "target": "mc/1.20.5-1.20.6",
       "previous_round_old_head": "18ed6883c2717332c53dfe07b2f284174b3daad0",
       "namespace": "intermediary",
       "intermediate_head": "e599cd6475c99fd5acbbe0d03810df5e9c72886a",
-      "previous_head": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca"
+      "previous_head": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0"
     },
     "1.21-1.21.1": {
       "pr": 17,
       "old_head": "c9a63a72f67c469b302bb99ec34502efb900b03c",
-      "new_head": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+      "new_head": "a62780429512a4e4072b56348e06059d127cfb1d",
       "branch": "candidate/mc-1.21-1.21.1",
       "target": "mc/1.21-1.21.1",
       "previous_round_old_head": "7d5c92e3f92f2bbc60fe2c2b9fb187a69be88ab2",
       "namespace": "intermediary",
       "intermediate_head": "5bad610b9ee1fef6508c1095206cc76d5ba83fdb",
-      "previous_head": "e80def340550064cbc8ec7250b6b588c2ece1a43"
+      "previous_head": "46b235bb6bacd13e099b53f2c2b839130d12eafb"
     },
     "1.21.11": {
       "pr": 31,
       "old_head": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
-      "new_head": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "new_head": "007b5e56f4ea3734634b138f59e8b417859365c1",
       "branch": "maintenance/mc-1.21.11-1.0.0",
       "target": "mc/1.21.11",
       "previous_round_old_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
       "namespace": "intermediary",
       "intermediate_head": "31db35f31ac984e0dc1ccb77e5dc467e1e917ed4",
-      "previous_head": "03f500e1ea528084024406ed1b85ace18fcf5be3"
+      "previous_head": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5"
     },
     "1.21.2-1.21.3": {
       "pr": 16,
       "old_head": "557d55ff7f6fcbc63c4e2ae596df05cee02af040",
-      "new_head": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+      "new_head": "d823a91c96b9bc80446116b44cd7568c70048c0d",
       "branch": "candidate/mc-1.21.2-1.21.3",
       "target": "mc/1.21.2-1.21.3",
       "previous_round_old_head": "444cab923238eea930c5e332eff0815dbbde0e20",
       "namespace": "intermediary",
       "intermediate_head": "f878ccda37c99fcc10b98bdd8ee81049d8c14c42",
-      "previous_head": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb"
+      "previous_head": "8f629c3b5d96344eb1dafe521e61edea0616fc79"
     },
     "1.21.4-1.21.8": {
       "pr": 14,
       "old_head": "db33c8bd0afc8c0e4d0a658e580ae4329ea3d40f",
-      "new_head": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+      "new_head": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
       "branch": "candidate/mc-1.21.4-1.21.8",
       "target": "mc/1.21.4-1.21.8",
       "previous_round_old_head": "052ca9744c3f8756d02aefd86f112f5476eee206",
       "namespace": "intermediary",
       "intermediate_head": "d3b19c21804f6bb077834eebd20f5bb87c43cc2f",
-      "previous_head": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b"
+      "previous_head": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb"
     },
     "1.21.9-1.21.10": {
       "pr": 13,
       "old_head": "832667c27967226478ac11d2728061c04915577e",
-      "new_head": "1287668b7932362ce8962c15ed993aa9798df183",
+      "new_head": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
       "branch": "candidate/mc-1.21.9-1.21.10",
       "target": "mc/1.21.9-1.21.10",
       "previous_round_old_head": "90bfab52b538363eb8630145c6df23936c70ae2d",
       "namespace": "intermediary",
       "intermediate_head": "7e4f70e1778915b36dfb58fda8885a64c2c3f652",
-      "previous_head": "d20a2f0f25f5d680c5092379790d5b724282641d"
+      "previous_head": "1287668b7932362ce8962c15ed993aa9798df183"
     },
     "26.1-26.2": {
       "pr": 32,
       "old_head": "11aca8017655fbea4bb735bbc53a661835f4d699",
-      "new_head": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "new_head": "47c108162eb0526616208a8547b4f339764ca7ea",
       "branch": "maintenance/mc-26.1-26.2-1.0.0",
       "target": "mc/26.1-26.2",
       "previous_round_old_head": "131f3e393e31778ed11d341830c856acc4d85a35",
       "namespace": "official",
       "intermediate_head": "17553377c2f620caf0ed582a3f645c613ce3c2f0",
-      "previous_head": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af"
+      "previous_head": "1e0393abaf481d3c9f460f4be142c6b906bb9f85"
     },
     "26.3": {
       "pr": 33,
       "old_head": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
-      "new_head": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "new_head": "e851745ca0dc7a20693f84d121bd0189094b6577",
       "branch": "maintenance/mc-26.3-1.0.0",
       "target": "mc/26.3",
       "previous_round_old_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
       "namespace": "official",
       "intermediate_head": "272ed96ac02b5f7e9eb6ef0b9a759a860205e107",
-      "previous_head": "409ecaaf9cfa5782c2965cc538a7188a925b12fc"
+      "previous_head": "6da391779c0461569ce1b6b6412070b5c7ef8a8b"
     }
   }
 }

@@ -86,6 +86,11 @@ jobs:
           python-version: '3.15.2'
       - name: Verify source Wrapper using coordination policy
         run: python3 .coordination-tools/scripts/verify_gradle_wrapper.py --root .
+      - name: Check upstream Gradle build-tool advisories
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ matrix.commit }}
+        run: python3 .coordination-tools/scripts/audit_gradle_tool.py --root . --source-sha "$SOURCE_SHA" --output gradle-tool-audit.json
       - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
           distribution: temurin

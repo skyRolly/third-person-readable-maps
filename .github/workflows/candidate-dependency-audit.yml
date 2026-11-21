@@ -97,6 +97,12 @@ jobs:
           python3 scripts/audit_candidate_dependencies.py audit --snapshot "${snapshots[0]}" \
             --source source --group "$GROUP" --branch "$BRANCH" --source-sha "$SOURCE_SHA" \
             --output candidate-dependency-audit.json
+      - name: Query upstream Gradle build-tool advisories
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ matrix.sha }}
+        run: python3 scripts/audit_gradle_tool.py --root source --source-sha "$SOURCE_SHA" --output gradle-tool-audit.json
       - name: Summarize candidate audit
         if: always()
         env:
@@ -117,12 +123,23 @@ jobs:
                   print('Source: `' + result['source_sha'] + '`; unreviewed failing matches: ' + str(len(result['matches'])))
                   print('Previously observed matches no longer returned and needing review: ' + str(len(result['resolved_needing_review'])))
                   print('This is candidate monitoring, not risk acceptance or release approval.')
+          q = Path('gradle-tool-audit.json')
+          if not q.exists():
+              print('Gradle upstream advisory check: INCOMPLETE; no report was produced.')
+          else:
+              tool = json.loads(q.read_text())
+              if tool['status'] != 'complete':
+                  print('Gradle upstream advisory check: INCOMPLETE; see retained report.')
+              else:
+                  print('Gradle ' + tool['gradle_version'] + ' upstream advisory matches: ' + str(len(tool['advisories'])))
           PYTHON
       - name: Upload candidate advisory report
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: candidate-dependency-audit-${{ strategy.job-index }}
-          path: candidate-dependency-audit.json
+          path: |
+            candidate-dependency-audit.json
+            gradle-tool-audit.json
           if-no-files-found: warn
           retention-days: 30

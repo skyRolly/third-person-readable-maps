@@ -1,5 +1,37 @@
 # Dependency-update PR review — 2026-11-12
 
+## Current update proposals — 2026-11-21
+
+The seven November 12 PRs below are historical: #24–#30 are closed without
+merging. Dependabot replaced them with the seven open PRs below. Their green
+checks apply to the current 0.0.2 or existing main bases, not to future
+security/product integration trees. Keep bot branches separate and require a
+rebase or recreation and fresh checks after the relevant target changes.
+
+| PR | Target | Update | Current review disposition |
+|---|---|---|---|
+| [#37](https://github.com/skyRolly/third-person-readable-maps/pull/37) | `mc/1.21.11` | setup-java 6.3.0 | Revalidate against the security and 1.0.0 integration tree. |
+| [#38](https://github.com/skyRolly/third-person-readable-maps/pull/38) | `mc/26.1-26.2` | setup-java 6.3.0 | Revalidate against the security and 1.0.0 integration tree. |
+| [#39](https://github.com/skyRolly/third-person-readable-maps/pull/39) | `mc/26.3` | setup-java 6.3.0 | Revalidate against the security and 1.0.0 integration tree. |
+| [#40](https://github.com/skyRolly/third-person-readable-maps/pull/40) | `main` | setup-java 6.3.0 | Revalidate against the coordinator's final workflows. |
+| [#41](https://github.com/skyRolly/third-person-readable-maps/pull/41) | `mc/26.1-26.2` | Gradle 9.9.1 | Superseded for security purposes by 9.9.2; reconcile after target integration. |
+| [#42](https://github.com/skyRolly/third-person-readable-maps/pull/42) | `mc/26.3` | Gradle 9.9.1 | Superseded for security purposes by 9.9.2; reconcile after target integration. |
+| [#43](https://github.com/skyRolly/third-person-readable-maps/pull/43) | `mc/1.21.11` | Gradle 9.9.1 | Superseded for security purposes by 9.9.2; reconcile after target integration. |
+
+The setup-java `v6.3.0` upstream tag resolved to
+`d1374f8ac74474200d16ef8ecee22c7ae7a51880`. The three 9.9.1 PRs passed the
+coordinator's canonical Wrapper preflight: the published Wrapper JAR SHA-256
+was `621008afc4f5d59357fcf06ffa644dd5aade5e091bdc363742710445f73cdaf8` and
+the published binary distribution SHA-256 was
+`d8a18a7a841dd5df825d35a685fad6f2d7f12ac0c280e57b67c27b4a520ba228`.
+Gradle 9.9.2 is the fixed release for additional upstream high-severity
+advisories affecting 9.9.1; see the [source-bound investigation](worklogs/late-review-2026-11-16.md)
+and [upstream advisory records](dependency-evidence/gradle-build-tool-advisories-2026-11-21.json).
+These checksum checks establish identity against Gradle's published values,
+not compatibility with the pending 1.0.0 implementations.
+
+## Historical 2026-11-12 proposals
+
 On [2026-11-14](pr-checks-2026-11-14.json), all seven PRs were still open,
 their recorded checks still passed on their existing bot heads, and no diff
 modified `gradle.properties`. The setup-java tag still resolved to the pinned

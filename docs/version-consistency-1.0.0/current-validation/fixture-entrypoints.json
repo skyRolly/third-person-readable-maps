@@ -2,18 +2,18 @@
   "javac": "javac 25.0.5",
   "entrypoints": {
     "intermediary": {
-      "group": "1.21.11",
-      "source_commit": "03f500e1ea528084024406ed1b85ace18fcf5be3",
+      "group": "1.14-1.14.4",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
       "log": "fixture-intermediary.log",
-      "log_sha256": "9c20d661f978ee4f3a44ed69870f710e5f1393ce7b67d20e677f4fab73758bd4",
-      "scope": "actual packaged verifier path; JVM control for inherited platform method; static Mixin model only"
+      "log_sha256": "167d2b802d75abc0f165ef5fc6f9d2b7cb33bed262f0705c8687bc7e3cff966f",
+      "scope": "actual packaged verifier path; JVM positive and invalid library replacement controls; static Mixin model only"
     },
     "official": {
-      "group": "26.3",
-      "source_commit": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
+      "group": "26.1-26.2",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
       "log": "fixture-official.log",
-      "log_sha256": "c98b6dfcd2d9a95faa8956458318cfa7e173b5cc6e0c57ec12c58658b13a0061",
-      "scope": "actual packaged verifier path; JVM control for inherited platform method; static Mixin model only"
+      "log_sha256": "d1984e24d7b29c89f090b0b22f4aa30f504703b84b37138c66488461f51a627c",
+      "scope": "actual packaged verifier path; JVM positive and invalid library replacement controls; static Mixin model only"
     }
   }
 }

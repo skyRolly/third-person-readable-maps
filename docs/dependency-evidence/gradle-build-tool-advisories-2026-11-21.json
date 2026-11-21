@@ -1,0 +1,701 @@
+{
+  "observed_on": "2026-11-21",
+  "scope": "Upstream Gradle build tool advisories. Distribution version 9.8.2 is proposed on all 13 product branches and used by all 3 maintenance/security branches; 9.9.1 bot updates are separately scoped. Exposure depends on build and host conditions; risk has not been accepted.",
+  "current_version": "9.8.2",
+  "candidate_fix": "9.9.2",
+  "compatibility": "All 13 product and three 0.0.2 security-proposal isolated clean builds passed with 9.9.2. Exact-new-head verification and independent review remain pending.",
+  "osv_query": "2026-11-21: OSV query of pkg:maven/org.gradle/gradle-core@9.8.2 returned no vulnerabilities; upstream records below remain authoritative for this investigation, and that query is not proof of non-applicability.",
+  "advisories": [
+    {
+      "ghsa_id": "GHSA-3cfg-jpcr-gfp3",
+      "summary": "Version catalog values run as code in generated accessors",
+      "severity": "critical",
+      "published_at": "2026-11-10T17:47:43Z",
+      "updated_at": "2026-11-10T17:47:43Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 7.0, <= 8.14.6",
+          "patched_versions": "8.14.7",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.0",
+          "patched_versions": "9.9.1",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-3cfg-jpcr-gfp3",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-3cfg-jpcr-gfp3",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "Code execution through a crafted version catalog; no catalog declaration was found in tracked build configuration, but untrusted changes or plugins need separate review.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-gqrr-4j89-5267",
+      "summary": "Gradle client trusts the content of the daemon registry",
+      "severity": "high",
+      "published_at": "2026-11-10T17:47:29Z",
+      "updated_at": "2026-11-10T17:47:29Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.6",
+          "patched_versions": "8.14.7",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.0",
+          "patched_versions": "9.9.1",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-gqrr-4j89-5267",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-gqrr-4j89-5267",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "A crafted daemon registry can redirect clients or deserialize attacker-controlled data; tracked Gradle properties did not set the registry base.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-pcp8-98xm-c6pr",
+      "summary": "Daemon client trusts stale registry entries (port squatting)",
+      "severity": "high",
+      "published_at": "2026-11-10T17:47:12Z",
+      "updated_at": "2026-11-10T17:47:12Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.6",
+          "patched_versions": "8.14.7",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.0",
+          "patched_versions": "9.9.1",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-pcp8-98xm-c6pr",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-pcp8-98xm-c6pr",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "A local attacker can exploit stale daemon registry entries; actual exposure depends on local host isolation.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-99wf-vhq9-wm2x",
+      "summary": "TestKit uses a predictable directory in the system temporary directory",
+      "severity": "high",
+      "published_at": "2026-11-19T21:03:10Z",
+      "updated_at": "2026-11-19T21:03:10Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.7",
+          "patched_versions": "8.14.8",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.1",
+          "patched_versions": "9.9.2",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-99wf-vhq9-wm2x",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-99wf-vhq9-wm2x",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "TestKit use outside Gradle Test tasks on shared hosts is the relevant condition; no GradleRunner use was found in tracked build configuration.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-7f7r-77ff-fr6f",
+      "summary": "Transitive snapshot dependencies skip dependency verification",
+      "severity": "high",
+      "published_at": "2026-11-19T21:03:02Z",
+      "updated_at": "2026-11-19T21:03:02Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.7",
+          "patched_versions": "8.14.8",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.1",
+          "patched_versions": "9.9.2",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-7f7r-77ff-fr6f",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-7f7r-77ff-fr6f",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "The bypass requires dependency verification plus a transitive changing module; effective build and plugin configuration requires further review.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-4mf6-7pm2-6wm8",
+      "summary": "SFTP repositories do not verify host keys",
+      "severity": "high",
+      "published_at": "2026-11-19T21:02:56Z",
+      "updated_at": "2026-11-19T21:02:56Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.7",
+          "patched_versions": "8.14.8",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.1",
+          "patched_versions": "9.9.2",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-4mf6-7pm2-6wm8",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-4mf6-7pm2-6wm8",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "SFTP repository use is required; no SFTP repository was found in tracked build configuration, but dynamically configured repositories remain unproven.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    },
+    {
+      "ghsa_id": "GHSA-35pj-rg5r-8rpv",
+      "summary": "Daemon registry is briefly readable by other local users when it is created",
+      "severity": "high",
+      "published_at": "2026-11-19T21:02:49Z",
+      "updated_at": "2026-11-19T21:02:49Z",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": "<= 8.14.7",
+          "patched_versions": "8.14.8",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "maven",
+            "name": "org.gradle:gradle-core"
+          },
+          "vulnerable_version_range": ">= 9.0.0, <= 9.9.1",
+          "patched_versions": "9.9.2",
+          "vulnerable_functions": []
+        }
+      ],
+      "identifiers": [
+        {
+          "value": "GHSA-35pj-rg5r-8rpv",
+          "type": "GHSA"
+        }
+      ],
+      "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-35pj-rg5r-8rpv",
+      "package": "org.gradle:gradle-core",
+      "actual_build_version": "9.8.2",
+      "dependency_origin": "Directly configured Gradle Wrapper distribution; build tool, not a bundled Mod runtime dependency.",
+      "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
+      "applicability_evidence": "A local user may race the daemon registry creation on a shared host; exposure depends on user-home permissions and host isolation.",
+      "disposition": "Actionable",
+      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "risk_accepted": false,
+      "independent_review": "PENDING"
+    }
+  ],
+  "schema": 1,
+  "risk_accepted": false,
+  "independent_review": "PENDING",
+  "sources": {
+    "integrated_maintenance": {
+      "1.21.11": "177f5708727ae4c152091d185536aaa734063280",
+      "26.1-26.2": "453cf35695cf07be4072f77895cdbafbed617870",
+      "26.3": "226b1de7dd4e7c2a75ec35eef1697434462e4f54"
+    },
+    "unmerged_security_proposals": {
+      "1.21.11": "8500c17c2a69fca3515469c48495dc038b186f50",
+      "26.1-26.2": "ceac175977fc8edd4369ce530566630604b181be",
+      "26.3": "a484da2d0ceda48b54ce0c4cd77ae037a68c84f4"
+    },
+    "proposed_product": {
+      "1.14-1.14.4": {
+        "source_sha": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.15-1.16.5": {
+        "source_sha": "dda66b117900a896afb9cdd99f757acd32becb5c",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.17-1.19.2": {
+        "source_sha": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.19.3": {
+        "source_sha": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.19.4-1.20.4": {
+        "source_sha": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.20.5-1.20.6": {
+        "source_sha": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.21-1.21.1": {
+        "source_sha": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.21.11": {
+        "source_sha": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+        "gradle_version": "9.8.2",
+        "source_kind": "unmerged-maintenance-proposal"
+      },
+      "1.21.2-1.21.3": {
+        "source_sha": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.21.4-1.21.8": {
+        "source_sha": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "1.21.9-1.21.10": {
+        "source_sha": "1287668b7932362ce8962c15ed993aa9798df183",
+        "gradle_version": "9.8.2",
+        "source_kind": "legacy-candidate"
+      },
+      "26.1-26.2": {
+        "source_sha": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+        "gradle_version": "9.8.2",
+        "source_kind": "unmerged-maintenance-proposal"
+      },
+      "26.3": {
+        "source_sha": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+        "gradle_version": "9.8.2",
+        "source_kind": "unmerged-maintenance-proposal"
+      }
+    }
+  },
+  "compatibility_evidence": {
+    "groups": {
+      "1.14-1.14.4": {
+        "tested_base_source": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+        "gradle_exit": 0,
+        "artifact_sha256": "2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d",
+        "log_sha256": "052423f52ab8392ca4fdb169dfaf4dbad3b7be6fa4ae1e5be91927896410fc7d",
+        "status": "PASS"
+      },
+      "1.15-1.16.5": {
+        "tested_base_source": "dda66b117900a896afb9cdd99f757acd32becb5c",
+        "gradle_exit": 0,
+        "artifact_sha256": "a97f481ae23d97500cc50f0a2ca92d09c0d1adb097df689d4190376e3a848470",
+        "log_sha256": "ea2201597b3e801647a1c63bc20ab2c50731817c3195b5fceef2fa40211161db",
+        "status": "PASS"
+      },
+      "1.17-1.19.2": {
+        "tested_base_source": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+        "gradle_exit": 0,
+        "artifact_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0",
+        "log_sha256": "3400ed16761caca592509d262f627aa526fac9acff7837dfb50988d6209e548c",
+        "status": "PASS"
+      },
+      "1.19.3": {
+        "tested_base_source": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+        "gradle_exit": 0,
+        "artifact_sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a",
+        "log_sha256": "b54e133911efaf83fd1cb5f95ecc594ba9bc25c8771a7238c90e995349198f87",
+        "status": "PASS"
+      },
+      "1.19.4-1.20.4": {
+        "tested_base_source": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+        "gradle_exit": 0,
+        "artifact_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
+        "log_sha256": "7c25e8f8fae7491f6e2ff519db6dd84724835723858f21b0f22f0fa05898d8c3",
+        "status": "PASS"
+      },
+      "1.20.5-1.20.6": {
+        "tested_base_source": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+        "gradle_exit": 0,
+        "artifact_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723",
+        "log_sha256": "e1e755bba8e6a772aa5fa6c2871abc053b6d5ab60474d85108e6d5ddaeb867eb",
+        "status": "PASS"
+      },
+      "1.21-1.21.1": {
+        "tested_base_source": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+        "gradle_exit": 0,
+        "artifact_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57",
+        "log_sha256": "1236a2cfb8c0f7cdfc55f1507f411e4fd76dda85d03b2d65ee7c351b465bd705",
+        "status": "PASS"
+      },
+      "1.21.11": {
+        "tested_base_source": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+        "gradle_exit": 0,
+        "artifact_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
+        "log_sha256": "d111f5e685fa62ff8c4fba0ee614c7e35284321762136c7bb77694a23b4e6650",
+        "status": "PASS"
+      },
+      "1.21.2-1.21.3": {
+        "tested_base_source": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+        "gradle_exit": 0,
+        "artifact_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e",
+        "log_sha256": "46058f9afcb919bb1fa288200689389c26c2121d9bd87968e6340e3755f97976",
+        "status": "PASS"
+      },
+      "1.21.4-1.21.8": {
+        "tested_base_source": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+        "gradle_exit": 0,
+        "artifact_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
+        "log_sha256": "da9821733a2bb9c03f87abf394df8a81ebe850234e8791e6c18e6f5fb02bc9ca",
+        "status": "PASS"
+      },
+      "1.21.9-1.21.10": {
+        "tested_base_source": "1287668b7932362ce8962c15ed993aa9798df183",
+        "gradle_exit": 0,
+        "artifact_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055",
+        "log_sha256": "6b5e96ad26e3553250e471100b8d34b1091302e1d78febf3980c6df80274ab05",
+        "status": "PASS"
+      },
+      "26.1-26.2": {
+        "tested_base_source": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+        "gradle_exit": 0,
+        "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
+        "log_sha256": "1059f8ea944f6167098ae44f8fe420bf03ff4d6cdd1def0b4b87f15f285969cd",
+        "status": "PASS"
+      },
+      "26.3": {
+        "tested_base_source": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+        "gradle_exit": 0,
+        "artifact_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
+        "log_sha256": "ea80cdd023efbdab28757b21ad8ccd21f95d0d57733c0a33f615b4416cfba2f9",
+        "status": "PASS"
+      }
+    },
+    "content_comparison": "For each group, all decompressed entries match the previous clean JAR except the Fabric-Gradle-Version field in META-INF/MANIFEST.MF. The JAR hashes differ; runtime observations retain their original artifact identities."
+  },
+  "proposed_fix_sources": {
+    "product": {
+      "1.14-1.14.4": {
+        "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+        "gradle_version": "9.9.2",
+        "pr": 23
+      },
+      "1.15-1.16.5": {
+        "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+        "gradle_version": "9.9.2",
+        "pr": 21
+      },
+      "1.17-1.19.2": {
+        "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+        "gradle_version": "9.9.2",
+        "pr": 20
+      },
+      "1.19.3": {
+        "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+        "gradle_version": "9.9.2",
+        "pr": 22
+      },
+      "1.19.4-1.20.4": {
+        "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+        "gradle_version": "9.9.2",
+        "pr": 19
+      },
+      "1.20.5-1.20.6": {
+        "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+        "gradle_version": "9.9.2",
+        "pr": 18
+      },
+      "1.21-1.21.1": {
+        "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+        "gradle_version": "9.9.2",
+        "pr": 17
+      },
+      "1.21.11": {
+        "source_sha": "007b5e56f4ea3734634b138f59e8b417859365c1",
+        "gradle_version": "9.9.2",
+        "pr": 31
+      },
+      "1.21.2-1.21.3": {
+        "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+        "gradle_version": "9.9.2",
+        "pr": 16
+      },
+      "1.21.4-1.21.8": {
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+        "gradle_version": "9.9.2",
+        "pr": 14
+      },
+      "1.21.9-1.21.10": {
+        "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+        "gradle_version": "9.9.2",
+        "pr": 13
+      },
+      "26.1-26.2": {
+        "source_sha": "47c108162eb0526616208a8547b4f339764ca7ea",
+        "gradle_version": "9.9.2",
+        "pr": 32
+      },
+      "26.3": {
+        "source_sha": "e851745ca0dc7a20693f84d121bd0189094b6577",
+        "gradle_version": "9.9.2",
+        "pr": 33
+      }
+    },
+    "security": {
+      "1.21.11": {
+        "source_sha": "b8cc4a8bb7416736096571567bd148485d9475db",
+        "gradle_version": "9.9.2",
+        "pr": 34
+      },
+      "26.1-26.2": {
+        "source_sha": "91086a22cca9d68f3e5e79d4a76c564f2d490402",
+        "gradle_version": "9.9.2",
+        "pr": 35
+      },
+      "26.3": {
+        "source_sha": "eabdeb561e8f776cace8e5efdf737c888893a531",
+        "gradle_version": "9.9.2",
+        "pr": 36
+      }
+    }
+  },
+  "proposed_fix_preflight_and_upstream_check": {
+    "product": {
+      "1.14-1.14.4": {
+        "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.15-1.16.5": {
+        "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.17-1.19.2": {
+        "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.19.3": {
+        "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.19.4-1.20.4": {
+        "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.20.5-1.20.6": {
+        "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.21-1.21.1": {
+        "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.21.11": {
+        "source_sha": "007b5e56f4ea3734634b138f59e8b417859365c1",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.21.2-1.21.3": {
+        "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.21.4-1.21.8": {
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "1.21.9-1.21.10": {
+        "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "26.1-26.2": {
+        "source_sha": "47c108162eb0526616208a8547b4f339764ca7ea",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "26.3": {
+        "source_sha": "e851745ca0dc7a20693f84d121bd0189094b6577",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      }
+    },
+    "security": {
+      "1.21.11": {
+        "source_sha": "b8cc4a8bb7416736096571567bd148485d9475db",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "26.1-26.2": {
+        "source_sha": "91086a22cca9d68f3e5e79d4a76c564f2d490402",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      },
+      "26.3": {
+        "source_sha": "eabdeb561e8f776cace8e5efdf737c888893a531",
+        "gradle_version": "9.9.2",
+        "upstream_advisory_count": 0,
+        "wrapper_preflight": "published Wrapper and distribution digests verified",
+        "risk_accepted": false
+      }
+    },
+    "feed": {
+      "record": "docs/dependency-evidence/gradle-upstream-feed-2026-11-21.json",
+      "record_sha256": "2861b10b7bdf221e2ac438963bc5ec417d843535937a9f28a87af0412dca605c",
+      "retrieval": "Gradle upstream GitHub repository advisory API; 2026-11-21",
+      "pages": 1,
+      "canonical_json_sha256": "5d665cbdc7caeef9af0d9682fd3bb8205e7a42abb7aa9215e574e1e3a2ddc8b2",
+      "scope": "Current upstream feed, not a claim of absence from all advisory sources."
+    }
+  }
+}

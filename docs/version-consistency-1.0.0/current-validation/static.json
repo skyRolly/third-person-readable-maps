@@ -3,52 +3,52 @@
     {
       "group": "1.14-1.14.4",
       "version": "1.14",
-      "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
-      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "61f56041ed1e1e0fe31fc757fcd1a266d0e10d3be1a8aecfc91d8e26e7b38b2f"
+      "log_sha256": "8773339d767feab563897d7815ba54f22bdbc6b6fd12f60d4cec6954688bc46a"
     },
     {
       "group": "1.14-1.14.4",
       "version": "1.14.1",
-      "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
-      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "f4f7cfe215da04fd61185d3fc9036398831446ddf919e8cec9efcff9c9b092f5"
+      "log_sha256": "864036129393546d6df8de314b357a451940f2a2d8b5d2c1455b5248af5ada33"
     },
     {
       "group": "1.14-1.14.4",
       "version": "1.14.2",
-      "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
-      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "545fb301e77b411184e26c1ae1c74f5904a2aef9714b1932ac6137f5889c25bf"
+      "log_sha256": "280f7565adc197a9c3fe60acaaaeffa19bc4f5c4881eacdf0273c8a457ba7f85"
     },
     {
       "group": "1.14-1.14.4",
       "version": "1.14.3",
-      "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
-      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "05ccfb26323865496b2f72999bb4de5a53c2981faa0d928a24dfc912a6c7f227"
+      "log_sha256": "37626d3c015c7c6efd7663af0b109cf7b806fb83494ba9bbc864ee4752f1fba2"
     },
     {
       "group": "1.14-1.14.4",
       "version": "1.14.4",
-      "source_commit": "fd498ecb3a4dbc09ec458d4b004ee18afb84267c",
-      "artifact_sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",
+      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "artifact_sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "11e2c689e96e315330242a0e109b7dd3c244b4fd545abe39c6478df0550ee7c2"
+      "log_sha256": "170e17af429f4b303be6fbafcf5ac049940a853d80abfcd863c442c660063315"
     },
     {
       "group": "1.15-1.16.5",
       "version": "1.15",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -57,7 +57,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.15.1",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -66,7 +66,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.15.2",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -75,7 +75,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -84,7 +84,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16.1",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -93,7 +93,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16.2",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -102,7 +102,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16.3",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -111,7 +111,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16.4",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -120,7 +120,7 @@
     {
       "group": "1.15-1.16.5",
       "version": "1.16.5",
-      "source_commit": "96f5c87093416cb9e1c5d3eacbb64fc236fe6044",
+      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
       "artifact_sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
       "exit_code": 0,
       "attempts": 1,
@@ -129,7 +129,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.17",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -138,7 +138,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.17.1",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -147,7 +147,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.18",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -156,7 +156,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.18.1",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -165,7 +165,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.18.2",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -174,7 +174,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.19",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -183,7 +183,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.19.1",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -192,7 +192,7 @@
     {
       "group": "1.17-1.19.2",
       "version": "1.19.2",
-      "source_commit": "7c7b65d7395e14d5d0d49ed8eadb3899f3872b3f",
+      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
       "artifact_sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
       "exit_code": 0,
       "attempts": 1,
@@ -201,7 +201,7 @@
     {
       "group": "1.19.3",
       "version": "1.19.3",
-      "source_commit": "b0353abf9dc93b774a4fcd2e94c98040fd643813",
+      "source_commit": "7a4133a61874833ce2947ff0754799a8824fd7ab",
       "artifact_sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
       "exit_code": 0,
       "attempts": 1,
@@ -210,7 +210,7 @@
     {
       "group": "1.19.4-1.20.4",
       "version": "1.19.4",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
       "attempts": 1,
@@ -219,16 +219,16 @@
     {
       "group": "1.19.4-1.20.4",
       "version": "1.20",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
-      "attempts": 2,
-      "log_sha256": "841b38c9d84d3d6c7c25f5f8802f1eda45939767518b61f5178896512063f046"
+      "attempts": 1,
+      "log_sha256": "2e019b80ef9dd69fedf7fe120990e1d502cf8df97b32588ad1fac0d0dbd04d22"
     },
     {
       "group": "1.19.4-1.20.4",
       "version": "1.20.1",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
       "attempts": 1,
@@ -237,7 +237,7 @@
     {
       "group": "1.19.4-1.20.4",
       "version": "1.20.2",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
       "attempts": 1,
@@ -246,7 +246,7 @@
     {
       "group": "1.19.4-1.20.4",
       "version": "1.20.3",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
       "attempts": 1,
@@ -255,7 +255,7 @@
     {
       "group": "1.19.4-1.20.4",
       "version": "1.20.4",
-      "source_commit": "97afd9aaf5ed3a305c82bbdd48a8fffb94725037",
+      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
       "artifact_sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
       "exit_code": 0,
       "attempts": 1,
@@ -264,7 +264,7 @@
     {
       "group": "1.20.5-1.20.6",
       "version": "1.20.5",
-      "source_commit": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca",
+      "source_commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
       "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
       "exit_code": 0,
       "attempts": 1,
@@ -273,7 +273,7 @@
     {
       "group": "1.20.5-1.20.6",
       "version": "1.20.6",
-      "source_commit": "1dc18e3cb0993fe1ab742d425d5cb74ef9ab12ca",
+      "source_commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
       "artifact_sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
       "exit_code": 0,
       "attempts": 1,
@@ -282,7 +282,7 @@
     {
       "group": "1.21-1.21.1",
       "version": "1.21",
-      "source_commit": "e80def340550064cbc8ec7250b6b588c2ece1a43",
+      "source_commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
       "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
       "exit_code": 0,
       "attempts": 1,
@@ -291,7 +291,7 @@
     {
       "group": "1.21-1.21.1",
       "version": "1.21.1",
-      "source_commit": "e80def340550064cbc8ec7250b6b588c2ece1a43",
+      "source_commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
       "artifact_sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
       "exit_code": 0,
       "attempts": 1,
@@ -300,7 +300,7 @@
     {
       "group": "1.21.11",
       "version": "1.21.11",
-      "source_commit": "03f500e1ea528084024406ed1b85ace18fcf5be3",
+      "source_commit": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
       "artifact_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
       "exit_code": 0,
       "attempts": 1,
@@ -309,7 +309,7 @@
     {
       "group": "1.21.2-1.21.3",
       "version": "1.21.2",
-      "source_commit": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb",
+      "source_commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
       "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
       "exit_code": 0,
       "attempts": 1,
@@ -318,7 +318,7 @@
     {
       "group": "1.21.2-1.21.3",
       "version": "1.21.3",
-      "source_commit": "9137a6fcf4fe8fcc92a5f0e6006a5f93a93194fb",
+      "source_commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
       "artifact_sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
       "exit_code": 0,
       "attempts": 1,
@@ -327,7 +327,7 @@
     {
       "group": "1.21.4-1.21.8",
       "version": "1.21.4",
-      "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
       "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
       "exit_code": 0,
       "attempts": 1,
@@ -336,7 +336,7 @@
     {
       "group": "1.21.4-1.21.8",
       "version": "1.21.5",
-      "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
       "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
       "exit_code": 0,
       "attempts": 1,
@@ -345,7 +345,7 @@
     {
       "group": "1.21.4-1.21.8",
       "version": "1.21.6",
-      "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
       "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
       "exit_code": 0,
       "attempts": 1,
@@ -354,7 +354,7 @@
     {
       "group": "1.21.4-1.21.8",
       "version": "1.21.7",
-      "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
       "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
       "exit_code": 0,
       "attempts": 1,
@@ -363,7 +363,7 @@
     {
       "group": "1.21.4-1.21.8",
       "version": "1.21.8",
-      "source_commit": "a1e3a10365f1966b12b5bb431ec9f8371f4e595b",
+      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
       "artifact_sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
       "exit_code": 0,
       "attempts": 1,
@@ -372,7 +372,7 @@
     {
       "group": "1.21.9-1.21.10",
       "version": "1.21.9",
-      "source_commit": "d20a2f0f25f5d680c5092379790d5b724282641d",
+      "source_commit": "1287668b7932362ce8962c15ed993aa9798df183",
       "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
       "exit_code": 0,
       "attempts": 1,
@@ -381,7 +381,7 @@
     {
       "group": "1.21.9-1.21.10",
       "version": "1.21.10",
-      "source_commit": "d20a2f0f25f5d680c5092379790d5b724282641d",
+      "source_commit": "1287668b7932362ce8962c15ed993aa9798df183",
       "artifact_sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
       "exit_code": 0,
       "attempts": 1,
@@ -390,7 +390,7 @@
     {
       "group": "26.1-26.2",
       "version": "26.1",
-      "source_commit": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
       "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
       "exit_code": 0,
       "attempts": 1,
@@ -399,7 +399,7 @@
     {
       "group": "26.1-26.2",
       "version": "26.1.1",
-      "source_commit": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
       "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
       "exit_code": 0,
       "attempts": 1,
@@ -408,7 +408,7 @@
     {
       "group": "26.1-26.2",
       "version": "26.1.2",
-      "source_commit": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
       "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
       "exit_code": 0,
       "attempts": 1,
@@ -417,7 +417,7 @@
     {
       "group": "26.1-26.2",
       "version": "26.2",
-      "source_commit": "b7efb599c8f14e4664c9d2d7372bb0dfe4f1d7af",
+      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
       "artifact_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
       "exit_code": 0,
       "attempts": 1,
@@ -426,12 +426,12 @@
     {
       "group": "26.3",
       "version": "26.3",
-      "source_commit": "409ecaaf9cfa5782c2965cc538a7188a925b12fc",
+      "source_commit": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
       "artifact_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
       "exit_code": 0,
       "attempts": 1,
       "log_sha256": "ac3b64e3f8b8faa064a9ccc58ae5091dd87254d75411d514b94c3dcc21e627d2"
     }
   ],
-  "status": "local verifier sweep against retained prior JAR bytes; final clean-build identity must be checked separately"
+  "status": "final-source verifier sweep; preview/retained artifact identity must be checked against final clean builds"
 }

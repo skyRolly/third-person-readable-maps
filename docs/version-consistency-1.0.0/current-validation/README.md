@@ -1,13 +1,21 @@
 # Current candidate validation
 
-The [current selection](../current-evidence.json) and [source pins](../current-heads.json) are the mutable entry points. The files in this directory record the selected observations: 13 clean builds, packaged metadata, the bounded 48-version static sweep, nine adjacent-version negative controls and their log hashes. Each clean JAR matched the preceding hierarchy-review build. Earlier runtime observations remain attached to their original sources and hashes; same-artifact continuity does not make them fresh or approved merged-source tests.
+The [current selection](../current-evidence.json) and [source pins](../current-heads.json)
+are the authoritative mutable entry points. Files in this directory contain
+observations for the source and artifact identities recorded inside them; until
+the selection marks a result observed, an older file does not certify a newer
+head. The [November 16 index](../late-review-2026-11-16.json) preserves the
+preceding build, static and hosted-check identities.
 
-The [hosted check index](hosted-checks.json) identifies proposal head, base head, synthetic PR merge commit, tested tree, job attempt and archive separately. All 26 final Linux and Windows jobs passed; their checked-out merge trees match the proposal trees, and downloaded archive and JAR hashes match the clean builds. On #22, the failed Linux dependency download was rerun; GitHub reports both successful jobs in attempt 2 while the retained Windows archive and its job start predate the rerun. Both refer to the same verified proposal and merge tree. These are proposed-head checks, not checks of a future merged maintenance source.
+Build, packaged metadata, static coverage, adjacent-version controls, hosted
+checkout/artifact records, and the non-publishing rehearsal are reconciled by
+`scripts/validate_current_evidence.py`. Its pending states remain visible and
+never authorize release. The rehearsal's harness controls are distinct from
+production aggregator controls.
 
-The [current candidate rehearsal](rehearsal/) aggregated all 13 final proposal artifacts and checked their checksums. Its manifest records coordinator code commit `ef0934f76034bda684895bc148a82b68cbca4973`; the [index](rehearsal/index.json) hashes the unchanged release scripts and version file used by the run. The candidate plan and product sources are exact. The 18 negative controls comprise 15 existing aggregation or authorization checks and three rehearsal-harness checks; the latter are not claims about the production aggregator. The reusable runner and its deterministic input-path substitutions are identified in the index.
-
-The rehearsal reused the byte-identical dated compatibility configuration;
-its current matrix can be regenerated from that configuration and the current
-plan. Their identities are checked without retaining duplicate copies.
-
-The security reports selected in the current evidence file are retained scans of their recorded earlier sources. The changes since those snapshots affect only linkage-verifier scripts, fixtures and the verification contract; they do not constitute a fresh Gradle resolution, new security scan, remediation or accepted risk. Current-source security resolution and strict release evidence remain pending.
+The Gradle 9.9.2 update changes the distribution and the JAR manifest version
+field. Fresh source-bound dependency resolutions and advisory scans are being
+collected. Earlier OSV reports and runtime observations retain their original
+source and artifact identities; neither a previous scan nor a previous JAR is
+relabelled as a fresh result. See the [late-review worklog](../../worklogs/late-review-2026-11-16.md)
+for the targeted 1.14 diagnostic, upstream Gradle advisories and outstanding gates.
