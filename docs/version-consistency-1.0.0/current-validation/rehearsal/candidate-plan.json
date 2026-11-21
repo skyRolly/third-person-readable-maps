@@ -11,7 +11,7 @@
   "groups": {
     "1.21.11": {
       "source_branch": "maintenance/mc-1.21.11-1.0.0",
-      "commit": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "commit": "007b5e56f4ea3734634b138f59e8b417859365c1",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -19,7 +19,7 @@
     },
     "26.1-26.2": {
       "source_branch": "maintenance/mc-26.1-26.2-1.0.0",
-      "commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "commit": "47c108162eb0526616208a8547b4f339764ca7ea",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -27,7 +27,7 @@
     },
     "26.3": {
       "source_branch": "maintenance/mc-26.3-1.0.0",
-      "commit": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "commit": "e851745ca0dc7a20693f84d121bd0189094b6577",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -35,7 +35,7 @@
     },
     "1.21.9-1.21.10": {
       "source_branch": "candidate/mc-1.21.9-1.21.10",
-      "commit": "1287668b7932362ce8962c15ed993aa9798df183",
+      "commit": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -43,7 +43,7 @@
     },
     "1.21.4-1.21.8": {
       "source_branch": "candidate/mc-1.21.4-1.21.8",
-      "commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+      "commit": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -51,7 +51,7 @@
     },
     "1.21.2-1.21.3": {
       "source_branch": "candidate/mc-1.21.2-1.21.3",
-      "commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+      "commit": "d823a91c96b9bc80446116b44cd7568c70048c0d",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -59,7 +59,7 @@
     },
     "1.21-1.21.1": {
       "source_branch": "candidate/mc-1.21-1.21.1",
-      "commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+      "commit": "a62780429512a4e4072b56348e06059d127cfb1d",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -67,7 +67,7 @@
     },
     "1.20.5-1.20.6": {
       "source_branch": "candidate/mc-1.20.5-1.20.6",
-      "commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+      "commit": "aa64abb6fd47c0a634dad03fb445634f3715a624",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -75,7 +75,7 @@
     },
     "1.19.4-1.20.4": {
       "source_branch": "candidate/mc-1.19.4-1.20.4",
-      "commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+      "commit": "9326fbbbdfa79d54512b655282c53739d3a4be25",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -83,7 +83,7 @@
     },
     "1.17-1.19.2": {
       "source_branch": "candidate/mc-1.17-1.19.2",
-      "commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+      "commit": "06b350856605011c1549d51d6edd3d351c5021c0",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -91,7 +91,7 @@
     },
     "1.15-1.16.5": {
       "source_branch": "candidate/mc-1.15-1.16.5",
-      "commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
+      "commit": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -99,7 +99,7 @@
     },
     "1.19.3": {
       "source_branch": "candidate/mc-1.19.3",
-      "commit": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+      "commit": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],
@@ -107,7 +107,7 @@
     },
     "1.14-1.14.4": {
       "source_branch": "candidate/mc-1.14-1.14.4",
-      "commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "commit": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
       "verified_changes": [
         "Prepare the coordinated 1.0.0 mod version and readable-map corrections"
       ],

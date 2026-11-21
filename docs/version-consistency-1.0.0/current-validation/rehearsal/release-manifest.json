@@ -2,7 +2,7 @@
   "schema": 1,
   "version": "1.0.0",
   "tag": "1.0.0",
-  "coordinator_sha": "15264589fa6a7e8ad9f62cc2d3977be84e6cce87",
+  "coordinator_sha": "ab0198e43e1d9082d93365092a028bbb9bbf694e",
   "candidate": true,
   "release_date": "2026-11-15",
   "changes": [
@@ -15,7 +15,7 @@
     {
       "id": "1.14-1.14.4",
       "branch": "candidate/mc-1.14-1.14.4",
-      "source_commit": "290e9f9bba2d15d9f0c907cdae40ce9706381b2e",
+      "source_commit": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
       "minecraft": [
         "1.14",
         "1.14.1",
@@ -28,13 +28,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
-      "sha256": "728fe46eb15e915eb33cb76b3f8a2c50b0774859d57afcfb5183540bb5bd2dde",
+      "sha256": "2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d",
       "runtime_evidence": {}
     },
     {
       "id": "1.15-1.16.5",
       "branch": "candidate/mc-1.15-1.16.5",
-      "source_commit": "dda66b117900a896afb9cdd99f757acd32becb5c",
+      "source_commit": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
       "minecraft": [
         "1.15",
         "1.15.1",
@@ -51,13 +51,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
-      "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
+      "sha256": "a97f481ae23d97500cc50f0a2ca92d09c0d1adb097df689d4190376e3a848470",
       "runtime_evidence": {}
     },
     {
       "id": "1.17-1.19.2",
       "branch": "candidate/mc-1.17-1.19.2",
-      "source_commit": "4c78a8b50eb1a8b38c9330cdbbe46a45f08429e4",
+      "source_commit": "06b350856605011c1549d51d6edd3d351c5021c0",
       "minecraft": [
         "1.17",
         "1.17.1",
@@ -73,13 +73,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
-      "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
+      "sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0",
       "runtime_evidence": {}
     },
     {
       "id": "1.19.3",
       "branch": "candidate/mc-1.19.3",
-      "source_commit": "7a4133a61874833ce2947ff0754799a8824fd7ab",
+      "source_commit": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
       "minecraft": [
         "1.19.3"
       ],
@@ -88,13 +88,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
-      "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
+      "sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a",
       "runtime_evidence": {}
     },
     {
       "id": "1.19.4-1.20.4",
       "branch": "candidate/mc-1.19.4-1.20.4",
-      "source_commit": "871301e06298de8e10e7d459b1a0dc7aa14f11e3",
+      "source_commit": "9326fbbbdfa79d54512b655282c53739d3a4be25",
       "minecraft": [
         "1.19.4",
         "1.20",
@@ -108,13 +108,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
-      "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
+      "sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
       "runtime_evidence": {}
     },
     {
       "id": "1.20.5-1.20.6",
       "branch": "candidate/mc-1.20.5-1.20.6",
-      "source_commit": "8b090a439f9a84ce0556c122bbf7935bf96c3ef0",
+      "source_commit": "aa64abb6fd47c0a634dad03fb445634f3715a624",
       "minecraft": [
         "1.20.5",
         "1.20.6"
@@ -124,13 +124,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
-      "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
+      "sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723",
       "runtime_evidence": {}
     },
     {
       "id": "1.21-1.21.1",
       "branch": "candidate/mc-1.21-1.21.1",
-      "source_commit": "46b235bb6bacd13e099b53f2c2b839130d12eafb",
+      "source_commit": "a62780429512a4e4072b56348e06059d127cfb1d",
       "minecraft": [
         "1.21",
         "1.21.1"
@@ -140,13 +140,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
-      "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
+      "sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57",
       "runtime_evidence": {}
     },
     {
       "id": "1.21.11",
       "branch": "maintenance/mc-1.21.11-1.0.0",
-      "source_commit": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "source_commit": "007b5e56f4ea3734634b138f59e8b417859365c1",
       "minecraft": [
         "1.21.11"
       ],
@@ -155,13 +155,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
-      "sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+      "sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
       "runtime_evidence": {}
     },
     {
       "id": "1.21.2-1.21.3",
       "branch": "candidate/mc-1.21.2-1.21.3",
-      "source_commit": "8f629c3b5d96344eb1dafe521e61edea0616fc79",
+      "source_commit": "d823a91c96b9bc80446116b44cd7568c70048c0d",
       "minecraft": [
         "1.21.2",
         "1.21.3"
@@ -171,13 +171,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
-      "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
+      "sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e",
       "runtime_evidence": {}
     },
     {
       "id": "1.21.4-1.21.8",
       "branch": "candidate/mc-1.21.4-1.21.8",
-      "source_commit": "04a61979a5a1f32d9b2e64434642ad5d8e6167eb",
+      "source_commit": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
       "minecraft": [
         "1.21.4",
         "1.21.5",
@@ -190,13 +190,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
-      "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
+      "sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
       "runtime_evidence": {}
     },
     {
       "id": "1.21.9-1.21.10",
       "branch": "candidate/mc-1.21.9-1.21.10",
-      "source_commit": "1287668b7932362ce8962c15ed993aa9798df183",
+      "source_commit": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
       "minecraft": [
         "1.21.9",
         "1.21.10"
@@ -206,13 +206,13 @@
       "loader": "0.20.1",
       "namespace": "intermediary",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
-      "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
+      "sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055",
       "runtime_evidence": {}
     },
     {
       "id": "26.1-26.2",
       "branch": "maintenance/mc-26.1-26.2-1.0.0",
-      "source_commit": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
       "minecraft": [
         "26.1",
         "26.1.1",
@@ -224,13 +224,13 @@
       "loader": "0.20.1",
       "namespace": "official",
       "artifact": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
-      "sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+      "sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
       "runtime_evidence": {}
     },
     {
       "id": "26.3",
       "branch": "maintenance/mc-26.3-1.0.0",
-      "source_commit": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "source_commit": "e851745ca0dc7a20693f84d121bd0189094b6577",
       "minecraft": [
         "26.3"
       ],
@@ -239,7 +239,7 @@
       "loader": "0.20.1",
       "namespace": "official",
       "artifact": "third-person-readable-maps-1.0.0-mc26.3.jar",
-      "sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+      "sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
       "runtime_evidence": {}
     }
   ]

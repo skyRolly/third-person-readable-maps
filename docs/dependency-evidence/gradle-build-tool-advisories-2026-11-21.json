@@ -1,9 +1,9 @@
 {
   "observed_on": "2026-11-21",
-  "scope": "Upstream Gradle build tool advisories. Distribution version 9.8.2 is proposed on all 13 product branches and used by all 3 maintenance/security branches; 9.9.1 bot updates are separately scoped. Exposure depends on build and host conditions; risk has not been accepted.",
-  "current_version": "9.8.2",
+  "scope": "Historical 2026-11-21 investigation of Gradle 9.8.2 in the then-current product proposals and still-integrated 0.0.2 branches; the source-bound proposal results below record the later 9.9.2 updates. Exposure depends on build and host conditions; no risk has been accepted.",
+  "current_version": "9.8.2 in the integrated maintenance branches at the recorded observation; prior proposal version before 9.9.2 update",
   "candidate_fix": "9.9.2",
-  "compatibility": "All 13 product and three 0.0.2 security-proposal isolated clean builds passed with 9.9.2. Exact-new-head verification and independent review remain pending.",
+  "compatibility": "All 13 exact-source product and three exact-source 0.0.2 security proposal clean builds passed on Gradle 9.9.2; Linux and Windows hosted archives matched those builds. Independent review and integration remain pending.",
   "osv_query": "2026-11-21: OSV query of pkg:maven/org.gradle/gradle-core@9.8.2 returned no vulnerabilities; upstream records below remain authoritative for this investigation, and that query is not proof of non-applicability.",
   "advisories": [
     {
@@ -45,9 +45,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "Code execution through a crafted version catalog; no catalog declaration was found in tracked build configuration, but untrusted changes or plugins need separate review.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-gqrr-4j89-5267",
@@ -88,9 +89,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "A crafted daemon registry can redirect clients or deserialize attacker-controlled data; tracked Gradle properties did not set the registry base.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-pcp8-98xm-c6pr",
@@ -131,9 +133,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "A local attacker can exploit stale daemon registry entries; actual exposure depends on local host isolation.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-99wf-vhq9-wm2x",
@@ -174,9 +177,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "TestKit use outside Gradle Test tasks on shared hosts is the relevant condition; no GradleRunner use was found in tracked build configuration.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-7f7r-77ff-fr6f",
@@ -217,9 +221,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "The bypass requires dependency verification plus a transitive changing module; effective build and plugin configuration requires further review.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-4mf6-7pm2-6wm8",
@@ -260,9 +265,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "SFTP repository use is required; no SFTP repository was found in tracked build configuration, but dynamically configured repositories remain unproven.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     },
     {
       "ghsa_id": "GHSA-35pj-rg5r-8rpv",
@@ -303,9 +309,10 @@
       "presence": "Wrapper configuration and source-bound dependency snapshots identify 9.8.2.",
       "applicability_evidence": "A local user may race the daemon registry creation on a shared host; exposure depends on user-home permissions and host isolation.",
       "disposition": "Actionable",
-      "remaining_action": "Review and validate the proposed 9.9.2 Wrapper update on the exact new heads; integrated 0.0.2 sources remain at 9.8.2 until independent review and owner-controlled integration.",
+      "remaining_action": "Review and integrate the existing 9.9.2 security proposals under the owner-controlled process; the integrated 0.0.2 sources remained at 9.8.2 at the recorded observation. Reassess actual exposure and retain unrelated unresolved advisories.",
       "risk_accepted": false,
-      "independent_review": "PENDING"
+      "independent_review": "PENDING",
+      "proposal_disposition": "Fixed in the proposed 9.9.2 Wrapper, verified by the source-bound upstream advisory query and builds; independent review and integration pending."
     }
   ],
   "schema": 1,

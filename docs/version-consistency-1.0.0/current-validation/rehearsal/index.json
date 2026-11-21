@@ -1,18 +1,22 @@
 {
   "candidate": true,
   "authorizes_release": false,
-  "coordinator_code_commit": "15264589fa6a7e8ad9f62cc2d3977be84e6cce87",
+  "coordinator_code_commit": "ab0198e43e1d9082d93365092a028bbb9bbf694e",
   "coordinator_code_sha256": {
     "scripts/release.py": "071213a3f00eda4fc94316cb1e5c67e76895eafa7429aaeee7da198ec0a4ffc8",
     "scripts/release_github.py": "2fb37ad4f166743082d78cd44ba12d87cbf63b94979af53095901b0f89a4eb1b",
+    "scripts/verify_gradle_wrapper.py": "2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481",
+    "scripts/audit_gradle_tool.py": "f5da282f27e2c4c83472474de5f92edc6b48e770908363732830dc780acb69e3",
+    "scripts/validate_current_evidence.py": "a773cdae17707813b8b693f577180cc49ee6d39f196bd332f378d937604b52f7",
+    ".github/workflows/release.yml": "f2b5f5b4a0cfdb5aed863ff74b116a8a3259ec33b714632f52adde29e7da4227",
     "release/current-version.json": "77cbd795932bd2c48bb1bcb3d3cb462cc36ed1e8d76074c2d20f9d9d21dda615"
   },
   "runner_base": "docs/legacy-dry-run-1.0.0-2026-11-14/hierarchy-2026-11-15/rehearse.py",
   "runner_base_sha256": "d99988c461c8cc12d0537b8dcb227569313d44c20e566affeb213da3f4789577",
-  "runner_sha256": "b9ada8c3be615f44fe8b6b58a82c2be4fc7665fd7e14d3be5e0bfc6d53670ac4",
+  "runner_sha256": "a48b1fc8256df9263570130c971b8dbaff2a7dbaf95dea50dc8b392ae3e4dbc7",
   "runner_substitutions": {
-    "hierarchy-final-builds-20261115": "late-review-final-builds-20261116",
-    "hierarchy-final-api-20261115": "late-review-final-api-20261116"
+    "hierarchy-final-builds-20261115": "gradle-992-final-builds-20261121",
+    "hierarchy-final-api-20261115": "gradle-992-final-api-20261121"
   },
   "harness_controls": [
     "missing-static-evidence",
@@ -20,9 +24,9 @@
     "missing-wrapper-preflight-evidence"
   ],
   "other_controls": 15,
-  "log_sha256": "b2cbd1ec76329210edca6f383a3ca145b6c8fba0719362ed2082e337eafc49d1",
+  "log_sha256": "29f0f9b7ce8f2827b38f42d424d4c3f77819a3e13eb05964570d70fe565602d4",
   "scope": "Non-publishing candidate aggregation; not strict release authorization or approved integrated-source rehearsal.",
   "candidate_compatibility_record": "docs/legacy-dry-run-1.0.0-2026-11-14/hierarchy-2026-11-15/candidate-compatibility.json",
   "candidate_compatibility_sha256": "7964647b689799a5bba7378ded64fe3364df2aa568710561f62e9b99716202b7",
-  "candidate_matrix_sha256": "8321be02b3d9b9bb3fdc742d5f441d29dfd5a65d224cfbc17a62905aa7bfd5ca"
+  "candidate_matrix_sha256": "693e35a28f22075ba115e47257c4ee252768e668f108a7dd782260f0bf3ba11d"
 }

@@ -1,5 +1,7 @@
 # Late review follow-up, 2026-11-16
 
+This worklog is chronological. Earlier investigation-status statements describe their time of observation; the final 2026-11-21 section records the later correction and validation. Current source and release status are in the [handoff](../pr-integration-handoff-1.0.0.md).
+
 After the platform hierarchy and evidence-lifecycle changes had passed their recorded checks, four automated inline review comments appeared on the open proposals. The broader product and coordination PRs were returned to draft while these comments are investigated. The exact prior product heads and their successful checks remain recorded in `version-consistency-1.0.0/current-heads.json` and `current-validation/`; their historical results must not be attributed to later commits.
 
 * [#32 inherited runtime-library resolution](https://github.com/skyRolly/third-person-readable-maps/pull/32#discussion_r4580545542): the adapter's preliminary game-only member scan can reject a game-owned reference whose member is inherited from a metadata-selected runtime library before the composite verifier runs. Preliminary investigation found the scan in all 13 product adapters. Confirm with packaged fixtures and repair without excluding references or weakening access checks.
@@ -76,3 +78,64 @@ all final build and verification subprocesses are being rerun with credential-li
 variables and authentication sockets removed. The repository owner or credential
 administrator should assess the exposure and rotate or revoke the credential if
 appropriate; no credential value is recorded here.
+
+## 2026-11-21 final proposal validation
+
+The shared game/library preliminary resolution correction is present in all 13
+proposal heads. Both namespace production entry points passed their eight-test
+compiled fixture suites at the current source. The bounded verifier still
+rejects game-owned references inherited from unresolved platform classes; this
+is an explicit supported-subset limitation, not proof of complete JVM linkage.
+All 13 current product JARs passed a credential-stripped clean build, exact
+metadata inspection, the packaged verifier for all 48 advertised versions, and
+nine adjacent-version negative controls. All 16 product and security-only PRs
+passed Linux and Windows hosted jobs; the actual PR merge commits had the same
+tree as their heads, and all 32 downloaded archives and JAR hashes matched the
+local clean builds. The [current evidence selection](../version-consistency-1.0.0/current-evidence.json)
+binds those observations to the actual sources and retains historical evidence
+separately. The 13-group non-publishing rehearsal passed, including 15
+production-related controls and three separately identified harness controls.
+
+All 13 final product JARs have new hashes. Compared with each immediately
+preceding 9.8.2 clean build, only the Gradle version field in the manifest
+changed; every other uncompressed entry matched. The comparison is recorded
+[here](../version-consistency-1.0.0/current-validation/artifact-content-comparison.json).
+The preceding 1.14 build already included the rendering-state correction; the
+old 1.14 runtime artifact preceded that correction. The current 9.9.2 JAR
+`2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d`
+then passed eight seeded draws in a [fresh instrumented 1.14 software-GL
+diagnostic](1.14-state-regression-2026-11-16/gradle-992-2026-11-21.json).
+The separate test Mixin changed the loaded renderer in memory, and the
+disposable Xorg server faulted on shutdown after the client completed. This
+does not establish unmodified-artifact, hardware-GPU, multiplayer or human
+visual acceptance. Other previous runtime observations remain historical and
+are not relabeled as observations of the new hashes.
+
+A fresh Gradle dependency resolution and OSV scan was performed for each
+current product source with the resolution subprocess stripped of credentials.
+The [compressed source-bound evidence](../dependency-evidence/current-build-security-2026-11-21.json.gz)
+contains the original snapshots, reports and logs. The ten legacy candidates
+have 385 failing occurrences (382 known, three changed against the retained
+baseline); the three maintenance proposals have 105 separately scoped known
+occurrences. The integrated scan has 105 unresolved occurrences separately;
+these are not added to the proposal count. Disappeared findings remain subject
+to review, and no risk was accepted. The upstream Gradle advisory review is
+separate: 9.8.2 matched seven published advisories; the proposed 9.9.2 matched
+none on the captured upstream feed. The result does not prove that every
+possible Gradle or game dependency advisory is absent.
+
+The security-first merge simulations were repeated on the final PR heads. Each
+pair still conflicts in README and CI. Selecting the reviewed 1.0.0 versions
+of those two paths in the temporary index produced exactly the product trees:
+`e7a988d5343108c87c3c3a70e0445b9098220add` (#34/#31),
+`fe29d5d047c59f2f8bb62798bfce9b32e5f3b7fd` (#35/#32), and
+`6c3d75201be0e7b89c43ce82c6b8e2652df5fb5b` (#36/#33). The shared Wrapper
+verifier, its tests and the Windows entry point match within each pair. These
+are simulations, not merges or review approvals.
+
+The coordinator's ordinary validation passed at code commit
+`ab0198e43e1d9082d93365092a028bbb9bbf694e`; the separate live prerequisite
+failed because the integrated 1.21.11 source lacks the required 1.0.0 release
+API verifier. The final live check must be read at the actual PR head. The
+security, owner map-ID decision, independent review, administrator protections,
+strict approved-source runtime and publication gates remain open.

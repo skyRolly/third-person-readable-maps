@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-21",
+  "game_version": "1.14",
+  "fabric_loader": "0.20.1",
+  "java": "8",
+  "renderer": "Xorg dummy; Mesa software OpenGL",
+  "source_commit": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+  "artifact_sha256": "2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d",
+  "artifact_filename": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+  "probe_source": "StateProbeMixin.java",
+  "probe_jar_sha256": "2448d234a7296addf73a88a7ca02179b37d5ecdbac2cfacd5f6e91ddfef55f72",
+  "runner_base": "run.py",
+  "runner_sha256": "9c0428a3195470ef2d0d83ba0351e01181bc073d3a4133cb3ae5a9e7dd064041",
+  "client_log": "gradle-992-client-2026-11-21.log.gz",
+  "client_log_uncompressed_sha256": "1298bec8c953b9dc7dd8b808dedcb2377884e469a001354cf8fcd672ada05578",
+  "client_log_compressed_sha256": "a57e5a34fbd9f27294e3a00daa7d093be2b796ca96e4dddab42d0a566201ee53",
+  "execution": "fixed candidate only; separate probe Mixin instrumented the loaded renderer in memory",
+  "samples": [
+    "[09:46:14] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=0 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=1 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=2 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=3 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=4 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=5 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=6 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true",
+    "[09:46:15] [main/INFO]: [STDOUT]: TPRM_STATE_PROBE sample=7 blend=true alpha=false factors_match=true color_match=true texture_match=true unit_match=true lighting_match=true"
+  ],
+  "credentials_stripped_from_client": true,
+  "result": "PASS: all eight instrumented draws preserved blend, alpha, blend factors, current color, texture binding, active unit and lighting",
+  "limitations": [
+    "The helper printed an old-versus-fixed completion phrase inherited from its two-artifact predecessor; this run exercised only the fixed 9.9.2 artifact.",
+    "This is not unmodified-artifact graphical, hardware-GPU, multiplayer, or independent acceptance.",
+    "The prior old-versus-fixed diagnostic retains its original source and artifact identities.",
+    "The disposable Xorg dummy server faulted while being shut down after the client exited successfully; the eight samples and client shutdown had already completed."
+  ]
+}

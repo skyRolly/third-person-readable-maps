@@ -1,4 +1,4 @@
-# 1.0.0 release-readiness gate matrix — updated 2026-11-16
+# 1.0.0 release-readiness gate matrix — updated 2026-11-21
 
 **Not release-ready.** Version 1.0.0 is the coordinated proposal, not a
 publication authorization. The [2026-11-04 gate history](release-readiness-2026-11-04.md)
@@ -7,7 +7,7 @@ The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readabl
 remains available at its original commit.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
-The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final clean-build, CI and rehearsal evidence is being refreshed. All 13 JAR hashes change with the Gradle 9.9.2 manifest update; the 1.14 JAR also contains a rendering-state correction. Earlier runtime observations retain their original artifact identities and do not establish exact-current-artifact acceptance.
+The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final proposed-head clean builds, hosted CI and the non-publishing candidate rehearsal have been recorded. All 13 JAR hashes change with the Gradle 9.9.2 manifest update; the 1.14 JAR also contains a rendering-state correction. Earlier runtime observations retain their original artifact identities and do not establish exact-current-artifact acceptance.
 
 | Gate | Status | Evidence and remaining action |
 |---|---|---|
@@ -15,20 +15,20 @@ The [current evidence selection](version-consistency-1.0.0/current-evidence.json
 | Compatibility grouping | PENDING REVIEW | Ten proposed legacy groups and proposals for three existing maintenance groups cover 48 explicit versions. No new split is proposed; independent acceptance remains. |
 | Version synchronization | PENDING REVIEW | All 13 proposed product heads and the proposed coordinator use 1.0.0. The actual integrated branches remain 0.0.2 until reviewed PRs merge. |
 | Local credential exposure assessment | PENDING REVIEW | The first local 9.9.2 compatibility and initial final builds inherited a repository-write-capable `GH_TOKEN`. No release-auditor credential was present; no literal token appeared in the captured logs, but disclosure by other means was not ruled out. Subsequent build subprocesses strip credentials. The credential owner should assess and rotate or revoke it if appropriate. |
-| Wrapper build security | PENDING REVIEW | Canonical preflight remains in place. Final-head hosted runs and independent review are pending. |
+| Wrapper build security | PENDING REVIEW | Canonical preflight remains in place. Final-head preflight, builds and hosted Linux/Windows runs passed; independent review is pending. |
 | Verification implementation | PENDING REVIEW | Discriminating JVM and packaged-entry-point fixtures cover the shared corrections. The bounded contract explicitly rejects unproven platform-member inheritance and other unsupported patterns; independent review remains required. |
-| Current artifact static compatibility | PENDING REVIEW | The corrected verifier has completed the 48-version sweep; final clean-artifact identity and source-bound evidence are being reconciled. |
-| Proposed-head Linux CI | NOT RUN | New proposed heads are queued for Linux CI; previous-head passes do not certify them. |
-| Proposed-head Windows CI | NOT RUN | New proposed heads are queued for Windows CI; previous-head passes do not certify them. |
+| Current artifact static compatibility | PASS | The bounded packaged verifier passed on all 48 versions using the exact clean-built proposal artifacts; independent review and runtime acceptance remain separate. |
+| Proposed-head Linux CI | PASS | All 13 product and three 0.0.2 security proposals passed on synthetic merge trees equal to their proposal trees; hosted archives match local builds. |
+| Proposed-head Windows CI | PASS | All 13 product and three 0.0.2 security proposals passed on synthetic merge trees equal to their proposal trees; hosted archives match local builds. |
 | Coordination CI | BLOCKED | Coordination tests and workflow lint now run independently of a separate live-release prerequisite job. The latter remains blocked while integrated maintenance sources lack the proposed verifier and version; strict release authorization requires both checks and rechecks the live sources. |
-| Installed-client startup | PENDING REVIEW | Earlier local-world observations retain their original source and artifact identities. The corrected 1.14 JAR has a targeted instrumented software-GL diagnostic; full current-artifact and approved-source acceptance remains open. |
+| Installed-client startup | PENDING REVIEW | Earlier local-world observations retain their original source and artifact identities. The current 1.14 JAR has a targeted instrumented software-GL diagnostic; full current-artifact and approved-source acceptance remains open. |
 | Rendering-state and map-ID correctness | PENDING REVIEW | Targeted legacy probes support the texture, lighting and NBT guards. All 19 component-era codecs normalize the tested malformed numbers to zero before rendering; paired candidate/no-Mod loading controls found matching behavior. No additional Mod-specific discrepancy is established by those controls. Remaining synchronization, graphical and independent acceptance requirements are tracked separately. |
 | Owner acceptance of map-ID contract | PENDING REVIEW | The proposed contract preserves the typed ID supplied by Minecraft, including valid zero; owner review and any decision about broader decoding changes remain outstanding. |
 | Foreground anomaly investigation | BLOCKED | A [dropped-item control](foreground-item-entities-2026-11-13/) explains particular small shapes in one 1.21.11 scene. The large historical shape did not recur in limited candidate/no-mod comparisons; its original conditions were not reproduced and its cause remains unresolved. |
 | Full graphical acceptance | NOT RUN | Controlled probes and partial screenshots do not cover all hands, poses, state restoration and first-person behavior on all final artifacts. Independent assessment is required. |
 | Hardware-GPU testing | NOT RUN | Existing fresh diagnostic clients used Xorg/Mesa software rendering. |
 | Multiplayer testing | BLOCKED | A later [instrumented 1.21.11 LAN repeat](multiplayer-smoke-2026-11-14/instrumented-2026-11-15/) observed the renderer's map-ID-2 lookup return no data before the host gave that map to the observer and data in the same second as the give command. Packets were not instrumented; the earlier observation, other versions, broader interactions and independent multiplayer acceptance remain open. |
-| Security advisory disposition | FAIL | The retained scans report 385 failing candidate and 105 failing integrated occurrences, plus 105 separately scoped unmerged-proposal occurrences. The [critical Netty TLS review](dependency-evidence/advisory-dispositions/netty-critical-tls-2026-11-15.json) advances 10 candidate, four integrated and four separately scoped unmerged-proposal matches; it establishes neither reachability nor a fix. Earlier Log4j and Netty investigations remain open; no risk is accepted. |
+| Security advisory disposition | FAIL | Fresh source-bound scans report 385 failing legacy-candidate occurrences and 105 separately scoped unmerged-proposal occurrences; the latest integrated scans report 105 unresolved occurrences. The [critical Netty TLS review](dependency-evidence/advisory-dispositions/netty-critical-tls-2026-11-15.json) advances 10 candidate, four integrated and four separately scoped unmerged-proposal matches; it establishes neither reachability nor a fix. Earlier Log4j and Netty investigations remain open; no risk is accepted. |
 | Dependency monitoring | BLOCKED | Proposal-head inventories and audits were refreshed, and placeholder Dependabot targets are absent. The lifecycle transition and authoritative monitoring for each eventual merged source require reviewed activation; unresolved findings continue failing. |
 | Effective branch protection | FAIL | On [2026-11-15](admin/branch-rules-observation-2026-11-15.json) the branch API reported `protected: false` for all 14 existing and intended targets; visible effective branch rules and repository/parent rulesets were empty. Detailed legacy protection settings were inaccessible. Administrator action and read-back are required. |
 | Independent source approvals | PENDING REVIEW | The 13 product PRs are ready for review; the coordinator's review status follows its final ordinary CI. All remain unmerged and eligible independent reviewers must approve the final heads. |
@@ -39,8 +39,8 @@ The [current evidence selection](version-consistency-1.0.0/current-evidence.json
 | Auditor access | BLOCKED | Configure and verify the read-only auditor credential through the administrator without exposing its value. |
 | Tag protection | BLOCKED | A tag-only policy and authorized creation path require administrator review and read-back. No tag was created. |
 | Runtime evidence | BLOCKED | Strict reports must bind every game version to the reviewed source commit and actual artifact SHA-256; local partial probes are insufficient. |
-| Provenance and checksums | PENDING REVIEW | Previous candidate provenance is historical; final proposed-source and artifact evidence is being refreshed. |
-| Non-publishing rehearsal | NOT RUN | A fresh rehearsal is required for the updated proposal sources and changed 1.14 artifact; prior rehearsal remains historical. |
+| Provenance and checksums | PENDING REVIEW | Candidate source, hosted artifacts, checksums and rehearsal provenance are recorded; strict approved merged-source provenance remains pending. |
+| Non-publishing rehearsal | PASS | The current proposed sources and artifacts passed 13-group, 48-version candidate aggregation, checksums and 18 controls (three harness-only); this is not strict production authorization. |
 | Live release authorization | FAIL | Security, integration, protection, review and runtime gates above are unsatisfied. |
 | Draft preparation readiness | BLOCKED | The owner has not authorized draft creation, and prerequisite gates are unsatisfied. |
 | Public publication readiness | BLOCKED | No approved draft or separate publication authorization exists. |
