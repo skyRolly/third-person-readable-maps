@@ -1,0 +1,11 @@
+{
+  "minecraft": "1.15",
+  "candidate_sha256": "d30a2a682699e881903275ce373d79374b1475e5dff10e7b3e66d364819b13de",
+  "position": [
+    5.5,
+    81.0,
+    -62.5
+  ],
+  "renderer": "Linux Xorg/Mesa software",
+  "note": "Images require visual inspection; single local layout only."
+}
