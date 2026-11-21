@@ -156,7 +156,12 @@ remains a separate graphical, hardware-GPU, and multiplayer acceptance gate.
 - `python3 -m unittest discover -s tests -v`: 185 passed after the evidence validator, ledger, documentation, and workflow changes.
 - `python3 scripts/validate_current_evidence.py`: returned `PENDING` for runtime observations and selected current integrated security inventories. This remains a separate release/readiness blocker.
 - Local workflow lint could not run because this environment's `/usr/bin/go` rejects `go run` (`Go: Unknown option: run`); the repository CI actionlint step will check the workflow on the PR.
-- Windows run of the new reachability workflow: pending hosted PR CI.
+- Initial Windows run of the new reachability workflow failed during checkout:
+  Git for Windows rejected ten historical archive paths because long path
+  handling was disabled. The source contents were unchanged and Linux completed
+  the same evidence and component checks. The checkout step now enables
+  `core.longpaths` through Git's per-process configuration environment; a fresh
+  Windows PR run is required to verify checkout and the Windows probes.
 - Fresh OSV scan after this documentation-only source branch: not run. No game source or dependency declarations changed; the checked-in exact-source candidate/integrated audit reports remain unchanged and failing.
 
 Counts remain 490 failing occurrences (22 Critical, 177 High, 274 Moderate,
