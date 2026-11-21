@@ -48,10 +48,10 @@ jobs:
         working-directory: ${{ runner.temp }}
         shell: pwsh
         run: '& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all'
-      - name: Verify APIs in every declared Minecraft version
-        run: python scripts/verify_supported_apis.py --jar build/libs
       - name: Test static verification
         run: python -m unittest discover -s tests
+      - name: Verify APIs in every declared Minecraft version
+        run: python scripts/verify_supported_apis.py --jar build/libs
       - name: Upload distributable mod
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
