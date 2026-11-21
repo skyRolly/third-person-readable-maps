@@ -1,0 +1,785 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-21",
+  "status": "complete-hash-verified-artifact-inventory",
+  "method": "Read exact runtime manifest URL and SHA-1 from each finding-index report; verify Mojang metadata SHA-1; select exact Netty Maven coordinate; verify artifact size and SHA-1; record artifact and relevant class SHA-256. Downloaded JARs were inspected as ZIP entries only and not executed.",
+  "finding_index": {
+    "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+    "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+  },
+  "source_occurrences": [
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+      "runtime_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.3",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "runtime_versions": [
+        "1.19.3"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-3/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "1d56b5a18354e989352546d101630cb3ca2146e72f559040c77d5ca2e5186291"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.4-1.20.4",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "runtime_versions": [
+        "1.19.4",
+        "1.20",
+        "1.20.1"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "69fe050c810c4b6dfdbe1d747c722d788fc862a0be40b7c2dca765fd561728c0"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.19.4-1.20.4",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "runtime_versions": [
+        "1.20.2",
+        "1.20.3",
+        "1.20.4"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "69fe050c810c4b6dfdbe1d747c722d788fc862a0be40b7c2dca765fd561728c0"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.20.5-1.20.6",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "runtime_versions": [
+        "1.20.5",
+        "1.20.6"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21-1.21.1",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "runtime_versions": [
+        "1.21",
+        "1.21.1"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.2-1.21.3",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+      "runtime_versions": [
+        "1.21.2",
+        "1.21.3"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.4-1.21.8",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+      "runtime_versions": [
+        "1.21.4"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.4-1.21.8",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+      "runtime_versions": [
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+    },
+    {
+      "advisory": "GHSA-pwqr-wmgm-9rr8",
+      "group": "1.21.9-1.21.10",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
+      "runtime_versions": [
+        "1.21.10",
+        "1.21.9"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.9-1.21.10",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+      "runtime_versions": [
+        "1.21.10",
+        "1.21.9"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+      "report_sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+    },
+    {
+      "advisory": "GHSA-pwqr-wmgm-9rr8",
+      "group": "1.21.11",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
+      "runtime_versions": [
+        "1.21.11"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "1.21.11",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+      "runtime_versions": [
+        "1.21.11"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+    },
+    {
+      "advisory": "GHSA-pwqr-wmgm-9rr8",
+      "group": "26.1-26.2",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
+      "runtime_versions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "26.1-26.2",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.15.Final",
+      "runtime_versions": [
+        "26.2"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "26.1-26.2",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+      "runtime_versions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+    },
+    {
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "group": "26.3",
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+      "runtime_versions": [
+        "26.3"
+      ],
+      "report": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+      "report_sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+    }
+  ],
+  "minecraft_manifests": [
+    {
+      "minecraft_version": "1.19",
+      "url": "https://piston-meta.mojang.com/v1/packages/a78840abb2308ea20e02f1092dffc410b771379c/1.19.json",
+      "sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+      "sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac"
+    },
+    {
+      "minecraft_version": "1.19.1",
+      "url": "https://piston-meta.mojang.com/v1/packages/68a9d61fb59bdff45833070b0bd0cbf2aabb39a4/1.19.1.json",
+      "sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+      "sha256": "ce9d1863936a147d95e5914ed7e78a7c5afd756fab426755c1508a634eba1ab8"
+    },
+    {
+      "minecraft_version": "1.19.2",
+      "url": "https://piston-meta.mojang.com/v1/packages/9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb/1.19.2.json",
+      "sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+      "sha256": "5b4ed0444276fe04346ac1147e22ade7f1779695baf3dc4daca6acf3901a14c7"
+    },
+    {
+      "minecraft_version": "1.19.3",
+      "url": "https://piston-meta.mojang.com/v1/packages/e3d4830def0774ed63394c0f72c894bfbdc9abd2/1.19.3.json",
+      "sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+      "sha256": "aa0f93889b1819934e23512732718b512f3d70cf58c9d9705abf670a75c98b19"
+    },
+    {
+      "minecraft_version": "1.19.4",
+      "url": "https://piston-meta.mojang.com/v1/packages/59b9f6eaf77cbeb53fe65454e9f83236e57efd42/1.19.4.json",
+      "sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+      "sha256": "03c4a79051999cab186a20be762b70cc1686567847f68e16c5a4b3a574894a04"
+    },
+    {
+      "minecraft_version": "1.20",
+      "url": "https://piston-meta.mojang.com/v1/packages/376c1bc4668ad64347f834f339ae9482c23bbdac/1.20.json",
+      "sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+      "sha256": "6f97e5ee8d3ce9844aab5062c4803c91da987e3443e86addf36abac33cd8ad9c"
+    },
+    {
+      "minecraft_version": "1.20.1",
+      "url": "https://piston-meta.mojang.com/v1/packages/fb730d2829f057fe26a41e5ecdc9e3307333bef5/1.20.1.json",
+      "sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+      "sha256": "937be3886f3c7e435912832cbe497e9933ea2b8df4c5e9a1a41f3605b8af5548"
+    },
+    {
+      "minecraft_version": "1.20.2",
+      "url": "https://piston-meta.mojang.com/v1/packages/2de0c0ee516b632aab03cd5ea4d34e5aafcdf130/1.20.2.json",
+      "sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+      "sha256": "e17e1d550a08e949f419a6c0a81643326b0d5383706729f8b964673b0bd94f19"
+    },
+    {
+      "minecraft_version": "1.20.3",
+      "url": "https://piston-meta.mojang.com/v1/packages/b64d934f068566415107a4a835d3e2099a86af3f/1.20.3.json",
+      "sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+      "sha256": "09a0cbd10dafee9d060a77183665825dc60725afd0734d70fc1feab56eb62d4b"
+    },
+    {
+      "minecraft_version": "1.20.4",
+      "url": "https://piston-meta.mojang.com/v1/packages/417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330/1.20.4.json",
+      "sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+      "sha256": "bb3e1e8935d115e6450664613a3a7d9cd1c89f6fcf9c34c84f324e825cd413f6"
+    },
+    {
+      "minecraft_version": "1.20.5",
+      "url": "https://piston-meta.mojang.com/v1/packages/5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446/1.20.5.json",
+      "sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+      "sha256": "eef0b257cf2fbe75debc1e21a18e3c0dd73ac093856148f0a5da52b21e5a99b4"
+    },
+    {
+      "minecraft_version": "1.20.6",
+      "url": "https://piston-meta.mojang.com/v1/packages/e614a15052d9bf81d314ff0111aaa21f7144115d/1.20.6.json",
+      "sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+      "sha256": "58b58c1ace5cb056f609da14e04c54c6fbe8f0b651f77be383a32d67de0a580d"
+    },
+    {
+      "minecraft_version": "1.21",
+      "url": "https://piston-meta.mojang.com/v1/packages/cf0560d5dc4f926b801e6ff12f189d9ffe0720b1/1.21.json",
+      "sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+      "sha256": "93455424ecb43394b987a2f90f5aa5b1958df974a2abb5714f9eff73278e32de"
+    },
+    {
+      "minecraft_version": "1.21.1",
+      "url": "https://piston-meta.mojang.com/v1/packages/ff7ef54488da4a711f3c8a781a9f79105bbe801a/1.21.1.json",
+      "sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+      "sha256": "ab07658fe972925ed0036e383a09e3b4ca6b3f4ee07634233c02a5a1d49a39c9"
+    },
+    {
+      "minecraft_version": "1.21.10",
+      "url": "https://piston-meta.mojang.com/v1/packages/563e8381e10c8d807c6531da30fa4a57bbc79f3c/1.21.10.json",
+      "sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+      "sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651"
+    },
+    {
+      "minecraft_version": "1.21.11",
+      "url": "https://piston-meta.mojang.com/v1/packages/a969d96978af7b52dba8df44e177f48ec4ebe0d8/1.21.11.json",
+      "sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad"
+    },
+    {
+      "minecraft_version": "1.21.2",
+      "url": "https://piston-meta.mojang.com/v1/packages/ec780c60f9c5a6cc2494f279eadf338ff6f70ecc/1.21.2.json",
+      "sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+      "sha256": "d2e96a066101672b163c908822f76989e5486499c2911678d6e62166ee36f570"
+    },
+    {
+      "minecraft_version": "1.21.3",
+      "url": "https://piston-meta.mojang.com/v1/packages/31d677732ca6cd2c29ab7071008870ba0fe13a55/1.21.3.json",
+      "sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+      "sha256": "0cd08d9da800ecd395f25f1878afadfdfd2197397882db1132d4a6b6c32de68a"
+    },
+    {
+      "minecraft_version": "1.21.4",
+      "url": "https://piston-meta.mojang.com/v1/packages/c88775961e316f2be09859c54e13017660ee7770/1.21.4.json",
+      "sha1": "c88775961e316f2be09859c54e13017660ee7770",
+      "sha256": "767a39dd8282a858786d401df139c99110390373e3212e3d2be859634e89890d"
+    },
+    {
+      "minecraft_version": "1.21.5",
+      "url": "https://piston-meta.mojang.com/v1/packages/d7eabdfb864d74c6d3942cdb864405778e948f28/1.21.5.json",
+      "sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+      "sha256": "c82e3e9f8c8b3b9350e3fb6051cd0080bc6a0c257ab7deeaaefb57138e6c6b67"
+    },
+    {
+      "minecraft_version": "1.21.6",
+      "url": "https://piston-meta.mojang.com/v1/packages/6d057cfccf6b8589ec6c9663902b07b7c1170538/1.21.6.json",
+      "sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+      "sha256": "73491945279675bb387c95b98838adac4146148df6bc6ad773406e8c1e3cd6f2"
+    },
+    {
+      "minecraft_version": "1.21.7",
+      "url": "https://piston-meta.mojang.com/v1/packages/5149e9aa052c041683a5b2d80aecaaabde953b87/1.21.7.json",
+      "sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+      "sha256": "e91db2a552a2e9b64e629ab18635e397b1ec2b4283820674929a3e7beb1201aa"
+    },
+    {
+      "minecraft_version": "1.21.8",
+      "url": "https://piston-meta.mojang.com/v1/packages/e7625384d0bdf069fb75349992292ca86198c851/1.21.8.json",
+      "sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+      "sha256": "9ef73126c6b2e43fdae1da93519a4f89a9e5cbaf59d0f7617594fdc885f96f8b"
+    },
+    {
+      "minecraft_version": "1.21.9",
+      "url": "https://piston-meta.mojang.com/v1/packages/61826f3fa6b54439cac19731be4305bb2f388c78/1.21.9.json",
+      "sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+      "sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b"
+    },
+    {
+      "minecraft_version": "26.1",
+      "url": "https://piston-meta.mojang.com/v1/packages/224ef4d5ccb0a181b750765f2fdc591e0072bd3a/26.1.json",
+      "sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+      "sha256": "9ee99d30a7efca85e33866231625474be36456dfbafc0bbc010db9ec08a4ca96"
+    },
+    {
+      "minecraft_version": "26.1.1",
+      "url": "https://piston-meta.mojang.com/v1/packages/3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a/26.1.1.json",
+      "sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+      "sha256": "95527a36610fc96ddc0bfb542f9e2a0daf60d8e42373873627fadc7e9dea0938"
+    },
+    {
+      "minecraft_version": "26.1.2",
+      "url": "https://piston-meta.mojang.com/v1/packages/80bb32e704c07fb2c44066a2c1774cb460d7e22b/26.1.2.json",
+      "sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+      "sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7"
+    },
+    {
+      "minecraft_version": "26.2",
+      "url": "https://piston-meta.mojang.com/v1/packages/cf103b8fab4900562221bf7f23b72725dd9a914a/26.2.json",
+      "sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+      "sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a"
+    },
+    {
+      "minecraft_version": "26.3",
+      "url": "https://piston-meta.mojang.com/v1/packages/ead839cbccf0ddf013c3f935f2840080b5cb0d26/26.3.json",
+      "sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+      "sha256": "43f99ada2af68d760f03840cd66eb3afba96c870fe1f521900fe5be08985d4f4"
+    }
+  ],
+  "netty_artifacts": [
+    {
+      "coordinate": "io.netty:netty-codec-http:4.1.118.Final",
+      "minecraft_versions": [
+        "1.21.10",
+        "1.21.9"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.1.118.Final/netty-codec-http-4.1.118.Final.jar",
+      "sha1": "eda08a71294afe78c779b85fd696bc13491507a8",
+      "size": 674362,
+      "source_groups": [
+        {
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/codec/http/HttpObjectDecoder.class",
+          "sha256": "58f191106827ddd66a6a0113fe519bfbc35f00b418740008a00ff0c474a8c253",
+          "size": 24765
+        },
+        {
+          "path": "io/netty/handler/codec/http/HttpRequestDecoder.class",
+          "sha256": "9008f7ab6f4260095c6259cbb99c9ea3a76920f050c41420db82efe0c2e23b37",
+          "size": 7322
+        }
+      ],
+      "sha256": "09822d785e9a794838031ddd5346cf419b30c036a981c2e277a062bea884174b"
+    },
+    {
+      "coordinate": "io.netty:netty-codec-http:4.2.7.Final",
+      "minecraft_versions": [
+        "1.21.11",
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar",
+      "sha1": "b734c108854099c421fd94d92d9f865e4d4da853",
+      "size": 683327,
+      "source_groups": [
+        {
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "source_kind": "integrated"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "source_kind": "integrated"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/codec/http/HttpObjectDecoder.class",
+          "sha256": "e5f82f56a09723843ae394d69055aa398193f6b1ce96e3fbf1549732a8b28e2c",
+          "size": 25427
+        },
+        {
+          "path": "io/netty/handler/codec/http/HttpRequestDecoder.class",
+          "sha256": "692a98f8f7202e8a1f9aa96cae2d505de41c11b64d113a5b5f3943cba5018b9f",
+          "size": 7322
+        }
+      ],
+      "sha256": "2984dd38420a61c4dd68fcacc51ffc528eb46f73f7795cdafdb3a4d6fcb76862"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.1.115.Final",
+      "minecraft_versions": [
+        "1.21.4"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar",
+      "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+      "size": 578357,
+      "source_groups": [
+        {
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689",
+          "size": 7169
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772",
+          "size": 5997
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5",
+          "size": 9787
+        }
+      ],
+      "sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.1.118.Final",
+      "minecraft_versions": [
+        "1.21.10",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8",
+        "1.21.9"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+      "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+      "size": 580162,
+      "source_groups": [
+        {
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "source_kind": "candidate"
+        },
+        {
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689",
+          "size": 7169
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772",
+          "size": 5997
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5",
+          "size": 9787
+        }
+      ],
+      "sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.1.77.Final",
+      "minecraft_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.jar",
+      "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+      "size": 528268,
+      "source_groups": [
+        {
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "f0acf775b8fed016684e7994a0125492cf0aad626cbd1cd58cddc63537d15636",
+          "size": 6020
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5",
+          "size": 4153
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f",
+          "size": 9025
+        }
+      ],
+      "sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.1.82.Final",
+      "minecraft_versions": [
+        "1.19.3",
+        "1.19.4",
+        "1.20",
+        "1.20.1"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar",
+      "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+      "size": 538569,
+      "source_groups": [
+        {
+          "group": "1.19.3",
+          "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+          "source_kind": "candidate"
+        },
+        {
+          "group": "1.19.4-1.20.4",
+          "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "f0acf775b8fed016684e7994a0125492cf0aad626cbd1cd58cddc63537d15636",
+          "size": 6020
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5",
+          "size": 4153
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f",
+          "size": 9025
+        }
+      ],
+      "sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.1.97.Final",
+      "minecraft_versions": [
+        "1.20.2",
+        "1.20.3",
+        "1.20.4",
+        "1.20.5",
+        "1.20.6",
+        "1.21",
+        "1.21.1",
+        "1.21.2",
+        "1.21.3"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+      "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+      "size": 560040,
+      "source_groups": [
+        {
+          "group": "1.19.4-1.20.4",
+          "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+          "source_kind": "candidate"
+        },
+        {
+          "group": "1.20.5-1.20.6",
+          "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+          "source_kind": "candidate"
+        },
+        {
+          "group": "1.21-1.21.1",
+          "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+          "source_kind": "candidate"
+        },
+        {
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "source_kind": "candidate"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689",
+          "size": 7169
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772",
+          "size": 5997
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227",
+          "size": 9785
+        }
+      ],
+      "sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.2.15.Final",
+      "minecraft_versions": [
+        "26.2"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.15.Final/netty-handler-4.2.15.Final.jar",
+      "sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+      "size": 586442,
+      "source_groups": [
+        {
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "source_kind": "integrated"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "ea41eef08a3685cfec5e7cf3b80c71f1094466b64ff83e76c971502e6e39877a",
+          "size": 7253
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "f3561beb96d975a7adffc79b65e79f5c21ea06e7f721f17e55a216562f459e66",
+          "size": 6166
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "278fa6e1c50a95bcc7b3916c5782e0acaba01c32885c9fff76de2c2461e45a90",
+          "size": 10755
+        }
+      ],
+      "sha256": "99b59e4bea72220d2aed52df8baf37d97431b06ade0b135226cdf73168975eab"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.2.16.Final",
+      "minecraft_versions": [
+        "26.3"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar",
+      "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+      "size": 587814,
+      "source_groups": [
+        {
+          "group": "26.3",
+          "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+          "source_kind": "integrated"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "ea41eef08a3685cfec5e7cf3b80c71f1094466b64ff83e76c971502e6e39877a",
+          "size": 7253
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "f3561beb96d975a7adffc79b65e79f5c21ea06e7f721f17e55a216562f459e66",
+          "size": 6166
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "278fa6e1c50a95bcc7b3916c5782e0acaba01c32885c9fff76de2c2461e45a90",
+          "size": 10755
+        }
+      ],
+      "sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7"
+    },
+    {
+      "coordinate": "io.netty:netty-handler:4.2.7.Final",
+      "minecraft_versions": [
+        "1.21.11",
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+      "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+      "size": 581349,
+      "source_groups": [
+        {
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "source_kind": "integrated"
+        },
+        {
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "source_kind": "integrated"
+        }
+      ],
+      "classes": [
+        {
+          "path": "io/netty/handler/ssl/SniHandler.class",
+          "sha256": "9ca78513113187267752aaaff0544ed9e997985c7d141fcfb6273b8bbd90656b",
+          "size": 7151
+        },
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "41be9595faa300a56e40da910d6410f8f3d2b6fb2b833c561258859b3d6213db",
+          "size": 5985
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "db6acdd588673f91d92677737abe8c22c867bc6dc8e1992b6e071ff705b5eb7c",
+          "size": 9763
+        }
+      ],
+      "sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3"
+    }
+  ]
+}

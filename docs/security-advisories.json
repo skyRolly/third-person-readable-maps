@@ -799,7 +799,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "Hash-verified game JAR review found RegionFileVersion (erz on 1.21.11) constructing LZ4BlockInputStream(InputStream), not the explicit stopOnEmptyBlock=false overload. This narrows that direct path but does not enumerate all library/reflective paths or host JNI behavior.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+          "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-mcr4-qmvw-px4g",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "1.21.11|pkg:maven/at.yawk.lz4/lz4-java@1.8.1|GHSA-xx22-p4ch-683r",
@@ -1375,7 +1391,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+          "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-pwqr-wmgm-9rr8",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "1.21.11|pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-q4f6-jm68-57ww",
@@ -1535,7 +1567,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+          "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-c4c3-7fpv-j4q5",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "1.21.11|pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-c653-97m9-rcg9",
@@ -2109,7 +2157,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "Hash-verified game JAR review found RegionFileVersion (erz on 1.21.11) constructing LZ4BlockInputStream(InputStream), not the explicit stopOnEmptyBlock=false overload. This narrows that direct path but does not enumerate all library/reflective paths or host JNI behavior.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+          "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-mcr4-qmvw-px4g",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.1-26.2|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-xx22-p4ch-683r",
@@ -3069,7 +3133,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+          "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-pwqr-wmgm-9rr8",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.1-26.2|pkg:maven/io.netty/netty-codec-http@4.2.7.Final|GHSA-q4f6-jm68-57ww",
@@ -3208,7 +3288,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+          "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-c4c3-7fpv-j4q5",
+        "disposition": "Upstream-dependent",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.1-26.2|pkg:maven/io.netty/netty-handler@4.2.15.Final|GHSA-fccg-mwvh-qqg4",
@@ -3311,7 +3407,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+          "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-c4c3-7fpv-j4q5",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.1-26.2|pkg:maven/io.netty/netty-handler@4.2.7.Final|GHSA-c653-97m9-rcg9",
@@ -3934,7 +4046,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "Hash-verified game JAR review found RegionFileVersion (erz on 1.21.11) constructing LZ4BlockInputStream(InputStream), not the explicit stopOnEmptyBlock=false overload. This narrows that direct path but does not enumerate all library/reflective paths or host JNI behavior.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+          "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-mcr4-qmvw-px4g",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.3|pkg:maven/at.yawk.lz4/lz4-java@1.10.1|GHSA-xx22-p4ch-683r",
@@ -4062,7 +4190,23 @@
         "The two mod Java classes implement rendering/Mixin callbacks only; the matched feature is not directly called by mod code.",
         "A targeted constant-pool reference search in the hash-verified game JARs did not establish a direct call to the investigated Netty/Guava feature. This search excludes transitive library implementations, reflection and other installed mods and cannot establish non-applicability.",
         "docs/dependency-evidence/runtime-features.json records game SHA-1s, searched features, member references and hash-verified default logging configuration; no vulnerable-feature PoC or game-wide runtime reachability test was run."
-      ]
+      ],
+      "latest_source_observation": {
+        "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+          "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+        },
+        "finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "investigation_evidence": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+        "advisory_evidence_id": "GHSA-c4c3-7fpv-j4q5",
+        "disposition": "Further investigation",
+        "failing": true,
+        "release_blocking": true,
+        "risk_accepted": false,
+        "review_date": "2026-11-21",
+        "reviewer": "Codex automated technical investigation; independent human review pending"
+      }
     },
     {
       "key": "26.3|pkg:maven/io.netty/netty-handler@4.2.16.Final|GHSA-fccg-mwvh-qqg4",
@@ -15031,5 +15175,14 @@
         }
       ]
     }
+  },
+  "critical_reachability_evidence": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+    "sha256": "960ba4aec2efee545cdd49450d973fc5599b91d509b83718e43f4901e0413704",
+    "review_date": "2026-11-21",
+    "security_clearance": false,
+    "risk_accepted": false,
+    "all_in_scope_occurrences_remain_failing": true,
+    "updated_integrated_occurrence_records": 9
   }
 }

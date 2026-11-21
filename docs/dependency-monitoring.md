@@ -2,6 +2,8 @@
 
 The [2026-11-21 source-bound scan archive and worklist](worklogs/issue-45-security-followup-2026-11-21.md) records the current candidate and integrated runs separately. It preserves original reports, snapshots and checksums without replacing prior baselines. The current reports retain 385 candidate and 105 integrated failing matches.
 
+The [critical/high reachability follow-up](worklogs/issue-45-critical-reachability-2026-11-21.md) adds source-bound runtime observations without removing any finding. All 13 candidate and integrated source heads still match the finding index; their Gradle 9.9.2 Wrapper files passed hash checks against Gradle's published values. The ten open legacy PR heads also match their indexed source SHAs and their exact-head Linux, Windows, Wrapper, and packaged API checks passed. They remain blocked by unresolved findings. Candidate (385) and integrated (105) monitoring remain separate, and all 490 occurrences continue to fail.
+
 Verified on 2026-11-04 against the initial maintained heads recorded in the
 [maintenance report](maintenance-2026-11-04.md). Proposed maintenance PRs do not
 change dependency versions or build resolution. Their hosted results must be

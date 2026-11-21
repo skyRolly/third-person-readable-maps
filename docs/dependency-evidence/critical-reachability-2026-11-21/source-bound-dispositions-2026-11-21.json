@@ -1,0 +1,2945 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-21",
+  "status": "incomplete-investigation-all-findings-remain-blocking",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "scope": "13 exact-source groups from the candidate and integrated finding index; unmerged-maintenance proposal observations remain a separate scope.",
+  "source_provenance": {
+    "archive_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json",
+      "sha256": "0f69c2ff6ecfa6e67a4b8ec00643c6a1bf097e9e6c88bf88e1a4bc4c326c3a5e"
+    },
+    "finding_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+    },
+    "archive_report_hashes_verified": 39,
+    "finding_records_hashes_and_source_identities_verified": 490
+  },
+  "current_counts": {
+    "candidate": {
+      "occurrences": 385,
+      "severity_occurrences": {
+        "CRITICAL": 18,
+        "HIGH": 141,
+        "MODERATE": 212,
+        "LOW": 14
+      },
+      "distinct_package_version_advisory_pairs": 180,
+      "distinct_advisory_ids": 88
+    },
+    "integrated": {
+      "occurrences": 105,
+      "severity_occurrences": {
+        "CRITICAL": 4,
+        "HIGH": 36,
+        "MODERATE": 62,
+        "LOW": 3
+      },
+      "distinct_package_version_advisory_pairs": 63,
+      "distinct_advisory_ids": 40
+    }
+  },
+  "occurrences_total": 490,
+  "critical_occurrences_in_scope": 22,
+  "high_occurrences_in_scope": 177,
+  "targeted_critical_occurrences": 22,
+  "targeted_high_occurrences": 11,
+  "findings": [
+    {
+      "advisory_id": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "severity": "CRITICAL",
+      "component": "io.netty:netty-handler",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-c4c3-7fpv-j4q5",
+      "upstream_advisory_authority": "https://api.github.com/repos/netty/netty/security-advisories/GHSA-c4c3-7fpv-j4q5",
+      "upstream_affected_ranges": [
+        {
+          "package": "io.netty:netty-handler",
+          "vulnerable_version_range": ">= 4.2.0.Final, <= 4.2.16.Final",
+          "first_patched_version": "4.2.17.Final"
+        },
+        {
+          "package": "io.netty:netty-handler",
+          "vulnerable_version_range": "<= 4.1.136.Final",
+          "first_patched_version": "4.1.137.Final"
+        }
+      ],
+      "occurrence_count": 14,
+      "source_groups": [
+        "1.17-1.19.2",
+        "1.19.3",
+        "1.19.4-1.20.4",
+        "1.20.5-1.20.6",
+        "1.21-1.21.1",
+        "1.21.11",
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10",
+        "26.1-26.2",
+        "26.3"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.19",
+            "1.19.1",
+            "1.19.2"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.19",
+              "version_metadata_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+              "client_sha1": "c0898ec7c6a5a2eaa317770203a1554260699994",
+              "client_sha256": "ffd4fb3037d4110085b4d3d2dc47b760695528eb14292c3e5f7c758983c6d764"
+            },
+            {
+              "minecraft_version": "1.19.1",
+              "version_metadata_sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+              "client_sha1": "90d438c3e432add8848a9f9f368ce5a52f6bc4a7",
+              "client_sha256": "146d4018cfed50c5e77483940653091f186d2eea9ad42fc40939f5c72d6b7f52"
+            },
+            {
+              "minecraft_version": "1.19.2",
+              "version_metadata_sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+              "client_sha1": "055b30d860ead928cba3849ba920c88b6950b654",
+              "client_sha256": "e1ac65de9b471b6916cc457fdcff00c1bafac17027aa79100c4df893b3d956db"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+          "package_version": "4.1.77.Final",
+          "dependency_scopes": [
+            "runtime/1.19",
+            "runtime/1.19.1",
+            "runtime/1.19.2"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "f0acf775b8fed016684e7994a0125492cf0aad626cbd1cd58cddc63537d15636"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.19",
+              "1.19.1",
+              "1.19.2"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.19.3",
+          "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+          "minecraft_versions": [
+            "1.19.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.19.3",
+              "version_metadata_sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+              "client_sha1": "977727ec9ab8b4631e5c12839f064092f17663f8",
+              "client_sha256": "b7228c23dbc8988129561af3918dd469577de842d2eb3c7dabe00316bf9a44d6"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "package_version": "4.1.82.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.19.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-3/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "1d56b5a18354e989352546d101630cb3ca2146e72f559040c77d5ca2e5186291"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "f0acf775b8fed016684e7994a0125492cf0aad626cbd1cd58cddc63537d15636"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.19.3",
+              "1.19.4",
+              "1.20",
+              "1.20.1"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.19.4-1.20.4",
+          "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+          "minecraft_versions": [
+            "1.19.4",
+            "1.20",
+            "1.20.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.19.4",
+              "version_metadata_sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+              "client_sha1": "958928a560c9167687bea0cefeb7375da1e552a8",
+              "client_sha256": "0e79cf7f07c107e9a1fe22ed703e472372b44149e64114944f0811abbd25f3ec"
+            },
+            {
+              "minecraft_version": "1.20",
+              "version_metadata_sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+              "client_sha1": "e575a48efda46cf88111ba05b624ef90c520eef1",
+              "client_sha256": "5ac9ead135746f5f27048f2e01d8d5bdc2dabc4d91422f73ef2435f4c3d24aff"
+            },
+            {
+              "minecraft_version": "1.20.1",
+              "version_metadata_sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+              "client_sha1": "0c3ec587af28e5a785c0b4a7b8a30f9a8f78f838",
+              "client_sha256": "56b71336d2b4fdffd197f56595b0da93e32a946f78f382a299b8f4b92758bb0f"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+          "package_version": "4.1.82.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.19.4",
+            "runtime/1.20",
+            "runtime/1.20.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "69fe050c810c4b6dfdbe1d747c722d788fc862a0be40b7c2dca765fd561728c0"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "f0acf775b8fed016684e7994a0125492cf0aad626cbd1cd58cddc63537d15636"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.19.3",
+              "1.19.4",
+              "1.20",
+              "1.20.1"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.19.4-1.20.4",
+          "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+          "minecraft_versions": [
+            "1.20.2",
+            "1.20.3",
+            "1.20.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.20.2",
+              "version_metadata_sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+              "client_sha1": "82d1974e75fc984c5ed4b038e764e50958ac61a0",
+              "client_sha256": "fa1a19be56a506426308abbc1cad85f299a7fc6dae4335559351ba0246713fda"
+            },
+            {
+              "minecraft_version": "1.20.3",
+              "version_metadata_sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+              "client_sha1": "b178a327a96f2cf1c9f98a45e5588d654a3e4369",
+              "client_sha256": "bef21938224902dd925e2d89dcfe1d2540656d4cf7a5abd2b93e0402d135c655"
+            },
+            {
+              "minecraft_version": "1.20.4",
+              "version_metadata_sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+              "client_sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+              "client_sha256": "9221ab461a491bf9661cd8e773a5e662aaa43d600fa7970b8c12bbfb0431b838"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "package_version": "4.1.97.Final",
+          "dependency_scopes": [
+            "runtime/1.20.2",
+            "runtime/1.20.3",
+            "runtime/1.20.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-4/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "69fe050c810c4b6dfdbe1d747c722d788fc862a0be40b7c2dca765fd561728c0"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.20.2",
+              "1.20.3",
+              "1.20.4",
+              "1.20.5",
+              "1.20.6",
+              "1.21",
+              "1.21.1",
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.20.5-1.20.6",
+          "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+          "minecraft_versions": [
+            "1.20.5",
+            "1.20.6"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.20.5",
+              "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+              "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+              "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510"
+            },
+            {
+              "minecraft_version": "1.20.6",
+              "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+              "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+              "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "package_version": "4.1.97.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.20.2",
+              "1.20.3",
+              "1.20.4",
+              "1.20.5",
+              "1.20.6",
+              "1.21",
+              "1.21.1",
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21-1.21.1",
+          "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+          "minecraft_versions": [
+            "1.21",
+            "1.21.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21",
+              "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+              "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+              "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8"
+            },
+            {
+              "minecraft_version": "1.21.1",
+              "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+              "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+              "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "package_version": "4.1.97.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.20.2",
+              "1.20.3",
+              "1.20.4",
+              "1.20.5",
+              "1.20.6",
+              "1.21",
+              "1.21.1",
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+          "package_version": "4.1.97.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.20.2",
+              "1.20.3",
+              "1.20.4",
+              "1.20.5",
+              "1.20.6",
+              "1.21",
+              "1.21.1",
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+          "package_version": "4.1.115.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.4"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "package_version": "4.1.118.Final",
+          "dependency_scopes": [
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8",
+              "1.21.9"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+          "package_version": "4.1.118.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9b3085dd20ed06bfe4434f95711bcc774289e67ad5dad60539077dc2d8824689"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8",
+              "1.21.9"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "minecraft_versions": [
+            "1.21.11"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.11",
+              "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+              "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+              "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "package_version": "4.2.7.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+            "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9ca78513113187267752aaaff0544ed9e997985c7d141fcfb6273b8bbd90656b"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "41be9595faa300a56e40da910d6410f8f3d2b6fb2b833c561258859b3d6213db"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "db6acdd588673f91d92677737abe8c22c867bc6dc8e1992b6e071ff705b5eb7c"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.11",
+              "26.1",
+              "26.1.1",
+              "26.1.2"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "minecraft_versions": [
+            "26.2"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.2",
+              "version_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+              "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+              "client_sha256": "40896ee9f1e2bec3c934daac7e93d41e9e3d9c2f8ae0ca366d52ffbfd1afa290"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.15.Final",
+          "package_version": "4.2.15.Final",
+          "dependency_scopes": [
+            "runtime/26.2"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "99b59e4bea72220d2aed52df8baf37d97431b06ade0b135226cdf73168975eab",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+            "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Upstream-dependent",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.15.Final/netty-handler-4.2.15.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "ea41eef08a3685cfec5e7cf3b80c71f1094466b64ff83e76c971502e6e39877a"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "f3561beb96d975a7adffc79b65e79f5c21ea06e7f721f17e55a216562f459e66"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "278fa6e1c50a95bcc7b3916c5782e0acaba01c32885c9fff76de2c2461e45a90"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "26.2"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "minecraft_versions": [
+            "26.1",
+            "26.1.1",
+            "26.1.2"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.1",
+              "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+              "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+              "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840"
+            },
+            {
+              "minecraft_version": "26.1.1",
+              "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+              "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+              "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3"
+            },
+            {
+              "minecraft_version": "26.1.2",
+              "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+              "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+              "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+          "package_version": "4.2.7.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+            "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "9ca78513113187267752aaaff0544ed9e997985c7d141fcfb6273b8bbd90656b"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "41be9595faa300a56e40da910d6410f8f3d2b6fb2b833c561258859b3d6213db"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "db6acdd588673f91d92677737abe8c22c867bc6dc8e1992b6e071ff705b5eb7c"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.11",
+              "26.1",
+              "26.1.1",
+              "26.1.2"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.3",
+          "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+          "minecraft_versions": [
+            "26.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.3",
+              "version_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+              "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+              "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+          "package_version": "4.2.16.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/26.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+            "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+          },
+          "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+            "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+            "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+          ],
+          "dependency_artifact_sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/ssl/SniHandler.class",
+              "sha256": "ea41eef08a3685cfec5e7cf3b80c71f1094466b64ff83e76c971502e6e39877a"
+            },
+            {
+              "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+              "sha256": "f3561beb96d975a7adffc79b65e79f5c21ea06e7f721f17e55a216562f459e66"
+            },
+            {
+              "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+              "sha256": "278fa6e1c50a95bcc7b3916c5782e0acaba01c32885c9fff76de2c2461e45a90"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "26.3"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "io.netty.handler.ssl.SniHandler / AbstractSniHandler ClientHello routing and default SslContext fallback",
+      "actual_call_path": "The fragmented-ClientHello behavior is reproduced in a local EmbeddedChannel probe against pinned vulnerable Netty artifacts. Static inspection of the hash-verified Minecraft client JARs found no direct SniHandler, AbstractSniHandler, or SslClientHelloHandler references. In Minecraft 1.21.9 through 26.3, the inspected optional management JSON-RPC path constructs an SslHandler from SslContext and uses HttpServerCodec, HttpObjectAggregator, and WebSocketServerProtocolHandler; it does not install SNI routing. Earlier inspected clients do not contain direct Netty SNI handler references.",
+      "effective_configuration": "Mojang management-server configuration defaults management-server-enabled to false. If explicitly enabled, the traced management server has no SNI routing and no client-auth requirement in the constructed server SslContext. Its AuthenticationHandler checks an API key on each request; this was verified in source-bound bytecode inspection. Launcher additions, arbitrary installed mods, reflective calls, and operator-selected server contexts are not captured.",
+      "reachability_finding": "No first-party SNI fallback path or mTLS-only authentication gate was located in inspected game code. The required advisory authentication-bypass preconditions were not demonstrated for the inspected built-in management server. The isolated component probe confirms that affected Netty handlers do route a fragmented ClientHello to the default context; this does not reproduce an authentication bypass in Minecraft.",
+      "verified_mitigation": "For the inspected built-in optional management server, disabled-by-default configuration, absence of SNI routing, lack of mTLS-only authentication, and per-request API-key validation remove the specific advisory preconditions in that path. These observations do not mitigate arbitrary additional handlers or launcher/mod behavior.",
+      "compatible_remediation": "The advisory identifies Netty 4.1.137.Final for the 4.1 line and 4.2.17.Final for the 4.2 line. Netty is supplied by Minecraft manifests in these findings; no library override was made. A game-side update must keep the Netty module set binary compatible.",
+      "remaining_uncertainty": "No full Minecraft process was instrumented. No search can exhaust arbitrary reflection, generated code, runtime-added agents, launcher classpath changes, or third-party mods. No actual authenticated handshake or exploit attempt was run. The game-managed library versions remain affected according to upstream ranges.",
+      "confidence": "Medium for the inspected first-party class and pipeline paths; low for all configurations of the host process.",
+      "disposition": "Further investigation with the single 26.2 occurrence retaining its source-bound Upstream-dependent remediation classification",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
+        "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
+        "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-jfh8-c2jp-5v3q",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "severity": "CRITICAL",
+      "component": "org.apache.logging.log4j:log4j-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-jfh8-c2jp-5v3q",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.15.0",
+          "first_patched_version": "2.15.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0-beta9, < 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Capture exact launch arguments and classpath for each supported launcher/game group.",
+            "Trace remote server/chat and other network input to logging APIs under the effective configuration.",
+            "Test mitigation only in a no-network isolated process; request a compatible upstream library update if defaults can be changed or vulnerable layout paths are reachable."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Capture exact launch arguments and classpath for each supported launcher/game group.",
+            "Trace remote server/chat and other network input to logging APIs under the effective configuration.",
+            "Test mitigation only in a no-network isolated process; request a compatible upstream library update if defaults can be changed or vulnerable layout paths are reachable."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1",
+            "1.18",
+            "1.18.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            },
+            {
+              "minecraft_version": "1.18",
+              "version_metadata_sha1": "ec767156930dbb04a5aa5444e3a97b33c8a6ca41",
+              "client_sha1": "d49eb6caed53d23927648c97451503442f9e26fd",
+              "client_sha256": "381e090ef22584526113bcccf26ae38a310a22094d14c2d0dec72b71fdf65aaa"
+            },
+            {
+              "minecraft_version": "1.18.1",
+              "version_metadata_sha1": "2acae2f1f84120846115c6e24810791cafa791d1",
+              "client_sha1": "7e46fb47609401970e2818989fa584fd467cd036",
+              "client_sha256": "737c28a56c8980fcd8574465c61538ebde8f511bdd035c69d0cbe27953f892aa"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+          "package_version": "2.14.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1",
+            "runtime/1.18",
+            "runtime/1.18.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Capture exact launch arguments and classpath for each supported launcher/game group.",
+            "Trace remote server/chat and other network input to logging APIs under the effective configuration.",
+            "Test mitigation only in a no-network isolated process; request a compatible upstream library update if defaults can be changed or vulnerable layout paths are reachable."
+          ]
+        }
+      ],
+      "vulnerable_api_or_class": "Log4j Core message substitution via StrSubstitutor/JndiLookup for attacker-controlled message text.",
+      "actual_call_path": "Hash-verified Mojang version metadata selects client-1.12.xml through -Dlog4j.configurationFile=${path} for the affected game versions. The console uses Mojang Patchy LegacyXMLLayout; its inspected toSerializable implementation formats and escapes the message without invoking Log4j substitution. The rolling file uses %msg{nolookups}. A local no-network probe found no expansion for the default launcher config. A synthetic embedded PatternLayout with %msg%n did expand a harmless local system-property marker, showing that an alternate/fallback config changes behavior.",
+      "effective_configuration": "The default Mojang launcher metadata provides a custom configuration path and matching XML. Actual JVM arguments and classpath from each supported launcher were not captured. Other mods/operators can replace logging configuration. Patchy\u2019s classpath ordering differs from a Core-first test classpath; both were inspected in the limited local tests.",
+      "reachability_finding": "The default configuration observations narrow the path, but game logging of attacker-controlled network input and the effective configuration under every launcher/mod combination were not traced. No live JNDI or network lookup was attempted; a synthetic factory refusing all lookups was used.",
+      "verified_mitigation": "The hash-verified default XML\u2019s LegacyXMLLayout and %msg{nolookups} did not expand the local marker in isolated probes. This applies only to that exact config and tested classpath; it is not a global non-applicability result.",
+      "compatible_remediation": "Upstream advisory endpoints include Log4j Core 2.12.2 for the 2.12 line and 2.15.0 for 2.13+; 2.15.0 is insufficient for the separate 2021-45046 finding. Minecraft owns these library versions. A coordinated Log4j update must address the full advisory set and Java/API compatibility.",
+      "remaining_uncertainty": "Actual client launcher arguments, classes loaded in each production launcher, message paths for hostile server/chat input, custom-mod configuration changes, and alternate Log4j appenders were not fully verified. No game-wide safe claim is supported.",
+      "confidence": "Medium for default configuration bytecode and local marker results; low for attacker-controlled input reachability across supported launchers.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Capture exact launch arguments and classpath for each supported launcher/game group.",
+        "Trace remote server/chat and other network input to logging APIs under the effective configuration.",
+        "Test mitigation only in a no-network isolated process; request a compatible upstream library update if defaults can be changed or vulnerable layout paths are reachable."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-7rjr-3q55-vv33",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "severity": "CRITICAL",
+      "component": "org.apache.logging.log4j:log4j-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-7rjr-3q55-vv33",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.16.0",
+          "first_patched_version": "2.16.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4.0, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": "< 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace attacker-controlled values into ThreadContext/MDC in each supported game client.",
+            "Verify effective launch configuration and installed logging plugins.",
+            "Request a compatible upstream Log4j update addressing the full advisory family if the feature is reachable or assumptions differ."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace attacker-controlled values into ThreadContext/MDC in each supported game client.",
+            "Verify effective launch configuration and installed logging plugins.",
+            "Request a compatible upstream Log4j update addressing the full advisory family if the feature is reachable or assumptions differ."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1",
+            "1.18",
+            "1.18.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            },
+            {
+              "minecraft_version": "1.18",
+              "version_metadata_sha1": "ec767156930dbb04a5aa5444e3a97b33c8a6ca41",
+              "client_sha1": "d49eb6caed53d23927648c97451503442f9e26fd",
+              "client_sha256": "381e090ef22584526113bcccf26ae38a310a22094d14c2d0dec72b71fdf65aaa"
+            },
+            {
+              "minecraft_version": "1.18.1",
+              "version_metadata_sha1": "2acae2f1f84120846115c6e24810791cafa791d1",
+              "client_sha1": "7e46fb47609401970e2818989fa584fd467cd036",
+              "client_sha256": "737c28a56c8980fcd8574465c61538ebde8f511bdd035c69d0cbe27953f892aa"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+          "package_version": "2.14.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1",
+            "runtime/1.18",
+            "runtime/1.18.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace attacker-controlled values into ThreadContext/MDC in each supported game client.",
+            "Verify effective launch configuration and installed logging plugins.",
+            "Request a compatible upstream Log4j update addressing the full advisory family if the feature is reachable or assumptions differ."
+          ]
+        }
+      ],
+      "vulnerable_api_or_class": "Log4j Core ThreadContext/MDC and context lookup substitutions in PatternLayout and related layouts.",
+      "actual_call_path": "The affected Minecraft clients select the same hash-verified client-1.12.xml default configuration. The actual Patchy LegacyXMLLayout and %msg{nolookups} file path do not configure context-lookup patterns. Isolated synthetic PatternLayout/MDC probes exercised JNDI lookup using a local factory that rejects all lookups; a marker lookup was invoked even when formatMsgNoLookups=true, confirming that this property alone is not sufficient.",
+      "effective_configuration": "The observed default launcher config does not activate the tested MDC/context lookup pattern. Actual launcher overrides, third-party appenders/layouts, and mod-installed logging plugins remain outside the evidence.",
+      "reachability_finding": "No attacker-controlled ThreadContext/MDC value flow was traced in the full game process. The synthetic vulnerable layout invokes the local no-network factory, but this is not evidence of an exploitable network request from Minecraft.",
+      "verified_mitigation": "Default-layout inspection shows the tested context lookup feature is not configured on the observed path. This is conditional on using Mojang\u2019s exact configuration and does not establish general non-applicability.",
+      "compatible_remediation": "The advisory identifies 2.12.2 for the 2.12 line and 2.16.0 for the 2.13+ line. Minecraft supplies these versions; no override was made. A compatible update must also address GHSA-jfh8-c2jp-5v3q and GHSA-fxph-q3j8-mv87.",
+      "remaining_uncertainty": "Exact launcher classpaths/configs, MDC population from untrusted network data, third-party layouts and plugin code were not fully inspected. The legacy Log4j packages remain upstream-affected.",
+      "confidence": "Medium for default configuration and component behavior; low for all launcher/mod layouts and MDC input reachability.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Trace attacker-controlled values into ThreadContext/MDC in each supported game client.",
+        "Verify effective launch configuration and installed logging plugins.",
+        "Request a compatible upstream Log4j update addressing the full advisory family if the feature is reachable or assumptions differ."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-fxph-q3j8-mv87",
+      "aliases": [
+        "CVE-2017-5645"
+      ],
+      "severity": "CRITICAL",
+      "component": "org.apache.logging.log4j:log4j-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-fxph-q3j8-mv87",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0, < 2.8.2",
+          "first_patched_version": "2.8.2"
+        }
+      ],
+      "occurrence_count": 2,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "2de29e72ba0a392231fdcc7b429be733bd4abb23b7499ef7e6637d3067b8d05a",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Verify actual supported-launcher configurations and enumerate loaded appenders at runtime.",
+            "Check installed mods/plugins and reflective startup paths for TcpSocketServer/UdpSocketServer.",
+            "If any custom configuration is supported, request an upstream Log4j update covering the full advisory set."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "2de29e72ba0a392231fdcc7b429be733bd4abb23b7499ef7e6637d3067b8d05a",
+          "severity": "CRITICAL",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Verify actual supported-launcher configurations and enumerate loaded appenders at runtime.",
+            "Check installed mods/plugins and reflective startup paths for TcpSocketServer/UdpSocketServer.",
+            "If any custom configuration is supported, request an upstream Log4j update covering the full advisory set."
+          ]
+        }
+      ],
+      "vulnerable_api_or_class": "Log4j Core TcpSocketServer/UdpSocketServer serialized LogEvent deserialization.",
+      "actual_call_path": "The vulnerable socket-server classes exist in the inspected Log4j Core 2.8.1 artifact, but neither TcpSocketServer nor UdpSocketServer was found in the inspected Minecraft client constant pools. The hash-verified default Mojang logging XML does not declare or start a Log4j socket server. No serialized payload was constructed or sent.",
+      "effective_configuration": "The default client-1.12.xml path has console and rolling-file appenders, not TCP/UDP socket-server configuration. Custom launcher configs and third-party mods may add appenders or invoke these classes.",
+      "reachability_finding": "No built-in client path starting the vulnerable socket server was established. Reachability through modified logging configuration, reflective invocation, or third-party plugin code remains unknown.",
+      "verified_mitigation": "The observed exact default config does not start the socket-server feature. This is a default-path observation only.",
+      "compatible_remediation": "The advisory lists Log4j 2.8.2 as the first patched version for the affected Core line. This alone does not fix the two 2021 Log4j findings. Minecraft owns the resolved Core dependency; no override was made.",
+      "remaining_uncertainty": "Actual launcher config/classpath, plugin appenders, custom remote logging, and socket-server reflective paths were not examined comprehensively. No safe global non-applicability finding can be made.",
+      "confidence": "Medium for exact default configuration and class-reference search; low for alternate configurations and plugins.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Verify actual supported-launcher configurations and enumerate loaded appenders at runtime.",
+        "Check installed mods/plugins and reflective startup paths for TcpSocketServer/UdpSocketServer.",
+        "If any custom configuration is supported, request an upstream Log4j update covering the full advisory set."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-pwqr-wmgm-9rr8",
+      "aliases": [
+        "CVE-2026-33870"
+      ],
+      "severity": "HIGH",
+      "component": "io.netty:netty-codec-http",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-pwqr-wmgm-9rr8",
+      "upstream_advisory_authority": "https://api.github.com/repos/netty/netty/security-advisories/GHSA-pwqr-wmgm-9rr8",
+      "upstream_affected_ranges": [
+        {
+          "package": "io.netty:netty-codec-http",
+          "vulnerable_version_range": "< 4.1.132.Final",
+          "first_patched_version": "4.1.132.Final"
+        },
+        {
+          "package": "io.netty:netty-codec-http",
+          "vulnerable_version_range": ">= 4.2.0.Alpha1, < 4.2.10.Final",
+          "first_patched_version": "4.2.10.Final"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.11",
+        "1.21.9-1.21.10",
+        "26.1-26.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-codec-http@4.1.118.Final",
+          "package_version": "4.1.118.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "09822d785e9a794838031ddd5346cf419b30c036a981c2e277a062bea884174b",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "321351f68c35482fc54e06a2f9dbeb4637020338f6b61daf75035385fe0cd0a7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Run an isolated Minecraft management-server test with feature enabled and the exact current runtime classpath.",
+            "Determine whether supported launchers or operators place a proxy or parser in front of the endpoint.",
+            "Request Mojang to bundle the fixed Netty line; do not override the game runtime in the mod."
+          ],
+          "dependency_artifact_sha1": "eda08a71294afe78c779b85fd696bc13491507a8",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.1.118.Final/netty-codec-http-4.1.118.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/codec/http/HttpObjectDecoder.class",
+              "sha256": "58f191106827ddd66a6a0113fe519bfbc35f00b418740008a00ff0c474a8c253"
+            },
+            {
+              "path": "io/netty/handler/codec/http/HttpRequestDecoder.class",
+              "sha256": "9008f7ab6f4260095c6259cbb99c9ea3a76920f050c41420db82efe0c2e23b37"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "minecraft_versions": [
+            "1.21.11"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.11",
+              "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+              "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+              "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
+          "package_version": "4.2.7.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "2984dd38420a61c4dd68fcacc51ffc528eb46f73f7795cdafdb3a4d6fcb76862",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+            "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+          },
+          "fingerprint": "321351f68c35482fc54e06a2f9dbeb4637020338f6b61daf75035385fe0cd0a7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Run an isolated Minecraft management-server test with feature enabled and the exact current runtime classpath.",
+            "Determine whether supported launchers or operators place a proxy or parser in front of the endpoint.",
+            "Request Mojang to bundle the fixed Netty line; do not override the game runtime in the mod."
+          ],
+          "dependency_artifact_sha1": "b734c108854099c421fd94d92d9f865e4d4da853",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/codec/http/HttpObjectDecoder.class",
+              "sha256": "e5f82f56a09723843ae394d69055aa398193f6b1ce96e3fbf1549732a8b28e2c"
+            },
+            {
+              "path": "io/netty/handler/codec/http/HttpRequestDecoder.class",
+              "sha256": "692a98f8f7202e8a1f9aa96cae2d505de41c11b64d113a5b5f3943cba5018b9f"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.11",
+              "26.1",
+              "26.1.1",
+              "26.1.2"
+            ]
+          }
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "minecraft_versions": [
+            "26.1",
+            "26.1.1",
+            "26.1.2"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.1",
+              "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+              "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+              "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840"
+            },
+            {
+              "minecraft_version": "26.1.1",
+              "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+              "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+              "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3"
+            },
+            {
+              "minecraft_version": "26.1.2",
+              "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+              "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+              "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0"
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-codec-http@4.2.7.Final",
+          "package_version": "4.2.7.Final",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "2984dd38420a61c4dd68fcacc51ffc528eb46f73f7795cdafdb3a4d6fcb76862",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+            "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+          },
+          "fingerprint": "321351f68c35482fc54e06a2f9dbeb4637020338f6b61daf75035385fe0cd0a7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Run an isolated Minecraft management-server test with feature enabled and the exact current runtime classpath.",
+            "Determine whether supported launchers or operators place a proxy or parser in front of the endpoint.",
+            "Request Mojang to bundle the fixed Netty line; do not override the game runtime in the mod."
+          ],
+          "dependency_artifact_sha1": "b734c108854099c421fd94d92d9f865e4d4da853",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-codec-http/4.2.7.Final/netty-codec-http-4.2.7.Final.jar",
+          "dependency_artifact_classes": [
+            {
+              "path": "io/netty/handler/codec/http/HttpObjectDecoder.class",
+              "sha256": "e5f82f56a09723843ae394d69055aa398193f6b1ce96e3fbf1549732a8b28e2c"
+            },
+            {
+              "path": "io/netty/handler/codec/http/HttpRequestDecoder.class",
+              "sha256": "692a98f8f7202e8a1f9aa96cae2d505de41c11b64d113a5b5f3943cba5018b9f"
+            }
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+            "minecraft_versions": [
+              "1.21.11",
+              "26.1",
+              "26.1.1",
+              "26.1.2"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "Netty HTTP chunked transfer-encoding quoted-string parser and request framing in HttpServerCodec.",
+      "actual_call_path": "A hash-verified management JSON-RPC server pipeline in Minecraft 1.21.9 and later constructs SslHandler, HttpServerCodec, HttpObjectAggregator, and WebSocketServerProtocolHandler. The feature defaults disabled. The local EmbeddedChannel probe with the advisory request-smuggling vector showed affected Netty releases accepting the outer and smuggled requests and the tested fixed releases rejecting the malformed framing.",
+      "effective_configuration": "Mojang DedicatedServerProperties defaults management-server-enabled false. When enabled, the server checks an API key on each request. The game pipeline does not include a downstream proxy in the inspected path.",
+      "reachability_finding": "The vulnerable parser is reachable in the optional first-party management-server pipeline when enabled. The parser behavior is confirmed in isolation, but a real Minecraft management-server request and a proxy/downstream desynchronization were not exercised. The tested exploit requires parser disagreement across an HTTP intermediary; the game pipeline alone does not establish that precondition.",
+      "verified_mitigation": "The feature is disabled by default and API-key protected when enabled; no intermediary was found in the inspected in-process pipeline. These are conditional deployment observations, not code-level parser fixes.",
+      "compatible_remediation": "The authoritative advisory lists 4.1.132.Final for Netty 4.1 and 4.2.10.Final for 4.2. Current affected game versions use 4.1.118.Final or 4.2.7.Final; Minecraft 26.2 uses 4.2.15.Final and is outside this advisory range. Dependencies are Minecraft-managed.",
+      "remaining_uncertainty": "No actual management server was started, no external intermediary was tested, and operator-enabled/third-party HTTP pipelines are outside the inspection. The affected component remains in the optional game path.",
+      "confidence": "High for the isolated parser differential and static first-party pipeline; medium-to-low for exploitability in actual deployments.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Run an isolated Minecraft management-server test with feature enabled and the exact current runtime classpath.",
+        "Determine whether supported launchers or operators place a proxy or parser in front of the endpoint.",
+        "Request Mojang to bundle the fixed Netty line; do not override the game runtime in the mod."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-mcr4-qmvw-px4g",
+      "aliases": [
+        "CVE-2026-106451"
+      ],
+      "severity": "HIGH",
+      "component": "at.yawk.lz4:lz4-java; org.lz4:lz4-java",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-mcr4-qmvw-px4g",
+      "upstream_advisory_authority": "https://api.github.com/repos/yawkat/lz4-java/security-advisories/GHSA-mcr4-qmvw-px4g",
+      "upstream_affected_ranges": [
+        {
+          "package": "at.yawk.lz4:lz4-java",
+          "vulnerable_version_range": "<= 1.11.3",
+          "first_patched_version": "1.11.4"
+        },
+        {
+          "package": "org.lz4:lz4-java",
+          "vulnerable_version_range": ">= 1.7.0, <= 1.8.1",
+          "first_patched_version": null
+        }
+      ],
+      "occurrence_count": 8,
+      "source_groups": [
+        "1.20.5-1.20.6",
+        "1.21-1.21.1",
+        "1.21.11",
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10",
+        "26.1-26.2",
+        "26.3"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.20.5-1.20.6",
+          "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+          "minecraft_versions": [
+            "1.20.5",
+            "1.20.6"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.20.5",
+              "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+              "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+              "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510"
+            },
+            {
+              "minecraft_version": "1.20.6",
+              "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+              "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+              "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21-1.21.1",
+          "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+          "minecraft_versions": [
+            "1.21",
+            "1.21.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21",
+              "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+              "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+              "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8"
+            },
+            {
+              "minecraft_version": "1.21.1",
+              "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+              "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+              "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "integrated",
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "minecraft_versions": [
+            "1.21.11"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.11",
+              "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+              "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+              "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd"
+            }
+          ],
+          "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+            "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.1-26.2",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+          "minecraft_versions": [
+            "26.1",
+            "26.1.1",
+            "26.1.2",
+            "26.2"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.1",
+              "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+              "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+              "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840"
+            },
+            {
+              "minecraft_version": "26.1.1",
+              "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+              "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+              "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3"
+            },
+            {
+              "minecraft_version": "26.1.2",
+              "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+              "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+              "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0"
+            },
+            {
+              "minecraft_version": "26.2",
+              "version_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+              "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+              "client_sha256": "40896ee9f1e2bec3c934daac7e93d41e9e3d9c2f8ae0ca366d52ffbfd1afa290"
+            }
+          ],
+          "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+          "package_version": "1.10.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/26.1",
+            "runtime/26.1.1",
+            "runtime/26.1.2",
+            "runtime/26.2"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+            "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        },
+        {
+          "source_kind": "integrated",
+          "group": "26.3",
+          "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+          "minecraft_versions": [
+            "26.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "26.3",
+              "version_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+              "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+              "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d"
+            }
+          ],
+          "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+          "package_version": "1.10.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/26.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+            "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+          },
+          "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-21",
+          "follow_up_requirements": [
+            "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+            "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+            "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+          ]
+        }
+      ],
+      "vulnerable_api_or_class": "LZ4BlockInputStream construction initializes LZ4Factory.nativeInstance/fastestInstance, which extracts a JNI library into java.io.tmpdir without the fixed release\u2019s protected extraction behavior.",
+      "actual_call_path": "Minecraft\u2019s RegionFileVersion registry contains direct LZ4BlockInputStream(InputStream) construction for region compression data in 1.20.5+ and 26.x source JARs. The inspected 1.10.1 input-stream constructor reaches LZ4Factory.fastestInstance. A no-network isolated Java probe with java.library.path empty and a private temporary directory triggered native loading for 1.8.0, 1.8.1, and 1.10.1 and observed temporary prefix/lock files; fixed 1.11.4 loaded without the lock-file pattern.",
+      "effective_configuration": "The game\u2019s LZ4 stream path is for local region-file storage. The experiment set a private java.io.tmpdir itself; it did not test any official launcher\u2019s defaults or shared-host filesystem permissions. The region LZ4 decoder is not evidence of a remote multiplayer packet path.",
+      "reachability_finding": "A first-party local region-file code path to the vulnerable stream constructor is confirmed for affected versions. Exploitation still requires the local shared-temp race conditions in the upstream advisory and the game to initialize the LZ4 path. No concurrent local attacker, symlink replacement, or host filesystem race was simulated.",
+      "verified_mitigation": "The isolated fixed-version comparison shows 1.11.4 avoids the observed lock-file extraction pattern. A private per-user java.io.tmpdir is a possible launcher-level mitigation but was only configured in the test process, not verified in supported launchers.",
+      "compatible_remediation": "The advisory identifies at.yawk.lz4:lz4-java 1.11.4 as fixed; the org.lz4 line has no first_patched_version in the advisory through 1.8.1. The audited game libraries are Minecraft-supplied at.yawk 1.8.1/1.10.1 or org.lz4 1.8.0. Minecraft compatibility and API behavior at the fixed version are not validated, so no override was made.",
+      "remaining_uncertainty": "Need establish when LZ4 region files are selected in normal client/world flows, whether downloaded/untrusted world files trigger it, and the actual tmp permissions and attacker concurrency in supported hosts. No real game process or attacker race was tested.",
+      "confidence": "High for the bytecode constructor path and local native extraction behavior; low-to-medium for real-world input and shared-temp exploit preconditions.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Trace default and user-selected region compression types and world import paths in each affected Minecraft version.",
+        "Test native extraction under representative shared-host tmp permissions using a non-destructive race harness in an isolated VM.",
+        "Request Mojang to update the game-owned LZ4 library to the fixed compatible release, or document and validate a secure launcher tmpdir mitigation."
+      ]
+    }
+  ],
+  "component_probe_run": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
+    "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7",
+    "cases": 28,
+    "passed": true,
+    "purpose": "Expected-behavior regression experiments on exact artifact pins; successful component tests do not indicate game safety or security clearance."
+  },
+  "source_bound_wrapper_verification": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/wrapper-source-verification-2026-11-21.json",
+    "sha256": "a01737ce03677e23f9824ef1122c6f640dd10080d17686be86281003315f6ef1",
+    "verified_sources": 13,
+    "all_gradle_9_9_2": true
+  },
+  "supporting_evidence": [
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json",
+      "sha256": "0f69c2ff6ecfa6e67a4b8ec00643c6a1bf097e9e6c88bf88e1a4bc4c326c3a5e",
+      "size_bytes": 18189
+    },
+    {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193",
+      "size_bytes": 476379
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/artifact-inspection-verified.json.gz",
+      "sha256": "3fa5310f3283a1be050ad631438f9231ab2cadee58cd6eeb08e97eb2cd9ae701",
+      "size_bytes": 75503,
+      "sha256_uncompressed": "0d5f9689280754148149036c03f82eb35f4bd10c23b065b5f4256d9cb98f2802"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+      "sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27",
+      "size_bytes": 123535,
+      "sha256_uncompressed": "27a1532f721a55403af809679ce7c7889b4e18af8a9321625d4958994ef3d2b0"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-critical-high.json.gz",
+      "sha256": "3ee9b12a841d2b0b0009e85b70f9766b0df6c1cc2d9033518a4d833fa57839d8",
+      "size_bytes": 61069,
+      "sha256_uncompressed": "407313c967cc263d88c0e8556a5fa2c004b24df15dc57ed981ecdbaaaebe808a"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
+      "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7",
+      "size_bytes": 96542
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/wrapper-source-verification-2026-11-21.json",
+      "sha256": "a01737ce03677e23f9824ef1122c6f640dd10080d17686be86281003315f6ef1",
+      "size_bytes": 11265
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/management-pipelines.json",
+      "sha256": "1dbdecb601fc71fe206492d04cd1ecea5ea68b9b158cd92a790f68a8d7dcec36",
+      "size_bytes": 7958
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/artifacts.json",
+      "sha256": "38f9077b1363f6928c7901d9430005f5a8155d639dac95abcfccc691d829417c",
+      "size_bytes": 23369
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NettyChunkProbe.java",
+      "sha256": "571319631a6139ce70b788eae27faa05b3283f0e63389368f4ba19dc359bf675",
+      "size_bytes": 2158
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NettySniProbe.java",
+      "sha256": "6da537a3652f43fc5a5b59087bf68769216a0bcbd0505c99895687818faab877",
+      "size_bytes": 3701
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/Lz4NativeProbe.java",
+      "sha256": "9befff023ac2b8dfb89f5a9e262032b944b1753cf90cdc686d8430a56e7f392a",
+      "size_bytes": 1597
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/LogLookupProbe.java",
+      "sha256": "0b95e2ab7f157e0ed86471119459fb7f28cfcd1d9516053507a733a146700c4a",
+      "size_bytes": 617
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/JndiLookupProbe.java",
+      "sha256": "25f064c9c5b36107336fb3b2ca7822962c8d88df26229406bc3e15ca1f25cf2b",
+      "size_bytes": 715
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/ThreadContextProbe.java",
+      "sha256": "b8cd9b857cbb4187aa9bacde8fd9e6055b5215db6d452b8c4aa0622447760021",
+      "size_bytes": 585
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/EnvironmentProbe.java",
+      "sha256": "05f9da5eba88a32a9881136d36bad910424261405f3927b74ac9879cae6671d0",
+      "size_bytes": 1030
+    },
+    {
+      "path": "scripts/inspect_critical_runtime.py",
+      "sha256": "61dd4913b78b7a42f43f8028a8811154899788e1da15ade1e25e680c37f78598",
+      "size_bytes": 10306
+    },
+    {
+      "path": "scripts/probe_dependency_reachability.py",
+      "sha256": "2212db32fe3161a02328b4c0c5b1d7f612ec7ff6b1b8bf0f4e9cd546ad5bb1e8",
+      "size_bytes": 15717
+    },
+    {
+      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/client-1.12.xml",
+      "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "size_bytes": 888,
+      "historical": true
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+      "sha256": "99f51d69d19f6e37afb9f1b92a75d94325c8596c315da612dc89b1e70d0f7fd4",
+      "size_bytes": 31922
+    },
+    {
+      "path": "scripts/inspect_netty_manifest_artifacts.py",
+      "sha256": "359fb59c11e410aa5057112ec725c0d5e4982994efe8c74361f868d921af395e",
+      "size_bytes": 8757
+    },
+    {
+      "path": "scripts/validate_critical_reachability_evidence.py",
+      "sha256": "207df12350a8d9e81533190a7e30332b347703390d85b69c7f43effe93cbdb80",
+      "size_bytes": 13205
+    },
+    {
+      "path": "scripts/verify_gradle_wrapper.py",
+      "sha256": "2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481",
+      "size_bytes": 5198
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NoNetworkContextFactory.java",
+      "sha256": "2253c050700882add9a04adc8b47685ac6d6683d63706eeb3c5f2489e7420b57",
+      "size_bytes": 448
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/1.14.4-embedded.xml",
+      "sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "size_bytes": 1124
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/1.18.1-embedded.xml",
+      "sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+      "size_bytes": 1098
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/synthetic-context.xml",
+      "sha256": "b82d16d1df156f1165ebc89d4d28812791c991deb0d547264fa607723ea5f8b8",
+      "size_bytes": 264
+    },
+    {
+      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/critical-dispositions.json",
+      "sha256": "c89508f9ca9abfa4db35cde780e5db5fcbb57d5210805ed126f86cae0b1a05af",
+      "size_bytes": 24642,
+      "historical": true
+    }
+  ],
+  "limitations": [
+    "All findings remain scanner-failing; this investigation did not edit source dependency versions or suppress OSV results.",
+    "Component-level probes do not constitute a Minecraft runtime exploit or prove non-reachability.",
+    "Game-managed library changes require compatible Mojang updates; the mod does not override game libraries.",
+    "Independent human review is pending; no risk acceptance is recorded."
+  ],
+  "netty_manifest_artifact_inspection": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+    "sha256": "99f51d69d19f6e37afb9f1b92a75d94325c8596c315da612dc89b1e70d0f7fd4",
+    "source_occurrences": 17,
+    "minecraft_manifest_versions": 29,
+    "distinct_artifact_variants": 10,
+    "all_artifacts_sha1_and_size_verified": true,
+    "sni_handler_class_present_in_all_netty_handler_artifacts": true
+  }
+}

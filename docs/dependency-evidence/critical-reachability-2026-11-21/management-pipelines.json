@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "method": "javap -c -p on the hash-verified client class identified by SslHandler constant-pool reference",
+  "observations": [
+    {
+      "minecraft": "1.21.10",
+      "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+      "class": "ato$1",
+      "javap_stdout_sha256": "bd7c97f9062db13b49f9dfdb8ba7fe34bbc5e2230fab771441892408584d48a0",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #78                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #87                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #93                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #103                // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "1.21.11",
+      "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+      "class": "aty$1",
+      "javap_stdout_sha256": "9aab5bda350b224ab990e82374064eb2985acbda0756ee0e89fe90e398f7c8ea",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #78                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #87                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #93                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #103                // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "1.21.9",
+      "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+      "class": "ato$1",
+      "javap_stdout_sha256": "bd7c97f9062db13b49f9dfdb8ba7fe34bbc5e2230fab771441892408584d48a0",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #78                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #87                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #93                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #103                // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "26.1",
+      "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+      "class": "net.minecraft.server.jsonrpc.ManagementServer$1",
+      "javap_stdout_sha256": "4c3b0611b83e819b4dc8edbff6c16422d47a7b80e6312484dea5e32d2af03d6a",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #67                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #81                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #85                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #98                 // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "26.1.1",
+      "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+      "class": "net.minecraft.server.jsonrpc.ManagementServer$1",
+      "javap_stdout_sha256": "4c3b0611b83e819b4dc8edbff6c16422d47a7b80e6312484dea5e32d2af03d6a",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #67                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #81                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #85                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #98                 // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "26.1.2",
+      "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+      "class": "net.minecraft.server.jsonrpc.ManagementServer$1",
+      "javap_stdout_sha256": "4c3b0611b83e819b4dc8edbff6c16422d47a7b80e6312484dea5e32d2af03d6a",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #67                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #81                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #85                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #98                 // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "26.2",
+      "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+      "class": "net.minecraft.server.jsonrpc.ManagementServer$1",
+      "javap_stdout_sha256": "0eb41efb92c2e2d7b1bae6c8c7286149af04292b5aff920982b1a2033ac86128",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #67                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #81                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #85                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #98                 // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    },
+    {
+      "minecraft": "26.3",
+      "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "class": "net.minecraft.server.jsonrpc.ManagementServer$1",
+      "javap_stdout_sha256": "0eb41efb92c2e2d7b1bae6c8c7286149af04292b5aff920982b1a2033ac86128",
+      "direct_ssl_handler": true,
+      "http_server_codec": true,
+      "sni_handler_reference": false,
+      "selected_instructions": [
+        "54: invokevirtual #67                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;",
+        "75: invokespecial #81                 // Method io/netty/handler/codec/http/HttpServerCodec.\"<init>\":()V",
+        "96: invokespecial #85                 // Method io/netty/handler/codec/http/HttpObjectAggregator.\"<init>\":(I)V",
+        "136: invokespecial #98                 // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler.\"<init>\":(Ljava/lang/String;)V"
+      ]
+    }
+  ]
+}
