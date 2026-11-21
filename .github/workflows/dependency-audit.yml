@@ -161,6 +161,8 @@ jobs:
           try:
               for kind in ('candidate', 'integrated'):
                   for path in sorted((root / kind).rglob('*.json')):
+                      if not path.is_file():
+                          continue
                       raw = path.read_bytes()
                       data = json.loads(raw)
                       # Store the raw bytes, including formatting; no old files are modified.
