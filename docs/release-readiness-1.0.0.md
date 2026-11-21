@@ -5,6 +5,12 @@ publication authorization. The [2026-11-04 gate history](release-readiness-2026-
 and [historical 0.0.2 evidence](historical-0.0.2-2026-11-05/) remain intact.
 The [November 13 gate snapshot](https://github.com/skyRolly/third-person-readable-maps/blob/1d47857ae681c5493914a032788d80e644466c02/docs/release-readiness-1.0.0.md)
 remains available at its original commit.
+The owner-only integration policy supersedes the branch-protection,
+independent-PR-review, and staged-protection requirements in this earlier
+matrix; see [the current policy](owner-only-integration-policy.md) and
+[Issue #44](https://github.com/skyRolly/third-person-readable-maps/issues/44).
+The release environment approval, security disposition, exact-source CI,
+runtime evidence, and publication safeguards remain separate gates.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
 The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final proposed-head clean builds, hosted CI and the non-publishing candidate rehearsal have been recorded. All 13 JAR hashes change with the Gradle 9.9.2 manifest update; the 1.14 JAR also contains a rendering-state correction. Earlier runtime observations retain their original artifact identities and do not establish exact-current-artifact acceptance.
