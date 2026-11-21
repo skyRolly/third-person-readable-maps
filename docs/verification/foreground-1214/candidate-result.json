@@ -1,0 +1,10 @@
+{
+  "version": "1.21.4",
+  "fabric_loader": "0.20.1",
+  "candidate_sha256": "26a28fb550132d07af415c41ccb82982937906ab991ad810406d2937b5e4e776",
+  "source_fixture": "/workspace/.minecraft-test-left-baseline-1.21.3",
+  "renderer": "Linux Xorg/Mesa software",
+  "original_clearance": "y 81-85",
+  "extra_clearance": "y 81-95",
+  "exit_code": 0
+}
