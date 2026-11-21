@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "observed_on": "2026-11-21",
-  "status": "Current proposed sources; candidate validation and approval do not authorize release.",
+  "status": "Current integrated maintenance branch heads and exact open legacy proposal heads; fresh CI, API, and build evidence is recorded per source. Dependency security and runtime evidence remain separate gates.",
   "groups": {
     "1.14-1.14.4": {
       "pr": 23,
@@ -83,13 +83,15 @@
     "1.21.11": {
       "pr": 31,
       "old_head": "d7f5bb77abe622110e2b0d9942d19d10097c09ac",
-      "new_head": "007b5e56f4ea3734634b138f59e8b417859365c1",
-      "branch": "maintenance/mc-1.21.11-1.0.0",
+      "new_head": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "branch": "mc/1.21.11",
       "target": "mc/1.21.11",
       "previous_round_old_head": "0a816406e3a2822381a34cc3adc43b1a91eb2259",
       "namespace": "intermediary",
       "intermediate_head": "31db35f31ac984e0dc1ccb77e5dc467e1e917ed4",
-      "previous_head": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5"
+      "previous_head": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
+      "source_pr": 31,
+      "latest_merge_pr": 37
     },
     "1.21.2-1.21.3": {
       "pr": 16,
@@ -127,24 +129,28 @@
     "26.1-26.2": {
       "pr": 32,
       "old_head": "11aca8017655fbea4bb735bbc53a661835f4d699",
-      "new_head": "47c108162eb0526616208a8547b4f339764ca7ea",
-      "branch": "maintenance/mc-26.1-26.2-1.0.0",
+      "new_head": "b7620ef8174180698cc36d273981aeadd3447941",
+      "branch": "mc/26.1-26.2",
       "target": "mc/26.1-26.2",
       "previous_round_old_head": "131f3e393e31778ed11d341830c856acc4d85a35",
       "namespace": "official",
       "intermediate_head": "17553377c2f620caf0ed582a3f645c613ce3c2f0",
-      "previous_head": "1e0393abaf481d3c9f460f4be142c6b906bb9f85"
+      "previous_head": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
+      "source_pr": 32,
+      "latest_merge_pr": 38
     },
     "26.3": {
       "pr": 33,
       "old_head": "7058605d2dcf31638a6c8564a94130693bfd9e0c",
-      "new_head": "e851745ca0dc7a20693f84d121bd0189094b6577",
-      "branch": "maintenance/mc-26.3-1.0.0",
+      "new_head": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "branch": "mc/26.3",
       "target": "mc/26.3",
       "previous_round_old_head": "0969f10cbbab5a19bb4a209e07e1f3a7f612768d",
       "namespace": "official",
       "intermediate_head": "272ed96ac02b5f7e9eb6ef0b9a759a860205e107",
-      "previous_head": "6da391779c0461569ce1b6b6412070b5c7ef8a8b"
+      "previous_head": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
+      "source_pr": 33,
+      "latest_merge_pr": 39
     }
   }
 }

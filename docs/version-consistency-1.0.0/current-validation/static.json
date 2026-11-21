@@ -300,11 +300,14 @@
     {
       "group": "1.21.11",
       "version": "1.21.11",
-      "source_commit": "007b5e56f4ea3734634b138f59e8b417859365c1",
+      "source_commit": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
       "artifact_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "3bf4d320bec50c6be4e20ff57a5cc66d131ab426fdb6c54f9f5615470562da28"
+      "log_sha256": "3bf4d320bec50c6be4e20ff57a5cc66d131ab426fdb6c54f9f5615470562da28",
+      "verifier_source_commit": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/1.21.11-static.log",
+      "verifier_output_sha256": "3bf4d320bec50c6be4e20ff57a5cc66d131ab426fdb6c54f9f5615470562da28"
     },
     {
       "group": "1.21.2-1.21.3",
@@ -390,47 +393,62 @@
     {
       "group": "26.1-26.2",
       "version": "26.1",
-      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
       "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "3c5a42687d469c95112d417a072339c0a2f7214924858ba0e7dcb94a90057184"
+      "log_sha256": "3c5a42687d469c95112d417a072339c0a2f7214924858ba0e7dcb94a90057184",
+      "verifier_source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/26.1-26.2-static.log",
+      "verifier_output_sha256": "a5d0c9d8114706cc408811778525ce57a7b7486c53d124c3a950276b1a5cee4c"
     },
     {
       "group": "26.1-26.2",
       "version": "26.1.1",
-      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
       "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "142c75b3415f2cf9eb3cd8d6301633f570242721ecbccf7b2a4b03f4d79dbdf9"
+      "log_sha256": "142c75b3415f2cf9eb3cd8d6301633f570242721ecbccf7b2a4b03f4d79dbdf9",
+      "verifier_source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/26.1-26.2-static.log",
+      "verifier_output_sha256": "a5d0c9d8114706cc408811778525ce57a7b7486c53d124c3a950276b1a5cee4c"
     },
     {
       "group": "26.1-26.2",
       "version": "26.1.2",
-      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
       "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "0901743cf5f1efc5403213b80e69f978adddc29873981765ef6f2a37240d17c3"
+      "log_sha256": "0901743cf5f1efc5403213b80e69f978adddc29873981765ef6f2a37240d17c3",
+      "verifier_source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/26.1-26.2-static.log",
+      "verifier_output_sha256": "a5d0c9d8114706cc408811778525ce57a7b7486c53d124c3a950276b1a5cee4c"
     },
     {
       "group": "26.1-26.2",
       "version": "26.2",
-      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
       "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "05efc7a56781e81456fbfb6e353da1d7b26a494ce373c15703364a7621b8ecad"
+      "log_sha256": "05efc7a56781e81456fbfb6e353da1d7b26a494ce373c15703364a7621b8ecad",
+      "verifier_source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/26.1-26.2-static.log",
+      "verifier_output_sha256": "a5d0c9d8114706cc408811778525ce57a7b7486c53d124c3a950276b1a5cee4c"
     },
     {
       "group": "26.3",
       "version": "26.3",
-      "source_commit": "e851745ca0dc7a20693f84d121bd0189094b6577",
+      "source_commit": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
       "artifact_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
       "exit_code": 0,
       "attempts": 1,
-      "log_sha256": "ac3b64e3f8b8faa064a9ccc58ae5091dd87254d75411d514b94c3dcc21e627d2"
+      "log_sha256": "ac3b64e3f8b8faa064a9ccc58ae5091dd87254d75411d514b94c3dcc21e627d2",
+      "verifier_source_commit": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "verifier_output_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/26.3-static.log",
+      "verifier_output_sha256": "ac3b64e3f8b8faa064a9ccc58ae5091dd87254d75411d514b94c3dcc21e627d2"
     }
   ],
   "status": "48-version packaged verifier sweep at final proposal heads; preview artifacts verified byte-identical to credential-isolated final clean builds"

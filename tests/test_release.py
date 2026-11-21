@@ -226,7 +226,7 @@ class ReleaseValidationTests(unittest.TestCase):
             release_github.verified_files(cfg, plan, bundle, 'c' * 40)
 
     def test_simulated_prepare_and_publish_check_the_complete_authorization_boundary(self):
-        # Exercise actual plan, bundle, branch/review/CI and deployment checks;
+        # Exercise actual plan, bundle, owner integration/CI and deployment checks;
         # only GitHub's API and the final HTTP writes are simulated in memory.
         coordinator = 'c' * 40
         branch_shas = {'main': coordinator}
@@ -254,12 +254,6 @@ class ReleaseValidationTests(unittest.TestCase):
         bundle = self.root / 'integration-bundle'
         release.aggregate(cfg, plan, artifacts, bundle, coordinator_sha=coordinator)
         files = release_github.verified_files(cfg, plan, bundle, coordinator)
-        protection = {'required_pull_request_reviews': {'required_approving_review_count': 1,
-            'dismiss_stale_reviews': True, 'require_code_owner_reviews': False, 'require_last_push_approval': False,
-            'bypass_pull_request_allowances': {'users': [], 'teams': [], 'apps': []}},
-            'enforce_admins': {'enabled': True}, 'allow_force_pushes': {'enabled': False},
-            'allow_deletions': {'enabled': False}, 'required_status_checks': {'strict': True,
-            'contexts': [], 'checks': []}}
         sha_branches = {sha: branch for branch, sha in branch_shas.items()}
         branches = list(branch_shas)
         run_ids = {branch: 100 + index for index, branch in enumerate(branches)}
@@ -271,32 +265,26 @@ class ReleaseValidationTests(unittest.TestCase):
 
         def api(path, **kwargs):
             parsed = urlsplit(path)
+            if parsed.path == 'repos/owner/repo':
+                return {'owner': {'login': 'owner'}}
             route = parsed.path.removeprefix('repos/owner/repo/')
             query = parse_qs(parsed.query)
+            if not route:
+                return {'owner': {'login': 'owner'}}
             if route.startswith('environments/'):
                 return {'id': 77, 'protection_rules': [{'type': 'required_reviewers',
                     'reviewers': [{'type': 'User', 'reviewer': {'id': 5}}], 'prevent_self_review': True}]}
-            if route.startswith('branches/'):
-                branch = unquote(route[len('branches/'):].removesuffix('/protection'))
-                if route.endswith('/protection'):
-                    result = copy.deepcopy(protection)
-                    required = sorted(authorize_release.role_checks(branch))
-                    result['required_status_checks'].update(contexts=required, checks=[
-                        {'context': n, 'app_id': 15368} for n in required])
-                    return result
-                return {'protected': True, 'commit': {'sha': branch_shas[branch]}}
             if route.startswith(('rules/branches/', 'rulesets')):
                 return []
+            if route.startswith('branches/'):
+                branch = unquote(route[len('branches/'):])
+                return {'protected': False, 'commit': {'sha': branch_shas[branch]}}
             if route.startswith('commits/') and route.endswith('/pulls'):
                 sha = route.split('/')[1]
                 branch = sha_branches[sha]
                 return [{'number': 1, 'merged_at': '2026-11-04T00:00:00Z', 'merge_commit_sha': sha,
-                         'base': {'ref': branch}, 'head': {'sha': 'b' * 40}, 'user': {'login': 'author'}}]
-            if route.startswith('pulls/') and route.endswith('/reviews'):
-                return [{'id': 1, 'user': {'login': 'reviewer'}, 'state': 'APPROVED', 'commit_id': 'b' * 40,
-                         'submitted_at': '2026-11-03T00:00:00Z'}]
-            if route.startswith('collaborators/'):
-                return {'permission': 'write'}
+                         'base': {'ref': branch}, 'head': {'sha': 'b' * 40},
+                         'merged_by': {'login': 'owner'}}]
             if route == 'actions/workflows/ci.yml':
                 return {'id': 12, 'path': '.github/workflows/ci.yml', 'state': 'active'}
             if route == 'actions/workflows/release.yml':
@@ -307,7 +295,7 @@ class ReleaseValidationTests(unittest.TestCase):
                     'workflow_id': 12, 'path': '.github/workflows/ci.yml@' + branch,
                     'head_sha': branch_shas[branch], 'head_branch': branch, 'event': 'push', 'run_attempt': 1,
                     'status': 'completed', 'conclusion': state['failure'] or 'success'}]}
-            if route.startswith('actions/runs/') and '/attempts/' in route:
+            if route.startswith('actions/runs/') and '/attempts/' in route and route.endswith('/jobs'):
                 run_id = int(route.split('/')[2])
                 branch = ids_branches[run_id]
                 sha = branch_shas[branch]
@@ -337,12 +325,6 @@ class ReleaseValidationTests(unittest.TestCase):
             if route == 'git/tags/tag-object':
                 return {'tag': plan['version'], 'object': {'type': 'commit', 'sha': coordinator}}
             self.fail('Unexpected GitHub API path: ' + path)
-
-        def graphql(query, variables):
-            branch = variables['branch'].removeprefix('refs/heads/')
-            return {'repository': {'ref': {'name': branch, 'target': {'oid': branch_shas[branch]},
-                'branchProtectionRule': {'id': 'rule', 'requiresCodeOwnerReviews': False,
-                    'requireLastPushApproval': False, 'bypassPullRequestAllowances': {'totalCount': 0}}}}}
 
         def fake_urlopen(request, timeout):
             # Only the intended fake upload / publish endpoints may be called.
@@ -383,7 +365,6 @@ class ReleaseValidationTests(unittest.TestCase):
                 return release_github.main()
 
         with patch.dict(os.environ, env), patch.object(authorize_release, 'api', side_effect=api), \
-             patch.object(authorize_release, 'graphql', side_effect=graphql), \
              patch.object(release_github, 'api', side_effect=api), \
              patch.object(release_github, 'urlopen', side_effect=fake_urlopen):
             for field, value in [('failure', 'failure'), ('no_approval', True)]:
@@ -501,10 +482,16 @@ class ReleaseValidationTests(unittest.TestCase):
             with self.assertRaises(release.Invalid):
                 release_github.tag_target('owner/repo', '1.0.0')
 
-    def test_unprotected_source_is_rejected_before_release(self):
-        with patch.object(authorize_release, 'api', return_value={'protected': False, 'commit': {'sha': 'a' * 40}}):
-            with self.assertRaises(release.Invalid):
-                authorize_release.protected_branch('owner/repo', 'mc/1.21.11', 'a' * 40)
+    def test_protected_source_is_rejected_before_release(self):
+        def api(path, **kwargs):
+            if '/branches/' in path:
+                return {'protected': True, 'commit': {'sha': 'a' * 40}}
+            if '/rules/branches/' in path or '/rulesets?' in path:
+                return []
+            self.fail('Unexpected authorization API path: ' + path)
+        with patch.object(authorize_release, 'api', side_effect=api):
+            with self.assertRaisesRegex(release.Invalid, 'must be unprotected'):
+                authorize_release.check_unprotected_policy('owner/repo', 'mc/1.21.11', 'a' * 40)
 
     def test_conflicting_draft_asset_is_rejected(self):
         release_data = {'assets': [{'name': 'file.jar', 'digest': 'sha256:' + 'b' * 64}]}

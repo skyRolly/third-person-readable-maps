@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "source_record": "docs/version-consistency-1.0.0/current-validation/hosted-checks.json",
+  "groups": {
+    "1.19.3": {
+      "run_id": 44889211087,
+      "artifact_id": 14701128524,
+      "archive_sha256": "e75a3b3121ec8dfa162a9a478050c3f9b1ddc8283280229414ec0ed7f700e1b7",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701128524.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a",
+      "source_commit": "a9cd58a4efdb5e9505006bb62914a89e19df0d71"
+    },
+    "1.17-1.19.2": {
+      "run_id": 44889210471,
+      "artifact_id": 14700749694,
+      "archive_sha256": "67f3635b026d889c89e0b4958bf678dbbe923a5d2ed45466cbfcaae8bbb6476a",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700749694.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0",
+      "source_commit": "06b350856605011c1549d51d6edd3d351c5021c0"
+    },
+    "1.14-1.14.4": {
+      "run_id": 44889210209,
+      "artifact_id": 14701133542,
+      "archive_sha256": "2d8206d294d4e023ef7b2c3cb6a056760d445bec12bd6da8856f13aa04115da4",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701133542.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d",
+      "source_commit": "b6f7632af554a0e51c7d8c421c17adc893cc1379"
+    },
+    "1.15-1.16.5": {
+      "run_id": 44889212168,
+      "artifact_id": 14701711316,
+      "archive_sha256": "fe58fe01f6becb26940dd018045f780f1f2901b54ea4b89942e1cff5754cbddf",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701711316.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "a97f481ae23d97500cc50f0a2ca92d09c0d1adb097df689d4190376e3a848470",
+      "source_commit": "4231b420749db2bbab3cf3e3a7825fc2516511d9"
+    },
+    "1.19.4-1.20.4": {
+      "run_id": 44889213224,
+      "artifact_id": 14701248459,
+      "archive_sha256": "7aca1a33418ba3b5b55e64f73a703303b7a27063970d4413ca32023b73459049",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701248459.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
+      "source_commit": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    "1.21-1.21.1": {
+      "run_id": 44889213085,
+      "artifact_id": 14700848073,
+      "archive_sha256": "9ba478be500786c64996f13845494b56fc0941fe5f0a06ea487b928380988159",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700848073.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57",
+      "source_commit": "a62780429512a4e4072b56348e06059d127cfb1d"
+    },
+    "1.20.5-1.20.6": {
+      "run_id": 44889213095,
+      "artifact_id": 14701706238,
+      "archive_sha256": "f9d0561752889482082ddcf63acbd3f9dd77702fa81aa79e94a5cba3221b9358",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701706238.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723",
+      "source_commit": "aa64abb6fd47c0a634dad03fb445634f3715a624"
+    },
+    "1.21.11": {
+      "run_id": 44889212320,
+      "artifact_id": 14700902948,
+      "archive_sha256": "e658e19fb69a9af440fe0b7a4dae1a97a5a4753290ab2def914c65b85fac48b6",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700902948.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
+      "source_commit": "007b5e56f4ea3734634b138f59e8b417859365c1"
+    },
+    "1.21.2-1.21.3": {
+      "run_id": 44889213768,
+      "artifact_id": 14701627060,
+      "archive_sha256": "4d3446818dcfb02824b3beffbc39a696c232a4be55902c2f3c6aceadd0fbc0c8",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701627060.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e",
+      "source_commit": "d823a91c96b9bc80446116b44cd7568c70048c0d"
+    },
+    "1.21.9-1.21.10": {
+      "run_id": 44889215015,
+      "artifact_id": 14701268523,
+      "archive_sha256": "c77a654358619ab27e417e6f0170371bcfbfa01cf93daaf79cbeb1baddb57313",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701268523.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055",
+      "source_commit": "5dd5d433fd785bf51f13827babf51a76d09f7cdb"
+    },
+    "1.21.4-1.21.8": {
+      "run_id": 44889214193,
+      "artifact_id": 14701760801,
+      "archive_sha256": "62c60b98e11ef557a3fcbe89097da26a491232dfaf12236060e891076389c50e",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701760801.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
+      "source_commit": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    "26.1-26.2": {
+      "run_id": 44889214299,
+      "artifact_id": 14701870029,
+      "archive_sha256": "73c6c22ced6b549de61c159a0cda4536fd89f92037e244af2ccbc730a6ac8f73",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701870029.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
+      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea"
+    },
+    "26.3": {
+      "run_id": 44889214966,
+      "artifact_id": 14700638717,
+      "archive_sha256": "48a810a737848b64b00dd8f294aadf493158233f3cb29da9dd2603cd1f06bf34",
+      "artifact_filename": "third-person-readable-maps-1.0.0-mc26.3.jar",
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700638717.zip",
+      "archive_and_jar_verified": true,
+      "artifact_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
+      "source_commit": "e851745ca0dc7a20693f84d121bd0189094b6577"
+    }
+  }
+}

@@ -208,16 +208,15 @@
       }
     },
     "1.21.11": {
-      "source_commit": "007b5e56f4ea3734634b138f59e8b417859365c1",
+      "source_commit": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
       "build": {
         "state": "observed",
         "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
         "artifact_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
-        "continuity": "different",
-        "previous_record": "docs/version-consistency-1.0.0/late-review-2026-11-16.json",
-        "previous_record_field": "groups",
-        "previous_source": "ceb5fb77f88f5d209a5c1e1a31d6dd9dfb3c13b5",
-        "previous_sha256": "c60f65c24a44fec6cf0c1fc0c67bb52a06e045ab32e2a9f7dbeab2c619f45b73",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/builds.json",
+        "previous_source": "007b5e56f4ea3734634b138f59e8b417859365c1",
+        "previous_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
         "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
@@ -228,12 +227,7 @@
         "state": "pending"
       },
       "security": {
-        "state": "fresh-resolution",
-        "source_commit": "007b5e56f4ea3734634b138f59e8b417859365c1",
-        "resolution_kind": "fresh-gradle-resolution",
-        "bundle": "docs/dependency-evidence/current-build-security-2026-11-21.json.gz",
-        "bundle_sha256": "4015b83643d74dd5accae0b3762d61ac6f5eab1959d0fb1217e5af514e0bd61b",
-        "risk_accepted": false
+        "state": "pending"
       }
     },
     "1.21.2-1.21.3": {
@@ -324,16 +318,15 @@
       }
     },
     "26.1-26.2": {
-      "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
       "build": {
         "state": "observed",
         "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
         "artifact_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
-        "continuity": "different",
-        "previous_record": "docs/version-consistency-1.0.0/late-review-2026-11-16.json",
-        "previous_record_field": "groups",
-        "previous_source": "1e0393abaf481d3c9f460f4be142c6b906bb9f85",
-        "previous_sha256": "703bbfa20130642133b393ba4198e02eba6e7824814d8c575098a5527ea4e93f",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/builds.json",
+        "previous_source": "47c108162eb0526616208a8547b4f339764ca7ea",
+        "previous_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
         "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
@@ -344,25 +337,19 @@
         "state": "pending"
       },
       "security": {
-        "state": "fresh-resolution",
-        "source_commit": "47c108162eb0526616208a8547b4f339764ca7ea",
-        "resolution_kind": "fresh-gradle-resolution",
-        "bundle": "docs/dependency-evidence/current-build-security-2026-11-21.json.gz",
-        "bundle_sha256": "4015b83643d74dd5accae0b3762d61ac6f5eab1959d0fb1217e5af514e0bd61b",
-        "risk_accepted": false
+        "state": "pending"
       }
     },
     "26.3": {
-      "source_commit": "e851745ca0dc7a20693f84d121bd0189094b6577",
+      "source_commit": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
       "build": {
         "state": "observed",
         "record": "docs/version-consistency-1.0.0/current-validation/builds.json",
         "artifact_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
-        "continuity": "different",
-        "previous_record": "docs/version-consistency-1.0.0/late-review-2026-11-16.json",
-        "previous_record_field": "groups",
-        "previous_source": "6da391779c0461569ce1b6b6412070b5c7ef8a8b",
-        "previous_sha256": "ecb9bd62d7bb256f9cf6981a80fdb1cb5617da8bfdf6d691e585fc8f62673559",
+        "continuity": "same",
+        "previous_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/builds.json",
+        "previous_source": "e851745ca0dc7a20693f84d121bd0189094b6577",
+        "previous_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
         "metadata_record": "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json"
       },
       "static": {
@@ -373,12 +360,7 @@
         "state": "pending"
       },
       "security": {
-        "state": "fresh-resolution",
-        "source_commit": "e851745ca0dc7a20693f84d121bd0189094b6577",
-        "resolution_kind": "fresh-gradle-resolution",
-        "bundle": "docs/dependency-evidence/current-build-security-2026-11-21.json.gz",
-        "bundle_sha256": "4015b83643d74dd5accae0b3762d61ac6f5eab1959d0fb1217e5af514e0bd61b",
-        "risk_accepted": false
+        "state": "pending"
       }
     }
   },
@@ -389,11 +371,11 @@
   "mod_version": "1.0.0",
   "candidate_rehearsal": {
     "state": "observed",
-    "index": "docs/version-consistency-1.0.0/current-validation/rehearsal/index.json",
-    "manifest": "docs/version-consistency-1.0.0/current-validation/rehearsal/release-manifest.json",
-    "plan": "docs/version-consistency-1.0.0/current-validation/rehearsal/candidate-plan.json",
-    "checksums": "docs/version-consistency-1.0.0/current-validation/rehearsal/SHA256SUMS",
-    "controls": "docs/version-consistency-1.0.0/current-validation/rehearsal/negative-controls.json"
+    "index": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/index.json",
+    "manifest": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/bundle/release-manifest.json",
+    "plan": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/candidate-plan.json",
+    "checksums": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/bundle/SHA256SUMS",
+    "controls": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/negative-controls.json"
   },
   "hosted_checks": {
     "state": "observed",
@@ -401,7 +383,7 @@
   },
   "entrypoint_fixtures": {
     "state": "observed",
-    "record": "docs/version-consistency-1.0.0/current-validation/fixture-entrypoints.json"
+    "record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/integrated-fixture-entrypoints.json"
   },
   "validation_logs": "docs/version-consistency-1.0.0/current-validation/validation-logs.json"
 }

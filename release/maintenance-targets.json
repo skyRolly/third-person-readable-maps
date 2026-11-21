@@ -4,20 +4,29 @@
     "1.21.11": {
       "branch": "mc/1.21.11",
       "target": "1.21.11",
-      "minecraft": ["1.21.11"],
-      "integrated_commit": "177f5708727ae4c152091d185536aaa734063280"
+      "minecraft": [
+        "1.21.11"
+      ],
+      "integrated_commit": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1"
     },
     "26.1-26.2": {
       "branch": "mc/26.1-26.2",
       "target": "26.1",
-      "minecraft": ["26.1", "26.1.1", "26.1.2", "26.2"],
-      "integrated_commit": "453cf35695cf07be4072f77895cdbafbed617870"
+      "minecraft": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2"
+      ],
+      "integrated_commit": "b7620ef8174180698cc36d273981aeadd3447941"
     },
     "26.3": {
       "branch": "mc/26.3",
       "target": "26.3",
-      "minecraft": ["26.3"],
-      "integrated_commit": "226b1de7dd4e7c2a75ec35eef1697434462e4f54"
+      "minecraft": [
+        "26.3"
+      ],
+      "integrated_commit": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a"
     }
   }
 }

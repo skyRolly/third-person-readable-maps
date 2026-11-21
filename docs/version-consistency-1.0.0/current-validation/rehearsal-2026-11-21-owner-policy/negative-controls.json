@@ -1,0 +1,20 @@
+{
+  "missing-group": "plan must contain every configured group exactly once",
+  "wrong-mod-version": "plan version differs from coordinated current version",
+  "wrong-candidate-source": "1.14-1.14.4: source must be its maintenance branch or its own non-publishing candidate branch",
+  "missing-strict-runtime-evidence": "1.21.11: missing version-by-version runtime evidence",
+  "candidate-publication": "release manifest version or candidate flag is invalid",
+  "duplicate-artifact": "1.21.11: expected exactly one JAR, found 2",
+  "wrong-game-metadata": "1.21.11: wrong dependency metadata",
+  "wrong-namespace": "1.21.11: wrong namespace or build target",
+  "mixed-0.0.2-and-1.0.0-artifacts": "1.21.11: unexpected JAR filename: third-person-readable-maps-1.0.0-mc1.21.11.jar",
+  "wrong-artifact-classifier": "1.21.11: unexpected JAR filename: third-person-readable-maps-1.0.0-mcWRONG.jar",
+  "duplicate-game-version": "1.21.11: invalid explicit Minecraft versions or compilation target",
+  "overlapping-game-version": "1.14-1.14.4: Minecraft versions overlap another group",
+  "strict-rejects-candidate-config": "strict CLI rejected the candidate-only configuration",
+  "changed-artifact-after-checksum": "sha256sum --check rejected a modified bundle artifact",
+  "wrong-remote-source-commit": "1.21.11: source branch is missing or its HEAD differs from the plan",
+  "missing-static-evidence": "missing or duplicate static verification evidence",
+  "failed-static-evidence": "1.14-1.14.4: static API verification is stale or failed",
+  "missing-wrapper-preflight-evidence": "1.21.11: missing Wrapper preflight evidence"
+}

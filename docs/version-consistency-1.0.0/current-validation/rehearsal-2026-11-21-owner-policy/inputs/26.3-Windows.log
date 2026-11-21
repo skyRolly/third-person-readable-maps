@@ -1,0 +1,533 @@
+Build (windows-latest)	Set up job	﻿2026-11-21T16:56:57.5845595Z Current runner version: '2.338.2'
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5903843Z ##[group]Runner Image Provisioner
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5905008Z Hosted Compute Agent
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5905782Z Version: 20261111.635
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5906609Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5907545Z Build Date: 2026-11-11T01:49:01Z
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5908515Z Worker ID: {2fc6079a-3c15-4ced-a1db-22cbae340360}
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5909441Z Region: eastus3
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5910125Z Cloud: Azure
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5910864Z ##[endgroup]
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5912516Z ##[group]Operating System
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5913405Z Microsoft Windows Server 2025
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5914266Z 10.0.26100
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5914921Z Datacenter
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5915612Z ##[endgroup]
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5916293Z ##[group]Runner Image
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5917669Z Image: windows-2025-vs2026
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5918459Z Version: 20261116.315.1
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5920009Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261116.315/images/windows/Windows2025-VS2026-Readme.md
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5922933Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261116.315
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5924256Z ##[endgroup]
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5925703Z ##[group]GITHUB_TOKEN Permissions
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5928325Z Contents: read
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5929719Z Metadata: read
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5930457Z ##[endgroup]
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5933113Z Secret source: Actions
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5934222Z Cache mode: write
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.5935224Z Prepare workflow directory
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.6282931Z Prepare all required actions
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.6334948Z Getting action download info
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.8373597Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+Build (windows-latest)	Set up job	2026-11-21T16:56:57.9493888Z Download action repository 'actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880' (SHA:d1374f8ac74474200d16ef8ecee22c7ae7a51880)
+Build (windows-latest)	Set up job	2026-11-21T16:56:58.4406177Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+Build (windows-latest)	Set up job	2026-11-21T16:56:58.5601069Z Download action repository 'gradle/actions@8da46b539cd8fe6ab27ca75128919a18d757604c' (SHA:8da46b539cd8fe6ab27ca75128919a18d757604c)
+Build (windows-latest)	Set up job	2026-11-21T16:56:59.2433385Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+Build (windows-latest)	Set up job	2026-11-21T16:56:59.5262818Z Complete job name: Build (windows-latest)
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-11-21T16:56:59.7101210Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7103680Z with:
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7104484Z   persist-credentials: false
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7105501Z   repository: skyRolly/third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7111625Z   token: ***
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7112651Z   ssh-strict: true
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7113441Z   ssh-user: git
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7114273Z   clean: true
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7115041Z   sparse-checkout-cone-mode: true
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7116007Z   fetch-depth: 1
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7117012Z   fetch-tags: false
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7117804Z   show-progress: true
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7118603Z   lfs: false
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7119302Z   submodules: false
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7120114Z   set-safe-directory: true
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7120977Z   allow-unsafe-pr-checkout: false
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.7122177Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8649188Z Syncing repository: skyRolly/third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8652461Z ##[group]Getting Git version info
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.8654029Z Working directory is 'D:\a\third-person-readable-maps\third-person-readable-maps'
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:56:59.9472382Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.1953533Z git version 2.56.1.windows.1
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2001346Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2017832Z Temporarily overriding HOME='D:\a\_temp\71765b7b-5513-455a-ae87-1ea300ad9534' before making global git config changes
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2020829Z Adding repository directory to the temporary git global config as a safe directory
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2027627Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\third-person-readable-maps\third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2662106Z Deleting the contents of 'D:\a\third-person-readable-maps\third-person-readable-maps'
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2667622Z ##[group]Determining repository object format
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2669714Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2670364Z ##[group]Initializing the repository
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.2679661Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\third-person-readable-maps\third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.3476813Z Initialized empty Git repository in D:/a/third-person-readable-maps/third-person-readable-maps/.git/
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.3530065Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/skyRolly/third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4137624Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4138836Z ##[group]Disabling automatic garbage collection
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4147718Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4571271Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4572316Z ##[group]Setting up auth
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4574383Z Removing SSH command configuration
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.4584274Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:00.5014530Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:01.7516110Z Removing HTTP extra header
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:01.7525496Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:01.7915819Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:02.3485783Z Removing includeIf entries pointing to credentials config files
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:02.3498106Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:02.3876894Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:02.9560259Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.0013472Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git.path D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.0396457Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.0818288Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.1202221Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.1601869Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.1602843Z ##[group]Fetching the repository
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:03.1616937Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +38bac1c010250838b47f6f16f98a5ced5e0d7b8a:refs/remotes/origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.0428703Z From https://github.com/skyRolly/third-person-readable-maps
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.0431290Z  * [new ref]         38bac1c010250838b47f6f16f98a5ced5e0d7b8a -> origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.0488887Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.0891938Z   origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.0948126Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1330107Z 38bac1c010250838b47f6f16f98a5ced5e0d7b8a
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1369358Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1370263Z ##[group]Determining the checkout info
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1371039Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1383898Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.1873422Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.2246133Z ##[group]Checking out the ref
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.2257172Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B mc/26.3 refs/remotes/origin/mc/26.3
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.2923883Z Switched to a new branch 'mc/26.3'
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.2944312Z branch 'mc/26.3' set up to track 'origin/mc/26.3'.
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.2988358Z ##[endgroup]
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.3451042Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.3796719Z 38bac1c010250838b47f6f16f98a5ced5e0d7b8a
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.3847119Z ##[group]Removing auth
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.3848043Z Removing SSH command configuration
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.3856194Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:04.4265195Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.0262085Z Removing HTTP extra header
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.0274878Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.0658642Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6249620Z Removing includeIf entries pointing to credentials config files
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6259605Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6596659Z includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6598719Z includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6599629Z includeif.gitdir:/github/workspace/.git.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6600227Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6650248Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.6984055Z D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.7031468Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git.path D\:\\a\\_temp\\git\-credentials\-be0b5e83\-852f\-4603\-9f54\-8a1708b77b07\.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.7421125Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.7754418Z D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.7807420Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/third-person-readable-maps/third-person-readable-maps/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-be0b5e83\-852f\-4603\-9f54\-8a1708b77b07\.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.8189096Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.8523815Z /github/runner_temp/git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.8568555Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-be0b5e83\-852f\-4603\-9f54\-8a1708b77b07\.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.8943684Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.9278541Z /github/runner_temp/git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.9322076Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-be0b5e83\-852f\-4603\-9f54\-8a1708b77b07\.config
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:05.9703044Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:06.5198018Z Removing credentials config 'D:\a\_temp\git-credentials-be0b5e83-852f-4603-9f54-8a1708b77b07.config'
+Build (windows-latest)	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T16:57:06.5209820Z ##[endgroup]
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	﻿2026-11-21T16:57:06.5687460Z ##[group]Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5688021Z with:
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5688328Z   distribution: temurin
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5688663Z   java-version: 25.0.5+8
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5688964Z   java-package: jdk
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5689257Z   check-latest: false
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5689545Z   force-download: false
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5689838Z   set-default: true
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5690138Z   server-id: github
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5690505Z   mvn-repositories-include-central: true
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5690893Z   mvn-repositories-prioritize-central: true
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5691254Z   overwrite-settings: true
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5691555Z   cache-read-only: false
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5691877Z   job-status: success
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5694404Z   token: ***
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5694815Z   show-download-progress: false
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5695144Z   problem-matcher: false
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.5695431Z ##[endgroup]
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.6820632Z ##[group]Installed distributions
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.7092800Z Trying to resolve the latest version from remote
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.9242857Z Resolved latest version as 25.0.5+8.0.LTS
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.9244262Z Trying to download...
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:06.9246242Z Downloading Java 25.0.5+8.0.LTS (Temurin-Hotspot) from https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.5%2B8/OpenJDK25U-jdk_x64_windows_hotspot_25.0.5_8.zip ...
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:08.2439302Z Verifying Java package signature...
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:09.5264479Z Extracting Java archive...
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6382477Z Java 25.0.5+8.0.LTS was downloaded
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6383177Z Setting Java 25.0.5+8.0.LTS as the default
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6398991Z 
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6400002Z Java configuration:
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6400648Z   Distribution: temurin
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6401084Z   Version: 25.0.5+8.0.LTS
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6401700Z   Path: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6402307Z 
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6402812Z ##[endgroup]
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6474497Z Creating settings.xml with server-id: github
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6478270Z Creating toolchains.xml for JDK version 25.0.5+8 from temurin
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6482898Z Writing to C:\Users\runneradmin\.m2\settings.xml
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6490192Z Writing to C:\Users\runneradmin\.m2\toolchains.xml
+Build (windows-latest)	Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	2026-11-21T16:57:11.6511288Z Configured MAVEN_ARGS to include -ntp to suppress Maven transfer progress logs. Set 'show-download-progress: true' to keep the download progress output.
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-11-21T16:57:11.6872861Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6873454Z with:
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6873760Z   python-version: 3.15.2
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6874076Z   check-latest: false
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6876274Z   token: ***
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6876685Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6877139Z   update-environment: true
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6877508Z   allow-prereleases: false
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6877808Z   freethreaded: false
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6878069Z env:
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6878478Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6879050Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6879539Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.6879828Z ##[endgroup]
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.8391845Z ##[group]Installed versions
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.8442348Z Successfully set up CPython (3.15.2)
+Build (windows-latest)	Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	2026-11-21T16:57:11.8443485Z ##[endgroup]
+Build (windows-latest)	Verify Gradle wrapper checksums	﻿2026-11-21T16:57:11.8742312Z ##[group]Run python scripts/verify_gradle_wrapper.py
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.8743046Z [36;1mpython scripts/verify_gradle_wrapper.py[0m
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9372234Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9372851Z env:
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9373350Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9373973Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9374513Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9374946Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9375533Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9376132Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9376712Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9377262Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:11.9377800Z ##[endgroup]
+Build (windows-latest)	Verify Gradle wrapper checksums	2026-11-21T16:57:14.0620751Z Verified Gradle 9.9.2 wrapper checksums
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	﻿2026-11-21T16:57:14.2301939Z ##[group]Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2302527Z with:
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2302867Z   cache-provider: basic
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2303193Z   cache-read-only: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2303497Z   cache-disabled: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2303815Z   cache-write-only: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2304139Z   cache-overwrite-existing: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2304521Z   cache-cleanup: on-success
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2304880Z   gradle-home-cache-includes: caches
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	notifications
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2305252Z   add-job-summary: always
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2305623Z   add-job-summary-as-pr-comment: never
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2305968Z   dependency-graph: disabled
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2306348Z   dependency-graph-report-dir: dependency-graph-reports
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2306932Z   dependency-graph-continue-on-failure: true
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2307317Z   build-scan-publish: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2307663Z   validate-wrappers: true
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2308099Z   allow-snapshot-wrappers: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2308465Z   gradle-home-cache-strict-match: false
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2308888Z   workflow-job-context: {
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	  "os": "windows-latest"
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	}
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2311286Z   github-token: ***
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2311564Z env:
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2311919Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2312506Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2313003Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2314078Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2314568Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2315039Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2315505Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2315951Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.2316322Z ##[endgroup]
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.8591366Z Setting GRADLE_USER_HOME to D:\a\.gradle to leverage (potentially) faster drive.
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.8645138Z Merged default JDK locations into C:\Users\runneradmin\.m2\toolchains.xml
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:14.8652554Z Basic Caching: This build uses the basic open-source caching provider. For faster builds and advanced features, consider switching to the Enhanced Caching provider. See https://github.com/gradle/actions/blob/main/DISTRIBUTION.md for details.
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:15.2041080Z Cache hit for: setup-java-Windows-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:16.4628148Z Received 134217728 of 448330314 (29.9%), 107.7 MBs/sec
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:17.5991869Z Received 268435456 of 448330314 (59.9%), 110.3 MBs/sec
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:18.6041520Z Received 402653184 of 448330314 (89.8%), 115.3 MBs/sec
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:18.9763612Z Received 448330314 of 448330314 (100.0%), 115.7 MBs/sec
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:18.9764870Z Cache Size: ~428 MB (448330314 B)
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:18.9959414Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/c38c808f-fc15-4f6a-a438-0b4a4720bbd2/cache.tzst -P -C D:/a/third-person-readable-maps/third-person-readable-maps --force-local --use-compress-program "zstd -d"
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.7769946Z Cache restored successfully
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.8191635Z Basic caching restored from cache key: setup-java-Windows-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.9270613Z Fetched 6 of 6 checksums
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.9273869Z ##[group]All Gradle Wrapper jars are valid
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.9275225Z ✓ Found known Gradle Wrapper JAR files:
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.9276175Z   621008afc4f5d59357fcf06ffa644dd5aade5e091bdc363742710445f73cdaf8 gradle\wrapper\gradle-wrapper.jar
+Build (windows-latest)	Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T16:57:20.9277026Z ##[endgroup]
+Build (windows-latest)	Clean build through Windows entry point	﻿2026-11-21T16:57:21.0273101Z ##[group]Run & "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0273931Z [36;1m& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all[0m
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0341555Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0342090Z env:
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0342575Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0343214Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0343769Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0344143Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0344730Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0345301Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0345850Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0346447Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0346963Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0347463Z   GRADLE_USER_HOME: D:\a\.gradle
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0348191Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0348774Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0349283Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0349752Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.0350231Z ##[endgroup]
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:21.6582461Z Verified Gradle 9.9.2 wrapper checksums
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3554152Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3557529Z Welcome to Gradle 9.9.2!
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3558167Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3558416Z Here are the highlights of this release:
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3560689Z  - Performance improvements for Kotlin DSL compilation
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3561839Z  - Test filtering for non-method JUnit Platform tests
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3564216Z  - Wrapper settings preserved on upgrade
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3565400Z  - Predefined groups in the Problems API
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3566016Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3566574Z For more details see https://docs.gradle.org/9.9.2/release-notes.html
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.3567340Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:22.5559674Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:24.0536169Z Daemon will be stopped at the end of the build 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:29.3579389Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:29.3612972Z > Configure project :
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:29.3637823Z Fabric Loom: 1.19.3
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:35.1585599Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:35.1586906Z > Task :clean UP-TO-DATE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.1531136Z > Task :compileJava
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.5544045Z > Task :processResources
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.5545000Z > Task :classes
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.5545610Z > Task :processIncludeJars
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6536521Z > Task :compileTestJava NO-SOURCE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6541017Z > Task :jar
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6541633Z > Task :processTestResources NO-SOURCE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6542330Z > Task :assemble
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6542952Z > Task :testClasses UP-TO-DATE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6543559Z > Task :test NO-SOURCE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.6544257Z > Task :validateAccessWidener NO-SOURCE
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.9541292Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.9546109Z > Task :verifyMixinTarget
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:37.9549032Z Verified net/minecraft/client/renderer/entity/layers/ItemInHandLayer.submitArmWithItem(Lnet/minecraft/client/renderer/entity/state/ArmedEntityRenderState;Lnet/minecraft/client/renderer/item/ItemStackRenderState;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/HumanoidArm;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0545750Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0551730Z > Task :verifyModJar
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0557233Z Verified distributable: third-person-readable-maps-1.0.0-mc26.3.jar
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0558188Z Minecraft 26.3, Java 25, client-only, official namespace, MIT license, required Mixin
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0558769Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0558944Z > Task :check
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.0559337Z > Task :build
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1402738Z gradle/actions: Writing build results to D:\a\_temp\.gradle-actions\build-results\__run_3-1795280246280.json
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1405303Z 
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1406216Z BUILD SUCCESSFUL in 16s
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1406758Z 7 actionable tasks: 6 executed, 1 up-to-date
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1408879Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.9.2/userguide/configuration_cache_enabling.html
+Build (windows-latest)	Clean build through Windows entry point	2026-11-21T16:57:38.1865243Z Built Fabric mod in "D:\a\third-person-readable-maps\third-person-readable-maps\build\libs".
+Build (windows-latest)	Test static verification	﻿2026-11-21T16:57:38.3003727Z ##[group]Run python -m unittest discover -s tests
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3004596Z [36;1mpython -m unittest discover -s tests[0m
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3072055Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3072465Z env:
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3072983Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3073734Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3074227Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3074685Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3075340Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3076355Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3076884Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3077539Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3078206Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3078630Z   GRADLE_USER_HOME: D:\a\.gradle
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3079052Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3079589Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3080196Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3080585Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (windows-latest)	Test static verification	2026-11-21T16:57:38.3080917Z ##[endgroup]
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1281441Z ............................................................
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1282573Z ----------------------------------------------------------------------
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1322458Z Ran 60 tests in 167.890s
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1323440Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1324644Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1326692Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1328350Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1330003Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1331695Z fixture: Mixin target, 1 game classes, 5 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1333183Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1334039Z 
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1334242Z OK
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1335133Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1336690Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1338641Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, '8ca7c274d75a4ee572e08d4ecd4a13fe46117636')])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1340540Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 0, '855c52c7e5220668eadb8fc1a77eaa232400dce7')])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1341901Z fixture: Mixin target, 1 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1343269Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1344310Z fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1345605Z fixture: Mixin target, 0 game classes, 2 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '958eab69f2485a592891196687e712734375db6d')])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1349215Z fixture: Mixin target, 0 game classes, 1 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1350255Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1351518Z fixture: Mixin target, 0 game classes, 0 game instructions, and dependency libraries [('linux', [('org/joml/', 1, 'd22b6154d1b95a4cc3d6cee878312ded363d1c5b')])] verified
+Build (windows-latest)	Test static verification	2026-11-21T17:00:27.1353286Z fixture: Mixin target, 0 game classes, 4 game instructions, and dependency libraries [('linux', [('org/joml/', 1, '7a47b5d29257dfaf838b2d26d9420294bece8ff4')]), ('osx', [('org/joml/', 1, 'abcc02e7ab4d9dda46ebe5b0806b92f7dfe3cce1')])] verified
+Build (windows-latest)	Verify packaged game and library APIs	﻿2026-11-21T17:00:27.2774351Z ##[group]Run python scripts/verify_supported_apis.py --jar build/libs
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2775261Z [36;1mpython scripts/verify_supported_apis.py --jar build/libs[0m
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2846537Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2847044Z env:
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2847610Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2848274Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2848784Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2849225Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2849858Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2850438Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2851638Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2852313Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2852909Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2853324Z   GRADLE_USER_HOME: D:\a\.gradle
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2853664Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2854195Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2854727Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2855114Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:27.2855454Z ##[endgroup]
+Build (windows-latest)	Verify packaged game and library APIs	2026-11-21T17:00:28.2185472Z 26.3: Mixin target, 31 game classes, 44 game instructions, and dependency libraries [('linux', [])] verified
+Build (windows-latest)	Upload distributable mod	﻿2026-11-21T17:00:28.3746320Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3746946Z with:
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3747276Z   name: third-person-readable-maps-Windows
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3747685Z   path: build/libs/*-mc26.3.jar
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3748020Z   if-no-files-found: error
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3748380Z   retention-days: 14
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3748677Z   compression-level: 6
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3748959Z   overwrite: false
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3749274Z   include-hidden-files: false
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3749612Z   archive: true
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3749909Z env:
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3750299Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3750918Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3751369Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3751707Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3752219Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3752797Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3753323Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3753778Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3754196Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3754559Z   GRADLE_USER_HOME: D:\a\.gradle
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3754935Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3755435Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3755948Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3756377Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.3756703Z ##[endgroup]
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.5733222Z With the provided path, there will be 1 file uploaded
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.5738346Z Artifact name is valid!
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.5739517Z Root directory input is valid!
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.8118067Z Uploading artifact: third-person-readable-maps-Windows.zip
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.8164697Z Beginning upload of artifact content to blob storage
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.9420480Z Uploaded bytes 6705
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.9735757Z Finished uploading artifact content to blob storage!
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.9737245Z SHA256 digest of uploaded artifact is c39779ed6436c1480bedb28afa078c0b34de5019a3a6c362b20d491642d45594
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:28.9738492Z Finalizing artifact upload
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:29.3520648Z Artifact third-person-readable-maps-Windows successfully finalized. Artifact ID 14716537195
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:29.3521567Z Artifact third-person-readable-maps-Windows has been successfully uploaded! Final size is 6705 bytes. Artifact ID is 14716537195
+Build (windows-latest)	Upload distributable mod	2026-11-21T17:00:29.3529210Z Artifact download URL: https://github.com/skyRolly/third-person-readable-maps/actions/runs/44927302601/artifacts/14716537195
+Build (windows-latest)	Upload verification reports and failure diagnostics	﻿2026-11-21T17:00:29.3877593Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3878214Z with:
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3878420Z   name: diagnostics-Windows
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3878721Z   path: build/reports/
+Build (windows-latest)	Upload verification reports and failure diagnostics	build/test-results/
+Build (windows-latest)	Upload verification reports and failure diagnostics	hs_err_pid*.log
+Build (windows-latest)	Upload verification reports and failure diagnostics	
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3879035Z   if-no-files-found: ignore
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3879243Z   retention-days: 7
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3879448Z   compression-level: 6
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3879663Z   overwrite: false
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3879860Z   include-hidden-files: false
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3880088Z   archive: true
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3880258Z env:
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3880548Z   JAVA_HOME: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3881025Z   JAVA_HOME_25_X64: C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0.LTS\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3881384Z   MAVEN_ARGS: -ntp
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3881645Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3882408Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.15.2\x64/lib/pkgconfig
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3882878Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3883256Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3883611Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.15.2\x64
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3883930Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3884203Z   GRADLE_USER_HOME: D:\a\.gradle
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3884441Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3884840Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3885256Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3885534Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.3885781Z ##[endgroup]
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.5790380Z With the provided path, there will be 2 files uploaded
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.5795486Z Artifact name is valid!
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.5797028Z Root directory input is valid!
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.8227140Z Uploading artifact: diagnostics-Windows.zip
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.8276194Z Beginning upload of artifact content to blob storage
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.9483459Z Uploaded bytes 677
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.9802008Z Finished uploading artifact content to blob storage!
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.9803536Z SHA256 digest of uploaded artifact is 5265a1d7856368d90334b65d4a199672a76d6e6929cf014919123018f352e7e4
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:29.9804238Z Finalizing artifact upload
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:30.3654465Z Artifact diagnostics-Windows successfully finalized. Artifact ID 14716537196
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:30.3655280Z Artifact diagnostics-Windows has been successfully uploaded! Final size is 677 bytes. Artifact ID is 14716537196
+Build (windows-latest)	Upload verification reports and failure diagnostics	2026-11-21T17:00:30.3663181Z Artifact download URL: https://github.com/skyRolly/third-person-readable-maps/actions/runs/44927302601/artifacts/14716537196
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	﻿2026-11-21T17:00:30.4058877Z Post job cleanup.
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7325315Z In post-action step
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7336143Z Basic Caching: This build uses the basic open-source caching provider. For faster builds and advanced features, consider switching to the Enhanced Caching provider. See https://github.com/gradle/actions/blob/main/DISTRIBUTION.md for details.
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7341062Z Basic caching restored entry with key `setup-java-Windows-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95`. Save was skipped.
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7344261Z ##[group]Generating Job Summary
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7350686Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7350788Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7352288Z <table>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7352663Z     <tr>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7353012Z         <th>Gradle Root Project</th>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7353413Z         <th>Requested Tasks</th>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7353728Z         <th>Gradle Version</th>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7353988Z         <th>Build Outcome</th>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7354532Z         <th>Build&nbsp;Scan®</th>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7354882Z     </tr>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7355086Z     <tr>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7355312Z         <td>third-person-readable-maps</td>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7355622Z         <td>clean build</td>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7355883Z         <td align='center'>9.9.2</td>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7356176Z         <td align='center'>:white_check_mark:</td>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7356904Z         <td><a href="https://scans.gradle.com" rel="nofollow" target="_blank"><img src="https://img.shields.io/badge/Not%20published-lightgrey" alt="Build Scan not published" /></a></td>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7357819Z     </tr>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7358051Z </table>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7358185Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7358299Z ============================
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7359084Z <h4>Gradle State Caching - 🛡️ Basic</h4>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7359362Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7360944Z **[Basic Caching](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#basic-caching)** uses the basic open-source caching provider. For faster builds and advanced features, consider the **[Enhanced Caching](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#enhanced-caching)** provider.
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7362539Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7362704Z <details>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7363127Z <summary>Entries: 1 restored, 0 saved - Expand for more details</summary>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7363523Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7364822Z [Cache was enabled](https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#caching-build-state-between-jobs) — Gradle User Home was restored from the cache and saved for use by subsequent jobs.
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7365632Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7365723Z <pre>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7365934Z Entry: Gradle User Home
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7366457Z     Requested Key : setup-java-Windows-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7367208Z     Restored  Key : setup-java-Windows-x64-gradle-eebe75e20b795f817a1d7da04fa853d82effc6f304b365426631895117ba6a95
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7367751Z               Size: 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7367972Z               Time: 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7368226Z               (Entry restored: exact match found)
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7368507Z     Saved     Key : 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7368743Z               Size: 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7368938Z               Time: 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7369210Z               (Entry not saved: entry with key already exists)
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7369502Z </pre>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7369699Z </details>
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7369808Z 
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7379626Z ##[endgroup]
+Build (windows-latest)	Post Run gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c	2026-11-21T17:00:30.7384651Z Completed post-action step
+Build (windows-latest)	Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0	﻿2026-11-21T17:00:30.8239832Z Post job cleanup.
+Build (windows-latest)	Post Run actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880	﻿2026-11-21T17:00:31.0130893Z Post job cleanup.
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-11-21T17:00:31.1613037Z Post job cleanup.
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.3516441Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.3891065Z git version 2.56.1.windows.1
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.3978976Z Temporarily overriding HOME='D:\a\_temp\275ed415-c1de-4d61-b823-f56b5e39505c' before making global git config changes
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.3980106Z Adding repository directory to the temporary git global config as a safe directory
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.3993449Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\third-person-readable-maps\third-person-readable-maps
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.4412911Z Removing SSH command configuration
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.4424970Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:31.4828781Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.0777430Z Removing HTTP extra header
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.0788512Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.1194226Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.7239100Z Removing includeIf entries pointing to credentials config files
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.7251609Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (windows-latest)	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-11-21T17:00:32.7649372Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build (windows-latest)	Complete job	﻿2026-11-21T17:00:33.3684091Z Cleaning up orphan processes

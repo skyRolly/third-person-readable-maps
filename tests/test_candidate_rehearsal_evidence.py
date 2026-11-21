@@ -25,17 +25,32 @@ class CandidateRehearsalEvidenceTests(unittest.TestCase):
         inputs_raw = (fresh / index['input_record'].split('/')[-1]).read_bytes()
         self.assertEqual(hashlib.sha256(inputs_raw).hexdigest(), index['input_record_sha256'])
         inputs = json.loads(inputs_raw)['groups']
-        manifest = json.loads((fresh / 'release-manifest.json').read_text())
+        heads = json.loads((ROOT / 'docs/version-consistency-1.0.0/current-heads.json').read_text())['groups']
+        manifest = json.loads((ROOT / selection['candidate_rehearsal']['manifest']).read_text())
         groups = {row['id']: row for row in manifest['groups']}
         self.assertEqual(set(inputs), set(groups))
+        self.assertEqual(set(inputs), set(heads))
         for group, row in inputs.items():
             with self.subTest(group=group):
+                self.assertEqual(row['source_commit'], heads[group]['new_head'])
                 archive = (ROOT / row['archive_path']).read_bytes()
                 self.assertEqual(hashlib.sha256(archive).hexdigest(), row['archive_sha256'])
                 with ZipFile(BytesIO(archive)) as zipped:
                     self.assertEqual(zipped.namelist(), [groups[group]['artifact']])
                     self.assertEqual(hashlib.sha256(zipped.read(groups[group]['artifact'])).hexdigest(),
                                      groups[group]['sha256'])
+                windows_archive = (ROOT / row['windows_archive_path']).read_bytes()
+                self.assertEqual(hashlib.sha256(windows_archive).hexdigest(), row['windows_archive_sha256'])
+                with ZipFile(BytesIO(windows_archive)) as zipped:
+                    self.assertEqual(zipped.namelist(), [groups[group]['artifact']])
+                    self.assertEqual(hashlib.sha256(zipped.read(groups[group]['artifact'])).hexdigest(),
+                                     groups[group]['sha256'])
+        preserved = fresh / 'superseded-current-state'
+        snapshot = json.loads((preserved / 'index.json').read_text())
+        for original, record in snapshot['files'].items():
+            with self.subTest(preserved=original):
+                self.assertEqual(hashlib.sha256((ROOT / record['snapshot_path']).read_bytes()).hexdigest(),
+                                 record['sha256'])
 
     def test_new_product_ci_results_match_transition_heads(self):
         transition = json.loads((ROOT / 'docs/source-head-transition-2026-11-13.json').read_text())['groups']

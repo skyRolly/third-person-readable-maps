@@ -9,11 +9,42 @@ The owner-only integration policy supersedes the branch-protection,
 independent-PR-review, and staged-protection requirements in this earlier
 matrix; see [the current policy](owner-only-integration-policy.md) and
 [Issue #44](https://github.com/skyRolly/third-person-readable-maps/issues/44).
+The matrix and sequence below preserve the earlier planning snapshot. The
+current integration state is reconciled here and in the mutable evidence files.
 The release environment approval, security disposition, exact-source CI,
 runtime evidence, and publication safeguards remain separate gates.
 The ten legacy `mc/*` targets are placeholders until their ports are reviewed
 and integrated; an open PR is not an integrated branch.
 The [current evidence selection](version-consistency-1.0.0/current-evidence.json) identifies the updated proposal heads. Final proposed-head clean builds, hosted CI and the non-publishing candidate rehearsal have been recorded. All 13 JAR hashes change with the Gradle 9.9.2 manifest update; the 1.14 JAR also contains a rendering-state correction. Earlier runtime observations retain their original artifact identities and do not establish exact-current-artifact acceptance.
+
+## Current owner-only integration status — 2026-11-21
+
+- GitHub read-back reports `protected: false` and no effective branch rules for
+  `main` and all 13 `mc/*` targets. The repository and inherited rulesets list
+  is empty. Owner integration does not require an independent PR approval.
+- The latest integrated sources are `mc/1.21.11`
+  (`ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1`, latest source merge #37),
+  `mc/26.1-26.2` (`b7620ef8174180698cc36d273981aeadd3447941`, #38), and
+  `mc/26.3` (`38bac1c010250838b47f6f16f98a5ced5e0d7b8a`, #39). Their current
+  Linux and Windows push CI, Wrapper preflight, clean build, and packaged API
+  verification passed. The matching run IDs and archive digests are recorded
+  in [current hosted evidence](version-consistency-1.0.0/current-validation/hosted-checks.json).
+- PRs #13, #14, and #16–#23 remain open at their recorded exact heads. Their
+  Linux and Windows builds and current-source API checks pass, but their latest
+  source-bound scans report 385 unresolved advisory occurrences across the ten
+  proposals. No risk is accepted. Those findings block integration under the
+  security-first policy.
+- The fresh owner-policy rehearsal validates all 13 selected sources and 48
+  versions using exact Linux and Windows CI archives. Its checksums pass and
+  its scope remains candidate-only. Current-source security inventories are
+  pending for the three integrated tips; runtime evidence remains pending for
+  every latest selected source.
+- Runtime acceptance remains separate. Full graphical acceptance on all
+  current artifacts is incomplete, hardware-GPU testing has not run, and the
+  multiplayer record is a partial 1.21.11 LAN observation without packet
+  instrumentation or coverage of the other versions.
+- No tag or release has been created. Issue #44 records the latest #15
+  coordination-check results and remaining audit status.
 
 | Gate | Status | Evidence and remaining action |
 |---|---|---|
