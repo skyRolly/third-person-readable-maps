@@ -160,8 +160,12 @@ remains a separate graphical, hardware-GPU, and multiplayer acceptance gate.
   Git for Windows rejected ten historical archive paths because long path
   handling was disabled. The source contents were unchanged and Linux completed
   the same evidence and component checks. The checkout step now enables
-  `core.longpaths` through Git's per-process configuration environment; a fresh
-  Windows PR run is required to verify checkout and the Windows probes.
+  `core.longpaths` through Git's per-process configuration environment in commit
+  `f8a2353d8ec1a4841ce2b13f565347c0eb9ed8a7`. The rerun on PR #53 (workflow run
+  `44957152496`) passed checkout, source-bound validation, and all 28/28 local
+  component probes on both Windows and Linux. Coordination, workflow lint, and
+  live release prerequisite jobs also passed. Windows probe artifact ID:
+  `14728266493` (SHA-256 `a693b9cf1dd2b8627af43e4845d74f46d9385d4102edd8a374e305e5ddbb4e99`).
 - Fresh OSV scan after this documentation-only source branch: not run. No game source or dependency declarations changed; the checked-in exact-source candidate/integrated audit reports remain unchanged and failing.
 
 Counts remain 490 failing occurrences (22 Critical, 177 High, 274 Moderate,
