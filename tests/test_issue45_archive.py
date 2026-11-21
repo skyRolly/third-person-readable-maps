@@ -233,22 +233,25 @@ class Issue45ArchiveNegativeTests(unittest.TestCase):
                                       ('integrated_run', 'integrated', 5678)):
             snapshot_path = kind + '/dependency-graph-reports/snapshot.json.gz'
             with self.subTest(field=field, value=True):
-                self.archive[field] = True
-                # Make the forged snapshot agree with str(True), including refreshed
-                # gzip and raw hashes. The former isinstance(int) check accepts this.
-                self._edit_artifact(snapshot_path, 'job', {'id': 'True'})
-                self.assertEqual(str(self.archive[field]), 'True')
-                with self.assertRaisesRegex(AssertionError, field):
-                    self.verify_archive(self.root, self.archive_dir)
-                self.archive[field] = original
-                self._edit_artifact(snapshot_path, 'job', {'id': str(original)})
+                try:
+                    self.archive[field] = True
+                    self._edit_artifact(snapshot_path, 'job', {'id': 'True'})
+                    with self.assertRaisesRegex(AssertionError, field):
+                        self.verify_archive(self.root, self.archive_dir)
+                finally:
+                    self.archive[field] = original
+                    self._edit_artifact(snapshot_path, 'job', {'id': str(original)})
+            self.verify_archive(self.root, self.archive_dir, expected_reports=2)
             with self.subTest(field=field, value=False):
-                self.archive[field] = False
-                self._write_indexes()
-                with self.assertRaises(AssertionError):
-                    self.verify_archive(self.root, self.archive_dir)
-                self.archive[field] = original
-                self._write_indexes()
+                try:
+                    self.archive[field] = False
+                    self._write_indexes()
+                    with self.assertRaises(AssertionError):
+                        self.verify_archive(self.root, self.archive_dir)
+                finally:
+                    self.archive[field] = original
+                    self._write_indexes()
+            self.verify_archive(self.root, self.archive_dir, expected_reports=2)
 
     def test_string_run_ids_are_rejected(self):
         for field in ('candidate_run', 'integrated_run'):
