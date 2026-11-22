@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "review_date": "2026-11-22",
+  "status": "historical_configuration_attribution_corrected",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "source_group": "1.17-1.19.2",
+  "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+  "artifact_inspection": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/artifact-byte-inspection.json",
+    "sha256": "ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5"
+  },
+  "historical_static_chat_report": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
+    "sha256": "1606d1a2ff9618cb75a5134de965f2a31c87129748a638a6cad2c9d1fc8e4ad4"
+  },
+  "historical_component_report": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-parameter-probes-2026-11-21.json",
+    "sha256": "b61a3a3a8c520a758c03dd92cddd479c3d1a520f02afd9b308a8ce37134124f3"
+  },
+  "historical_runtime_reports": [
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json",
+      "sha256": "cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-report.json",
+      "sha256": "41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-report.json",
+      "sha256": "3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14"
+    }
+  ],
+  "historical_runtime_case_attributions": [
+    {
+      "minecraft_version": "1.14.4",
+      "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a",
+      "client_embedded_xml_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "runtime_case": "1.14.4-embedded-chat-jndi",
+      "historical_fixture": "1.14.4-embedded.xml",
+      "historical_fixture_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "historical_attribution": "exact_client_embedded"
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d",
+      "client_embedded_xml_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "runtime_case": "1.17.1-embedded-chat-jndi",
+      "historical_fixture": "1.18.1-embedded.xml",
+      "historical_fixture_sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+      "historical_attribution": "representative_not_exact"
+    },
+    {
+      "minecraft_version": "1.18.1",
+      "client_sha256": "737c28a56c8980fcd8574465c61538ebde8f511bdd035c69d0cbe27953f892aa",
+      "client_embedded_xml_sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+      "runtime_case": "1.18.1-embedded-chat-jndi",
+      "historical_fixture": "1.18.1-embedded.xml",
+      "historical_fixture_sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+      "historical_attribution": "exact_client_embedded"
+    }
+  ],
+  "component_2_14_1_case": {
+    "case_name": "2.14.1-1.18.1-embedded.xml-chat-jndi",
+    "configuration": "1.18.1-embedded.xml",
+    "configuration_sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+    "attribution_for_1_17_1": "representative_not_exact",
+    "actual_1_17_1_embedded_xml_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a"
+  },
+  "correction": "The historical component result used the 1.18.1 XML and cannot establish behavior for the exact 1.17.1 embedded XML. The separately inspected 1.17.1 client chat path remains valid static evidence. The current probes select the matching 1.14.4 fixture bytes for a new 1.17.1 test; any new result requires separate execution and source-bound recording.",
+  "follow_up": [
+    "Validate new exact-configuration probe results against the actual source commit and retained XML hash.",
+    "Keep the three targeted Log4j findings failing and release-blocking.",
+    "Investigate supported launcher arguments, third-party mods, and custom configurations."
+  ]
+}

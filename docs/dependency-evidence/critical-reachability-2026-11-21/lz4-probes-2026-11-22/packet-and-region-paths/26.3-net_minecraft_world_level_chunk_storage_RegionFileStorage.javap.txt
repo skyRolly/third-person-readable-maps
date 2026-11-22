@@ -1,0 +1,358 @@
+Compiled from "RegionFileStorage.java"
+public final class net.minecraft.world.level.chunk.storage.RegionFileStorage implements java.lang.AutoCloseable {
+  public static final java.lang.String ANVIL_EXTENSION;
+
+  private static final int MAX_CACHE_SIZE;
+
+  private final it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<java.util.Optional<net.minecraft.world.level.chunk.storage.RegionFile>> regionCache;
+
+  private final net.minecraft.world.level.chunk.storage.RegionStorageInfo info;
+
+  private final java.nio.file.Path folder;
+
+  private final boolean sync;
+
+  public net.minecraft.world.level.chunk.storage.RegionFileStorage(net.minecraft.world.level.chunk.storage.RegionStorageInfo, java.nio.file.Path, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap
+       8: dup
+       9: invokespecial #9                  // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap."<init>":()V
+      12: putfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+      15: aload_0
+      16: aload_2
+      17: putfield      #16                 // Field folder:Ljava/nio/file/Path;
+      20: aload_0
+      21: iload_3
+      22: putfield      #20                 // Field sync:Z
+      25: aload_0
+      26: aload_1
+      27: putfield      #24                 // Field info:Lnet/minecraft/world/level/chunk/storage/RegionStorageInfo;
+      30: return
+
+  private java.nio.file.Path regionPath(net.minecraft.world.level.ChunkPos);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field folder:Ljava/nio/file/Path;
+       4: aload_1
+       5: invokevirtual #28                 // Method net/minecraft/world/level/ChunkPos.getRegionX:()I
+       8: aload_1
+       9: invokevirtual #34                 // Method net/minecraft/world/level/ChunkPos.getRegionZ:()I
+      12: invokedynamic #37,  0             // InvokeDynamic #0:makeConcatWithConstants:(II)Ljava/lang/String;
+      17: invokeinterface #41,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      22: areturn
+
+  private net.minecraft.world.level.chunk.storage.RegionFile getRegionFile(net.minecraft.world.level.ChunkPos, boolean) throws java.io.IOException;
+    Code:
+       0: aload_1
+       1: invokevirtual #28                 // Method net/minecraft/world/level/ChunkPos.getRegionX:()I
+       4: aload_1
+       5: invokevirtual #34                 // Method net/minecraft/world/level/ChunkPos.getRegionZ:()I
+       8: invokestatic  #47                 // Method net/minecraft/world/level/ChunkPos.pack:(II)J
+      11: lstore_3
+      12: aload_0
+      13: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+      16: lload_3
+      17: invokevirtual #51                 // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.getAndMoveToFirst:(J)Ljava/lang/Object;
+      20: checkcast     #55                 // class java/util/Optional
+      23: astore        5
+      25: aload         5
+      27: ifnull        53
+      30: aload         5
+      32: invokevirtual #57                 // Method java/util/Optional.isPresent:()Z
+      35: ifeq          47
+      38: aload         5
+      40: invokevirtual #61                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      43: checkcast     #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      46: areturn
+      47: iload_2
+      48: ifne          53
+      51: aconst_null
+      52: areturn
+      53: aload_0
+      54: aload_1
+      55: invokevirtual #67                 // Method regionPath:(Lnet/minecraft/world/level/ChunkPos;)Ljava/nio/file/Path;
+      58: astore        6
+      60: iload_2
+      61: ifne          86
+      64: aload         6
+      66: iconst_0
+      67: anewarray     #71                 // class java/nio/file/LinkOption
+      70: invokestatic  #73                 // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      73: ifne          86
+      76: aload_0
+      77: lload_3
+      78: invokestatic  #79                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      81: invokevirtual #83                 // Method cache:(JLjava/util/Optional;)V
+      84: aconst_null
+      85: areturn
+      86: aload_0
+      87: getfield      #16                 // Field folder:Ljava/nio/file/Path;
+      90: invokestatic  #87                 // Method net/minecraft/util/FileUtil.createDirectoriesSafe:(Ljava/nio/file/Path;)V
+      93: new           #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      96: dup
+      97: aload_0
+      98: getfield      #24                 // Field info:Lnet/minecraft/world/level/chunk/storage/RegionStorageInfo;
+     101: aload         6
+     103: aload_0
+     104: getfield      #16                 // Field folder:Ljava/nio/file/Path;
+     107: aload_0
+     108: getfield      #20                 // Field sync:Z
+     111: invokespecial #93                 // Method net/minecraft/world/level/chunk/storage/RegionFile."<init>":(Lnet/minecraft/world/level/chunk/storage/RegionStorageInfo;Ljava/nio/file/Path;Ljava/nio/file/Path;Z)V
+     114: astore        7
+     116: aload_0
+     117: lload_3
+     118: aload         7
+     120: invokestatic  #96                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     123: invokevirtual #83                 // Method cache:(JLjava/util/Optional;)V
+     126: aload         7
+     128: areturn
+
+  private net.minecraft.world.level.chunk.storage.RegionFile getOrCreateRegionFile(net.minecraft.world.level.ChunkPos) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_1
+       3: invokevirtual #100                // Method getRegionFile:(Lnet/minecraft/world/level/ChunkPos;Z)Lnet/minecraft/world/level/chunk/storage/RegionFile;
+       6: invokestatic  #104                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      12: areturn
+
+  private void cache(long, java.util.Optional<net.minecraft.world.level.chunk.storage.RegionFile>) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+       4: lload_1
+       5: aload_3
+       6: invokevirtual #110                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.putAndMoveToFirst:(JLjava/lang/Object;)Ljava/lang/Object;
+       9: pop
+      10: aload_0
+      11: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+      14: invokevirtual #114                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.size:()I
+      17: sipush        256
+      20: if_icmple     54
+      23: aload_0
+      24: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+      27: invokevirtual #117                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.removeLast:()Ljava/lang/Object;
+      30: checkcast     #55                 // class java/util/Optional
+      33: astore        4
+      35: aload         4
+      37: invokevirtual #57                 // Method java/util/Optional.isPresent:()Z
+      40: ifeq          54
+      43: aload         4
+      45: invokevirtual #61                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      48: checkcast     #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      51: invokevirtual #120                // Method net/minecraft/world/level/chunk/storage/RegionFile.close:()V
+      54: return
+
+  public net.minecraft.nbt.CompoundTag read(net.minecraft.world.level.ChunkPos) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokevirtual #100                // Method getRegionFile:(Lnet/minecraft/world/level/ChunkPos;Z)Lnet/minecraft/world/level/chunk/storage/RegionFile;
+       6: astore_2
+       7: aload_2
+       8: ifnonnull     13
+      11: aconst_null
+      12: areturn
+      13: aload_2
+      14: aload_1
+      15: invokevirtual #123                // Method net/minecraft/world/level/chunk/storage/RegionFile.getChunkDataInputStream:(Lnet/minecraft/world/level/ChunkPos;)Ljava/io/DataInputStream;
+      18: astore_3
+      19: aload_3
+      20: ifnonnull     37
+      23: aconst_null
+      24: astore        4
+      26: aload_3
+      27: ifnull        34
+      30: aload_3
+      31: invokevirtual #127                // Method java/io/DataInputStream.close:()V
+      34: aload         4
+      36: areturn
+      37: aload_3
+      38: invokestatic  #130                // Method net/minecraft/nbt/NbtIo.read:(Ljava/io/DataInput;)Lnet/minecraft/nbt/CompoundTag;
+      41: astore        4
+      43: aload_3
+      44: ifnull        51
+      47: aload_3
+      48: invokevirtual #127                // Method java/io/DataInputStream.close:()V
+      51: aload         4
+      53: areturn
+      54: astore        4
+      56: aload_3
+      57: ifnull        76
+      60: aload_3
+      61: invokevirtual #127                // Method java/io/DataInputStream.close:()V
+      64: goto          76
+      67: astore        5
+      69: aload         4
+      71: aload         5
+      73: invokevirtual #138                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      76: aload         4
+      78: athrow
+    Exception table:
+       from    to  target type
+          19    26    54   Class java/lang/Throwable
+          37    43    54   Class java/lang/Throwable
+          60    64    67   Class java/lang/Throwable
+
+  public void scanChunk(net.minecraft.world.level.ChunkPos, net.minecraft.nbt.StreamTagVisitor) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokevirtual #100                // Method getRegionFile:(Lnet/minecraft/world/level/ChunkPos;Z)Lnet/minecraft/world/level/chunk/storage/RegionFile;
+       6: astore_3
+       7: aload_3
+       8: ifnonnull     12
+      11: return
+      12: aload_3
+      13: aload_1
+      14: invokevirtual #123                // Method net/minecraft/world/level/chunk/storage/RegionFile.getChunkDataInputStream:(Lnet/minecraft/world/level/ChunkPos;)Ljava/io/DataInputStream;
+      17: astore        4
+      19: aload         4
+      21: ifnull        33
+      24: aload         4
+      26: aload_2
+      27: invokestatic  #142                // Method net/minecraft/nbt/NbtAccounter.unlimitedHeap:()Lnet/minecraft/nbt/NbtAccounter;
+      30: invokestatic  #148                // Method net/minecraft/nbt/NbtIo.parse:(Ljava/io/DataInput;Lnet/minecraft/nbt/StreamTagVisitor;Lnet/minecraft/nbt/NbtAccounter;)V
+      33: aload         4
+      35: ifnull        73
+      38: aload         4
+      40: invokevirtual #127                // Method java/io/DataInputStream.close:()V
+      43: goto          73
+      46: astore        5
+      48: aload         4
+      50: ifnull        70
+      53: aload         4
+      55: invokevirtual #127                // Method java/io/DataInputStream.close:()V
+      58: goto          70
+      61: astore        6
+      63: aload         5
+      65: aload         6
+      67: invokevirtual #138                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      70: aload         5
+      72: athrow
+      73: return
+    Exception table:
+       from    to  target type
+          19    33    46   Class java/lang/Throwable
+          53    58    61   Class java/lang/Throwable
+
+  public void write(net.minecraft.world.level.ChunkPos, net.minecraft.nbt.CompoundTag) throws java.io.IOException;
+    Code:
+       0: getstatic     #152                // Field net/minecraft/SharedConstants.DEBUG_DONT_SAVE_WORLD:Z
+       3: ifeq          7
+       6: return
+       7: aload_0
+       8: aload_1
+       9: invokevirtual #157                // Method getOrCreateRegionFile:(Lnet/minecraft/world/level/ChunkPos;)Lnet/minecraft/world/level/chunk/storage/RegionFile;
+      12: astore_3
+      13: aload_2
+      14: ifnonnull     25
+      17: aload_3
+      18: aload_1
+      19: invokevirtual #161                // Method net/minecraft/world/level/chunk/storage/RegionFile.clear:(Lnet/minecraft/world/level/ChunkPos;)V
+      22: goto          78
+      25: aload_3
+      26: aload_1
+      27: invokevirtual #165                // Method net/minecraft/world/level/chunk/storage/RegionFile.getChunkDataOutputStream:(Lnet/minecraft/world/level/ChunkPos;)Ljava/io/DataOutputStream;
+      30: astore        4
+      32: aload_2
+      33: aload         4
+      35: invokestatic  #169                // Method net/minecraft/nbt/NbtIo.write:(Lnet/minecraft/nbt/CompoundTag;Ljava/io/DataOutput;)V
+      38: aload         4
+      40: ifnull        78
+      43: aload         4
+      45: invokevirtual #173                // Method java/io/DataOutputStream.close:()V
+      48: goto          78
+      51: astore        5
+      53: aload         4
+      55: ifnull        75
+      58: aload         4
+      60: invokevirtual #173                // Method java/io/DataOutputStream.close:()V
+      63: goto          75
+      66: astore        6
+      68: aload         5
+      70: aload         6
+      72: invokevirtual #138                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      75: aload         5
+      77: athrow
+      78: return
+    Exception table:
+       from    to  target type
+          32    38    51   Class java/lang/Throwable
+          58    63    66   Class java/lang/Throwable
+
+  public void close() throws java.io.IOException;
+    Code:
+       0: new           #176                // class net/minecraft/util/ExceptionCollector
+       3: dup
+       4: invokespecial #178                // Method net/minecraft/util/ExceptionCollector."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+      12: invokevirtual #179                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.values:()Lit/unimi/dsi/fastutil/objects/ObjectCollection;
+      15: invokeinterface #183,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectCollection.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+      20: astore_2
+      21: aload_2
+      22: invokeinterface #189,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      27: ifeq          74
+      30: aload_2
+      31: invokeinterface #194,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      36: checkcast     #55                 // class java/util/Optional
+      39: astore_3
+      40: aload_3
+      41: invokevirtual #197                // Method java/util/Optional.isEmpty:()Z
+      44: ifeq          50
+      47: goto          21
+      50: aload_3
+      51: invokevirtual #61                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      54: checkcast     #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      57: invokevirtual #120                // Method net/minecraft/world/level/chunk/storage/RegionFile.close:()V
+      60: goto          71
+      63: astore        4
+      65: aload_1
+      66: aload         4
+      68: invokevirtual #202                // Method net/minecraft/util/ExceptionCollector.add:(Ljava/lang/Throwable;)V
+      71: goto          21
+      74: aload_1
+      75: invokevirtual #205                // Method net/minecraft/util/ExceptionCollector.throwIfPresent:()V
+      78: return
+    Exception table:
+       from    to  target type
+          50    60    63   Class java/io/IOException
+
+  public void flush() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field regionCache:Lit/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap;
+       4: invokevirtual #179                // Method it/unimi/dsi/fastutil/longs/Long2ObjectLinkedOpenHashMap.values:()Lit/unimi/dsi/fastutil/objects/ObjectCollection;
+       7: invokeinterface #183,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectCollection.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+      12: astore_1
+      13: aload_1
+      14: invokeinterface #189,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      19: ifeq          52
+      22: aload_1
+      23: invokeinterface #194,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      28: checkcast     #55                 // class java/util/Optional
+      31: astore_2
+      32: aload_2
+      33: invokevirtual #57                 // Method java/util/Optional.isPresent:()Z
+      36: ifeq          49
+      39: aload_2
+      40: invokevirtual #61                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      43: checkcast     #65                 // class net/minecraft/world/level/chunk/storage/RegionFile
+      46: invokevirtual #208                // Method net/minecraft/world/level/chunk/storage/RegionFile.flush:()V
+      49: goto          13
+      52: return
+
+  public net.minecraft.world.level.chunk.storage.RegionStorageInfo info();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field info:Lnet/minecraft/world/level/chunk/storage/RegionStorageInfo;
+       4: areturn
+}

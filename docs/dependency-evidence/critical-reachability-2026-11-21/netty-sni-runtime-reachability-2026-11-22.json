@@ -1,0 +1,1507 @@
+{
+  "advisory": {
+    "alias": "CVE-2026-75595",
+    "id": "GHSA-c4c3-7fpv-j4q5",
+    "package": "io.netty:netty-handler",
+    "required_authentication_precondition": "SNI-specific mutual TLS must be the sole authentication gate, the SNI-specific SslContext must require client certificates, and the fallback/default context must be more permissive with no secondary peer-certificate verification.",
+    "severity": "CRITICAL",
+    "upstream_authority": "https://api.github.com/repos/netty/netty/security-advisories/GHSA-c4c3-7fpv-j4q5",
+    "upstream_ranges": [
+      {
+        "first_patched_version": "4.2.17.Final",
+        "package": "io.netty:netty-handler",
+        "vulnerable_version_range": ">= 4.2.0.Final, <= 4.2.16.Final"
+      },
+      {
+        "first_patched_version": "4.1.137.Final",
+        "package": "io.netty:netty-handler",
+        "vulnerable_version_range": "<= 4.1.136.Final"
+      }
+    ]
+  },
+  "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+  "component_probe": {
+    "passed": true,
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
+    "scope_limit": "The EmbeddedChannel component probe demonstrates vulnerable/fixed SniHandler selection behavior only; it does not establish a Minecraft exploit path or an authentication bypass.",
+    "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7",
+    "sni_cases": [
+      {
+        "configuration": null,
+        "coordinates_in_order": [
+          "io.netty:netty-buffer:4.1.118.Final",
+          "io.netty:netty-codec-http:4.1.118.Final",
+          "io.netty:netty-codec:4.1.118.Final",
+          "io.netty:netty-common:4.1.118.Final",
+          "io.netty:netty-handler:4.1.118.Final",
+          "io.netty:netty-resolver:4.1.118.Final",
+          "io.netty:netty-transport:4.1.118.Final"
+        ],
+        "exit_code": 0,
+        "expected": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "formatMsgNoLookups": false,
+        "main": "NettySniProbe",
+        "name": "netty-sni-4.1.118.Final",
+        "observed": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "passed": true,
+        "stderr": "",
+        "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n"
+      },
+      {
+        "configuration": null,
+        "coordinates_in_order": [
+          "io.netty:netty-buffer:4.1.137.Final",
+          "io.netty:netty-codec-http:4.1.137.Final",
+          "io.netty:netty-codec:4.1.137.Final",
+          "io.netty:netty-common:4.1.137.Final",
+          "io.netty:netty-handler:4.1.137.Final",
+          "io.netty:netty-resolver:4.1.137.Final",
+          "io.netty:netty-transport:4.1.137.Final"
+        ],
+        "exit_code": 0,
+        "expected": {
+          "FINAL_FALLBACKS": 0,
+          "FIRST_FRAGMENT_FALLBACKS": 0,
+          "HOST_SELECTIONS": 1
+        },
+        "formatMsgNoLookups": false,
+        "main": "NettySniProbe",
+        "name": "netty-sni-4.1.137.Final",
+        "observed": {
+          "FINAL_FALLBACKS": 0,
+          "FIRST_FRAGMENT_FALLBACKS": 0,
+          "HOST_SELECTIONS": 1
+        },
+        "passed": true,
+        "stderr": "",
+        "stdout": "FIRST_FRAGMENT_FALLBACKS=0\nFINAL_FALLBACKS=0\nHOST_SELECTIONS=1\n"
+      },
+      {
+        "configuration": null,
+        "coordinates_in_order": [
+          "io.netty:netty-buffer:4.2.7.Final",
+          "io.netty:netty-codec-base:4.2.7.Final",
+          "io.netty:netty-codec-compression:4.2.7.Final",
+          "io.netty:netty-codec-http:4.2.7.Final",
+          "io.netty:netty-common:4.2.7.Final",
+          "io.netty:netty-handler:4.2.7.Final",
+          "io.netty:netty-resolver:4.2.7.Final",
+          "io.netty:netty-transport:4.2.7.Final"
+        ],
+        "exit_code": 0,
+        "expected": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "formatMsgNoLookups": false,
+        "main": "NettySniProbe",
+        "name": "netty-sni-4.2.7.Final",
+        "observed": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "passed": true,
+        "stderr": "",
+        "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n"
+      },
+      {
+        "configuration": null,
+        "coordinates_in_order": [
+          "io.netty:netty-buffer:4.2.15.Final",
+          "io.netty:netty-codec-base:4.2.15.Final",
+          "io.netty:netty-codec-compression:4.2.15.Final",
+          "io.netty:netty-codec-http:4.2.15.Final",
+          "io.netty:netty-common:4.2.15.Final",
+          "io.netty:netty-handler:4.2.15.Final",
+          "io.netty:netty-resolver:4.2.15.Final",
+          "io.netty:netty-transport:4.2.15.Final"
+        ],
+        "exit_code": 0,
+        "expected": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "formatMsgNoLookups": false,
+        "main": "NettySniProbe",
+        "name": "netty-sni-4.2.15.Final",
+        "observed": {
+          "FINAL_FALLBACKS": 1,
+          "FIRST_FRAGMENT_FALLBACKS": 1,
+          "HOST_SELECTIONS": 0
+        },
+        "passed": true,
+        "stderr": "",
+        "stdout": "FIRST_FRAGMENT_FALLBACKS=1\nFINAL_FALLBACKS=1\nHOST_SELECTIONS=0\n"
+      },
+      {
+        "configuration": null,
+        "coordinates_in_order": [
+          "io.netty:netty-buffer:4.2.17.Final",
+          "io.netty:netty-codec-base:4.2.17.Final",
+          "io.netty:netty-codec-compression:4.2.17.Final",
+          "io.netty:netty-codec-http:4.2.17.Final",
+          "io.netty:netty-common:4.2.17.Final",
+          "io.netty:netty-handler:4.2.17.Final",
+          "io.netty:netty-resolver:4.2.17.Final",
+          "io.netty:netty-transport:4.2.17.Final"
+        ],
+        "exit_code": 0,
+        "expected": {
+          "FINAL_FALLBACKS": 0,
+          "FIRST_FRAGMENT_FALLBACKS": 0,
+          "HOST_SELECTIONS": 1
+        },
+        "formatMsgNoLookups": false,
+        "main": "NettySniProbe",
+        "name": "netty-sni-4.2.17.Final",
+        "observed": {
+          "FINAL_FALLBACKS": 0,
+          "FIRST_FRAGMENT_FALLBACKS": 0,
+          "HOST_SELECTIONS": 1
+        },
+        "passed": true,
+        "stderr": "",
+        "stdout": "FIRST_FRAGMENT_FALLBACKS=0\nFINAL_FALLBACKS=0\nHOST_SELECTIONS=1\n"
+      }
+    ]
+  },
+  "exact_official_classpath_scan": {
+    "all_artifact_sizes_and_sha1_verified": true,
+    "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+    "distinct_client_and_runtime_jars": 612,
+    "limitations": [
+      "This is a bytecode/string-reference scan and does not execute every game version or instrument arbitrary runtime-generated bytecode.",
+      "No custom launcher, Java agent, third-party mod set, or modified network pipeline was captured.",
+      "The component-level Netty SNI probe establishes vulnerable fallback behavior only when an SniHandler is actually constructed; it is not a Minecraft runtime exploit.",
+      "Minecraft owns the affected libraries; no compatible Mojang update or project-controlled dependency override was applied."
+    ],
+    "method": "Scan every .class entry in each exact Minecraft client JAR and every default runtime libraries.artifact JAR from the pinned Mojang version metadata. Search constant-pool/classfile bytes for SniHandler binary names (including reflective class-name strings) and Netty SslHandler/SslContext references. Native classifiers are not Java classpath JARs and are excluded.",
+    "minecraft_versions": [
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8",
+      "1.21.9",
+      "1.21.10",
+      "1.21.11",
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "netty_handler_by_minecraft_version": {
+      "1.19": {
+        "coordinate": "io.netty:netty-handler:4.1.77.Final",
+        "minecraft_metadata_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+        "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+        "size_bytes": 528268
+      },
+      "1.19.1": {
+        "coordinate": "io.netty:netty-handler:4.1.77.Final",
+        "minecraft_metadata_sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+        "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+        "size_bytes": 528268
+      },
+      "1.19.2": {
+        "coordinate": "io.netty:netty-handler:4.1.77.Final",
+        "minecraft_metadata_sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+        "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+        "size_bytes": 528268
+      },
+      "1.19.3": {
+        "coordinate": "io.netty:netty-handler:4.1.82.Final",
+        "minecraft_metadata_sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+        "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "size_bytes": 538569
+      },
+      "1.19.4": {
+        "coordinate": "io.netty:netty-handler:4.1.82.Final",
+        "minecraft_metadata_sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+        "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "size_bytes": 538569
+      },
+      "1.20": {
+        "coordinate": "io.netty:netty-handler:4.1.82.Final",
+        "minecraft_metadata_sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+        "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "size_bytes": 538569
+      },
+      "1.20.1": {
+        "coordinate": "io.netty:netty-handler:4.1.82.Final",
+        "minecraft_metadata_sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+        "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "size_bytes": 538569
+      },
+      "1.20.2": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.20.3": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.20.4": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.20.5": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.20.6": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.21": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.21.1": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.21.10": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "1.21.11": {
+        "coordinate": "io.netty:netty-handler:4.2.7.Final",
+        "minecraft_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+        "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "size_bytes": 581349
+      },
+      "1.21.2": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.21.3": {
+        "coordinate": "io.netty:netty-handler:4.1.97.Final",
+        "minecraft_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+        "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "size_bytes": 560040
+      },
+      "1.21.4": {
+        "coordinate": "io.netty:netty-handler:4.1.115.Final",
+        "minecraft_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+        "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+        "size_bytes": 578357
+      },
+      "1.21.5": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "1.21.6": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "1.21.7": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "1.21.8": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "1.21.9": {
+        "coordinate": "io.netty:netty-handler:4.1.118.Final",
+        "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+        "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "size_bytes": 580162
+      },
+      "26.1": {
+        "coordinate": "io.netty:netty-handler:4.2.7.Final",
+        "minecraft_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+        "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "size_bytes": 581349
+      },
+      "26.1.1": {
+        "coordinate": "io.netty:netty-handler:4.2.7.Final",
+        "minecraft_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+        "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "size_bytes": 581349
+      },
+      "26.1.2": {
+        "coordinate": "io.netty:netty-handler:4.2.7.Final",
+        "minecraft_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+        "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "size_bytes": 581349
+      },
+      "26.2": {
+        "coordinate": "io.netty:netty-handler:4.2.15.Final",
+        "minecraft_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+        "sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+        "size_bytes": 586442
+      },
+      "26.3": {
+        "coordinate": "io.netty:netty-handler:4.2.16.Final",
+        "minecraft_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+        "sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+        "size_bytes": 587814
+      }
+    },
+    "netty_handler_implementation_hits": 46,
+    "netty_handler_versions": [
+      "io.netty:netty-handler:4.1.115.Final",
+      "io.netty:netty-handler:4.1.118.Final",
+      "io.netty:netty-handler:4.1.77.Final",
+      "io.netty:netty-handler:4.1.82.Final",
+      "io.netty:netty-handler:4.1.97.Final",
+      "io.netty:netty-handler:4.2.15.Final",
+      "io.netty:netty-handler:4.2.16.Final",
+      "io.netty:netty-handler:4.2.7.Final"
+    ],
+    "non_netty_sni_handler_callers": 0,
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-vanilla-classpath-scan-2026-11-22.json",
+    "raw_sni_handler_constant_string_hits": 46,
+    "sha256": "6a4fbbe49d5c496e73b47b0a523a462a4c411e7f9c6c58fd84e2e3672fdaaacc",
+    "total_class_files_scanned": 414135,
+    "total_unique_jar_bytes": 1300288588,
+    "versions_with_first_party_tls_context_or_handler_references": {
+      "1.21.10": [
+        {
+          "class_file": "aro.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "ato$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "ato.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "avq.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "1.21.11": [
+        {
+          "class_file": "ary.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "aty$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "aty.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "avy.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "1.21.9": [
+        {
+          "class_file": "aro.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "ato$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "ato.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "avq.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "26.1": [
+        {
+          "class_file": "net/minecraft/server/dedicated/DedicatedServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "26.1.1": [
+        {
+          "class_file": "net/minecraft/server/dedicated/DedicatedServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "26.1.2": [
+        {
+          "class_file": "net/minecraft/server/dedicated/DedicatedServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "26.2": [
+        {
+          "class_file": "net/minecraft/server/jsonrpc/JsonRpc.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ],
+      "26.3": [
+        {
+          "class_file": "net/minecraft/server/jsonrpc/JsonRpc.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer$1.class",
+          "references": [
+            "io/netty/handler/ssl/SslHandler",
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext"
+          ]
+        },
+        {
+          "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "references": [
+            "io/netty/handler/ssl/SslContext",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        }
+      ]
+    }
+  },
+  "focused_exact_bytecode": {
+    "captured_versions": [
+      "1.21.10",
+      "1.21.11",
+      "26.3"
+    ],
+    "captures_by_version": {
+      "1.21.10": [
+        {
+          "class_entry": "aro.class",
+          "class_sha256": "5add37f324ebc5a23ffde457318a8fadda9b4bf7ebdc9d792add9152f2b439cb",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/DedicatedServer.javap.txt",
+          "javap_sha256": "f4d5391211bd31093b3d837a238b28e8e76ba489d3ac1d51cce13c73b15856f4",
+          "symbol": "DedicatedServer"
+        },
+        {
+          "class_entry": "ato.class",
+          "class_sha256": "7c8fe5e40481162d103c506576149114ef9fc53a1430e68a82a548e1140b7595",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/ManagementServer.javap.txt",
+          "javap_sha256": "a7f773feb75688858cefa12fb522a91860588c0fc8018a5cc719609e82cbafc5",
+          "symbol": "ManagementServer"
+        },
+        {
+          "class_entry": "ato$1.class",
+          "class_sha256": "14f71ff9803d8f2c68f728ff2a205465bbd47ef7ab60b883927b6245bd34117f",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/ManagementServer-1.javap.txt",
+          "javap_sha256": "bd7c97f9062db13b49f9dfdb8ba7fe34bbc5e2230fab771441892408584d48a0",
+          "symbol": "ManagementServer$1"
+        },
+        {
+          "class_entry": "avq.class",
+          "class_sha256": "2ae20acf0a552241c47dbf8dbbc60116b0394aaecd18640548099db2f02b5d8c",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/JsonRpcSslContextProvider.javap.txt",
+          "javap_sha256": "56aef0bfe49156d34cd7e6ed01166f4fec201c58087e324ec7c0ca25c32850a6",
+          "symbol": "JsonRpcSslContextProvider"
+        },
+        {
+          "class_entry": "arp.class",
+          "class_sha256": "0cf7e0282865b233856795b843d25120198b0edc791ba400b185064398481d3b",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/DedicatedServerProperties.javap.txt",
+          "javap_sha256": "2b1c713fe8579dc9525d11159c64d4a22bb8cb633af760b60d9e7f2f86e43529",
+          "symbol": "DedicatedServerProperties"
+        },
+        {
+          "class_entry": "igy.class",
+          "class_sha256": "381fb3b57538d24c8756d2c4c65161b1d6c4ce50254ae46a8d1e0c4b3b107f45",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/IntegratedServer.javap.txt",
+          "javap_sha256": "6ba3d368cbcef71ada5a0b559d3694cf7df308377d3a203839ddcc6fbc68aaff",
+          "symbol": "IntegratedServer"
+        },
+        {
+          "class_entry": "net/minecraft/server/Main.class",
+          "class_sha256": "f06e6d3dc4f365b5e5cf831ca6c87106f830875150530a1460f346c621fa1930",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/Main.javap.txt",
+          "javap_sha256": "bfd5e4ed1aa649c9f8bd27361898d3a3d2f4ffa5afa267354d189913dea1195d",
+          "symbol": "Main"
+        }
+      ],
+      "1.21.11": [
+        {
+          "class_entry": "ary.class",
+          "class_sha256": "e55eef9ca66dc0cf92698a9adb5ef58c392affa92831ddaa3eace6dd6a5c29e7",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/DedicatedServer.javap.txt",
+          "javap_sha256": "9a6e7dd83589203270de6a0c9934b3bf9020f0464629eb913055847e4a2d47d9",
+          "symbol": "DedicatedServer"
+        },
+        {
+          "class_entry": "aty.class",
+          "class_sha256": "450a642d01ef97acb714aee6fa11ce084ea231d1e8bf6f13ff58382e9bfee771",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/ManagementServer.javap.txt",
+          "javap_sha256": "a5327b1960eba390e0209e3caf7a79075856fa5696bc1d546e4efd025afaea5e",
+          "symbol": "ManagementServer"
+        },
+        {
+          "class_entry": "aty$1.class",
+          "class_sha256": "446ceb8a488502a3d85067ae15a3ddab20eee1b6e1e63326478c019c5205dfdb",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/ManagementServer-1.javap.txt",
+          "javap_sha256": "9aab5bda350b224ab990e82374064eb2985acbda0756ee0e89fe90e398f7c8ea",
+          "symbol": "ManagementServer$1"
+        },
+        {
+          "class_entry": "avy.class",
+          "class_sha256": "248cbf9c788f48b3096ae4cc160a4b680d3929ddb34f3baa1e202f7ba7491d7b",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/JsonRpcSslContextProvider.javap.txt",
+          "javap_sha256": "ba981d883a1ef80dc5c6a64031a4670191320ab85a6131bd99893148e6d2f2d8",
+          "symbol": "JsonRpcSslContextProvider"
+        },
+        {
+          "class_entry": "arz.class",
+          "class_sha256": "c8fee8efee1154fa36c2fc77a57f524a2181c660425651ffba7cfd341cb496d9",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/DedicatedServerProperties.javap.txt",
+          "javap_sha256": "a29e2f1eb508189c0d8d3621676eff484bad8dbc80260a97c2a03c799c897c0d",
+          "symbol": "DedicatedServerProperties"
+        },
+        {
+          "class_entry": "avx.class",
+          "class_sha256": "60592b9d391ba63f9cf593623497a0a6a1528a97af93b630cac1081712479f13",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/AuthenticationHandler.javap.txt",
+          "javap_sha256": "387232a0aacbd96ac03a4d9cfc90a254efc39d9622fd123aa61ce1538771ff19",
+          "symbol": "AuthenticationHandler"
+        },
+        {
+          "class_entry": "avz.class",
+          "class_sha256": "f5d855812e8a4d0efcc256bccc37c36398418dddacf27ba9d13854afc6ea9896",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/SecurityConfig.javap.txt",
+          "javap_sha256": "1eace69aad615aabf03d93b144581e3504e09cea6f7cb89912e703b4f3dfa017",
+          "symbol": "SecurityConfig"
+        },
+        {
+          "class_entry": "iqa.class",
+          "class_sha256": "eb0473e4d123ad3a5aad5e5ac776e3f0e6e8851b134709b7cc24922e4e333caf",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/IntegratedServer.javap.txt",
+          "javap_sha256": "45f0f416988599dbece737ddc675d23c3c3283b6eafa97128b8e119cf993783e",
+          "symbol": "IntegratedServer"
+        }
+      ],
+      "26.3": [
+        {
+          "class_entry": "net/minecraft/server/jsonrpc/JsonRpc.class",
+          "class_sha256": "f1440a0f5af8d5abca5a5d6190a5a597c929699e96bf8d9dcff73d1491617331",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/JsonRpc.javap.txt",
+          "javap_sha256": "032d766e14e95cebf8280c0bf960bdb35542c59f1a61bea9383f60256acd3041",
+          "symbol": "JsonRpc"
+        },
+        {
+          "class_entry": "net/minecraft/server/jsonrpc/ManagementServer.class",
+          "class_sha256": "9d2a2d9f201f2c99bb30da6556fc4944cdae2d5e7c83374c514c62b0a2d17945",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/ManagementServer.javap.txt",
+          "javap_sha256": "6a2c352a0d0460d30038e80a83e753fb9d75521cd32a7766e90219ebff34c5df",
+          "symbol": "ManagementServer"
+        },
+        {
+          "class_entry": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+          "class_sha256": "81fd70815188dfc1bc7650b6de7fe4b0f3e09a3676a798923dd36ddd6841ed1c",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/JsonRpcSslContextProvider.javap.txt",
+          "javap_sha256": "90693e0f362b5f8c0d01ecab197bd31a213d72909d8c30887313d77e3a2e4987",
+          "symbol": "JsonRpcSslContextProvider"
+        },
+        {
+          "class_entry": "net/minecraft/server/dedicated/DedicatedServerProperties.class",
+          "class_sha256": "3c2fd6cd3d9004dd01226321167db2b1de19cf4c41849a3b661d082796d9f336",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/DedicatedServerProperties.javap.txt",
+          "javap_sha256": "057d28b5ce23e42eaa67f31facb0b8d43d795cefcd109424ad2431b4795d35a3",
+          "symbol": "DedicatedServerProperties"
+        },
+        {
+          "class_entry": "net/minecraft/server/jsonrpc/security/AuthenticationHandler.class",
+          "class_sha256": "bd8f976c532bcc66bf7e1740016847153be4965c30e7606e61bfe8ee6bc8f6e0",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/AuthenticationHandler.javap.txt",
+          "javap_sha256": "cd84c42f67c9dc308da390beff3f55fc85d3507f1c6f2ceae916482ea126894a",
+          "symbol": "AuthenticationHandler"
+        },
+        {
+          "class_entry": "net/minecraft/client/server/IntegratedServer.class",
+          "class_sha256": "ccb7f86fedf41c9d364a89c1fc83ffa0f785bedf907f48ce70235c780a28376e",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/IntegratedServer.javap.txt",
+          "javap_sha256": "0f2492400813d0f99199e82a8f1d5e9960f9651638e77976945c452dc5d7dabf",
+          "symbol": "IntegratedServer"
+        },
+        {
+          "class_entry": "net/minecraft/server/Main.class",
+          "class_sha256": "49fbddd0c09f41a2ec095020e87fff31974d98b90bbd991ba17dff197ec1100e",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/Main.javap.txt",
+          "javap_sha256": "a151c854296a378803dd9de0c07abe29b4aad7c34de9109f9e898a55eb4841f8",
+          "symbol": "Main"
+        },
+        {
+          "class_entry": "io/netty/handler/ssl/SslContextBuilder.class",
+          "class_sha256": "0fdf385af11c487f5248f5270cfcec3c9849581082985af83cafca75b982bfb4",
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/Netty-4.2.16-SslContextBuilder.javap.txt",
+          "javap_sha256": "63c7c628e5fd3d23a56d0eb731daacf5311d21a3f8b4066f01666b25eccd7db4",
+          "symbol": "Netty SslContextBuilder"
+        }
+      ]
+    },
+    "findings": {
+      "authentication": "The dedicated management endpoint uses an API-key check in AuthenticationHandler; the observed Netty client-auth mode is NONE. This is not an SNI-selected mTLS gate.",
+      "dedicated_server_management_endpoint": "In 1.21.10, 1.21.11 and 26.3 the TLS-related game classes map to DedicatedServer, ManagementServer, the channel initializer and JsonRpcSslContextProvider. The endpoint is a dedicated-server feature; the integrated client server class has no management-server or SNI reference in the inspected binaries.",
+      "effective_server_configuration": "The exact DedicatedServerProperties constructors default management-server-enabled=false, host=localhost, and management-server-tls-enabled=true. The endpoint is constructed only inside DedicatedServer when explicitly enabled; an operator may configure a remote bind host. Across all eight exact affected Netty handler versions, javap of SslContextBuilder shows its constructor initializes ClientAuth.NONE. The 1.21.10, 1.21.11 and 26.3 game providers call forServer(keyManager).trustManager(trustManager).build() and do not call clientAuth().",
+      "game_client_and_integrated_server": "The 1.21.10 and 26.3 game packet path bytecode is separately source-bound in the packet-path capture index. The 1.21.10 packet initializer uses a game packet pipeline over Netty sockets; the 26.3 Connection capture shows the current packet pipeline. Exact IntegratedServer class constant-pool checks for 1.21.10, 1.21.11 and 26.3 find no management-server, SniHandler, SslHandler or SslContext reference. The full 29-version scan finds no non-Netty SniHandler call or reflective class-name reference.",
+      "pipeline": "When a non-null SslContext is supplied, ManagementServer$1 adds sslContext.newHandler(channel.alloc()) directly to the channel pipeline, then HttpServerCodec, HttpObjectAggregator, AuthenticationHandler, WebSocketServerProtocolHandler, frame aggregation, and JSON-RPC handlers. No SniHandler is constructed or inserted."
+    },
+    "index_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpath-bytecode-index-2026-11-22.json",
+    "index_sha256": "1bce553e20bf51590387228967eccb4660bbd92158dd5d074a7ed29f0afd42a2",
+    "integrated_server_constant_pool_reference_checks": [
+      {
+        "SniHandler_marker_found": false,
+        "SslContext_marker_found": false,
+        "SslHandler_marker_found": false,
+        "class_entry": "igy.class",
+        "class_sha256": "381fb3b57538d24c8756d2c4c65161b1d6c4ce50254ae46a8d1e0c4b3b107f45",
+        "client_jar_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+        "management_server_class_descriptor_marker": "Lato;",
+        "management_server_class_marker_found": false,
+        "minecraft_version": "1.21.10"
+      },
+      {
+        "SniHandler_marker_found": false,
+        "SslContext_marker_found": false,
+        "SslHandler_marker_found": false,
+        "class_entry": "iqa.class",
+        "class_sha256": "eb0473e4d123ad3a5aad5e5ac776e3f0e6e8851b134709b7cc24922e4e333caf",
+        "client_jar_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+        "management_server_class_descriptor_marker": "Laty;",
+        "management_server_class_marker_found": false,
+        "minecraft_version": "1.21.11"
+      },
+      {
+        "SniHandler_marker_found": false,
+        "SslContext_marker_found": false,
+        "SslHandler_marker_found": false,
+        "class_entry": "net/minecraft/client/server/IntegratedServer.class",
+        "class_sha256": "ccb7f86fedf41c9d364a89c1fc83ffa0f785bedf907f48ce70235c780a28376e",
+        "client_jar_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+        "management_server_class_descriptor_marker": "net/minecraft/server/jsonrpc/ManagementServer",
+        "management_server_class_marker_found": false,
+        "minecraft_version": "26.3"
+      }
+    ],
+    "mapping_sources": [
+      {
+        "excerpt_class_headers": [
+          "net.minecraft.client.server.IntegratedServer -> igy:",
+          "net.minecraft.server.Main -> net.minecraft.server.Main:",
+          "net.minecraft.server.dedicated.DedicatedServer -> aro:",
+          "net.minecraft.server.dedicated.DedicatedServerProperties -> arp:",
+          "net.minecraft.server.jsonrpc.ManagementServer -> ato:",
+          "net.minecraft.server.jsonrpc.ManagementServer$1 -> ato$1:",
+          "net.minecraft.server.jsonrpc.security.AuthenticationHandler -> avp:",
+          "net.minecraft.server.jsonrpc.security.JsonRpcSslContextProvider -> avq:",
+          "net.minecraft.server.jsonrpc.security.SecurityConfig -> avr:"
+        ],
+        "excerpt_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/official-mapping-classes.txt",
+        "excerpt_sha256": "b99e59a2e20bc387c2cea546acd82a7553e991852ce44f2fc554f22904da4d74",
+        "minecraft_version": "1.21.10",
+        "sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7",
+        "sha256": "2a6f53f4c1fd048e8fa956e3a3fbbb0afc02d5bbc23e52a16b328aed61b9bf39",
+        "size_bytes": 11511143,
+        "url": "https://piston-data.mojang.com/v1/objects/7e62354a697f95cf5e7d5981face0583676a9ef7/client.txt"
+      },
+      {
+        "excerpt_class_headers": [
+          "net.minecraft.client.server.IntegratedServer -> iqa:",
+          "net.minecraft.server.Main -> net.minecraft.server.Main:",
+          "net.minecraft.server.dedicated.DedicatedServer -> ary:",
+          "net.minecraft.server.dedicated.DedicatedServerProperties -> arz:",
+          "net.minecraft.server.jsonrpc.ManagementServer -> aty:",
+          "net.minecraft.server.jsonrpc.ManagementServer$1 -> aty$1:",
+          "net.minecraft.server.jsonrpc.security.AuthenticationHandler -> avx:",
+          "net.minecraft.server.jsonrpc.security.JsonRpcSslContextProvider -> avy:",
+          "net.minecraft.server.jsonrpc.security.SecurityConfig -> avz:"
+        ],
+        "excerpt_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/official-mapping-classes.txt",
+        "excerpt_sha256": "8812c9db6944e935cf82801ae94500c60c88ed85b6df2c8a1617abdcf7ab6550",
+        "minecraft_version": "1.21.11",
+        "sha1": "031a68bebf55d824f66d6573d8c752f0e1bf232a",
+        "sha256": "517799a8485e107e932dc1bd27c002b2d0b9207eb2396b685bcfe6c3321a9fbd",
+        "size_bytes": 11779287,
+        "url": "https://piston-data.mojang.com/v1/objects/031a68bebf55d824f66d6573d8c752f0e1bf232a/client.txt"
+      }
+    ],
+    "packet_path_capture_index": {
+      "command": "javap -p -c -classpath <official-client.jar> <class>",
+      "observations": [
+        {
+          "classes": [
+            {
+              "class": "wk",
+              "class_path": "wk.class",
+              "class_sha256": "aa53cb5486062d1a7108bdd5dfeed1a6aa3638dc3b7f194a1c34cadf41634a40",
+              "javap_bytes": 72091,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-wk.javap.txt",
+              "javap_sha256": "6f8718c8e08ff00737637e2facd1808447e89b285a9be24566f022d785575d5b"
+            },
+            {
+              "class": "wy",
+              "class_path": "wy.class",
+              "class_sha256": "45a94d4ade323efe3232d622cb8e1798e27d8964a7e9d08327f91d3797816af1",
+              "javap_bytes": 5948,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-wy.javap.txt",
+              "javap_sha256": "4606df4336e7d3010bf9b83df930e15c66dbe37779483c7338f45222d1463edf"
+            },
+            {
+              "class": "xd",
+              "class_path": "xd.class",
+              "class_sha256": "388cfd10b95a1c09899914e79d858730af898d5f49eb9277179a8c349ce4bc31",
+              "javap_bytes": 216,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-xd.javap.txt",
+              "javap_sha256": "1a9937616830e7035d08016407da6138bf4431b9fd3e7a1df2f85623eeadeb00"
+            }
+          ],
+          "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+          "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+          "minecraft_version": "1.21.10",
+          "official_mapping_sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7"
+        },
+        {
+          "classes": [
+            {
+              "class": "net.minecraft.network.Connection",
+              "class_path": "net/minecraft/network/Connection.class",
+              "class_sha256": "37d3b157233523f45c970939b578652c200a802768e4335aa6170694bd843062",
+              "javap_bytes": 86726,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_Connection.javap.txt",
+              "javap_sha256": "eeb83e3f764dde3a325b7f4411430ddd83e0931d461484ac8b89b58065ce56d6"
+            },
+            {
+              "class": "net.minecraft.network.PacketDecoder",
+              "class_path": "net/minecraft/network/PacketDecoder.class",
+              "class_sha256": "e90c688f12c7b4183d779fcb452c7264045eb02b5d92a6e85d32907d66661f65",
+              "javap_bytes": 7391,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_PacketDecoder.javap.txt",
+              "javap_sha256": "9b3eb8661c2133a86e6aff4cd28f89824895eda701fc96e432151af42d40c5b5"
+            },
+            {
+              "class": "net.minecraft.network.ProtocolInfo",
+              "class_path": "net/minecraft/network/ProtocolInfo.class",
+              "class_sha256": "c1420483f7aeb309711b1b9166e6249337fab4546fed93c1409cfe91cd8396a7",
+              "javap_bytes": 492,
+              "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_ProtocolInfo.javap.txt",
+              "javap_sha256": "6cf121fb61c7d588f8eac157a74b835e9bfe55f2bd6968e5b6154e45bd483b43"
+            }
+          ],
+          "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "minecraft_version": "26.3",
+          "official_mapping_sha1": null
+        }
+      ],
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/capture-index.json",
+      "sha256": "7deaff6a24ef6ab33a3bf419b17c850359bc6cdf348ff76fcc4f9bfd95a0025d"
+    }
+  },
+  "observed_on": "2026-11-22",
+  "reachability_conclusion": {
+    "confidence": "High for the exact unmodified official Mojang binaries and manifests scanned; insufficient to clear modded/custom-launcher deployment scope.",
+    "disposition": "Further investigation with the 26.2 occurrence retaining its source-bound Upstream-dependent remediation classification",
+    "official_unmodified_vanilla_client_and_integrated_server": "No SniHandler constructor, pipeline entry, or reflective class-name reference exists outside Netty handler implementation classes across the exact 29 official client/runtime classpaths. The observed dedicated-server management TLS endpoint uses SslHandler directly, has clientAuth NONE, and uses API-key authentication; its default enabled flag is false. The CVE-specific fallback/mTLS gate is not reached by these inspected first-party paths.",
+    "release_blocking": true,
+    "risk_accepted": false,
+    "security_clearance": false,
+    "third_party_mods_custom_launchers_agents": "Not scanned. Arbitrary third-party mods, launcher-added classpaths, Java agents, runtime-generated code and pipeline mutations can create SniHandler or change authentication. No global non-reachability claim is made for those configurations."
+  },
+  "remediation": {
+    "project_control": "Minecraft owns the resolved game runtime. No compatible Mojang update is present in the affected manifests. No mod-level override was applied because it would replace game-managed modules and compatibility is not established.",
+    "required_follow_up": [
+      "Inspect supported third-party mod sets, custom launcher classpaths and runtime agents or require a bounded supported environment before changing the overall disposition.",
+      "Request/consume a compatible Mojang runtime update to Netty 4.1.137.Final or 4.2.17.Final where these game lines remain supported.",
+      "Retain the current blocker until scope and upstream update requirements are satisfied."
+    ],
+    "upstream_fixed_versions": {
+      "4.1.x": "4.1.137.Final",
+      "4.2.x": "4.2.17.Final"
+    }
+  },
+  "review": {
+    "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed runtime update)",
+    "review_date": "2026-11-22",
+    "reviewer": "Codex automated technical investigation; independent human review pending"
+  },
+  "scanner_script": {
+    "artifact_integrity": "Mojang manifest size and SHA-1 verified before class scanning",
+    "path": "scripts/inspect_netty_sni_client_reachability.py",
+    "sha256": "ac207c8d65657e610dfb5f02b73bb85303552582402e7783470852e640abf4ab",
+    "source_bound_records_commit": "956c28254afa347d222304947e4a9878e78d209a"
+  },
+  "schema": 1,
+  "source_scope": {
+    "dependency_owner": "Minecraft version manifest / game runtime; not mod-controlled, build-tool, or Gradle plugin code.",
+    "occurrence_count": 14,
+    "occurrences": [
+      {
+        "dependency_artifact_sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+        "dependency_artifact_sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "runtime/1.19",
+          "runtime/1.19.1",
+          "runtime/1.19.2"
+        ],
+        "group": "1.17-1.19.2",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "c0898ec7c6a5a2eaa317770203a1554260699994",
+            "client_sha256": "ffd4fb3037d4110085b4d3d2dc47b760695528eb14292c3e5f7c758983c6d764",
+            "minecraft_version": "1.19",
+            "version_metadata_sha1": "a78840abb2308ea20e02f1092dffc410b771379c"
+          },
+          {
+            "client_sha1": "90d438c3e432add8848a9f9f368ce5a52f6bc4a7",
+            "client_sha256": "146d4018cfed50c5e77483940653091f186d2eea9ad42fc40939f5c72d6b7f52",
+            "minecraft_version": "1.19.1",
+            "version_metadata_sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4"
+          },
+          {
+            "client_sha1": "055b30d860ead928cba3849ba920c88b6950b654",
+            "client_sha256": "e1ac65de9b471b6916cc457fdcff00c1bafac17027aa79100c4df893b3d956db",
+            "minecraft_version": "1.19.2",
+            "version_metadata_sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb"
+          }
+        ],
+        "minecraft_versions": [
+          "1.19",
+          "1.19.1",
+          "1.19.2"
+        ],
+        "package_version": "4.1.77.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.77.Final",
+        "source_kind": "candidate",
+        "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0"
+      },
+      {
+        "dependency_artifact_sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "dependency_artifact_sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.19.3"
+        ],
+        "group": "1.19.3",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "977727ec9ab8b4631e5c12839f064092f17663f8",
+            "client_sha256": "b7228c23dbc8988129561af3918dd469577de842d2eb3c7dabe00316bf9a44d6",
+            "minecraft_version": "1.19.3",
+            "version_metadata_sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2"
+          }
+        ],
+        "minecraft_versions": [
+          "1.19.3"
+        ],
+        "package_version": "4.1.82.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+        "source_kind": "candidate",
+        "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71"
+      },
+      {
+        "dependency_artifact_sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+        "dependency_artifact_sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.82.Final/netty-handler-4.1.82.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.19.4",
+          "runtime/1.20",
+          "runtime/1.20.1"
+        ],
+        "group": "1.19.4-1.20.4",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "958928a560c9167687bea0cefeb7375da1e552a8",
+            "client_sha256": "0e79cf7f07c107e9a1fe22ed703e472372b44149e64114944f0811abbd25f3ec",
+            "minecraft_version": "1.19.4",
+            "version_metadata_sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42"
+          },
+          {
+            "client_sha1": "e575a48efda46cf88111ba05b624ef90c520eef1",
+            "client_sha256": "5ac9ead135746f5f27048f2e01d8d5bdc2dabc4d91422f73ef2435f4c3d24aff",
+            "minecraft_version": "1.20",
+            "version_metadata_sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac"
+          },
+          {
+            "client_sha1": "0c3ec587af28e5a785c0b4a7b8a30f9a8f78f838",
+            "client_sha256": "56b71336d2b4fdffd197f56595b0da93e32a946f78f382a299b8f4b92758bb0f",
+            "minecraft_version": "1.20.1",
+            "version_metadata_sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5"
+          }
+        ],
+        "minecraft_versions": [
+          "1.19.4",
+          "1.20",
+          "1.20.1"
+        ],
+        "package_version": "4.1.82.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+        "source_kind": "candidate",
+        "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+      },
+      {
+        "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "runtime/1.20.2",
+          "runtime/1.20.3",
+          "runtime/1.20.4"
+        ],
+        "group": "1.19.4-1.20.4",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "82d1974e75fc984c5ed4b038e764e50958ac61a0",
+            "client_sha256": "fa1a19be56a506426308abbc1cad85f299a7fc6dae4335559351ba0246713fda",
+            "minecraft_version": "1.20.2",
+            "version_metadata_sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130"
+          },
+          {
+            "client_sha1": "b178a327a96f2cf1c9f98a45e5588d654a3e4369",
+            "client_sha256": "bef21938224902dd925e2d89dcfe1d2540656d4cf7a5abd2b93e0402d135c655",
+            "minecraft_version": "1.20.3",
+            "version_metadata_sha1": "b64d934f068566415107a4a835d3e2099a86af3f"
+          },
+          {
+            "client_sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+            "client_sha256": "9221ab461a491bf9661cd8e773a5e662aaa43d600fa7970b8c12bbfb0431b838",
+            "minecraft_version": "1.20.4",
+            "version_metadata_sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330"
+          }
+        ],
+        "minecraft_versions": [
+          "1.20.2",
+          "1.20.3",
+          "1.20.4"
+        ],
+        "package_version": "4.1.97.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+        "source_kind": "candidate",
+        "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+      },
+      {
+        "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.20.5",
+          "runtime/1.20.6"
+        ],
+        "group": "1.20.5-1.20.6",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+            "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510",
+            "minecraft_version": "1.20.5",
+            "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446"
+          },
+          {
+            "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+            "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2",
+            "minecraft_version": "1.20.6",
+            "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d"
+          }
+        ],
+        "minecraft_versions": [
+          "1.20.5",
+          "1.20.6"
+        ],
+        "package_version": "4.1.97.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+        "source_kind": "candidate",
+        "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624"
+      },
+      {
+        "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21",
+          "runtime/1.21.1"
+        ],
+        "group": "1.21-1.21.1",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+            "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8",
+            "minecraft_version": "1.21",
+            "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1"
+          },
+          {
+            "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+            "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+            "minecraft_version": "1.21.1",
+            "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21",
+          "1.21.1"
+        ],
+        "package_version": "4.1.97.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+        "source_kind": "candidate",
+        "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d"
+      },
+      {
+        "dependency_artifact_sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+        "dependency_artifact_sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.97.Final/netty-handler-4.1.97.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.2",
+          "runtime/1.21.3"
+        ],
+        "group": "1.21.2-1.21.3",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+            "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c",
+            "minecraft_version": "1.21.2",
+            "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc"
+          },
+          {
+            "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+            "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b",
+            "minecraft_version": "1.21.3",
+            "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21.2",
+          "1.21.3"
+        ],
+        "package_version": "4.1.97.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.97.Final",
+        "source_kind": "candidate",
+        "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d"
+      },
+      {
+        "dependency_artifact_sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+        "dependency_artifact_sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.115.Final/netty-handler-4.1.115.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.4"
+        ],
+        "group": "1.21.4-1.21.8",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+            "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e",
+            "minecraft_version": "1.21.4",
+            "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21.4"
+        ],
+        "package_version": "4.1.115.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.115.Final",
+        "source_kind": "candidate",
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+      },
+      {
+        "dependency_artifact_sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "dependency_artifact_sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "runtime/1.21.5",
+          "runtime/1.21.6",
+          "runtime/1.21.7",
+          "runtime/1.21.8"
+        ],
+        "group": "1.21.4-1.21.8",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+            "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11",
+            "minecraft_version": "1.21.5",
+            "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28"
+          },
+          {
+            "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+            "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a",
+            "minecraft_version": "1.21.6",
+            "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538"
+          },
+          {
+            "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+            "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9",
+            "minecraft_version": "1.21.7",
+            "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87"
+          },
+          {
+            "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+            "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f",
+            "minecraft_version": "1.21.8",
+            "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21.5",
+          "1.21.6",
+          "1.21.7",
+          "1.21.8"
+        ],
+        "package_version": "4.1.118.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+        "source_kind": "candidate",
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+      },
+      {
+        "dependency_artifact_sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+        "dependency_artifact_sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.1.118.Final/netty-handler-4.1.118.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.10",
+          "runtime/1.21.9"
+        ],
+        "group": "1.21.9-1.21.10",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+            "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+            "minecraft_version": "1.21.10",
+            "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c"
+          },
+          {
+            "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+            "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b",
+            "minecraft_version": "1.21.9",
+            "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21.10",
+          "1.21.9"
+        ],
+        "package_version": "4.1.118.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.1.118.Final",
+        "source_kind": "candidate",
+        "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb"
+      },
+      {
+        "dependency_artifact_sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "dependency_artifact_sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.11"
+        ],
+        "group": "1.21.11",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+            "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd",
+            "minecraft_version": "1.21.11",
+            "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8"
+          }
+        ],
+        "minecraft_versions": [
+          "1.21.11"
+        ],
+        "package_version": "4.2.7.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+        "source_kind": "integrated",
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1"
+      },
+      {
+        "dependency_artifact_sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+        "dependency_artifact_sha256": "99b59e4bea72220d2aed52df8baf37d97431b06ade0b135226cdf73168975eab",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.15.Final/netty-handler-4.2.15.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "runtime/26.2"
+        ],
+        "group": "26.1-26.2",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+            "client_sha256": "40896ee9f1e2bec3c934daac7e93d41e9e3d9c2f8ae0ca366d52ffbfd1afa290",
+            "minecraft_version": "26.2",
+            "version_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a"
+          }
+        ],
+        "minecraft_versions": [
+          "26.2"
+        ],
+        "package_version": "4.2.15.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.2.15.Final",
+        "source_kind": "integrated",
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+      },
+      {
+        "dependency_artifact_sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+        "dependency_artifact_sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.7.Final/netty-handler-4.2.7.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/26.1",
+          "runtime/26.1.1",
+          "runtime/26.1.2"
+        ],
+        "group": "26.1-26.2",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+            "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840",
+            "minecraft_version": "26.1",
+            "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a"
+          },
+          {
+            "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+            "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3",
+            "minecraft_version": "26.1.1",
+            "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a"
+          },
+          {
+            "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+            "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0",
+            "minecraft_version": "26.1.2",
+            "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b"
+          }
+        ],
+        "minecraft_versions": [
+          "26.1",
+          "26.1.1",
+          "26.1.2"
+        ],
+        "package_version": "4.2.7.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.2.7.Final",
+        "source_kind": "integrated",
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+      },
+      {
+        "dependency_artifact_sha1": "cc82873ae4b6d14effe480740ad838de09add70d",
+        "dependency_artifact_sha256": "a259ca496da05ac1981f95cd856211f894a328056a6129e9cd70dbbd5df401f7",
+        "dependency_manifest_artifact_url": "https://libraries.minecraft.net/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/26.3"
+        ],
+        "group": "26.3",
+        "minecraft_artifacts": [
+          {
+            "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+            "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+            "minecraft_version": "26.3",
+            "version_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26"
+          }
+        ],
+        "minecraft_versions": [
+          "26.3"
+        ],
+        "package_version": "4.2.16.Final",
+        "purl": "pkg:maven/io.netty/netty-handler@4.2.16.Final",
+        "source_kind": "integrated",
+        "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a"
+      }
+    ],
+    "source_groups": [
+      "1.17-1.19.2",
+      "1.19.3",
+      "1.19.4-1.20.4",
+      "1.20.5-1.20.6",
+      "1.21-1.21.1",
+      "1.21.11",
+      "1.21.2-1.21.3",
+      "1.21.4-1.21.8",
+      "1.21.9-1.21.10",
+      "26.1-26.2",
+      "26.3"
+    ]
+  }
+}

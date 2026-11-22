@@ -1,6 +1,6 @@
 # Security advisory ledger
 
-The [2026-11-21 exact-source finding index](dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json) and [investigation follow-up](worklogs/issue-45-security-followup-2026-11-21.md) preserve current candidate and integrated scans separately. All 385 candidate and 105 integrated matches remain failing; the structured ledger's historical dispositions below are unchanged. No risk is accepted.
+The [2026-11-21 exact-source finding index](dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json), [source-bound critical/high investigation](worklogs/issue-45-critical-reachability-2026-11-21.md), and [structured disposition evidence](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) preserve candidate and integrated scans separately. All 385 candidate and 105 integrated matches remain failing. New component and pipeline evidence does not remove a scanner occurrence, authorize risk acceptance, or provide release clearance.
 
 The [November 15 Netty review](dependency-evidence/netty-high-review-2026-11-15.json)
 records two high-severity advisories and 28 separately source-scoped occurrences,
@@ -18,22 +18,36 @@ There is no repository SECURITY.md. Supported surfaces are the client-only Fabri
 
 The [historical-game logging survey and critical disposition record](dependency-evidence/log4j-default-launcher-2026-11-14/) adds version-bound launcher configuration evidence and records 18 candidate remediation classifications; none changes the failing security gate.
 
+## Source-bound critical and focused high evidence — 2026-11-21
+
+The initial 2026-11-21 source-bound snapshot covered 22 Critical and 23 focused High occurrences. Its source reports and checksums remain preserved.
+
+## Jackson runtime reachability follow-up — 2026-11-22
+
+The [updated source-bound record](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) adds exact Mojang metadata, Minecraft client and Log4j artifact identities, client call-path observations, MSAL bytecode scans, and bounded parser probes for seven Jackson High advisories. The [Jackson/MSAL and Log4j analysis](dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json) binds 21 occurrences to candidate source SHAs. The current focused record covers 22 Critical and 44 High occurrences; all 66 remain blocking. The full inventory remains 490 failing occurrences. No finding is Fixed, Not applicable, or Risk accepted.
+
+The vanilla integrated server returns `TextFilter.DUMMY`; the optional dedicated-server text-filter path can reach MSAL Jackson parsing when configured. Log4j Core also exposes Jackson-backed parser and JSON-configuration APIs, although Mojang's captured default client XML does not select them. The report records unresolved custom-launcher and third-party-mod paths. No mod-controlled upgrade exists and no Minecraft-managed library was overridden.
+
+The additional [Commons Compress reachability record](dependency-evidence/critical-reachability-2026-11-21/commons-compress-reachability-2026-11-21.json) traces the vulnerable `TarArchiveInputStream` path through Mojang's Realms runtime library for Minecraft 1.14–1.14.3, and through the client binary for 1.14.4–1.17.1. The optional download action receives a Realms API-provided archive, but exploit-specific TAR header control has not been established. Related 7z and ZIP API searches found no direct vanilla call sites; those findings remain blocking because the inspection is not a full call graph and does not include arbitrary mods.
+
+Netty 4.1.77.Final through 4.1.118.Final and 4.2.7.Final through 4.2.16.Final findings remain game-managed. Vulnerable component behavior was reproduced for representative exact versions, while source-bound game inspection found no first-party SNI handler and traced an optional management-server HTTP pipeline. The default-disabled service and API-key check narrow those paths but do not exclude other launchers or mods. The [Log4j chat-path record](dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json) traces remote chat packets through the 1.14.4 and 1.17.1 clients to the `[CHAT]` logger. Mojang version metadata supplies the external logging argument; the tested external XML did not invoke lookups. The historical Log4j 2.14.1 probe used the **1.18.1** embedded XML, so its synthetic JNDI calls are representative rather than a test of the exact 1.17.1 XML. The [configuration attribution correction](dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/log4j-configuration-attribution.json) preserves that distinction. Runtime launcher arguments and classpaths remain unverified, so the affected Log4j findings stay blocking. LZ4 native extraction is traced from region-file code to the affected constructor; the shared-temporary-directory race and real-world trigger conditions remain untested. Upstream updates or further host-specific evidence are still required.
+
+## Guava deserialization reachability follow-up — 2026-11-22
+
+The [Guava investigation](dependency-evidence/critical-reachability-2026-11-21/guava-deserialization-reachability-2026-11-22.json) binds 16 High occurrences across 13 source groups and 48 Minecraft versions. The advisory's affected range is `>= 4.0, <= 33.7.1`, with Guava 33.7.2 as the first fixed release. An isolated 64 MiB probe reproduced allocation exhaustion for affected classes and verified bounded behavior on 33.7.2. Exact scans cover 48 official client jars and 655 runtime libraries; vanilla client packet-decoder traces were also captured for 1.14.4, 1.21.10, and 26.3. These observations do not cover arbitrary mods, launchers, agents, or reflective paths. Every Guava occurrence remains **Further investigation** and release-blocking because Minecraft supplies the dependency and supported modded runtime reachability is unresolved.
+
+The focused record now covers 22 Critical and 60 High occurrences; all 82 remain blocking. The complete candidate/integrated inventory remains 490 failing occurrences. No finding is cleared or accepted by the Guava investigation.
+
+
+## LZ4 runtime reachability follow-up — 2026-11-22
+
+The [source-bound LZ4 investigation](dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json) covers `GHSA-cmp6-m4wj-q63q` (6 High occurrences), `GHSA-vqf4-7m7x-wgfc` (5), and the existing `GHSA-mcr4-qmvw-px4g` (8). These rows overlap and do not represent 19 independent vulnerabilities. Exact scans cover 19 Minecraft clients across eight source groups. The vanilla region-file path reads the per-chunk compression id and can construct `LZ4BlockInputStream`; a local imported world is a plausible input. Representative vanilla network chunk packet paths are separate. The component probe reproduced CMP6 behavior in affected Java decompressor variants and verified the upstream-fixed 1.10.1 and 1.11.4 behavior. Hosted Linux and Windows probe jobs passed on PR commit `a800917` ([run 44977010612](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44977010612)); macOS remains untested. Native extraction was observed in vulnerable artifacts, but the shared-temp race and a game-level malformed region file were not tested.
+
+All 19 LZ4 advisory occurrences remain **Further investigation**, failing, and release-blocking because Minecraft owns the runtime libraries and no game-side fix or complete exploit/mitigation test is available. Eleven newly source-bound High occurrences bring the focused set to 22 Critical and 71 High (93 total); the full inventory remains 490 failing occurrences. No risk is accepted or clearance claimed.
+
 ## Additional static evidence
 
-[Runtime feature evidence](dependency-evidence/runtime-features.json) records a
-constant-pool search of all six hash-verified game client JARs and the official,
-hash-verified default logging configurations. RegionFileVersion (`erz` on
-1.21.11) constructs `LZ4BlockInputStream(InputStream)`; the searched direct call
-does not set `stopOnEmptyBlock=false`. This narrows GHSA-343h-94h5-c4wr's direct
-game path but does not exhaust library/reflective paths. Default logging uses
-LegacyXMLLayout/PatternLayout rather than the named SocketAppender,
-Rfc5424Layout or JsonTemplateLayout features; the custom LegacyXMLLayout
-implementation and operator/other-mod configuration remain unverified. Targeted
-Netty/Guava feature references were not established by this game-JAR-only search;
-transitive library implementations, reflection and other installed mods were
-outside it. None of these narrow negative observations justifies a game-wide
-Not applicable disposition. Specific evidence/proof gaps are attached to every
-structured record. No runtime PoC or game-wide exploitability proof is claimed.
+[Runtime feature evidence](dependency-evidence/runtime-features.json) preserves the earlier six-client survey. The new source-bound inspection covers the official client binaries and 557 non-Netty game-library artifacts. It confirms `RegionFileVersion` constructs `LZ4BlockInputStream(InputStream)` and records the actual native-load path; this does not exhaust reflective paths or prove a remote multiplayer input path. Mojang's `LegacyXMLLayout` implementation is now inspected and its exact default configuration was exercised with local harmless markers. Netty and Log4j component tests reproduced vulnerable behavior only in isolated harnesses; there was no full Minecraft exploit test. None of these observations justifies a game-wide Not applicable disposition. Specific evidence and remaining proof gaps are linked from every new source-bound record.
 
 The [final-source November 14 scans](dependency-evidence/osv-rescan-2026-11-14/final-proposals/) include fresh proposal inventories and preserve the integrated-source distinction.
 
@@ -403,7 +417,7 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 - `io.netty:netty-handler`: introduced 4.2.0.Final; fixed 4.2.17.Final.
 - `io.netty:netty-handler`: introduced 0; fixed 4.1.137.Final.
 
-**Disposition:** The `26.2` runtime-only `netty-handler` 4.2.15.Final occurrence is **Upstream-dependent** for a compatible runtime update; the other occurrences remain **Further investigation**. The [upstream advisory](https://github.com/netty/netty/security/advisories/GHSA-c4c3-7fpv-j4q5) describes fragmented ClientHello fallback and the additional conditions for an mTLS bypass, and identifies 4.2.17.Final as fixed. The [GitHub advisory API response](dependency-evidence/ghsa-c4c3-2026-11-14.json) was retrieved on November 14; its SHA-256 is `1ef10fdd35708ed6bc960f39a884c04fb8fb702a602e18b414e819a0a9e87113`. The recorded 26.2 game JAR search found no direct `SniHandler` or `AbstractSniHandler` reference, but does not cover transitive libraries, reflection, configuration or other installed components. Trace those paths; the critical occurrence remains failing and no risk is accepted.
+**Disposition:** The `26.2` runtime-only `netty-handler` 4.2.15.Final occurrence remains **Upstream-dependent** for remediation; all other source occurrences remain **Further investigation**. The new [source-bound critical investigation](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) verifies all 14 exact Netty package occurrences and their hashes. Representative affected and fixed Netty handlers were exercised with a fragmented ClientHello. The inspected Mojang clients have no direct SNI handler reference; the optional management JSON-RPC path uses TLS without SNI, is disabled by default, and applies API-key authentication when enabled. This does not exclude runtime-added handlers, launchers, reflection, or other mods and does not reproduce an authentication bypass. The upstream fixed endpoints are 4.1.137.Final and 4.2.17.Final. Every occurrence remains failing and release-blocking; no risk is accepted.
 
 | Group | Package/version | Inventory scopes | Origin / relevance |
 | --- | --- | --- | --- |
@@ -655,7 +669,7 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 - `at.yawk.lz4:lz4-java`: introduced 0; fixed 1.11.4.
 - `org.lz4:lz4-java`: introduced 1.7.0; last_affected 1.8.1.
 
-**Disposition: Further investigation.** Verify JNI extraction use, shared temporary directory permissions and host hardening; private java.io.tmpdir is a possible operator mitigation, not verified here. If reachable, request a compatible upstream game fix; do not override game-managed libraries in the mod.
+**Disposition: Further investigation.** The new source-bound investigation traces Minecraft region-file decoding into `LZ4BlockInputStream` and confirms native extraction for the recorded 1.8.0, 1.8.1, and 1.10.1 artifacts. An isolated fixed 1.11.4 comparison avoids the observed lock-file pattern. The local shared-temp race, real-world trigger conditions, and supported-launcher `java.io.tmpdir` settings remain untested. The dependencies are game-managed; request a compatible upstream fix and do not override them in the mod.
 
 | Group | Package/version | Inventory scopes | Origin / relevance |
 | --- | --- | --- | --- |
@@ -723,7 +737,7 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 - `io.netty:netty-codec-http`: introduced 0; fixed 4.1.132.Final.
 - `io.netty:netty-codec-http`: introduced 4.2.0.Alpha1; fixed 4.2.10.Final.
 
-**Disposition: Further investigation.** Trace quoted-string chunk extension parsing through intermediaries. If reachable, request a compatible upstream game fix; do not override game-managed libraries in the mod.
+**Disposition: Further investigation.** The source-bound local `EmbeddedChannel` test reproduced the malformed-framing differential for affected 4.1.118.Final and 4.2.7.Final and rejected it with tested fixed releases. Minecraft's optional management server contains `HttpServerCodec`, defaults disabled, and checks an API key when enabled. No real game server or intermediary was tested, so request-smuggling reachability is unproven. The dependency is Minecraft-managed; no override was applied.
 
 | Group | Package/version | Inventory scopes | Origin / relevance |
 | --- | --- | --- | --- |
@@ -959,3 +973,26 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 
 Follow-up owner: repository maintainer and security reviewer. Re-evaluate before release, on changed game libraries or advisory scope, and no later than 2027-02-02. Runtime traces/configuration for the named vulnerable feature are still needed; uncertainty is not non-applicability.
 
+
+
+## Issue #45 Commons Compress TAR follow-up — 2026-11-22
+
+[Source-bound follow-up evidence](dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json) and [worklog](worklogs/issue-45-commons-compress-runtime-followup-2026-11-22.md) cover 12 High advisory occurrences across three legacy source groups. Exact Minecraft Realms/client bytecode reaches Commons Compress 1.8.1 through an optional gzip TAR world download. A 111-byte malformed archive reproduced `OutOfMemoryError` in the exact library under a 32 MiB heap; upstream-fixed 1.21 rejected the same input. The Realms service's acceptance of owner-controlled PAX metadata remains unverified. All four findings remain failing, release-blocking, and unaccepted; these 12 rows are already included in the 71 focused High occurrences, so inventory counts are unchanged. Hosted Linux/Windows validation passed in [run 44980595788](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980595788); both downloaded probe artifact digests and payload hashes are retained in [the hosted verification index](dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json). No game-managed library override was made.
+
+### GHSA-c4c3-7fpv-j4q5 / CVE-2026-75595 — Netty SNI fallback follow-up (2026-11-22)
+
+The exact official Mojang client/runtime scan covers 29 affected Minecraft versions, 612 SHA-1/size-verified JARs and 414,135 class files. It found 46 `SniHandler` strings, all inside Netty's own handler implementation, and **zero non-Netty callers or reflective name references**. Bytecode traces for 1.21.10, 1.21.11 and 26.3 show the optional TLS JSON-RPC listener belongs to `DedicatedServer`; when configured it adds a direct `SslHandler`, not `SniHandler`. The endpoint defaults off, has no SNI-selected mutual TLS gate, and uses API-key authentication. Exact builders for all eight affected Netty handler versions default to `ClientAuth.NONE`.
+
+The stock vanilla client/integrated-server paths examined do not reach the advisory's SNI fallback. Third-party mods, custom launcher classpaths, agents and runtime pipeline changes remain unscanned, so all 14 findings remain failing and release-blocking. Minecraft supplies the affected libraries; no override or risk acceptance was made. See the [full source-bound conclusion](dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json), [complete 29-version classpath scan](dependency-evidence/critical-reachability-2026-11-21/netty-vanilla-classpath-scan-2026-11-22.json), and [bytecode evidence index](dependency-evidence/critical-reachability-2026-11-21/netty-callpath-bytecode-index-2026-11-22.json).
+
+## Log4j runtime reachability follow-up — 2026-11-22
+
+The [source-bound Log4j runtime overlay](dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-observations-2026-11-22.json) and [worklog](worklogs/issue-45-log4j-runtime-followup-2026-11-22.md) record Linux and Windows exact Mojang runtime matrices, retained GitHub artifacts, component probes, and the source-bound client observations. The dedicated runtime workflow [44990273341](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273341) and related CI [44990273351](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273351) passed. These are evidence-validation results, not vulnerability clearance.
+
+The eight current finding-index rows for `GHSA-jfh8-c2jp-5v3q` / CVE-2021-44228, `GHSA-7rjr-3q55-vv33` / CVE-2021-45046, and `GHSA-fxph-q3j8-mv87` / CVE-2017-5645 are in three candidate source groups and use Minecraft-managed Log4j Core 2.8.1 or 2.14.1. Exact client inspection traces remote chat to the `[CHAT]` logger in tested 1.14.4 and 1.17.1 clients. The captured default XML probes leave lookup markers literal and issue no local JNDI calls; a non-default embedded fallback configuration invokes synthetic local lookups on 2.14.1. Exact JDK LDAP decoder probes accepted a harmless serialized `String` on the tested Mojang Java 8 and Java 16 runtimes, and blocked it on Java 17. No external network, LDAP server, gadget, or full-game exploit was used. For CVE-2021-45046, the tested default chat/MDC path did not activate the condition; a synthetic non-default context layout did. For CVE-2017-5645, the default XML did not configure Log4j TCP/UDP socket servers, and no direct client reference was found. Supported launcher process arguments/classpaths and arbitrary mods, agents, reflective calls, and custom logging configurations remain unverified.
+
+All eight existing rows remain **Further investigation**, failing, and release-blocking. Apache's first fixed releases are 2.15.0, 2.16.0, and 2.8.2 for the respective advisories; Minecraft owns the affected libraries and no override was applied. A separate exact Mojang metadata check verified Log4j Core 2.17.0 for Minecraft 1.19–1.19.2 and records narrow **Not applicable** dispositions for these three IDs only. Those versions have no corresponding targeted row in the 490-record finding index, so the inventory remains 490 failing occurrences (22 Critical, 177 High); unrelated Log4j advisories and older Log4j versions remain unchanged. No risk is accepted and no release clearance is claimed.
+
+After preserving the exact 2.17.0 JAR and correcting Windows archive path handling, the 27-case Linux/Windows matrix passed in [run 44992388625](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44992388625), and all four main CI jobs passed in [run 44992388657](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44992388657). The 185-test local unit suite also passed. These results validate the evidence pipeline; they do not change the eight blocking dispositions or establish complete launcher/mod reachability.
+
+The review correction verified the 1.17.1 client XML against its exact Mojang JAR. A new [Linux and Windows runtime record](dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/exact-runtime-verification.json) uses those matching bytes and Mojang Java 16.0.1; each component probe recorded two calls to a local synthetic JNDI context. The historical 1.18.1-XML result remains preserved as representative. Neither result demonstrates a remote exploit or changes the blocking dispositions.

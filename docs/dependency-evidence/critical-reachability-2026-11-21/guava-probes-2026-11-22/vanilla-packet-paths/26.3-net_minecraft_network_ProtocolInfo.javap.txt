@@ -1,0 +1,10 @@
+Compiled from "ProtocolInfo.java"
+public interface net.minecraft.network.ProtocolInfo<T extends net.minecraft.network.PacketListener> {
+  public abstract net.minecraft.network.ConnectionProtocol id();
+
+  public abstract net.minecraft.network.protocol.PacketFlow flow();
+
+  public abstract net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.network.protocol.Packet<? super T>> codec();
+
+  public abstract net.minecraft.network.protocol.BundlerInfo bundlerInfo();
+}

@@ -1,0 +1,21 @@
+{
+  "observed_on": "2026-11-22",
+  "scope": "This runner only; not a proxy for Minecraft user launchers or shared-host policies.",
+  "commands": [
+    "stat mode and ownership metadata for /tmp",
+    "read /proc/sys/fs/protected_regular and /proc/sys/fs/protected_symlinks",
+    "java -XshowSettings:properties -version and retain only java.io.tmpdir"
+  ],
+  "tmp_directory": {
+    "path": "/tmp",
+    "mode_octal": "0o1777",
+    "sticky_bit": true
+  },
+  "sysctls": {
+    "protected_regular": "0",
+    "protected_symlinks": "0"
+  },
+  "java_default_tmpdir": "/tmp",
+  "security_clearance": false,
+  "risk_accepted": false
+}

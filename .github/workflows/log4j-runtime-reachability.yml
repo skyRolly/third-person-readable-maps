@@ -1,0 +1,89 @@
+name: Log4j runtime reachability
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/log4j-runtime-reachability.yml'
+      - '.gitattributes'
+      - 'scripts/probe_mojang_log4j_runtime_matrix.py'
+      - 'scripts/validate_mojang_log4j_runtime_probes.py'
+      - 'scripts/validate_critical_reachability_evidence.py'
+      - 'scripts/inspect_issue45_review_artifacts.py'
+      - 'tests/test_issue45_review_validation.py'
+      - 'tests/fixtures/critical_reachability/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/*.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/**'
+      - 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/**'
+      - 'docs/security-advisories.json'
+      - 'docs/dependency-evidence/log4j-default-launcher-2026-11-14/metadata-index.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-observations-2026-11-22.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/log4j-runtime-reachability.yml'
+      - '.gitattributes'
+      - 'scripts/probe_mojang_log4j_runtime_matrix.py'
+      - 'scripts/validate_mojang_log4j_runtime_probes.py'
+      - 'scripts/validate_critical_reachability_evidence.py'
+      - 'scripts/inspect_issue45_review_artifacts.py'
+      - 'tests/test_issue45_review_validation.py'
+      - 'tests/fixtures/critical_reachability/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/*.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/**'
+      - 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/**'
+      - 'docs/security-advisories.json'
+      - 'docs/dependency-evidence/log4j-default-launcher-2026-11-14/metadata-index.json'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/**'
+      - 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-observations-2026-11-22.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-mojang-runtimes:
+    name: Probe exact Mojang runtimes (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+        env:
+          GIT_CONFIG_COUNT: 1
+          GIT_CONFIG_KEY_0: core.longpaths
+          GIT_CONFIG_VALUE_0: 'true'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Validate source-bound Issue #45 observations
+        run: python scripts/validate_critical_reachability_evidence.py
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: '21.0.13+9'
+      - name: Probe Log4j on exact Mojang-selected Java runtimes
+        run: python scripts/probe_mojang_log4j_runtime_matrix.py --cache .probe-cache/mojang-log4j --output mojang-log4j-runtime-probes.json
+      - name: Validate exact Mojang Log4j runtime evidence
+        run: python scripts/validate_mojang_log4j_runtime_probes.py --report mojang-log4j-runtime-probes.json --expected-analysis-commit "${{ github.sha }}"
+      - name: Retain exact Mojang Log4j runtime probes
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mojang-log4j-runtime-probes-${{ matrix.os }}
+          path: |
+            mojang-log4j-runtime-probes.json
+            docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/
+          if-no-files-found: error
+          retention-days: 30

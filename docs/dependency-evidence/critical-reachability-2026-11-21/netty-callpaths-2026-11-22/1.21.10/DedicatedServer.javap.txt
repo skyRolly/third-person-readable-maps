@@ -1,0 +1,2137 @@
+Compiled from "SourceFile"
+public class aro extends net.minecraft.server.MinecraftServer implements ana {
+  static final org.slf4j.Logger m;
+
+  private static final int n;
+
+  private static final int o;
+
+  private final java.util.List<amn> p;
+
+  private bbv q;
+
+  private final bbs r;
+
+  private bbx s;
+
+  private final arq t;
+
+  private atd u;
+
+  private final aye v;
+
+  private bwd w;
+
+  private boolean x;
+
+  private final anb y;
+
+  private final java.util.Map<java.lang.String, java.lang.String> z;
+
+  private ato A;
+
+  private long B;
+
+  public aro(java.lang.Thread, fih$c, baa, ani, arq, com.mojang.datafixers.DataFixer, ane);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: getstatic     #105                // Field java/net/Proxy.NO_PROXY:Ljava/net/Proxy;
+       9: aload         6
+      11: aload         7
+      13: invokestatic  #110                // Method axk.a:()Laxk;
+      16: invokespecial #113                // Method net/minecraft/server/MinecraftServer."<init>":(Ljava/lang/Thread;Lfih$c;Lbaa;Lani;Ljava/net/Proxy;Lcom/mojang/datafixers/DataFixer;Lane;Laxi;)V
+      19: aload_0
+      20: invokestatic  #119                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      23: invokestatic  #125                // Method java/util/Collections.synchronizedList:(Ljava/util/List;)Ljava/util/List;
+      26: putfield      #127                // Field p:Ljava/util/List;
+      29: aload_0
+      30: aload         5
+      32: putfield      #129                // Field t:Larq;
+      35: aload_0
+      36: new           #131                // class bbs
+      39: dup
+      40: aload_0
+      41: invokespecial #134                // Method bbs."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+      44: putfield      #136                // Field r:Lbbs;
+      47: aload_0
+      48: aload         5
+      50: invokevirtual #141                // Method arq.a:()Larp;
+      53: invokestatic  #146                // Method aye.a:(Larp;)Laye;
+      56: putfield      #148                // Field v:Laye;
+      59: aload_0
+      60: aload         5
+      62: invokestatic  #151                // Method a:(Larq;)Lanb;
+      65: putfield      #153                // Field y:Lanb;
+      68: aload         5
+      70: invokevirtual #141                // Method arq.a:()Larp;
+      73: getfield      #158                // Field arp.i:Z
+      76: ifeq          89
+      79: aload_0
+      80: invokestatic  #162                // Method bU:()Ljava/util/Map;
+      83: putfield      #164                // Field z:Ljava/util/Map;
+      86: goto          96
+      89: aload_0
+      90: invokestatic  #169                // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+      93: putfield      #164                // Field z:Ljava/util/Map;
+      96: return
+
+  private static java.util.Map<java.lang.String, java.lang.String> bU();
+    Code:
+       0: ldc           #191                // String codeofconduct
+       2: iconst_0
+       3: anewarray     #193                // class java/lang/String
+       6: invokestatic  #198                // InterfaceMethod java/nio/file/Path.of:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+       9: astore_0
+      10: aload_0
+      11: iconst_1
+      12: anewarray     #200                // class java/nio/file/LinkOption
+      15: dup
+      16: iconst_0
+      17: getstatic     #204                // Field java/nio/file/LinkOption.NOFOLLOW_LINKS:Ljava/nio/file/LinkOption;
+      20: aastore
+      21: invokestatic  #210                // Method java/nio/file/Files.isDirectory:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      24: ifne          44
+      27: new           #212                // class java/lang/IllegalArgumentException
+      30: dup
+      31: aload_0
+      32: invokestatic  #216                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      35: invokedynamic #228,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      40: invokespecial #231                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      43: athrow
+      44: invokestatic  #235                // Method com/google/common/collect/ImmutableMap.builder:()Lcom/google/common/collect/ImmutableMap$Builder;
+      47: astore_1
+      48: aload_0
+      49: invokestatic  #239                // Method java/nio/file/Files.list:(Ljava/nio/file/Path;)Ljava/util/stream/Stream;
+      52: astore_2
+      53: aload_2
+      54: invokeinterface #245,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      59: invokeinterface #251,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      64: astore_3
+      65: aload_3
+      66: invokeinterface #257,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      71: ifeq          229
+      74: aload_3
+      75: invokeinterface #261,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      80: checkcast     #195                // class java/nio/file/Path
+      83: astore        4
+      85: aload         4
+      87: invokeinterface #265,  1          // InterfaceMethod java/nio/file/Path.getFileName:()Ljava/nio/file/Path;
+      92: invokeinterface #269,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+      97: astore        5
+      99: aload         5
+     101: ldc_w         #271                // String .txt
+     104: invokevirtual #275                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+     107: ifeq          226
+     110: aload         5
+     112: iconst_0
+     113: aload         5
+     115: invokevirtual #279                // Method java/lang/String.length:()I
+     118: iconst_4
+     119: isub
+     120: invokevirtual #283                // Method java/lang/String.substring:(II)Ljava/lang/String;
+     123: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     126: invokevirtual #293                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+     129: astore        6
+     131: aload         4
+     133: iconst_0
+     134: anewarray     #200                // class java/nio/file/LinkOption
+     137: invokeinterface #297,  2          // InterfaceMethod java/nio/file/Path.toRealPath:([Ljava/nio/file/LinkOption;)Ljava/nio/file/Path;
+     142: invokeinterface #300,  1          // InterfaceMethod java/nio/file/Path.getParent:()Ljava/nio/file/Path;
+     147: aload_0
+     148: invokeinterface #303,  1          // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+     153: invokeinterface #307,  2          // InterfaceMethod java/nio/file/Path.equals:(Ljava/lang/Object;)Z
+     158: ifne          176
+     161: new           #212                // class java/lang/IllegalArgumentException
+     164: dup
+     165: aload         5
+     167: invokedynamic #310,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     172: invokespecial #231                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+     175: athrow
+     176: ldc_w         #312                // String \n
+     179: aload         4
+     181: getstatic     #318                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+     184: invokestatic  #322                // Method java/nio/file/Files.readAllLines:(Ljava/nio/file/Path;Ljava/nio/charset/Charset;)Ljava/util/List;
+     187: invokestatic  #326                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+     190: astore        7
+     192: aload_1
+     193: aload         6
+     195: aload         7
+     197: invokestatic  #330                // Method bgh.a:(Ljava/lang/String;)Ljava/lang/String;
+     200: invokevirtual #334                // Method com/google/common/collect/ImmutableMap$Builder.put:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;
+     203: pop
+     204: goto          226
+     207: astore        7
+     209: new           #212                // class java/lang/IllegalArgumentException
+     212: dup
+     213: aload         5
+     215: invokedynamic #337,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     220: aload         7
+     222: invokespecial #340                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+     225: athrow
+     226: goto          65
+     229: aload_2
+     230: ifnull        266
+     233: aload_2
+     234: invokeinterface #344,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     239: goto          266
+     242: astore_3
+     243: aload_2
+     244: ifnull        264
+     247: aload_2
+     248: invokeinterface #344,  1          // InterfaceMethod java/util/stream/Stream.close:()V
+     253: goto          264
+     256: astore        4
+     258: aload_3
+     259: aload         4
+     261: invokevirtual #348                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     264: aload_3
+     265: athrow
+     266: aload_1
+     267: invokevirtual #352                // Method com/google/common/collect/ImmutableMap$Builder.build:()Lcom/google/common/collect/ImmutableMap;
+     270: areturn
+     271: astore_1
+     272: new           #212                // class java/lang/IllegalArgumentException
+     275: dup
+     276: ldc_w         #354                // String Failed to read Code of Conduct folder
+     279: aload_1
+     280: invokespecial #340                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+     283: athrow
+    Exception table:
+       from    to  target type
+         176   204   207   Class java/io/IOException
+          53   229   242   Class java/lang/Throwable
+         247   253   256   Class java/lang/Throwable
+          44   270   271   Class java/io/IOException
+
+  private io.netty.handler.ssl.SslContext bV();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #370                // Field arp.v:Ljava/lang/String;
+       7: aload_0
+       8: invokevirtual #368                // Method a:()Larp;
+      11: getfield      #372                // Field arp.w:Ljava/lang/String;
+      14: invokestatic  #377                // Method avq.a:(Ljava/lang/String;Ljava/lang/String;)Lio/netty/handler/ssl/SslContext;
+      17: areturn
+      18: astore_1
+      19: invokestatic  #379                // Method avq.a:()V
+      22: new           #381                // class java/lang/IllegalStateException
+      25: dup
+      26: ldc_w         #383                // String Failed to configure TLS for the server management protocol
+      29: aload_1
+      30: invokespecial #384                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      33: athrow
+    Exception table:
+       from    to  target type
+           0    17    18   Class java/lang/Exception
+
+  public boolean e() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #387                // Field arp.s:I
+       7: istore_1
+       8: aload_0
+       9: invokevirtual #368                // Method a:()Larp;
+      12: getfield      #389                // Field arp.q:Z
+      15: ifeq          177
+      18: aload_0
+      19: getfield      #129                // Field t:Larq;
+      22: invokevirtual #141                // Method arq.a:()Larp;
+      25: getfield      #391                // Field arp.t:Ljava/lang/String;
+      28: astore_2
+      29: aload_2
+      30: invokestatic  #395                // Method avr.a:(Ljava/lang/String;)Z
+      33: ifne          47
+      36: new           #381                // class java/lang/IllegalStateException
+      39: dup
+      40: ldc_w         #397                // String Invalid management server secret, must be 40 alphanumeric characters
+      43: invokespecial #398                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      46: athrow
+      47: aload_0
+      48: invokevirtual #368                // Method a:()Larp;
+      51: getfield      #400                // Field arp.r:Ljava/lang/String;
+      54: astore_3
+      55: aload_3
+      56: iload_1
+      57: invokestatic  #406                // Method com/google/common/net/HostAndPort.fromParts:(Ljava/lang/String;I)Lcom/google/common/net/HostAndPort;
+      60: astore        4
+      62: new           #393                // class avr
+      65: dup
+      66: aload_2
+      67: invokespecial #407                // Method avr."<init>":(Ljava/lang/String;)V
+      70: astore        5
+      72: new           #409                // class avp
+      75: dup
+      76: aload         5
+      78: invokespecial #412                // Method avp."<init>":(Lavr;)V
+      81: astore        6
+      83: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+      86: ldc_w         #416                // String Starting json RPC server on {}
+      89: aload         4
+      91: invokeinterface #422,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      96: aload_0
+      97: new           #424                // class ato
+     100: dup
+     101: aload         4
+     103: aload         6
+     105: invokespecial #427                // Method ato."<init>":(Lcom/google/common/net/HostAndPort;Lavp;)V
+     108: putfield      #429                // Field A:Lato;
+     111: aload_0
+     112: invokestatic  #434                // Method auf.a:(Laro;)Lauf;
+     115: astore        7
+     117: aload         7
+     119: invokevirtual #438                // Method auf.h:()Layo;
+     122: new           #440                // class atn
+     125: dup
+     126: aload         7
+     128: aload_0
+     129: getfield      #429                // Field A:Lato;
+     132: invokespecial #443                // Method atn."<init>":(Lauf;Lato;)V
+     135: invokevirtual #448                // Method ayo.a:(Layp;)V
+     138: aload_0
+     139: invokevirtual #368                // Method a:()Larp;
+     142: getfield      #450                // Field arp.u:Z
+     145: ifeq          168
+     148: aload_0
+     149: invokevirtual #452                // Method bV:()Lio/netty/handler/ssl/SslContext;
+     152: astore        8
+     154: aload_0
+     155: getfield      #429                // Field A:Lato;
+     158: aload         7
+     160: aload         8
+     162: invokevirtual #455                // Method ato.a:(Lauf;Lio/netty/handler/ssl/SslContext;)V
+     165: goto          177
+     168: aload_0
+     169: getfield      #429                // Field A:Lato;
+     172: aload         7
+     174: invokevirtual #458                // Method ato.a:(Lauf;)V
+     177: new           #9                  // class aro$1
+     180: dup
+     181: aload_0
+     182: ldc_w         #460                // String Server console handler
+     185: invokespecial #463                // Method aro$1."<init>":(Laro;Ljava/lang/String;)V
+     188: astore_2
+     189: aload_2
+     190: iconst_1
+     191: invokevirtual #467                // Method java/lang/Thread.setDaemon:(Z)V
+     194: aload_2
+     195: new           #468                // class s
+     198: dup
+     199: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     202: invokespecial #471                // Method s."<init>":(Lorg/slf4j/Logger;)V
+     205: invokevirtual #475                // Method java/lang/Thread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+     208: aload_2
+     209: invokevirtual #478                // Method java/lang/Thread.start:()V
+     212: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     215: ldc_w         #480                // String Starting minecraft server version {}
+     218: invokestatic  #485                // Method ac.b:()Lah;
+     221: invokeinterface #489,  1          // InterfaceMethod ah.c:()Ljava/lang/String;
+     226: invokeinterface #422,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     231: invokestatic  #495                // Method java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+     234: invokevirtual #499                // Method java/lang/Runtime.maxMemory:()J
+     237: ldc2_w        #500                // long 1024l
+     240: ldiv
+     241: ldc2_w        #500                // long 1024l
+     244: ldiv
+     245: ldc2_w        #502                // long 512l
+     248: lcmp
+     249: ifge          263
+     252: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     255: ldc_w         #505                // String To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"
+     258: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     263: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     266: ldc_w         #510                // String Loading properties
+     269: invokeinterface #512,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     274: aload_0
+     275: getfield      #129                // Field t:Larq;
+     278: invokevirtual #141                // Method arq.a:()Larp;
+     281: astore_3
+     282: aload_0
+     283: invokevirtual #515                // Method Y:()Z
+     286: ifeq          299
+     289: aload_0
+     290: ldc_w         #517                // String 127.0.0.1
+     293: invokevirtual #520                // Method a_:(Ljava/lang/String;)V
+     296: goto          323
+     299: aload_0
+     300: aload_3
+     301: getfield      #523                // Field arp.d:Z
+     304: invokevirtual #525                // Method d:(Z)V
+     307: aload_0
+     308: aload_3
+     309: getfield      #527                // Field arp.e:Z
+     312: invokevirtual #529                // Method e:(Z)V
+     315: aload_0
+     316: aload_3
+     317: getfield      #532                // Field arp.f:Ljava/lang/String;
+     320: invokevirtual #520                // Method a_:(Ljava/lang/String;)V
+     323: aload_0
+     324: getfield      #536                // Field k:Lfis;
+     327: aload_3
+     328: getfield      #539                // Field arp.n:Lars$a;
+     331: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+     334: checkcast     #544                // class drn
+     337: invokeinterface #549,  2          // InterfaceMethod fis.a:(Ldrn;)V
+     342: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     345: ldc_w         #551                // String Default game type: {}
+     348: aload_3
+     349: getfield      #539                // Field arp.n:Lars$a;
+     352: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+     355: invokeinterface #422,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     360: aconst_null
+     361: astore        4
+     363: aload_0
+     364: invokevirtual #553                // Method A:()Ljava/lang/String;
+     367: invokevirtual #556                // Method java/lang/String.isEmpty:()Z
+     370: ifne          382
+     373: aload_0
+     374: invokevirtual #553                // Method A:()Ljava/lang/String;
+     377: invokestatic  #562                // Method java/net/InetAddress.getByName:(Ljava/lang/String;)Ljava/net/InetAddress;
+     380: astore        4
+     382: aload_0
+     383: invokevirtual #565                // Method W:()I
+     386: ifge          397
+     389: aload_0
+     390: aload_3
+     391: getfield      #567                // Field arp.p:I
+     394: invokevirtual #570                // Method b:(I)V
+     397: aload_0
+     398: invokevirtual #572                // Method Z:()V
+     401: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     404: ldc_w         #574                // String Starting Minecraft server on {}:{}
+     407: aload_0
+     408: invokevirtual #553                // Method A:()Ljava/lang/String;
+     411: invokevirtual #556                // Method java/lang/String.isEmpty:()Z
+     414: ifeq          423
+     417: ldc_w         #576                // String *
+     420: goto          427
+     423: aload_0
+     424: invokevirtual #553                // Method A:()Ljava/lang/String;
+     427: aload_0
+     428: invokevirtual #565                // Method W:()I
+     431: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     434: invokeinterface #584,  4          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     439: aload_0
+     440: invokevirtual #588                // Method an:()Laxy;
+     443: aload         4
+     445: aload_0
+     446: invokevirtual #565                // Method W:()I
+     449: invokevirtual #593                // Method axy.a:(Ljava/net/InetAddress;I)V
+     452: goto          497
+     455: astore        5
+     457: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     460: ldc_w         #595                // String **** FAILED TO BIND TO PORT!
+     463: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     468: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     471: ldc_w         #597                // String The exception was: {}
+     474: aload         5
+     476: invokevirtual #598                // Method java/io/IOException.toString:()Ljava/lang/String;
+     479: invokeinterface #600,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     484: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     487: ldc_w         #602                // String Perhaps a server is already running on that port?
+     490: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     495: iconst_0
+     496: ireturn
+     497: aload_0
+     498: invokevirtual #605                // Method ag:()Z
+     501: ifne          548
+     504: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     507: ldc_w         #607                // String **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+     510: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     515: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     518: ldc_w         #609                // String The server will make no attempt to authenticate usernames. Beware.
+     521: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     526: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     529: ldc_w         #611                // String While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+     532: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     537: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     540: ldc_w         #613                // String To change this, set \"online-mode\" to \"true\" in the server.properties file.
+     543: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     548: aload_0
+     549: invokevirtual #616                // Method bI:()Z
+     552: ifeq          567
+     555: aload_0
+     556: getfield      #619                // Field j:Lane;
+     559: invokevirtual #624                // Method ane.f:()Lbbm;
+     562: invokeinterface #627,  1          // InterfaceMethod bbm.a:()V
+     567: aload_0
+     568: invokestatic  #632                // Method bbc.e:(Lnet/minecraft/server/MinecraftServer;)Z
+     571: ifne          576
+     574: iconst_0
+     575: ireturn
+     576: aload_0
+     577: new           #634                // class arn
+     580: dup
+     581: aload_0
+     582: aload_0
+     583: invokevirtual #638                // Method bh:()Ljr;
+     586: aload_0
+     587: getfield      #641                // Field h:Lfik;
+     590: invokespecial #644                // Method arn."<init>":(Laro;Ljr;Lfik;)V
+     593: invokevirtual #647                // Method a:(Lbbd;)V
+     596: aload_0
+     597: new           #649                // class bwd
+     600: dup
+     601: invokestatic  #655                // Method bwg.values:()[Lbwg;
+     604: arraylength
+     605: aload_0
+     606: invokevirtual #659                // Method bA:()Lbvx;
+     609: getstatic     #664                // Field bwc.a:Lbwc;
+     612: invokespecial #667                // Method bwd."<init>":(ILbvx;Lbwc;)V
+     615: putfield      #669                // Field w:Lbwd;
+     618: invokestatic  #672                // Method ag.d:()J
+     621: lstore        5
+     623: aload_0
+     624: getfield      #619                // Field j:Lane;
+     627: invokevirtual #624                // Method ane.f:()Lbbm;
+     630: aload_0
+     631: invokevirtual #605                // Method ag:()Z
+     634: ifne          641
+     637: iconst_1
+     638: goto          642
+     641: iconst_0
+     642: invokeinterface #674,  2          // InterfaceMethod bbm.a:(Z)V
+     647: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     650: ldc_w         #676                // String Preparing level \"{}\"
+     653: aload_0
+     654: invokevirtual #678                // Method j:()Ljava/lang/String;
+     657: invokeinterface #422,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     662: aload_0
+     663: invokevirtual #680                // Method u:()V
+     666: invokestatic  #672                // Method ag.d:()J
+     669: lload         5
+     671: lsub
+     672: lstore        7
+     674: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     677: ldc_w         #682                // String %.3fs
+     680: iconst_1
+     681: anewarray     #684                // class java/lang/Object
+     684: dup
+     685: iconst_0
+     686: lload         7
+     688: l2d
+     689: ldc2_w        #685                // double 1.0E9d
+     692: ddiv
+     693: invokestatic  #691                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     696: aastore
+     697: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     700: astore        9
+     702: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     705: ldc_w         #697                // String Done ({})! For help, type \"help\"
+     708: aload         9
+     710: invokeinterface #422,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     715: aload_3
+     716: getfield      #700                // Field arp.x:Ljava/lang/Boolean;
+     719: ifnull        746
+     722: aload_0
+     723: invokevirtual #704                // Method aQ:()Ldrm;
+     726: getstatic     #708                // Field drm.C:Ldrm$e;
+     729: invokevirtual #711                // Method drm.b:(Ldrm$e;)Ldrm$g;
+     732: checkcast     #39                 // class drm$a
+     735: aload_3
+     736: getfield      #700                // Field arp.x:Ljava/lang/Boolean;
+     739: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+     742: aload_0
+     743: invokevirtual #719                // Method drm$a.a:(ZLnet/minecraft/server/MinecraftServer;)V
+     746: aload_3
+     747: getfield      #721                // Field arp.y:Z
+     750: ifeq          772
+     753: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     756: ldc_w         #723                // String Starting GS4 status listener
+     759: invokeinterface #512,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     764: aload_0
+     765: aload_0
+     766: invokestatic  #728                // Method bbv.a:(Lana;)Lbbv;
+     769: putfield      #730                // Field q:Lbbv;
+     772: aload_3
+     773: getfield      #732                // Field arp.A:Z
+     776: ifeq          798
+     779: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     782: ldc_w         #734                // String Starting remote control listener
+     785: invokeinterface #512,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     790: aload_0
+     791: aload_0
+     792: invokestatic  #739                // Method bbx.a:(Lana;)Lbbx;
+     795: putfield      #741                // Field s:Lbbx;
+     798: aload_0
+     799: invokevirtual #744                // Method bJ:()J
+     802: lconst_0
+     803: lcmp
+     804: ifle          858
+     807: new           #23                 // class java/lang/Thread
+     810: dup
+     811: new           #746                // class arr
+     814: dup
+     815: aload_0
+     816: invokespecial #749                // Method arr."<init>":(Laro;)V
+     819: invokespecial #752                // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+     822: astore        10
+     824: aload         10
+     826: new           #753                // class t
+     829: dup
+     830: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     833: invokespecial #754                // Method t."<init>":(Lorg/slf4j/Logger;)V
+     836: invokevirtual #475                // Method java/lang/Thread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+     839: aload         10
+     841: ldc_w         #756                // String Server Watchdog
+     844: invokevirtual #759                // Method java/lang/Thread.setName:(Ljava/lang/String;)V
+     847: aload         10
+     849: iconst_1
+     850: invokevirtual #467                // Method java/lang/Thread.setDaemon:(Z)V
+     853: aload         10
+     855: invokevirtual #478                // Method java/lang/Thread.start:()V
+     858: aload_3
+     859: getfield      #762                // Field arp.U:Z
+     862: ifeq          880
+     865: aload_0
+     866: invokestatic  #766                // Method bwm.a:(Lnet/minecraft/server/MinecraftServer;)V
+     869: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     872: ldc_w         #768                // String JMX monitoring enabled
+     875: invokeinterface #512,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     880: aload_0
+     881: invokevirtual #771                // Method E:()Layo;
+     884: invokevirtual #772                // Method ayo.a:()V
+     887: iconst_1
+     888: ireturn
+    Exception table:
+       from    to  target type
+         439   452   455   Class java/io/IOException
+
+  public boolean aS();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #790                // Field arp.l:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #713                // class java/lang/Boolean
+      16: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      19: ireturn
+
+  public void f(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #809,  0            // InvokeDynamic #3:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public boolean aT();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #816                // Field arp.ae:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #713                // class java/lang/Boolean
+      16: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      19: ireturn
+
+  public void g(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #820,  0            // InvokeDynamic #4:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public void a(java.util.function.BooleanSupplier);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #823                // Method net/minecraft/server/MinecraftServer.a:(Ljava/util/function/BooleanSupplier;)V
+       5: aload_0
+       6: getfield      #429                // Field A:Lato;
+       9: ifnull        19
+      12: aload_0
+      13: getfield      #429                // Field A:Lato;
+      16: invokevirtual #824                // Method ato.a:()V
+      19: invokestatic  #826                // Method ag.c:()J
+      22: lstore_2
+      23: aload_0
+      24: invokevirtual #829                // Method bH:()I
+      27: istore        4
+      29: iload         4
+      31: ifle          67
+      34: iload         4
+      36: i2l
+      37: getstatic     #833                // Field bgm.c:J
+      40: lmul
+      41: lstore        5
+      43: lload_2
+      44: aload_0
+      45: getfield      #835                // Field B:J
+      48: lsub
+      49: lload         5
+      51: lcmp
+      52: iflt          67
+      55: aload_0
+      56: lload_2
+      57: putfield      #835                // Field B:J
+      60: aload_0
+      61: invokevirtual #771                // Method E:()Layo;
+      64: invokevirtual #837                // Method ayo.e:()V
+      67: return
+
+  public boolean a(boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: invokevirtual #771                // Method E:()Layo;
+       4: invokevirtual #841                // Method ayo.c:()V
+       7: aload_0
+       8: iload_1
+       9: iload_2
+      10: iload_3
+      11: invokespecial #843                // Method net/minecraft/server/MinecraftServer.a:(ZZZ)Z
+      14: istore        4
+      16: aload_0
+      17: invokevirtual #771                // Method E:()Layo;
+      20: invokevirtual #845                // Method ayo.d:()V
+      23: iload         4
+      25: ireturn
+
+  public boolean aj();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #848                // Field arp.g:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #713                // class java/lang/Boolean
+      16: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      19: ireturn
+
+  public void i(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #852,  0            // InvokeDynamic #5:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public arp a();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: areturn
+
+  public void a(cbn);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: aload_1
+       6: invokedynamic #860,  0            // InvokeDynamic #6:apply:(Laro;Lcbn;)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: aload_0
+      16: invokevirtual #862                // Method v:()V
+      19: return
+
+  public void v();
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokevirtual #368                // Method a:()Larp;
+       5: getfield      #865                // Field arp.m:Lars$a;
+       8: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      11: checkcast     #867                // class cbn
+      14: iconst_1
+      15: invokevirtual #870                // Method a:(Lcbn;Z)V
+      18: return
+
+  public int bB();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #874                // Field arp.L:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void e(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #884,  0            // InvokeDynamic #7:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: aload_0
+      16: invokevirtual #888                // Method bE:()Larn;
+      19: iload_1
+      20: invokevirtual #890                // Method arn.a:(I)V
+      23: return
+
+  public int bC();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #894                // Field arp.M:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void f(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #898,  0            // InvokeDynamic #8:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: aload_0
+      16: invokevirtual #888                // Method bE:()Larn;
+      19: iload_1
+      20: invokevirtual #899                // Method arn.b:(I)V
+      23: return
+
+  public ae a(ae);
+    Code:
+       0: aload_1
+       1: ldc_w         #902                // String Is Modded
+       4: aload_0
+       5: invokedynamic #911,  0            // InvokeDynamic #9:get:(Laro;)Ljava/util/function/Supplier;
+      10: invokevirtual #915                // Method ae.a:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      13: aload_1
+      14: ldc_w         #917                // String Type
+      17: invokedynamic #924,  0            // InvokeDynamic #10:get:()Ljava/util/function/Supplier;
+      22: invokevirtual #915                // Method ae.a:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      25: aload_1
+      26: areturn
+
+  public void a(java.nio.file.Path) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: astore_2
+       5: aload_1
+       6: iconst_0
+       7: anewarray     #928                // class java/nio/file/OpenOption
+      10: invokestatic  #932                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      13: astore_3
+      14: aload_3
+      15: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      18: ldc_w         #934                // String sync-chunk-writes=%s%n
+      21: iconst_1
+      22: anewarray     #684                // class java/lang/Object
+      25: dup
+      26: iconst_0
+      27: aload_2
+      28: getfield      #937                // Field arp.S:Z
+      31: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      34: aastore
+      35: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      38: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+      41: aload_3
+      42: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      45: ldc_w         #947                // String gamemode=%s%n
+      48: iconst_1
+      49: anewarray     #684                // class java/lang/Object
+      52: dup
+      53: iconst_0
+      54: aload_2
+      55: getfield      #539                // Field arp.n:Lars$a;
+      58: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      61: aastore
+      62: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      65: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+      68: aload_3
+      69: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      72: ldc_w         #949                // String entity-broadcast-range-percentage=%d%n
+      75: iconst_1
+      76: anewarray     #684                // class java/lang/Object
+      79: dup
+      80: iconst_0
+      81: aload_2
+      82: getfield      #952                // Field arp.X:Lars$a;
+      85: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      88: aastore
+      89: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      92: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+      95: aload_3
+      96: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      99: ldc_w         #954                // String max-world-size=%d%n
+     102: iconst_1
+     103: anewarray     #684                // class java/lang/Object
+     106: dup
+     107: iconst_0
+     108: aload_2
+     109: getfield      #957                // Field arp.R:I
+     112: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     115: aastore
+     116: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     119: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     122: aload_3
+     123: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     126: ldc_w         #959                // String view-distance=%d%n
+     129: iconst_1
+     130: anewarray     #684                // class java/lang/Object
+     133: dup
+     134: iconst_0
+     135: aload_2
+     136: getfield      #874                // Field arp.L:Lars$a;
+     139: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+     142: aastore
+     143: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     146: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     149: aload_3
+     150: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     153: ldc_w         #961                // String simulation-distance=%d%n
+     156: iconst_1
+     157: anewarray     #684                // class java/lang/Object
+     160: dup
+     161: iconst_0
+     162: aload_2
+     163: getfield      #894                // Field arp.M:Lars$a;
+     166: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+     169: aastore
+     170: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     173: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     176: aload_3
+     177: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     180: ldc_w         #963                // String generate-structures=%s%n
+     183: iconst_1
+     184: anewarray     #684                // class java/lang/Object
+     187: dup
+     188: iconst_0
+     189: aload_2
+     190: getfield      #967                // Field arp.ai:Leqn;
+     193: invokevirtual #971                // Method eqn.d:()Z
+     196: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     199: aastore
+     200: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     203: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     206: aload_3
+     207: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     210: ldc_w         #973                // String use-native=%s%n
+     213: iconst_1
+     214: anewarray     #684                // class java/lang/Object
+     217: dup
+     218: iconst_0
+     219: aload_2
+     220: getfield      #975                // Field arp.E:Z
+     223: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     226: aastore
+     227: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     230: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     233: aload_3
+     234: getstatic     #289                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     237: ldc_w         #977                // String rate-limit=%d%n
+     240: iconst_1
+     241: anewarray     #684                // class java/lang/Object
+     244: dup
+     245: iconst_0
+     246: aload_2
+     247: getfield      #980                // Field arp.K:I
+     250: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     253: aastore
+     254: invokestatic  #695                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     257: invokevirtual #945                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     260: aload_3
+     261: ifnull        296
+     264: aload_3
+     265: invokevirtual #981                // Method java/io/Writer.close:()V
+     268: goto          296
+     271: astore        4
+     273: aload_3
+     274: ifnull        293
+     277: aload_3
+     278: invokevirtual #981                // Method java/io/Writer.close:()V
+     281: goto          293
+     284: astore        5
+     286: aload         4
+     288: aload         5
+     290: invokevirtual #348                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     293: aload         4
+     295: athrow
+     296: return
+    Exception table:
+       from    to  target type
+          14   260   271   Class java/lang/Throwable
+         277   281   284   Class java/lang/Throwable
+
+  public void i();
+    Code:
+       0: aload_0
+       1: getfield      #148                // Field v:Laye;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #148                // Field v:Laye;
+      11: invokevirtual #987                // Method aye.close:()V
+      14: aload_0
+      15: getfield      #989                // Field u:Latd;
+      18: ifnull        28
+      21: aload_0
+      22: getfield      #989                // Field u:Latd;
+      25: invokevirtual #993                // Method atd.b:()V
+      28: aload_0
+      29: getfield      #741                // Field s:Lbbx;
+      32: ifnull        42
+      35: aload_0
+      36: getfield      #741                // Field s:Lbbx;
+      39: invokevirtual #994                // Method bbx.b:()V
+      42: aload_0
+      43: getfield      #730                // Field q:Lbbv;
+      46: ifnull        56
+      49: aload_0
+      50: getfield      #730                // Field q:Lbbv;
+      53: invokevirtual #995                // Method bbv.b:()V
+      56: aload_0
+      57: getfield      #429                // Field A:Lato;
+      60: ifnull        87
+      63: aload_0
+      64: getfield      #429                // Field A:Lato;
+      67: iconst_1
+      68: invokevirtual #996                // Method ato.a:(Z)V
+      71: goto          87
+      74: astore_1
+      75: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+      78: ldc_w         #998                // String Interrupted while stopping the management server
+      81: aload_1
+      82: invokeinterface #1001,  3         // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+      87: return
+    Exception table:
+       from    to  target type
+          63    71    74   Class java/lang/InterruptedException
+
+  public void L();
+    Code:
+       0: aload_0
+       1: invokespecial #1004               // Method net/minecraft/server/MinecraftServer.L:()V
+       4: aload_0
+       5: invokevirtual #1007               // Method bD:()V
+       8: return
+
+  public void a(java.lang.String, ej);
+    Code:
+       0: aload_0
+       1: getfield      #127                // Field p:Ljava/util/List;
+       4: new           #1010               // class amn
+       7: dup
+       8: aload_1
+       9: aload_2
+      10: invokespecial #1012               // Method amn."<init>":(Ljava/lang/String;Lej;)V
+      13: invokeinterface #1015,  2         // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      18: pop
+      19: return
+
+  public void bD();
+    Code:
+       0: aload_0
+       1: getfield      #127                // Field p:Ljava/util/List;
+       4: invokeinterface #1017,  1         // InterfaceMethod java/util/List.isEmpty:()Z
+       9: ifne          44
+      12: aload_0
+      13: getfield      #127                // Field p:Ljava/util/List;
+      16: iconst_0
+      17: invokeinterface #1021,  2         // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+      22: checkcast     #1010               // class amn
+      25: astore_1
+      26: aload_0
+      27: invokevirtual #1025               // Method aJ:()Lek;
+      30: aload_1
+      31: getfield      #1027               // Field amn.b:Lej;
+      34: aload_1
+      35: getfield      #1029               // Field amn.a:Ljava/lang/String;
+      38: invokevirtual #1034               // Method ek.a:(Lej;Ljava/lang/String;)V
+      41: goto          0
+      44: return
+
+  public boolean n();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public int o();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #980                // Field arp.K:I
+       7: ireturn
+
+  public boolean p();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #975                // Field arp.E:Z
+       7: ireturn
+
+  public arn bE();
+    Code:
+       0: aload_0
+       1: invokespecial #1039               // Method net/minecraft/server/MinecraftServer.am:()Lbbd;
+       4: checkcast     #634                // class arn
+       7: areturn
+
+  public int t();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1042               // Field arp.N:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void g(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1046,  0           // InvokeDynamic #11:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public boolean s();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public java.lang.String b();
+    Code:
+       0: aload_0
+       1: invokevirtual #553                // Method A:()Ljava/lang/String;
+       4: areturn
+
+  public int d();
+    Code:
+       0: aload_0
+       1: invokevirtual #565                // Method W:()I
+       4: ireturn
+
+  public java.lang.String h();
+    Code:
+       0: aload_0
+       1: invokevirtual #1049               // Method ak:()Ljava/lang/String;
+       4: areturn
+
+  public void bF();
+    Code:
+       0: aload_0
+       1: getfield      #989                // Field u:Latd;
+       4: ifnonnull     15
+       7: aload_0
+       8: aload_0
+       9: invokestatic  #1053               // Method atd.a:(Laro;)Latd;
+      12: putfield      #989                // Field u:Latd;
+      15: return
+
+  public boolean ap();
+    Code:
+       0: aload_0
+       1: getfield      #989                // Field u:Latd;
+       4: ifnull        11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public int bG();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1058               // Field arp.F:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #578                // class java/lang/Integer
+      13: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      16: ireturn
+
+  public void h(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1062,  0           // InvokeDynamic #12:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public boolean a(awx, ja, czl);
+    Code:
+       0: aload_1
+       1: invokevirtual #1068               // Method awx.A:()Lfid$a;
+       4: astore        4
+       6: aload_1
+       7: invokevirtual #1072               // Method awx.al:()Lami;
+      10: aload         4
+      12: invokevirtual #1074               // Method fid$a.a:()Lami;
+      15: if_acmpeq     20
+      18: iconst_0
+      19: ireturn
+      20: aload_0
+      21: invokevirtual #888                // Method bE:()Larn;
+      24: invokevirtual #1081               // Method arn.k:()Lbbf;
+      27: invokevirtual #1084               // Method bbf.d:()Z
+      30: ifeq          35
+      33: iconst_0
+      34: ireturn
+      35: aload_0
+      36: invokevirtual #888                // Method bE:()Larn;
+      39: aload_3
+      40: invokevirtual #1088               // Method czl.gA:()Lbbb;
+      43: invokevirtual #1091               // Method arn.f:(Lbbb;)Z
+      46: ifeq          51
+      49: iconst_0
+      50: ireturn
+      51: aload_0
+      52: invokevirtual #1093               // Method bG:()I
+      55: ifgt          60
+      58: iconst_0
+      59: ireturn
+      60: aload         4
+      62: invokevirtual #1096               // Method fid$a.b:()Lja;
+      65: astore        5
+      67: aload_2
+      68: invokevirtual #1098               // Method ja.u:()I
+      71: aload         5
+      73: invokevirtual #1098               // Method ja.u:()I
+      76: isub
+      77: invokestatic  #1103               // Method bfh.a:(I)I
+      80: istore        6
+      82: aload_2
+      83: invokevirtual #1105               // Method ja.w:()I
+      86: aload         5
+      88: invokevirtual #1105               // Method ja.w:()I
+      91: isub
+      92: invokestatic  #1103               // Method bfh.a:(I)I
+      95: istore        7
+      97: iload         6
+      99: iload         7
+     101: invokestatic  #1111               // Method java/lang/Math.max:(II)I
+     104: istore        8
+     106: iload         8
+     108: aload_0
+     109: invokevirtual #1093               // Method bG:()I
+     112: if_icmpgt     119
+     115: iconst_1
+     116: goto          120
+     119: iconst_0
+     120: ireturn
+
+  public boolean ar();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1119               // Field arp.V:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #713                // class java/lang/Boolean
+      13: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      16: ireturn
+
+  public void j(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1123,  0           // InvokeDynamic #13:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public boolean as();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1126               // Field arp.W:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #713                // class java/lang/Boolean
+      13: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      16: ireturn
+
+  public void k(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1130,  0           // InvokeDynamic #14:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public int k();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1133               // Field arp.G:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #578                // class java/lang/Integer
+      13: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      16: ireturn
+
+  public void i(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1137,  0           // InvokeDynamic #15:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public int l();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1140               // Field arp.H:I
+       7: ireturn
+
+  public int au();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1143               // Field arp.ac:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void d(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1147,  0           // InvokeDynamic #16:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public int bH();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1150               // Field arp.ad:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void j(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1154,  0           // InvokeDynamic #17:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public java.lang.String ak();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1156               // Field arp.h:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #193                // class java/lang/String
+      16: areturn
+
+  public void d(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: aload_1
+       6: invokedynamic #1163,  0           // InvokeDynamic #18:apply:(Laro;Ljava/lang/String;)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public boolean m();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1166               // Field arp.P:Z
+       7: ireturn
+
+  public boolean c();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1169               // Field arp.Q:Z
+       7: ireturn
+
+  public int ay();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #957                // Field arp.R:I
+       7: ireturn
+
+  public int aB();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1174               // Field arp.O:I
+       7: ireturn
+
+  public boolean aC();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: astore_1
+       5: aload_1
+       6: getfield      #1178               // Field arp.af:Z
+       9: ifeq          33
+      12: aload_1
+      13: getfield      #523                // Field arp.d:Z
+      16: ifeq          33
+      19: aload_0
+      20: getfield      #619                // Field j:Lane;
+      23: invokevirtual #1180               // Method ane.b:()Z
+      26: ifeq          33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: ireturn
+
+  public boolean br();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1183               // Field arp.ag:Z
+       7: ireturn
+
+  protected boolean bI();
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: iconst_0
+       3: istore_1
+       4: iload_2
+       5: ifne          43
+       8: iload_1
+       9: iconst_2
+      10: if_icmpgt     43
+      13: iload_1
+      14: ifle          32
+      17: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+      20: ldc_w         #1185               // String Encountered a problem while converting the user banlist, retrying in a few seconds
+      23: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      28: aload_0
+      29: invokevirtual #1188               // Method bW:()V
+      32: aload_0
+      33: invokestatic  #1190               // Method bbc.a:(Lnet/minecraft/server/MinecraftServer;)Z
+      36: istore_2
+      37: iinc          1, 1
+      40: goto          4
+      43: iconst_0
+      44: istore_3
+      45: iconst_0
+      46: istore_1
+      47: iload_3
+      48: ifne          86
+      51: iload_1
+      52: iconst_2
+      53: if_icmpgt     86
+      56: iload_1
+      57: ifle          75
+      60: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+      63: ldc_w         #1192               // String Encountered a problem while converting the ip banlist, retrying in a few seconds
+      66: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      71: aload_0
+      72: invokevirtual #1188               // Method bW:()V
+      75: aload_0
+      76: invokestatic  #1194               // Method bbc.b:(Lnet/minecraft/server/MinecraftServer;)Z
+      79: istore_3
+      80: iinc          1, 1
+      83: goto          47
+      86: iconst_0
+      87: istore        4
+      89: iconst_0
+      90: istore_1
+      91: iload         4
+      93: ifne          132
+      96: iload_1
+      97: iconst_2
+      98: if_icmpgt     132
+     101: iload_1
+     102: ifle          120
+     105: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     108: ldc_w         #1196               // String Encountered a problem while converting the op list, retrying in a few seconds
+     111: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     116: aload_0
+     117: invokevirtual #1188               // Method bW:()V
+     120: aload_0
+     121: invokestatic  #1198               // Method bbc.c:(Lnet/minecraft/server/MinecraftServer;)Z
+     124: istore        4
+     126: iinc          1, 1
+     129: goto          91
+     132: iconst_0
+     133: istore        5
+     135: iconst_0
+     136: istore_1
+     137: iload         5
+     139: ifne          178
+     142: iload_1
+     143: iconst_2
+     144: if_icmpgt     178
+     147: iload_1
+     148: ifle          166
+     151: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     154: ldc_w         #1200               // String Encountered a problem while converting the whitelist, retrying in a few seconds
+     157: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     162: aload_0
+     163: invokevirtual #1188               // Method bW:()V
+     166: aload_0
+     167: invokestatic  #1202               // Method bbc.d:(Lnet/minecraft/server/MinecraftServer;)Z
+     170: istore        5
+     172: iinc          1, 1
+     175: goto          137
+     178: iconst_0
+     179: istore        6
+     181: iconst_0
+     182: istore_1
+     183: iload         6
+     185: ifne          224
+     188: iload_1
+     189: iconst_2
+     190: if_icmpgt     224
+     193: iload_1
+     194: ifle          212
+     197: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+     200: ldc_w         #1204               // String Encountered a problem while converting the player save files, retrying in a few seconds
+     203: invokeinterface #508,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     208: aload_0
+     209: invokevirtual #1188               // Method bW:()V
+     212: aload_0
+     213: invokestatic  #1207               // Method bbc.a:(Laro;)Z
+     216: istore        6
+     218: iinc          1, 1
+     221: goto          183
+     224: iload_2
+     225: ifne          247
+     228: iload_3
+     229: ifne          247
+     232: iload         4
+     234: ifne          247
+     237: iload         5
+     239: ifne          247
+     242: iload         6
+     244: ifeq          251
+     247: iconst_1
+     248: goto          252
+     251: iconst_0
+     252: ireturn
+
+  private void bW();
+    Code:
+       0: ldc2_w        #1208               // long 5000l
+       3: invokestatic  #1213               // Method java/lang/Thread.sleep:(J)V
+       6: goto          11
+       9: astore_1
+      10: return
+      11: return
+    Exception table:
+       from    to  target type
+           0     6     9   Class java/lang/InterruptedException
+
+  public long bJ();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1215               // Field arp.I:J
+       7: lreturn
+
+  public int bp();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #1218               // Field arp.J:I
+       7: ireturn
+
+  public java.lang.String q();
+    Code:
+       0: ldc_w         #1220               // String
+       3: areturn
+
+  public java.lang.String a(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field r:Lbbs;
+       4: invokevirtual #1221               // Method bbs.e:()V
+       7: aload_0
+       8: aload_0
+       9: aload_1
+      10: invokedynamic #1229,  0           // InvokeDynamic #19:run:(Laro;Ljava/lang/String;)Ljava/lang/Runnable;
+      15: invokevirtual #1231               // Method h:(Ljava/lang/Runnable;)V
+      18: aload_0
+      19: getfield      #136                // Field r:Lbbs;
+      22: invokevirtual #1233               // Method bbs.f:()Ljava/lang/String;
+      25: areturn
+
+  public void z();
+    Code:
+       0: aload_0
+       1: invokevirtual #771                // Method E:()Layo;
+       4: invokevirtual #1234               // Method ayo.b:()V
+       7: aload_0
+       8: invokespecial #1236               // Method net/minecraft/server/MinecraftServer.z:()V
+      11: invokestatic  #1238               // Method ag.k:()V
+      14: return
+
+  public boolean a(bbb);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public int c(int);
+    Code:
+       0: aload_0
+       1: invokevirtual #1242               // Method bK:()I
+       4: iload_1
+       5: imul
+       6: bipush        100
+       8: idiv
+       9: ireturn
+
+  public int bK();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #952                // Field arp.X:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #578                // class java/lang/Integer
+      13: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      16: ireturn
+
+  public void k(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1246,  0           // InvokeDynamic #20:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public java.lang.String j();
+    Code:
+       0: aload_0
+       1: getfield      #1248               // Field g:Lfih$c;
+       4: invokevirtual #1249               // Method fih$c.f:()Ljava/lang/String;
+       7: areturn
+
+  public boolean bd();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #937                // Field arp.S:Z
+      10: ireturn
+
+  public ayf a(awy);
+    Code:
+       0: aload_0
+       1: getfield      #148                // Field v:Laye;
+       4: ifnull        19
+       7: aload_0
+       8: getfield      #148                // Field v:Laye;
+      11: aload_1
+      12: invokevirtual #1257               // Method awy.gz:()Lcom/mojang/authlib/GameProfile;
+      15: invokevirtual #1260               // Method aye.a:(Lcom/mojang/authlib/GameProfile;)Layf;
+      18: areturn
+      19: getstatic     #1265               // Field ayf.e:Layf;
+      22: areturn
+
+  public drn bj();
+    Code:
+       0: aload_0
+       1: invokevirtual #1271               // Method bL:()Z
+       4: ifeq          19
+       7: aload_0
+       8: getfield      #536                // Field k:Lfis;
+      11: invokeinterface #1273,  1         // InterfaceMethod fis.j:()Ldrn;
+      16: goto          20
+      19: aconst_null
+      20: areturn
+
+  public boolean bL();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1275               // Field arp.k:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #713                // class java/lang/Boolean
+      16: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      19: ireturn
+
+  public void l(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1279,  0           // InvokeDynamic #21:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: aload_0
+      16: aload_0
+      17: invokevirtual #1281               // Method bj:()Ldrn;
+      20: invokevirtual #1284               // Method b:(Ldrn;)I
+      23: pop
+      24: return
+
+  public drn bM();
+    Code:
+       0: aload_0
+       1: invokevirtual #368                // Method a:()Larp;
+       4: getfield      #539                // Field arp.n:Lars$a;
+       7: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      10: checkcast     #544                // class drn
+      13: areturn
+
+  public void c(drn);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: aload_1
+       6: invokedynamic #1292,  0           // InvokeDynamic #22:apply:(Laro;Ldrn;)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: aload_0
+      16: getfield      #536                // Field k:Lfis;
+      19: aload_0
+      20: invokevirtual #1294               // Method bM:()Ldrn;
+      23: invokeinterface #549,  2          // InterfaceMethod fis.a:(Ldrn;)V
+      28: aload_0
+      29: aload_0
+      30: invokevirtual #1281               // Method bj:()Ldrn;
+      33: invokevirtual #1284               // Method b:(Ldrn;)I
+      36: pop
+      37: return
+
+  public java.util.Optional<net.minecraft.server.MinecraftServer$b> ae();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1301               // Field arp.aa:Ljava/util/Optional;
+      10: areturn
+
+  public void aY();
+    Code:
+       0: aload_0
+       1: invokespecial #1304               // Method net/minecraft/server/MinecraftServer.aY:()V
+       4: aload_0
+       5: aload_0
+       6: invokevirtual #659                // Method bA:()Lbvx;
+       9: getstatic     #1309               // Field bvt.a:Lbvs;
+      12: invokevirtual #1314               // Method bvx.a:(Lbvs;)Z
+      15: putfield      #1316               // Field x:Z
+      18: return
+
+  public bwe f();
+    Code:
+       0: aload_0
+       1: getfield      #669                // Field w:Lbwd;
+       4: areturn
+
+  public boolean g();
+    Code:
+       0: aload_0
+       1: getfield      #1316               // Field x:Z
+       4: ireturn
+
+  public boolean bu();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1320               // Field arp.aj:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #713                // class java/lang/Boolean
+      16: invokevirtual #716                // Method java/lang/Boolean.booleanValue:()Z
+      19: ireturn
+
+  public void m(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1324,  0           // InvokeDynamic #23:apply:(Laro;Z)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  public anb bx();
+    Code:
+       0: aload_0
+       1: getfield      #153                // Field y:Lanb;
+       4: areturn
+
+  public int by();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: invokevirtual #141                // Method arq.a:()Larp;
+       7: getfield      #1329               // Field arp.ah:Lars$a;
+      10: invokevirtual #542                // Method ars$a.get:()Ljava/lang/Object;
+      13: checkcast     #578                // class java/lang/Integer
+      16: invokevirtual #877                // Method java/lang/Integer.intValue:()I
+      19: ireturn
+
+  public void l(int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field t:Larq;
+       4: aload_0
+       5: iload_1
+       6: invokedynamic #1333,  0           // InvokeDynamic #24:apply:(Laro;I)Ljava/util/function/UnaryOperator;
+      11: invokevirtual #812                // Method arq.a:(Ljava/util/function/UnaryOperator;)Larq;
+      14: pop
+      15: return
+
+  private static anb a(arq);
+    Code:
+       0: aload_0
+       1: invokevirtual #141                // Method arq.a:()Larp;
+       4: invokestatic  #1336               // Method a:(Larp;)Ljava/util/Optional;
+       7: astore_1
+       8: aload_1
+       9: invokedynamic #1344,  0           // InvokeDynamic #25:apply:()Ljava/util/function/Function;
+      14: invokevirtual #1350               // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      17: getstatic     #1352               // Field anb.a:Lanb;
+      20: invokevirtual #1355               // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #47                 // class anb
+      26: areturn
+
+  private static java.util.Optional<java.net.URI> a(arp);
+    Code:
+       0: aload_0
+       1: getfield      #1359               // Field arp.j:Ljava/lang/String;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #556                // Method java/lang/String.isEmpty:()Z
+       9: ifeq          16
+      12: invokestatic  #1362               // Method java/util/Optional.empty:()Ljava/util/Optional;
+      15: areturn
+      16: aload_1
+      17: invokestatic  #1365               // Method ag.a:(Ljava/lang/String;)Ljava/net/URI;
+      20: invokestatic  #1368               // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      23: areturn
+      24: astore_2
+      25: getstatic     #414                // Field m:Lorg/slf4j/Logger;
+      28: ldc_w         #1370               // String Failed to parse bug link {}
+      31: aload_1
+      32: aload_2
+      33: invokeinterface #1372,  4         // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      38: invokestatic  #1362               // Method java/util/Optional.empty:()Ljava/util/Optional;
+      41: areturn
+    Exception table:
+       from    to  target type
+          16    23    24   Class java/lang/Exception
+
+  public java.util.Map<java.lang.String, java.lang.String> ad();
+    Code:
+       0: aload_0
+       1: getfield      #164                // Field z:Ljava/util/Map;
+       4: areturn
+
+  public bbd am();
+    Code:
+       0: aload_0
+       1: invokevirtual #888                // Method bE:()Larn;
+       4: areturn
+
+  private static anb a(java.net.URI);
+    Code:
+       0: new           #47                 // class anb
+       3: dup
+       4: getstatic     #1375               // Field anb$b.a:Lanb$b;
+       7: aload_0
+       8: invokevirtual #1378               // Method anb$b.a:(Ljava/net/URI;)Lanb$a;
+      11: invokestatic  #1381               // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      14: invokespecial #1384               // Method anb."<init>":(Ljava/util/List;)V
+      17: areturn
+
+  private arp a(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1329               // Field arp.ah:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp a(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1320               // Field arp.aj:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp a(drn, arp);
+    Code:
+       0: aload_2
+       1: getfield      #539                // Field arp.n:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: aload_1
+       9: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      12: checkcast     #155                // class arp
+      15: areturn
+
+  private arp b(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1275               // Field arp.k:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp b(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #952                // Field arp.X:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private void e(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #1025               // Method aJ:()Lek;
+       4: aload_0
+       5: getfield      #136                // Field r:Lbbs;
+       8: invokevirtual #1395               // Method bbs.g:()Lej;
+      11: aload_1
+      12: invokevirtual #1034               // Method ek.a:(Lej;Ljava/lang/String;)V
+      15: return
+
+  private arp a(java.lang.String, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1156               // Field arp.h:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: aload_1
+       9: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      12: checkcast     #155                // class arp
+      15: areturn
+
+  private arp c(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1150               // Field arp.ad:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp d(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1143               // Field arp.ac:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp e(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1133               // Field arp.G:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp c(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1126               // Field arp.W:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp d(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1119               // Field arp.V:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp f(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1058               // Field arp.F:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp g(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #1042               // Field arp.N:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private static java.lang.String bX();
+    Code:
+       0: ldc_w         #1397               // String Dedicated Server (map_server.txt)
+       3: areturn
+
+  private java.lang.String bY();
+    Code:
+       0: aload_0
+       1: invokevirtual #1400               // Method U:()Lbfg;
+       4: invokevirtual #1404               // Method bfg.b:()Ljava/lang/String;
+       7: areturn
+
+  private arp h(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #894                // Field arp.M:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp i(int, arp);
+    Code:
+       0: aload_2
+       1: getfield      #874                // Field arp.L:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #581                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp a(cbn, arp);
+    Code:
+       0: aload_2
+       1: getfield      #865                // Field arp.m:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: aload_1
+       9: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      12: checkcast     #155                // class arp
+      15: areturn
+
+  private arp e(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #848                // Field arp.g:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp f(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #816                // Field arp.ae:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  private arp g(boolean, arp);
+    Code:
+       0: aload_2
+       1: getfield      #790                // Field arp.l:Lars$a;
+       4: aload_0
+       5: invokevirtual #1389               // Method bg:()Ljy$b;
+       8: iload_1
+       9: invokestatic  #940                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      12: invokevirtual #1392               // Method ars$a.a:(Ljy;Ljava/lang/Object;)Lars;
+      15: checkcast     #155                // class arp
+      18: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #1411               // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #414                // Field m:Lorg/slf4j/Logger;
+       6: return
+}

@@ -1,0 +1,112 @@
+{
+  "command": "javap -p -c -classpath <official-client.jar> <class>",
+  "observations": [
+    {
+      "classes": [
+        {
+          "class": "jc",
+          "class_path": "jc.class",
+          "class_sha256": "5dffc75649e5040e9b0cde7938bd8d7da7b24a16a9da96ddd106fda8f8980faf",
+          "javap_bytes": 45650,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.14.4-jc.javap.txt",
+          "javap_sha256": "85c180e975004be2bc0e40cc996650615db991c9f133ca966f803826cc194773"
+        },
+        {
+          "class": "jc$1",
+          "class_path": "jc$1.class",
+          "class_sha256": "6148bfeddc6b451ec5727734979d7c81893e153ccbfff1534cdab2c90d0b54f0",
+          "javap_bytes": 3958,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.14.4-jc_inner_1.javap.txt",
+          "javap_sha256": "5519e57e26e0af0b31b298010c70bb74c3dea1e07462ad9cf0e1955933078718"
+        },
+        {
+          "class": "jc$2",
+          "class_path": "jc$2.class",
+          "class_sha256": "a4965a88d3a6ab0a3e0d86b34d01f8e589ec4fa44c73575bd470029d13de8810",
+          "javap_bytes": 1005,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.14.4-jc_inner_2.javap.txt",
+          "javap_sha256": "357cd178ad1f1ae152d08b57d2bb2c40e87d200984a4a7b692215e0fa46acf3e"
+        },
+        {
+          "class": "jf",
+          "class_path": "jf.class",
+          "class_sha256": "b7c69f72f5af1d2290152c7fd141878c698e25c30629a0e29ee27d0de843aac3",
+          "javap_bytes": 8598,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.14.4-jf.javap.txt",
+          "javap_sha256": "43d920d7744de25e088b256c298723c095ab64a7a1c0cf6f16666d494cd191f6"
+        }
+      ],
+      "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+      "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a",
+      "minecraft_version": "1.14.4",
+      "official_mapping_sha1": "6073e4ba6949217eb708c4512be2ccc1850a603f"
+    },
+    {
+      "classes": [
+        {
+          "class": "wk",
+          "class_path": "wk.class",
+          "class_sha256": "aa53cb5486062d1a7108bdd5dfeed1a6aa3638dc3b7f194a1c34cadf41634a40",
+          "javap_bytes": 72091,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-wk.javap.txt",
+          "javap_sha256": "6f8718c8e08ff00737637e2facd1808447e89b285a9be24566f022d785575d5b"
+        },
+        {
+          "class": "wy",
+          "class_path": "wy.class",
+          "class_sha256": "45a94d4ade323efe3232d622cb8e1798e27d8964a7e9d08327f91d3797816af1",
+          "javap_bytes": 5948,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-wy.javap.txt",
+          "javap_sha256": "4606df4336e7d3010bf9b83df930e15c66dbe37779483c7338f45222d1463edf"
+        },
+        {
+          "class": "xd",
+          "class_path": "xd.class",
+          "class_sha256": "388cfd10b95a1c09899914e79d858730af898d5f49eb9277179a8c349ce4bc31",
+          "javap_bytes": 216,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/1.21.10-xd.javap.txt",
+          "javap_sha256": "1a9937616830e7035d08016407da6138bf4431b9fd3e7a1df2f85623eeadeb00"
+        }
+      ],
+      "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+      "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+      "minecraft_version": "1.21.10",
+      "official_mapping_sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7"
+    },
+    {
+      "classes": [
+        {
+          "class": "net.minecraft.network.Connection",
+          "class_path": "net/minecraft/network/Connection.class",
+          "class_sha256": "37d3b157233523f45c970939b578652c200a802768e4335aa6170694bd843062",
+          "javap_bytes": 86726,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_Connection.javap.txt",
+          "javap_sha256": "eeb83e3f764dde3a325b7f4411430ddd83e0931d461484ac8b89b58065ce56d6"
+        },
+        {
+          "class": "net.minecraft.network.PacketDecoder",
+          "class_path": "net/minecraft/network/PacketDecoder.class",
+          "class_sha256": "e90c688f12c7b4183d779fcb452c7264045eb02b5d92a6e85d32907d66661f65",
+          "javap_bytes": 7391,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_PacketDecoder.javap.txt",
+          "javap_sha256": "9b3eb8661c2133a86e6aff4cd28f89824895eda701fc96e432151af42d40c5b5"
+        },
+        {
+          "class": "net.minecraft.network.ProtocolInfo",
+          "class_path": "net/minecraft/network/ProtocolInfo.class",
+          "class_sha256": "c1420483f7aeb309711b1b9166e6249337fab4546fed93c1409cfe91cd8396a7",
+          "javap_bytes": 492,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/26.3-net_minecraft_network_ProtocolInfo.javap.txt",
+          "javap_sha256": "6cf121fb61c7d588f8eac157a74b835e9bfe55f2bd6968e5b6154e45bd483b43"
+        }
+      ],
+      "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+      "minecraft_version": "26.3",
+      "official_mapping_sha1": null
+    }
+  ],
+  "observed_on": "2026-11-22",
+  "schema": 1,
+  "tool": "OpenJDK javap 21.0.12.1 via jdk.jdeps/com.sun.tools.javap.Main"
+}

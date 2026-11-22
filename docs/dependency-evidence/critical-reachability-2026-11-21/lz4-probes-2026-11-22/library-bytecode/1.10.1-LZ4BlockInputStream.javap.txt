@@ -1,0 +1,690 @@
+Compiled from "LZ4BlockInputStream.java"
+public class net.jpountz.lz4.LZ4BlockInputStream extends java.io.FilterInputStream {
+  private final net.jpountz.lz4.LZ4FastDecompressor fastDecompressor;
+
+  private final net.jpountz.lz4.LZ4SafeDecompressor safeDecompressor;
+
+  private final java.util.zip.Checksum checksum;
+
+  private final boolean stopOnEmptyBlock;
+
+  private byte[] buffer;
+
+  private byte[] compressedBuffer;
+
+  private int originalLen;
+
+  private int o;
+
+  private boolean finished;
+
+  static final boolean $assertionsDisabled;
+
+  public net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, net.jpountz.lz4.LZ4FastDecompressor, java.util.zip.Checksum, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aconst_null
+       4: aload_3
+       5: iload         4
+       7: invokespecial #1                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;Lnet/jpountz/lz4/LZ4SafeDecompressor;Ljava/util/zip/Checksum;Z)V
+      10: return
+
+  public net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, net.jpountz.lz4.LZ4FastDecompressor, java.util.zip.Checksum);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: iconst_1
+       5: invokespecial #2                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;Ljava/util/zip/Checksum;Z)V
+       8: return
+
+  public net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, net.jpountz.lz4.LZ4FastDecompressor);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #3                  // Method net/jpountz/xxhash/XXHashFactory.fastestInstance:()Lnet/jpountz/xxhash/XXHashFactory;
+       6: ldc           #4                  // int -1756908916
+       8: invokevirtual #5                  // Method net/jpountz/xxhash/XXHashFactory.newStreamingHash32:(I)Lnet/jpountz/xxhash/StreamingXXHash32;
+      11: invokevirtual #6                  // Method net/jpountz/xxhash/StreamingXXHash32.asChecksum:()Ljava/util/zip/Checksum;
+      14: iconst_1
+      15: invokespecial #2                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;Ljava/util/zip/Checksum;Z)V
+      18: return
+
+  public net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #7                  // Method net/jpountz/lz4/LZ4Factory.fastestInstance:()Lnet/jpountz/lz4/LZ4Factory;
+       5: invokevirtual #8                  // Method net/jpountz/lz4/LZ4Factory.fastDecompressor:()Lnet/jpountz/lz4/LZ4FastDecompressor;
+       8: invokestatic  #3                  // Method net/jpountz/xxhash/XXHashFactory.fastestInstance:()Lnet/jpountz/xxhash/XXHashFactory;
+      11: ldc           #4                  // int -1756908916
+      13: invokevirtual #5                  // Method net/jpountz/xxhash/XXHashFactory.newStreamingHash32:(I)Lnet/jpountz/xxhash/StreamingXXHash32;
+      16: invokevirtual #6                  // Method net/jpountz/xxhash/StreamingXXHash32.asChecksum:()Ljava/util/zip/Checksum;
+      19: iload_2
+      20: invokespecial #2                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;Ljava/util/zip/Checksum;Z)V
+      23: return
+
+  public net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #7                  // Method net/jpountz/lz4/LZ4Factory.fastestInstance:()Lnet/jpountz/lz4/LZ4Factory;
+       5: invokevirtual #8                  // Method net/jpountz/lz4/LZ4Factory.fastDecompressor:()Lnet/jpountz/lz4/LZ4FastDecompressor;
+       8: invokespecial #9                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;)V
+      11: return
+
+  private net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, net.jpountz.lz4.LZ4FastDecompressor, net.jpountz.lz4.LZ4SafeDecompressor, java.util.zip.Checksum, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #10                 // Method java/io/FilterInputStream."<init>":(Ljava/io/InputStream;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #11                 // Field fastDecompressor:Lnet/jpountz/lz4/LZ4FastDecompressor;
+      10: aload_0
+      11: aload_3
+      12: putfield      #12                 // Field safeDecompressor:Lnet/jpountz/lz4/LZ4SafeDecompressor;
+      15: aload_0
+      16: aload         4
+      18: putfield      #13                 // Field checksum:Ljava/util/zip/Checksum;
+      21: aload_0
+      22: iload         5
+      24: putfield      #14                 // Field stopOnEmptyBlock:Z
+      27: aload_0
+      28: iconst_0
+      29: newarray       byte
+      31: putfield      #15                 // Field buffer:[B
+      34: aload_0
+      35: getstatic     #16                 // Field net/jpountz/lz4/LZ4BlockOutputStream.HEADER_LENGTH:I
+      38: newarray       byte
+      40: putfield      #17                 // Field compressedBuffer:[B
+      43: aload_0
+      44: aload_0
+      45: iconst_0
+      46: dup_x1
+      47: putfield      #18                 // Field originalLen:I
+      50: putfield      #19                 // Field o:I
+      53: aload_0
+      54: iconst_0
+      55: putfield      #20                 // Field finished:Z
+      58: return
+
+  public static net.jpountz.lz4.LZ4BlockInputStream$Builder newBuilder();
+    Code:
+       0: new           #21                 // class net/jpountz/lz4/LZ4BlockInputStream$Builder
+       3: dup
+       4: aconst_null
+       5: invokespecial #22                 // Method net/jpountz/lz4/LZ4BlockInputStream$Builder."<init>":(Lnet/jpountz/lz4/LZ4BlockInputStream$1;)V
+       8: areturn
+
+  public int available() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field originalLen:I
+       4: aload_0
+       5: getfield      #19                 // Field o:I
+       8: isub
+       9: ireturn
+
+  public int read() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field finished:Z
+       4: ifeq          9
+       7: iconst_m1
+       8: ireturn
+       9: aload_0
+      10: getfield      #19                 // Field o:I
+      13: aload_0
+      14: getfield      #18                 // Field originalLen:I
+      17: if_icmpne     24
+      20: aload_0
+      21: invokespecial #23                 // Method refill:()V
+      24: aload_0
+      25: getfield      #20                 // Field finished:Z
+      28: ifeq          33
+      31: iconst_m1
+      32: ireturn
+      33: aload_0
+      34: getfield      #15                 // Field buffer:[B
+      37: aload_0
+      38: dup
+      39: getfield      #19                 // Field o:I
+      42: dup_x1
+      43: iconst_1
+      44: iadd
+      45: putfield      #19                 // Field o:I
+      48: baload
+      49: sipush        255
+      52: iand
+      53: ireturn
+
+  public int read(byte[], int, int) throws java.io.IOException;
+    Code:
+       0: aload_1
+       1: iload_2
+       2: iload_3
+       3: invokestatic  #24                 // Method net/jpountz/util/SafeUtils.checkRange:([BII)V
+       6: aload_0
+       7: getfield      #20                 // Field finished:Z
+      10: ifeq          15
+      13: iconst_m1
+      14: ireturn
+      15: aload_0
+      16: getfield      #19                 // Field o:I
+      19: aload_0
+      20: getfield      #18                 // Field originalLen:I
+      23: if_icmpne     30
+      26: aload_0
+      27: invokespecial #23                 // Method refill:()V
+      30: aload_0
+      31: getfield      #20                 // Field finished:Z
+      34: ifeq          39
+      37: iconst_m1
+      38: ireturn
+      39: iload_3
+      40: aload_0
+      41: getfield      #18                 // Field originalLen:I
+      44: aload_0
+      45: getfield      #19                 // Field o:I
+      48: isub
+      49: invokestatic  #25                 // Method java/lang/Math.min:(II)I
+      52: istore_3
+      53: aload_0
+      54: getfield      #15                 // Field buffer:[B
+      57: aload_0
+      58: getfield      #19                 // Field o:I
+      61: aload_1
+      62: iload_2
+      63: iload_3
+      64: invokestatic  #26                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+      67: aload_0
+      68: dup
+      69: getfield      #19                 // Field o:I
+      72: iload_3
+      73: iadd
+      74: putfield      #19                 // Field o:I
+      77: iload_3
+      78: ireturn
+
+  public int read(byte[]) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: aload_1
+       4: arraylength
+       5: invokevirtual #27                 // Method read:([BII)I
+       8: ireturn
+
+  public long skip(long) throws java.io.IOException;
+    Code:
+       0: lload_1
+       1: lconst_0
+       2: lcmp
+       3: ifle          13
+       6: aload_0
+       7: getfield      #20                 // Field finished:Z
+      10: ifeq          15
+      13: lconst_0
+      14: lreturn
+      15: aload_0
+      16: getfield      #19                 // Field o:I
+      19: aload_0
+      20: getfield      #18                 // Field originalLen:I
+      23: if_icmpne     30
+      26: aload_0
+      27: invokespecial #23                 // Method refill:()V
+      30: aload_0
+      31: getfield      #20                 // Field finished:Z
+      34: ifeq          39
+      37: lconst_0
+      38: lreturn
+      39: lload_1
+      40: aload_0
+      41: getfield      #18                 // Field originalLen:I
+      44: aload_0
+      45: getfield      #19                 // Field o:I
+      48: isub
+      49: i2l
+      50: invokestatic  #28                 // Method java/lang/Math.min:(JJ)J
+      53: l2i
+      54: istore_3
+      55: aload_0
+      56: dup
+      57: getfield      #19                 // Field o:I
+      60: iload_3
+      61: iadd
+      62: putfield      #19                 // Field o:I
+      65: iload_3
+      66: i2l
+      67: lreturn
+
+  private void refill() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #17                 // Field compressedBuffer:[B
+       5: getstatic     #16                 // Field net/jpountz/lz4/LZ4BlockOutputStream.HEADER_LENGTH:I
+       8: invokespecial #29                 // Method tryReadFully:([BI)Z
+      11: ifne          40
+      14: aload_0
+      15: getfield      #14                 // Field stopOnEmptyBlock:Z
+      18: ifne          29
+      21: aload_0
+      22: iconst_1
+      23: putfield      #20                 // Field finished:Z
+      26: goto          39
+      29: new           #30                 // class java/io/EOFException
+      32: dup
+      33: ldc           #31                 // String Stream ended prematurely
+      35: invokespecial #32                 // Method java/io/EOFException."<init>":(Ljava/lang/String;)V
+      38: athrow
+      39: return
+      40: iconst_0
+      41: istore_1
+      42: iload_1
+      43: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+      46: if_icmpge     79
+      49: aload_0
+      50: getfield      #17                 // Field compressedBuffer:[B
+      53: iload_1
+      54: baload
+      55: getstatic     #34                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC:[B
+      58: iload_1
+      59: baload
+      60: if_icmpeq     73
+      63: new           #35                 // class java/io/IOException
+      66: dup
+      67: ldc           #36                 // String Stream is corrupted
+      69: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+      72: athrow
+      73: iinc          1, 1
+      76: goto          42
+      79: aload_0
+      80: getfield      #17                 // Field compressedBuffer:[B
+      83: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+      86: baload
+      87: sipush        255
+      90: iand
+      91: istore_1
+      92: iload_1
+      93: sipush        240
+      96: iand
+      97: istore_2
+      98: bipush        10
+     100: iload_1
+     101: bipush        15
+     103: iand
+     104: iadd
+     105: istore_3
+     106: iload_2
+     107: bipush        16
+     109: if_icmpeq     128
+     112: iload_2
+     113: bipush        32
+     115: if_icmpeq     128
+     118: new           #35                 // class java/io/IOException
+     121: dup
+     122: ldc           #36                 // String Stream is corrupted
+     124: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     127: athrow
+     128: aload_0
+     129: getfield      #17                 // Field compressedBuffer:[B
+     132: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+     135: iconst_1
+     136: iadd
+     137: invokestatic  #38                 // Method net/jpountz/util/SafeUtils.readIntLE:([BI)I
+     140: istore        4
+     142: aload_0
+     143: aload_0
+     144: getfield      #17                 // Field compressedBuffer:[B
+     147: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+     150: iconst_5
+     151: iadd
+     152: invokestatic  #38                 // Method net/jpountz/util/SafeUtils.readIntLE:([BI)I
+     155: putfield      #18                 // Field originalLen:I
+     158: aload_0
+     159: getfield      #17                 // Field compressedBuffer:[B
+     162: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+     165: bipush        9
+     167: iadd
+     168: invokestatic  #38                 // Method net/jpountz/util/SafeUtils.readIntLE:([BI)I
+     171: istore        5
+     173: getstatic     #39                 // Field $assertionsDisabled:Z
+     176: ifne          199
+     179: getstatic     #16                 // Field net/jpountz/lz4/LZ4BlockOutputStream.HEADER_LENGTH:I
+     182: getstatic     #33                 // Field net/jpountz/lz4/LZ4BlockOutputStream.MAGIC_LENGTH:I
+     185: bipush        13
+     187: iadd
+     188: if_icmpeq     199
+     191: new           #40                 // class java/lang/AssertionError
+     194: dup
+     195: invokespecial #41                 // Method java/lang/AssertionError."<init>":()V
+     198: athrow
+     199: aload_0
+     200: getfield      #18                 // Field originalLen:I
+     203: iconst_1
+     204: iload_3
+     205: ishl
+     206: if_icmpgt     260
+     209: aload_0
+     210: getfield      #18                 // Field originalLen:I
+     213: iflt          260
+     216: iload         4
+     218: iflt          260
+     221: aload_0
+     222: getfield      #18                 // Field originalLen:I
+     225: ifne          233
+     228: iload         4
+     230: ifne          260
+     233: aload_0
+     234: getfield      #18                 // Field originalLen:I
+     237: ifeq          245
+     240: iload         4
+     242: ifeq          260
+     245: iload_2
+     246: bipush        16
+     248: if_icmpne     270
+     251: aload_0
+     252: getfield      #18                 // Field originalLen:I
+     255: iload         4
+     257: if_icmpeq     270
+     260: new           #35                 // class java/io/IOException
+     263: dup
+     264: ldc           #36                 // String Stream is corrupted
+     266: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     269: athrow
+     270: aload_0
+     271: getfield      #18                 // Field originalLen:I
+     274: ifne          317
+     277: iload         4
+     279: ifne          317
+     282: iload         5
+     284: ifeq          297
+     287: new           #35                 // class java/io/IOException
+     290: dup
+     291: ldc           #36                 // String Stream is corrupted
+     293: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     296: athrow
+     297: aload_0
+     298: getfield      #14                 // Field stopOnEmptyBlock:Z
+     301: ifne          311
+     304: aload_0
+     305: invokespecial #23                 // Method refill:()V
+     308: goto          316
+     311: aload_0
+     312: iconst_1
+     313: putfield      #20                 // Field finished:Z
+     316: return
+     317: aload_0
+     318: getfield      #15                 // Field buffer:[B
+     321: arraylength
+     322: aload_0
+     323: getfield      #18                 // Field originalLen:I
+     326: if_icmpge     351
+     329: aload_0
+     330: aload_0
+     331: getfield      #18                 // Field originalLen:I
+     334: aload_0
+     335: getfield      #15                 // Field buffer:[B
+     338: arraylength
+     339: iconst_3
+     340: imul
+     341: iconst_2
+     342: idiv
+     343: invokestatic  #42                 // Method java/lang/Math.max:(II)I
+     346: newarray       byte
+     348: putfield      #15                 // Field buffer:[B
+     351: iload_2
+     352: lookupswitch  { // 2
+                    16: 380
+                    32: 395
+               default: 546
+          }
+     380: aload_0
+     381: aload_0
+     382: getfield      #15                 // Field buffer:[B
+     385: aload_0
+     386: getfield      #18                 // Field originalLen:I
+     389: invokespecial #43                 // Method readFully:([BI)V
+     392: goto          554
+     395: aload_0
+     396: getfield      #17                 // Field compressedBuffer:[B
+     399: arraylength
+     400: iload         4
+     402: if_icmpge     425
+     405: aload_0
+     406: iload         4
+     408: aload_0
+     409: getfield      #17                 // Field compressedBuffer:[B
+     412: arraylength
+     413: iconst_3
+     414: imul
+     415: iconst_2
+     416: idiv
+     417: invokestatic  #42                 // Method java/lang/Math.max:(II)I
+     420: newarray       byte
+     422: putfield      #17                 // Field compressedBuffer:[B
+     425: aload_0
+     426: aload_0
+     427: getfield      #17                 // Field compressedBuffer:[B
+     430: iload         4
+     432: invokespecial #43                 // Method readFully:([BI)V
+     435: aload_0
+     436: getfield      #11                 // Field fastDecompressor:Lnet/jpountz/lz4/LZ4FastDecompressor;
+     439: ifnonnull     489
+     442: aload_0
+     443: getfield      #12                 // Field safeDecompressor:Lnet/jpountz/lz4/LZ4SafeDecompressor;
+     446: aload_0
+     447: getfield      #17                 // Field compressedBuffer:[B
+     450: iconst_0
+     451: iload         4
+     453: aload_0
+     454: getfield      #15                 // Field buffer:[B
+     457: iconst_0
+     458: aload_0
+     459: getfield      #18                 // Field originalLen:I
+     462: invokevirtual #44                 // Method net/jpountz/lz4/LZ4SafeDecompressor.decompress:([BII[BII)I
+     465: istore        6
+     467: iload         6
+     469: aload_0
+     470: getfield      #18                 // Field originalLen:I
+     473: if_icmpeq     486
+     476: new           #35                 // class java/io/IOException
+     479: dup
+     480: ldc           #36                 // String Stream is corrupted
+     482: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     485: athrow
+     486: goto          529
+     489: aload_0
+     490: getfield      #11                 // Field fastDecompressor:Lnet/jpountz/lz4/LZ4FastDecompressor;
+     493: aload_0
+     494: getfield      #17                 // Field compressedBuffer:[B
+     497: iconst_0
+     498: aload_0
+     499: getfield      #15                 // Field buffer:[B
+     502: iconst_0
+     503: aload_0
+     504: getfield      #18                 // Field originalLen:I
+     507: invokevirtual #45                 // Method net/jpountz/lz4/LZ4FastDecompressor.decompress:([BI[BII)I
+     510: istore        6
+     512: iload         4
+     514: iload         6
+     516: if_icmpeq     529
+     519: new           #35                 // class java/io/IOException
+     522: dup
+     523: ldc           #36                 // String Stream is corrupted
+     525: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     528: athrow
+     529: goto          554
+     532: astore        6
+     534: new           #35                 // class java/io/IOException
+     537: dup
+     538: ldc           #36                 // String Stream is corrupted
+     540: aload         6
+     542: invokespecial #47                 // Method java/io/IOException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+     545: athrow
+     546: new           #40                 // class java/lang/AssertionError
+     549: dup
+     550: invokespecial #41                 // Method java/lang/AssertionError."<init>":()V
+     553: athrow
+     554: aload_0
+     555: getfield      #13                 // Field checksum:Ljava/util/zip/Checksum;
+     558: invokeinterface #48,  1           // InterfaceMethod java/util/zip/Checksum.reset:()V
+     563: aload_0
+     564: getfield      #13                 // Field checksum:Ljava/util/zip/Checksum;
+     567: aload_0
+     568: getfield      #15                 // Field buffer:[B
+     571: iconst_0
+     572: aload_0
+     573: getfield      #18                 // Field originalLen:I
+     576: invokeinterface #49,  4           // InterfaceMethod java/util/zip/Checksum.update:([BII)V
+     581: aload_0
+     582: getfield      #13                 // Field checksum:Ljava/util/zip/Checksum;
+     585: invokeinterface #50,  1           // InterfaceMethod java/util/zip/Checksum.getValue:()J
+     590: l2i
+     591: iload         5
+     593: if_icmpeq     606
+     596: new           #35                 // class java/io/IOException
+     599: dup
+     600: ldc           #36                 // String Stream is corrupted
+     602: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     605: athrow
+     606: aload_0
+     607: iconst_0
+     608: putfield      #19                 // Field o:I
+     611: return
+    Exception table:
+       from    to  target type
+         435   529   532   Class net/jpountz/lz4/LZ4Exception
+
+  private boolean tryReadFully(byte[], int) throws java.io.IOException;
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_3
+       3: iload_2
+       4: if_icmpge     36
+       7: aload_0
+       8: getfield      #51                 // Field in:Ljava/io/InputStream;
+      11: aload_1
+      12: iload_3
+      13: iload_2
+      14: iload_3
+      15: isub
+      16: invokevirtual #52                 // Method java/io/InputStream.read:([BII)I
+      19: istore        4
+      21: iload         4
+      23: ifge          28
+      26: iconst_0
+      27: ireturn
+      28: iload_3
+      29: iload         4
+      31: iadd
+      32: istore_3
+      33: goto          2
+      36: getstatic     #39                 // Field $assertionsDisabled:Z
+      39: ifne          55
+      42: iload_2
+      43: iload_3
+      44: if_icmpeq     55
+      47: new           #40                 // class java/lang/AssertionError
+      50: dup
+      51: invokespecial #41                 // Method java/lang/AssertionError."<init>":()V
+      54: athrow
+      55: iconst_1
+      56: ireturn
+
+  private void readFully(byte[], int) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #29                 // Method tryReadFully:([BI)Z
+       6: ifne          19
+       9: new           #30                 // class java/io/EOFException
+      12: dup
+      13: ldc           #31                 // String Stream ended prematurely
+      15: invokespecial #32                 // Method java/io/EOFException."<init>":(Ljava/lang/String;)V
+      18: athrow
+      19: return
+
+  public boolean markSupported();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public void mark(int);
+    Code:
+       0: return
+
+  public void reset() throws java.io.IOException;
+    Code:
+       0: new           #35                 // class java/io/IOException
+       3: dup
+       4: ldc           #53                 // String mark/reset not supported
+       6: invokespecial #37                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+       9: athrow
+
+  public java.lang.String toString();
+    Code:
+       0: new           #54                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #55                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #56                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #57                 // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+      14: invokevirtual #58                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      17: ldc           #59                 // String (in=
+      19: invokevirtual #58                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      22: aload_0
+      23: getfield      #51                 // Field in:Ljava/io/InputStream;
+      26: invokevirtual #60                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      29: ldc           #61                 // String , decompressor=
+      31: invokevirtual #58                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: aload_0
+      35: getfield      #11                 // Field fastDecompressor:Lnet/jpountz/lz4/LZ4FastDecompressor;
+      38: ifnull        48
+      41: aload_0
+      42: getfield      #11                 // Field fastDecompressor:Lnet/jpountz/lz4/LZ4FastDecompressor;
+      45: goto          52
+      48: aload_0
+      49: getfield      #12                 // Field safeDecompressor:Lnet/jpountz/lz4/LZ4SafeDecompressor;
+      52: invokevirtual #60                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      55: ldc           #62                 // String , checksum=
+      57: invokevirtual #58                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      60: aload_0
+      61: getfield      #13                 // Field checksum:Ljava/util/zip/Checksum;
+      64: invokevirtual #60                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      67: ldc           #63                 // String )
+      69: invokevirtual #58                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      72: invokevirtual #64                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      75: areturn
+
+  net.jpountz.lz4.LZ4BlockInputStream(java.io.InputStream, net.jpountz.lz4.LZ4FastDecompressor, net.jpountz.lz4.LZ4SafeDecompressor, java.util.zip.Checksum, boolean, net.jpountz.lz4.LZ4BlockInputStream$1);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: iload         5
+       8: invokespecial #1                  // Method "<init>":(Ljava/io/InputStream;Lnet/jpountz/lz4/LZ4FastDecompressor;Lnet/jpountz/lz4/LZ4SafeDecompressor;Ljava/util/zip/Checksum;Z)V
+      11: return
+
+  static {};
+    Code:
+       0: ldc_w         #65                 // class net/jpountz/lz4/LZ4BlockInputStream
+       3: invokevirtual #66                 // Method java/lang/Class.desiredAssertionStatus:()Z
+       6: ifne          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: putstatic     #39                 // Field $assertionsDisabled:Z
+      17: return
+}

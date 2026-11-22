@@ -2,6 +2,14 @@
 
 The [2026-11-21 source-bound scan archive and worklist](worklogs/issue-45-security-followup-2026-11-21.md) records the current candidate and integrated runs separately. It preserves original reports, snapshots and checksums without replacing prior baselines. The current reports retain 385 candidate and 105 integrated failing matches.
 
+The [critical/high reachability follow-up](worklogs/issue-45-critical-reachability-2026-11-21.md) adds source-bound runtime observations without removing any finding. All 13 candidate and integrated source heads still match the finding index; their Gradle 9.9.2 Wrapper files passed hash checks against Gradle's published values. The ten open legacy PR heads also match their indexed source SHAs and their exact-head Linux, Windows, Wrapper, and packaged API checks passed. They remain blocked by unresolved findings. Candidate (385) and integrated (105) monitoring remain separate, and all 490 occurrences continue to fail.
+
+The [2026-11-22 Jackson runtime follow-up](worklogs/issue-45-jackson-runtime-followup-2026-11-22.md) adds 21 source-bound High observations to the focused reachability set. It narrows specific first-party paths and records the unresolved Minecraft-managed Jackson and Log4j surfaces; all 44 focused High and 22 focused Critical occurrences remain release-blocking.
+
+The [2026-11-22 Guava runtime follow-up](worklogs/issue-45-guava-runtime-followup-2026-11-22.md) adds 16 source-bound High observations across 13 groups and 48 Minecraft versions. The component probe reproduces affected deserialization allocation behavior and checks upstream-fixed Guava 33.7.2; official runtime scanning covers 48 clients and 655 libraries. The sampled vanilla packet paths do not use Java object deserialization, but supported modded runtime reachability remains unknown. All 60 focused High and 22 focused Critical occurrences remain release-blocking; the full 490 occurrence inventory is unchanged.
+
+The [2026-11-22 LZ4 runtime follow-up](worklogs/issue-45-lz4-runtime-followup-2026-11-22.md) adds 11 source-bound High rows for `GHSA-cmp6-m4wj-q63q` and `GHSA-vqf4-7m7x-wgfc`; the already tracked `GHSA-mcr4-qmvw-px4g` evidence is also expanded. Across those overlapping advisories, exact scans cover 19 clients and eight source groups. Region-file decoding reaches `LZ4BlockInputStream` for a local world file; sampled vanilla network chunk packets use a separate path. The Linux/Windows reachability jobs passed on PR commit `a800917` (run [44977010612](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44977010612)); this does not clear the findings. All 71 focused High and 22 focused Critical occurrences remain release-blocking. The full inventory is still 490 failing occurrences.
+
 Verified on 2026-11-04 against the initial maintained heads recorded in the
 [maintenance report](maintenance-2026-11-04.md). Proposed maintenance PRs do not
 change dependency versions or build resolution. Their hosted results must be
@@ -307,3 +315,12 @@ retire a candidate entry only after its actual maintained head is covered by the
 authoritative reviewed audit and ledger. A deleted branch qualifies for the
 narrow merged-candidate continuation above only while its integration can be
 proved; other missing or moved sources fail visibly rather than appearing clean.
+
+
+## Issue #45 targeted archive-parser follow-up — 2026-11-22
+
+The source-bound [Commons Compress follow-up](dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json) adds a bounded test for the Mojang-supplied Commons Compress 1.8.1 TAR path. The vulnerable parser's allocation behavior reproduced, and fixed 1.21 rejected the same fixture. Attacker control over Realms server-produced TAR headers remains unverified. These 12 scoped rows are included in the 71 focused High occurrences and remain release-blocking; candidate and integrated OSV scans are unchanged and remain fail-closed. The pinned Linux/Windows component rerun passed on PR source commit `51ec66f`; hosted payload and ZIP digests are indexed in [the verification report](dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json).
+
+## Issue #45 Netty SNI runtime evidence — 2026-11-22
+
+The critical Netty SNI advisory is now bound to a full scan of all affected Mojang client/runtime JARs for each of 29 game versions. The scan and focused bytecode captures are indexed in the structured advisory ledger. It records no vanilla non-Netty `SniHandler` caller; this does not cover arbitrary third-party mods, launcher additions or Java agents. The 14 source-bound occurrences remain failing and release-blocking until upstream or runtime-scope questions are resolved. Candidate and integrated OSV inventories and counts are unchanged.

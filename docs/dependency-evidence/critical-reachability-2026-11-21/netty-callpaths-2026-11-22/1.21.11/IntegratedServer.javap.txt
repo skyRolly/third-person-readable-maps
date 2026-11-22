@@ -1,0 +1,825 @@
+Compiled from "SourceFile"
+public class iqa extends net.minecraft.server.MinecraftServer {
+  private static final org.slf4j.Logger n;
+
+  private static final int o;
+
+  public static final int m;
+
+  private final gfj p;
+
+  private boolean q;
+
+  private int r;
+
+  private dwl s;
+
+  private iqd t;
+
+  private java.util.UUID u;
+
+  private int v;
+
+  private volatile java.util.List<uq$a> w;
+
+  private final uq x;
+
+  public iqa(java.lang.Thread, gfj, fni$c, bak, ans, ano, axq);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: aload_2
+       8: invokevirtual #75                 // Method gfj.ae:()Ljava/net/Proxy;
+      11: aload_2
+      12: invokevirtual #79                 // Method gfj.aC:()Lcom/mojang/datafixers/DataFixer;
+      15: aload         6
+      17: aload         7
+      19: invokespecial #82                 // Method net/minecraft/server/MinecraftServer."<init>":(Ljava/lang/Thread;Lfni$c;Lbak;Lans;Ljava/net/Proxy;Lcom/mojang/datafixers/DataFixer;Lano;Laxq;)V
+      22: aload_0
+      23: iconst_1
+      24: putfield      #84                 // Field q:Z
+      27: aload_0
+      28: iconst_m1
+      29: putfield      #86                 // Field r:I
+      32: aload_0
+      33: iconst_0
+      34: putfield      #88                 // Field v:I
+      37: aload_0
+      38: new           #90                 // class java/util/ArrayList
+      41: dup
+      42: invokespecial #93                 // Method java/util/ArrayList."<init>":()V
+      45: putfield      #95                 // Field w:Ljava/util/List;
+      48: aload_0
+      49: new           #37                 // class uq
+      52: dup
+      53: invokespecial #96                 // Method uq."<init>":()V
+      56: putfield      #98                 // Field x:Luq;
+      59: aload_0
+      60: aload_2
+      61: invokevirtual #102                // Method gfj.ad:()Lcom/mojang/authlib/GameProfile;
+      64: invokevirtual #105                // Method a:(Lcom/mojang/authlib/GameProfile;)V
+      67: aload_0
+      68: aload_2
+      69: invokevirtual #109                // Method gfj.P:()Z
+      72: invokevirtual #113                // Method d:(Z)V
+      75: aload_0
+      76: new           #115                // class ipz
+      79: dup
+      80: aload_0
+      81: aload_0
+      82: invokevirtual #119                // Method bd:()Ljk;
+      85: aload_0
+      86: getfield      #123                // Field h:Lfnl;
+      89: invokespecial #126                // Method ipz."<init>":(Liqa;Ljk;Lfnl;)V
+      92: invokevirtual #129                // Method a:(Lbbz;)V
+      95: aload_0
+      96: aload_2
+      97: putfield      #131                // Field p:Lgfj;
+     100: return
+
+  public boolean e();
+    Code:
+       0: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+       3: ldc           #151                // String Starting integrated minecraft server version {}
+       5: invokestatic  #155                // Method w.b:()Laa;
+       8: invokeinterface #160,  1          // InterfaceMethod aa.c:()Ljava/lang/String;
+      13: invokeinterface #166,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      18: aload_0
+      19: iconst_1
+      20: invokevirtual #168                // Method e:(Z)V
+      23: aload_0
+      24: invokevirtual #171                // Method Y:()V
+      27: aload_0
+      28: invokevirtual #174                // Method u_:()V
+      31: aload_0
+      32: invokevirtual #177                // Method W:()Lcom/mojang/authlib/GameProfile;
+      35: astore_1
+      36: aload_0
+      37: invokevirtual #181                // Method bb:()Lfnt;
+      40: invokeinterface #185,  1          // InterfaceMethod fnt.d:()Ljava/lang/String;
+      45: astore_2
+      46: aload_0
+      47: aload_1
+      48: ifnull        64
+      51: aload_1
+      52: invokevirtual #190                // Method com/mojang/authlib/GameProfile.name:()Ljava/lang/String;
+      55: aload_2
+      56: invokedynamic #202,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      61: goto          65
+      64: aload_2
+      65: invokevirtual #207                // Method d:(Ljava/lang/String;)V
+      68: iconst_1
+      69: ireturn
+
+  public boolean I();
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field q:Z
+       4: ireturn
+
+  public void b(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #98                 // Field x:Luq;
+       4: invokestatic  #214                // Method um.a:(Lui;)Lum$a;
+       7: astore_2
+       8: aload_0
+       9: iload_1
+      10: invokespecial #216                // Method net/minecraft/server/MinecraftServer.b:(Z)V
+      13: aload_2
+      14: ifnull        46
+      17: aload_2
+      18: invokevirtual #219                // Method um$a.close:()V
+      21: goto          46
+      24: astore_3
+      25: aload_2
+      26: ifnull        44
+      29: aload_2
+      30: invokevirtual #219                // Method um$a.close:()V
+      33: goto          44
+      36: astore        4
+      38: aload_3
+      39: aload         4
+      41: invokevirtual #223                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      44: aload_3
+      45: athrow
+      46: aload_0
+      47: invokevirtual #227                // Method aR:()Lann;
+      50: invokevirtual #232                // Method ann.i:()Z
+      53: ifeq          67
+      56: aload_0
+      57: aload_0
+      58: getfield      #98                 // Field x:Luq;
+      61: invokevirtual #235                // Method uq.a:()Ljava/util/List;
+      64: putfield      #95                 // Field w:Ljava/util/List;
+      67: return
+    Exception table:
+       from    to  target type
+           8    13    24   Class java/lang/Throwable
+          29    33    36   Class java/lang/Throwable
+
+  public void a(java.util.function.BooleanSupplier);
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field q:Z
+       4: istore_2
+       5: aload_0
+       6: invokestatic  #241                // Method gfj.V:()Lgfj;
+       9: invokevirtual #244                // Method gfj.an:()Z
+      12: ifne          30
+      15: aload_0
+      16: invokevirtual #248                // Method aj:()Lbbz;
+      19: invokevirtual #252                // Method bbz.t:()Ljava/util/List;
+      22: invokeinterface #257,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      27: ifeq          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: putfield      #84                 // Field q:Z
+      38: invokestatic  #264                // Method bzl.a:()Lbzm;
+      41: astore_3
+      42: iload_2
+      43: ifne          87
+      46: aload_0
+      47: getfield      #84                 // Field q:Z
+      50: ifeq          87
+      53: aload_3
+      54: ldc_w         #266                // String autoSave
+      57: invokeinterface #270,  2          // InterfaceMethod bzm.a:(Ljava/lang/String;)V
+      62: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+      65: ldc_w         #272                // String Saving and pausing game...
+      68: invokeinterface #274,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      73: aload_0
+      74: iconst_0
+      75: iconst_0
+      76: iconst_0
+      77: invokevirtual #277                // Method b:(ZZZ)Z
+      80: pop
+      81: aload_3
+      82: invokeinterface #279,  1          // InterfaceMethod bzm.c:()V
+      87: aload_0
+      88: getfield      #84                 // Field q:Z
+      91: ifeq          99
+      94: aload_0
+      95: invokevirtual #281                // Method h:()V
+      98: return
+      99: iload_2
+     100: ifeq          107
+     103: aload_0
+     104: invokevirtual #284                // Method L:()V
+     107: aload_0
+     108: aload_1
+     109: invokespecial #286                // Method net/minecraft/server/MinecraftServer.a:(Ljava/util/function/BooleanSupplier;)V
+     112: iconst_2
+     113: aload_0
+     114: getfield      #131                // Field p:Lgfj;
+     117: getfield      #290                // Field gfj.k:Lgfo;
+     120: invokevirtual #295                // Method gfo.e:()Lgfn;
+     123: invokevirtual #300                // Method gfn.b:()Ljava/lang/Object;
+     126: checkcast     #302                // class java/lang/Integer
+     129: invokevirtual #306                // Method java/lang/Integer.intValue:()I
+     132: invokestatic  #312                // Method java/lang/Math.max:(II)I
+     135: istore        4
+     137: iload         4
+     139: aload_0
+     140: invokevirtual #248                // Method aj:()Lbbz;
+     143: invokevirtual #314                // Method bbz.p:()I
+     146: if_icmpeq     184
+     149: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+     152: ldc_w         #316                // String Changing view distance to {}, from {}
+     155: iload         4
+     157: invokestatic  #320                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     160: aload_0
+     161: invokevirtual #248                // Method aj:()Lbbz;
+     164: invokevirtual #314                // Method bbz.p:()I
+     167: invokestatic  #320                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     170: invokeinterface #323,  4          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     175: aload_0
+     176: invokevirtual #248                // Method aj:()Lbbz;
+     179: iload         4
+     181: invokevirtual #326                // Method bbz.a:(I)V
+     184: iconst_2
+     185: aload_0
+     186: getfield      #131                // Field p:Lgfj;
+     189: getfield      #290                // Field gfj.k:Lgfo;
+     192: invokevirtual #329                // Method gfo.f:()Lgfn;
+     195: invokevirtual #300                // Method gfn.b:()Ljava/lang/Object;
+     198: checkcast     #302                // class java/lang/Integer
+     201: invokevirtual #306                // Method java/lang/Integer.intValue:()I
+     204: invokestatic  #312                // Method java/lang/Math.max:(II)I
+     207: istore        5
+     209: iload         5
+     211: aload_0
+     212: getfield      #88                 // Field v:I
+     215: if_icmpeq     256
+     218: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+     221: ldc_w         #331                // String Changing simulation distance to {}, from {}
+     224: iload         5
+     226: invokestatic  #320                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     229: aload_0
+     230: getfield      #88                 // Field v:I
+     233: invokestatic  #320                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     236: invokeinterface #323,  4          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     241: aload_0
+     242: invokevirtual #248                // Method aj:()Lbbz;
+     245: iload         5
+     247: invokevirtual #333                // Method bbz.b:(I)V
+     250: aload_0
+     251: iload         5
+     253: putfield      #88                 // Field v:I
+     256: return
+
+  protected bxn a();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: invokevirtual #340                // Method gfj.aT:()Lgjm;
+       7: invokevirtual #344                // Method gjm.i:()Lbxn;
+      10: areturn
+
+  public boolean g();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  private void h();
+    Code:
+       0: aload_0
+       1: invokevirtual #348                // Method K:()V
+       4: aload_0
+       5: invokevirtual #248                // Method aj:()Lbbz;
+       8: invokevirtual #252                // Method bbz.t:()Ljava/util/List;
+      11: invokeinterface #352,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore_1
+      17: aload_1
+      18: invokeinterface #357,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          46
+      26: aload_1
+      27: invokeinterface #360,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #33                 // class axg
+      35: astore_2
+      36: aload_2
+      37: getstatic     #366                // Field bdk.l:Lamo;
+      40: invokevirtual #369                // Method axg.a:(Lamo;)V
+      43: goto          17
+      46: return
+
+  public boolean m();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public boolean c();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public java.nio.file.Path G();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: getfield      #375                // Field gfj.p:Ljava/io/File;
+       7: invokevirtual #380                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+      10: areturn
+
+  public boolean n();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public int o();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public boolean p();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: getfield      #290                // Field gfj.k:Lgfo;
+       7: invokevirtual #383                // Method gfo.aU:()Z
+      10: ireturn
+
+  public void a(m);
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: aload_1
+       5: invokevirtual #386                // Method gfj.b:(Lm;)V
+       8: return
+
+  public y a(y);
+    Code:
+       0: aload_1
+       1: ldc_w         #390                // String Type
+       4: ldc_w         #392                // String Integrated Server (map_client.txt)
+       7: invokevirtual #397                // Method y.a:(Ljava/lang/String;Ljava/lang/String;)V
+      10: aload_1
+      11: ldc_w         #399                // String Is Modded
+      14: aload_0
+      15: invokedynamic #416,  0            // InvokeDynamic #1:get:(Liqa;)Ljava/util/function/Supplier;
+      20: invokevirtual #419                // Method y.a:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      23: aload_1
+      24: ldc_w         #421                // String Launched Version
+      27: aload_0
+      28: getfield      #131                // Field p:Lgfj;
+      31: dup
+      32: invokestatic  #427                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      35: pop
+      36: invokedynamic #433,  0            // InvokeDynamic #2:get:(Lgfj;)Ljava/util/function/Supplier;
+      41: invokevirtual #419                // Method y.a:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      44: aload_1
+      45: areturn
+
+  public bgi T();
+    Code:
+       0: invokestatic  #438                // Method gfj.i:()Lbgi;
+       3: aload_0
+       4: invokespecial #440                // Method net/minecraft/server/MinecraftServer.T:()Lbgi;
+       7: invokevirtual #445                // Method bgi.a:(Lbgi;)Lbgi;
+      10: areturn
+
+  public boolean a(dwl, boolean, int);
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: invokevirtual #451                // Method gfj.aX:()V
+       7: aload_0
+       8: getfield      #131                // Field p:Lgfj;
+      11: invokevirtual #455                // Method gfj.R:()Lhig;
+      14: invokevirtual #460                // Method hig.z:()V
+      17: aload_0
+      18: invokevirtual #464                // Method ak:()Layh;
+      21: aconst_null
+      22: iload_3
+      23: invokevirtual #469                // Method ayh.a:(Ljava/net/InetAddress;I)V
+      26: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+      29: ldc_w         #471                // String Started serving on {}
+      32: iload_3
+      33: invokestatic  #320                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      36: invokeinterface #166,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      41: aload_0
+      42: iload_3
+      43: putfield      #86                 // Field r:I
+      46: aload_0
+      47: new           #473                // class iqd
+      50: dup
+      51: aload_0
+      52: invokevirtual #476                // Method ah:()Ljava/lang/String;
+      55: iload_3
+      56: invokedynamic #481,  0            // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;
+      61: invokespecial #483                // Method iqd."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      64: putfield      #485                // Field t:Liqd;
+      67: aload_0
+      68: getfield      #485                // Field t:Liqd;
+      71: invokevirtual #488                // Method iqd.start:()V
+      74: aload_0
+      75: aload_1
+      76: putfield      #490                // Field s:Ldwl;
+      79: aload_0
+      80: invokevirtual #248                // Method aj:()Lbbz;
+      83: iload_2
+      84: invokevirtual #492                // Method bbz.a:(Z)V
+      87: aload_0
+      88: aload_0
+      89: getfield      #131                // Field p:Lgfj;
+      92: getfield      #495                // Field gfj.s:Lhnh;
+      95: invokevirtual #501                // Method hnh.gJ:()Lbbx;
+      98: invokevirtual #504                // Method b:(Lbbx;)Lbbh;
+     101: astore        4
+     103: aload_0
+     104: getfield      #131                // Field p:Lgfj;
+     107: getfield      #495                // Field gfj.s:Lhnh;
+     110: aload         4
+     112: invokevirtual #507                // Method hnh.a:(Lbbn;)V
+     115: aload_0
+     116: invokevirtual #248                // Method aj:()Lbbz;
+     119: invokevirtual #252                // Method bbz.t:()Ljava/util/List;
+     122: invokeinterface #352,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     127: astore        5
+     129: aload         5
+     131: invokeinterface #357,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     136: ifeq          163
+     139: aload         5
+     141: invokeinterface #360,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     146: checkcast     #33                 // class axg
+     149: astore        6
+     151: aload_0
+     152: invokevirtual #511                // Method aF:()Lee;
+     155: aload         6
+     157: invokevirtual #516                // Method ee.a:(Laxg;)V
+     160: goto          129
+     163: iconst_1
+     164: ireturn
+     165: astore        4
+     167: iconst_0
+     168: ireturn
+    Exception table:
+       from    to  target type
+           0   164   165   Class java/io/IOException
+
+  public void x();
+    Code:
+       0: aload_0
+       1: invokespecial #519                // Method net/minecraft/server/MinecraftServer.x:()V
+       4: aload_0
+       5: getfield      #485                // Field t:Liqd;
+       8: ifnull        23
+      11: aload_0
+      12: getfield      #485                // Field t:Liqd;
+      15: invokevirtual #522                // Method iqd.interrupt:()V
+      18: aload_0
+      19: aconst_null
+      20: putfield      #485                // Field t:Liqd;
+      23: return
+
+  public void a(boolean);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokedynamic #531,  0            // InvokeDynamic #4:run:(Liqa;)Ljava/lang/Runnable;
+       7: invokevirtual #534                // Method h:(Ljava/lang/Runnable;)V
+      10: aload_0
+      11: iload_1
+      12: invokespecial #535                // Method net/minecraft/server/MinecraftServer.a:(Z)V
+      15: aload_0
+      16: getfield      #485                // Field t:Liqd;
+      19: ifnull        34
+      22: aload_0
+      23: getfield      #485                // Field t:Liqd;
+      26: invokevirtual #522                // Method iqd.interrupt:()V
+      29: aload_0
+      30: aconst_null
+      31: putfield      #485                // Field t:Liqd;
+      34: return
+
+  public boolean q();
+    Code:
+       0: aload_0
+       1: getfield      #86                 // Field r:I
+       4: iconst_m1
+       5: if_icmple     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  public int V();
+    Code:
+       0: aload_0
+       1: getfield      #86                 // Field r:I
+       4: ireturn
+
+  public void a(dwl);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #538                // Method net/minecraft/server/MinecraftServer.a:(Ldwl;)V
+       5: aload_0
+       6: aconst_null
+       7: putfield      #490                // Field s:Ldwl;
+      10: return
+
+  public bbh k();
+    Code:
+       0: getstatic     #544                // Field bbh.c:Lbbh;
+       3: areturn
+
+  public bbh b();
+    Code:
+       0: getstatic     #544                // Field bbh.c:Lbbh;
+       3: areturn
+
+  public void a(java.util.UUID);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #547                // Field u:Ljava/util/UUID;
+       5: return
+
+  public boolean a(bbx);
+    Code:
+       0: aload_0
+       1: invokevirtual #177                // Method W:()Lcom/mojang/authlib/GameProfile;
+       4: ifnull        28
+       7: aload_1
+       8: invokevirtual #552                // Method bbx.b:()Ljava/lang/String;
+      11: aload_0
+      12: invokevirtual #177                // Method W:()Lcom/mojang/authlib/GameProfile;
+      15: invokevirtual #190                // Method com/mojang/authlib/GameProfile.name:()Ljava/lang/String;
+      18: invokevirtual #556                // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+      21: ifeq          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: ireturn
+
+  public int c(int);
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: getfield      #290                // Field gfj.k:Lgfo;
+       7: invokevirtual #560                // Method gfo.g:()Lgfn;
+      10: invokevirtual #300                // Method gfn.b:()Ljava/lang/Object;
+      13: checkcast     #562                // class java/lang/Double
+      16: invokevirtual #566                // Method java/lang/Double.doubleValue:()D
+      19: iload_1
+      20: i2d
+      21: dmul
+      22: d2i
+      23: ireturn
+
+  public boolean aZ();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: getfield      #290                // Field gfj.k:Lgfo;
+       7: getfield      #570                // Field gfo.aA:Z
+      10: ireturn
+
+  public dwl bf();
+    Code:
+       0: aload_0
+       1: invokevirtual #574                // Method q:()Z
+       4: ifeq          34
+       7: aload_0
+       8: invokevirtual #577                // Method v_:()Z
+      11: ifne          34
+      14: aload_0
+      15: getfield      #490                // Field s:Ldwl;
+      18: aload_0
+      19: getfield      #580                // Field k:Lfnt;
+      22: invokeinterface #582,  1          // InterfaceMethod fnt.j:()Ldwl;
+      27: invokestatic  #588                // Method com/google/common/base/MoreObjects.firstNonNull:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      30: checkcast     #590                // class dwl
+      33: areturn
+      34: aconst_null
+      35: areturn
+
+  public jc v();
+    Code:
+       0: aload_0
+       1: getfield      #580                // Field k:Lfnt;
+       4: invokeinterface #594,  1          // InterfaceMethod fnt.v:()Luz;
+       9: astore_1
+      10: aload_1
+      11: ifnonnull     19
+      14: aload_0
+      15: invokespecial #596                // Method net/minecraft/server/MinecraftServer.v:()Ljc;
+      18: areturn
+      19: new           #17                 // class bgp$j
+      22: dup
+      23: getstatic     #149                // Field n:Lorg/slf4j/Logger;
+      26: invokespecial #601                // Method bgp$j."<init>":(Lorg/slf4j/Logger;)V
+      29: astore_2
+      30: aload_2
+      31: aload_0
+      32: invokevirtual #605                // Method bc:()Ljr$b;
+      35: aload_1
+      36: invokestatic  #610                // Method fno.a:(Lbgp;Ljf$a;Luz;)Lfnq;
+      39: astore_3
+      40: aload_3
+      41: getstatic     #613                // Field axg$c.a:Lcom/mojang/serialization/MapCodec;
+      44: invokeinterface #618,  2          // InterfaceMethod fnq.a:(Lcom/mojang/serialization/MapCodec;)Ljava/util/Optional;
+      49: getstatic     #621                // Field axg$c.b:Laxg$c;
+      52: invokevirtual #626                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      55: checkcast     #31                 // class axg$c
+      58: astore        4
+      60: aload         4
+      62: invokevirtual #629                // Method axg$c.a:()Ljava/util/Optional;
+      65: invokevirtual #632                // Method java/util/Optional.isPresent:()Z
+      68: ifeq          123
+      71: aload         4
+      73: invokevirtual #634                // Method axg$c.b:()Ljava/util/Optional;
+      76: invokevirtual #632                // Method java/util/Optional.isPresent:()Z
+      79: ifeq          123
+      82: new           #636                // class jc
+      85: dup
+      86: aload         4
+      88: invokevirtual #629                // Method axg$c.a:()Ljava/util/Optional;
+      91: invokevirtual #638                // Method java/util/Optional.get:()Ljava/lang/Object;
+      94: checkcast     #640                // class amt
+      97: aload         4
+      99: invokevirtual #634                // Method axg$c.b:()Ljava/util/Optional;
+     102: invokevirtual #638                // Method java/util/Optional.get:()Ljava/lang/Object;
+     105: checkcast     #642                // class jn
+     108: invokestatic  #647                // Method is.a:(Ljn;)Lis;
+     111: invokespecial #650                // Method jc."<init>":(Lamt;Lis;)V
+     114: astore        5
+     116: aload_2
+     117: invokevirtual #651                // Method bgp$j.close:()V
+     120: aload         5
+     122: areturn
+     123: aload_2
+     124: invokevirtual #651                // Method bgp$j.close:()V
+     127: goto          148
+     130: astore_3
+     131: aload_2
+     132: invokevirtual #651                // Method bgp$j.close:()V
+     135: goto          146
+     138: astore        4
+     140: aload_3
+     141: aload         4
+     143: invokevirtual #223                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     146: aload_3
+     147: athrow
+     148: aload_0
+     149: invokespecial #596                // Method net/minecraft/server/MinecraftServer.v:()Ljc;
+     152: areturn
+    Exception table:
+       from    to  target type
+          30   116   130   Class java/lang/Throwable
+         131   135   138   Class java/lang/Throwable
+
+  public boolean b(boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: iload_3
+       4: invokespecial #655                // Method net/minecraft/server/MinecraftServer.b:(ZZZ)Z
+       7: istore        4
+       9: aload_0
+      10: invokevirtual #657                // Method j:()V
+      13: iload         4
+      15: ireturn
+
+  private void j();
+    Code:
+       0: aload_0
+       1: getfield      #659                // Field g:Lfni$c;
+       4: invokevirtual #661                // Method fni$c.b:()Z
+       7: ifeq          23
+      10: aload_0
+      11: getfield      #131                // Field p:Lgfj;
+      14: aload_0
+      15: invokedynamic #665,  0            // InvokeDynamic #5:run:(Liqa;)Ljava/lang/Runnable;
+      20: invokevirtual #668                // Method gfj.execute:(Ljava/lang/Runnable;)V
+      23: return
+
+  public void a(java.lang.Throwable, esa, dvu);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #671                // Method net/minecraft/server/MinecraftServer.a:(Ljava/lang/Throwable;Lesa;Ldvu;)V
+       7: aload_0
+       8: invokevirtual #657                // Method j:()V
+      11: aload_0
+      12: getfield      #131                // Field p:Lgfj;
+      15: aload_0
+      16: aload_3
+      17: invokedynamic #678,  0            // InvokeDynamic #6:run:(Liqa;Ldvu;)Ljava/lang/Runnable;
+      22: invokevirtual #668                // Method gfj.execute:(Ljava/lang/Runnable;)V
+      25: return
+
+  public void b(java.lang.Throwable, esa, dvu);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #683                // Method net/minecraft/server/MinecraftServer.b:(Ljava/lang/Throwable;Lesa;Ldvu;)V
+       7: aload_0
+       8: invokevirtual #657                // Method j:()V
+      11: aload_0
+      12: getfield      #131                // Field p:Lgfj;
+      15: aload_0
+      16: aload_3
+      17: invokedynamic #687,  0            // InvokeDynamic #7:run:(Liqa;Ldvu;)Ljava/lang/Runnable;
+      22: invokevirtual #668                // Method gfj.execute:(Ljava/lang/Runnable;)V
+      25: return
+
+  public int r();
+    Code:
+       0: bipush        8
+       2: ireturn
+
+  public java.util.Collection<uq$a> d();
+    Code:
+       0: aload_0
+       1: getfield      #95                 // Field w:Ljava/util/List;
+       4: areturn
+
+  public bxq f();
+    Code:
+       0: aload_0
+       1: invokevirtual #692                // Method a:()Lbxn;
+       4: areturn
+
+  public bbn l();
+    Code:
+       0: aload_0
+       1: invokevirtual #695                // Method b:()Lbbh;
+       4: areturn
+
+  private void a(dvu);
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: aload_1
+       5: invokestatic  #700                // Method gna.b:(Lgfj;Ldvu;)V
+       8: return
+
+  private void b(dvu);
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: aload_1
+       5: invokestatic  #702                // Method gna.a:(Lgfj;Ldvu;)V
+       8: return
+
+  private void s();
+    Code:
+       0: aload_0
+       1: getfield      #131                // Field p:Lgfj;
+       4: invokestatic  #705                // Method gna.a:(Lgfj;)V
+       7: return
+
+  private void bx();
+    Code:
+       0: aload_0
+       1: invokevirtual #248                // Method aj:()Lbbz;
+       4: invokevirtual #252                // Method bbz.t:()Ljava/util/List;
+       7: invokestatic  #711                // Method com/google/common/collect/Lists.newArrayList:(Ljava/lang/Iterable;)Ljava/util/ArrayList;
+      10: astore_1
+      11: aload_1
+      12: invokeinterface #352,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      17: astore_2
+      18: aload_2
+      19: invokeinterface #357,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          62
+      27: aload_2
+      28: invokeinterface #360,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #33                 // class axg
+      36: astore_3
+      37: aload_3
+      38: invokevirtual #715                // Method axg.cY:()Ljava/util/UUID;
+      41: aload_0
+      42: getfield      #547                // Field u:Ljava/util/UUID;
+      45: invokevirtual #721                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+      48: ifne          59
+      51: aload_0
+      52: invokevirtual #248                // Method aj:()Lbbz;
+      55: aload_3
+      56: invokevirtual #723                // Method bbz.b:(Laxg;)V
+      59: goto          18
+      62: return
+
+  private java.lang.String by();
+    Code:
+       0: aload_0
+       1: invokevirtual #725                // Method T:()Lbgi;
+       4: invokevirtual #726                // Method bgi.b:()Ljava/lang/String;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #733                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #149                // Field n:Lorg/slf4j/Logger;
+       6: return
+}

@@ -1,0 +1,130 @@
+{
+  "ghsa_id": "GHSA-cmp6-m4wj-q63q",
+  "cve_id": "CVE-2025-66566",
+  "url": "https://api.github.com/advisories/GHSA-cmp6-m4wj-q63q",
+  "html_url": "https://github.com/advisories/GHSA-cmp6-m4wj-q63q",
+  "summary": "yawkat LZ4 Java has a possible information leak in Java safe decompressor",
+  "description": "### Summary\n\nInsufficient clearing of the output buffer in Java-based decompressor implementations in lz4-java 1.10.0 and earlier allows remote attackers to read previous buffer contents via crafted compressed input. In applications where the output buffer is reused without being cleared, this may lead to disclosure of sensitive data.\n\nJNI-based implementations are *not* affected.\n\n### Details\n\nDuring the decompression process, the lz4 algorithm may have to repeat data that was previously decompressed in the same input frame. In the Java implementation, this is implemented by copy operations within the output buffer.\n\nWith a crafted input, an attacker may induce the Java implementation to copy from a region in the output buffer that does not contain decompressed data yet. If that region contains sensitive information because the output buffer was not cleared prior to decompression, that data will then be copied to the decompressed output.\n\n- `LZ4Factory.nativeInstance().safeDecompressor()` *is not* affected.\n- `LZ4Factory.nativeInstance().fastDecompressor()` *is* affected because it actually uses `safeInstance()` since 1.8.1. In 1.8.0 and earlier versions, this implementation is instead vulnerable to the more severe [CVE‐2025‐12183](https://sites.google.com/sonatype.com/vulnerabilities/cve-2025-12183), so downgrading is not a solution.\n- Both decompressors of `LZ4Factory.safeInstance()`, `LZ4Factory.unsafeInstance()` and `LZ4Factory.fastestJavaInstance()` are affected.\n- `LZ4Factory.fastestInstance()` uses the `nativeInstance` or `fastestJavaInstance` depending on platform. `LZ4Factory.fastestInstance().fastDecompressor()` is always affected, while `LZ4Factory.fastestInstance().safeDecompressor()` is affected only when JNI cannot be used (e.g. on unsupported platforms).\n\nIndependent of this vulnerability, it is recommended that users migrate from `fastDecompressor` to `safeDecompressor`, as the latter is more performant (despite the name).\n\nThe impact of this vulnerability depends on how user code interacts with the decompression API. Users that allocate a new destination buffer each time, or use only zeroed buffers, are not impacted. When the buffer is reused, however, the confidentiality impact can be severe. This vulnerability is marked as VC:H out of caution.\n\n### Mitigation\n\nlz4-java 1.10.1 fixes this issue without requiring changes in user code.\n\nIf you cannot upgrade to 1.10.1, you can mitigate this vulnerability by zeroing the output buffer before passing it to the decompression function.\n\n### Relation to CVE‐2025‐12183\n\nThis CVE is a different attack than [CVE‐2025‐12183](https://sites.google.com/sonatype.com/vulnerabilities/cve-2025-12183), affecting different implementations with different impact. This new vulnerability was discovered by [CodeIntelligence](https://www.code-intelligence.com/) during research that followed up on CVE‐2025‐12183. Users are recommended to upgrade to 1.10.1 to fix both vulnerabilities.",
+  "type": "reviewed",
+  "severity": "high",
+  "repository_advisory_url": "https://api.github.com/repos/yawkat/lz4-java/security-advisories/GHSA-cmp6-m4wj-q63q",
+  "source_code_location": "https://github.com/yawkat/lz4-java",
+  "identifiers": [
+    {
+      "value": "GHSA-cmp6-m4wj-q63q",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2025-66566",
+      "type": "CVE"
+    }
+  ],
+  "references": [
+    "https://github.com/yawkat/lz4-java/security/advisories/GHSA-cmp6-m4wj-q63q",
+    "https://nvd.nist.gov/vuln/detail/CVE-2025-66566",
+    "https://github.com/yawkat/lz4-java/commit/33d180cb70c4d93c80fb0dc3ab3002f457e93840",
+    "https://github.com/advisories/GHSA-cmp6-m4wj-q63q"
+  ],
+  "published_at": "2025-12-05T18:54:55Z",
+  "updated_at": "2025-12-05T18:54:56Z",
+  "github_reviewed_at": "2025-12-05T18:54:55Z",
+  "nvd_published_at": "2025-12-05T18:15:59Z",
+  "withdrawn_at": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "maven",
+        "name": "at.yawk.lz4:lz4-java"
+      },
+      "vulnerable_version_range": "<= 1.10.0",
+      "first_patched_version": "1.10.1",
+      "vulnerable_functions": [
+
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "maven",
+        "name": "org.lz4:lz4-java"
+      },
+      "vulnerable_version_range": "<= 1.8.1",
+      "first_patched_version": null,
+      "vulnerable_functions": [
+
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "maven",
+        "name": "org.lz4:lz4-pure-java"
+      },
+      "vulnerable_version_range": "<= 1.8.1",
+      "first_patched_version": null,
+      "vulnerable_functions": [
+
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "maven",
+        "name": "net.jpountz.lz4:lz4"
+      },
+      "vulnerable_version_range": "<= 1.8.1",
+      "first_patched_version": null,
+      "vulnerable_functions": [
+
+      ]
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": null,
+      "score": 0.0
+    },
+    "cvss_v4": {
+      "vector_string": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+      "score": 8.2
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-201",
+      "name": "Insertion of Sensitive Information Into Sent Data"
+    }
+  ],
+  "credits": [
+    {
+      "user": {
+        "login": "simonresch",
+        "id": 65217285,
+        "node_id": "MDQ6VXNlcjY1MjE3Mjg1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65217285?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/simonresch",
+        "html_url": "https://github.com/simonresch",
+        "followers_url": "https://api.github.com/users/simonresch/followers",
+        "following_url": "https://api.github.com/users/simonresch/following{/other_user}",
+        "gists_url": "https://api.github.com/users/simonresch/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/simonresch/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/simonresch/subscriptions",
+        "organizations_url": "https://api.github.com/users/simonresch/orgs",
+        "repos_url": "https://api.github.com/users/simonresch/repos",
+        "events_url": "https://api.github.com/users/simonresch/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/simonresch/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "type": "reporter"
+    }
+  ],
+  "comments": 12,
+  "cvss": {
+    "vector_string": null,
+    "score": null
+  },
+  "epss": {
+    "percentage": 0.00649,
+    "percentile": 0.51567
+  }
+}

@@ -1,0 +1,277 @@
+Compiled from "RegionFileVersion.java"
+public class net.minecraft.world.level.chunk.storage.RegionFileVersion {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final it.unimi.dsi.fastutil.ints.Int2ObjectMap<net.minecraft.world.level.chunk.storage.RegionFileVersion> VERSIONS;
+
+  private static final it.unimi.dsi.fastutil.objects.Object2ObjectMap<java.lang.String, net.minecraft.world.level.chunk.storage.RegionFileVersion> VERSIONS_BY_NAME;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion VERSION_GZIP;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion VERSION_DEFLATE;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion VERSION_NONE;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion VERSION_LZ4;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion VERSION_CUSTOM;
+
+  public static final net.minecraft.world.level.chunk.storage.RegionFileVersion DEFAULT;
+
+  private static volatile net.minecraft.world.level.chunk.storage.RegionFileVersion selected;
+
+  private final int id;
+
+  private final java.lang.String optionName;
+
+  private final net.minecraft.world.level.chunk.storage.RegionFileVersion$StreamWrapper<java.io.InputStream> inputWrapper;
+
+  private final net.minecraft.world.level.chunk.storage.RegionFileVersion$StreamWrapper<java.io.OutputStream> outputWrapper;
+
+  private net.minecraft.world.level.chunk.storage.RegionFileVersion(int, java.lang.String, net.minecraft.world.level.chunk.storage.RegionFileVersion$StreamWrapper<java.io.InputStream>, net.minecraft.world.level.chunk.storage.RegionFileVersion$StreamWrapper<java.io.OutputStream>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #7                  // Field id:I
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field optionName:Ljava/lang/String;
+      14: aload_0
+      15: aload_3
+      16: putfield      #17                 // Field inputWrapper:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      19: aload_0
+      20: aload         4
+      22: putfield      #21                 // Field outputWrapper:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      25: return
+
+  private static net.minecraft.world.level.chunk.storage.RegionFileVersion register(net.minecraft.world.level.chunk.storage.RegionFileVersion);
+    Code:
+       0: getstatic     #24                 // Field VERSIONS:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: aload_0
+       4: getfield      #7                  // Field id:I
+       7: aload_0
+       8: invokeinterface #28,  3           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.put:(ILjava/lang/Object;)Ljava/lang/Object;
+      13: pop
+      14: aload_0
+      15: getfield      #13                 // Field optionName:Ljava/lang/String;
+      18: ifnull        35
+      21: getstatic     #34                 // Field VERSIONS_BY_NAME:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      24: aload_0
+      25: getfield      #13                 // Field optionName:Ljava/lang/String;
+      28: aload_0
+      29: invokeinterface #38,  3           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      34: pop
+      35: aload_0
+      36: areturn
+
+  public static net.minecraft.world.level.chunk.storage.RegionFileVersion fromId(int);
+    Code:
+       0: getstatic     #24                 // Field VERSIONS:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: iload_0
+       4: invokeinterface #43,  2           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.get:(I)Ljava/lang/Object;
+       9: checkcast     #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+      12: areturn
+
+  public static void configure(java.lang.String);
+    Code:
+       0: getstatic     #34                 // Field VERSIONS_BY_NAME:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+       3: aload_0
+       4: invokeinterface #47,  2           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+      12: astore_1
+      13: aload_1
+      14: ifnull        24
+      17: aload_1
+      18: putstatic     #50                 // Field selected:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+      21: goto          48
+      24: getstatic     #54                 // Field LOGGER:Lorg/slf4j/Logger;
+      27: ldc           #58                 // String Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}
+      29: aload_0
+      30: ldc           #60                 // String ,
+      32: getstatic     #34                 // Field VERSIONS_BY_NAME:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      35: invokeinterface #62,  1           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.keySet:()Lit/unimi/dsi/fastutil/objects/ObjectSet;
+      40: invokestatic  #66                 // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+      43: invokeinterface #72,  4           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      48: return
+
+  public static net.minecraft.world.level.chunk.storage.RegionFileVersion getSelected();
+    Code:
+       0: getstatic     #50                 // Field selected:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+       3: areturn
+
+  public static boolean isValidVersion(int);
+    Code:
+       0: getstatic     #24                 // Field VERSIONS:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: iload_0
+       4: invokeinterface #78,  2           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.containsKey:(I)Z
+       9: ireturn
+
+  public int getId();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field id:I
+       4: ireturn
+
+  public java.io.OutputStream wrap(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field outputWrapper:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+       4: aload_1
+       5: invokeinterface #82,  2           // InterfaceMethod net/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper.wrap:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #87                 // class java/io/OutputStream
+      13: areturn
+
+  public java.io.InputStream wrap(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field inputWrapper:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+       4: aload_1
+       5: invokeinterface #82,  2           // InterfaceMethod net/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper.wrap:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #89                 // class java/io/InputStream
+      13: areturn
+
+  private static java.io.OutputStream lambda$static$7(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #91                 // class java/lang/UnsupportedOperationException
+       3: dup
+       4: invokespecial #93                 // Method java/lang/UnsupportedOperationException."<init>":()V
+       7: athrow
+
+  private static java.io.InputStream lambda$static$6(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #91                 // class java/lang/UnsupportedOperationException
+       3: dup
+       4: invokespecial #93                 // Method java/lang/UnsupportedOperationException."<init>":()V
+       7: athrow
+
+  private static java.io.OutputStream lambda$static$5(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #94                 // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #96                 // class net/jpountz/lz4/LZ4BlockOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #98                 // Method net/jpountz/lz4/LZ4BlockOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #101                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream lambda$static$4(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #102                // class net/minecraft/util/FastBufferedInputStream
+       3: dup
+       4: new           #104                // class net/jpountz/lz4/LZ4BlockInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #106                // Method net/jpountz/lz4/LZ4BlockInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #109                // Method net/minecraft/util/FastBufferedInputStream."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  private static java.io.OutputStream lambda$static$3(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #94                 // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #110                // class java/util/zip/DeflaterOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #112                // Method java/util/zip/DeflaterOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #101                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream lambda$static$2(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #102                // class net/minecraft/util/FastBufferedInputStream
+       3: dup
+       4: new           #113                // class java/util/zip/InflaterInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #115                // Method java/util/zip/InflaterInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #109                // Method net/minecraft/util/FastBufferedInputStream."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  private static java.io.OutputStream lambda$static$1(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #94                 // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #116                // class java/util/zip/GZIPOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #118                // Method java/util/zip/GZIPOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #101                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream lambda$static$0(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #102                // class net/minecraft/util/FastBufferedInputStream
+       3: dup
+       4: new           #119                // class java/util/zip/GZIPInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #121                // Method java/util/zip/GZIPInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #109                // Method net/minecraft/util/FastBufferedInputStream."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #122                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #54                 // Field LOGGER:Lorg/slf4j/Logger;
+       6: new           #128                // class it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap
+       9: dup
+      10: invokespecial #130                // Method it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap."<init>":()V
+      13: putstatic     #24                 // Field VERSIONS:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      16: new           #131                // class it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+      19: dup
+      20: invokespecial #133                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap."<init>":()V
+      23: putstatic     #34                 // Field VERSIONS_BY_NAME:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      26: new           #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+      29: dup
+      30: iconst_1
+      31: aconst_null
+      32: invokedynamic #134,  0            // InvokeDynamic #0:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      37: invokedynamic #137,  0            // InvokeDynamic #1:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      42: invokespecial #138                // Method "<init>":(ILjava/lang/String;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;)V
+      45: invokestatic  #141                // Method register:(Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;)Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+      48: putstatic     #145                // Field VERSION_GZIP:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+      51: new           #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+      54: dup
+      55: iconst_2
+      56: ldc           #148                // String deflate
+      58: invokedynamic #150,  0            // InvokeDynamic #2:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      63: invokedynamic #151,  0            // InvokeDynamic #3:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      68: invokespecial #138                // Method "<init>":(ILjava/lang/String;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;)V
+      71: invokestatic  #141                // Method register:(Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;)Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+      74: putstatic     #152                // Field VERSION_DEFLATE:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+      77: new           #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+      80: dup
+      81: iconst_3
+      82: ldc           #155                // String none
+      84: invokedynamic #157,  0            // InvokeDynamic #4:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      89: invokedynamic #158,  0            // InvokeDynamic #5:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+      94: invokespecial #138                // Method "<init>":(ILjava/lang/String;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;)V
+      97: invokestatic  #141                // Method register:(Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;)Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     100: putstatic     #159                // Field VERSION_NONE:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     103: new           #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+     106: dup
+     107: iconst_4
+     108: ldc           #162                // String lz4
+     110: invokedynamic #164,  0            // InvokeDynamic #6:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+     115: invokedynamic #165,  0            // InvokeDynamic #7:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+     120: invokespecial #138                // Method "<init>":(ILjava/lang/String;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;)V
+     123: invokestatic  #141                // Method register:(Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;)Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     126: putstatic     #166                // Field VERSION_LZ4:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     129: new           #8                  // class net/minecraft/world/level/chunk/storage/RegionFileVersion
+     132: dup
+     133: bipush        127
+     135: aconst_null
+     136: invokedynamic #169,  0            // InvokeDynamic #8:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+     141: invokedynamic #170,  0            // InvokeDynamic #9:wrap:()Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;
+     146: invokespecial #138                // Method "<init>":(ILjava/lang/String;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;Lnet/minecraft/world/level/chunk/storage/RegionFileVersion$StreamWrapper;)V
+     149: invokestatic  #141                // Method register:(Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;)Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     152: putstatic     #171                // Field VERSION_CUSTOM:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     155: getstatic     #152                // Field VERSION_DEFLATE:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     158: putstatic     #174                // Field DEFAULT:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     161: getstatic     #174                // Field DEFAULT:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     164: putstatic     #50                 // Field selected:Lnet/minecraft/world/level/chunk/storage/RegionFileVersion;
+     167: return
+}

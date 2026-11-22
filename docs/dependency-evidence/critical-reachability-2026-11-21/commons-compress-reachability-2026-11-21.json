@@ -1,0 +1,1914 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-21",
+  "status": "incomplete-investigation-all-findings-remain-blocking",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "source_provenance": {
+    "finding_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+    },
+    "high_family_inspection": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+      "sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27"
+    },
+    "upstream_advisory_archive": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-critical-high.json.gz",
+      "sha256": "3ee9b12a841d2b0b0009e85b70f9766b0df6c1cc2d9033518a4d833fa57839d8"
+    },
+    "high_family_inspector_method": "Exact Mojang client/library bytes verified by the existing source-bound collector; game client constant-pool references are recorded per version. Absence of a literal reference is not call-graph proof."
+  },
+  "package": {
+    "coordinate": "org.apache.commons:commons-compress:1.8.1",
+    "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+    "dependency_owner": "Minecraft runtime manifest",
+    "manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+    "size_bytes": 365552,
+    "sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+    "sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+    "runtime_minecraft_versions": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3",
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1"
+    ]
+  },
+  "decompiler_provenance": {
+    "name": "CFR",
+    "version": "0.152",
+    "distribution_url": "https://repo.maven.apache.org/maven2/org/benf/cfr/0.152/cfr-0.152.jar",
+    "sha256": "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2",
+    "notes": "CFR 0.152 was used for local inspection of pinned Minecraft client classes and the exact Mojang Realms 1.14.17 runtime JAR. Decompiled source was not committed. The Realm TAR downloader, UI caller, and server-result caller class files were hash-checked in all four 1.14.14-1.14.17 artifacts."
+  },
+  "code_path_examples": [
+    {
+      "minecraft_version": "1.14.4",
+      "client_jar_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+      "client_jar_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a",
+      "mapped_class": "com.mojang.realmsclient.client.FileDownload",
+      "obfuscated_class": "cvj.class",
+      "class_sha256": "01d2b6639ec3ede9396617267aef619063640869f31f4a6e547006101b21f7a7",
+      "mappings_sha1": "6073e4ba6949217eb708c4512be2ccc1850a603f",
+      "mappings_sha256": "2dd53a5e70ba493cf6e33c0fc52bbdf4c57f9429c7a13842565aa825fd44d910",
+      "mapped_methods": [
+        "download(WorldDownload, String, DownloadStatus, LevelStorageSource)",
+        "untarGzipArchive(String, File, LevelStorageSource)"
+      ],
+      "observed_behavior": "Downloads WorldDownload.downloadLink into temporary .tar.gz, then wraps GzipCompressorInputStream and TarArchiveInputStream and iterates TarArchiveEntry objects."
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "client_jar_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+      "client_jar_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d",
+      "mapped_class": "com.mojang.realmsclient.client.FileDownload",
+      "obfuscated_class": "dqx.class",
+      "class_sha256": "c17a406c15f44d6a9eb69ef2533808364163157023302face62b1d33b02a1a92",
+      "mappings_sha1": "e4d540e0cba05a6097e885dffdf363e621f87d3f",
+      "mappings_sha256": "2b28ded68f8602aaf2f35ef92dd10ee41ba2cf9723e29570155d60e1723848e9",
+      "mapped_methods": [
+        "download(WorldDownload, String, DownloadStatus, LevelStorageSource)",
+        "untarGzipArchive(String, File, LevelStorageSource)"
+      ],
+      "observed_behavior": "Downloads WorldDownload.downloadLink into temporary .tar.gz, then wraps GzipCompressorInputStream and TarArchiveInputStream and iterates TarArchiveEntry objects."
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "mapped_class": "com.mojang.realmsclient.client.RealmsClient",
+      "obfuscated_class": "dra.class",
+      "class_sha256": "1c9e78b1c04cae67e5bb7e6768c42caaec4f84835becba650ffcc79e803775dd",
+      "mapped_method": "requestDownloadInfo(long, int)",
+      "endpoint_template": "/worlds/{WORLD_ID}/slot/{SLOT_ID}/download",
+      "artifact": "same exact 1.17.1 client jar and mappings as FileDownload example"
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "mapped_class": "com.mojang.realmsclient.dto.WorldDownload",
+      "obfuscated_class": "dsf.class",
+      "class_sha256": "1b3c92ffe27e47d5c25da208ad7d46fd0837568bf054c28bebd851aca506215f",
+      "mapped_method": "parse(String)",
+      "observed_behavior": "Reads JSON field downloadLink into WorldDownload.downloadLink."
+    }
+  ],
+  "reachability_scope": {
+    "tar_parser_reference_versions": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3",
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1"
+    ],
+    "game_client_tar_parser_reference_versions": [
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1"
+    ],
+    "realms_runtime_library_tar_parser_reference_versions": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3"
+    ],
+    "game_client_versions_without_direct_tar_parser_reference": [
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3"
+    ],
+    "7z_direct_reference_versions": [],
+    "zip_archive_input_stream_direct_reference_versions": [],
+    "scope_limit": "The TAR caller list combines literal references in the exact game-client binaries and the exact Mojang Realms 1.14.14-1.14.17 runtime JARs. It does not prove every caller, launcher/plugin path, reflective path, or arbitrary installed-mod path."
+  },
+  "findings": [
+    {
+      "advisory_id": "GHSA-xqfj-vm6h-2x34",
+      "aliases": [
+        "CVE-2021-35517"
+      ],
+      "severity": "HIGH",
+      "component": "org.apache.commons:commons-compress",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-xqfj-vm6h-2x34",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.commons:commons-compress",
+          "vulnerable_version_range": "< 1.21",
+          "first_patched_version": "1.21"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "classes": [
+                "cvj.class"
+              ]
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [
+            "1.14.4"
+          ],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "8bad139ba3cf1bb675af773810255bc8406cd52d01fc5d37f138095f80be4afe",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "coordinate": "com.mojang:realms:1.14.14",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.14/realms-1.14.14.jar",
+                "sha1": "93a4cea4eeb81b0d8c042fe46977e670f3b036ac",
+                "size": 6364649,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.14/realms-1.14.14.jar"
+              },
+              "artifact_sha256": "8cd1aa97e0bf73e242b6043762fe1d03f67b4ebfe719c0ca5084483c9f90b953",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "coordinate": "com.mojang:realms:1.14.15",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.15/realms-1.14.15.jar",
+                "sha1": "b414341661ed1b32899beb9787f08927ffee634f",
+                "size": 6364656,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.15/realms-1.14.15.jar"
+              },
+              "artifact_sha256": "006e59c077a9128afc9591b9d1f12b6f387985d92aad18ddec99fea862b73ec6",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "coordinate": "com.mojang:realms:1.14.16",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.16/realms-1.14.16.jar",
+                "sha1": "c471ed4220097ec622a6b035395a5ad4abedec9e",
+                "size": 6364656,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.16/realms-1.14.16.jar"
+              },
+              "artifact_sha256": "84da4f9047616ece911914ecbbc51c7eb60a16f5ce76bde9b94061eebd3ffcf4",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "coordinate": "com.mojang:realms:1.14.17",
+              "artifact": {
+                "path": "com/mojang/realms/1.14.17/realms-1.14.17.jar",
+                "sha1": "34fe59f43058b2565905b2f073149e709ec9f3ba",
+                "size": 6364655,
+                "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.17/realms-1.14.17.jar"
+              },
+              "artifact_sha256": "55981b2784d25d480c2106670713a4e48721fc4fd3dba681dd09c9c71c7260ce",
+              "literal_reference_matches": [
+                "realms/c.class"
+              ],
+              "class_path": "realms/c.class",
+              "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+              "related_call_path_classes": [
+                {
+                  "path": "realms/c.class",
+                  "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+                },
+                {
+                  "path": "realms/ah.class",
+                  "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+                },
+                {
+                  "path": "realms/ab.class",
+                  "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+                }
+              ],
+              "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+            }
+          ]
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.15",
+              "classes": [
+                "cys.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "classes": [
+                "cys.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "classes": [
+                "cyv.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16",
+              "classes": [
+                "dhx.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "classes": [
+                "dhx.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "classes": [
+                "dfv.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "classes": [
+                "dfv.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "classes": [
+                "dfy.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "classes": [
+                "dfy.class"
+              ]
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "8bad139ba3cf1bb675af773810255bc8406cd52d01fc5d37f138095f80be4afe",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": []
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.17",
+              "classes": [
+                "dqw.class"
+              ]
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "classes": [
+                "dqx.class"
+              ]
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [
+            "1.17",
+            "1.17.1"
+          ],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "8bad139ba3cf1bb675af773810255bc8406cd52d01fc5d37f138095f80be4afe",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "runtime_library_vulnerable_api_reference_observations": []
+        }
+      ],
+      "vulnerable_api_or_class": "org/apache/commons/compress/archivers/tar/TarArchiveInputStream",
+      "actual_call_path": "The exact Minecraft 1.14, 1.14.1, 1.14.2, and 1.14.3 runtime manifests include Mojang Realms 1.14.14-1.14.17. In these JARs, realms/ab obtains a WorldDownload and opens the download UI; realms/ah starts a worker that calls realms/c with WorldDownload.downloadLink. realms/c performs an HTTP GET, downloads the gzip TAR, then constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. These three caller class hashes match across all four JARs. In Minecraft 1.14.4 and 1.15-1.17.1 the equivalent path is present directly in the exact client binary as Mojang-mapped com.mojang.realmsclient.client.FileDownload. CFR inspection of the exact Mojang artifacts was performed for 1.14.17 Realms, 1.14.4 client, and 1.17.1 client; the source-bound literal reference scan covers every listed version.",
+      "effective_configuration": "The Realms world-backup download path is an optional UI action; it does not execute on ordinary client startup. The Realms API returns a WorldDownload containing a downloadLink, and that response body is downloaded and parsed as a gzip TAR. The exact malformed TAR header control required to trigger CVE-2021-35517 was not established.",
+      "reachability_finding": "The affected Commons Compress 1.8.1 TAR parser is reachable on the optional Realms world-download path in every affected package version from Minecraft 1.14 through 1.17.1: the first four versions call it from the Mojang com.mojang:realms runtime JAR, while 1.14.4-1.17.1 call it from the client binary. This confirms component reachability, not exploitability. The required attacker control over malformed TAR metadata and the resulting DoS impact remain unverified; this is not a non-applicability finding.",
+      "verified_mitigation": "No mod-controlled mitigation was identified. The game owns Commons Compress; the mod does not declare or bundle this library and no runtime override was made.",
+      "compatible_remediation": "The authoritative advisory lists Commons Compress 1.21 as first patched for this package range. Minecraft versions with the affected 1.8.1 manifest need a game-side, compatibility-tested library update; no mod-side override is supported.",
+      "remaining_uncertainty": "The Realm server creates the archive. No controlled experiment established whether a Realm owner can cause server output to contain the inconsistent TAR metadata required by CVE-2021-35517. No end-to-end Realms backup test or isolated reproducer against exact Commons Compress 1.8.1 and fixed 1.21 was run. The TAR extraction destination uses entry names to construct save paths; path normalization and archive-entry control need a separate security review.",
+      "confidence": "High for exact package and runtime artifact identities and presence of the TAR parser path across Minecraft 1.14-1.17.1; high for the decompiled 1.14.17/1.14.4/1.17.1 invocation paths and identical 1.14.x Realm caller classes; low for attacker control of server-generated TAR headers and exploitability.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed runtime dependency and Realms client path)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Establish with a safe mock or Mojang-supplied test Realm whether a Realm owner can control the TAR size/length fields that trigger CVE-2021-35517.",
+        "Reproduce the upstream TAR denial-of-service with exact Commons Compress 1.8.1 in a resource-limited isolated process, then compare with fixed 1.21.",
+        "Review the Realms TAR extraction path for traversal and enforce normalized containment upstream if vulnerable.",
+        "Request Mojang to update the game-owned Commons Compress runtime on affected versions; do not override it in this mod."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-7hfm-57qf-j43q",
+      "aliases": [
+        "CVE-2021-35515"
+      ],
+      "severity": "HIGH",
+      "component": "org.apache.commons:commons-compress",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-7hfm-57qf-j43q",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.commons:commons-compress",
+          "vulnerable_version_range": "< 1.21",
+          "first_patched_version": "1.21"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "32da4018ea4feefd855b21d793b34a765561f2f79834829387865cd1dcbec679",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.15",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "32da4018ea4feefd855b21d793b34a765561f2f79834829387865cd1dcbec679",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.17",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "32da4018ea4feefd855b21d793b34a765561f2f79834829387865cd1dcbec679",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        }
+      ],
+      "vulnerable_api_or_class": "org/apache/commons/compress/archivers/sevenz/SevenZFile",
+      "actual_call_path": "No direct game-client class reference to org/apache/commons/compress/archivers/sevenz/SevenZFile was found in the inspected exact client binaries for these occurrences. The package is present in the game runtime classpath. This constant-pool result is not a complete call-graph, reflective, third-party, or arbitrary-mod analysis.",
+      "effective_configuration": "No first-party vanilla client invocation was found for the vulnerable archive class in the inspected binaries; third-party mods, reflection, and launcher-added code were not excluded.",
+      "reachability_finding": "A first-party vanilla client call path to the vulnerable 7z/ZIP API was not identified by the exact-client literal scan. This is insufficient for Not applicable because indirect, reflective, library-to-library, and third-party mod paths have not been excluded.",
+      "verified_mitigation": "No mod-controlled mitigation was identified. The game owns Commons Compress; the mod does not declare or bundle this library and no runtime override was made.",
+      "compatible_remediation": "The authoritative advisory lists Commons Compress 1.21 as first patched for this package range. Minecraft versions with the affected 1.8.1 manifest need a game-side, compatibility-tested library update; no mod-side override is supported.",
+      "remaining_uncertainty": "A full call graph across game libraries, supported launchers, reflective paths, and arbitrary installed mods was not performed; this is not a non-applicability clearance.",
+      "confidence": "High that no direct literal reference was found in inspected vanilla clients; low for complete runtime non-reachability.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed runtime dependency and Realms client path)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Trace indirect and reflective calls to the vulnerable archive API in actual launcher/runtime classpaths and third-party mods.",
+        "Review any game parsing path and untrusted input source before assigning Not applicable.",
+        "Request a game-side Commons Compress update for affected game lines; do not override it in the mod."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-crv7-7245-f45f",
+      "aliases": [
+        "CVE-2021-35516"
+      ],
+      "severity": "HIGH",
+      "component": "org.apache.commons:commons-compress",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-crv7-7245-f45f",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.commons:commons-compress",
+          "vulnerable_version_range": "< 1.21",
+          "first_patched_version": "1.21"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "f04440d199d452e93298ce79b75da858e1bc4ec00853963cac4d0c99941d0f8d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.15",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "f04440d199d452e93298ce79b75da858e1bc4ec00853963cac4d0c99941d0f8d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.17",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "f04440d199d452e93298ce79b75da858e1bc4ec00853963cac4d0c99941d0f8d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        }
+      ],
+      "vulnerable_api_or_class": "org/apache/commons/compress/archivers/sevenz/SevenZFile",
+      "actual_call_path": "No direct game-client class reference to org/apache/commons/compress/archivers/sevenz/SevenZFile was found in the inspected exact client binaries for these occurrences. The package is present in the game runtime classpath. This constant-pool result is not a complete call-graph, reflective, third-party, or arbitrary-mod analysis.",
+      "effective_configuration": "No first-party vanilla client invocation was found for the vulnerable archive class in the inspected binaries; third-party mods, reflection, and launcher-added code were not excluded.",
+      "reachability_finding": "A first-party vanilla client call path to the vulnerable 7z/ZIP API was not identified by the exact-client literal scan. This is insufficient for Not applicable because indirect, reflective, library-to-library, and third-party mod paths have not been excluded.",
+      "verified_mitigation": "No mod-controlled mitigation was identified. The game owns Commons Compress; the mod does not declare or bundle this library and no runtime override was made.",
+      "compatible_remediation": "The authoritative advisory lists Commons Compress 1.21 as first patched for this package range. Minecraft versions with the affected 1.8.1 manifest need a game-side, compatibility-tested library update; no mod-side override is supported.",
+      "remaining_uncertainty": "A full call graph across game libraries, supported launchers, reflective paths, and arbitrary installed mods was not performed; this is not a non-applicability clearance.",
+      "confidence": "High that no direct literal reference was found in inspected vanilla clients; low for complete runtime non-reachability.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed runtime dependency and Realms client path)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Trace indirect and reflective calls to the vulnerable archive API in actual launcher/runtime classpaths and third-party mods.",
+        "Review any game parsing path and untrusted input source before assigning Not applicable.",
+        "Request a game-side Commons Compress update for affected game lines; do not override it in the mod."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-mc84-pj99-q6hh",
+      "aliases": [
+        "CVE-2021-36090"
+      ],
+      "severity": "HIGH",
+      "component": "org.apache.commons:commons-compress",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-mc84-pj99-q6hh",
+      "upstream_advisory_authority": null,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.commons:commons-compress",
+          "vulnerable_version_range": "< 1.21",
+          "first_patched_version": "1.21"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.14",
+              "version_metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+              "client_sha1": "7a762a59345c13af7d87111207a93f5a8607f6c0",
+              "client_sha256": "93907cbf0655aa5f10d049efa4d745f4250eecc5d0d5d1268046eec3144f323a"
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "version_metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+              "client_sha1": "55ba86ddcbc3579397f41910463ffd4056e1e523",
+              "client_sha256": "7194d1326cf796f62ac55f3cb56f851c232895639ae27510f3207d5a73f91814"
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "version_metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+              "client_sha1": "ca6c5a139045967229975c0c0b7f93e78b4314c2",
+              "client_sha256": "9b740c9fd4955981125ebd3cd086baa8b4392963d043a3480b5b942a96637c25"
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "version_metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+              "client_sha1": "af100b34ec7ef2b8b9cf7775b544d21d690dddec",
+              "client_sha256": "4063062677433988e012fba53e42e4c21adb6919ac7f061f19f3c6e75b334e07"
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+              "client_sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+              "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.14",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.14.4",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "98858fd078ac32be6dfe4fee3600f75a43a1c71fcda0e787a389e3e871cc21a1",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.15",
+              "version_metadata_sha1": "833322370ab320e77717097082effe1d124d48bd",
+              "client_sha1": "7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800",
+              "client_sha256": "41eee66b4c8e76c018745a63a46a15097cc1c6482c94b38801054938a010b21b"
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "version_metadata_sha1": "18c3063de87ae126b4e017121219ba802be0755b",
+              "client_sha1": "8b11614bea9293592a947ea8f4fd72981ea66677",
+              "client_sha256": "6e28ecd008d0ca5e1dcd346dbc2882430f02a77a78864d57acc49fc8bc1b5358"
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "version_metadata_sha1": "e9d0adb8f642abe422909ede50f651b2b58a3573",
+              "client_sha1": "e3f78cd16f9eb9a52307ed96ebec64241cc5b32d",
+              "client_sha256": "4a73008a73f3824b7c711750a5a37556df8614f193c0a531e292dad159a73a7c"
+            },
+            {
+              "minecraft_version": "1.16",
+              "version_metadata_sha1": "e9d21d375f9c961f0e9731d4e463306d76e77c48",
+              "client_sha1": "228fdf45541c4c2fe8aec4f20e880cb8fcd46621",
+              "client_sha256": "00740ef4475d4cd0a1d7064f89602f759c45ff9afe29da9b0ee0b9037ebb2a71"
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "version_metadata_sha1": "54fa3af57d041d2771e66d390197b2c0288e697c",
+              "client_sha1": "c9abbe8ee4fa490751ca70635340b7cf00db83ff",
+              "client_sha256": "b4831e7b63b10588ff06ea86322108d916c536446f3aea3ae988b7fe3e1f66ef"
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "version_metadata_sha1": "998d9ef5770d05c20d760dc16cf85151f35009f2",
+              "client_sha1": "653e97a2d1d76f87653f02242d243cdee48a5144",
+              "client_sha256": "19960f4e3c60f2723f361844d2b4020b8bf2160bd91a1e1efde8ce5aea4ff73d"
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "version_metadata_sha1": "6485dd131ef68c968041a9f6fd73094b027e42e1",
+              "client_sha1": "1321521b2caf934f7fc9665aab7e059a7b2bfcdf",
+              "client_sha256": "da85197babd989a7de318774cf5d97bcef95e89a70c9fa9a4c8180463e9589fa"
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "version_metadata_sha1": "596ad61fda7612d9edf8881cf81869276bdb7f82",
+              "client_sha1": "1952d94a0784e7abda230aae6a1e8fc0522dba99",
+              "client_sha256": "d6740464ee2bdf37d285c5d368d2e16497492427fb5783e2db3482bbf0079ed0"
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "version_metadata_sha1": "fba9f7833e858a1257d810d21a3a9e3c967f9077",
+              "client_sha1": "37fd3c903861eeff3bc24b71eed48f828b5269c8",
+              "client_sha256": "00b5ebbc33e95ea88c1ab80601599c9827e9aa861d93ccc2cfcbbfd996e86263"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.15",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.15.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.1",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.2",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.3",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.4",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.16.5",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "98858fd078ac32be6dfe4fee3600f75a43a1c71fcda0e787a389e3e871cc21a1",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.17",
+              "version_metadata_sha1": "0d9ace8a2ecfd1f4c782786f4b985a499240ff12",
+              "client_sha1": "1cf89c77ed5e72401b869f66410934804f3d6f52",
+              "client_sha256": "14122287d4e4256c2d65ec8c0ccfa3b56448495fa3ccabc87d0f0eeb4fa1c30f"
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+              "client_sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+              "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d"
+            }
+          ],
+          "client_vulnerable_api_reference_observations": [
+            {
+              "minecraft_version": "1.17",
+              "classes": []
+            },
+            {
+              "minecraft_version": "1.17.1",
+              "classes": []
+            }
+          ],
+          "purl": "pkg:maven/org.apache.commons/commons-compress@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1"
+          ],
+          "dependency_owner": "Minecraft runtime manifest",
+          "scope_interpretation": "The Gradle scope is the resolved game-library development graph; the pinned runtime manifests supply this package. It is not a mod-declared library or Gradle plugin dependency.",
+          "dependency_artifact_sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+          "dependency_artifact_sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+          "vulnerable_api_directly_referenced_in_game_versions": [],
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "98858fd078ac32be6dfe4fee3600f75a43a1c71fcda0e787a389e3e871cc21a1",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true
+        }
+      ],
+      "vulnerable_api_or_class": "org/apache/commons/compress/archivers/zip/ZipArchiveInputStream",
+      "actual_call_path": "No direct game-client class reference to org/apache/commons/compress/archivers/zip/ZipArchiveInputStream was found in the inspected exact client binaries for these occurrences. The package is present in the game runtime classpath. This constant-pool result is not a complete call-graph, reflective, third-party, or arbitrary-mod analysis.",
+      "effective_configuration": "No first-party vanilla client invocation was found for the vulnerable archive class in the inspected binaries; third-party mods, reflection, and launcher-added code were not excluded.",
+      "reachability_finding": "A first-party vanilla client call path to the vulnerable 7z/ZIP API was not identified by the exact-client literal scan. This is insufficient for Not applicable because indirect, reflective, library-to-library, and third-party mod paths have not been excluded.",
+      "verified_mitigation": "No mod-controlled mitigation was identified. The game owns Commons Compress; the mod does not declare or bundle this library and no runtime override was made.",
+      "compatible_remediation": "The authoritative advisory lists Commons Compress 1.21 as first patched for this package range. Minecraft versions with the affected 1.8.1 manifest need a game-side, compatibility-tested library update; no mod-side override is supported.",
+      "remaining_uncertainty": "A full call graph across game libraries, supported launchers, reflective paths, and arbitrary installed mods was not performed; this is not a non-applicability clearance.",
+      "confidence": "High that no direct literal reference was found in inspected vanilla clients; low for complete runtime non-reachability.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed runtime dependency and Realms client path)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-21",
+      "follow_up_requirements": [
+        "Trace indirect and reflective calls to the vulnerable archive API in actual launcher/runtime classpaths and third-party mods.",
+        "Review any game parsing path and untrusted input source before assigning Not applicable.",
+        "Request a game-side Commons Compress update for affected game lines; do not override it in the mod."
+      ]
+    }
+  ],
+  "build_gradle_control_assessment": {
+    "method": "Read build.gradle by exact source commit through GitHub file API and recorded the returned Git blob SHA plus direct dependency declarations.",
+    "result": "No source group directly declares Commons Compress, Netty, Log4j, LZ4, Jackson, Guava, or Apache Commons dependencies. The only dependency declarations are the Minecraft game artifact and Fabric Loader. This does not inspect the Loom/Gradle plugin transitive classpaths; the advisory scopes in this investigation bind to Minecraft runtime manifests.",
+    "sources": [
+      {
+        "source_kind": "candidate",
+        "group": "1.14-1.14.4",
+        "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+        "build_gradle_blob_sha": "8f1bf661ec6466767dd6f118423065459257ae8a",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.15-1.16.5",
+        "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+        "build_gradle_blob_sha": "fdfa2905719d8544f25347fedf8b5c4027dd5965",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.17-1.19.2",
+        "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+        "build_gradle_blob_sha": "12e014eab11789725c6f4dbe05e5696752301569",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.19.3",
+        "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+        "build_gradle_blob_sha": "b396b8ac5b708bb7973fec0e1b9d8f7d217994d4",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.19.4-1.20.4",
+        "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25",
+        "build_gradle_blob_sha": "b396b8ac5b708bb7973fec0e1b9d8f7d217994d4",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.20.5-1.20.6",
+        "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+        "build_gradle_blob_sha": "e38edc1f2400c164e40bc246bef610ddfecb76a0",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21-1.21.1",
+        "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+        "build_gradle_blob_sha": "e38edc1f2400c164e40bc246bef610ddfecb76a0",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.2-1.21.3",
+        "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+        "build_gradle_blob_sha": "e38edc1f2400c164e40bc246bef610ddfecb76a0",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.4-1.21.8",
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+        "build_gradle_blob_sha": "e38edc1f2400c164e40bc246bef610ddfecb76a0",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.9-1.21.10",
+        "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+        "build_gradle_blob_sha": "e38edc1f2400c164e40bc246bef610ddfecb76a0",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "integrated",
+        "group": "1.21.11",
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+        "build_gradle_blob_sha": "f748f5d2d052968527f8c80504b3893a57f90b49",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "modImplementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "integrated",
+        "group": "26.1-26.2",
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "build_gradle_blob_sha": "838f6e705ef1d5b4212a2494bf7206f85060ca2b",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "implementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      },
+      {
+        "source_kind": "integrated",
+        "group": "26.3",
+        "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+        "build_gradle_blob_sha": "e2f1dea4ea721355157d5e754439d4b07063bf0a",
+        "dependency_declarations": [
+          "minecraft com.mojang:minecraft:${project.minecraft_version}",
+          "implementation net.fabricmc:fabric-loader:${project.loader_version}"
+        ]
+      }
+    ]
+  },
+  "additional_runtime_library_callers": [
+    {
+      "minecraft_version": "1.14",
+      "coordinate": "com.mojang:realms:1.14.14",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.14/realms-1.14.14.jar",
+        "sha1": "93a4cea4eeb81b0d8c042fe46977e670f3b036ac",
+        "size": 6364649,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.14/realms-1.14.14.jar"
+      },
+      "artifact_sha256": "8cd1aa97e0bf73e242b6043762fe1d03f67b4ebfe719c0ca5084483c9f90b953",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.1",
+      "coordinate": "com.mojang:realms:1.14.15",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.15/realms-1.14.15.jar",
+        "sha1": "b414341661ed1b32899beb9787f08927ffee634f",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.15/realms-1.14.15.jar"
+      },
+      "artifact_sha256": "006e59c077a9128afc9591b9d1f12b6f387985d92aad18ddec99fea862b73ec6",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.2",
+      "coordinate": "com.mojang:realms:1.14.16",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.16/realms-1.14.16.jar",
+        "sha1": "c471ed4220097ec622a6b035395a5ad4abedec9e",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.16/realms-1.14.16.jar"
+      },
+      "artifact_sha256": "84da4f9047616ece911914ecbbc51c7eb60a16f5ce76bde9b94061eebd3ffcf4",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    },
+    {
+      "minecraft_version": "1.14.3",
+      "coordinate": "com.mojang:realms:1.14.17",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.17/realms-1.14.17.jar",
+        "sha1": "34fe59f43058b2565905b2f073149e709ec9f3ba",
+        "size": 6364655,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.17/realms-1.14.17.jar"
+      },
+      "artifact_sha256": "55981b2784d25d480c2106670713a4e48721fc4fd3dba681dd09c9c71c7260ce",
+      "literal_reference_matches": [
+        "realms/c.class"
+      ],
+      "class_path": "realms/c.class",
+      "class_sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ],
+      "observed_call_path": "Exact com.mojang:realms library implementation: realms/ab requests a WorldDownload and opens the download UI; realms/ah starts a worker that passes WorldDownload.downloadLink to realms/c; realms/c issues an HTTP GET, downloads the gzip TAR, constructs GzipCompressorInputStream and TarArchiveInputStream, calls getNextTarEntry, and extracts entries. CFR 0.152 inspection was performed on the exact 1.14.17 artifact. The realms/c, realms/ah, and realms/ab class bytes are identical across the four 1.14.x artifacts listed here."
+    }
+  ]
+}

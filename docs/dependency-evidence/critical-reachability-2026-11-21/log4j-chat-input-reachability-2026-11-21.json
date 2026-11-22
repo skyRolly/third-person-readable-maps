@@ -1,0 +1,460 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-21",
+  "status": "reachability-confirmed-but-launcher-dependent-clearance-incomplete",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "advisory_ids": [
+    "GHSA-jfh8-c2jp-5v3q",
+    "GHSA-7rjr-3q55-vv33",
+    "GHSA-fxph-q3j8-mv87"
+  ],
+  "source_provenance": {
+    "finding_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+    },
+    "high_family_inspection": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+      "sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27"
+    },
+    "existing_component_probe_report": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
+      "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7"
+    },
+    "new_parameterized_chat_probe_report": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-parameter-probes-2026-11-21.json",
+      "sha256": "b61a3a3a8c520a758c03dd92cddd479c3d1a520f02afd9b308a8ce37134124f3"
+    },
+    "cfr": {
+      "version": "0.152",
+      "sha256": "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2"
+    },
+    "external_launcher_xml": {
+      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/client-1.12.xml",
+      "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4"
+    },
+    "embedded_xml_fixtures": [
+      {
+        "path": "tests/fixtures/critical_reachability/1.14.4-embedded.xml",
+        "sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a"
+      },
+      {
+        "path": "tests/fixtures/critical_reachability/1.18.1-embedded.xml",
+        "sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9"
+      }
+    ],
+    "chat_probe_fixture": {
+      "path": "tests/fixtures/critical_reachability/ChatJndiProbe.java",
+      "sha256": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb"
+    },
+    "chat_probe_runner": {
+      "path": "scripts/probe_dependency_reachability.py",
+      "sha256": "b940ad70eabe7a61a7e30158e9c2cf7eb2313cd30866f5d4e172f1eb405d3dff"
+    }
+  },
+  "source_group_bindings": [
+    {
+      "source_kind": "candidate",
+      "group": "1.14-1.14.4",
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "minecraft_versions": [
+        "1.14",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4"
+      ],
+      "source_report": {
+        "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+        "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+      },
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "package_version": "2.8.1",
+      "dependency_scopes": [
+        "gradle",
+        "runtime/1.14",
+        "runtime/1.14.1",
+        "runtime/1.14.2",
+        "runtime/1.14.3",
+        "runtime/1.14.4"
+      ],
+      "dependency_owner": "Minecraft version manifest / game runtime",
+      "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+      "advisory_occurrences": [
+        "GHSA-7rjr-3q55-vv33",
+        "GHSA-fxph-q3j8-mv87",
+        "GHSA-jfh8-c2jp-5v3q"
+      ]
+    },
+    {
+      "source_kind": "candidate",
+      "group": "1.15-1.16.5",
+      "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+      "minecraft_versions": [
+        "1.15",
+        "1.15.1",
+        "1.15.2",
+        "1.16",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5"
+      ],
+      "source_report": {
+        "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+        "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+      },
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+      "package_version": "2.8.1",
+      "dependency_scopes": [
+        "gradle",
+        "runtime/1.15",
+        "runtime/1.15.1",
+        "runtime/1.15.2",
+        "runtime/1.16",
+        "runtime/1.16.1",
+        "runtime/1.16.2",
+        "runtime/1.16.3",
+        "runtime/1.16.4",
+        "runtime/1.16.5"
+      ],
+      "dependency_owner": "Minecraft version manifest / game runtime",
+      "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+      "advisory_occurrences": [
+        "GHSA-7rjr-3q55-vv33",
+        "GHSA-fxph-q3j8-mv87",
+        "GHSA-jfh8-c2jp-5v3q"
+      ]
+    },
+    {
+      "source_kind": "candidate",
+      "group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "minecraft_versions": [
+        "1.17",
+        "1.17.1",
+        "1.18",
+        "1.18.1"
+      ],
+      "source_report": {
+        "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+        "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+      },
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+      "package_version": "2.14.1",
+      "dependency_scopes": [
+        "gradle",
+        "runtime/1.17",
+        "runtime/1.17.1",
+        "runtime/1.18",
+        "runtime/1.18.1"
+      ],
+      "dependency_owner": "Minecraft version manifest / game runtime",
+      "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+      "advisory_occurrences": [
+        "GHSA-7rjr-3q55-vv33",
+        "GHSA-jfh8-c2jp-5v3q"
+      ]
+    }
+  ],
+  "exact_client_code_path_samples": [
+    {
+      "minecraft_version": "1.14.4",
+      "source_kind": "candidate",
+      "source_group": "1.14-1.14.4",
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "version_metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+      "client_artifact": {
+        "sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+        "size": 25191691,
+        "url": "https://piston-data.mojang.com/v1/objects/8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9/client.jar"
+      },
+      "client_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a",
+      "log4j_core_coordinate": "org.apache.logging.log4j:log4j-core:2.8.1",
+      "log4j_core_artifact": {
+        "path": "org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar",
+        "sha1": "4ac28ff2f1ddf05dae3043a190451e8c46b73c31",
+        "size": 1402925,
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar"
+      },
+      "log4j_core_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+      "patchy_coordinate": "com.mojang:patchy:1.3.9",
+      "patchy_artifact": {
+        "path": "com/mojang/patchy/1.3.9/patchy-1.3.9.jar",
+        "sha1": "eb8bb7b66fa0e2152b1b40b3856e82f7619439ee",
+        "size": 23581,
+        "url": "https://libraries.minecraft.net/com/mojang/patchy/1.3.9/patchy-1.3.9.jar"
+      },
+      "patchy_sha256": "79f5a9d8c788489d3375cb77cc826a905e261e50d23f31b94c2d5f2b92ad3dc6",
+      "manifest_runtime_library_order": [
+        {
+          "index": 0,
+          "coordinate": "com.mojang:patchy:1.3.9"
+        },
+        {
+          "index": 24,
+          "coordinate": "org.apache.logging.log4j:log4j-core:2.8.1"
+        }
+      ],
+      "official_version_metadata_logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "file": {
+          "id": "client-1.12.xml",
+          "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+          "size": 888,
+          "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+        },
+        "type": "log4j2-xml"
+      },
+      "embedded_log4j2_xml_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "class_observations": [
+        {
+          "role": "packet",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundChatPacket",
+          "obfuscated_class": "kv.class",
+          "class_sha256": "7b7259d04eef53181dd9bd922c7459e7b5ea7542a18f677bbd6f8f1a61c76824"
+        },
+        {
+          "role": "listener",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener",
+          "obfuscated_class": "dkc.class",
+          "class_sha256": "429721d40c5912ad916302eeca57d1cd1e1e6b61fd64aa06a0527976d06e52a5"
+        },
+        {
+          "role": "chat_component",
+          "mapped_class": "net.minecraft.client.gui.components.ChatComponent",
+          "obfuscated_class": "czj.class",
+          "class_sha256": "76a82fef1f7ef08abfd0e7de5f7caf7947256906066cbc18c428c7610ffe2e7a"
+        }
+      ],
+      "observed_call_path": [
+        "ClientboundChatPacket.read(FriendlyByteBuf) -> ClientPacketListener.handleChat(ClientboundChatPacket) -> ChatComponent.addMessage(Component) -> Logger.info(\"[CHAT] {}\", Component.getString())"
+      ],
+      "attacker_input": "A remote multiplayer server can send a ClientboundChatPacket whose message component text is processed by the client chat component and passed to the [CHAT] logger call. This is a static exact-client path; no live server session was used."
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "source_kind": "candidate",
+      "source_group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "version_metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+      "client_artifact": {
+        "sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+        "size": 19546842,
+        "url": "https://piston-data.mojang.com/v1/objects/8d9b65467c7913fcf6f5b2e729d44a1e00fde150/client.jar"
+      },
+      "client_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d",
+      "log4j_core_coordinate": "org.apache.logging.log4j:log4j-core:2.14.1",
+      "log4j_core_artifact": {
+        "path": "org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+        "sha1": "9141212b8507ab50a45525b545b39d224614528b",
+        "size": 1745700,
+        "url": "https://libraries.minecraft.net/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar"
+      },
+      "log4j_core_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+      "patchy_coordinate": "com.mojang:patchy:2.1.6",
+      "patchy_artifact": {
+        "path": "com/mojang/patchy/2.1.6/patchy-2.1.6.jar",
+        "sha1": "ce112c16c6275fdfff2d30208533ec906a191f71",
+        "size": 10090,
+        "url": "https://libraries.minecraft.net/com/mojang/patchy/2.1.6/patchy-2.1.6.jar"
+      },
+      "patchy_sha256": "302c68c244f0f8c13e186f9201030b21fc99c302f30e41d4ed8e8d31276faf1f",
+      "manifest_runtime_library_order": [
+        {
+          "index": 1,
+          "coordinate": "com.mojang:patchy:2.1.6"
+        },
+        {
+          "index": 27,
+          "coordinate": "org.apache.logging.log4j:log4j-core:2.14.1"
+        }
+      ],
+      "official_version_metadata_logging": {
+        "argument": "-Dlog4j.configurationFile=${path}",
+        "file": {
+          "id": "client-1.12.xml",
+          "sha1": "bd65e7d2e3c237be76cfbef4c2405033d7f91521",
+          "size": 888,
+          "url": "https://piston-data.mojang.com/v1/objects/bd65e7d2e3c237be76cfbef4c2405033d7f91521/client-1.12.xml"
+        },
+        "type": "log4j2-xml"
+      },
+      "embedded_log4j2_xml_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "class_observations": [
+        {
+          "role": "packet",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundChatPacket",
+          "obfuscated_class": "qd.class",
+          "class_sha256": "64618df611833743c0c21072c7698c2d02c121c3b692756663ced4f34c20d7c4"
+        },
+        {
+          "role": "listener",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener",
+          "obfuscated_class": "ejj.class",
+          "class_sha256": "46da1b5f61cb9df652e8c6cbb85a705b5956ad59693c58d9ce94f7728e8d6f72"
+        },
+        {
+          "role": "chat_component",
+          "mapped_class": "net.minecraft.client.gui.components.ChatComponent",
+          "obfuscated_class": "dxb.class",
+          "class_sha256": "7af014559ca3c61fb15c97ac4fc55a1a62daa190df5ba6b06f438f631982db81"
+        }
+      ],
+      "observed_call_path": [
+        "ClientboundChatPacket constructor reads FriendlyByteBuf.readComponent() -> ClientPacketListener.handleChat(ClientboundChatPacket) -> ChatComponent.addMessage(Component) -> Logger.info(\"[CHAT] {}\", Component.getString())"
+      ],
+      "attacker_input": "A remote multiplayer server can send a ClientboundChatPacket whose message component text is processed by the client chat component and passed to the [CHAT] logger call. This is a static exact-client path; no live server session was used."
+    }
+  ],
+  "patchy_1_3_9_jndi_override": {
+    "coordinate": "com.mojang:patchy:1.3.9",
+    "class_path": "org/apache/logging/log4j/core/lookup/JndiLookup.class",
+    "class_sha256": "159f936bf478d42d494783ac468635989ccc36d825200b88af005c83d489db8c",
+    "observed_implementation": "Both lookup methods return null. The exact Patchy-first probe reports this class as the loaded source for Log4j Core 2.8.1.",
+    "limitation": "This classpath observation applies to the tested manifest ordering; third-party launchers or plugins can change classpath resolution."
+  },
+  "message_pattern_converter_observations": [
+    {
+      "coordinate": "org.apache.logging.log4j:log4j-core:2.8.1",
+      "class_path": "org/apache/logging/log4j/core/pattern/MessagePatternConverter.class",
+      "class_sha256": "791a12347e62d9884c4d6f8e285098fedaf3bcdf591af3e4449923191588d43c",
+      "note": "Exact 2.8.1 class inspected; Patchy 1.3.9 shadows JndiLookup when first on the classpath."
+    },
+    {
+      "coordinate": "org.apache.logging.log4j:log4j-core:2.14.1",
+      "class_path": "org/apache/logging/log4j/core/pattern/MessagePatternConverter.class",
+      "class_sha256": "f0a869f7da9b17d0a23d0cb0e13c65afa5e42e9567b47603a8fc0debc7ef193c",
+      "note": "Formatted log message text containing `${` is passed through StrSubstitutor unless the layout disables lookups."
+    }
+  ],
+  "parameterized_chat_probe": {
+    "fixture_call_shape": "logger.info(\"[CHAT] {}\", componentText.replaceAll(\"\\r\", \"\\\\r\").replaceAll(\"\\n\", \"\\\\n\"));",
+    "network_behavior": "No network was used. The test JVM sets java.naming.factory.initial to NoNetworkContextFactory, which throws locally and counts lookup attempts.",
+    "cases": {
+      "2.8.1-launcher-chat-jndi": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 0
+        },
+        "coordinates_in_order": [
+          "com.mojang:patchy:1.3.9",
+          "org.apache.logging.log4j:log4j-api:2.8.1",
+          "org.apache.logging.log4j:log4j-core:2.8.1"
+        ],
+        "configuration": "launcher",
+        "formatMsgNoLookups": false
+      },
+      "2.8.1-launcher-chat-jndi-core-first": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 0
+        },
+        "coordinates_in_order": [
+          "org.apache.logging.log4j:log4j-core:2.8.1",
+          "org.apache.logging.log4j:log4j-api:2.8.1",
+          "com.mojang:patchy:1.3.9"
+        ],
+        "configuration": "launcher",
+        "formatMsgNoLookups": false
+      },
+      "2.8.1-1.14.4-embedded.xml-chat-jndi": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 0
+        },
+        "coordinates_in_order": [
+          "com.mojang:patchy:1.3.9",
+          "org.apache.logging.log4j:log4j-api:2.8.1",
+          "org.apache.logging.log4j:log4j-core:2.8.1"
+        ],
+        "configuration": "1.14.4-embedded.xml",
+        "formatMsgNoLookups": false
+      },
+      "2.8.1-1.14.4-embedded.xml-chat-jndi-core-first": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 2
+        },
+        "coordinates_in_order": [
+          "org.apache.logging.log4j:log4j-core:2.8.1",
+          "org.apache.logging.log4j:log4j-api:2.8.1",
+          "com.mojang:patchy:1.3.9"
+        ],
+        "configuration": "1.14.4-embedded.xml",
+        "formatMsgNoLookups": false
+      },
+      "2.14.1-launcher-chat-jndi": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 0
+        },
+        "coordinates_in_order": [
+          "com.mojang:patchy:2.1.6",
+          "org.apache.logging.log4j:log4j-api:2.14.1",
+          "org.apache.logging.log4j:log4j-core:2.14.1"
+        ],
+        "configuration": "launcher",
+        "formatMsgNoLookups": false
+      },
+      "2.14.1-1.18.1-embedded.xml-chat-jndi": {
+        "passed": true,
+        "observed": {
+          "NO_NETWORK_CONTEXT_CALLS": 2
+        },
+        "coordinates_in_order": [
+          "com.mojang:patchy:2.1.6",
+          "org.apache.logging.log4j:log4j-api:2.14.1",
+          "org.apache.logging.log4j:log4j-core:2.14.1"
+        ],
+        "configuration": "1.18.1-embedded.xml",
+        "formatMsgNoLookups": false
+      }
+    },
+    "all_expected_results_passed": true
+  },
+  "technical_dispositions": [
+    {
+      "advisory_id": "GHSA-jfh8-c2jp-5v3q",
+      "disposition": "Further investigation",
+      "reachability": "The attacker-controlled chat-to-logger path is present in exact Minecraft 1.14.4 and 1.17.1 clients. The 1.17.1 Log4j 2.14.1 parameterized [CHAT] probe invokes the synthetic JNDI context twice with the embedded fallback XML and zero times with the external launcher XML. For 1.14.4 Log4j 2.8.1, Patchy 1.3.9 stubs JndiLookup in manifest order; reversing that order makes the fallback probe invoke the local context twice.",
+      "reason_unresolved": "The version metadata specifies -Dlog4j.configurationFile=${path} and the external XML, but production JVM arguments and loaded classpaths were not captured for each supported launcher. A custom launcher, altered classpath, or logging override changes the tested mitigation assumptions. No network lookup or game exploit was attempted.",
+      "release_blocking": true,
+      "risk_accepted": false
+    },
+    {
+      "advisory_id": "GHSA-7rjr-3q55-vv33",
+      "disposition": "Further investigation",
+      "reachability": "The same remote chat text reaches the message logger. The inspected Minecraft chat path does not itself write that value to Log4j ThreadContext/MDC, and the official XML does not configure context lookup patterns. The separate synthetic MDC/layout probe remains evidence that alternate layouts can activate the advisory condition.",
+      "reason_unresolved": "No full process-level search ruled out mod/plugin ThreadContext population, alternate layouts, or launcher configuration changes.",
+      "release_blocking": true,
+      "risk_accepted": false
+    },
+    {
+      "advisory_id": "GHSA-fxph-q3j8-mv87",
+      "disposition": "Further investigation",
+      "reachability": "The exact default and embedded Minecraft logging XML contain no TCP/UDP socket-server appender. Existing exact-client literal scans found no direct TcpSocketServer/UdpSocketServer reference.",
+      "reason_unresolved": "Custom launcher configuration, third-party appenders, reflective paths, and arbitrary installed mods were not exhaustively examined.",
+      "release_blocking": true,
+      "risk_accepted": false
+    }
+  ],
+  "limits": [
+    "The two client code-path samples do not establish identical call chains in every affected Minecraft patch version; all source-group occurrences remain blocking.",
+    "Mojang version metadata proves the supplied logging argument and config identity, not that every official or third-party launcher passes the argument unchanged.",
+    "The synthetic JNDI provider makes no network request and cannot establish remote code execution or data exfiltration.",
+    "No risk is accepted, and no OSV finding is suppressed."
+  ],
+  "responsible_owner": "skyRolly for project security disposition; Mojang for game-managed Log4j and bundled client configuration",
+  "reviewer": "Codex automated technical investigation; independent human review pending",
+  "review_date": "2026-11-21",
+  "follow_up_requirements": [
+    "Capture actual JVM arguments and resolved classpaths from each supported official launcher and identify any supported third-party launcher configurations.",
+    "Verify whether alternate launchers preserve Mojang metadata logging arguments and classpath order.",
+    "Retain the affected game-managed Log4j findings as blockers until launcher/configuration assumptions are verified or an upstream fixed game runtime is selected.",
+    "Do not classify the chat-reachable Log4Shell path as generally Not applicable based only on the standard launcher XML."
+  ]
+}

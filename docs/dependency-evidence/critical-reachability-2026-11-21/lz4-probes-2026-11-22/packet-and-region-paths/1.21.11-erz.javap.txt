@@ -1,0 +1,277 @@
+Compiled from "SourceFile"
+public class erz {
+  private static final org.slf4j.Logger g;
+
+  private static final it.unimi.dsi.fastutil.ints.Int2ObjectMap<erz> h;
+
+  private static final it.unimi.dsi.fastutil.objects.Object2ObjectMap<java.lang.String, erz> i;
+
+  public static final erz a;
+
+  public static final erz b;
+
+  public static final erz c;
+
+  public static final erz d;
+
+  public static final erz e;
+
+  public static final erz f;
+
+  private static volatile erz j;
+
+  private final int k;
+
+  private final java.lang.String l;
+
+  private final erz$a<java.io.InputStream> m;
+
+  private final erz$a<java.io.OutputStream> n;
+
+  private erz(int, java.lang.String, erz$a<java.io.InputStream>, erz$a<java.io.OutputStream>);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #46                 // Field k:I
+       9: aload_0
+      10: aload_2
+      11: putfield      #48                 // Field l:Ljava/lang/String;
+      14: aload_0
+      15: aload_3
+      16: putfield      #50                 // Field m:Lerz$a;
+      19: aload_0
+      20: aload         4
+      22: putfield      #52                 // Field n:Lerz$a;
+      25: return
+
+  private static erz a(erz);
+    Code:
+       0: getstatic     #60                 // Field h:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: aload_0
+       4: getfield      #46                 // Field k:I
+       7: aload_0
+       8: invokeinterface #66,  3           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.put:(ILjava/lang/Object;)Ljava/lang/Object;
+      13: pop
+      14: aload_0
+      15: getfield      #48                 // Field l:Ljava/lang/String;
+      18: ifnull        35
+      21: getstatic     #68                 // Field i:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      24: aload_0
+      25: getfield      #48                 // Field l:Ljava/lang/String;
+      28: aload_0
+      29: invokeinterface #73,  3           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      34: pop
+      35: aload_0
+      36: areturn
+
+  public static erz a(int);
+    Code:
+       0: getstatic     #60                 // Field h:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: iload_0
+       4: invokeinterface #78,  2           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.get:(I)Ljava/lang/Object;
+       9: checkcast     #2                  // class erz
+      12: areturn
+
+  public static void a(java.lang.String);
+    Code:
+       0: getstatic     #68                 // Field i:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+       3: aload_0
+       4: invokeinterface #82,  2           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: checkcast     #2                  // class erz
+      12: astore_1
+      13: aload_1
+      14: ifnull        24
+      17: aload_1
+      18: putstatic     #84                 // Field j:Lerz;
+      21: goto          48
+      24: getstatic     #86                 // Field g:Lorg/slf4j/Logger;
+      27: ldc           #88                 // String Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}
+      29: aload_0
+      30: ldc           #90                 // String ,
+      32: getstatic     #68                 // Field i:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      35: invokeinterface #94,  1           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2ObjectMap.keySet:()Lit/unimi/dsi/fastutil/objects/ObjectSet;
+      40: invokestatic  #100                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+      43: invokeinterface #106,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      48: return
+
+  public static erz a();
+    Code:
+       0: getstatic     #84                 // Field j:Lerz;
+       3: areturn
+
+  public static boolean b(int);
+    Code:
+       0: getstatic     #60                 // Field h:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: iload_0
+       4: invokeinterface #111,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.containsKey:(I)Z
+       9: ireturn
+
+  public int b();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field k:I
+       4: ireturn
+
+  public java.io.OutputStream a(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field n:Lerz$a;
+       4: aload_1
+       5: invokeinterface #118,  2          // InterfaceMethod erz$a.wrap:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #120                // class java/io/OutputStream
+      13: areturn
+
+  public java.io.InputStream a(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field m:Lerz$a;
+       4: aload_1
+       5: invokeinterface #118,  2          // InterfaceMethod erz$a.wrap:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #124                // class java/io/InputStream
+      13: areturn
+
+  private static java.io.OutputStream b(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #127                // class java/lang/UnsupportedOperationException
+       3: dup
+       4: invokespecial #128                // Method java/lang/UnsupportedOperationException."<init>":()V
+       7: athrow
+
+  private static java.io.InputStream b(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #127                // class java/lang/UnsupportedOperationException
+       3: dup
+       4: invokespecial #128                // Method java/lang/UnsupportedOperationException."<init>":()V
+       7: athrow
+
+  private static java.io.OutputStream c(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #130                // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #132                // class net/jpountz/lz4/LZ4BlockOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #135                // Method net/jpountz/lz4/LZ4BlockOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #136                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream c(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #138                // class bfn
+       3: dup
+       4: new           #140                // class net/jpountz/lz4/LZ4BlockInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #143                // Method net/jpountz/lz4/LZ4BlockInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #144                // Method bfn."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  private static java.io.OutputStream d(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #130                // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #146                // class java/util/zip/DeflaterOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #147                // Method java/util/zip/DeflaterOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #136                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream d(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #138                // class bfn
+       3: dup
+       4: new           #149                // class java/util/zip/InflaterInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #150                // Method java/util/zip/InflaterInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #144                // Method bfn."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  private static java.io.OutputStream e(java.io.OutputStream) throws java.io.IOException;
+    Code:
+       0: new           #130                // class java/io/BufferedOutputStream
+       3: dup
+       4: new           #152                // class java/util/zip/GZIPOutputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #153                // Method java/util/zip/GZIPOutputStream."<init>":(Ljava/io/OutputStream;)V
+      12: invokespecial #136                // Method java/io/BufferedOutputStream."<init>":(Ljava/io/OutputStream;)V
+      15: areturn
+
+  private static java.io.InputStream e(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #138                // class bfn
+       3: dup
+       4: new           #155                // class java/util/zip/GZIPInputStream
+       7: dup
+       8: aload_0
+       9: invokespecial #156                // Method java/util/zip/GZIPInputStream."<init>":(Ljava/io/InputStream;)V
+      12: invokespecial #144                // Method bfn."<init>":(Ljava/io/InputStream;)V
+      15: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #163                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #86                 // Field g:Lorg/slf4j/Logger;
+       6: new           #165                // class it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap
+       9: dup
+      10: invokespecial #166                // Method it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap."<init>":()V
+      13: putstatic     #60                 // Field h:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      16: new           #168                // class it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap
+      19: dup
+      20: invokespecial #169                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap."<init>":()V
+      23: putstatic     #68                 // Field i:Lit/unimi/dsi/fastutil/objects/Object2ObjectMap;
+      26: new           #2                  // class erz
+      29: dup
+      30: iconst_1
+      31: aconst_null
+      32: invokedynamic #184,  0            // InvokeDynamic #0:wrap:()Lerz$a;
+      37: invokedynamic #189,  0            // InvokeDynamic #1:wrap:()Lerz$a;
+      42: invokespecial #191                // Method "<init>":(ILjava/lang/String;Lerz$a;Lerz$a;)V
+      45: invokestatic  #193                // Method a:(Lerz;)Lerz;
+      48: putstatic     #195                // Field a:Lerz;
+      51: new           #2                  // class erz
+      54: dup
+      55: iconst_2
+      56: ldc           #197                // String deflate
+      58: invokedynamic #201,  0            // InvokeDynamic #2:wrap:()Lerz$a;
+      63: invokedynamic #205,  0            // InvokeDynamic #3:wrap:()Lerz$a;
+      68: invokespecial #191                // Method "<init>":(ILjava/lang/String;Lerz$a;Lerz$a;)V
+      71: invokestatic  #193                // Method a:(Lerz;)Lerz;
+      74: putstatic     #207                // Field b:Lerz;
+      77: new           #2                  // class erz
+      80: dup
+      81: iconst_3
+      82: ldc           #209                // String none
+      84: invokedynamic #211,  0            // InvokeDynamic #4:wrap:()Lerz$a;
+      89: invokedynamic #213,  0            // InvokeDynamic #5:wrap:()Lerz$a;
+      94: invokespecial #191                // Method "<init>":(ILjava/lang/String;Lerz$a;Lerz$a;)V
+      97: invokestatic  #193                // Method a:(Lerz;)Lerz;
+     100: putstatic     #215                // Field c:Lerz;
+     103: new           #2                  // class erz
+     106: dup
+     107: iconst_4
+     108: ldc           #217                // String lz4
+     110: invokedynamic #221,  0            // InvokeDynamic #6:wrap:()Lerz$a;
+     115: invokedynamic #225,  0            // InvokeDynamic #7:wrap:()Lerz$a;
+     120: invokespecial #191                // Method "<init>":(ILjava/lang/String;Lerz$a;Lerz$a;)V
+     123: invokestatic  #193                // Method a:(Lerz;)Lerz;
+     126: putstatic     #227                // Field d:Lerz;
+     129: new           #2                  // class erz
+     132: dup
+     133: bipush        127
+     135: aconst_null
+     136: invokedynamic #231,  0            // InvokeDynamic #8:wrap:()Lerz$a;
+     141: invokedynamic #235,  0            // InvokeDynamic #9:wrap:()Lerz$a;
+     146: invokespecial #191                // Method "<init>":(ILjava/lang/String;Lerz$a;Lerz$a;)V
+     149: invokestatic  #193                // Method a:(Lerz;)Lerz;
+     152: putstatic     #237                // Field e:Lerz;
+     155: getstatic     #207                // Field b:Lerz;
+     158: putstatic     #239                // Field f:Lerz;
+     161: getstatic     #239                // Field f:Lerz;
+     164: putstatic     #84                 // Field j:Lerz;
+     167: return
+}

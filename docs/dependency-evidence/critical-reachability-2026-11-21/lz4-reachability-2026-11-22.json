@@ -1,0 +1,1053 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "status": "investigated-blocking-no-clearance",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "scope": {
+    "finding_index_records": 490,
+    "candidate_occurrences": 385,
+    "integrated_occurrences": 105,
+    "focused_critical_occurrences": 22,
+    "focused_high_occurrences": 71,
+    "focused_critical_high_occurrences": 93,
+    "full_inventory_changed": false
+  },
+  "source_provenance": {
+    "finding_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+    },
+    "archive_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json",
+      "sha256": "0f69c2ff6ecfa6e67a4b8ec00643c6a1bf097e9e6c88bf88e1a4bc4c326c3a5e"
+    },
+    "source_group_shas": {
+      "1.20.5-1.20.6": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "1.21-1.21.1": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "1.21.2-1.21.3": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "1.21.4-1.21.8": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "1.21.9-1.21.10": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "1.21.11": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "26.1-26.2": "b7620ef8174180698cc36d273981aeadd3447941",
+      "26.3": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a"
+    },
+    "upstream_patches": {
+      "cmp6-fix.patch": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/cmp6-fix.patch.gz",
+        "upstream_commit": "33d180cb70c4d93c80fb0dc3ab3002f457e93840",
+        "sha256_uncompressed": "7f7ed6bd105cf9e00e2af70d11b595f277c5b6513fde0699746996c248d3f126",
+        "sha256_gzip": "95dfdbf540a81ddc23218f03307cd9e10459d69bc05c74213380d068da1be21c"
+      },
+      "mcr4-fix.patch": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/mcr4-fix.patch.gz",
+        "upstream_commit": "7a48b7f6b8099b9dab6541e4ac2ee0979dc55aa3",
+        "sha256_uncompressed": "e7cf647e8cc98c0e1fb1505291e691df71975fe7b9a23cde7d756aea51072965",
+        "sha256_gzip": "d4243933b203e0fda4b8d53ba1d20df921ae15ff14c9beda7c7ea3737d129d44"
+      }
+    },
+    "hosted_ci_verification": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "run_id": 44977010612,
+      "head_sha": "a800917f9fa111df3bf9a0720fbd976e67ecbeb3",
+      "conclusion": "success",
+      "linux_and_windows_reachability_jobs_passed": true,
+      "security_clearance": false
+    }
+  },
+  "findings": [
+    {
+      "advisory_id": "GHSA-cmp6-m4wj-q63q",
+      "aliases": [
+        "CVE-2025-66566"
+      ],
+      "severity": "HIGH",
+      "component": "org.lz4:lz4-java; at.yawk.lz4:lz4-java",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-cmp6-m4wj-q63q",
+      "upstream_affected_ranges": [
+        {
+          "package": "at.yawk.lz4:lz4-java",
+          "vulnerable_version_range": "<= 1.10.0",
+          "first_patched_version": "1.10.1"
+        },
+        {
+          "package": "org.lz4:lz4-java",
+          "vulnerable_version_range": "<= 1.8.1",
+          "first_patched_version": null
+        }
+      ],
+      "occurrence_count": 6,
+      "source_groups": [
+        "1.20.5-1.20.6",
+        "1.21-1.21.1",
+        "1.21.11",
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.20.5-1.20.6",
+          "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+          "minecraft_versions": [
+            "1.20.5",
+            "1.20.6"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.20.5",
+              "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+              "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+              "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510"
+            },
+            {
+              "minecraft_version": "1.20.6",
+              "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+              "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+              "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21-1.21.1",
+          "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+          "minecraft_versions": [
+            "1.21",
+            "1.21.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21",
+              "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+              "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+              "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8"
+            },
+            {
+              "minecraft_version": "1.21.1",
+              "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+              "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+              "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "integrated",
+          "group": "1.21.11",
+          "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+          "minecraft_versions": [
+            "1.21.11"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.11",
+              "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+              "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+              "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd"
+            }
+          ],
+          "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
+          "package_version": "1.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.11"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "1f30a180ee04ccd53339a716aec13cae60a013b5",
+          "dependency_artifact_sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+            "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+          },
+          "fingerprint": "d9c0c5465404a0e081050a79706435d2993e1886c559b758b240d4d0b2ab5fe4",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        }
+      ],
+      "vulnerable_api_or_class": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor and other Java fast/safe decompressor implementations; Minecraft calls LZ4BlockInputStream(InputStream), which selects LZ4Factory.fastestInstance().fastDecompressor().",
+      "reachability_finding": "The default region-file LZ4 stream path reaches the fast decompressor. In at.yawk 1.8.1 the default resolves to LZ4JavaSafeFastDecompressor and the upstream vectors reproduce stale output bytes. For org.lz4 1.8.0 on this Linux runner fastestInstance selected the JNI fast decompressor, whose CMP6 vector output was zero; the Java fallback/safe/fastestJava APIs still reproduced the issue. The exact game-level data disclosure and supported platform fallback behavior are not established.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Verify exact native/JVM selection on supported Windows and macOS launchers and fallback behavior.",
+        "Exercise a harmless crafted LZ4 region-file stream through a supported Minecraft runtime, including checksum behavior and caller-visible output.",
+        "Request Mojang to update game-managed versions to at.yawk.lz4:lz4-java 1.10.1 or later; do not override it in this mod."
+      ],
+      "evidence_refs": {
+        "exact_finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "runtime_scan": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/runtime-scan.json",
+        "group_call_capture_index": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/capture-index.json",
+        "region_and_packet_path_index": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/capture-index.json",
+        "upstream_advisory_snapshot": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-cmp6-m4wj-q63q.json",
+        "component_probe_results": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/probe-results.json"
+      }
+    },
+    {
+      "advisory_id": "GHSA-vqf4-7m7x-wgfc",
+      "aliases": [
+        "CVE-2025-12183"
+      ],
+      "severity": "HIGH",
+      "component": "org.lz4:lz4-java; at.yawk.lz4:lz4-java",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-vqf4-7m7x-wgfc",
+      "upstream_affected_ranges": [
+        {
+          "package": "org.lz4:lz4-java",
+          "vulnerable_version_range": "< 1.8.1",
+          "first_patched_version": "1.8.1"
+        },
+        {
+          "package": "at.yawk.lz4:lz4-java",
+          "vulnerable_version_range": "< 1.8.1",
+          "first_patched_version": "1.8.1"
+        }
+      ],
+      "occurrence_count": 5,
+      "source_groups": [
+        "1.20.5-1.20.6",
+        "1.21-1.21.1",
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.20.5-1.20.6",
+          "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+          "minecraft_versions": [
+            "1.20.5",
+            "1.20.6"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.20.5",
+              "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+              "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+              "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510"
+            },
+            {
+              "minecraft_version": "1.20.6",
+              "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+              "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+              "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.20.5",
+            "runtime/1.20.6"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+          },
+          "fingerprint": "601b4ec879007f314ea951b025b2988f7e08b1a9fd219640acb162b6ab89653f",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21-1.21.1",
+          "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+          "minecraft_versions": [
+            "1.21",
+            "1.21.1"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21",
+              "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+              "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+              "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8"
+            },
+            {
+              "minecraft_version": "1.21.1",
+              "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+              "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+              "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21",
+            "runtime/1.21.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+          },
+          "fingerprint": "601b4ec879007f314ea951b025b2988f7e08b1a9fd219640acb162b6ab89653f",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "601b4ec879007f314ea951b025b2988f7e08b1a9fd219640acb162b6ab89653f",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "601b4ec879007f314ea951b025b2988f7e08b1a9fd219640acb162b6ab89653f",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+          "package_version": "1.8.0",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "scope_interpretation": "The Gradle label records the resolved game-library development graph; it does not identify a Gradle plugin dependency. Runtime manifest scopes are the game-supplied runtime packages.",
+          "dependency_artifact_sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+          "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "601b4ec879007f314ea951b025b2988f7e08b1a9fd219640acb162b6ab89653f",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22"
+        }
+      ],
+      "vulnerable_api_or_class": "net.jpountz.lz4.LZ4BlockInputStream(InputStream) -> LZ4Factory.fastestInstance().fastDecompressor(); the org.lz4 1.8.0 fast path may select JNI LZ4_decompress_fast or unsafe Java fallback.",
+      "reachability_finding": "Confirmed vanilla per-chunk region-file dispatch can select compression id 4 and call the LZ4 block stream over local world-file bytes. The exact vanilla network chunk packet path is separate in representative captures. GHSA-vqf4 describes the native fast and unsafe Java implementations reached by the 1.8.0 factory selection. A malicious region-file payload was not run; the call path is nevertheless reachable when opening an untrusted/imported world.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Exercise a bounded LZ4 region-file payload through an isolated Minecraft runtime or a faithful RegionFileVersion harness.",
+        "Request Mojang to update the five affected legacy groups to a compatible fixed fork release; do not override game-managed libraries in the mod.",
+        "Re-check the default native/fallback implementation on each supported OS."
+      ],
+      "evidence_refs": {
+        "exact_finding_index": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+        "runtime_scan": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/runtime-scan.json",
+        "group_call_capture_index": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/capture-index.json",
+        "region_and_packet_path_index": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/capture-index.json",
+        "upstream_advisory_snapshot": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-vqf4-7m7x-wgfc.json",
+        "component_probe_results": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/probe-results.json"
+      }
+    }
+  ],
+  "shared_mcr4_context": {
+    "advisory_id": "GHSA-mcr4-qmvw-px4g",
+    "alias": "CVE-2026-106451",
+    "occurrences": 8,
+    "affected_versions": [
+      {
+        "coordinate": "org.lz4:lz4-java:1.8.0",
+        "sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+        "sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+      },
+      {
+        "coordinate": "at.yawk.lz4:lz4-java:1.8.1",
+        "sha1": "1f30a180ee04ccd53339a716aec13cae60a013b5",
+        "sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0"
+      },
+      {
+        "coordinate": "at.yawk.lz4:lz4-java:1.10.1",
+        "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+        "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3"
+      },
+      {
+        "coordinate": "at.yawk.lz4:lz4-java:1.11.4",
+        "sha1": "a27ccbac6c886771d3db36f91b144950bdb5082a",
+        "sha256": "58c8e0b813960d2a248e050c353baea73139b48a2ffc55382d42c69707e17325"
+      }
+    ],
+    "vulnerable_api_or_class": "net.jpountz.lz4.LZ4JNIUtils / native library extraction lock-file handling derived from java.io.tmpdir.",
+    "actual_call_path": "Minecraft RegionFileVersion id 4 selects LZ4BlockInputStream, whose LZ4Factory.fastestInstance decompressor loads the native implementation where available; the library loads native resources through its temporary extraction path.",
+    "effective_configuration": "The sampled JVM defaults java.io.tmpdir to /tmp on this runner; /tmp is mode 1777 with protected_regular=0. This is a runner-only observation, not a launcher guarantee. Region-file compression id 4 is registered as lz4; default writes use deflate id 2, but readers choose a codec per chunk header.",
+    "reachability_finding": "The native extraction path is dynamically observed for 1.8.0, 1.8.1 and 1.10.1; at.yawk 1.11.4 does not create the observed lock file. A local shared-temp replacement race was not attempted. Other local users on shared hosts may satisfy the advisory precondition; ordinary single-user launchers and protected temp directories can reduce exposure.",
+    "verified_mitigation": "A private per-user java.io.tmpdir or system-installed native library is an upstream-described mitigation for shared-temp extraction risk. at.yawk 1.11.4 is the first fixed release. No mitigation is applied by this mod or guaranteed by supported launchers.",
+    "disposition": "Further investigation",
+    "release_blocking": true,
+    "risk_accepted": false,
+    "remaining_uncertainty": [
+      "No controlled race experiment was run.",
+      "Launcher tmpdir, permissions and concurrent local-user threat models are not verified.",
+      "Game-level native extraction was tested only in the pinned artifact probe harness."
+    ],
+    "source_occurrences": [
+      {
+        "source_kind": "candidate",
+        "group": "1.20.5-1.20.6",
+        "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+        "minecraft_versions": [
+          "1.20.5",
+          "1.20.6"
+        ],
+        "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+        "package_version": "1.8.0",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.20.5",
+          "runtime/1.20.6"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-5/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "acc44bea75079cc41c814835582fd53a9b717f6c4ec7b10146e9f34e14a9b6d0"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21-1.21.1",
+        "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+        "minecraft_versions": [
+          "1.21",
+          "1.21.1"
+        ],
+        "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+        "package_version": "1.8.0",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21",
+          "runtime/1.21.1"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-6/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "ec92072509fff681508cdce2f7213cab619a70caa5367294d42d12e926ade231"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.2-1.21.3",
+        "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+        "minecraft_versions": [
+          "1.21.2",
+          "1.21.3"
+        ],
+        "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+        "package_version": "1.8.0",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.2",
+          "runtime/1.21.3"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.4-1.21.8",
+        "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+        "minecraft_versions": [
+          "1.21.4",
+          "1.21.5",
+          "1.21.6",
+          "1.21.7",
+          "1.21.8"
+        ],
+        "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+        "package_version": "1.8.0",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.4",
+          "runtime/1.21.5",
+          "runtime/1.21.6",
+          "runtime/1.21.7",
+          "runtime/1.21.8"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.21.9-1.21.10",
+        "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+        "minecraft_versions": [
+          "1.21.10",
+          "1.21.9"
+        ],
+        "purl": "pkg:maven/org.lz4/lz4-java@1.8.0",
+        "package_version": "1.8.0",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.10",
+          "runtime/1.21.9"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "integrated",
+        "group": "1.21.11",
+        "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+        "minecraft_versions": [
+          "1.21.11"
+        ],
+        "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.8.1",
+        "package_version": "1.8.1",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.21.11"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-0/dependency-audit.json.gz",
+          "sha256_uncompressed": "8088ed407c9686cd70635898b3729d9aa98ded1d33684f319d219dc2cf748d46"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "integrated",
+        "group": "26.1-26.2",
+        "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+        "minecraft_versions": [
+          "26.1",
+          "26.1.1",
+          "26.1.2",
+          "26.2"
+        ],
+        "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+        "package_version": "1.10.1",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/26.1",
+          "runtime/26.1.1",
+          "runtime/26.1.2",
+          "runtime/26.2"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-1/dependency-audit.json.gz",
+          "sha256_uncompressed": "39ccdad7b7acc73309c83042986176b5439a222007dfd787c2640b586f6c3618"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      },
+      {
+        "source_kind": "integrated",
+        "group": "26.3",
+        "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+        "minecraft_versions": [
+          "26.3"
+        ],
+        "purl": "pkg:maven/at.yawk.lz4/lz4-java@1.10.1",
+        "package_version": "1.10.1",
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/26.3"
+        ],
+        "dependency_artifact_sha1": null,
+        "dependency_artifact_sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/integrated/dependency-audit-2/dependency-audit.json.gz",
+          "sha256_uncompressed": "f4dcb66b79ef593b76e0978cc1dd1d63b6a70b29dd43169628b5f88b0d05b6fd"
+        },
+        "fingerprint": "d5dee944604fee56f1da558efb1a495059eabdaeff71f80929d0ad2c5614af4e",
+        "disposition": "Further investigation",
+        "release_blocking": true,
+        "risk_accepted": false
+      }
+    ]
+  },
+  "runtime_call_path": {
+    "exact_versions_scanned": 19,
+    "source_groups_scanned": 8,
+    "direct_lz4_stream_caller_found_for_each_version": true,
+    "caller_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+    "vanilla_flow": "RegionFile reads a chunk record and its per-chunk compression id; RegionFileVersion.fromId resolves id 4 (lz4); the selected input wrapper constructs LZ4BlockInputStream(InputStream); the stream uses LZ4Factory.fastestInstance().fastDecompressor().",
+    "configuration": "The captured 1.21.10 bytecode registers id 4 as lz4 and identifies the server.properties key region-file-compression. Static initialization sets deflate/id 2 as the default writer selection. On read, the chunk header determines codec, so changing the write default does not disable reading existing LZ4 chunks.",
+    "attacker_input": "A user-selected or imported local Minecraft world/region file can supply the chunk record and compression id. User interaction/local file access is required for the vanilla first-party path.",
+    "network_path": "Three representative vanilla chunk-packet captures (1.20.5, 1.21.10 and 1.21.11) show typed packet handling separate from RegionFile LZ4 decoding. The 26.3 capture contains named region-storage classes but no mapped chunk-packet capture, so no 26.3 network-path conclusion is recorded. These samples do not prove arbitrary mods, reflection, launcher extensions or every networking path are safe.",
+    "confidence": "High confidence that vanilla region-file input reaches the LZ4 stream constructor on the scanned versions; medium confidence on default decompressor selection because native loading is platform-dependent; no full game exploit test."
+  },
+  "component_tests": {
+    "probe": "tests/fixtures/critical_reachability/Lz4AdvisoryProbe.java",
+    "results": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/probe-results.json",
+    "runner": "scripts/probe_dependency_reachability.py",
+    "local_result": "38/38 all-family expected checks passed, including 8/8 LZ4-native and CMP6 component cases.",
+    "cmp6_method": "105 bounded vectors ported from upstream commit 33d180cb70c4d93c80fb0dc3ab3002f457e93840; compared output bytes for fast and safe API variants. This is component behavior, not a Minecraft region-file exploit or proof of exfiltration.",
+    "observations": {
+      "org.lz4 1.8.0": "fastestInstance on this Linux host chose LZ4JNIFastDecompressor and produced zero nonzero output bytes for this CMP6 vector set; safeInstance and fastestJavaInstance produced 923 nonzero output bytes each.",
+      "at.yawk 1.8.1": "fastestInstance selected LZ4JavaSafeFastDecompressor and produced 923 nonzero output bytes; this matches the upstream affected API description.",
+      "at.yawk 1.10.1 and 1.11.4": "all tested fast/safe Java decompressor variants produced zero nonzero output bytes for the vectors.",
+      "buffer_observation": "LZ4BlockInputStream instances have distinct arrays; each stream retains a decompressor. The stream-level malicious input path and cross-block data disclosure were not tested."
+    },
+    "not_tested": [
+      "No malicious Minecraft region file was opened in a running game.",
+      "No CVE-2025-12183 memory-corruption or denial-of-service payload was run.",
+      "No local shared-temporary-directory race was attempted.",
+      "macOS native/fallback selection remains unverified.",
+      "Hosted component probes did not run a full Minecraft client or a malicious region file.",
+      "No local shared-temporary-directory race or CVE-2025-12183 exploit payload was run."
+    ],
+    "hosted_cross_platform_verification": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "run_id": 44977010612,
+      "head_sha": "a800917f9fa111df3bf9a0720fbd976e67ecbeb3",
+      "conclusion": "success",
+      "linux_and_windows_reachability_jobs_passed": true,
+      "security_clearance": false
+    }
+  },
+  "upstream_fixes_and_compatibility": {
+    "cmp6": "GHSA-cmp6 upstream patch at commit 33d180cb70c4d93c80fb0dc3ab3002f457e93840; first fixed at.yawk release 1.10.1.",
+    "vqf4": "GHSA-vqf4 at.yawk v1.8.1 changes default factories to safe implementations; old org.lz4 1.8.0 coordinate is replaced by the maintained fork.",
+    "mcr4": "GHSA-mcr4 upstream patch at commit 7a48b7f6b8099b9dab6541e4ac2ee0979dc55aa3; first fixed release at.yawk 1.11.4.",
+    "binary_linkage": "javap captures for 1.8.0, 1.8.1, 1.10.1 and 1.11.4 each contain the exact LZ4BlockInputStream(InputStream) constructor used by Minecraft. This confirms the named call signature exists; it is not a full Minecraft runtime compatibility test.",
+    "mod_control": "Every affected occurrence is Minecraft manifest runtime-owned. This repository does not bundle or control those runtime libraries. No dependency override or source fix was applied."
+  },
+  "host_temp_observation": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/host-temp-observation.json",
+  "source_bound_limitations": [
+    "Third-party mods, launcher modifications, Java agents, reflection and undocumented classpaths are outside the exact vanilla client scan.",
+    "No risk acceptance is recorded.",
+    "All 19 LZ4 advisory occurrence rows remain failing and release-blocking."
+  ]
+}

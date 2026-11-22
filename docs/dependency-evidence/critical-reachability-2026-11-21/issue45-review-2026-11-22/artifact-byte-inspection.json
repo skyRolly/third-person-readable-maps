@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "analysis_source_commit": "1da853baf68ea35ba0628c5ed033b5be682397d7",
+  "high_family_sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "method": "Verify retained metadata SHA-1 and official artifact size, SHA-1, and SHA-256 before reading ZIP entries; downloaded artifacts are never executed.",
+  "clients": [
+    {
+      "minecraft_version": "1.14.4",
+      "metadata_sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+      "artifact": {
+        "sha1": "8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9",
+        "size": 25191691,
+        "url": "https://piston-data.mojang.com/v1/objects/8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9/client.jar"
+      },
+      "artifact_sha256": "b3b2a798e2d67b566008fe4a03767ae2c7ff3f8c7ba6751e7b71fc7299672d0a",
+      "entry": "log4j2.xml",
+      "entry_size": 1124,
+      "entry_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a"
+    },
+    {
+      "minecraft_version": "1.17.1",
+      "metadata_sha1": "e0e7ab5ed6f55bbd874ef95be3c9356d67e64b57",
+      "artifact": {
+        "sha1": "8d9b65467c7913fcf6f5b2e729d44a1e00fde150",
+        "size": 19546842,
+        "url": "https://piston-data.mojang.com/v1/objects/8d9b65467c7913fcf6f5b2e729d44a1e00fde150/client.jar"
+      },
+      "artifact_sha256": "a49b4a56c5bbe15c9ed9fe53efa9a591f265a1f5ba7d6aa9739a58ea7a92b79d",
+      "entry": "log4j2.xml",
+      "entry_size": 1124,
+      "entry_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a"
+    },
+    {
+      "minecraft_version": "1.18.1",
+      "metadata_sha1": "2acae2f1f84120846115c6e24810791cafa791d1",
+      "artifact": {
+        "sha1": "7e46fb47609401970e2818989fa584fd467cd036",
+        "size": 20042090,
+        "url": "https://piston-data.mojang.com/v1/objects/7e46fb47609401970e2818989fa584fd467cd036/client.jar"
+      },
+      "artifact_sha256": "737c28a56c8980fcd8574465c61538ebde8f511bdd035c69d0cbe27953f892aa",
+      "entry": "log4j2.xml",
+      "entry_size": 1098,
+      "entry_sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9"
+    }
+  ],
+  "realms": [
+    {
+      "minecraft_version": "1.14",
+      "coordinate": "com.mojang:realms:1.14.14",
+      "metadata_sha1": "0fd01dd81eaa451d3130b1cf025a10f129585b10",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.14/realms-1.14.14.jar",
+        "sha1": "93a4cea4eeb81b0d8c042fe46977e670f3b036ac",
+        "size": 6364649,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.14/realms-1.14.14.jar"
+      },
+      "artifact_sha256": "8cd1aa97e0bf73e242b6043762fe1d03f67b4ebfe719c0ca5084483c9f90b953",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ]
+    },
+    {
+      "minecraft_version": "1.14.1",
+      "coordinate": "com.mojang:realms:1.14.15",
+      "metadata_sha1": "183e49ba0fabb5ef8a304f8f5907fa887f40c466",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.15/realms-1.14.15.jar",
+        "sha1": "b414341661ed1b32899beb9787f08927ffee634f",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.15/realms-1.14.15.jar"
+      },
+      "artifact_sha256": "006e59c077a9128afc9591b9d1f12b6f387985d92aad18ddec99fea862b73ec6",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ]
+    },
+    {
+      "minecraft_version": "1.14.2",
+      "coordinate": "com.mojang:realms:1.14.16",
+      "metadata_sha1": "83299b3bf3139ebd9ae5547b3144dcf68d4cb1fd",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.16/realms-1.14.16.jar",
+        "sha1": "c471ed4220097ec622a6b035395a5ad4abedec9e",
+        "size": 6364656,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.16/realms-1.14.16.jar"
+      },
+      "artifact_sha256": "84da4f9047616ece911914ecbbc51c7eb60a16f5ce76bde9b94061eebd3ffcf4",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ]
+    },
+    {
+      "minecraft_version": "1.14.3",
+      "coordinate": "com.mojang:realms:1.14.17",
+      "metadata_sha1": "e21618620e02be5a14543d1d17ffdba941d09aa8",
+      "artifact": {
+        "path": "com/mojang/realms/1.14.17/realms-1.14.17.jar",
+        "sha1": "34fe59f43058b2565905b2f073149e709ec9f3ba",
+        "size": 6364655,
+        "url": "https://libraries.minecraft.net/com/mojang/realms/1.14.17/realms-1.14.17.jar"
+      },
+      "artifact_sha256": "55981b2784d25d480c2106670713a4e48721fc4fd3dba681dd09c9c71c7260ce",
+      "related_call_path_classes": [
+        {
+          "path": "realms/c.class",
+          "sha256": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0"
+        },
+        {
+          "path": "realms/ah.class",
+          "sha256": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00"
+        },
+        {
+          "path": "realms/ab.class",
+          "sha256": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+        }
+      ]
+    }
+  ]
+}

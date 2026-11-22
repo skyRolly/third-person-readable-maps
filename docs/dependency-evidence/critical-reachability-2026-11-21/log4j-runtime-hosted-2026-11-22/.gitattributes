@@ -1,0 +1,2 @@
+# Captured reports, Mojang metadata, and archive artifacts are retained byte-for-byte.
+* -text -eol whitespace=-blank-at-eol

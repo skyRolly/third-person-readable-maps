@@ -1,0 +1,305 @@
+Compiled from "ManagementServer.java"
+public class net.minecraft.server.jsonrpc.ManagementServer {
+  private static final org.slf4j.Logger LOGGER;
+
+  private final com.google.common.net.HostAndPort hostAndPort;
+
+  private final net.minecraft.server.jsonrpc.security.AuthenticationHandler authenticationHandler;
+
+  private io.netty.channel.Channel serverChannel;
+
+  private final io.netty.channel.EventLoopGroup eventLoopGroup;
+
+  private java.util.concurrent.ScheduledFuture<?> heartbeat;
+
+  private final java.util.Set<net.minecraft.server.jsonrpc.Connection> connections;
+
+  public net.minecraft.server.jsonrpc.ManagementServer(com.google.common.net.HostAndPort, net.minecraft.server.jsonrpc.security.AuthenticationHandler);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method com/google/common/collect/Sets.newIdentityHashSet:()Ljava/util/Set;
+       8: putfield      #13                 // Field connections:Ljava/util/Set;
+      11: aload_0
+      12: aload_1
+      13: putfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+      16: aload_0
+      17: aload_2
+      18: putfield      #23                 // Field authenticationHandler:Lnet/minecraft/server/jsonrpc/security/AuthenticationHandler;
+      21: aload_0
+      22: new           #27                 // class io/netty/channel/MultiThreadIoEventLoopGroup
+      25: dup
+      26: iconst_0
+      27: new           #29                 // class com/google/common/util/concurrent/ThreadFactoryBuilder
+      30: dup
+      31: invokespecial #31                 // Method com/google/common/util/concurrent/ThreadFactoryBuilder."<init>":()V
+      34: ldc           #32                 // String Management server IO #%d
+      36: invokevirtual #34                 // Method com/google/common/util/concurrent/ThreadFactoryBuilder.setNameFormat:(Ljava/lang/String;)Lcom/google/common/util/concurrent/ThreadFactoryBuilder;
+      39: iconst_1
+      40: invokevirtual #38                 // Method com/google/common/util/concurrent/ThreadFactoryBuilder.setDaemon:(Z)Lcom/google/common/util/concurrent/ThreadFactoryBuilder;
+      43: invokevirtual #42                 // Method com/google/common/util/concurrent/ThreadFactoryBuilder.build:()Ljava/util/concurrent/ThreadFactory;
+      46: invokestatic  #46                 // Method io/netty/channel/nio/NioIoHandler.newFactory:()Lio/netty/channel/IoHandlerFactory;
+      49: invokespecial #52                 // Method io/netty/channel/MultiThreadIoEventLoopGroup."<init>":(ILjava/util/concurrent/ThreadFactory;Lio/netty/channel/IoHandlerFactory;)V
+      52: putfield      #55                 // Field eventLoopGroup:Lio/netty/channel/EventLoopGroup;
+      55: return
+
+  public net.minecraft.server.jsonrpc.ManagementServer(com.google.common.net.HostAndPort, net.minecraft.server.jsonrpc.security.AuthenticationHandler, io.netty.channel.EventLoopGroup);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method com/google/common/collect/Sets.newIdentityHashSet:()Ljava/util/Set;
+       8: putfield      #13                 // Field connections:Ljava/util/Set;
+      11: aload_0
+      12: aload_1
+      13: putfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+      16: aload_0
+      17: aload_2
+      18: putfield      #23                 // Field authenticationHandler:Lnet/minecraft/server/jsonrpc/security/AuthenticationHandler;
+      21: aload_0
+      22: aload_3
+      23: putfield      #55                 // Field eventLoopGroup:Lio/netty/channel/EventLoopGroup;
+      26: return
+
+  public boolean scheduleHeartbeat(net.minecraft.server.notifications.NotificationManager, long);
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field heartbeat:Ljava/util/concurrent/ScheduledFuture;
+       4: ifnull        36
+       7: aload_0
+       8: getfield      #59                 // Field heartbeat:Ljava/util/concurrent/ScheduledFuture;
+      11: iconst_1
+      12: invokeinterface #63,  2           // InterfaceMethod java/util/concurrent/ScheduledFuture.cancel:(Z)Z
+      17: ifne          36
+      20: getstatic     #69                 // Field LOGGER:Lorg/slf4j/Logger;
+      23: ldc           #73                 // String The existing heartbeat was not canceled and the new heartbeat of {} seconds has not been applied.
+      25: lload_2
+      26: invokestatic  #75                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+      29: invokeinterface #81,  3           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      34: iconst_0
+      35: ireturn
+      36: lload_2
+      37: lconst_0
+      38: lcmp
+      39: ifle          71
+      42: aload_0
+      43: aload_0
+      44: getfield      #55                 // Field eventLoopGroup:Lio/netty/channel/EventLoopGroup;
+      47: aload_1
+      48: dup
+      49: invokestatic  #87                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      52: pop
+      53: invokedynamic #93,  0             // InvokeDynamic #0:run:(Lnet/minecraft/server/notifications/NotificationManager;)Ljava/lang/Runnable;
+      58: lload_2
+      59: lload_2
+      60: getstatic     #97                 // Field java/util/concurrent/TimeUnit.SECONDS:Ljava/util/concurrent/TimeUnit;
+      63: invokeinterface #103,  7          // InterfaceMethod io/netty/channel/EventLoopGroup.scheduleAtFixedRate:(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Lio/netty/util/concurrent/ScheduledFuture;
+      68: putfield      #59                 // Field heartbeat:Ljava/util/concurrent/ScheduledFuture;
+      71: iconst_1
+      72: ireturn
+
+  public void onConnected(net.minecraft.server.jsonrpc.Connection);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field connections:Ljava/util/Set;
+       4: dup
+       5: astore_2
+       6: monitorenter
+       7: aload_0
+       8: getfield      #13                 // Field connections:Ljava/util/Set;
+      11: aload_1
+      12: invokeinterface #109,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      17: pop
+      18: aload_2
+      19: monitorexit
+      20: goto          28
+      23: astore_3
+      24: aload_2
+      25: monitorexit
+      26: aload_3
+      27: athrow
+      28: return
+    Exception table:
+       from    to  target type
+           7    20    23   any
+          23    26    23   any
+
+  public void onDisconnected(net.minecraft.server.jsonrpc.Connection);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field connections:Ljava/util/Set;
+       4: dup
+       5: astore_2
+       6: monitorenter
+       7: aload_0
+       8: getfield      #13                 // Field connections:Ljava/util/Set;
+      11: aload_1
+      12: invokeinterface #115,  2          // InterfaceMethod java/util/Set.remove:(Ljava/lang/Object;)Z
+      17: pop
+      18: aload_2
+      19: monitorexit
+      20: goto          28
+      23: astore_3
+      24: aload_2
+      25: monitorexit
+      26: aload_3
+      27: athrow
+      28: return
+    Exception table:
+       from    to  target type
+           7    20    23   any
+          23    26    23   any
+
+  public void startWithoutTls(net.minecraft.server.jsonrpc.internalapi.MinecraftApi);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: invokevirtual #118                // Method start:(Lnet/minecraft/server/jsonrpc/internalapi/MinecraftApi;Lio/netty/handler/ssl/SslContext;)V
+       6: return
+
+  public void startWithTls(net.minecraft.server.jsonrpc.internalapi.MinecraftApi, io.netty.handler.ssl.SslContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #118                // Method start:(Lnet/minecraft/server/jsonrpc/internalapi/MinecraftApi;Lio/netty/handler/ssl/SslContext;)V
+       6: return
+
+  private void start(net.minecraft.server.jsonrpc.internalapi.MinecraftApi, io.netty.handler.ssl.SslContext);
+    Code:
+       0: new           #122                // class net/minecraft/server/jsonrpc/JsonRpcLogger
+       3: dup
+       4: invokespecial #124                // Method net/minecraft/server/jsonrpc/JsonRpcLogger."<init>":()V
+       7: astore_3
+       8: new           #125                // class io/netty/bootstrap/ServerBootstrap
+      11: dup
+      12: invokespecial #127                // Method io/netty/bootstrap/ServerBootstrap."<init>":()V
+      15: new           #128                // class io/netty/handler/logging/LoggingHandler
+      18: dup
+      19: getstatic     #130                // Field io/netty/handler/logging/LogLevel.DEBUG:Lio/netty/handler/logging/LogLevel;
+      22: invokespecial #136                // Method io/netty/handler/logging/LoggingHandler."<init>":(Lio/netty/handler/logging/LogLevel;)V
+      25: invokevirtual #139                // Method io/netty/bootstrap/ServerBootstrap.handler:(Lio/netty/channel/ChannelHandler;)Lio/netty/bootstrap/AbstractBootstrap;
+      28: checkcast     #125                // class io/netty/bootstrap/ServerBootstrap
+      31: ldc           #143                // class io/netty/channel/socket/nio/NioServerSocketChannel
+      33: invokevirtual #145                // Method io/netty/bootstrap/ServerBootstrap.channel:(Ljava/lang/Class;)Lio/netty/bootstrap/AbstractBootstrap;
+      36: checkcast     #125                // class io/netty/bootstrap/ServerBootstrap
+      39: new           #149                // class net/minecraft/server/jsonrpc/ManagementServer$1
+      42: dup
+      43: aload_0
+      44: aload_2
+      45: aload_1
+      46: aload_3
+      47: invokespecial #151                // Method net/minecraft/server/jsonrpc/ManagementServer$1."<init>":(Lnet/minecraft/server/jsonrpc/ManagementServer;Lio/netty/handler/ssl/SslContext;Lnet/minecraft/server/jsonrpc/internalapi/MinecraftApi;Lnet/minecraft/server/jsonrpc/JsonRpcLogger;)V
+      50: invokevirtual #154                // Method io/netty/bootstrap/ServerBootstrap.childHandler:(Lio/netty/channel/ChannelHandler;)Lio/netty/bootstrap/ServerBootstrap;
+      53: aload_0
+      54: getfield      #55                 // Field eventLoopGroup:Lio/netty/channel/EventLoopGroup;
+      57: invokevirtual #158                // Method io/netty/bootstrap/ServerBootstrap.group:(Lio/netty/channel/EventLoopGroup;)Lio/netty/bootstrap/ServerBootstrap;
+      60: aload_0
+      61: getfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+      64: invokevirtual #162                // Method com/google/common/net/HostAndPort.getHost:()Ljava/lang/String;
+      67: aload_0
+      68: getfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+      71: invokevirtual #168                // Method com/google/common/net/HostAndPort.getPort:()I
+      74: invokevirtual #172                // Method io/netty/bootstrap/ServerBootstrap.localAddress:(Ljava/lang/String;I)Lio/netty/bootstrap/AbstractBootstrap;
+      77: checkcast     #125                // class io/netty/bootstrap/ServerBootstrap
+      80: invokevirtual #176                // Method io/netty/bootstrap/ServerBootstrap.bind:()Lio/netty/channel/ChannelFuture;
+      83: astore        4
+      85: aload_0
+      86: aload         4
+      88: invokeinterface #180,  1          // InterfaceMethod io/netty/channel/ChannelFuture.channel:()Lio/netty/channel/Channel;
+      93: putfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+      96: aload         4
+      98: invokeinterface #189,  1          // InterfaceMethod io/netty/channel/ChannelFuture.syncUninterruptibly:()Lio/netty/channel/ChannelFuture;
+     103: pop
+     104: getstatic     #69                 // Field LOGGER:Lorg/slf4j/Logger;
+     107: ldc           #192                // String Json-RPC Management connection listening on {}:{}
+     109: aload_0
+     110: getfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+     113: invokevirtual #162                // Method com/google/common/net/HostAndPort.getHost:()Ljava/lang/String;
+     116: aload_0
+     117: invokevirtual #194                // Method getPort:()I
+     120: invokestatic  #195                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     123: invokeinterface #200,  4          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     128: return
+
+  public void stop(boolean) throws java.lang.InterruptedException;
+    Code:
+       0: aload_0
+       1: getfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+       4: ifnull        27
+       7: aload_0
+       8: getfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+      11: invokeinterface #204,  1          // InterfaceMethod io/netty/channel/Channel.close:()Lio/netty/channel/ChannelFuture;
+      16: invokeinterface #209,  1          // InterfaceMethod io/netty/channel/ChannelFuture.sync:()Lio/netty/channel/ChannelFuture;
+      21: pop
+      22: aload_0
+      23: aconst_null
+      24: putfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+      27: aload_0
+      28: getfield      #13                 // Field connections:Ljava/util/Set;
+      31: invokeinterface #212,  1          // InterfaceMethod java/util/Set.clear:()V
+      36: iload_1
+      37: ifeq          55
+      40: aload_0
+      41: getfield      #55                 // Field eventLoopGroup:Lio/netty/channel/EventLoopGroup;
+      44: invokeinterface #215,  1          // InterfaceMethod io/netty/channel/EventLoopGroup.shutdownGracefully:()Lio/netty/util/concurrent/Future;
+      49: invokeinterface #219,  1          // InterfaceMethod io/netty/util/concurrent/Future.sync:()Lio/netty/util/concurrent/Future;
+      54: pop
+      55: return
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokedynamic #223,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       6: invokevirtual #227                // Method forEachConnection:(Ljava/util/function/Consumer;)V
+       9: return
+
+  public int getPort();
+    Code:
+       0: aload_0
+       1: getfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+       4: ifnull        25
+       7: aload_0
+       8: getfield      #185                // Field serverChannel:Lio/netty/channel/Channel;
+      11: invokeinterface #231,  1          // InterfaceMethod io/netty/channel/Channel.localAddress:()Ljava/net/SocketAddress;
+      16: checkcast     #234                // class java/net/InetSocketAddress
+      19: invokevirtual #236                // Method java/net/InetSocketAddress.getPort:()I
+      22: goto          32
+      25: aload_0
+      26: getfield      #19                 // Field hostAndPort:Lcom/google/common/net/HostAndPort;
+      29: invokevirtual #168                // Method com/google/common/net/HostAndPort.getPort:()I
+      32: ireturn
+
+  void forEachConnection(java.util.function.Consumer<net.minecraft.server.jsonrpc.Connection>);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field connections:Ljava/util/Set;
+       4: dup
+       5: astore_2
+       6: monitorenter
+       7: aload_0
+       8: getfield      #13                 // Field connections:Ljava/util/Set;
+      11: aload_1
+      12: invokeinterface #237,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+      17: aload_2
+      18: monitorexit
+      19: goto          27
+      22: astore_3
+      23: aload_2
+      24: monitorexit
+      25: aload_3
+      26: athrow
+      27: return
+    Exception table:
+       from    to  target type
+           7    19    22   any
+          22    25    22   any
+
+  static {};
+    Code:
+       0: invokestatic  #240                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #69                 // Field LOGGER:Lorg/slf4j/Logger;
+       6: return
+}

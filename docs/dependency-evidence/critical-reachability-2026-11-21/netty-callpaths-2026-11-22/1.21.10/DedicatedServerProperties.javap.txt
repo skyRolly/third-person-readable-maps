@@ -1,0 +1,807 @@
+Compiled from "SourceFile"
+public class arp extends ars<arp> {
+  static final org.slf4j.Logger al;
+
+  private static final java.util.regex.Pattern am;
+
+  private static final com.google.common.base.Splitter an;
+
+  public static final java.lang.String a;
+
+  public static final java.lang.String b;
+
+  public static final java.lang.String c;
+
+  public final boolean d;
+
+  public final boolean e;
+
+  public final java.lang.String f;
+
+  public final ars<arp>.a<java.lang.Boolean> g;
+
+  public final ars<arp>.a<java.lang.String> h;
+
+  public final boolean i;
+
+  public final java.lang.String j;
+
+  public final ars<arp>.a<java.lang.Boolean> k;
+
+  public final ars<arp>.a<java.lang.Boolean> l;
+
+  public final ars<arp>.a<cbn> m;
+
+  public final ars<arp>.a<drn> n;
+
+  public final java.lang.String o;
+
+  public final int p;
+
+  public final boolean q;
+
+  public final java.lang.String r;
+
+  public final int s;
+
+  public final java.lang.String t;
+
+  public final boolean u;
+
+  public final java.lang.String v;
+
+  public final java.lang.String w;
+
+  public final java.lang.Boolean x;
+
+  public final boolean y;
+
+  public final int z;
+
+  public final boolean A;
+
+  public final int B;
+
+  public final java.lang.String C;
+
+  public final boolean D;
+
+  public final boolean E;
+
+  public final ars<arp>.a<java.lang.Integer> F;
+
+  public final ars<arp>.a<java.lang.Integer> G;
+
+  public final int H;
+
+  public final long I;
+
+  public final int J;
+
+  public final int K;
+
+  public final ars<arp>.a<java.lang.Integer> L;
+
+  public final ars<arp>.a<java.lang.Integer> M;
+
+  public final ars<arp>.a<java.lang.Integer> N;
+
+  public final int O;
+
+  public final boolean P;
+
+  public final boolean Q;
+
+  public final int R;
+
+  public final boolean S;
+
+  public final java.lang.String T;
+
+  public final boolean U;
+
+  public final ars<arp>.a<java.lang.Boolean> V;
+
+  public final ars<arp>.a<java.lang.Boolean> W;
+
+  public final ars<arp>.a<java.lang.Integer> X;
+
+  public final java.lang.String Y;
+
+  public final int Z;
+
+  public final java.util.Optional<net.minecraft.server.MinecraftServer$b> aa;
+
+  public final drd ab;
+
+  public final ars<arp>.a<java.lang.Integer> ac;
+
+  public final ars<arp>.a<java.lang.Integer> ad;
+
+  public final ars<arp>.a<java.lang.Boolean> ae;
+
+  public final boolean af;
+
+  public final boolean ag;
+
+  public final ars<arp>.a<java.lang.Integer> ah;
+
+  private final arp$a ao;
+
+  public final eqn ai;
+
+  public ars<arp>.a<java.lang.Boolean> aj;
+
+  public arp(java.util.Properties);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #120                // Method ars."<init>":(Ljava/util/Properties;)V
+       5: aload_0
+       6: aload_0
+       7: ldc           #122                // String online-mode
+       9: iconst_1
+      10: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+      13: putfield      #127                // Field d:Z
+      16: aload_0
+      17: aload_0
+      18: ldc           #129                // String prevent-proxy-connections
+      20: iconst_0
+      21: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+      24: putfield      #131                // Field e:Z
+      27: aload_0
+      28: aload_0
+      29: ldc           #133                // String server-ip
+      31: ldc           #135                // String
+      33: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      36: putfield      #140                // Field f:Ljava/lang/String;
+      39: aload_0
+      40: aload_0
+      41: ldc           #142                // String allow-flight
+      43: iconst_0
+      44: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+      47: putfield      #147                // Field g:Lars$a;
+      50: aload_0
+      51: aload_0
+      52: ldc           #149                // String motd
+      54: ldc           #151                // String A Minecraft Server
+      56: invokevirtual #154                // Method b:(Ljava/lang/String;Ljava/lang/String;)Lars$a;
+      59: putfield      #156                // Field h:Lars$a;
+      62: aload_0
+      63: aload_0
+      64: ldc           #158                // String enable-code-of-conduct
+      66: iconst_0
+      67: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+      70: putfield      #160                // Field i:Z
+      73: aload_0
+      74: aload_0
+      75: ldc           #162                // String bug-report-link
+      77: ldc           #135                // String
+      79: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      82: putfield      #164                // Field j:Ljava/lang/String;
+      85: aload_0
+      86: aload_0
+      87: ldc           #166                // String force-gamemode
+      89: iconst_0
+      90: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+      93: putfield      #168                // Field k:Lars$a;
+      96: aload_0
+      97: aload_0
+      98: ldc           #170                // String enforce-whitelist
+     100: iconst_0
+     101: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+     104: putfield      #172                // Field l:Lars$a;
+     107: aload_0
+     108: aload_0
+     109: ldc           #174                // String difficulty
+     111: invokedynamic #194,  0            // InvokeDynamic #0:apply:()Ljava/util/function/IntFunction;
+     116: invokedynamic #204,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     121: invokestatic  #207                // Method a:(Ljava/util/function/IntFunction;Ljava/util/function/Function;)Ljava/util/function/Function;
+     124: invokedynamic #214,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+     129: getstatic     #217                // Field cbn.b:Lcbn;
+     132: invokevirtual #220                // Method b:(Ljava/lang/String;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/Object;)Lars$a;
+     135: putfield      #222                // Field m:Lars$a;
+     138: aload_0
+     139: aload_0
+     140: ldc           #224                // String gamemode
+     142: invokedynamic #232,  0            // InvokeDynamic #3:apply:()Ljava/util/function/IntFunction;
+     147: invokedynamic #238,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     152: invokestatic  #207                // Method a:(Ljava/util/function/IntFunction;Ljava/util/function/Function;)Ljava/util/function/Function;
+     155: invokedynamic #244,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     160: getstatic     #247                // Field drn.a:Ldrn;
+     163: invokevirtual #220                // Method b:(Ljava/lang/String;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/Object;)Lars$a;
+     166: putfield      #249                // Field n:Lars$a;
+     169: aload_0
+     170: aload_0
+     171: ldc           #251                // String level-name
+     173: ldc           #253                // String world
+     175: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     178: putfield      #255                // Field o:Ljava/lang/String;
+     181: aload_0
+     182: aload_0
+     183: ldc_w         #257                // String server-port
+     186: sipush        25565
+     189: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     192: putfield      #262                // Field p:I
+     195: aload_0
+     196: aload_0
+     197: ldc_w         #264                // String management-server-enabled
+     200: iconst_0
+     201: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     204: putfield      #266                // Field q:Z
+     207: aload_0
+     208: aload_0
+     209: ldc_w         #268                // String management-server-host
+     212: ldc_w         #270                // String localhost
+     215: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     218: putfield      #272                // Field r:Ljava/lang/String;
+     221: aload_0
+     222: aload_0
+     223: ldc_w         #274                // String management-server-port
+     226: iconst_0
+     227: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     230: putfield      #276                // Field s:I
+     233: aload_0
+     234: aload_0
+     235: ldc_w         #278                // String management-server-secret
+     238: invokestatic  #282                // Method avr.a:()Ljava/lang/String;
+     241: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     244: putfield      #284                // Field t:Ljava/lang/String;
+     247: aload_0
+     248: aload_0
+     249: ldc           #38                 // String management-server-tls-enabled
+     251: iconst_1
+     252: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     255: putfield      #286                // Field u:Z
+     258: aload_0
+     259: aload_0
+     260: ldc           #40                 // String management-server-tls-keystore
+     262: ldc           #135                // String
+     264: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     267: putfield      #288                // Field v:Ljava/lang/String;
+     270: aload_0
+     271: aload_0
+     272: ldc           #43                 // String management-server-tls-keystore-password
+     274: ldc           #135                // String
+     276: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     279: putfield      #290                // Field w:Ljava/lang/String;
+     282: aload_0
+     283: aload_0
+     284: ldc_w         #292                // String announce-player-achievements
+     287: invokevirtual #295                // Method b:(Ljava/lang/String;)Ljava/lang/Boolean;
+     290: putfield      #297                // Field x:Ljava/lang/Boolean;
+     293: aload_0
+     294: aload_0
+     295: ldc_w         #299                // String enable-query
+     298: iconst_0
+     299: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     302: putfield      #301                // Field y:Z
+     305: aload_0
+     306: aload_0
+     307: ldc_w         #303                // String query.port
+     310: sipush        25565
+     313: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     316: putfield      #305                // Field z:I
+     319: aload_0
+     320: aload_0
+     321: ldc_w         #307                // String enable-rcon
+     324: iconst_0
+     325: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     328: putfield      #309                // Field A:Z
+     331: aload_0
+     332: aload_0
+     333: ldc_w         #311                // String rcon.port
+     336: sipush        25575
+     339: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     342: putfield      #313                // Field B:I
+     345: aload_0
+     346: aload_0
+     347: ldc_w         #315                // String rcon.password
+     350: ldc           #135                // String
+     352: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     355: putfield      #317                // Field C:Ljava/lang/String;
+     358: aload_0
+     359: aload_0
+     360: ldc_w         #319                // String hardcore
+     363: iconst_0
+     364: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     367: putfield      #321                // Field D:Z
+     370: aload_0
+     371: aload_0
+     372: ldc_w         #323                // String use-native-transport
+     375: iconst_1
+     376: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     379: putfield      #325                // Field E:Z
+     382: aload_0
+     383: aload_0
+     384: ldc_w         #327                // String spawn-protection
+     387: bipush        16
+     389: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     392: putfield      #332                // Field F:Lars$a;
+     395: aload_0
+     396: aload_0
+     397: ldc_w         #334                // String op-permission-level
+     400: iconst_4
+     401: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     404: putfield      #336                // Field G:Lars$a;
+     407: aload_0
+     408: aload_0
+     409: ldc_w         #338                // String function-permission-level
+     412: iconst_2
+     413: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     416: putfield      #340                // Field H:I
+     419: aload_0
+     420: aload_0
+     421: ldc_w         #342                // String max-tick-time
+     424: getstatic     #348                // Field java/util/concurrent/TimeUnit.MINUTES:Ljava/util/concurrent/TimeUnit;
+     427: lconst_1
+     428: invokevirtual #352                // Method java/util/concurrent/TimeUnit.toMillis:(J)J
+     431: invokevirtual #355                // Method a:(Ljava/lang/String;J)J
+     434: putfield      #357                // Field I:J
+     437: aload_0
+     438: aload_0
+     439: ldc_w         #359                // String max-chained-neighbor-updates
+     442: ldc_w         #360                // int 1000000
+     445: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     448: putfield      #362                // Field J:I
+     451: aload_0
+     452: aload_0
+     453: ldc_w         #364                // String rate-limit
+     456: iconst_0
+     457: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     460: putfield      #366                // Field K:I
+     463: aload_0
+     464: aload_0
+     465: ldc_w         #368                // String view-distance
+     468: bipush        10
+     470: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     473: putfield      #370                // Field L:Lars$a;
+     476: aload_0
+     477: aload_0
+     478: ldc_w         #372                // String simulation-distance
+     481: bipush        10
+     483: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     486: putfield      #374                // Field M:Lars$a;
+     489: aload_0
+     490: aload_0
+     491: ldc_w         #376                // String max-players
+     494: bipush        20
+     496: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     499: putfield      #378                // Field N:Lars$a;
+     502: aload_0
+     503: aload_0
+     504: ldc_w         #380                // String network-compression-threshold
+     507: sipush        256
+     510: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     513: putfield      #382                // Field O:I
+     516: aload_0
+     517: aload_0
+     518: ldc_w         #384                // String broadcast-rcon-to-ops
+     521: iconst_1
+     522: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     525: putfield      #386                // Field P:Z
+     528: aload_0
+     529: aload_0
+     530: ldc_w         #388                // String broadcast-console-to-ops
+     533: iconst_1
+     534: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     537: putfield      #390                // Field Q:Z
+     540: aload_0
+     541: aload_0
+     542: ldc_w         #392                // String max-world-size
+     545: invokedynamic #400,  0            // InvokeDynamic #6:apply:()Ljava/util/function/UnaryOperator;
+     550: ldc_w         #401                // int 29999984
+     553: invokevirtual #404                // Method a:(Ljava/lang/String;Ljava/util/function/UnaryOperator;I)I
+     556: putfield      #406                // Field R:I
+     559: aload_0
+     560: aload_0
+     561: ldc_w         #408                // String sync-chunk-writes
+     564: iconst_1
+     565: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     568: putfield      #410                // Field S:Z
+     571: aload_0
+     572: aload_0
+     573: ldc_w         #412                // String region-file-compression
+     576: ldc_w         #414                // String deflate
+     579: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     582: putfield      #416                // Field T:Ljava/lang/String;
+     585: aload_0
+     586: aload_0
+     587: ldc_w         #418                // String enable-jmx-monitoring
+     590: iconst_0
+     591: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     594: putfield      #420                // Field U:Z
+     597: aload_0
+     598: aload_0
+     599: ldc_w         #422                // String enable-status
+     602: iconst_1
+     603: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+     606: putfield      #424                // Field V:Lars$a;
+     609: aload_0
+     610: aload_0
+     611: ldc_w         #426                // String hide-online-players
+     614: iconst_0
+     615: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+     618: putfield      #428                // Field W:Lars$a;
+     621: aload_0
+     622: aload_0
+     623: ldc_w         #430                // String entity-broadcast-range-percentage
+     626: invokedynamic #436,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     631: bipush        100
+     633: invokestatic  #442                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     636: invokevirtual #445                // Method b:(Ljava/lang/String;Ljava/util/function/Function;Ljava/lang/Object;)Lars$a;
+     639: putfield      #447                // Field X:Lars$a;
+     642: aload_0
+     643: aload_0
+     644: ldc_w         #449                // String text-filtering-config
+     647: ldc           #135                // String
+     649: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     652: putfield      #451                // Field Y:Ljava/lang/String;
+     655: aload_0
+     656: aload_0
+     657: ldc_w         #453                // String text-filtering-version
+     660: iconst_0
+     661: invokevirtual #260                // Method a:(Ljava/lang/String;I)I
+     664: putfield      #455                // Field Z:I
+     667: aload_0
+     668: aload_0
+     669: ldc_w         #457                // String player-idle-timeout
+     672: iconst_0
+     673: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     676: putfield      #459                // Field ac:Lars$a;
+     679: aload_0
+     680: aload_0
+     681: ldc_w         #461                // String status-heartbeat-interval
+     684: iconst_0
+     685: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     688: putfield      #463                // Field ad:Lars$a;
+     691: aload_0
+     692: aload_0
+     693: ldc_w         #465                // String white-list
+     696: iconst_0
+     697: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+     700: putfield      #467                // Field ae:Lars$a;
+     703: aload_0
+     704: aload_0
+     705: ldc_w         #469                // String enforce-secure-profile
+     708: iconst_1
+     709: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     712: putfield      #471                // Field af:Z
+     715: aload_0
+     716: aload_0
+     717: ldc_w         #473                // String log-ips
+     720: iconst_1
+     721: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     724: putfield      #475                // Field ag:Z
+     727: aload_0
+     728: aload_0
+     729: ldc_w         #477                // String pause-when-empty-seconds
+     732: bipush        60
+     734: invokevirtual #330                // Method b:(Ljava/lang/String;I)Lars$a;
+     737: putfield      #479                // Field ah:Lars$a;
+     740: aload_0
+     741: aload_0
+     742: ldc_w         #481                // String accepts-transfers
+     745: iconst_0
+     746: invokevirtual #145                // Method b:(Ljava/lang/String;Z)Lars$a;
+     749: putfield      #483                // Field aj:Lars$a;
+     752: aload_0
+     753: ldc_w         #485                // String level-seed
+     756: ldc           #135                // String
+     758: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     761: astore_2
+     762: aload_0
+     763: ldc_w         #487                // String generate-structures
+     766: iconst_1
+     767: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     770: istore_3
+     771: aload_2
+     772: invokestatic  #492                // Method eqn.a:(Ljava/lang/String;)Ljava/util/OptionalLong;
+     775: invokestatic  #495                // Method eqn.g:()J
+     778: invokevirtual #500                // Method java/util/OptionalLong.orElse:(J)J
+     781: lstore        4
+     783: aload_0
+     784: new           #489                // class eqn
+     787: dup
+     788: lload         4
+     790: iload_3
+     791: iconst_0
+     792: invokespecial #503                // Method eqn."<init>":(JZZ)V
+     795: putfield      #505                // Field ai:Leqn;
+     798: aload_0
+     799: new           #8                  // class arp$a
+     802: dup
+     803: aload_0
+     804: ldc_w         #507                // String generator-settings
+     807: invokedynamic #513,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     812: new           #515                // class com/google/gson/JsonObject
+     815: dup
+     816: invokespecial #518                // Method com/google/gson/JsonObject."<init>":()V
+     819: invokevirtual #521                // Method a:(Ljava/lang/String;Ljava/util/function/Function;Ljava/lang/Object;)Ljava/lang/Object;
+     822: checkcast     #515                // class com/google/gson/JsonObject
+     825: aload_0
+     826: ldc_w         #523                // String level-type
+     829: invokedynamic #529,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+     834: getstatic     #534                // Field fad.a:Lami;
+     837: invokevirtual #539                // Method ami.a:()Lamj;
+     840: invokevirtual #544                // Method amj.toString:()Ljava/lang/String;
+     843: invokevirtual #521                // Method a:(Ljava/lang/String;Ljava/util/function/Function;Ljava/lang/Object;)Ljava/lang/Object;
+     846: checkcast     #546                // class java/lang/String
+     849: invokespecial #549                // Method arp$a."<init>":(Lcom/google/gson/JsonObject;Ljava/lang/String;)V
+     852: putfield      #551                // Field ao:Larp$a;
+     855: aload_0
+     856: aload_0
+     857: ldc_w         #553                // String resource-pack-id
+     860: ldc           #135                // String
+     862: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     865: aload_0
+     866: ldc_w         #555                // String resource-pack
+     869: ldc           #135                // String
+     871: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     874: aload_0
+     875: ldc_w         #557                // String resource-pack-sha1
+     878: ldc           #135                // String
+     880: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     883: aload_0
+     884: ldc_w         #559                // String resource-pack-hash
+     887: invokevirtual #561                // Method a:(Ljava/lang/String;)Ljava/lang/String;
+     890: aload_0
+     891: ldc_w         #563                // String require-resource-pack
+     894: iconst_0
+     895: invokevirtual #125                // Method a:(Ljava/lang/String;Z)Z
+     898: aload_0
+     899: ldc_w         #565                // String resource-pack-prompt
+     902: ldc           #135                // String
+     904: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     907: invokestatic  #568                // Method a:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)Ljava/util/Optional;
+     910: putfield      #570                // Field aa:Ljava/util/Optional;
+     913: aload_0
+     914: aload_0
+     915: ldc_w         #572                // String initial-enabled-packs
+     918: ldc_w         #574                // String ,
+     921: getstatic     #579                // Field dso.d:Ldso;
+     924: invokevirtual #582                // Method dso.a:()Ldrd;
+     927: invokevirtual #587                // Method drd.a:()Ljava/util/List;
+     930: invokestatic  #591                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+     933: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     936: aload_0
+     937: ldc_w         #593                // String initial-disabled-packs
+     940: ldc_w         #574                // String ,
+     943: getstatic     #579                // Field dso.d:Ldso;
+     946: invokevirtual #582                // Method dso.a:()Ldrd;
+     949: invokevirtual #595                // Method drd.b:()Ljava/util/List;
+     952: invokestatic  #591                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+     955: invokevirtual #138                // Method a:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     958: invokestatic  #598                // Method c:(Ljava/lang/String;Ljava/lang/String;)Ldrd;
+     961: putfield      #600                // Field ab:Ldrd;
+     964: return
+
+  public static arp a(java.nio.file.Path);
+    Code:
+       0: new           #2                  // class arp
+       3: dup
+       4: aload_0
+       5: invokestatic  #611                // Method b:(Ljava/nio/file/Path;)Ljava/util/Properties;
+       8: invokespecial #612                // Method "<init>":(Ljava/util/Properties;)V
+      11: areturn
+
+  protected arp a(jy, java.util.Properties);
+    Code:
+       0: new           #2                  // class arp
+       3: dup
+       4: aload_2
+       5: invokespecial #612                // Method "<init>":(Ljava/util/Properties;)V
+       8: areturn
+
+  private static xx c(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #624                // Method com/google/common/base/Strings.isNullOrEmpty:(Ljava/lang/String;)Z
+       4: ifne          65
+       7: aload_0
+       8: invokestatic  #629                // Method bge.a:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      11: astore_1
+      12: getstatic     #634                // Field xz.a:Lcom/mojang/serialization/Codec;
+      15: getstatic     #637                // Field jy.b:Ljy$b;
+      18: getstatic     #643                // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+      21: invokeinterface #646,  2          // InterfaceMethod jy$b.a:(Lcom/mojang/serialization/DynamicOps;)Lamh;
+      26: aload_1
+      27: invokeinterface #652,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      32: aload_0
+      33: invokedynamic #664,  0            // InvokeDynamic #10:accept:(Ljava/lang/String;)Ljava/util/function/Consumer;
+      38: invokeinterface #670,  2          // InterfaceMethod com/mojang/serialization/DataResult.resultOrPartial:(Ljava/util/function/Consumer;)Ljava/util/Optional;
+      43: aconst_null
+      44: invokevirtual #674                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      47: checkcast     #676                // class xx
+      50: areturn
+      51: astore_1
+      52: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+      55: ldc_w         #680                // String Failed to parse resource pack prompt \'{}\'
+      58: aload_0
+      59: aload_1
+      60: invokeinterface #686,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      65: aconst_null
+      66: areturn
+    Exception table:
+       from    to  target type
+           7    50    51   Class java/lang/Exception
+
+  private static java.util.Optional<net.minecraft.server.MinecraftServer$b> a(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String);
+    Code:
+       0: aload_1
+       1: invokevirtual #695                // Method java/lang/String.isEmpty:()Z
+       4: ifeq          11
+       7: invokestatic  #699                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      10: areturn
+      11: aload_2
+      12: invokevirtual #695                // Method java/lang/String.isEmpty:()Z
+      15: ifne          42
+      18: aload_2
+      19: astore        6
+      21: aload_3
+      22: invokestatic  #624                // Method com/google/common/base/Strings.isNullOrEmpty:(Ljava/lang/String;)Z
+      25: ifne          70
+      28: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+      31: ldc_w         #701                // String resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.
+      34: invokeinterface #703,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      39: goto          70
+      42: aload_3
+      43: invokestatic  #624                // Method com/google/common/base/Strings.isNullOrEmpty:(Ljava/lang/String;)Z
+      46: ifne          66
+      49: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+      52: ldc_w         #705                // String resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.
+      55: invokeinterface #703,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      60: aload_3
+      61: astore        6
+      63: goto          70
+      66: ldc           #135                // String
+      68: astore        6
+      70: aload         6
+      72: invokevirtual #695                // Method java/lang/String.isEmpty:()Z
+      75: ifeq          92
+      78: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+      81: ldc_w         #707                // String You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.
+      84: invokeinterface #703,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      89: goto          117
+      92: getstatic     #709                // Field am:Ljava/util/regex/Pattern;
+      95: aload         6
+      97: invokevirtual #715                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+     100: invokevirtual #720                // Method java/util/regex/Matcher.matches:()Z
+     103: ifne          117
+     106: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+     109: ldc_w         #722                // String Invalid sha1 for resource-pack-sha1
+     112: invokeinterface #703,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     117: aload         5
+     119: invokestatic  #724                // Method c:(Ljava/lang/String;)Lxx;
+     122: astore        7
+     124: aload_0
+     125: invokevirtual #695                // Method java/lang/String.isEmpty:()Z
+     128: ifeq          159
+     131: aload_1
+     132: getstatic     #730                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+     135: invokevirtual #734                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+     138: invokestatic  #740                // Method java/util/UUID.nameUUIDFromBytes:([B)Ljava/util/UUID;
+     141: astore        8
+     143: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+     146: ldc_w         #742                // String resource-pack-id missing, using default of {}
+     149: aload         8
+     151: invokeinterface #745,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     156: goto          186
+     159: aload_0
+     160: invokestatic  #749                // Method java/util/UUID.fromString:(Ljava/lang/String;)Ljava/util/UUID;
+     163: astore        8
+     165: goto          186
+     168: astore        9
+     170: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+     173: ldc_w         #751                // String Failed to parse \'{}\' into UUID
+     176: aload_0
+     177: invokeinterface #745,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     182: invokestatic  #699                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     185: areturn
+     186: new           #18                 // class net/minecraft/server/MinecraftServer$b
+     189: dup
+     190: aload         8
+     192: aload_1
+     193: aload         6
+     195: iload         4
+     197: aload         7
+     199: invokespecial #754                // Method net/minecraft/server/MinecraftServer$b."<init>":(Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;ZLxx;)V
+     202: invokestatic  #758                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     205: areturn
+    Exception table:
+       from    to  target type
+         159   165   168   Class java/lang/IllegalArgumentException
+
+  private static drd c(java.lang.String, java.lang.String);
+    Code:
+       0: getstatic     #773                // Field an:Lcom/google/common/base/Splitter;
+       3: aload_0
+       4: invokevirtual #779                // Method com/google/common/base/Splitter.splitToList:(Ljava/lang/CharSequence;)Ljava/util/List;
+       7: astore_2
+       8: getstatic     #773                // Field an:Lcom/google/common/base/Splitter;
+      11: aload_1
+      12: invokevirtual #779                // Method com/google/common/base/Splitter.splitToList:(Ljava/lang/CharSequence;)Ljava/util/List;
+      15: astore_3
+      16: new           #584                // class drd
+      19: dup
+      20: aload_2
+      21: aload_3
+      22: invokespecial #782                // Method drd."<init>":(Ljava/util/List;Ljava/util/List;)V
+      25: areturn
+
+  public eqk a(jm$a);
+    Code:
+       0: aload_0
+       1: getfield      #551                // Field ao:Larp$a;
+       4: aload_1
+       5: invokevirtual #787                // Method arp$a.a:(Ljm$a;)Leqk;
+       8: areturn
+
+  protected ars b(jy, java.util.Properties);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #791                // Method a:(Ljy;Ljava/util/Properties;)Larp;
+       6: areturn
+
+  private static void d(java.lang.String, java.lang.String);
+    Code:
+       0: getstatic     #678                // Field al:Lorg/slf4j/Logger;
+       3: ldc_w         #793                // String Failed to parse resource pack prompt \'{}\': {}
+       6: aload_0
+       7: aload_1
+       8: invokeinterface #686,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      13: return
+
+  private static java.lang.String d(java.lang.String);
+    Code:
+       0: aload_0
+       1: getstatic     #799                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+       4: invokevirtual #803                // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+       7: areturn
+
+  private static com.google.gson.JsonObject e(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #695                // Method java/lang/String.isEmpty:()Z
+       4: ifne          11
+       7: aload_0
+       8: goto          14
+      11: ldc_w         #805                // String {}
+      14: invokestatic  #809                // Method bew.a:(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+      17: areturn
+
+  private static java.lang.Integer f(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #813                // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+       4: bipush        10
+       6: sipush        1000
+       9: invokestatic  #818                // Method bfh.a:(III)I
+      12: invokestatic  #442                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      15: areturn
+
+  private static java.lang.Integer a(java.lang.Integer);
+    Code:
+       0: aload_0
+       1: invokevirtual #822                // Method java/lang/Integer.intValue:()I
+       4: iconst_1
+       5: ldc_w         #401                // int 29999984
+       8: invokestatic  #818                // Method bfh.a:(III)I
+      11: invokestatic  #442                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      14: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #830                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #678                // Field al:Lorg/slf4j/Logger;
+       6: ldc_w         #832                // String ^[a-fA-F0-9]{40}$
+       9: invokestatic  #836                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+      12: putstatic     #709                // Field am:Ljava/util/regex/Pattern;
+      15: bipush        44
+      17: invokestatic  #840                // Method com/google/common/base/Splitter.on:(C)Lcom/google/common/base/Splitter;
+      20: invokevirtual #844                // Method com/google/common/base/Splitter.trimResults:()Lcom/google/common/base/Splitter;
+      23: putstatic     #773                // Field an:Lcom/google/common/base/Splitter;
+      26: return
+}

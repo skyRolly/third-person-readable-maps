@@ -1,0 +1,64 @@
+Compiled from "SourceFile"
+final class jc$1 extends io.netty.channel.ChannelInitializer<io.netty.channel.Channel> {
+  final jc a;
+
+  jc$1(jc);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #16                 // Field a:Ljc;
+       5: aload_0
+       6: invokespecial #19                 // Method io/netty/channel/ChannelInitializer."<init>":()V
+       9: return
+
+  protected void initChannel(io.netty.channel.Channel) throws java.lang.Exception;
+    Code:
+       0: aload_1
+       1: invokeinterface #33,  1           // InterfaceMethod io/netty/channel/Channel.config:()Lio/netty/channel/ChannelConfig;
+       6: getstatic     #39                 // Field io/netty/channel/ChannelOption.TCP_NODELAY:Lio/netty/channel/ChannelOption;
+       9: iconst_1
+      10: invokestatic  #45                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      13: invokeinterface #51,  3           // InterfaceMethod io/netty/channel/ChannelConfig.setOption:(Lio/netty/channel/ChannelOption;Ljava/lang/Object;)Z
+      18: pop
+      19: goto          23
+      22: astore_2
+      23: aload_1
+      24: invokeinterface #55,  1           // InterfaceMethod io/netty/channel/Channel.pipeline:()Lio/netty/channel/ChannelPipeline;
+      29: ldc           #57                 // String timeout
+      31: new           #59                 // class io/netty/handler/timeout/ReadTimeoutHandler
+      34: dup
+      35: bipush        30
+      37: invokespecial #62                 // Method io/netty/handler/timeout/ReadTimeoutHandler."<init>":(I)V
+      40: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      45: ldc           #70                 // String splitter
+      47: new           #72                 // class jj
+      50: dup
+      51: invokespecial #73                 // Method jj."<init>":()V
+      54: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      59: ldc           #75                 // String decoder
+      61: new           #77                 // class jf
+      64: dup
+      65: getstatic     #83                 // Field kd.b:Lkd;
+      68: invokespecial #86                 // Method jf."<init>":(Lkd;)V
+      71: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      76: ldc           #88                 // String prepender
+      78: new           #90                 // class jk
+      81: dup
+      82: invokespecial #91                 // Method jk."<init>":()V
+      85: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      90: ldc           #93                 // String encoder
+      92: new           #95                 // class jg
+      95: dup
+      96: getstatic     #97                 // Field kd.a:Lkd;
+      99: invokespecial #98                 // Method jg."<init>":(Lkd;)V
+     102: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     107: ldc           #100                // String packet_handler
+     109: aload_0
+     110: getfield      #16                 // Field a:Ljc;
+     113: invokeinterface #68,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     118: pop
+     119: return
+    Exception table:
+       from    to  target type
+           0    19    22   Class io/netty/channel/ChannelException
+}

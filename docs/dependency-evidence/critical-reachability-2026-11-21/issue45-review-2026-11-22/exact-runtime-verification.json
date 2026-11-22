@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "source_branch_head": "5989d8c0d61adf3bb9e4f7e247965929b21a0b2a",
+  "analysis_commit": "285f3037d40db0861d9f1649df66dbd478e2d8b0",
+  "workflow_run": 45010716782,
+  "workflow_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/45010716782",
+  "inspection_sha256": "ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "platforms": {
+    "linux": {
+      "artifact_id": 14749412512,
+      "archive_path": "docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/linux-exact-runtime.zip",
+      "archive_sha256": "4cf8d0bb4c69cd461963d4ee34514b5078e776e4253facc50e69d1482c64b483",
+      "archive_size_bytes": 379093,
+      "report_sha256": "16b8231d618c4f48abe1ccb899db416cb75c9c4f3431b997d67f4691e8b17600",
+      "report_platform": "linux",
+      "report_cases": 27,
+      "case_name": "1.17.1-embedded-chat-jndi",
+      "case_source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "java_runtime_name": "16.0.1.9.1",
+      "configuration": "1.14.4-embedded.xml",
+      "configuration_scope": "exact_client_embedded",
+      "configuration_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "local_jndi_context_calls": 2,
+      "passed": true
+    },
+    "windows": {
+      "artifact_id": 14750060894,
+      "archive_path": "docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/windows-exact-runtime.zip",
+      "archive_sha256": "19bc46e215db50f4aa618af5b576acc050196f5ac1e9932f496fb69622fb1a68",
+      "archive_size_bytes": 385023,
+      "report_sha256": "fbc76f344f35f15844a10fbed50dc232043dd78080acac4014d2a7d06b2a6ae6",
+      "report_platform": "windows-x64",
+      "report_cases": 27,
+      "case_name": "1.17.1-embedded-chat-jndi",
+      "case_source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "java_runtime_name": "16.0.1.9.1",
+      "configuration": "1.14.4-embedded.xml",
+      "configuration_scope": "exact_client_embedded",
+      "configuration_sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "local_jndi_context_calls": 2,
+      "passed": true
+    }
+  }
+}

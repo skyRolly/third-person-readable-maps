@@ -1,0 +1,346 @@
+{
+  "client_mappings_verified": 14,
+  "high_family_scan_sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27",
+  "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+  "minecraft_version_count": 19,
+  "named_client_classes_without_published_mappings": 5,
+  "observations": [
+    {
+      "class_file": "dvo.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> dvo:",
+        "sha1": "65b1468c44fbf34382716416b5c1a16d2949217a",
+        "size": 9421856,
+        "url": "https://piston-data.mojang.com/v1/objects/65b1468c44fbf34382716416b5c1a16d2949217a/client.txt",
+        "verified_sha1": "65b1468c44fbf34382716416b5c1a16d2949217a"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.20.5",
+      "source_group": "1.20.5-1.20.6",
+      "source_kind": "candidate",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "verified_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+      "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446/1.20.5.json"
+    },
+    {
+      "class_file": "dvp.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> dvp:",
+        "sha1": "de46c8f33d7826eb83e8ef0e9f80dc1f08cb9498",
+        "size": 9422442,
+        "url": "https://piston-data.mojang.com/v1/objects/de46c8f33d7826eb83e8ef0e9f80dc1f08cb9498/client.txt",
+        "verified_sha1": "de46c8f33d7826eb83e8ef0e9f80dc1f08cb9498"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.20.6",
+      "source_group": "1.20.5-1.20.6",
+      "source_kind": "candidate",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624",
+      "verified_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+      "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/e614a15052d9bf81d314ff0111aaa21f7144115d/1.20.6.json"
+    },
+    {
+      "class_file": "dwr.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> dwr:",
+        "sha1": "0530a206839eb1e9b35ec86acbbe394b07a2d9fb",
+        "size": 9597156,
+        "url": "https://piston-data.mojang.com/v1/objects/0530a206839eb1e9b35ec86acbbe394b07a2d9fb/client.txt",
+        "verified_sha1": "0530a206839eb1e9b35ec86acbbe394b07a2d9fb"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21",
+      "source_group": "1.21-1.21.1",
+      "source_kind": "candidate",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "verified_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+      "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/cf0560d5dc4f926b801e6ff12f189d9ffe0720b1/1.21.json"
+    },
+    {
+      "class_file": "dwr.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> dwr:",
+        "sha1": "2244b6f072256667bcd9a73df124d6c58de77992",
+        "size": 9598610,
+        "url": "https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt",
+        "verified_sha1": "2244b6f072256667bcd9a73df124d6c58de77992"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.1",
+      "source_group": "1.21-1.21.1",
+      "source_kind": "candidate",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d",
+      "verified_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+      "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/ff7ef54488da4a711f3c8a781a9f79105bbe801a/1.21.1.json"
+    },
+    {
+      "class_file": "enf.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> enf:",
+        "sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7",
+        "size": 11511143,
+        "url": "https://piston-data.mojang.com/v1/objects/7e62354a697f95cf5e7d5981face0583676a9ef7/client.txt",
+        "verified_sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.10",
+      "source_group": "1.21.9-1.21.10",
+      "source_kind": "candidate",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "verified_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+      "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/563e8381e10c8d807c6531da30fa4a57bbc79f3c/1.21.10.json"
+    },
+    {
+      "class_file": "erz.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> erz:",
+        "sha1": "031a68bebf55d824f66d6573d8c752f0e1bf232a",
+        "size": 11779287,
+        "url": "https://piston-data.mojang.com/v1/objects/031a68bebf55d824f66d6573d8c752f0e1bf232a/client.txt",
+        "verified_sha1": "031a68bebf55d824f66d6573d8c752f0e1bf232a"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.11",
+      "source_group": "1.21.11",
+      "source_kind": "integrated",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "verified_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/a969d96978af7b52dba8df44e177f48ec4ebe0d8/1.21.11.json"
+    },
+    {
+      "class_file": "ebh.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> ebh:",
+        "sha1": "ce0ed2eb99175df9ec5166324e3fdd1f87cee827",
+        "size": 10178587,
+        "url": "https://piston-data.mojang.com/v1/objects/ce0ed2eb99175df9ec5166324e3fdd1f87cee827/client.txt",
+        "verified_sha1": "ce0ed2eb99175df9ec5166324e3fdd1f87cee827"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.2",
+      "source_group": "1.21.2-1.21.3",
+      "source_kind": "candidate",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "verified_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+      "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/ec780c60f9c5a6cc2494f279eadf338ff6f70ecc/1.21.2.json"
+    },
+    {
+      "class_file": "ebi.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> ebi:",
+        "sha1": "42c2292dfc21de314dee5205760332c807cad411",
+        "size": 10178949,
+        "url": "https://piston-data.mojang.com/v1/objects/42c2292dfc21de314dee5205760332c807cad411/client.txt",
+        "verified_sha1": "42c2292dfc21de314dee5205760332c807cad411"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.3",
+      "source_group": "1.21.2-1.21.3",
+      "source_kind": "candidate",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+      "verified_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+      "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/31d677732ca6cd2c29ab7071008870ba0fe13a55/1.21.3.json"
+    },
+    {
+      "class_file": "eal.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> eal:",
+        "sha1": "0cf2a0b7f056da1a5a5dd99fc6dc752f33987150",
+        "size": 10323161,
+        "url": "https://piston-data.mojang.com/v1/objects/0cf2a0b7f056da1a5a5dd99fc6dc752f33987150/client.txt",
+        "verified_sha1": "0cf2a0b7f056da1a5a5dd99fc6dc752f33987150"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.4",
+      "source_group": "1.21.4-1.21.8",
+      "source_kind": "candidate",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "verified_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+      "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/c88775961e316f2be09859c54e13017660ee7770/1.21.4.json"
+    },
+    {
+      "class_file": "eff.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> eff:",
+        "sha1": "57669731d542f98646772e91a0d68628f9827a5c",
+        "size": 10670987,
+        "url": "https://piston-data.mojang.com/v1/objects/57669731d542f98646772e91a0d68628f9827a5c/client.txt",
+        "verified_sha1": "57669731d542f98646772e91a0d68628f9827a5c"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.5",
+      "source_group": "1.21.4-1.21.8",
+      "source_kind": "candidate",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "verified_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+      "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/d7eabdfb864d74c6d3942cdb864405778e948f28/1.21.5.json"
+    },
+    {
+      "class_file": "ehq.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> ehq:",
+        "sha1": "848855615bc81e3db1c85e69b6afb150807a1261",
+        "size": 10987575,
+        "url": "https://piston-data.mojang.com/v1/objects/848855615bc81e3db1c85e69b6afb150807a1261/client.txt",
+        "verified_sha1": "848855615bc81e3db1c85e69b6afb150807a1261"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.6",
+      "source_group": "1.21.4-1.21.8",
+      "source_kind": "candidate",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "verified_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+      "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/6d057cfccf6b8589ec6c9663902b07b7c1170538/1.21.6.json"
+    },
+    {
+      "class_file": "ehq.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> ehq:",
+        "sha1": "8d83af626cae1865deaf55fbf96934be4886fd45",
+        "size": 10988969,
+        "url": "https://piston-data.mojang.com/v1/objects/8d83af626cae1865deaf55fbf96934be4886fd45/client.txt",
+        "verified_sha1": "8d83af626cae1865deaf55fbf96934be4886fd45"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.7",
+      "source_group": "1.21.4-1.21.8",
+      "source_kind": "candidate",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "verified_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+      "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/5149e9aa052c041683a5b2d80aecaaabde953b87/1.21.7.json"
+    },
+    {
+      "class_file": "ehq.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> ehq:",
+        "sha1": "bdeb624c3aefba11d9d40f34bc96176350b549b6",
+        "size": 10989738,
+        "url": "https://piston-data.mojang.com/v1/objects/bdeb624c3aefba11d9d40f34bc96176350b549b6/client.txt",
+        "verified_sha1": "bdeb624c3aefba11d9d40f34bc96176350b549b6"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.8",
+      "source_group": "1.21.4-1.21.8",
+      "source_kind": "candidate",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+      "verified_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+      "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/e7625384d0bdf069fb75349992292ca86198c851/1.21.8.json"
+    },
+    {
+      "class_file": "enf.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": {
+        "class_mapping_line": "net.minecraft.world.level.chunk.storage.RegionFileVersion -> enf:",
+        "sha1": "3641ccb54eac2153c7e8274823c5a8e046beaba0",
+        "size": 11510637,
+        "url": "https://piston-data.mojang.com/v1/objects/3641ccb54eac2153c7e8274823c5a8e046beaba0/client.txt",
+        "verified_sha1": "3641ccb54eac2153c7e8274823c5a8e046beaba0"
+      },
+      "mapping_verification": "verified",
+      "minecraft_version": "1.21.9",
+      "source_group": "1.21.9-1.21.10",
+      "source_kind": "candidate",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "verified_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+      "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/61826f3fa6b54439cac19731be4305bb2f388c78/1.21.9.json"
+    },
+    {
+      "class_file": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": null,
+      "mapping_verification": "official client class is named; no client mappings published",
+      "minecraft_version": "26.1",
+      "source_group": "26.1-26.2",
+      "source_kind": "integrated",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verified_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+      "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/224ef4d5ccb0a181b750765f2fdc591e0072bd3a/26.1.json"
+    },
+    {
+      "class_file": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": null,
+      "mapping_verification": "official client class is named; no client mappings published",
+      "minecraft_version": "26.1.1",
+      "source_group": "26.1-26.2",
+      "source_kind": "integrated",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verified_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+      "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a/26.1.1.json"
+    },
+    {
+      "class_file": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": null,
+      "mapping_verification": "official client class is named; no client mappings published",
+      "minecraft_version": "26.1.2",
+      "source_group": "26.1-26.2",
+      "source_kind": "integrated",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verified_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+      "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/80bb32e704c07fb2c44066a2c1774cb460d7e22b/26.1.2.json"
+    },
+    {
+      "class_file": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": null,
+      "mapping_verification": "official client class is named; no client mappings published",
+      "minecraft_version": "26.2",
+      "source_group": "26.1-26.2",
+      "source_kind": "integrated",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941",
+      "verified_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+      "version_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/cf103b8fab4900562221bf7f23b72725dd9a914a/26.2.json"
+    },
+    {
+      "class_file": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+      "mapped_direct_caller": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+      "mapping": null,
+      "mapping_verification": "official client class is named; no client mappings published",
+      "minecraft_version": "26.3",
+      "source_group": "26.3",
+      "source_kind": "integrated",
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a",
+      "verified_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+      "version_metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+      "version_metadata_url": "https://piston-meta.mojang.com/v1/packages/ead839cbccf0ddf013c3f935f2840080b5cb0d26/26.3.json"
+    }
+  ],
+  "observed_on": "2026-11-22",
+  "schema": 1,
+  "security_clearance": false,
+  "source_index_sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193",
+  "status": "complete",
+  "target": "Minecraft LZ4 region-file stream direct caller"
+}

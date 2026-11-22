@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "workflow_run_id": 44977010612,
+  "workflow_run_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/44977010612",
+  "workflow": "CI",
+  "run_number": 812,
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "a800917f9fa111df3bf9a0720fbd976e67ecbeb3",
+  "head_branch": "security/issue45-runtime-reachability",
+  "jobs": [
+    {
+      "name": "Verify reachability experiments (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify reachability experiments (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Validate coordination",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Validate live release prerequisites",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "reachability-probes-ubuntu-latest",
+      "artifact_id": 14735388694,
+      "size_bytes": 11415,
+      "sha256": "67c0c326b95c279e4d0ad4ace85f53e4e523a3b69e2b4fd66bd582915a71f721"
+    },
+    {
+      "name": "reachability-probes-windows-latest",
+      "artifact_id": 14735559801,
+      "size_bytes": 11514,
+      "sha256": "3cf76b901f36325a1408368bfb6ce74d41ccdc8462d4dae4acea549213291856"
+    }
+  ],
+  "what_this_verifies": "The exact PR commit passed the source-bound validator and ran the dependency behavior probe successfully on Linux and Windows, including LZ4 native-selection and CMP6 vector expectations. The recorded artifact SHA-256 digests come from the GitHub Actions artifact API.",
+  "limitations": [
+    "This is a component probe under hosted CI launchers, not a full Minecraft runtime or malicious region-file test.",
+    "macOS native/fallback selection was not tested.",
+    "The shared-temp race and CVE-2025-12183 exploit payload were not tested.",
+    "A successful behavior probe does not clear or suppress source-bound advisory findings."
+  ],
+  "security_clearance": false,
+  "risk_accepted": false
+}
