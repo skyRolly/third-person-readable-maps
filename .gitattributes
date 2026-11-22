@@ -22,5 +22,3 @@ docs/multiplayer-smoke-2026-11-14/**/*.log -text whitespace=-blank-at-eol
 docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-logging-client-1.21.2.xml -text whitespace=-blank-at-eol
 # Preserve byte-exact hosted Windows probe output for checksum verification.
 docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-probes-2026-11-22/*.json -text
-# Preserve downloaded Log4j runtime reports, metadata snapshots, and artifacts byte-for-byte.
-docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/** -text -eol whitespace=-blank-at-eol
