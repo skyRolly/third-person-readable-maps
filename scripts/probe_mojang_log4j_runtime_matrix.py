@@ -284,6 +284,9 @@ def preserve_snapshot(path, payload):
 
 
 def run_matrix(cache, compiler_home):
+    # The probe changes cwd for isolated JVM invocations, so all cached runtime
+    # executable paths must remain absolute across those subprocesses.
+    cache = cache.resolve()
     cache.mkdir(parents=True, exist_ok=True)
     platform_id = expected_java_platform()
     all_raw = (METADATA / 'all.json').read_bytes()
