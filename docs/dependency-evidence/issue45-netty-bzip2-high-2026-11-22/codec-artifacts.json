@@ -1,0 +1,76 @@
+{
+  "libraries": [
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "7ad54797ec5310d5c3e51d32e510a837c9087ba00d8a5d512b8f14bd40a1ead8",
+      "class_size_bytes": 7545,
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.15.Final",
+      "sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+      "sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+      "size_bytes": 183091,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "7ad54797ec5310d5c3e51d32e510a837c9087ba00d8a5d512b8f14bd40a1ead8",
+      "class_size_bytes": 7545,
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+      "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+      "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+      "size_bytes": 182886,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+      "class_size_bytes": 7569,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
+      "sha1": "d326bf3a4c785b272da3db6941779a1bd5448378",
+      "sha256": "cd189afb70ec6eacfcdfdd3a5f472b4e705a5c91d5bd3ef0386421f2ae15ec77",
+      "size_bytes": 352900,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+      "class_size_bytes": 7569,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+      "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+      "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+      "size_bytes": 355199,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+      "class_size_bytes": 7569,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+      "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+      "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+      "size_bytes": 337017,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+      "class_size_bytes": 7569,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+      "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+      "size_bytes": 339155,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+    },
+    {
+      "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+      "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+      "class_size_bytes": 7569,
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+      "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+      "size_bytes": 345274,
+      "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+    }
+  ],
+  "schema": 1,
+  "security_clearance": false
+}

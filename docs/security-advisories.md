@@ -1,13 +1,14 @@
 # Security advisory ledger
 
-The [High Netty IP-filter follow-up](worklogs/issue-45-netty-ipfilter-high-2026-11-22.md)
-adds bounded source-bound investigation of `GHSA-3qp7-7mw8-wx86` for 12
-occurrences. The [High Netty SNI follow-up](worklogs/issue-45-netty-sni-high-2026-11-22.md)
-remains separately preserved. The [current priority register](dependency-evidence/issue45-netty-ipfilter-high-2026-11-22/priority-register-v3.json)
-links focused evidence for 117 Critical/High occurrences across 22 advisory
-IDs. All 490 matches remain blocking; 82 High occurrences across 15 advisory
-IDs remain outside the focused investigations. No new non-applicability or risk
-acceptance is claimed.
+The [High Netty Bzip2 follow-up](worklogs/issue-45-netty-bzip2-high-2026-11-22.md)
+adds bounded source-bound investigation of `GHSA-558v-64gr-wgg4` for 13
+occurrences. The earlier [IP-filter](worklogs/issue-45-netty-ipfilter-high-2026-11-22.md)
+and [SNI](worklogs/issue-45-netty-sni-high-2026-11-22.md) follow-ups remain
+separately preserved. The [current priority register](dependency-evidence/issue45-netty-bzip2-high-2026-11-22/priority-register-v4.json)
+links focused evidence for 130 Critical/High occurrences across 23 advisory
+IDs. All 490 retained matches remain blocking; 69 High occurrences across 14
+advisory IDs remain outside the focused investigations. No non-applicability or
+risk acceptance is claimed.
 
 The [2026-11-22 live follow-up](worklogs/issue-45-live-validation-2026-11-22.md) independently re-resolved and rescanned all 13 source groups. Its [Critical/High register](dependency-evidence/issue45-live-source-2026-11-22/priority-register.json) preserves source commits, audit archive identities, scopes, affected ranges and the existing dispositions. All 490 findings remain blocking; no new risk acceptance or dependency fix is asserted.
 
