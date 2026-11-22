@@ -973,3 +973,8 @@ Affected ranges and fixed endpoints (each release line is separate; a listed fix
 
 Follow-up owner: repository maintainer and security reviewer. Re-evaluate before release, on changed game libraries or advisory scope, and no later than 2027-02-02. Runtime traces/configuration for the named vulnerable feature are still needed; uncertainty is not non-applicability.
 
+
+
+## Issue #45 Commons Compress TAR follow-up — 2026-11-22
+
+[Source-bound follow-up evidence](dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json) and [worklog](worklogs/issue-45-commons-compress-runtime-followup-2026-11-22.md) cover 12 High advisory occurrences across three legacy source groups. Exact Minecraft Realms/client bytecode reaches Commons Compress 1.8.1 through an optional gzip TAR world download. A 111-byte malformed archive reproduced `OutOfMemoryError` in the exact library under a 32 MiB heap; upstream-fixed 1.21 rejected the same input. The Realms service's acceptance of owner-controlled PAX metadata remains unverified. All four findings remain failing, release-blocking, and unaccepted; these 12 rows are already included in the 71 focused High occurrences, so inventory counts are unchanged. No game-managed library override was made.

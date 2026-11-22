@@ -1094,11 +1094,22 @@ def validate():
     reference = ledger.get('critical_reachability_evidence', {})
     if reference.get('path') != EVIDENCE.relative_to(ROOT).as_posix() or reference.get('sha256') != raw_hash(EVIDENCE):
         fail('structured advisory ledger does not reference this evidence')
+    commons_pointer = evidence.get('commons_compress_tar_reachability', {}).get('latest_followup', {})
+    commons_path = ROOT / commons_pointer.get('path', '')
+    commons = load(commons_path) if commons_path.is_file() else {}
+    if commons_pointer.get('path') != (BASE / 'commons-compress-runtime-followup-2026-11-22.json').relative_to(ROOT).as_posix() or \
+            commons_pointer.get('sha256') != raw_hash(commons_path) or \
+            commons_pointer.get('occurrences') != 12 or commons_pointer.get('source_groups') != 3 or \
+            commons_pointer.get('risk_accepted') is not False or commons_pointer.get('security_clearance') is not False or \
+            commons_pointer.get('release_blocking') is not True or commons.get('security_clearance') is not False or \
+            commons.get('risk_accepted') is not False or commons.get('release_blocking') is not True:
+        fail('Commons Compress source-bound TAR follow-up is missing, cleared, or inconsistent')
     if reference.get('targeted_high_occurrences') != 71 or reference.get('targeted_critical_occurrences') != 22 or \
             reference.get('targeted_occurrences') != 93 or \
             reference.get('guava_deserialization_reachability') != guava_pointer or \
-            reference.get('lz4_runtime_reachability') != lz4_pointer:
-        fail('structured advisory ledger focused counts or Guava/LZ4 pointer mismatch')
+            reference.get('lz4_runtime_reachability') != lz4_pointer or \
+            reference.get('commons_compress_tar_reachability') != commons_pointer:
+        fail('structured advisory ledger focused counts or Guava/LZ4/Commons pointer mismatch')
     updated = [row for row in ledger['records'] if 'latest_source_observation' in row]
     if len(updated) != reference.get('updated_integrated_occurrence_records'):
         fail('structured ledger source-observation count mismatch')

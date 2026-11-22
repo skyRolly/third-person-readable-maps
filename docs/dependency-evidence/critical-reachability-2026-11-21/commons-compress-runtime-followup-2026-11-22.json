@@ -1,0 +1,227 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "status": "component_oom_reproduced_in_manifest_version; first_party_tar_parser_path_present; remote_payload_control_unresolved",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "scope": {
+    "package": "org.apache.commons:commons-compress",
+    "vulnerable_version": "1.8.1",
+    "first_patched_version": "1.21",
+    "advisory_ids": [
+      "GHSA-xqfj-vm6h-2x34",
+      "GHSA-7hfm-57qf-j43q",
+      "GHSA-crv7-7245-f45f",
+      "GHSA-mc84-pj99-q6hh"
+    ],
+    "occurrences": 12,
+    "occurrences_by_advisory": {
+      "GHSA-xqfj-vm6h-2x34": 3,
+      "GHSA-7hfm-57qf-j43q": 3,
+      "GHSA-crv7-7245-f45f": 3,
+      "GHSA-mc84-pj99-q6hh": 3
+    },
+    "source_groups": [
+      "1.14-1.14.4",
+      "1.15-1.16.5",
+      "1.17-1.19.2"
+    ],
+    "source_group_shas": {
+      "1.14-1.14.4": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+      "1.15-1.16.5": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+      "1.17-1.19.2": "06b350856605011c1549d51d6edd3d351c5021c0"
+    },
+    "dependency_owner": "Mojang Minecraft runtime manifest",
+    "mod_controls_dependency": false
+  },
+  "source_provenance": {
+    "prior_exact_reachability_report": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-reachability-2026-11-21.json",
+      "sha256": "bec556dc9aae4440a41f37432f5e1b4e4c4d5dfbbc471857a5cb38139a740095"
+    },
+    "finding_index": {
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193",
+      "record_count": 490
+    },
+    "mojang_metadata": {
+      "version": "1.14.4",
+      "url": "https://piston-meta.mojang.com/v1/packages/be146d5f66a3627ed0a87c234c4d8dde8ab35098/1.14.4.json",
+      "sha1": "be146d5f66a3627ed0a87c234c4d8dde8ab35098",
+      "sha256": "615f466a39d2c19ae9b6e2401aa7bd07dbda337f976bcce383326b8d6ba4e532",
+      "size": 26942
+    },
+    "mojang_artifacts": {
+      "commons-compress-1.8.1": {
+        "coordinate": "org.apache.commons:commons-compress:1.8.1",
+        "url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar",
+        "sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+        "sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+        "size": 365552
+      },
+      "commons-io-2.5": {
+        "coordinate": "commons-io:commons-io:2.5",
+        "url": "https://libraries.minecraft.net/commons-io/commons-io/2.5/commons-io-2.5.jar",
+        "sha1": "2852e6e05fbb95076fc091f6d1780f1f8fe35e0f",
+        "sha256": "a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474",
+        "size": 208700
+      }
+    },
+    "upstream_fixed_artifact": {
+      "coordinate": "org.apache.commons:commons-compress:1.21",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar",
+      "sha1": "4ec95b60d4e86b5c95a0e919cb172a0af98011ef",
+      "sha256": "6aecfd5459728a595601cfa07258d131972ffc39b492eb48bdd596577a2f244a",
+      "size": 1018316,
+      "maven_sha1_sidecar_url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar.sha1"
+    }
+  },
+  "upstream_authority": {
+    "security_report": "https://commons.apache.org/proper/commons-compress/security.html",
+    "patch_commits": [
+      {
+        "sha": "d0af873e77d16f41edfef7b69da5c8c35c96a650",
+        "url": "https://github.com/apache/commons-compress/commit/d0af873e77d16f41edfef7b69da5c8c35c96a650",
+        "change": "bound PAX value reads by TAR entry size"
+      },
+      {
+        "sha": "7ce1b0796d6cbe1f41b969583bd49f33ae0efef0",
+        "url": "https://github.com/apache/commons-compress/commit/7ce1b0796d6cbe1f41b969583bd49f33ae0efef0",
+        "change": "guard integer overflow in header length accounting"
+      },
+      {
+        "sha": "80124dd9fe4b0a0b2e203ca19aacac8cd0afc96f",
+        "url": "https://github.com/apache/commons-compress/commit/80124dd9fe4b0a0b2e203ca19aacac8cd0afc96f",
+        "change": "avoid allocate-then-fill pattern across archive parsers"
+      }
+    ]
+  },
+  "vulnerable_api": {
+    "class": "org.apache.commons.compress.archivers.tar.TarArchiveInputStream",
+    "method": "getNextTarEntry",
+    "internal_method": "TarUtils.parsePaxHeaders",
+    "root_cause": "The PAX record declares a value length far larger than its containing TAR entry. Commons Compress 1.8.1 allocates a byte array using the declared record length before the stream reveals the short entry; the patched parser validates the record against the entry length before allocating.",
+    "fixture": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-probes-2026-11-22/pax-oversize-length.tar.gz",
+      "sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+      "size": 111,
+      "uncompressed_tar_sha256": "a9adeefdb8a7717e7c30f889c8d6c0ac636cff9fcce5969cf660537d02828409",
+      "uncompressed_tar_size": 2560,
+      "pax_record": "100000000 path=x\\n",
+      "actual_pax_entry_size": 17
+    },
+    "probe_source": {
+      "path": "tests/fixtures/critical_reachability/CommonsTarGzipPipelineProbe.java",
+      "sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
+      "size": 931
+    },
+    "execution": {
+      "jdk": "Eclipse Temurin OpenJDK 21.0.13+9",
+      "max_heap": "32 MiB",
+      "network_used": false,
+      "sandboxed_subprocess": true,
+      "same_probe_class_bytes_for_both_versions": true
+    },
+    "observations": [
+      {
+        "artifact": "org.apache.commons:commons-compress:1.8.1",
+        "commons_io": "commons-io:commons-io:2.5",
+        "stdout": "RESULT=OUT_OF_MEMORY",
+        "exit_code": 0,
+        "result": "OutOfMemoryError caught inside isolated process"
+      },
+      {
+        "artifact": "org.apache.commons:commons-compress:1.21",
+        "commons_io": "commons-io:commons-io:2.5",
+        "stdout": "RESULT=java.io.IOException:Paxheader value size 99999985 exceeds size of header record",
+        "exit_code": 0,
+        "result": "malformed PAX record rejected before large allocation"
+      }
+    ]
+  },
+  "first_party_call_path": {
+    "minecraft_versions": "1.14 through 1.17.1 where the 1.8.1 manifest entry occurs",
+    "path": "Realms world download UI -> Realm API request returns WorldDownload.downloadLink -> HTTP download of .tar.gz -> GzipCompressorInputStream -> TarArchiveInputStream.getNextTarEntry -> extraction.",
+    "representative_exact_artifacts": [
+      "Mojang Realms 1.14.17",
+      "Minecraft client 1.14.4",
+      "Minecraft client 1.17.1"
+    ],
+    "source_bound_class_and_callsite_analysis": "See the prior report for exact JAR hashes, mappings, and class SHA-256 values. The exact version metadata establishes org.apache.commons:commons-compress:1.8.1 and Commons IO 2.5 for Minecraft 1.14.4.",
+    "user_action_required": true,
+    "input_provenance": "The download link is returned by the Mojang Realms API, and archive bytes are fetched over HTTPS. This probe proves the parser behavior and that the vanilla path reaches the parser, but it does not establish that a Realm owner can make the server emit this malformed PAX/TAR metadata or bypass server-side validation.",
+    "attacker_reachability": "Unresolved. The Realms archive is server-produced; no controlled Realm or server-side archive-construction experiment was available."
+  },
+  "finding_dispositions": [
+    {
+      "advisory_id": "GHSA-xqfj-vm6h-2x34",
+      "package": "org.apache.commons:commons-compress:1.8.1",
+      "disposition": "Further investigation",
+      "technical_justification": "The affected TAR API is reached by an optional vanilla Realms world-download path, and an isolated 2.5 KB gzip TAR reproduced OutOfMemoryError in the exact manifest library. The fixed upstream artifact rejects the same bytes. Whether a remote Realm operator can cause the service to deliver these inconsistent PAX length fields remains unverified; therefore the finding is not cleared.",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "follow_up_requirements": [
+        "Obtain a safe test Realm or server-generated archive demonstrating whether an owner-controlled world can preserve attacker-chosen PAX record lengths.",
+        "Request Mojang to update the affected game-managed Commons Compress library to a compatible fixed version.",
+        "Keep all three source-group occurrences blocking until attacker input and upstream remediation are resolved."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-7hfm-57qf-j43q",
+      "package": "org.apache.commons:commons-compress:1.8.1",
+      "disposition": "Further investigation",
+      "technical_justification": "The upstream issue requires a 7Z decoder path. Exact first-party source analysis found no direct 7Z parser caller; arbitrary mod and reflective caller inventories remain incomplete. No non-applicability claim is made.",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "follow_up_requirements": [
+        "Complete first-party and supported launcher call graph coverage for SevenZFile and reflection."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-crv7-7245-f45f",
+      "package": "org.apache.commons:commons-compress:1.8.1",
+      "disposition": "Further investigation",
+      "technical_justification": "The upstream issue requires a 7Z decoder path. Exact first-party source analysis found no direct 7Z parser caller; arbitrary mod and reflective caller inventories remain incomplete. No non-applicability claim is made.",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "follow_up_requirements": [
+        "Complete first-party and supported launcher call graph coverage for SevenZFile and reflection."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-mc84-pj99-q6hh",
+      "package": "org.apache.commons:commons-compress:1.8.1",
+      "disposition": "Further investigation",
+      "technical_justification": "The upstream issue requires a ZIP parser path. Exact first-party source analysis found no direct ZipArchiveInputStream or ZipFile caller; arbitrary mod and reflective caller inventories remain incomplete. No non-applicability claim is made.",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "follow_up_requirements": [
+        "Complete first-party and supported launcher call graph coverage for ZIP archive APIs and reflection."
+      ]
+    }
+  ],
+  "security_disposition": {
+    "confirmed_fix_in_project": false,
+    "upstream_fix_available": true,
+    "mod_controlled_dependency": false,
+    "unresolved_blocking_occurrences": 12,
+    "risk_accepted": false,
+    "security_clearance": false
+  },
+  "limitations": [
+    "No full Minecraft process launch or Realms server experiment was run.",
+    "No claim is made that this malformed archive can be uploaded by a Realm owner or accepted by Realms service validation.",
+    "No game-managed library override was applied.",
+    "The three 7Z/ZIP advisories were not dynamically reproduced; they remain blocking.",
+    "Issue #46 graphical, GPU, and multiplayer acceptance is separate."
+  ]
+}

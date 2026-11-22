@@ -11882,14 +11882,9 @@
   },
   "supporting_evidence": [
     {
-      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json",
-      "sha256": "0f69c2ff6ecfa6e67a4b8ec00643c6a1bf097e9e6c88bf88e1a4bc4c326c3a5e",
-      "size_bytes": 18189
-    },
-    {
-      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
-      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193",
-      "size_bytes": 476379
+      "path": ".github/workflows/ci.yml",
+      "sha256": "43d94700ed4460dd7e9a534daccff3302fed5eb70e870166dbd96cc6fb6666b3",
+      "size_bytes": 3819
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/artifact-inspection-verified.json.gz",
@@ -11898,138 +11893,91 @@
       "sha256_uncompressed": "0d5f9689280754148149036c03f82eb35f4bd10c23b065b5f4256d9cb98f2802"
     },
     {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-probes-2026-11-22/pax-oversize-length.tar.gz",
+      "sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+      "size_bytes": 111
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-reachability-2026-11-21.json",
+      "sha256": "bec556dc9aae4440a41f37432f5e1b4e4c4d5dfbbc471857a5cb38139a740095",
+      "size_bytes": 94659
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json",
+      "sha256": "6fcf266f703b3a34536977fe00aac21e714de32a2010276b89ca4d214545d065",
+      "size_bytes": 11804
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-deserialization-reachability-2026-11-22.json",
+      "sha256": "8aebd81e224f1a481157769090add067d5b0b75074ec2f43fc94ee031311686a"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/GuavaDeserializationProbe.java",
+      "sha256": "80e144d56252eb683f35cb1a31298739bebe72a6e550b2119998548f1df15487"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha1",
+      "sha256": "626635d9fe4de77053b97d02c84839cc74813904d8e7704dc7d99138f49f2d30"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha256",
+      "sha256": "4b373a91023c9d2df8aa0b05909d4f6f54910abb9431342074f7b405ffb29941"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-release.json",
+      "sha256": "0a3c4dc9ece6175fda2aeb6916d96514549a0a3d74d44d613eace1a3cfd36601"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-upstream-advisory.json",
+      "sha256": "062e60e7ff35f6ae19fb6e612f61e098735474de46608e054499e6a5d3ebda21"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/probe-results.json",
+      "sha256": "86e8cc6bd49a8fea129530b5f6584cfdbf1db631fdbd40de986f46e1d0329056"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/runtime-scan.json.gz",
+      "sha256": "d933dcbdf37c1b9bb55e2e99753cc4fb53aa0e396eae2bb8109aa380908a40ba",
+      "sha256_uncompressed": "34c11d7b9d51378cce59720f8b4f1e72c9aa368905cc452c3aa377a4dfa6def9"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/upstream-fix.patch",
+      "sha256": "e912bbf9cbdf1d329b86b80d44b5c47543413861cdaa9f4764748a33f00a85c3"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/capture-index.json",
+      "sha256": "7deaff6a24ef6ab33a3bf419b17c850359bc6cdf348ff76fcc4f9bfd95a0025d"
+    },
+    {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
       "sha256": "41b176dbd93c264242d59ddde9b9520d68ff205c3db240e0588786331082ed27",
       "size_bytes": 123535,
       "sha256_uncompressed": "27a1532f721a55403af809679ce7c7889b4e18af8a9321625d4958994ef3d2b0"
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-critical-high.json.gz",
-      "sha256": "3ee9b12a841d2b0b0009e85b70f9766b0df6c1cc2d9033518a4d833fa57839d8",
-      "size_bytes": 61069,
-      "sha256_uncompressed": "407313c967cc263d88c0e8556a5fa2c004b24df15dc57ed981ecdbaaaebe808a"
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+      "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338",
+      "size_bytes": 297306
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
-      "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7",
-      "size_bytes": 96542
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonDepthProbe.java",
+      "sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "size_bytes": 920
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/wrapper-source-verification-2026-11-21.json",
-      "sha256": "a01737ce03677e23f9824ef1122c6f640dd10080d17686be86281003315f6ef1",
-      "size_bytes": 11265
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonFixedDepthProbe.java",
+      "sha256": "6d9119353321c8787c6975c2a110444f2e8c61b8e5798e44f6b88163fb97615b",
+      "size_bytes": 685
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/management-pipelines.json",
-      "sha256": "1dbdecb601fc71fe206492d04cd1ecea5ea68b9b158cd92a790f68a8d7dcec36",
-      "size_bytes": 7958
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonObjectDepthProbe.java",
+      "sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "size_bytes": 663
     },
     {
-      "path": "tests/fixtures/critical_reachability/artifacts.json",
-      "sha256": "38f9077b1363f6928c7901d9430005f5a8155d639dac95abcfccc691d829417c",
-      "size_bytes": 23369
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/NettyChunkProbe.java",
-      "sha256": "571319631a6139ce70b788eae27faa05b3283f0e63389368f4ba19dc359bf675",
-      "size_bytes": 2158
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/NettySniProbe.java",
-      "sha256": "6da537a3652f43fc5a5b59087bf68769216a0bcbd0505c99895687818faab877",
-      "size_bytes": 3701
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/Lz4NativeProbe.java",
-      "sha256": "9befff023ac2b8dfb89f5a9e262032b944b1753cf90cdc686d8430a56e7f392a",
-      "size_bytes": 1597
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/LogLookupProbe.java",
-      "sha256": "0b95e2ab7f157e0ed86471119459fb7f28cfcd1d9516053507a733a146700c4a",
-      "size_bytes": 617
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/JndiLookupProbe.java",
-      "sha256": "25f064c9c5b36107336fb3b2ca7822962c8d88df26229406bc3e15ca1f25cf2b",
-      "size_bytes": 715
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/ThreadContextProbe.java",
-      "sha256": "b8cd9b857cbb4187aa9bacde8fd9e6055b5215db6d452b8c4aa0622447760021",
-      "size_bytes": 585
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/EnvironmentProbe.java",
-      "sha256": "05f9da5eba88a32a9881136d36bad910424261405f3927b74ac9879cae6671d0",
-      "size_bytes": 1030
-    },
-    {
-      "path": "scripts/inspect_critical_runtime.py",
-      "sha256": "61dd4913b78b7a42f43f8028a8811154899788e1da15ade1e25e680c37f78598",
-      "size_bytes": 10306
-    },
-    {
-      "path": "scripts/probe_dependency_reachability.py",
-      "sha256": "d7088e5abc2190158c019e396a859cee9be8bc92ef9e66ef2c501485a5fe2c72",
-      "size_bytes": 18322
-    },
-    {
-      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/client-1.12.xml",
-      "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
-      "size_bytes": 888,
-      "historical": true
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
-      "sha256": "99f51d69d19f6e37afb9f1b92a75d94325c8596c315da612dc89b1e70d0f7fd4",
-      "size_bytes": 31922
-    },
-    {
-      "path": "scripts/inspect_netty_manifest_artifacts.py",
-      "sha256": "359fb59c11e410aa5057112ec725c0d5e4982994efe8c74361f868d921af395e",
-      "size_bytes": 8757
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/validator-before-guava-2026-11-22.py",
-      "sha256": "b32bc3924d581eba50cfd49bbe9c9c17ac71a76c7bb3c108766fae63ab0d05c2",
-      "size_bytes": 48281
-    },
-    {
-      "path": "scripts/verify_gradle_wrapper.py",
-      "sha256": "2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481",
-      "size_bytes": 5198
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/NoNetworkContextFactory.java",
-      "sha256": "2253c050700882add9a04adc8b47685ac6d6683d63706eeb3c5f2489e7420b57",
-      "size_bytes": 448
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/1.14.4-embedded.xml",
-      "sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
-      "size_bytes": 1124
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/1.18.1-embedded.xml",
-      "sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
-      "size_bytes": 1098
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/synthetic-context.xml",
-      "sha256": "b82d16d1df156f1165ebc89d4d28812791c991deb0d547264fa607723ea5f8b8",
-      "size_bytes": 264
-    },
-    {
-      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/critical-dispositions.json",
-      "sha256": "c89508f9ca9abfa4db35cde780e5db5fcbb57d5210805ed126f86cae0b1a05af",
-      "size_bytes": 24642,
-      "historical": true
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-reachability-2026-11-21.json",
-      "sha256": "bec556dc9aae4440a41f37432f5e1b4e4c4d5dfbbc471857a5cb38139a740095",
-      "size_bytes": 94659
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/jackson-depth-probe-results-2026-11-22.json",
+      "sha256": "9979f19f93e1432f6247024ee0c1ae041199f0ce00711051c4a8f2454796ab31",
+      "size_bytes": 7389
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
@@ -12042,14 +11990,112 @@
       "size_bytes": 132104
     },
     {
-      "path": "tests/fixtures/critical_reachability/ChatJndiProbe.java",
-      "sha256": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb",
-      "size_bytes": 910
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "size_bytes": 2087
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
-      "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338",
-      "size_bytes": 297306
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-cmp6-m4wj-q63q.json",
+      "sha256": "8a26d8842c8a32a48e7a097a97c4a919cf6f626db2bbf56c0ccccac4eab4b6b3",
+      "size_bytes": 6922
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-mcr4-qmvw-px4g.json",
+      "sha256": "4a8f46fad35e2f8a818c3629868b24fac6409978dcb62a0f926ce7ec0254c5f7",
+      "size_bytes": 5729
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-vqf4-7m7x-wgfc.json",
+      "sha256": "95633d33ca3f43f39be892f1db31f12374369644e4cd0c49b34dc72ce69dbb6b",
+      "size_bytes": 5496
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/capture-index.json",
+      "sha256": "afac635c77a49d01ca3d5ad5dd00ae003a931bbe8477189aebc10c0d300224c5",
+      "size_bytes": 11652
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/cmp6-fix.patch.gz",
+      "sha256": "95dfdbf540a81ddc23218f03307cd9e10459d69bc05c74213380d068da1be21c",
+      "size_bytes": 2198,
+      "sha256_uncompressed": "7f7ed6bd105cf9e00e2af70d11b595f277c5b6513fde0699746996c248d3f126"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/host-temp-observation.json",
+      "sha256": "17054bba6a956b3d7128300311bc5eb115159ab6bc528fbbacdf2057365f619f",
+      "size_bytes": 625
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/mapping-index.json",
+      "sha256": "4b7c63901ae9fefe937c31ff2df567a3e22b0e8e2ddc2f944f1c8f85f0af019d",
+      "size_bytes": 18694
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/mcr4-fix.patch.gz",
+      "sha256": "d4243933b203e0fda4b8d53ba1d20df921ae15ff14c9beda7c7ea3737d129d44",
+      "size_bytes": 3441,
+      "sha256_uncompressed": "e7cf647e8cc98c0e1fb1505291e691df71975fe7b9a23cde7d756aea51072965"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/capture-index.json",
+      "sha256": "ac3f4102cde7d69dbc6394a434343b2cf0738de8066ec0439b0ef096070656f9",
+      "size_bytes": 26511
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/probe-results.json",
+      "sha256": "292ee375cdd04e693c6e8e1df7577634f91f6593a62714647c2383d808b5ee55",
+      "size_bytes": 15559
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/runtime-scan.json",
+      "sha256": "55cb6a860dd76f15b89093c7176fa56872906b3c86cca02fddcaecdd51a95697",
+      "size_bytes": 15887
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.10.1-release.json",
+      "sha256": "f4eaeeda7af27f281be617a8ed94bba44b20335f9a6b56ae0a9540f91b1e3e25",
+      "size_bytes": 2551
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.11.4-release.json",
+      "sha256": "8f244de8679f83074bcff50e5190693c09b83a990c46bbb152dd541f7d6bab53",
+      "size_bytes": 5336
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.8.1-release.json",
+      "sha256": "ec19708e7ef52893facb32b1ac5e75bb351f2baa80c10387d1044cf3b1b184a0",
+      "size_bytes": 2853
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
+      "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
+      "size_bytes": 57444
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/management-pipelines.json",
+      "sha256": "1dbdecb601fc71fe206492d04cd1ecea5ea68b9b158cd92a790f68a8d7dcec36",
+      "size_bytes": 7958
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json",
+      "sha256": "99f51d69d19f6e37afb9f1b92a75d94325c8596c315da612dc89b1e70d0f7fd4",
+      "size_bytes": 31922
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/reachability-probes-2026-11-21-rerun.json",
+      "sha256": "bdae9b3d7066e334bd7419f3f53a62c014fff133ddeea43e6e84f1e56edce8a7",
+      "size_bytes": 96542
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-critical-high.json.gz",
+      "sha256": "3ee9b12a841d2b0b0009e85b70f9766b0df6c1cc2d9033518a4d833fa57839d8",
+      "size_bytes": 61069,
+      "sha256_uncompressed": "407313c967cc263d88c0e8556a5fa2c004b24df15dc57ed981ecdbaaaebe808a"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-logging-client-1.21.2.xml",
+      "sha256": "4a73b65f9ba949bdc90d408d49edc984ff7841759b45c86c3e54febe646d7279",
+      "size_bytes": 1073
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.10.json",
@@ -12102,166 +12148,41 @@
       "size_bytes": 279726
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-logging-client-1.21.2.xml",
-      "sha256": "4a73b65f9ba949bdc90d408d49edc984ff7841759b45c86c3e54febe646d7279",
-      "size_bytes": 1073
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonDepthProbe.java",
-      "sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
-      "size_bytes": 920
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonFixedDepthProbe.java",
-      "sha256": "6d9119353321c8787c6975c2a110444f2e8c61b8e5798e44f6b88163fb97615b",
-      "size_bytes": 685
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonObjectDepthProbe.java",
-      "sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
-      "size_bytes": 663
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/jackson-depth-probe-results-2026-11-22.json",
-      "sha256": "9979f19f93e1432f6247024ee0c1ae041199f0ce00711051c4a8f2454796ab31",
-      "size_bytes": 7389
-    },
-    {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/validator-before-guava-2026-11-22.py",
       "sha256": "b32bc3924d581eba50cfd49bbe9c9c17ac71a76c7bb3c108766fae63ab0d05c2",
       "size_bytes": 48281
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-deserialization-reachability-2026-11-22.json",
-      "sha256": "8aebd81e224f1a481157769090add067d5b0b75074ec2f43fc94ee031311686a"
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/wrapper-source-verification-2026-11-21.json",
+      "sha256": "a01737ce03677e23f9824ef1122c6f640dd10080d17686be86281003315f6ef1",
+      "size_bytes": 11265
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/runtime-scan.json.gz",
-      "sha256": "d933dcbdf37c1b9bb55e2e99753cc4fb53aa0e396eae2bb8109aa380908a40ba",
-      "sha256_uncompressed": "34c11d7b9d51378cce59720f8b4f1e72c9aa368905cc452c3aa377a4dfa6def9"
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json",
+      "sha256": "0f69c2ff6ecfa6e67a4b8ec00643c6a1bf097e9e6c88bf88e1a4bc4c326c3a5e",
+      "size_bytes": 18189
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/probe-results.json",
-      "sha256": "86e8cc6bd49a8fea129530b5f6584cfdbf1db631fdbd40de986f46e1d0329056"
+      "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+      "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193",
+      "size_bytes": 476379
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/GuavaDeserializationProbe.java",
-      "sha256": "80e144d56252eb683f35cb1a31298739bebe72a6e550b2119998548f1df15487"
+      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/client-1.12.xml",
+      "sha256": "03e30ee5bd5c1fc723d1049e2e4e8b3ad4c4992514f3206fc4b54637488b83e4",
+      "size_bytes": 888,
+      "historical": true
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-upstream-advisory.json",
-      "sha256": "062e60e7ff35f6ae19fb6e612f61e098735474de46608e054499e6a5d3ebda21"
+      "path": "docs/dependency-evidence/log4j-default-launcher-2026-11-14/critical-dispositions.json",
+      "sha256": "c89508f9ca9abfa4db35cde780e5db5fcbb57d5210805ed126f86cae0b1a05af",
+      "size_bytes": 24642,
+      "historical": true
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-release.json",
-      "sha256": "0a3c4dc9ece6175fda2aeb6916d96514549a0a3d74d44d613eace1a3cfd36601"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/upstream-fix.patch",
-      "sha256": "e912bbf9cbdf1d329b86b80d44b5c47543413861cdaa9f4764748a33f00a85c3"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha1",
-      "sha256": "626635d9fe4de77053b97d02c84839cc74813904d8e7704dc7d99138f49f2d30"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha256",
-      "sha256": "4b373a91023c9d2df8aa0b05909d4f6f54910abb9431342074f7b405ffb29941"
-    },
-    {
-      "path": "scripts/scan_guava_runtime_reachability.py",
-      "sha256": "ccf48ef6319d6d10f37350223db256c79c04e147d842e8703c574afb3a2fd0af"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/guava-probes-2026-11-22/vanilla-packet-paths/capture-index.json",
-      "sha256": "7deaff6a24ef6ab33a3bf419b17c850359bc6cdf348ff76fcc4f9bfd95a0025d"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-      "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
-      "size_bytes": 57444
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/runtime-scan.json",
-      "sha256": "55cb6a860dd76f15b89093c7176fa56872906b3c86cca02fddcaecdd51a95697",
-      "size_bytes": 15887
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/capture-index.json",
-      "sha256": "afac635c77a49d01ca3d5ad5dd00ae003a931bbe8477189aebc10c0d300224c5",
-      "size_bytes": 11652
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/mapping-index.json",
-      "sha256": "4b7c63901ae9fefe937c31ff2df567a3e22b0e8e2ddc2f944f1c8f85f0af019d",
-      "size_bytes": 18694
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/probe-results.json",
-      "sha256": "292ee375cdd04e693c6e8e1df7577634f91f6593a62714647c2383d808b5ee55",
-      "size_bytes": 15559
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/capture-index.json",
-      "sha256": "ac3f4102cde7d69dbc6394a434343b2cf0738de8066ec0439b0ef096070656f9",
-      "size_bytes": 26511
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/host-temp-observation.json",
-      "sha256": "17054bba6a956b3d7128300311bc5eb115159ab6bc528fbbacdf2057365f619f",
-      "size_bytes": 625
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-cmp6-m4wj-q63q.json",
-      "sha256": "8a26d8842c8a32a48e7a097a97c4a919cf6f626db2bbf56c0ccccac4eab4b6b3",
-      "size_bytes": 6922
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-vqf4-7m7x-wgfc.json",
-      "sha256": "95633d33ca3f43f39be892f1db31f12374369644e4cd0c49b34dc72ce69dbb6b",
-      "size_bytes": 5496
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/GHSA-mcr4-qmvw-px4g.json",
-      "sha256": "4a8f46fad35e2f8a818c3629868b24fac6409978dcb62a0f926ce7ec0254c5f7",
-      "size_bytes": 5729
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/cmp6-fix.patch.gz",
-      "sha256": "95dfdbf540a81ddc23218f03307cd9e10459d69bc05c74213380d068da1be21c",
-      "size_bytes": 2198,
-      "sha256_uncompressed": "7f7ed6bd105cf9e00e2af70d11b595f277c5b6513fde0699746996c248d3f126"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/mcr4-fix.patch.gz",
-      "sha256": "d4243933b203e0fda4b8d53ba1d20df921ae15ff14c9beda7c7ea3737d129d44",
-      "size_bytes": 3441,
-      "sha256_uncompressed": "e7cf647e8cc98c0e1fb1505291e691df71975fe7b9a23cde7d756aea51072965"
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.8.1-release.json",
-      "sha256": "ec19708e7ef52893facb32b1ac5e75bb351f2baa80c10387d1044cf3b1b184a0",
-      "size_bytes": 2853
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.10.1-release.json",
-      "sha256": "f4eaeeda7af27f281be617a8ed94bba44b20335f9a6b56ae0a9540f91b1e3e25",
-      "size_bytes": 2551
-    },
-    {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/v1.11.4-release.json",
-      "sha256": "8f244de8679f83074bcff50e5190693c09b83a990c46bbb152dd541f7d6bab53",
-      "size_bytes": 5336
-    },
-    {
-      "path": "scripts/scan_lz4_runtime_reachability.py",
-      "sha256": "9c294d745efa88bdd2f3480a6811d68bd97b34ce541bcd982169ca8b2e71af8c",
-      "size_bytes": 7960
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/Lz4AdvisoryProbe.java",
-      "sha256": "42970ed0058a2a4daf536aa456d2a1f86db5c479f58462e5497a597e4f79367d",
-      "size_bytes": 5577
+      "path": "docs/worklogs/issue-45-commons-compress-runtime-followup-2026-11-22.md",
+      "sha256": "d4312af7988cbdfa0d6b8599623cf75c3e9a016eff394f8a7fe01d88c8e26e26",
+      "size_bytes": 3705
     },
     {
       "path": "docs/worklogs/issue-45-lz4-runtime-followup-2026-11-22.md",
@@ -12269,19 +12190,118 @@
       "size_bytes": 3790
     },
     {
-      "path": ".github/workflows/ci.yml",
-      "sha256": "a186cada7a806e0f81a1084cc937d7b19c246d808d547a5bd9ca94d346889bce",
-      "size_bytes": 3255
+      "path": "scripts/inspect_critical_runtime.py",
+      "sha256": "61dd4913b78b7a42f43f8028a8811154899788e1da15ade1e25e680c37f78598",
+      "size_bytes": 10306
+    },
+    {
+      "path": "scripts/inspect_netty_manifest_artifacts.py",
+      "sha256": "359fb59c11e410aa5057112ec725c0d5e4982994efe8c74361f868d921af395e",
+      "size_bytes": 8757
+    },
+    {
+      "path": "scripts/probe_commons_compress_reachability.py",
+      "sha256": "7d6cf11ca2d306c7a7a08f55fb37212de0f5fc19e556798c3375d2a7b729781d",
+      "size_bytes": 14531
+    },
+    {
+      "path": "scripts/probe_dependency_reachability.py",
+      "sha256": "d7088e5abc2190158c019e396a859cee9be8bc92ef9e66ef2c501485a5fe2c72",
+      "size_bytes": 18322
+    },
+    {
+      "path": "scripts/scan_guava_runtime_reachability.py",
+      "sha256": "ccf48ef6319d6d10f37350223db256c79c04e147d842e8703c574afb3a2fd0af"
+    },
+    {
+      "path": "scripts/scan_lz4_runtime_reachability.py",
+      "sha256": "9c294d745efa88bdd2f3480a6811d68bd97b34ce541bcd982169ca8b2e71af8c",
+      "size_bytes": 7960
     },
     {
       "path": "scripts/validate_critical_reachability_evidence.py",
-      "sha256": "65fbb951d160de06f78d14ada6d15908ded4f5bf2f9c7a6f73a7dad481474039",
-      "size_bytes": 80576
+      "sha256": "52cff4c45fae103744c93f366a6dab2b5230fa2a59495bd0943862d022ce2e76",
+      "size_bytes": 81651
     },
     {
-      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
-      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
-      "size_bytes": 2087
+      "path": "scripts/verify_gradle_wrapper.py",
+      "sha256": "2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481",
+      "size_bytes": 5198
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/1.14.4-embedded.xml",
+      "sha256": "fefb05f2648f148d7e23e289df93b8cf2dd988a1f33da83ee1b21ee0d445237a",
+      "size_bytes": 1124
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/1.18.1-embedded.xml",
+      "sha256": "269649dac10b0e33c1aa2e83a7ecc8793cf002d09263ad524b4d69b72b871aa9",
+      "size_bytes": 1098
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/ChatJndiProbe.java",
+      "sha256": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb",
+      "size_bytes": 910
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/CommonsTarGzipPipelineProbe.java",
+      "sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
+      "size_bytes": 931
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/EnvironmentProbe.java",
+      "sha256": "05f9da5eba88a32a9881136d36bad910424261405f3927b74ac9879cae6671d0",
+      "size_bytes": 1030
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/JndiLookupProbe.java",
+      "sha256": "25f064c9c5b36107336fb3b2ca7822962c8d88df26229406bc3e15ca1f25cf2b",
+      "size_bytes": 715
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/LogLookupProbe.java",
+      "sha256": "0b95e2ab7f157e0ed86471119459fb7f28cfcd1d9516053507a733a146700c4a",
+      "size_bytes": 617
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/Lz4AdvisoryProbe.java",
+      "sha256": "42970ed0058a2a4daf536aa456d2a1f86db5c479f58462e5497a597e4f79367d",
+      "size_bytes": 5577
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/Lz4NativeProbe.java",
+      "sha256": "9befff023ac2b8dfb89f5a9e262032b944b1753cf90cdc686d8430a56e7f392a",
+      "size_bytes": 1597
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NettyChunkProbe.java",
+      "sha256": "571319631a6139ce70b788eae27faa05b3283f0e63389368f4ba19dc359bf675",
+      "size_bytes": 2158
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NettySniProbe.java",
+      "sha256": "6da537a3652f43fc5a5b59087bf68769216a0bcbd0505c99895687818faab877",
+      "size_bytes": 3701
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/NoNetworkContextFactory.java",
+      "sha256": "2253c050700882add9a04adc8b47685ac6d6683d63706eeb3c5f2489e7420b57",
+      "size_bytes": 448
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/ThreadContextProbe.java",
+      "sha256": "b8cd9b857cbb4187aa9bacde8fd9e6055b5215db6d452b8c4aa0622447760021",
+      "size_bytes": 585
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/artifacts.json",
+      "sha256": "38f9077b1363f6928c7901d9430005f5a8155d639dac95abcfccc691d829417c",
+      "size_bytes": 23369
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/synthetic-context.xml",
+      "sha256": "b82d16d1df156f1165ebc89d4d28812791c991deb0d547264fa607723ea5f8b8",
+      "size_bytes": 264
     }
   ],
   "limitations": [
@@ -12334,6 +12354,25 @@
       "realms/c.class": "f3eb2f48eb3b81b43f84cb8e67961f7f52ea9f39a3bbe9ebf4dd3fd516d50ee0",
       "realms/ah.class": "f4efb1cb78766b2211ba2e793b72597f0dac8d8efe73348272744189c7f78e00",
       "realms/ab.class": "7c32dacfd5d4cb64c215ba244b0d8b3e6a8971c00a2c79e40ddc806a8fe5d1d4"
+    },
+    "latest_followup": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json",
+      "sha256": "6fcf266f703b3a34536977fe00aac21e714de32a2010276b89ca4d214545d065",
+      "reviewed_on": "2026-11-22",
+      "advisories": [
+        "GHSA-xqfj-vm6h-2x34",
+        "GHSA-7hfm-57qf-j43q",
+        "GHSA-crv7-7245-f45f",
+        "GHSA-mc84-pj99-q6hh"
+      ],
+      "occurrences": 12,
+      "source_groups": 3,
+      "vulnerable_parser_probe": "OutOfMemoryError reproduced under -Xmx32m using exact Minecraft manifest Commons Compress 1.8.1 and Commons IO 2.5.",
+      "fixed_parser_probe": "Commons Compress 1.21 rejected the identical gzip TAR before allocation.",
+      "attacker_control": "unresolved; Realm server produces the downloaded archive and no test Realm was available",
+      "security_clearance": false,
+      "risk_accepted": false,
+      "release_blocking": true
     }
   },
   "log4j_chat_input_probe_run": {

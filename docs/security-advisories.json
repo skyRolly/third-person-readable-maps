@@ -15178,7 +15178,7 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "328a4eedead78aeaefa19c851a86f866526dda2f79275ed796dec3b6f6985d88",
+    "sha256": "1926fdd9253fa0a958a3d84428d019273051ffff3a4705031885c5582e70ed84",
     "review_date": "2026-11-22",
     "security_clearance": false,
     "risk_accepted": false,
@@ -15274,6 +15274,25 @@
       "security_clearance": false,
       "release_blocking": true,
       "hosted_ci_run": 44977010612
+    },
+    "commons_compress_tar_reachability": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json",
+      "sha256": "6fcf266f703b3a34536977fe00aac21e714de32a2010276b89ca4d214545d065",
+      "reviewed_on": "2026-11-22",
+      "advisories": [
+        "GHSA-xqfj-vm6h-2x34",
+        "GHSA-7hfm-57qf-j43q",
+        "GHSA-crv7-7245-f45f",
+        "GHSA-mc84-pj99-q6hh"
+      ],
+      "occurrences": 12,
+      "source_groups": 3,
+      "vulnerable_parser_probe": "OutOfMemoryError reproduced under -Xmx32m using exact Minecraft manifest Commons Compress 1.8.1 and Commons IO 2.5.",
+      "fixed_parser_probe": "Commons Compress 1.21 rejected the identical gzip TAR before allocation.",
+      "attacker_control": "unresolved; Realm server produces the downloaded archive and no test Realm was available",
+      "security_clearance": false,
+      "risk_accepted": false,
+      "release_blocking": true
     }
   }
 }

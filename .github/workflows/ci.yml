@@ -78,11 +78,21 @@ jobs:
           java-version: '21.0.13+9'
       - name: Check local-only Log4j, Netty, and LZ4 behavior
         run: python scripts/probe_dependency_reachability.py --cache .probe-cache --download --output reachability-probes.json
+      - name: Check Commons Compress TAR behavior against the upstream fix
+        run: python scripts/probe_commons_compress_reachability.py --cache .probe-cache --download --output commons-compress-reachability.json
       - name: Retain experiment results
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: reachability-probes-${{ matrix.os }}
           path: reachability-probes.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Retain Commons Compress probe results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: commons-compress-probe-${{ matrix.os }}
+          path: commons-compress-reachability.json
           if-no-files-found: error
           retention-days: 30

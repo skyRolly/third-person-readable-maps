@@ -315,3 +315,8 @@ retire a candidate entry only after its actual maintained head is covered by the
 authoritative reviewed audit and ledger. A deleted branch qualifies for the
 narrow merged-candidate continuation above only while its integration can be
 proved; other missing or moved sources fail visibly rather than appearing clean.
+
+
+## Issue #45 targeted archive-parser follow-up — 2026-11-22
+
+The source-bound [Commons Compress follow-up](dependency-evidence/critical-reachability-2026-11-21/commons-compress-runtime-followup-2026-11-22.json) adds a bounded test for the Mojang-supplied Commons Compress 1.8.1 TAR path. The vulnerable parser's allocation behavior reproduced, and fixed 1.21 rejected the same fixture. Attacker control over Realms server-produced TAR headers remains unverified. These 12 scoped rows are included in the 71 focused High occurrences and remain release-blocking; candidate and integrated OSV scans are unchanged and remain fail-closed.
