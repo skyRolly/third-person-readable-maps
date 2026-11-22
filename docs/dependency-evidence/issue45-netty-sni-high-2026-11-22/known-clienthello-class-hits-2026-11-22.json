@@ -1,0 +1,122 @@
+{
+  "libraries": [
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "0a28d7b59d6bf99d225fd92f7b314c8bea9519ac66b8a6bc9cda4dd0a9a2509b"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5"
+        }
+      ],
+      "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+      "sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07",
+      "version": "4.1.115.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "0a28d7b59d6bf99d225fd92f7b314c8bea9519ac66b8a6bc9cda4dd0a9a2509b"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "cc3eea992539751a22ae5ef6bb6f4618b5b16bd6345d3cb19d7ba367050e4fa5"
+        }
+      ],
+      "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+      "sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+      "version": "4.1.118.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "110f2b916ef43961b5da5c3f5eece8122d3bbb2a717885ad73728802b7e1a10a"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f"
+        }
+      ],
+      "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+      "sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+      "version": "4.1.77.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "939ca04bf0b398c43a1453e05da7c4f8ac2ca4b67fe376a7eaa5bc3fc91b5ba5"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "110f2b916ef43961b5da5c3f5eece8122d3bbb2a717885ad73728802b7e1a10a"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "d24377417c8e9cf172013eb352c05327f07f2eadba5ed61e9c63fa9b4858435f"
+        }
+      ],
+      "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+      "sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+      "version": "4.1.82.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "b033a82403e91ae0ee16d8281e4bb9b4c7e0a0174bb98f5dd2b7d264b3b15772"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "0a28d7b59d6bf99d225fd92f7b314c8bea9519ac66b8a6bc9cda4dd0a9a2509b"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "96b9f6b4da0bbed981766b421e6aca751e7ac774a5a57702d00e314875a86227"
+        }
+      ],
+      "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+      "sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+      "version": "4.1.97.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "path": "io/netty/handler/ssl/AbstractSniHandler.class",
+          "sha256": "41be9595faa300a56e40da910d6410f8f3d2b6fb2b833c561258859b3d6213db"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler$1.class",
+          "sha256": "695acff729fc42c3d1aa0b6c030b88b062d1d1a6d439c7ebf4f6aad3880dde71"
+        },
+        {
+          "path": "io/netty/handler/ssl/SslClientHelloHandler.class",
+          "sha256": "db6acdd588673f91d92677737abe8c22c867bc6dc8e1992b6e071ff705b5eb7c"
+        }
+      ],
+      "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+      "sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+      "version": "4.2.7.Final"
+    }
+  ],
+  "method": "Independently rehashed six cached Netty JARs and three known ClientHello literal-bearing class entries in each. This records class-file contents, not execution or reachability.",
+  "observed_on": "2026-11-22",
+  "schema": 1,
+  "security_clearance": false
+}

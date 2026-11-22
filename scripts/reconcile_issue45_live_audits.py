@@ -285,6 +285,96 @@ def validate_focused_review(identifier, finding, observed, current_rows, histori
                 'focused review stale: advisory metadata: ' + identifier)
 
 
+def priority_observations(reports, rows):
+    """Compare every verified observation of an advisory selected for export.
+
+    A source reporting a lower severity is still relevant to the identity and
+    applicability of an advisory another source reports as Critical or High.
+    Keep its full provenance until the comparison has succeeded.
+    """
+    selected = {ident[3] for ident, row in rows.items() if row['severity'] in ('CRITICAL', 'HIGH')}
+    observations = defaultdict(list)
+    for (kind, group, purl, identifier), row in sorted(rows.items()):
+        if identifier not in selected:
+            continue
+        report, _, artifact = reports[kind + '|' + group]
+        advisory = report['advisories'][identifier]
+        observations[identifier].append({
+            'source_kind': kind, 'group': group, 'source_sha': report['source_sha'],
+            'report_artifact_id': artifact['id'], 'report_archive_digest': artifact['digest'],
+            'report_member': 'candidate-dependency-audit.json' if kind == 'candidate' else 'dependency-audit.json',
+            'purl': purl, 'advisory_id': identifier, 'severity': row['severity'],
+            'scopes': row['scopes'], 'fingerprint': row['fingerprint'], 'disposition': row['disposition'],
+            'failing': row['failing'], 'advisory': advisory, 'modified': advisory.get('modified'),
+        })
+    for identifier, sources in observations.items():
+        first = sources[0]
+        for source in sources:
+            require(isinstance(source['modified'], str) and source['modified'].strip(),
+                    'invalid advisory modified timestamp: ' + identifier)
+            detail = (' (' + first['source_kind'] + '|' + first['group'] + ' vs ' +
+                      source['source_kind'] + '|' + source['group'] + ')')
+            require(source['severity'] == first['severity'],
+                    'inconsistent advisory severity across sources: ' + identifier + detail)
+            require({k: v for k, v in source['advisory'].items() if k != 'modified'} ==
+                    {k: v for k, v in first['advisory'].items() if k != 'modified'},
+                    'inconsistent advisory content across sources: ' + identifier + detail)
+    return observations
+
+
+def validate_priority_schema(register, observations):
+    """Validate timestamp shape against the independently verified source reports.
+
+    A schema-1 register has one timestamp per advisory. Schema 2 permits a
+    null timestamp only for an advisory with differing observed timestamps and
+    must name every source and its value. Unmixed advisories remain strings.
+    """
+    schema = register.get('schema')
+    require(type(schema) is int and schema in (1, 2), 'unsupported priority register schema')
+    entries = register.get('advisories')
+    require(isinstance(entries, list), 'invalid priority register advisories')
+    by_id = {row['advisory_id']: row for row in entries}
+    require(len(by_id) == len(entries) and set(by_id) == set(observations),
+            'priority timestamp advisory coverage differs')
+    mixed_count = 0
+    for identifier, sources in observations.items():
+        expected = {}
+        expected_occurrences = {}
+        for source in sources:
+            key = source['source_kind'] + '|' + source['group']
+            modified = source['modified']
+            require(isinstance(modified, str) and modified.strip(), 'invalid source timestamp: ' + identifier)
+            require(key not in expected or expected[key] == modified, 'conflicting timestamp in source: ' + identifier)
+            expected[key] = modified
+            identity = (source['source_kind'], source['group'], source['purl'])
+            require(identity not in expected_occurrences, 'duplicate priority source occurrence: ' + identifier)
+            expected_occurrences[identity] = source
+        row = by_id[identifier]
+        actual = {(item['source_kind'], item['group'], item['purl']): item for item in row['occurrences']}
+        require(len(actual) == len(row['occurrences']) and set(actual) == set(expected_occurrences),
+                'priority occurrence coverage differs: ' + identifier)
+        for identity, occurrence in actual.items():
+            source = expected_occurrences[identity]
+            require(row['severity'] == source['severity'] and occurrence['source_sha'] == source['source_sha'] and
+                    occurrence['source_report_artifact_id'] == source['report_artifact_id'] and
+                    occurrence['source_report_archive_sha256'] == source['report_archive_digest'].removeprefix('sha256:') and
+                    occurrence['source_report_member'] == source['report_member'] and
+                    occurrence['scopes'] == source['scopes'] and occurrence['fingerprint'] == source['fingerprint'] and
+                    occurrence['disposition'] == source['disposition'] and occurrence['release_blocking'] == source['failing'],
+                    'priority occurrence provenance differs: ' + identifier)
+        actual_sources = {item['source_kind'] + '|' + item['group'] for item in row['occurrences']}
+        require(actual_sources == set(expected), 'priority timestamp source coverage differs: ' + identifier)
+        if len(set(expected.values())) == 1:
+            require(isinstance(row.get('modified'), str) and row['modified'] == next(iter(expected.values())) and
+                    'modified_by_source' not in row, 'invalid single priority timestamp: ' + identifier)
+        else:
+            mixed_count += 1
+            require(schema == 2 and row.get('modified') is None and
+                    isinstance(row.get('modified_by_source'), dict) and row['modified_by_source'] == expected,
+                    'invalid mixed priority timestamps or source attribution: ' + identifier)
+    require((schema == 2) == (mixed_count > 0), 'priority schema does not match timestamp observations')
+
+
 def priority_register(live=LIVE, root=ROOT):
     old_index, old_reports, old_rows = historic(root)
     index, reports, rows = verify_live(live, old_index)
@@ -307,19 +397,16 @@ def priority_register(live=LIVE, root=ROOT):
         field = 'targeted_' + label + '_occurrences'
         require(count == evidence.get(field) == reference.get(field),
                 'incomplete focused advisory coverage: ' + severity)
+    # Check all severities before dropping non-priority rows from the export.
+    source_observations = priority_observations(reports, rows)
     grouped = {}
     modified_by_source = defaultdict(dict)
-    advisory_content = {}
     for ident, row in sorted(rows.items()):
         if row['severity'] not in ('CRITICAL', 'HIGH'):
             continue
         kind, group, purl, identifier = ident
         report, _, item = reports[kind + '|' + group]
         advisory = report['advisories'][identifier]
-        content = {key: value for key, value in advisory.items() if key != 'modified'}
-        require(identifier not in advisory_content or advisory_content[identifier] == content,
-                'inconsistent advisory content across sources: ' + identifier)
-        advisory_content[identifier] = content
         focus = focused.get(identifier)
         require(row['disposition'] != 'Risk accepted', 'risk acceptance requires separate review: ' + identifier)
         owner = ('Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle'
@@ -352,12 +439,12 @@ def priority_register(live=LIVE, root=ROOT):
             'dependency_owner': owner,
             'disposition': row['disposition'], 'release_blocking': row['failing'], 'risk_accepted': False})
     mixed_timestamps = False
-    for identifier, observations in modified_by_source.items():
-        if len(set(observations.values())) > 1:
+    for identifier, timestamps in modified_by_source.items():
+        if len(set(timestamps.values())) > 1:
             # Independent runs may observe administrative timestamp updates at
             # different times. Preserve each value without choosing one as current.
             grouped[identifier]['modified'] = None
-            grouped[identifier]['modified_by_source'] = dict(sorted(observations.items()))
+            grouped[identifier]['modified_by_source'] = dict(sorted(timestamps.items()))
             mixed_timestamps = True
     for identifier, finding in focused.items():
         observed = grouped.get(identifier, {}).get('occurrences', [])
@@ -371,6 +458,7 @@ def priority_register(live=LIVE, root=ROOT):
     if mixed_timestamps:
         result['schema_note'] = ('Schema 2 records differing advisory modified timestamps by source; '
                                  'a null modified value means there is no single observed timestamp.')
+    validate_priority_schema(result, source_observations)
     return result
 
 
