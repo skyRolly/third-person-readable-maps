@@ -3,6 +3,8 @@ import copy
 from contextlib import ExitStack, redirect_stderr, redirect_stdout
 import hashlib
 from io import BytesIO, StringIO
+import importlib.util
+import inspect
 import json
 from pathlib import Path
 import sys
@@ -14,6 +16,9 @@ from zipfile import ZIP_DEFLATED, ZipFile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import inspect_issue45_sni_high as sni
+spec = importlib.util.spec_from_file_location('pr58_base_scan', ROOT / 'tests/fixtures/issue45_pr58_base_scan.py')
+prior_scan = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(prior_scan)
 
 
 class HighSniEvidenceTests(unittest.TestCase):
@@ -102,6 +107,34 @@ class HighSniEvidenceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'refusing to overwrite'):
                 sni.write_new(target, {'changed': True})
 
+    def test_writer_cannot_replace_file_created_after_existence_check(self):
+        source = inspect.getsource(sni.write_new)
+        self.assertEqual(source.count("path.open('xb')"), 1)
+        mutant = {}
+        exec(compile(source.replace("path.open('xb')", "path.open('wb')"),
+                     '<exclusive-open-removed>', 'exec'), sni.__dict__, mutant)
+        competitor = b'an independently created evidence record\n'
+        real_open = Path.open
+        with tempfile.TemporaryDirectory() as directory:
+            def run(writer, name, exclusive):
+                target = Path(directory) / name
+                self.assertFalse(target.exists())
+                def interleaved_open(path, mode='r', *args, **kwargs):
+                    if path == target and mode in ('xb', 'wb'):
+                        with real_open(path, 'wb') as other:
+                            other.write(competitor)
+                    return real_open(path, mode, *args, **kwargs)
+                with patch.object(Path, 'open', interleaved_open):
+                    if exclusive:
+                        with self.assertRaises(FileExistsError) as error:
+                            writer(target, {'new': True})
+                        self.assertEqual(Path(error.exception.filename), target)
+                    else:
+                        writer(target, {'new': True})
+                return target.read_bytes()
+            self.assertNotEqual(run(mutant['write_new'], 'mutant.json', False), competitor)
+            self.assertEqual(run(sni.write_new, 'protected.json', True), competitor)
+
     def test_regenerated_review_and_register_match_retained_bytes(self):
         catalog, occurrences, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
         expected = sni.make_review(self.ledger, self.critical, self.scan, catalog, occurrences, versions,
@@ -153,6 +186,24 @@ class HighSniEvidenceTests(unittest.TestCase):
         with patch.object(sni.audits, 'priority_register', return_value=mixed):
             with self.assertRaisesRegex(ValueError, 'historical priority register does not match verified reports'):
                 sni.load_inputs()
+
+    def test_sni_register_builder_rejects_unsupported_priority_schemas(self):
+        review_raw = (ROOT / sni.REVIEW).read_bytes()
+        review = json.loads(review_raw)
+        sni.make_current_register(self.priority, review, review_raw)
+        source = inspect.getsource(sni.make_current_register)
+        guard = ("    require(type(priority.get('schema')) is int and priority['schema'] == 1,\n"
+                 "            'unsupported priority schema for retained SNI evidence')\n")
+        self.assertEqual(source.count(guard), 1)
+        mutant = {}
+        exec(compile(source.replace(guard, ''), '<schema-check-removed>', 'exec'), sni.__dict__, mutant)
+        for schema in (2, 3, True):
+            with self.subTest(schema=schema):
+                changed = copy.deepcopy(self.priority)
+                changed['schema'] = schema
+                self.assertEqual(mutant['make_current_register'](changed, review, review_raw)['schema'], schema)
+                with self.assertRaisesRegex(ValueError, 'unsupported priority schema'):
+                    sni.make_current_register(changed, review, review_raw)
 
     def test_new_vanilla_caller_or_wrong_mod_source_is_not_cleared(self):
         sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
@@ -223,9 +274,9 @@ class HighSniEvidenceTests(unittest.TestCase):
                 sni.inspect_cached_classpath_jar(cache, artifact, ['1.19'])
 
     def test_clienthello_scan_cannot_hide_an_external_reference(self):
-        _, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        catalog, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
         original = json.loads((ROOT / sni.BASE_SCAN).read_bytes())
-        sni.validate_base_scan(original, self.scan, self.critical, versions)
+        sni.validate_base_scan(original, self.scan, self.critical, versions, catalog)
         altered = copy.deepcopy(original)
         row = next(item for item in altered['artifacts'] if not any(
             coord.startswith('io.netty:netty-handler:') for coord in item['coordinates']))
@@ -233,7 +284,91 @@ class HighSniEvidenceTests(unittest.TestCase):
                                                   'sha256': 'a' * 64, 'netty_handler_internal': False})
         altered['external_references'].append({'artifact_sha1': row['sha1'], 'class_file': 'example/Caller.class'})
         with self.assertRaisesRegex(ValueError, 'uncovered callers'):
-            sni.validate_base_scan(altered, self.scan, self.critical, versions)
+            sni.validate_base_scan(altered, self.scan, self.critical, versions, catalog)
+
+    def test_known_literal_hits_cannot_be_removed_duplicated_or_changed(self):
+        catalog, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        baseline = json.loads((ROOT / sni.BASE_SCAN).read_bytes())
+        sni.validate_base_scan(baseline, self.scan, self.critical, versions, catalog)
+        for kind in ('missing', 'duplicate', 'digest'):
+            with self.subTest(kind=kind):
+                altered = copy.deepcopy(baseline)
+                row = next(r for r in altered['artifacts'] if r['sha1'] == catalog[0]['sha1'])
+                hits = row['clienthello_name_references']
+                hit = next(h for h in hits if h['class_file'].endswith('/SslClientHelloHandler.class'))
+                if kind == 'missing':
+                    hits.remove(hit)
+                    altered['netty_handler_reference_count'] -= 1
+                    reason = 'known Netty ClientHello class missing'
+                elif kind == 'duplicate':
+                    hits.append(copy.deepcopy(hit))
+                    altered['netty_handler_reference_count'] += 1
+                    reason = 'duplicate ClientHello class observation'
+                else:
+                    hit['sha256'] = '0' * 64
+                    reason = 'known Netty ClientHello class digest differs'
+                # Adjusted aggregates fool the merged validator in all three cases.
+                prior_scan.validate_base_scan(altered, self.scan, self.critical, versions)
+                with self.assertRaisesRegex(ValueError, reason):
+                    sni.validate_base_scan(altered, self.scan, self.critical, versions, catalog)
+
+    def test_cli_checks_known_hit_inventory_before_accepting_retained_review(self):
+        baseline = json.loads((ROOT / sni.BASE_SCAN).read_bytes())
+        catalog, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        sni.validate_base_scan(baseline, self.scan, self.critical, versions, catalog)
+        altered = copy.deepcopy(baseline)
+        row = next(r for r in altered['artifacts'] if r['sha1'] == catalog[0]['sha1'])
+        row['clienthello_name_references'] = [h for h in row['clienthello_name_references']
+                                             if not h['class_file'].endswith('/SslClientHelloHandler.class')]
+        altered['netty_handler_reference_count'] -= 1
+        prior_scan.validate_base_scan(altered, self.scan, self.critical, versions)
+        real_read = sni.read
+        def read_with_mutation(root, path, expected=None):
+            return json.dumps(altered).encode() if path == sni.BASE_SCAN else real_read(root, path, expected)
+        out, err = StringIO(), StringIO()
+        with patch.object(sys, 'argv', ['inspect_issue45_sni_high.py']), \
+             patch.object(sni, 'read', side_effect=read_with_mutation), \
+             redirect_stdout(out), redirect_stderr(err):
+            self.assertEqual(sni.main(), 1)
+        self.assertIn('known Netty ClientHello class missing from scan', err.getvalue())
+
+    def test_known_hit_catalog_is_bound_to_jar_and_version(self):
+        catalog, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        baseline = json.loads((ROOT / sni.BASE_SCAN).read_bytes())
+        sni.validate_base_scan(baseline, self.scan, self.critical, versions, catalog)
+        for field, value in (('sha1', '0' * 40), ('sha256', '0' * 64), ('version', '4.1.999.Final')):
+            with self.subTest(field=field):
+                changed = copy.deepcopy(catalog)
+                changed[0][field] = value
+                # The former validator did not consult the library catalog.
+                prior_scan.validate_base_scan(baseline, self.scan, self.critical, versions)
+                with self.assertRaisesRegex(ValueError, 'known Netty library identity differs'):
+                    sni.validate_base_scan(baseline, self.scan, self.critical, versions, changed)
+
+        for kind in ('missing_class', 'changed_class_digest'):
+            with self.subTest(kind=kind):
+                changed = copy.deepcopy(catalog)
+                classes = changed[0]['classes']
+                hit = next(item for item in classes if item['path'].endswith('/AbstractSniHandler.class'))
+                if kind == 'missing_class':
+                    classes.remove(hit)
+                else:
+                    hit['sha256'] = '0' * 64
+                prior_scan.validate_base_scan(baseline, self.scan, self.critical, versions)
+                with self.assertRaisesRegex(ValueError, 'known Netty ClientHello class digest differs from library catalog'):
+                    sni.validate_base_scan(baseline, self.scan, self.critical, versions, changed)
+
+    def test_scan_artifact_identity_and_version_cannot_change(self):
+        catalog, _, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        baseline = json.loads((ROOT / sni.BASE_SCAN).read_bytes())
+        sni.validate_base_scan(baseline, self.scan, self.critical, versions, catalog)
+        for field in ('sha1', 'sha256', 'coordinates'):
+            with self.subTest(field=field):
+                altered = copy.deepcopy(baseline)
+                row = next(r for r in altered['artifacts'] if r['sha1'] == catalog[0]['sha1'])
+                row[field] = ['io.netty:netty-handler:4.1.999.Final'] if field == 'coordinates' else '0' * len(row[field])
+                with self.assertRaisesRegex(ValueError, 'ClientHello artifact identity differs'):
+                    sni.validate_base_scan(altered, self.scan, self.critical, versions, catalog)
 
 
 if __name__ == '__main__':

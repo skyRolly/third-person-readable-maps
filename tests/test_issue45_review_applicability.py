@@ -1,9 +1,11 @@
 """Show that PR #54's old exporter accepted stale focused-review evidence."""
 import copy
+from contextlib import redirect_stderr, redirect_stdout
 import gzip
 import hashlib
-from io import BytesIO
+from io import BytesIO, StringIO
 import importlib.util
+import inspect
 import json
 from pathlib import Path
 import shutil
@@ -30,9 +32,14 @@ candidate_spec = importlib.util.spec_from_file_location('pr58_priority_export',
     ROOT / 'tests/fixtures/issue45_pr58_priority_export.py')
 candidate = importlib.util.module_from_spec(candidate_spec)
 candidate_spec.loader.exec_module(candidate)
+merged_spec = importlib.util.spec_from_file_location('pr58_merged_priority_export',
+    ROOT / 'tests/fixtures/issue45_pr58_merged_priority_export.py')
+merged = importlib.util.module_from_spec(merged_spec)
+merged_spec.loader.exec_module(merged)
 
 EVIDENCE = 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
 INDEX = 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json'
+ARCHIVE_INDEX = 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/archive-index.json'
 LEDGER = 'docs/security-advisories.json'
 ADVISORY = 'GHSA-jfh8-c2jp-5v3q'
 
@@ -84,6 +91,72 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         ledger['critical_reachability_evidence']['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
         ledger_path.write_text(json.dumps(ledger, indent=2) + '\n')
 
+    def mutate_historical_report(self, edit):
+        # Copy the full archive only for these tests, then rebuild every changed
+        # checksum/reference in the disposable fixture, never in retained evidence.
+        archive_path = self.root / ARCHIVE_INDEX
+        archive_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / ARCHIVE_INDEX, archive_path)
+        archive_index = json.loads(archive_path.read_bytes())
+        for entry in archive_index['files']:
+            target = self.root / entry['path']
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if not target.exists():
+                shutil.copyfile(ROOT / entry['path'], target)
+        index_path = self.root / INDEX
+        index = json.loads(index_path.read_bytes())
+        spec = index['reports']['candidate|1.14-1.14.4']
+        path = self.root / spec['report']
+        report = json.loads(gzip.decompress(path.read_bytes()))
+        edit(report)
+        raw = (json.dumps(report, indent=2) + '\n').encode()
+        packed = gzip.compress(raw, mtime=0)
+        path.write_bytes(packed)
+        report_hash = hashlib.sha256(raw).hexdigest()
+        spec['sha256_uncompressed'] = report_hash
+        for row in index['records']:
+            if row['report'] == spec['report']:
+                row['report_sha256_uncompressed'] = report_hash
+        index_path.write_text(json.dumps(index, indent=2) + '\n')
+        archived = next(row for row in archive_index['files'] if row['path'] == spec['report'])
+        archived['sha256_uncompressed'] = report_hash
+        archived['sha256_gzip'] = hashlib.sha256(packed).hexdigest()
+        archive_path.write_text(json.dumps(archive_index, indent=2) + '\n')
+        def update(evidence):
+            evidence['source_provenance']['finding_index']['sha256'] = hashlib.sha256(index_path.read_bytes()).hexdigest()
+            evidence['source_provenance']['archive_index']['sha256'] = hashlib.sha256(archive_path.read_bytes()).hexdigest()
+            for finding in evidence['findings']:
+                for row in finding['occurrences']:
+                    if row['source_report']['path'] == spec['report']:
+                        row['source_report']['sha256_uncompressed'] = report_hash
+        self.mutate_focused(update)
+        for row in archive_index['files']:
+            packed = (self.root / row['path']).read_bytes()
+            self.assertEqual(hashlib.sha256(packed).hexdigest(), row['sha256_gzip'])
+            self.assertEqual(hashlib.sha256(gzip.decompress(packed)).hexdigest(), row['sha256_uncompressed'])
+        return spec['report']
+
+    def assert_historical_manifest_is_checked(self):
+        old_index, old_reports, _ = live.historic(self.root)
+        _, reports, _ = live.verify_live(self.live, old_index)
+        reviewed = json.loads((self.root / EVIDENCE).read_bytes())
+        finding = next(row for row in reviewed['findings'] if row['advisory_id'] == ADVISORY)
+        observed = finding['occurrences'][0]['minecraft_artifacts'][0]['version_metadata_sha1']
+        self.assertEqual(reports['candidate|1.14-1.14.4'][0]['runtime_manifests']['1.14']['sha1'], observed)
+        self.assertNotEqual(old_reports['candidate|1.14-1.14.4']['runtime_manifests'].get('1.14', {}).get('sha1'),
+                            observed)
+        # Remove exactly the historical half of the production check as a
+        # mutation control: all other validation remains the real implementation.
+        source = inspect.getsource(live.validate_focused_review)
+        condition = "old_manifests.get(version, {}).get('sha1') == metadata_sha and\n"
+        self.assertEqual(source.count(condition), 1)
+        mutant = {}
+        exec(compile(source.replace(condition, ''), '<historical-check-removed>', 'exec'), live.__dict__, mutant)
+        with patch.object(live, 'validate_focused_review', mutant['validate_focused_review']):
+            self.assertTrue(live.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'focused review stale: runtime manifest identity: .* 1.14'):
+            live.priority_register(self.live, self.root)
+
     def labels_with_advisory(self, identifier):
         index = json.loads((self.live / 'artifact-index.json').read_bytes())
         labels = []
@@ -126,6 +199,26 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         with patch.object(live, 'validate_focused_review', prior.validate_focused_review):
             self.assertTrue(live.priority_register(self.live, self.root)['advisories'])
         with self.assertRaisesRegex(ValueError, 'focused review stale: runtime manifest identity'):
+            live.priority_register(self.live, self.root)
+
+    def test_changed_historical_manifest_invalidates_review_independently(self):
+        self.mutate_historical_report(lambda report:
+            report['runtime_manifests']['1.14'].update(sha1='0' * 40))
+        self.assert_historical_manifest_is_checked()
+
+    def test_missing_historical_manifest_invalidates_review_independently(self):
+        self.mutate_historical_report(lambda report: report['runtime_manifests'].pop('1.14'))
+        self.assert_historical_manifest_is_checked()
+
+    def test_duplicate_reviewed_manifest_version_is_rejected(self):
+        def edit(evidence):
+            finding = next(row for row in evidence['findings'] if row['advisory_id'] == ADVISORY)
+            artifacts = finding['occurrences'][0]['minecraft_artifacts']
+            artifacts[-1] = copy.deepcopy(artifacts[0])
+        self.mutate_focused(edit)
+        with patch.object(live, 'validate_focused_review', prior.validate_focused_review):
+            self.assertTrue(live.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'focused review stale: runtime manifest coverage'):
             live.priority_register(self.live, self.root)
 
     def test_missing_reviewed_runtime_manifest_is_rejected(self):
@@ -272,6 +365,179 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         self.assertTrue(candidate.priority_register(self.live, self.root)['advisories'])
         with self.assertRaisesRegex(ValueError, 'inconsistent advisory content across sources'):
             live.priority_register(self.live, self.root)
+
+    def test_lower_severity_observation_is_not_dropped_before_consistency_check(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        labels = self.labels_with_advisory(identifier)
+        self.assertEqual(len(labels), 3)
+        for number, label in enumerate(labels):
+            def edit(report, number=number):
+                advisory = report['advisories'][identifier]
+                advisory['modified'] = f'2026-11-{23 + number}T00:00:00Z'
+                if number == 2:
+                    advisory['database_specific']['severity'] = 'MODERATE'
+                for row in report['matches']:
+                    if row['advisory'] == identifier:
+                        row['severity'] = advisory['database_specific']['severity']
+                        row['fingerprint'] = audit.advisory_fingerprint(advisory)
+            self.mutate_report(label, edit)
+        index, _, _ = live.historic(self.root)
+        _, reports, rows = live.verify_live(self.live, index)
+        observations = [row for key, row in rows.items() if key[3] == identifier]
+        self.assertEqual({row['severity'] for row in observations}, {'HIGH', 'MODERATE'})
+        self.assertEqual(len({reports[key][0]['advisories'][identifier]['modified']
+                              for key in reports if identifier in reports[key][0]['advisories']}), 3)
+        old = merged.priority_register(self.live, self.root)
+        old_row = next(item for item in old['advisories'] if item['advisory_id'] == identifier)
+        self.assertLess(len(old_row['occurrences']), len(observations))
+        with self.assertRaisesRegex(ValueError, 'inconsistent advisory severity across sources: ' + identifier):
+            live.priority_register(self.live, self.root)
+
+    def test_changed_severity_alone_is_a_cross_source_conflict(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        label = self.labels_with_advisory(identifier)[0]
+        def edit(report):
+            advisory = report['advisories'][identifier]
+            advisory['database_specific']['severity'] = 'MODERATE'
+            for row in report['matches']:
+                if row['advisory'] == identifier:
+                    row['severity'] = 'MODERATE'
+                    row['fingerprint'] = audit.advisory_fingerprint(advisory)
+        self.mutate_report(label, edit)
+        index, _, _ = live.historic(self.root)
+        live.verify_live(self.live, index)
+        self.assertTrue(merged.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'inconsistent advisory severity across sources: ' + identifier):
+            live.priority_register(self.live, self.root)
+
+    def test_cli_does_not_write_a_register_with_a_severity_conflict(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        def edit(report):
+            advisory = report['advisories'][identifier]
+            advisory['database_specific']['severity'] = 'MODERATE'
+            for row in report['matches']:
+                if row['advisory'] == identifier:
+                    row['severity'] = 'MODERATE'
+                    row['fingerprint'] = audit.advisory_fingerprint(advisory)
+        self.mutate_report(self.labels_with_advisory(identifier)[0], edit)
+        index, _, _ = live.historic(self.root)
+        live.verify_live(self.live, index)
+        comparison = live.reconcile(self.live, self.root)
+        target = Path(self.temp.name) / 'priority.json'
+        current = live.priority_register
+        def invoke(exporter):
+            out, err = StringIO(), StringIO()
+            with patch.object(sys, 'argv', ['reconcile', '--live', str(self.live), '--priority-register', str(target)]), \
+                 patch.object(live, 'reconcile', return_value=comparison), \
+                 patch.object(live, 'priority_register', side_effect=lambda unused: exporter(self.live, self.root)), \
+                 redirect_stdout(out), redirect_stderr(err):
+                result = live.main()
+            return result, err.getvalue()
+        self.assertEqual(invoke(merged.priority_register)[0], 1)  # findings still block
+        self.assertTrue(target.exists())  # but the old exporter emitted the incomplete register
+        target.unlink()
+        status, error = invoke(current)
+        self.assertEqual(status, 2)
+        self.assertIn('inconsistent advisory severity across sources: ' + identifier, error)
+        self.assertFalse(target.exists())
+
+    def test_conflicting_aliases_are_rejected(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        def edit(report):
+            advisory = report['advisories'][identifier]
+            advisory['aliases'].append('CVE-2099-12345')
+            for row in report['matches']:
+                if row['advisory'] == identifier:
+                    row['fingerprint'] = audit.advisory_fingerprint(advisory)
+        self.mutate_report(self.labels_with_advisory(identifier)[0], edit)
+        index, _, _ = live.historic(self.root)
+        live.verify_live(self.live, index)
+        with self.assertRaisesRegex(ValueError, 'inconsistent advisory content across sources: ' + identifier):
+            live.priority_register(self.live, self.root)
+
+    def test_moderate_only_advisories_remain_outside_priority_export(self):
+        index, _, _ = live.historic(self.root)
+        _, _, rows = live.verify_live(self.live, index)
+        selected = {key[3] for key, row in rows.items() if row['severity'] in ('HIGH', 'CRITICAL')}
+        moderate_only = {key[3] for key, row in rows.items() if row['severity'] == 'MODERATE'} - selected
+        self.assertTrue(moderate_only)
+        result = live.priority_register(self.live, self.root)
+        self.assertEqual((result['advisory_ids'], result['occurrences']), (37, 199))
+        self.assertFalse(moderate_only & {row['advisory_id'] for row in result['advisories']})
+
+    def test_schema_one_timestamp_contract_uses_verified_sources(self):
+        index, _, _ = live.historic(self.root)
+        _, reports, rows = live.verify_live(self.live, index)
+        observations = live.priority_observations(reports, rows)
+        baseline = live.priority_register(self.live, self.root)
+        live.validate_priority_schema(baseline, observations)
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        for kind in ('unsupported', 'unmixed_schema_two', 'null', 'wrong_value', 'source_map', 'missing_source'):
+            with self.subTest(kind=kind):
+                result = copy.deepcopy(baseline)
+                row = next(a for a in result['advisories'] if a['advisory_id'] == identifier)
+                if kind == 'unsupported':
+                    result['schema'] = 3
+                    reason = 'unsupported priority register schema'
+                elif kind == 'unmixed_schema_two':
+                    result['schema'] = 2
+                    reason = 'priority schema does not match timestamp observations'
+                elif kind == 'null':
+                    row['modified'] = None
+                    reason = 'invalid single priority timestamp'
+                elif kind == 'wrong_value':
+                    row['modified'] = '2026-11-23T00:00:00Z'
+                    reason = 'invalid single priority timestamp'
+                elif kind == 'source_map':
+                    row['modified_by_source'] = {'candidate|extra': row['modified']}
+                    reason = 'invalid single priority timestamp'
+                else:
+                    row['occurrences'] = [item for item in row['occurrences'] if item['group'] != '1.14-1.14.4']
+                    reason = 'priority occurrence coverage differs'
+                with self.assertRaisesRegex(ValueError, reason):
+                    live.validate_priority_schema(result, observations)
+
+    def test_schema_two_requires_all_verified_mixed_timestamps(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        label = self.labels_with_advisory(identifier)[0]
+        self.mutate_report(label, lambda report: report['advisories'][identifier].update(
+            modified='2026-11-23T00:00:00Z'))
+        index, _, _ = live.historic(self.root)
+        _, reports, rows = live.verify_live(self.live, index)
+        observations = live.priority_observations(reports, rows)
+        baseline = live.priority_register(self.live, self.root)
+        self.assertEqual(baseline['schema'], 2)
+        live.validate_priority_schema(baseline, observations)
+        for kind in ('schema_one', 'missing', 'extra', 'wrong_type', 'wrong_value', 'nonnull', 'missing_modified'):
+            with self.subTest(kind=kind):
+                result = copy.deepcopy(baseline)
+                row = next(a for a in result['advisories'] if a['advisory_id'] == identifier)
+                values = row['modified_by_source']
+                key = next(iter(values))
+                if kind == 'schema_one':
+                    result['schema'] = 1
+                elif kind == 'missing':
+                    del values[key]
+                elif kind == 'extra':
+                    values['candidate|extra'] = '2026-11-23T00:00:00Z'
+                elif kind == 'wrong_type':
+                    values[key] = None
+                elif kind == 'wrong_value':
+                    values[key] = '2026-11-24T00:00:00Z'
+                elif kind == 'missing_modified':
+                    del row['modified']
+                    source = inspect.getsource(live.validate_priority_schema)
+                    guard = "'modified' in row and row['modified'] is None"
+                    self.assertEqual(source.count(guard), 1)
+                    mutant = {}
+                    exec(compile(source.replace(guard, "row.get('modified') is None"),
+                                 '<missing-null-accepted>', 'exec'), live.__dict__, mutant)
+                    # PR #59's first revision treated a missing field as null.
+                    mutant['validate_priority_schema'](result, observations)
+                else:
+                    row['modified'] = '2026-11-23T00:00:00Z'
+                with self.assertRaisesRegex(ValueError, 'invalid mixed priority timestamps or source attribution'):
+                    live.validate_priority_schema(result, observations)
 
 
 if __name__ == '__main__':

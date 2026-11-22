@@ -27,10 +27,18 @@ UPSTREAM = DIR + '/upstream-advisory.json'
 UPSTREAM_SHA = 'daf24ba7ef8ed9e5131ff8264cd8c8554d789b841dbd1c0f286554d456b07bae'
 ARTIFACTS = DIR + '/local-artifact-verification.json'
 BASE_SCAN = DIR + '/clienthello-classpath-scan.json'
+KNOWN_HITS = DIR + '/known-clienthello-class-hits-2026-11-22.json'
+KNOWN_HITS_SHA = 'c818c5c955642f351866bbf248ba1e5f46b4cbbc33b12c75a3f2ac6fcb817355'
 REVIEW = DIR + '/source-bound-review.json'
 CURRENT = DIR + '/priority-register-v2.json'
 HIGH = 'GHSA-x4gw-5cx5-pgmh'
 CRITICAL = 'GHSA-c4c3-7fpv-j4q5'
+KNOWN_HIT_PATHS = frozenset({
+    'io/netty/handler/ssl/AbstractSniHandler.class',
+    'io/netty/handler/ssl/SslClientHelloHandler$1.class',
+    'io/netty/handler/ssl/SslClientHelloHandler.class',
+})
+CATALOG_HIT_PATHS = KNOWN_HIT_PATHS - {'io/netty/handler/ssl/SslClientHelloHandler$1.class'}
 
 
 def sha(raw):
@@ -53,7 +61,9 @@ def load_inputs(root=ROOT):
     priority_raw = read(root, PRIORITY, prior['sha256'])
     priority = json.loads(priority_raw, object_pairs_hook=unique_object)
     regenerated = audits.priority_register(root / audits.LIVE.relative_to(audits.ROOT), root)
-    require(regenerated == priority, 'historical priority register does not match verified reports')
+    require(type(priority.get('schema')) is int and priority['schema'] == 1 and
+            type(regenerated.get('schema')) is int and regenerated['schema'] == 1 and regenerated == priority,
+            'historical priority register does not match verified reports')
     ref = ledger['critical_reachability_evidence']
     critical_raw = read(root, ref['path'], ref['sha256'])
     critical = json.loads(critical_raw, object_pairs_hook=unique_object)
@@ -139,7 +149,43 @@ def inspect_cached_classpath_jar(cache, artifact, versions):
             'class_files_scanned': classes, 'clienthello_name_references': hits}
 
 
-def validate_base_scan(base_scan, scan, critical, versions):
+def known_hit_inventory(catalog, root=ROOT):
+    """Bind independently observed literal hits to the reviewed JAR catalog."""
+    known = json.loads(read(root, KNOWN_HITS, KNOWN_HITS_SHA), object_pairs_hook=unique_object)
+    require(known.get('schema') == 1 and known.get('security_clearance') is False and
+            isinstance(known.get('libraries'), list), 'invalid known ClientHello inventory')
+    libraries = {row['sha1']: row for row in catalog}
+    require(len(libraries) == len(catalog) == len(known['libraries']) == 6,
+            'known Netty library coverage differs')
+    result = {}
+    for row in known['libraries']:
+        prior = libraries.get(row['sha1'])
+        require(prior is not None and row['sha1'] not in result and
+                row['version'] == prior['version'] and row['sha256'] == prior['sha256'],
+                'known Netty library identity differs')
+        recorded = {item['path']: item['sha256'] for item in prior['classes']}
+        require(len(recorded) == len(prior['classes']), 'duplicate Netty catalog class')
+        hits = {item['path']: item['sha256'] for item in row['literal_hits']}
+        require(len(hits) == len(row['literal_hits']) and set(hits) == KNOWN_HIT_PATHS and
+                all(re.fullmatch(r'[a-f0-9]{64}', value) for value in hits.values()),
+                'known Netty ClientHello class inventory differs')
+        require(CATALOG_HIT_PATHS <= set(recorded) and
+                all(hits[path] == recorded[path] for path in CATALOG_HIT_PATHS),
+                'known Netty ClientHello class digest differs from library catalog')
+        result[row['sha1']] = {'version': row['version'], 'sha256': row['sha256'], 'hits': hits}
+    return result
+
+
+def verify_known_cached_library(raw, library, known):
+    inspect_library(raw, library)
+    with ZipFile(BytesIO(raw)) as archive:
+        for path, expected in known['hits'].items():
+            contents = archive.read(path)
+            require(b'SslClientHelloHandler' in contents and sha(contents) == expected,
+                    'known cached ClientHello literal or class digest differs')
+
+
+def validate_base_scan(base_scan, scan, critical, versions, catalog):
     prior = critical['supplemental_source_bound_evidence']['vanilla_classpath_scan']
     require(base_scan.get('schema') == 1 and base_scan.get('security_clearance') is False and
             base_scan.get('prior_vanilla_scan') == {'path': prior['path'], 'sha256': prior['sha256']} and
@@ -150,7 +196,9 @@ def validate_base_scan(base_scan, scan, critical, versions):
     rows = base_scan['artifacts']
     require(len(expected) == len(selected) == len(rows) == 471 and
             len({row['sha1'] for row in rows}) == len(rows), 'ClientHello scan coverage differs')
-    internal, external = [], []
+    known = known_hit_inventory(catalog)
+    required = {(jar, path, digest) for jar, item in known.items() for path, digest in item['hits'].items()}
+    internal, external, observed_known = [], [], set()
     for row in rows:
         previous = expected.get(row['sha1'])
         require(previous is not None and row['sha256'] == previous['sha256'] and
@@ -158,12 +206,25 @@ def validate_base_scan(base_scan, scan, critical, versions):
                 row['class_files_scanned'] == previous['class_files_scanned'] and
                 row['minecraft_versions'] == sorted(set(previous['minecraft_versions']) & set(versions)),
                 'ClientHello artifact identity differs')
+        seen_paths = set()
         for hit in row['clienthello_name_references']:
+            require(hit['class_file'] not in seen_paths, 'duplicate ClientHello class observation')
+            seen_paths.add(hit['class_file'])
             is_internal = hit['class_file'].startswith('io/netty/handler/ssl/') and any(
                 coordinate.startswith('io.netty:netty-handler:') for coordinate in row['coordinates'])
             require(hit['netty_handler_internal'] == is_internal and
-                    len(hit['sha256']) == 64, 'ClientHello reference classification differs')
+                    re.fullmatch(r'[a-f0-9]{64}', hit['sha256']), 'ClientHello reference classification differs')
+            if is_internal:
+                library = known.get(row['sha1'])
+                require(library is not None and row['sha256'] == library['sha256'] and
+                        'io.netty:netty-handler:' + library['version'] in row['coordinates'],
+                        'known Netty library identity differs')
+                require(hit['class_file'] in library['hits'], 'unexpected Netty ClientHello class observation')
+                require(hit['sha256'] == library['hits'][hit['class_file']],
+                        'known Netty ClientHello class digest differs')
+                observed_known.add((row['sha1'], hit['class_file'], hit['sha256']))
             (internal if is_internal else external).append((row['sha1'], hit['class_file']))
+    require(observed_known == required, 'known Netty ClientHello class missing from scan')
     require(base_scan['class_files_scanned'] == sum(row['class_files_scanned'] for row in rows) and
             base_scan['netty_handler_reference_count'] == len(internal) and
             base_scan['external_references'] == [{'artifact_sha1': jar, 'class_file': name}
@@ -237,7 +298,7 @@ def make_review(ledger, critical, scan, catalog, occurrences, versions, artifact
             artifact.get('libraries') == catalog and artifact.get('security_clearance') is False,
             'local artifact verification differs from prior source-bound evidence')
     base_scan = json.loads(base_scan_raw, object_pairs_hook=unique_object)
-    validate_base_scan(base_scan, scan, critical, versions)
+    validate_base_scan(base_scan, scan, critical, versions, catalog)
     scan_ref = critical['supplemental_source_bound_evidence']['vanilla_classpath_scan']
     review = {'schema': 1, 'advisory_id': HIGH, 'aliases': ['CVE-2026-45416'], 'severity': 'HIGH',
         'observed_on': '2026-11-22', 'analysis_base_commit': 'cf7f850a618a02321c9b3d27b3e9ba13c03b2792',
@@ -282,6 +343,8 @@ def make_review(ledger, critical, scan, catalog, occurrences, versions, artifact
 
 
 def make_current_register(priority, review, review_raw):
+    require(type(priority.get('schema')) is int and priority['schema'] == 1,
+            'unsupported priority schema for retained SNI evidence')
     updated = copy.deepcopy(priority)
     entry = next(row for row in updated['advisories'] if row['advisory_id'] == HIGH)
     require(entry['focused_evidence'] is None and len(entry['occurrences']) == review['occurrence_count'] == 12,
@@ -326,6 +389,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--inspect-cache', type=Path, help='verify SHA-1-keyed Netty library cache')
+    mode.add_argument('--verify-known-hits-cache', type=Path, help='recheck known ClientHello literal hits in cached JARs')
     mode.add_argument('--scan-clienthello-cache', type=Path, help='scan hash-verified cached client/runtime JARs')
     mode.add_argument('--write-review', action='store_true')
     args = parser.parse_args()
@@ -341,6 +405,12 @@ def main():
                 'prior_evidence_sha256': ledger['critical_reachability_evidence']['sha256'],
                 'libraries': catalog, 'security_clearance': False})
             print('Verified six Netty JARs and their SNI class hashes locally')
+        elif args.verify_known_hits_cache:
+            known = known_hit_inventory(catalog)
+            for row in catalog:
+                verify_known_cached_library((args.verify_known_hits_cache / row['sha1']).read_bytes(), row,
+                                            known[row['sha1']])
+            print('Verified 18 known literal-bearing class entries in six Netty JARs; no reachability is implied')
         elif args.scan_clienthello_cache:
             selected = [item for item in scan['runtime_classpath_scan']['all_artifacts']
                         if set(item['minecraft_versions']) & set(versions)]
@@ -358,7 +428,7 @@ def main():
                       'netty_handler_reference_count': sum(hit['netty_handler_internal'] for row in rows
                                                             for hit in row['clienthello_name_references']),
                       'external_references': external, 'security_clearance': False}
-            validate_base_scan(result, scan, critical, versions)
+            validate_base_scan(result, scan, critical, versions, catalog)
             write_new(ROOT / BASE_SCAN, result)
             print('Scanned ' + str(len(rows)) + ' hash-verified JARs; external ClientHello name references: ' + str(len(external)))
         elif args.write_review:

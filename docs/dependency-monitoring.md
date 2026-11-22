@@ -324,3 +324,23 @@ The source-bound [Commons Compress follow-up](dependency-evidence/critical-reach
 ## Issue #45 Netty SNI runtime evidence — 2026-11-22
 
 The critical Netty SNI advisory is now bound to a full scan of all affected Mojang client/runtime JARs for each of 29 game versions. The scan and focused bytecode captures are indexed in the structured advisory ledger. It records no vanilla non-Netty `SniHandler` caller; this does not cover arbitrary third-party mods, launcher additions or Java agents. The 14 source-bound occurrences remain failing and release-blocking until upstream or runtime-scope questions are resolved. Candidate and integrated OSV inventories and counts are unchanged.
+
+## Issue #45 priority-register timestamp contract
+
+The register exporter first compares every verified observation of an advisory
+selected by at least one Critical or High occurrence, including observations
+reported at lower severity. Different effective severities or any different
+advisory fields other than `modified` stop export and require review.
+
+Schema 1 contains a nonempty string `modified` for each advisory and no
+`modified_by_source`: every verified source must have the same timestamp.
+Schema 2 is emitted only when at least one advisory has different timestamps
+but otherwise identical observations. For each such advisory, `modified` is
+null and `modified_by_source` maps every `source_kind|group` to its nonempty
+timestamp string. Unmixed advisories in schema 2 retain the schema 1 shape.
+The exporter checks these values and source coverage against the verified
+reports; schema shape alone cannot establish source integrity. Unknown schemas,
+missing or extra attribution, and contradictory timestamp values fail closed.
+The retained SNI evidence consumer accepts only its pinned schema 1 baseline;
+it cannot silently reinterpret an unreviewed schema 2 register. Neither schema
+represents a finding clearance or risk acceptance.
