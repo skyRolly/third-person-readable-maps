@@ -1,0 +1,48 @@
+name: Issue 45 Windows failure controls
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  control:
+    name: Windows failure control (${{ matrix.scenario }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - scenario: first-fails-second-passes
+            first: 1
+            second: 0
+          - scenario: first-passes-second-fails
+            first: 0
+            second: 1
+          - scenario: both-pass
+            first: 0
+            second: 0
+    steps:
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Create synthetic unittest fixtures
+        shell: python
+        env:
+          FIRST_RESULT: ${{ matrix.first }}
+          SECOND_RESULT: ${{ matrix.second }}
+        run: |
+          import os
+          from pathlib import Path
+          directory = Path(os.environ['RUNNER_TEMP']) / 'issue45-control'
+          directory.mkdir()
+          for name, value in [('test_issue45_live_audits.py', os.environ['FIRST_RESULT']),
+                              ('test_issue45_mod_jar_inspection.py', os.environ['SECOND_RESULT'])]:
+              (directory / name).write_text('import unittest\nclass Control(unittest.TestCase):\n'
+                                            '    def test_control(self):\n        self.assertEqual(0, ' + value + ')\n')
+      - name: Verify live audit evidence
+        run: python -m unittest discover -s "${env:RUNNER_TEMP}/issue45-control" -p "test_issue45_live_audits.py" -v
+      - name: Verify packaged-mod evidence
+        run: python -m unittest discover -s "${env:RUNNER_TEMP}/issue45-control" -p "test_issue45_mod_jar_inspection.py" -v

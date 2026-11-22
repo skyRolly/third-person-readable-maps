@@ -212,14 +212,87 @@ def reconcile(live=LIVE, root=ROOT):
     }
 
 
+def validate_focused_review(identifier, finding, observed, current_rows, historical_rows, historical_reports, reports):
+    """Fail closed if an investigation no longer describes the audited evidence.
+
+    The archived review cites a historical report, while a live scan is a new
+    report with its own independently checked archive digest. Compare their
+    source-bound findings and advisory content, not their necessarily different
+    report bytes. A changed `modified` timestamp alone is administrative; every
+    other advisory field must match until separately reviewed.
+    """
+    require(finding.get('advisory_id') == identifier and finding.get('risk_accepted') is False and
+            finding.get('release_blocking') is True, 'invalid focused review: ' + identifier)
+    expected = {}
+    for row in finding['occurrences']:
+        key = occurrence(row['source_kind'], row['group'], {'purl': row['purl'], 'advisory': identifier})
+        require(key not in expected, 'duplicate focused review occurrence: ' + identifier)
+        expected[key] = row
+    actual = {}
+    for row in observed:
+        key = occurrence(row['source_kind'], row['group'], {'purl': row['purl'], 'advisory': identifier})
+        require(key not in actual, 'duplicate focused live occurrence: ' + identifier)
+        actual[key] = row
+    require(len(expected) == finding['occurrence_count'] and set(actual) == set(expected),
+            'focused occurrence identities differ: ' + identifier)
+    for key, reviewed in expected.items():
+        current = actual[key]
+        match = current_rows[key]
+        old = historical_rows.get(key)
+        group_key = key[0] + '|' + key[1]
+        require(old is not None and group_key in reports and group_key in historical_reports,
+                'focused historical source missing: ' + identifier)
+        require(reviewed['source_sha'] == current['source_sha'] == old['source_sha'] and
+                reviewed['purl'] == current['purl'] and
+                reviewed['package_version'] == current['purl'].rsplit('@', 1)[-1],
+                'focused review stale: source or package identity: ' + identifier)
+        scopes = reviewed['dependency_scopes']
+        require(scopes == current['scopes'] == old['scopes'] and
+                sorted(reviewed['minecraft_versions']) ==
+                sorted(s.split('/', 1)[1] for s in scopes if s.startswith('runtime/')),
+                'focused review stale: dependency scopes or environments: ' + identifier)
+        require(reviewed['fingerprint'] == current['fingerprint'] == old['fingerprint'],
+                'focused review stale: advisory fingerprint: ' + identifier)
+        require(reviewed['severity'] == match['severity'] == old['severity'] == finding['severity'] and
+                reviewed['disposition'] == current['disposition'] == old['disposition'] and
+                reviewed['failing'] == current['release_blocking'] == old['failing'] and
+                reviewed['release_blocking'] == current['release_blocking'] and
+                reviewed['risk_accepted'] is False and current['risk_accepted'] is False,
+                'focused review stale: severity, disposition or blocking state: ' + identifier)
+        source = reviewed['source_report']
+        require(source.get('path') == old['report'] and
+                source.get('sha256_uncompressed') == old['report_sha256_uncompressed'],
+                'focused review stale: historical report provenance: ' + identifier)
+        previous_advisory = historical_reports[group_key]['advisories'][identifier]
+        current_advisory = reports[group_key][0]['advisories'][identifier]
+        require(sorted(finding['aliases']) == sorted(previous_advisory.get('aliases', [])) and
+                {k: v for k, v in previous_advisory.items() if k != 'modified'} ==
+                {k: v for k, v in current_advisory.items() if k != 'modified'},
+                'focused review stale: advisory metadata: ' + identifier)
+
+
 def priority_register(live=LIVE, root=ROOT):
-    old_index, _, _ = historic(root)
+    old_index, old_reports, old_rows = historic(root)
     index, reports, rows = verify_live(live, old_index)
     evidence_path = 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
     evidence_raw = (root / evidence_path).read_bytes()
     evidence = decode(evidence_raw)
+    ledger = decode((root / 'docs/security-advisories.json').read_bytes())
+    reference = ledger.get('critical_reachability_evidence', {})
+    require(reference.get('path') == evidence_path and reference.get('sha256') == digest(evidence_raw),
+            'focused evidence ledger provenance mismatch')
+    source_index = evidence.get('source_provenance', {}).get('finding_index', {})
+    index_path = 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json'
+    require(source_index.get('path') == index_path and
+            source_index.get('sha256') == digest((root / index_path).read_bytes()),
+            'focused evidence finding-index provenance mismatch')
     focused = {row['advisory_id']: row for row in evidence['findings']}
     require(len(focused) == len(evidence['findings']), 'duplicate focused advisory')
+    for severity, label in (('CRITICAL', 'critical'), ('HIGH', 'high')):
+        count = sum(row['occurrence_count'] for row in focused.values() if row['severity'] == severity)
+        field = 'targeted_' + label + '_occurrences'
+        require(count == evidence.get(field) == reference.get(field),
+                'incomplete focused advisory coverage: ' + severity)
     grouped = {}
     for ident, row in sorted(rows.items()):
         if row['severity'] not in ('CRITICAL', 'HIGH'):
@@ -258,12 +331,7 @@ def priority_register(live=LIVE, root=ROOT):
             'disposition': row['disposition'], 'release_blocking': row['failing'], 'risk_accepted': False})
     for identifier, finding in focused.items():
         observed = grouped.get(identifier, {}).get('occurrences', [])
-        require(len(observed) == finding['occurrence_count'], 'focused occurrence count differs: ' + identifier)
-        actual = {(row['source_kind'], row['group'], row['purl'], row['source_sha']) for row in observed}
-        expected = {(row['source_kind'], row['group'], row['purl'], row['source_sha'])
-                    for row in finding['occurrences']}
-        require(actual == expected and len(expected) == len(finding['occurrences']),
-                'focused occurrence identities differ: ' + identifier)
+        validate_focused_review(identifier, finding, observed, rows, old_rows, old_reports, reports)
     return {'schema': 1, 'coordinator_sha': index['coordinator_sha'],
             'candidate_run': index['candidate_run'], 'maintenance_run': index['maintenance_run'],
             'focused_evidence_sha256': digest(evidence_raw), 'advisory_ids': len(grouped),
