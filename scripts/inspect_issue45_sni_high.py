@@ -223,7 +223,10 @@ def bind_occurrences(high, critical, scan, mod):
 def write_new(path, value):
     require(not path.exists(), 'refusing to overwrite existing evidence')
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+    # Hash exactly the LF-terminated UTF-8 bytes Git retains on every platform.
+    raw = (json.dumps(value, indent=2, sort_keys=True) + '\n').encode('utf-8')
+    with path.open('xb') as stream:
+        stream.write(raw)
 
 
 def make_review(ledger, critical, scan, catalog, occurrences, versions, artifact_raw, base_scan_raw):
@@ -309,6 +312,16 @@ def validate_outputs(priority, review_raw, current_raw, expected_review):
             'current priority register does not match source-bound review')
 
 
+def validate_ledger_reference(ledger, current_raw):
+    ref = ledger.get('latest_focused_priority_register')
+    coverage = json.loads(current_raw, object_pairs_hook=unique_object)['focused_coverage']
+    require(isinstance(ref, dict) and ref.get('path') == CURRENT and ref.get('sha256') == sha(current_raw) and
+            ref.get('advisory_ids') == coverage['advisory_ids'] and
+            ref.get('focused_occurrences') == coverage['total_occurrences'] and
+            ref.get('remaining_unfocused_high_occurrences') == coverage['high_occurrences_without_focused_evidence'] and
+            ref.get('security_clearance') is False, 'current priority ledger reference differs')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
@@ -364,14 +377,7 @@ def main():
             current_raw = read(ROOT, CURRENT)
             expected = make_review(ledger, critical, scan, catalog, occurrences, versions, artifact_raw, base_scan_raw)
             validate_outputs(priority, review_raw, current_raw, expected)
-            ref = ledger.get('latest_focused_priority_register')
-            coverage = json.loads(current_raw)['focused_coverage']
-            require(isinstance(ref, dict) and ref.get('path') == CURRENT and ref.get('sha256') == sha(current_raw) and
-                        ref.get('advisory_ids') == coverage['advisory_ids'] and
-                        ref.get('focused_occurrences') == coverage['total_occurrences'] and
-                        ref.get('remaining_unfocused_high_occurrences') == coverage['high_occurrences_without_focused_evidence'] and
-                        ref.get('security_clearance') is False,
-                    'current priority ledger reference differs')
+            validate_ledger_reference(ledger, current_raw)
             print('Validated source and artifact bindings for 12 blocking High occurrences')
         return 0
     except (OSError, ValueError, KeyError, StopIteration, TypeError, BadZipFile) as exc:

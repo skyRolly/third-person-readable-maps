@@ -5,7 +5,9 @@ from io import BytesIO
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,8 +34,65 @@ class HighSniEvidenceTests(unittest.TestCase):
         self.assertEqual(current['focused_coverage']['high_occurrences'], 83)
         self.assertTrue(all(row['release_blocking'] and not row['risk_accepted']
                             for advisory in current['advisories'] for row in advisory['occurrences']))
+        sni.validate_ledger_reference(self.ledger, current_raw)
         ref = self.ledger['latest_focused_priority_register']
         self.assertEqual((ref['path'], ref['sha256']), (sni.CURRENT, hashlib.sha256(current_raw).hexdigest()))
+
+    def test_ledger_summary_fields_cannot_drift(self):
+        raw = (ROOT / sni.CURRENT).read_bytes()
+        sni.validate_ledger_reference(self.ledger, raw)
+        for field, value in (('advisory_ids', 22), ('focused_occurrences', 106),
+                             ('remaining_unfocused_high_occurrences', 93), ('security_clearance', True),
+                             ('path', 'wrong.json'), ('sha256', '0' * 64)):
+            with self.subTest(field=field):
+                ledger = copy.deepcopy(self.ledger)
+                ref = ledger['latest_focused_priority_register']
+                ref[field] = value
+                if field not in ('path', 'sha256'):
+                    # PR #56's CI checked only these two fields and accepted this mutation.
+                    self.assertEqual((ref['path'], ref['sha256']),
+                                     (sni.CURRENT, hashlib.sha256(raw).hexdigest()))
+                with self.assertRaisesRegex(ValueError, 'current priority ledger reference differs'):
+                    sni.validate_ledger_reference(ledger, raw)
+
+    def test_evidence_writer_is_lf_stable_under_windows_text_translation(self):
+        value = {'test': ['a', 'b']}
+        expected = (json.dumps(value, indent=2, sort_keys=True) + '\n').encode('utf-8')
+
+        def windows_text_write(path, text, encoding=None, **kwargs):
+            return path.write_bytes(text.replace('\n', '\r\n').encode(encoding or 'utf-8'))
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with patch.object(Path, 'write_text', windows_text_write):
+                # This is the merged PR #56 writer, run under simulated Windows translation.
+                legacy = root / 'legacy.json'
+                legacy.write_text(json.dumps(value, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+                self.assertNotEqual(legacy.read_bytes(), expected)
+                target = root / 'review.json'
+                sni.write_new(target, value)
+            raw = target.read_bytes()
+            self.assertEqual(raw, expected)
+            self.assertNotIn(b'\r\n', raw)
+            self.assertEqual(hashlib.sha256(raw).digest(), hashlib.sha256(raw.replace(b'\r\n', b'\n')).digest())
+            with self.assertRaisesRegex(ValueError, 'refusing to overwrite'):
+                sni.write_new(target, {'changed': True})
+
+    def test_regenerated_review_and_register_match_retained_bytes(self):
+        catalog, occurrences, versions = sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
+        expected = sni.make_review(self.ledger, self.critical, self.scan, catalog, occurrences, versions,
+                                   (ROOT / sni.ARTIFACTS).read_bytes(), (ROOT / sni.BASE_SCAN).read_bytes())
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            review_path, register_path = root / 'review.json', root / 'register.json'
+            sni.write_new(review_path, expected)
+            review_raw = review_path.read_bytes()
+            sni.write_new(register_path, sni.make_current_register(self.priority, expected, review_raw))
+            current_raw = register_path.read_bytes()
+            self.assertEqual(review_raw, (ROOT / sni.REVIEW).read_bytes())
+            self.assertEqual(current_raw, (ROOT / sni.CURRENT).read_bytes())
+            sni.validate_outputs(self.priority, review_raw, current_raw, expected)
+            sni.validate_ledger_reference(self.ledger, current_raw)
 
     def test_duplicate_or_changed_source_and_scope_are_rejected(self):
         sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
@@ -107,7 +166,6 @@ class HighSniEvidenceTests(unittest.TestCase):
             sni.inspect_library(changed, changed_expected)
 
     def test_clienthello_scanner_finds_external_literal_and_rejects_bad_hash(self):
-        import tempfile
         out = BytesIO()
         with ZipFile(out, 'w', ZIP_DEFLATED) as archive:
             archive.writestr('example/Caller.class', b'example SslClientHelloHandler literal')
