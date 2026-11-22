@@ -228,8 +228,10 @@ def priority_register(live=LIVE, root=ROOT):
         report, _, item = reports[kind + '|' + group]
         advisory = report['advisories'][identifier]
         focus = focused.get(identifier)
-        require(any(scope.startswith('runtime/') for scope in row['scopes']) and
-                row['disposition'] != 'Risk accepted', 'unexpected ownership or risk acceptance: ' + identifier)
+        require(row['disposition'] != 'Risk accepted', 'risk acceptance requires separate review: ' + identifier)
+        owner = ('Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle'
+                 if any(scope.startswith('runtime/') for scope in row['scopes']) else
+                 'Gradle-resolved dependency; owner and actual use require investigation')
         package = purl.split('@', 1)[0]
         ranges = [entry.get('ranges', []) for entry in advisory.get('affected', [])
                   if (entry.get('package') or {}).get('purl') == package]
@@ -252,7 +254,7 @@ def priority_register(live=LIVE, root=ROOT):
             'purl': purl, 'scopes': row['scopes'], 'fingerprint': row['fingerprint'],
             'source_report_artifact_id': item['id'], 'source_report_archive_sha256': item['digest'].removeprefix('sha256:'),
             'source_report_member': 'candidate-dependency-audit.json' if kind == 'candidate' else 'dependency-audit.json',
-            'dependency_owner': 'Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle',
+            'dependency_owner': owner,
             'disposition': row['disposition'], 'release_blocking': row['failing'], 'risk_accepted': False})
     for identifier, finding in focused.items():
         observed = grouped.get(identifier, {}).get('occurrences', [])

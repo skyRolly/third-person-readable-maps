@@ -47,7 +47,10 @@ contains all 199 Critical/High occurrences and 37 advisory IDs, exact source
 commits, current report archive hashes and member names, scopes, aliases,
 upstream affected ranges and existing dispositions. Its 20 focused IDs cover 93
 occurrences (22 Critical, 71 High); the remaining 17 High IDs still require
-advisory-specific investigation. No new reviewer decision is implied.
+advisory-specific investigation. The export also preserves a Gradle-only
+finding if one is returned in a future same-source comparison; it does not
+assume that build-only packages are Minecraft-owned. No new reviewer decision
+is implied.
 
 ## Reachability and remediation priorities
 
@@ -89,12 +92,15 @@ records retain their prior further-investigation classification. There is no
 verified compatible dependency upgrade in this repository, and no game-managed
 library was silently overridden.
 
-The new [product JAR literal inspection](../dependency-evidence/issue45-live-source-2026-11-22/mod-jar-literal-inspection.json)
+The new [product JAR literal inspection](../dependency-evidence/issue45-live-source-2026-11-22/mod-jar-literal-inspection-v2.json)
 checks the previously retained exact-source archives and JAR SHA-256 values.
 Across all 13 product JARs it records 30 class files, no selected literal
 Netty/Log4j/JNDI references and no nested JAR entries. This checks this mod's
 packaged bytes only; indirect game calls, dynamically constructed names,
 reflection, other mods, agents and runtime configuration remain outside it.
+The second report binds the same observations to frozen copies of the source
+and build records; the original report remains preserved. Later product head
+changes do not relabel or invalidate those dated observations.
 
 ## Supported runtime observation matrix
 
@@ -144,10 +150,11 @@ hosted audit snapshot workflows pass an empty action token and use an early
 Gradle init guard. The coordinated release build now also applies that guard
 before project configuration. A local real-Gradle 9.6.1 regression used only
 synthetic values: a clean build passed, each of `GH_TOKEN`, `GITHUB_TOKEN` and
-`INPUT_GITHUB-TOKEN` was rejected before project configuration, and the local
+`INPUT_GITHUB-TOKEN` was rejected before settings evaluation, and the local
 isolation helper removed all three. Negative controls invoke the Gradle Java
 launcher directly because some POSIX shells drop hyphenated environment names
-before the JVM starts. This is not a sandbox or proof that every secret source is
+before the JVM starts. A deliberately delayed guard is rejected because its
+settings marker proves it ran too late. This is not a sandbox or proof that every secret source is
 blocked. Direct unguarded invocations and filesystem or network access remain
 possible. Hosted Gradle 9.9.2 results must be read from the exact-head CI run.
 The first hosted regression run

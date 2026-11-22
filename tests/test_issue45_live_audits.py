@@ -174,6 +174,25 @@ class LiveAuditTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'snapshot run or branch mismatch'):
             live.reconcile(self.path)
 
+    def test_priority_export_retains_gradle_only_high_finding(self):
+        def edit(report):
+            # Choose a High advisory outside the focused set, then keep its
+            # finding, scopes, and inventories internally consistent.
+            row = next(row for row in report['matches'] if row['advisory'] == 'GHSA-4jrv-ppp4-jm57')
+            purl = row['purl']
+            self.assertIn('gradle', row['scopes'])
+            for scope, packages in report['inventories'].items():
+                if scope.startswith('runtime/') and purl in packages:
+                    packages.remove(purl)
+            row['scopes'] = ['gradle']
+        self.candidate(edit)
+        register = live.priority_register(self.path)
+        advisory = next(row for row in register['advisories'] if row['advisory_id'] == 'GHSA-4jrv-ppp4-jm57')
+        row = next(row for row in advisory['occurrences'] if row['group'] == '1.14-1.14.4')
+        self.assertEqual(row['scopes'], ['gradle'])
+        self.assertIn('Gradle-resolved', row['dependency_owner'])
+        self.assertTrue(row['release_blocking'])
+
 
 if __name__ == '__main__':
     unittest.main()

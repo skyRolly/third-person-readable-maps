@@ -16,6 +16,10 @@ from release import require, unique_object
 
 ROOT = Path(__file__).resolve().parents[1]
 INPUTS = 'docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/artifact-inputs.json'
+HEADS_SNAPSHOT = 'docs/dependency-evidence/issue45-live-source-2026-11-22/product-heads-snapshot.json'
+BUILDS_SNAPSHOT = 'docs/dependency-evidence/issue45-live-source-2026-11-22/product-builds-snapshot.json'
+HEADS_SHA256 = '49e23765f2bbe912112cf18198b2d6b2933e479b2d3568b7bcd6a92fb676eb13'
+BUILDS_SHA256 = '1c98da271fbf0bb4d6ce94e7831c7ae044e5a6bffceca36d0942e93be9820bd1'
 NEEDLES = ('io/netty/', 'io.netty.', 'SniHandler', 'SslHandler', 'ChannelPipeline',
            'org/apache/logging/log4j', 'org.apache.logging.log4j', 'ThreadContext',
            'javax/naming/', 'javax.naming.', 'Jndi', 'jndi')
@@ -50,10 +54,11 @@ def inspect_archive(raw, record):
 
 def collect(root=ROOT):
     inputs = json.loads((root / INPUTS).read_bytes(), object_pairs_hook=unique_object)['groups']
-    heads = json.loads((root / 'docs/version-consistency-1.0.0/current-heads.json').read_bytes(),
-                       object_pairs_hook=unique_object)['groups']
-    builds = json.loads((root / 'docs/version-consistency-1.0.0/current-validation/builds.json').read_bytes(),
-                        object_pairs_hook=unique_object)
+    heads_raw, builds_raw = (root / HEADS_SNAPSHOT).read_bytes(), (root / BUILDS_SNAPSHOT).read_bytes()
+    require(digest(heads_raw) == HEADS_SHA256 and digest(builds_raw) == BUILDS_SHA256,
+            'historical source or build snapshot checksum mismatch')
+    heads = json.loads(heads_raw, object_pairs_hook=unique_object)['groups']
+    builds = json.loads(builds_raw, object_pairs_hook=unique_object)
     require(len(inputs) == 13 and set(inputs) == set(heads) == set(builds), 'product group set mismatch')
     result = {}
     for group, row in sorted(inputs.items()):
@@ -65,6 +70,8 @@ def collect(root=ROOT):
                          **inspect_archive(path.read_bytes(), row)}
     return {'schema': 1, 'scope': 'selected literal class-file byte references in retained product JARs',
             'input_record': INPUTS, 'input_record_sha256': digest((root / INPUTS).read_bytes()),
+            'source_snapshot': {'path': HEADS_SNAPSHOT, 'sha256': HEADS_SHA256},
+            'build_snapshot': {'path': BUILDS_SNAPSHOT, 'sha256': BUILDS_SHA256},
             'search_terms': list(NEEDLES), 'groups': result, 'security_clearance': False,
             'limitations': 'No runtime launch, indirect paths, generated strings, other mods or agents are excluded.'}
 

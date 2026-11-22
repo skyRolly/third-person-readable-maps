@@ -40,6 +40,18 @@ def temporary_project():
                 time.sleep(1)
 
 
+def check_result(result, markers, should_pass, label):
+    output = result.stdout + result.stderr
+    if SYNTHETIC in output:
+        raise RuntimeError(label + ': test credential appeared in Gradle output')
+    if should_pass:
+        if result.returncode != 0 or not all(path.exists() for path in markers):
+            raise RuntimeError(label + ': clean Gradle build did not complete')
+    elif (result.returncode == 0 or any(path.exists() for path in markers) or
+          'Unexpected GitHub credential environment variable:' not in output):
+        raise RuntimeError(label + ': guard did not reject before settings evaluation')
+
+
 def run(gradle):
     gradle = shutil.which(gradle)
     if not gradle:
@@ -58,7 +70,8 @@ def run(gradle):
                    '-Dorg.gradle.appname=gradle', '-jar', str(launchers[0])]
     guard = ROOT / '.github/gradle/no-github-credentials.init.gradle'
     with temporary_project() as root:
-        (root / 'settings.gradle').write_text("rootProject.name = 'guard-regression'\n", encoding='utf-8')
+        (root / 'settings.gradle').write_text("new File(settingsDir, 'settings.marker').text = 'evaluated'\n"
+                                              "rootProject.name = 'guard-regression'\n", encoding='utf-8')
         (root / 'build.gradle').write_text(
             "file('configured.marker').text = 'configured'\n"
             "tasks.register('verifyCleanEnvironment') { doLast {\n"
@@ -71,28 +84,37 @@ def run(gradle):
         env = {name: os.environ[name] for name in allowed if name in os.environ}
         env.update(HOME=str(root), GRADLE_USER_HOME=str(root / 'gradle-home'),
                    TMP=str(root), TEMP=str(root), TMPDIR=str(root))
-        configured, executed = root / 'configured.marker', root / 'executed.marker'
+        markers = [root / 'settings.marker', root / 'configured.marker', root / 'executed.marker']
         args = ['--offline', '--no-daemon', '--console=plain', '--init-script', str(guard),
                 'verifyCleanEnvironment']
 
         def invoke(command, variables, should_pass, label):
-            configured.unlink(missing_ok=True)
-            executed.unlink(missing_ok=True)
+            for marker in markers:
+                marker.unlink(missing_ok=True)
             result = subprocess.run(command, cwd=root, env=variables, capture_output=True, text=True, timeout=180)
-            output = result.stdout + result.stderr
-            if SYNTHETIC in output:
-                raise RuntimeError(label + ': test credential appeared in Gradle output')
-            if should_pass:
-                if result.returncode != 0 or not configured.exists() or not executed.exists():
-                    raise RuntimeError(label + ': clean Gradle build did not complete')
-            elif (result.returncode == 0 or configured.exists() or executed.exists() or
-                  'Unexpected GitHub credential environment variable:' not in output):
-                raise RuntimeError(label + ': guard did not reject before project configuration')
+            check_result(result, markers, should_pass, label)
             print(label + ': PASS')
 
         invoke([gradle, *args], env, True, 'Clean environment')
         for name in NAMES:
             invoke([*java_gradle, *args], dict(env, **{name: SYNTHETIC}), False, name + ' rejection')
+        # Negative control: the old project-only marker check would accept a
+        # guard that runs too late, after settings.gradle has already executed.
+        delayed = root / 'delayed.init.gradle'
+        delayed.write_text("gradle.beforeProject {\n"
+                           "  if (System.getenv('GH_TOKEN')) throw new GradleException(\n"
+                           "    'Unexpected GitHub credential environment variable: GH_TOKEN')\n"
+                           "}\n", encoding='utf-8')
+        delayed_args = [str(delayed) if arg == str(guard) else arg for arg in args]
+        try:
+            invoke([*java_gradle, *delayed_args], dict(env, GH_TOKEN=SYNTHETIC), False, 'Delayed guard')
+        except RuntimeError as exc:
+            if ('before settings evaluation' not in str(exc) or not markers[0].exists() or
+                    markers[1].exists() or markers[2].exists()):
+                raise
+        else:
+            raise RuntimeError('Delayed guard was incorrectly accepted')
+        print('Delayed-guard mutation rejected: PASS')
         if os.name != 'nt':
             wrapper = root / 'gradlew'
             wrapper.write_text('#!/bin/sh\nexec ' + shlex.quote(gradle) + ' "$@"\n', encoding='utf-8')

@@ -2,7 +2,9 @@ import hashlib
 from io import BytesIO
 import json
 from pathlib import Path
+import shutil
 import sys
+import tempfile
 import unittest
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -27,11 +29,44 @@ def archive(class_bytes):
 class ModJarInspectionTests(unittest.TestCase):
     def test_real_source_bound_archives(self):
         result = inspect.collect()
-        stored = json.loads((ROOT / 'docs/dependency-evidence/issue45-live-source-2026-11-22/mod-jar-literal-inspection.json').read_text())
+        stored = json.loads((ROOT / 'docs/dependency-evidence/issue45-live-source-2026-11-22/mod-jar-literal-inspection-v2.json').read_text())
         self.assertEqual(result, stored)
         self.assertEqual(len(result['groups']), 13)
         self.assertFalse(result['security_clearance'])
         self.assertTrue(all(row['classes'] for row in result['groups'].values()))
+
+    def test_historical_inspection_survives_current_head_and_build_changes(self):
+        expected = inspect.collect()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            def copy(relative):
+                dest = root / relative
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / relative, dest)
+            for name in (inspect.INPUTS, inspect.HEADS_SNAPSHOT, inspect.BUILDS_SNAPSHOT):
+                copy(name)
+            inputs = json.loads((root / inspect.INPUTS).read_bytes())['groups']
+            for row in inputs.values():
+                copy(row['archive_path'])
+            # Deliberately advance the mutable records; the archived reports
+            # remain bound to their own source/build snapshots.
+            current_heads = json.loads((ROOT / inspect.HEADS_SNAPSHOT).read_bytes())
+            current_builds = json.loads((ROOT / inspect.BUILDS_SNAPSHOT).read_bytes())
+            group = next(iter(current_builds))
+            current_heads['groups'][group]['new_head'] = '0' * 40
+            current_builds[group]['source_commit'] = '0' * 40
+            current_builds[group]['sha256'] = '0' * 64
+            for name, value in [('docs/version-consistency-1.0.0/current-heads.json', current_heads),
+                                ('docs/version-consistency-1.0.0/current-validation/builds.json', current_builds)]:
+                dest = root / name
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_text(json.dumps(value))
+            self.assertEqual(inspect.collect(root), expected)
+            # A changed historical snapshot cannot be substituted silently.
+            snapshot = root / inspect.HEADS_SNAPSHOT
+            snapshot.write_bytes(snapshot.read_bytes() + b' ')
+            with self.assertRaisesRegex(ValueError, 'historical source or build snapshot checksum mismatch'):
+                inspect.collect(root)
 
     def test_literal_reference_is_detected(self):
         clean, record = archive(b'fixture')

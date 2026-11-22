@@ -51,6 +51,21 @@ class IsolatedGradleTests(unittest.TestCase):
         self.assertEqual(len(calls), 2)
         delay.assert_called_once_with(1)
 
+    def test_settings_execution_before_rejection_is_not_accepted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            markers = [root / 'settings.marker', root / 'configured.marker', root / 'executed.marker']
+            failure = subprocess.CompletedProcess([], 1, stdout='',
+                stderr='Unexpected GitHub credential environment variable: GH_TOKEN')
+            guard.check_result(failure, markers, False, 'negative control')
+            markers[0].write_text('settings ran before rejection')
+            with self.assertRaisesRegex(RuntimeError, 'before settings evaluation'):
+                guard.check_result(failure, markers, False, 'negative control')
+            for marker in markers:
+                marker.write_text('ran')
+            success = subprocess.CompletedProcess([], 0, stdout='', stderr='')
+            guard.check_result(success, markers, True, 'positive control')
+
 
 if __name__ == '__main__':
     unittest.main()
