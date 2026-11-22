@@ -150,6 +150,12 @@ launcher directly because some POSIX shells drop hyphenated environment names
 before the JVM starts. This is not a sandbox or proof that every secret source is
 blocked. Direct unguarded invocations and filesystem or network access remain
 possible. Hosted Gradle 9.9.2 results must be read from the exact-head CI run.
+The first hosted regression run
+[45015650200](https://github.com/skyRolly/third-person-readable-maps/actions/runs/45015650200)
+passed the Windows credential controls but failed when Windows kept a Gradle DLL
+locked during temporary-directory cleanup. Commit `a4e2bb8` added daemon
+shutdown and bounded cleanup retries; the initial failure remains part of the
+record and later runs must be assessed separately.
 
 The credential owner must independently:
 
