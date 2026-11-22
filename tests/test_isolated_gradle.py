@@ -4,10 +4,12 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from isolated_gradle import build_environment
+import check_gradle_credential_guard as guard
 
 
 class IsolatedGradleTests(unittest.TestCase):
@@ -31,6 +33,23 @@ class IsolatedGradleTests(unittest.TestCase):
             result = subprocess.run([sys.executable, str(ROOT / 'scripts/isolated_gradle.py'),
                                      '--root', str(root), '--', 'clean', 'build'], env=env)
             self.assertEqual(result.returncode, 0)
+
+    def test_temporary_project_retries_a_transient_locked_file(self):
+        real_remove = guard.shutil.rmtree
+        calls = []
+
+        def transient(path):
+            calls.append(path)
+            if len(calls) == 1:
+                raise PermissionError('test-only lock')
+            real_remove(path)
+
+        with patch.object(guard.shutil, 'rmtree', side_effect=transient), patch.object(guard.time, 'sleep') as delay:
+            with guard.temporary_project() as project:
+                (project / 'fixture').write_text('test')
+            self.assertFalse(project.exists())
+        self.assertEqual(len(calls), 2)
+        delay.assert_called_once_with(1)
 
 
 if __name__ == '__main__':

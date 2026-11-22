@@ -6,6 +6,7 @@ processes. This tests early environment checks, not sandboxing or disclosure of
 historical credentials.
 """
 import argparse
+from contextlib import contextmanager
 import os
 from pathlib import Path
 import shlex
@@ -13,10 +14,30 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ('GH_TOKEN', 'GITHUB_TOKEN', 'INPUT_GITHUB-TOKEN')
 SYNTHETIC = 'guard-regression-synthetic-value'
+
+
+@contextmanager
+def temporary_project():
+    root = Path(tempfile.mkdtemp(prefix='gradle-guard-regression-'))
+    try:
+        yield root
+    finally:
+        # Single-use Gradle daemons can briefly keep native DLLs open after the
+        # client exits on Windows. Retry cleanup without treating the guard as
+        # failed or retaining test files indefinitely.
+        for attempt in range(20):
+            try:
+                shutil.rmtree(root)
+                break
+            except PermissionError:
+                if attempt == 19:
+                    raise
+                time.sleep(1)
 
 
 def run(gradle):
@@ -36,8 +57,7 @@ def run(gradle):
     java_gradle = [java, '-Xmx64m', '-Xms64m', '-javaagent:' + str(agents[0]),
                    '-Dorg.gradle.appname=gradle', '-jar', str(launchers[0])]
     guard = ROOT / '.github/gradle/no-github-credentials.init.gradle'
-    with tempfile.TemporaryDirectory(prefix='gradle-guard-regression-') as directory:
-        root = Path(directory)
+    with temporary_project() as root:
         (root / 'settings.gradle').write_text("rootProject.name = 'guard-regression'\n", encoding='utf-8')
         (root / 'build.gradle').write_text(
             "file('configured.marker').text = 'configured'\n"
@@ -82,6 +102,10 @@ def run(gradle):
                    inherited, True, 'Isolated local Gradle subprocess')
         else:
             print('Isolated local Gradle helper: not tested on Windows (Linux helper)')
+            stopped = subprocess.run([*java_gradle, '--stop'], cwd=root, env=env, capture_output=True,
+                                     text=True, timeout=60)
+            if stopped.returncode:
+                raise RuntimeError('Unable to stop test Gradle daemons before cleanup')
 
 
 def main():
