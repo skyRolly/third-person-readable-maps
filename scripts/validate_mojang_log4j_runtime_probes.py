@@ -386,7 +386,7 @@ def validate_static_dispositions():
         with zipfile.ZipFile(archive_path) as archive:
             require(archive.read('mojang-log4j-runtime-probes.json') == report_bytes,
                     'hosted ' + platform + ' archive does not contain the retained JSON report')
-            prefix = str(LOG4J_METADATA_DIR.relative_to(ROOT)) + '/'
+            prefix = LOG4J_METADATA_DIR.relative_to(ROOT).as_posix() + '/'
             members = [name for name in archive.namelist() if name.startswith(prefix) and not name.endswith('/')]
             require(bool(members), 'hosted ' + platform + ' archive has no pinned Mojang metadata')
             for member in members:
