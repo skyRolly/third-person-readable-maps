@@ -376,7 +376,7 @@ def validate_outputs(priority, review_raw, current_raw, expected_review):
 
 
 def validate_ledger_reference(ledger, current_raw):
-    ref = ledger.get('latest_focused_priority_register')
+    ref = ledger.get('sni_high_focused_priority_register')
     coverage = json.loads(current_raw, object_pairs_hook=unique_object)['focused_coverage']
     require(isinstance(ref, dict) and ref.get('path') == CURRENT and ref.get('sha256') == sha(current_raw) and
             ref.get('advisory_ids') == coverage['advisory_ids'] and

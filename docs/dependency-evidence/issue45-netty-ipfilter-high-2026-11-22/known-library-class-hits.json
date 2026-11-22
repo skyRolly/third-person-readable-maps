@@ -1,0 +1,552 @@
+{
+  "libraries": [
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "30bfb90943dfc691c7beaf7086b68659ffc265af4f887d557583a27312d56bee",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "bc53083cfeae4158ea018bcb4eeae6fb1785ef22c34ba3ee120415d4d0498a9c",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "274976abf649b95c7bb0d2f683ac7158146891a464f724f1ad7d624ad20e7722",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "dd80cc66cebf01abd78e8aee65bdb0c652c5792eab97aa06b66809b4d15d1347",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "346fa44f4c423283f4dca07667ce152024d7b64789fd9aa4571dfd24e5b69c56",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "7d7498140a90168d1ce27035927eac63110df2c8b5256144b70b493c48e8559d",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "6776ea6ba7de88bc78b1be755068b2e2bdce0b2534a070febdc057281e1eb6fa",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "6c0205f69d1b2eb9c88fbe5d885cb426459086d8752c1e35bbb8e70c8360cca6",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "8571bb69e139f65fa5871f0ce35b592ec2847b3b632fca434ed88d8f6ca03025",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "f25d4a7f4ca69417ab879328b5ab732c53286a03c876865ed35b4aa03b63e6d9",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "51a2195c4789bc97fd5fa21e7d4c932daff494d95deb7ef29cdd18e14bba37c4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+      "sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07",
+      "version": "4.1.115.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "30bfb90943dfc691c7beaf7086b68659ffc265af4f887d557583a27312d56bee",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "bc53083cfeae4158ea018bcb4eeae6fb1785ef22c34ba3ee120415d4d0498a9c",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "274976abf649b95c7bb0d2f683ac7158146891a464f724f1ad7d624ad20e7722",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "ebb7de91d2ee78b79d0e854b9aa4133ee38d1a6c4ff17189cc0b4cef4a1d4b43",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "346fa44f4c423283f4dca07667ce152024d7b64789fd9aa4571dfd24e5b69c56",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "7d7498140a90168d1ce27035927eac63110df2c8b5256144b70b493c48e8559d",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "6776ea6ba7de88bc78b1be755068b2e2bdce0b2534a070febdc057281e1eb6fa",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "6c0205f69d1b2eb9c88fbe5d885cb426459086d8752c1e35bbb8e70c8360cca6",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "8571bb69e139f65fa5871f0ce35b592ec2847b3b632fca434ed88d8f6ca03025",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "f25d4a7f4ca69417ab879328b5ab732c53286a03c876865ed35b4aa03b63e6d9",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "51a2195c4789bc97fd5fa21e7d4c932daff494d95deb7ef29cdd18e14bba37c4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+      "sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+      "version": "4.1.118.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "30bfb90943dfc691c7beaf7086b68659ffc265af4f887d557583a27312d56bee",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "bc53083cfeae4158ea018bcb4eeae6fb1785ef22c34ba3ee120415d4d0498a9c",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "274976abf649b95c7bb0d2f683ac7158146891a464f724f1ad7d624ad20e7722",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "dd80cc66cebf01abd78e8aee65bdb0c652c5792eab97aa06b66809b4d15d1347",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "346fa44f4c423283f4dca07667ce152024d7b64789fd9aa4571dfd24e5b69c56",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "696b0e25dedb307526244fb2eefcaec6d65769609e396260b8e7eefd3230b55f",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "976f70469bfe7d7589c5ce19bc62a6d256fdd150bd02537aaf4edfd2932c7f73",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "cfb49f02e9aee772db23917747c02b9e920f347ba1c04c0f268e0f6adaa84f4d",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "8571bb69e139f65fa5871f0ce35b592ec2847b3b632fca434ed88d8f6ca03025",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "f25d4a7f4ca69417ab879328b5ab732c53286a03c876865ed35b4aa03b63e6d9",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "51a2195c4789bc97fd5fa21e7d4c932daff494d95deb7ef29cdd18e14bba37c4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+      "sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+      "version": "4.1.77.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "30bfb90943dfc691c7beaf7086b68659ffc265af4f887d557583a27312d56bee",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "bc53083cfeae4158ea018bcb4eeae6fb1785ef22c34ba3ee120415d4d0498a9c",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "274976abf649b95c7bb0d2f683ac7158146891a464f724f1ad7d624ad20e7722",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "dd80cc66cebf01abd78e8aee65bdb0c652c5792eab97aa06b66809b4d15d1347",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "346fa44f4c423283f4dca07667ce152024d7b64789fd9aa4571dfd24e5b69c56",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "696b0e25dedb307526244fb2eefcaec6d65769609e396260b8e7eefd3230b55f",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "976f70469bfe7d7589c5ce19bc62a6d256fdd150bd02537aaf4edfd2932c7f73",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "cfb49f02e9aee772db23917747c02b9e920f347ba1c04c0f268e0f6adaa84f4d",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "8571bb69e139f65fa5871f0ce35b592ec2847b3b632fca434ed88d8f6ca03025",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "f25d4a7f4ca69417ab879328b5ab732c53286a03c876865ed35b4aa03b63e6d9",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "51a2195c4789bc97fd5fa21e7d4c932daff494d95deb7ef29cdd18e14bba37c4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+      "sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+      "version": "4.1.82.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "30bfb90943dfc691c7beaf7086b68659ffc265af4f887d557583a27312d56bee",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "bc53083cfeae4158ea018bcb4eeae6fb1785ef22c34ba3ee120415d4d0498a9c",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "274976abf649b95c7bb0d2f683ac7158146891a464f724f1ad7d624ad20e7722",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "dd80cc66cebf01abd78e8aee65bdb0c652c5792eab97aa06b66809b4d15d1347",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "346fa44f4c423283f4dca07667ce152024d7b64789fd9aa4571dfd24e5b69c56",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "696b0e25dedb307526244fb2eefcaec6d65769609e396260b8e7eefd3230b55f",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "976f70469bfe7d7589c5ce19bc62a6d256fdd150bd02537aaf4edfd2932c7f73",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "cfb49f02e9aee772db23917747c02b9e920f347ba1c04c0f268e0f6adaa84f4d",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "8571bb69e139f65fa5871f0ce35b592ec2847b3b632fca434ed88d8f6ca03025",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "f25d4a7f4ca69417ab879328b5ab732c53286a03c876865ed35b4aa03b63e6d9",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "51a2195c4789bc97fd5fa21e7d4c932daff494d95deb7ef29cdd18e14bba37c4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+      "sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+      "version": "4.1.97.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ipfilter/AbstractRemoteAddressFilter.class",
+          "sha256": "7c1443e799aa96046726bf1ce3c4c509724ef441c4c5b06cb6524feca842e7f4",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRule.class",
+          "sha256": "1ba7ed836f3c2e3efb7c6c85733ae1e4a2fac204ba5c5ca1995ad9dd672f15da",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpFilterRuleType.class",
+          "sha256": "7aba7355bfb9decfde13dd8ded10bd8aa717b5d414274f699dd2b1660425f1ad",
+          "terms": [
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilter.class",
+          "sha256": "fa791e497f19b4ac8b9db22a6cf270ca14fdbab3e6aad31ba202a02c2b02ef7a",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$1.class",
+          "sha256": "8ac06ee35fbd77fa7810fa946cbc37351d4f792aa74a71f314fc67e3d9bf61e8",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip4SubnetFilterRule.class",
+          "sha256": "60c382ef2593687f3096a43d7aefd1a336a7bbff660dd5cca59fcd97d560c9f0",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule$Ip6SubnetFilterRule.class",
+          "sha256": "ad784e3db59c00952bc4ac97111ae3fdeb9460be90ed4a7f9b4083faa70f6fa7",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRule.class",
+          "sha256": "ee27546bf07c1e44ef3913a4c67ab5a791cb76c6ef46a44ea4d7c7161909bb2b",
+          "terms": [
+            "IpSubnetFilter",
+            "IpFilterRule"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/IpSubnetFilterRuleComparator.class",
+          "sha256": "00e72a7c611e34d600e2e9ad5ec5f87ac760de8f1c8bdee5b738b016168c80ea",
+          "terms": [
+            "IpSubnetFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/RuleBasedIpFilter.class",
+          "sha256": "5b8516a1621e5f3bde3ec7d8113cb39649024ad7c5af5c6927e7545088b60388",
+          "terms": [
+            "RuleBasedIpFilter",
+            "IpFilterRule",
+            "AbstractRemoteAddressFilter"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ipfilter/UniqueIpFilter.class",
+          "sha256": "babf6da3ed18f7399714db3b3fbe6989afaa408fce11a8dd3bf917f596c615e2",
+          "terms": [
+            "AbstractRemoteAddressFilter"
+          ]
+        }
+      ],
+      "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+      "sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+      "version": "4.2.7.Final"
+    }
+  ],
+  "schema": 1,
+  "security_clearance": false
+}
