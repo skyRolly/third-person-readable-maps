@@ -142,6 +142,18 @@ class HighSniEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'OSV affected ranges differ'):
             sni.bind_occurrences(high, self.critical, self.scan, self.mod)
 
+    def test_unreviewed_schema_two_priority_is_not_used_as_historical_baseline(self):
+        self.assertTrue(sni.load_inputs()[1]['security_clearance'] is False)
+        mixed = copy.deepcopy(self.priority)
+        mixed['schema'] = 2
+        mixed['schema_note'] = 'mixed timestamps by source'
+        row = next(item for item in mixed['advisories'] if item['advisory_id'] == sni.HIGH)
+        row['modified'] = None
+        row['modified_by_source'] = {'candidate|example': '2026-11-23T00:00:00Z'}
+        with patch.object(sni.audits, 'priority_register', return_value=mixed):
+            with self.assertRaisesRegex(ValueError, 'historical priority register does not match verified reports'):
+                sni.load_inputs()
+
     def test_new_vanilla_caller_or_wrong_mod_source_is_not_cleared(self):
         sni.bind_occurrences(self.high, self.critical, self.scan, self.mod)
         scan = copy.deepcopy(self.scan)

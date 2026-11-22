@@ -251,6 +251,20 @@ def validate_focused_review(identifier, finding, observed, current_rows, histori
                 sorted(reviewed['minecraft_versions']) ==
                 sorted(s.split('/', 1)[1] for s in scopes if s.startswith('runtime/')),
                 'focused review stale: dependency scopes or environments: ' + identifier)
+        artifacts = reviewed.get('minecraft_artifacts')
+        require(isinstance(artifacts, list) and all(isinstance(item, dict) for item in artifacts),
+                'focused review stale: runtime manifest coverage: ' + identifier)
+        manifests = {item.get('minecraft_version'): item for item in artifacts}
+        require(len(manifests) == len(artifacts) and set(manifests) == set(reviewed['minecraft_versions']),
+                'focused review stale: runtime manifest coverage: ' + identifier)
+        old_manifests = historical_reports[group_key].get('runtime_manifests', {})
+        new_manifests = reports[group_key][0].get('runtime_manifests', {})
+        for version, item in manifests.items():
+            metadata_sha = item.get('version_metadata_sha1')
+            require(isinstance(metadata_sha, str) and re.fullmatch(r'[a-f0-9]{40}', metadata_sha) and
+                    old_manifests.get(version, {}).get('sha1') == metadata_sha and
+                    new_manifests.get(version, {}).get('sha1') == metadata_sha,
+                    'focused review stale: runtime manifest identity: ' + identifier + ' ' + version)
         require(reviewed['fingerprint'] == current['fingerprint'] == old['fingerprint'],
                 'focused review stale: advisory fingerprint: ' + identifier)
         require(reviewed['severity'] == match['severity'] == old['severity'] == finding['severity'] and
@@ -294,12 +308,18 @@ def priority_register(live=LIVE, root=ROOT):
         require(count == evidence.get(field) == reference.get(field),
                 'incomplete focused advisory coverage: ' + severity)
     grouped = {}
+    modified_by_source = defaultdict(dict)
+    advisory_content = {}
     for ident, row in sorted(rows.items()):
         if row['severity'] not in ('CRITICAL', 'HIGH'):
             continue
         kind, group, purl, identifier = ident
         report, _, item = reports[kind + '|' + group]
         advisory = report['advisories'][identifier]
+        content = {key: value for key, value in advisory.items() if key != 'modified'}
+        require(identifier not in advisory_content or advisory_content[identifier] == content,
+                'inconsistent advisory content across sources: ' + identifier)
+        advisory_content[identifier] = content
         focus = focused.get(identifier)
         require(row['disposition'] != 'Risk accepted', 'risk acceptance requires separate review: ' + identifier)
         owner = ('Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle'
@@ -320,8 +340,10 @@ def priority_register(live=LIVE, root=ROOT):
             'follow_up': focus.get('follow_up_requirements') if focus else
                 ['Investigate the affected API, input trust boundary, supported runtime and compatible upstream fix.']})
         require(entry['aliases'] == sorted(advisory.get('aliases', [])) and
-                entry['severity'] == row['severity'] and entry['modified'] == advisory.get('modified'),
+                entry['severity'] == row['severity'] and isinstance(advisory.get('modified'), str) and
+                advisory['modified'],
                 'inconsistent advisory metadata')
+        modified_by_source[identifier][kind + '|' + group] = advisory['modified']
         entry['affected_ranges'][package] = ranges
         entry['occurrences'].append({'source_kind': kind, 'group': group, 'source_sha': report['source_sha'],
             'purl': purl, 'scopes': row['scopes'], 'fingerprint': row['fingerprint'],
@@ -329,15 +351,27 @@ def priority_register(live=LIVE, root=ROOT):
             'source_report_member': 'candidate-dependency-audit.json' if kind == 'candidate' else 'dependency-audit.json',
             'dependency_owner': owner,
             'disposition': row['disposition'], 'release_blocking': row['failing'], 'risk_accepted': False})
+    mixed_timestamps = False
+    for identifier, observations in modified_by_source.items():
+        if len(set(observations.values())) > 1:
+            # Independent runs may observe administrative timestamp updates at
+            # different times. Preserve each value without choosing one as current.
+            grouped[identifier]['modified'] = None
+            grouped[identifier]['modified_by_source'] = dict(sorted(observations.items()))
+            mixed_timestamps = True
     for identifier, finding in focused.items():
         observed = grouped.get(identifier, {}).get('occurrences', [])
         validate_focused_review(identifier, finding, observed, rows, old_rows, old_reports, reports)
-    return {'schema': 1, 'coordinator_sha': index['coordinator_sha'],
+    result = {'schema': 2 if mixed_timestamps else 1, 'coordinator_sha': index['coordinator_sha'],
             'candidate_run': index['candidate_run'], 'maintenance_run': index['maintenance_run'],
             'focused_evidence_sha256': digest(evidence_raw), 'advisory_ids': len(grouped),
             'occurrences': sum(len(value['occurrences']) for value in grouped.values()),
             'review_status': 'No new security disposition or risk acceptance is implied by this index.',
             'security_clearance': False, 'advisories': [grouped[key] for key in sorted(grouped)]}
+    if mixed_timestamps:
+        result['schema_note'] = ('Schema 2 records differing advisory modified timestamps by source; '
+                                 'a null modified value means there is no single observed timestamp.')
+    return result
 
 
 def main():
