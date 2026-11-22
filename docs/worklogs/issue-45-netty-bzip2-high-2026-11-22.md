@@ -55,8 +55,10 @@ blocking occurrences.
 review and derived register offline. The explicit `--verify-codec-download`
 and `--verify-client-download` options independently fetch pinned Mojang
 artifacts, reject redirects and verify sizes, SHA-1, SHA-256 and the inspected
-class bytes. `--verify-runtime-cache` rechecks the retained client and manifest
-cache, all seven codec JARs, the Fabric artifact and the `javap` observation;
+class bytes. The client check also requires `--javap` and compares a fresh
+disassembly to the retained pipeline observation. `--verify-runtime-cache`
+rechecks the retained client and manifest cache, all seven codec JARs, the
+Fabric artifact and the `javap` observation;
 it requires the explicitly named cache paths, Fabric JAR and `javap` executable.
 Unit tests use synthetic, harmless archive entries and never need network access.
 

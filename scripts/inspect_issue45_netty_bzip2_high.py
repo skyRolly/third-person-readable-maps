@@ -343,7 +343,8 @@ def verify_client_bytes(raw, row, pipeline):
             'downloaded Minecraft compression classes differ')
 
 
-def verify_client_download(clients, pipeline):
+def verify_client_download(clients, pipeline, javap):
+    require(javap, 'javap is required to verify the downloaded Minecraft pipeline')
     row = next(item for item in clients['games'] if item['minecraft_version'] == '26.2')
     url = 'https://piston-data.mojang.com/v1/objects/' + row['client_sha1'] + '/client.jar'
     require(row['client_url'] == url and 0 < row['client_size_bytes'] <= 64 * 1024 * 1024,
@@ -353,6 +354,7 @@ def verify_client_download(clients, pipeline):
         require(response.geturl() == url, 'unexpected Minecraft client redirect')
         raw = response.read(row['client_size_bytes'] + 1)
     verify_client_bytes(raw, row, pipeline)
+    require(inspect_pipeline(raw, javap) == pipeline, 'downloaded Minecraft pipeline disassembly differs')
 
 
 def verify_runtime_cache(args, games, clients, codecs, fabric, pipeline):
@@ -480,8 +482,8 @@ def main():
             verify_codec_downloads(codecs)
             print('Verified seven source-bound Mojang codec JARs and their decoder class hashes')
         if args.verify_client_download:
-            verify_client_download(clients, pipeline)
-            print('Verified source-bound Minecraft 26.2 client and compression class hashes')
+            verify_client_download(clients, pipeline, args.javap)
+            print('Verified source-bound Minecraft 26.2 client and compression pipeline disassembly')
         if args.verify_runtime_cache:
             verify_runtime_cache(args, games, clients, codecs, fabric, pipeline)
             print('Verified cached Minecraft, codec, Fabric and pipeline observations offline')

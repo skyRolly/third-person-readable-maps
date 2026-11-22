@@ -176,14 +176,14 @@ class Bzip2EvidenceTests(unittest.TestCase):
              redirect_stdout(out), redirect_stderr(err):
             self.assertEqual(bzip2.main(), 0, err.getvalue())
         with patch.object(sys, 'argv', ['bzip2', '--verify-codec-download', '--verify-client-download',
-                                       '--verify-runtime-cache']), \
+                                       '--verify-runtime-cache', '--javap', 'synthetic-javap']), \
              patch.object(bzip2, 'verify_codec_downloads') as codec, \
              patch.object(bzip2, 'verify_client_download') as client, \
              patch.object(bzip2, 'verify_runtime_cache') as cache, \
              redirect_stdout(StringIO()), redirect_stderr(StringIO()):
             self.assertEqual(bzip2.main(), 0)
             codec.assert_called_once_with(self.codecs)
-            client.assert_called_once_with(self.clients, self.pipeline)
+            client.assert_called_once_with(self.clients, self.pipeline, Path('synthetic-javap'))
             self.assertEqual(cache.call_count, 1)
         for flag, name in (('--verify-codec-download', 'verify_codec_downloads'),
                            ('--verify-client-download', 'verify_client_download'),
@@ -200,7 +200,32 @@ class Bzip2EvidenceTests(unittest.TestCase):
         row['client_url'] = 'https://example.invalid/client.jar'
         with patch.object(bzip2, 'build_opener', side_effect=AssertionError('unexpected network')):
             with self.assertRaisesRegex(ValueError, 'Minecraft client source URL or size differs'):
-                bzip2.verify_client_download(clients, self.pipeline)
+                bzip2.verify_client_download(clients, self.pipeline, Path('synthetic-javap'))
+
+    def test_downloaded_client_disassembly_is_required_and_compared(self):
+        connection = b'setupCompression net/minecraft/network/CompressionDecoder addAfter'
+        decoder = b'java/util/zip/Inflater io/netty/handler/codec/ByteToMessageDecoder'
+        raw = make_jar([(bzip2.MC_CONNECTION, connection), (bzip2.MC_DECODER, decoder)])
+        info = identity(raw)
+        url = 'https://piston-data.mojang.com/v1/objects/' + info['sha1'] + '/client.jar'
+        row = {'minecraft_version': '26.2', 'client_url': url, 'client_size_bytes': info['size_bytes'],
+               'client_sha1': info['sha1'], 'client_sha256': info['sha256'],
+               'class_files_scanned': 2, 'literal_hits': []}
+        pipeline = {'connection_sha256': bzip2.sha(connection), 'decoder_sha256': bzip2.sha(decoder)}
+        javap = Path('synthetic-javap')
+        with patch.object(bzip2, 'build_opener') as opener, \
+             patch.object(bzip2, 'inspect_pipeline', return_value=pipeline) as disassemble:
+            response = opener.return_value.open.return_value.__enter__.return_value
+            response.geturl.return_value = url
+            response.read.return_value = raw
+            bzip2.verify_client_download({'games': [row]}, pipeline, javap)
+            disassemble.assert_called_once_with(raw, javap)
+            disassemble.return_value = dict(pipeline, connection_sha256='0' * 64)
+            with self.assertRaisesRegex(ValueError, 'downloaded Minecraft pipeline disassembly differs'):
+                bzip2.verify_client_download({'games': [row]}, pipeline, javap)
+        with patch.object(bzip2, 'build_opener', side_effect=AssertionError('unexpected network')):
+            with self.assertRaisesRegex(ValueError, 'javap is required'):
+                bzip2.verify_client_download({'games': [row]}, pipeline, None)
 
 
 if __name__ == '__main__':
