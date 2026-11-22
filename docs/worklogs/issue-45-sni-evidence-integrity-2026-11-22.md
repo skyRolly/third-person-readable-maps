@@ -13,6 +13,8 @@ The earlier CI unit test checked the current register's ledger path and hash,
 but did not exercise the standalone verifier's copied coverage counts and
 clearance flag. The same ledger-reference validator is now called by both the
 CLI and CI tests. Mutations of each count, the clearance flag, path and checksum
-are rejected. No advisory disposition, audit gate or risk decision changes.
+are rejected. A CLI regression also verifies that the command rejects a stale
+ledger and demonstrates that bypassing the validator would accept it.
+No advisory disposition, audit gate or risk decision changes.
 All 490 findings remain blocking, and the High SNI investigation retains its
 bounded static scope.

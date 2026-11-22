@@ -1,7 +1,8 @@
 """Source and artifact controls for the scoped High Netty SNI investigation."""
 import copy
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 import hashlib
-from io import BytesIO
+from io import BytesIO, StringIO
 import json
 from pathlib import Path
 import sys
@@ -54,6 +55,29 @@ class HighSniEvidenceTests(unittest.TestCase):
                                      (sni.CURRENT, hashlib.sha256(raw).hexdigest()))
                 with self.assertRaisesRegex(ValueError, 'current priority ledger reference differs'):
                     sni.validate_ledger_reference(ledger, raw)
+
+    def test_cli_fails_if_ledger_summary_changes(self):
+        def invoke(ledger, remove_cli_check=False):
+            out, err = StringIO(), StringIO()
+            with ExitStack() as stack:
+                stack.enter_context(patch.object(sys, 'argv', ['inspect_issue45_sni_high.py']))
+                stack.enter_context(patch.object(sni, 'load_inputs', return_value=(
+                    ledger, self.priority, self.critical, self.scan, self.mod)))
+                stack.enter_context(redirect_stdout(out))
+                stack.enter_context(redirect_stderr(err))
+                if remove_cli_check:
+                    stack.enter_context(patch.object(sni, 'validate_ledger_reference', return_value=None))
+                result = sni.main()
+            return result, out.getvalue(), err.getvalue()
+
+        self.assertEqual(invoke(self.ledger)[0], 0)
+        altered = copy.deepcopy(self.ledger)
+        altered['latest_focused_priority_register']['focused_occurrences'] += 1
+        result, _, error = invoke(altered)
+        self.assertEqual(result, 1)
+        self.assertIn('current priority ledger reference differs', error)
+        # A missing main-to-validator call would accept the same stale ledger.
+        self.assertEqual(invoke(altered, remove_cli_check=True)[0], 0)
 
     def test_evidence_writer_is_lf_stable_under_windows_text_translation(self):
         value = {'test': ['a', 'b']}
