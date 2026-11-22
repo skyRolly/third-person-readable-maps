@@ -32,6 +32,8 @@ TARGET_COUNTS = {
     'GHSA-rmj7-2vxq-3g9f': 3,
     'GHSA-wv8q-qhhj-9h54': 3,
     'GHSA-xxph-c9ww-hj94': 16,
+    'GHSA-cmp6-m4wj-q63q': 6,
+    'GHSA-vqf4-7m7x-wgfc': 5,
 }
 
 
@@ -758,13 +760,242 @@ def validate():
                 expected_decoder not in connection_text:
             fail('Minecraft packet path does not match the recorded typed-decoder observation')
 
+    lz4_path = BASE / 'lz4-reachability-2026-11-22.json'
+    lz4 = load(lz4_path)
+    lz4_pointer = evidence.get('lz4_runtime_reachability', {})
+    lz4_ids = {'GHSA-cmp6-m4wj-q63q', 'GHSA-vqf4-7m7x-wgfc'}
+    if lz4.get('security_clearance') is not False or lz4.get('risk_accepted') is not False or \
+            lz4.get('release_blocking') is not True or lz4.get('scope', {}).get('full_inventory_changed') is not False:
+        fail('LZ4 report must preserve the failing inventory and withhold clearance')
+    if lz4.get('source_provenance', {}).get('finding_index', {}).get('sha256') != raw_hash(ARCHIVE / 'finding-index.json') or \
+            lz4.get('source_provenance', {}).get('archive_index', {}).get('sha256') != raw_hash(ARCHIVE / 'archive-index.json') or \
+            lz4_pointer.get('path') != lz4_path.relative_to(ROOT).as_posix() or \
+            lz4_pointer.get('sha256') != raw_hash(lz4_path) or lz4_pointer.get('occurrences') != 19 or \
+            lz4_pointer.get('minecraft_versions') != 19 or lz4_pointer.get('source_groups') != 8 or \
+            lz4_pointer.get('security_clearance') is not False or lz4_pointer.get('release_blocking') is not True:
+        fail('LZ4 report/source-bound pointer mismatch')
+    if lz4['scope'].get('focused_critical_occurrences') != 22 or \
+            lz4['scope'].get('focused_high_occurrences') != 71 or \
+            lz4['scope'].get('focused_critical_high_occurrences') != 93 or \
+            lz4['scope'].get('finding_index_records') != len(finding_index['records']):
+        fail('LZ4 focused or full source counts mismatch')
+
+    lz4_by_id = {row['advisory_id']: row for row in lz4.get('findings', [])}
+    lz4_source_by_id = {row['advisory_id']: row for row in evidence['findings']
+                        if row['advisory_id'] in lz4_ids}
+    if set(lz4_by_id) != lz4_ids or set(lz4_source_by_id) != lz4_ids:
+        fail('LZ4 supplemental advisory set mismatch')
+    for advisory in lz4_ids:
+        exact_rows = [row for row in finding_index['records'] if row['advisory'] == advisory]
+        finding = lz4_source_by_id[advisory]
+        report_finding = lz4_by_id[advisory]
+        if len(exact_rows) != TARGET_COUNTS[advisory] or finding.get('occurrence_count') != len(exact_rows) or \
+                report_finding.get('occurrence_count') != len(exact_rows) or \
+                finding.get('disposition') != 'Further investigation' or \
+                report_finding.get('disposition') != 'Further investigation' or \
+                finding.get('release_blocking') is not True or report_finding.get('release_blocking') is not True or \
+                finding.get('risk_accepted') is not False or report_finding.get('risk_accepted') is not False:
+            fail('LZ4 advisory remains blocking with exact occurrence count: ' + advisory)
+        source_occurrences = {(row['source_kind'], row['group'], row['source_sha'], row['purl']): row
+                              for row in finding['occurrences']}
+        report_occurrences = {(row['source_kind'], row['group'], row['source_sha'], row['purl']): row
+                              for row in report_finding['occurrences']}
+        if len(source_occurrences) != len(exact_rows) or len(report_occurrences) != len(exact_rows):
+            fail('LZ4 occurrence bindings contain duplicates or omissions: ' + advisory)
+        for row in exact_rows:
+            key = (row['source_kind'], row['group'], row['source_sha'], row['purl'])
+            occurrence = source_occurrences.get(key)
+            report_occurrence = report_occurrences.get(key)
+            expected_versions = sorted(scope.removeprefix('runtime/') for scope in row['scopes']
+                                       if scope.startswith('runtime/'))
+            for candidate in (occurrence, report_occurrence):
+                if candidate is None or candidate.get('source_sha') != row['source_sha'] or \
+                        candidate.get('dependency_scopes') != row['scopes'] or \
+                        candidate.get('fingerprint') != row['fingerprint'] or \
+                        candidate.get('severity') != 'HIGH' or candidate.get('disposition') != row['disposition'] or \
+                        candidate.get('failing') is not True or candidate.get('risk_accepted') is not False or \
+                        candidate.get('release_blocking') is not True or \
+                        candidate.get('source_report') != {'path': row['report'],
+                                                           'sha256_uncompressed': row['report_sha256_uncompressed']} or \
+                        candidate.get('minecraft_versions') != expected_versions:
+                    fail('LZ4 occurrence is not exact-source bound: ' + advisory + ' ' + str(key))
+
+    mcr4_rows = [row for row in finding_index['records'] if row['advisory'] == 'GHSA-mcr4-qmvw-px4g']
+    mcr4_evidence = next(row for row in evidence['findings'] if row['advisory_id'] == 'GHSA-mcr4-qmvw-px4g')
+    shared_mcr4 = lz4.get('shared_mcr4_context', {})
+    if len(mcr4_rows) != 8 or shared_mcr4.get('occurrences') != 8 or \
+            len(shared_mcr4.get('source_occurrences', [])) != 8 or \
+            shared_mcr4.get('disposition') != 'Further investigation' or \
+            shared_mcr4.get('release_blocking') is not True or shared_mcr4.get('risk_accepted') is not False:
+        fail('LZ4 native extraction finding source coverage/disposition mismatch')
+    exact_mcr4 = {(row['source_kind'], row['group'], row['source_sha'], row['purl']): row for row in mcr4_rows}
+    supplemental_mcr4 = {(row['source_kind'], row['group'], row['source_sha'], row['purl']): row
+                         for row in shared_mcr4['source_occurrences']}
+    if set(supplemental_mcr4) != set(exact_mcr4):
+        fail('LZ4 native extraction source group bindings mismatch')
+    for key, row in exact_mcr4.items():
+        supplemental = supplemental_mcr4[key]
+        if supplemental.get('source_report') != {'path': row['report'],
+                                                  'sha256_uncompressed': row['report_sha256_uncompressed']} or \
+                supplemental.get('fingerprint') != row['fingerprint'] or \
+                supplemental.get('dependency_scopes') != row['scopes'] or \
+                supplemental.get('release_blocking') is not True or supplemental.get('risk_accepted') is not False:
+            fail('LZ4 native extraction occurrence not bound to exact report: ' + str(key))
+
+    lz4_dir = BASE / 'lz4-probes-2026-11-22'
+    runtime_scan_path = lz4_dir / 'runtime-scan.json'
+    runtime_scan = load(runtime_scan_path)
+    if raw_hash(runtime_scan_path) != next(x['sha256'] for x in evidence['supporting_evidence']
+                                          if x['path'] == runtime_scan_path.relative_to(ROOT).as_posix()) or \
+            runtime_scan.get('finding_index', {}).get('sha256') != raw_hash(ARCHIVE / 'finding-index.json') or \
+            runtime_scan.get('high_family_inspection', {}).get('sha256') != raw_hash(high_family_path) or \
+            runtime_scan.get('minecraft_version_count') != 19 or runtime_scan.get('occurrence_count') != 8 or \
+            runtime_scan.get('security_clearance') is not False:
+        fail('LZ4 exact client runtime scan provenance/count mismatch')
+    expected_lz4_versions = {scope.removeprefix('runtime/') for row in mcr4_rows for scope in row['scopes']
+                             if scope.startswith('runtime/')}
+    runtime_observations = runtime_scan.get('observations', [])
+    if {row['minecraft_version'] for row in runtime_observations} != expected_lz4_versions or \
+            len(runtime_observations) != 19 or \
+            {row['source_group'] for row in runtime_observations} != {row['group'] for row in mcr4_rows}:
+        fail('LZ4 exact-client coverage does not match source-bound version scopes')
+    for observation in runtime_observations:
+        game = high_family['games'].get(observation['minecraft_version'])
+        source_row = next(row for row in mcr4_rows if row['group'] == observation['source_group'])
+        if game is None or observation.get('source_sha') != source_row['source_sha'] or \
+                observation.get('source_kind') != source_row['source_kind'] or \
+                observation.get('literal_reference_verified') is not True or \
+                observation.get('client_sha1') != game.get('client', {}).get('sha1') or \
+                observation.get('client_sha256') != game.get('client_sha256') or \
+                not DIGEST.fullmatch(observation.get('direct_caller_class_sha256', '')):
+            fail('LZ4 client artifact/source binding mismatch for ' + observation['minecraft_version'])
+
+    capture_index_path = lz4_dir / 'capture-index.json'
+    capture_index = load(capture_index_path)
+    if raw_hash(capture_index_path) != next(x['sha256'] for x in evidence['supporting_evidence']
+                                           if x['path'] == capture_index_path.relative_to(ROOT).as_posix()):
+        fail('LZ4 caller/bytecode capture index hash mismatch')
+    group_captures = capture_index.get('group_caller_captures', [])
+    if {row['source_group'] for row in group_captures} != {row['group'] for row in mcr4_rows} or \
+            len(group_captures) != 8:
+        fail('LZ4 per-source-group bytecode caller coverage mismatch')
+    for capture in group_captures:
+        path = ROOT / capture['javap_path']
+        contents = path.read_text()
+        source_row = next(row for row in mcr4_rows if row['group'] == capture['source_group'])
+        if raw_hash(path) != capture.get('javap_sha256') or capture.get('source_sha') != source_row['source_sha'] or \
+                capture.get('constructor_reference_verified') is not True or \
+                'LZ4BlockInputStream' not in contents:
+            fail('LZ4 region-file stream constructor capture mismatch for ' + capture['source_group'])
+    library_captures = capture_index.get('library_bytecode_captures', [])
+    if {row['version'] for row in library_captures} != {'1.8.0', '1.8.1', '1.10.1', '1.11.4'}:
+        fail('LZ4 library bytecode comparison version set mismatch')
+    for artifact in library_captures:
+        for capture in artifact['classes']:
+            path = ROOT / capture['javap_path']
+            if raw_hash(path) != capture.get('javap_sha256'):
+                fail('LZ4 library bytecode capture checksum mismatch: ' + capture['javap_path'])
+        block = next(row for row in artifact['classes'] if row['class'] == 'net.jpountz.lz4.LZ4BlockInputStream')
+        text = (ROOT / block['javap_path']).read_text()
+        if 'LZ4BlockInputStream(java.io.InputStream)' not in text or 'fastDecompressor' not in text:
+            fail('LZ4 fixed/vulnerable artifact does not contain the compared stream API')
+
+    packet_path = lz4_dir / 'packet-and-region-paths/capture-index.json'
+    packet_index = load(packet_path)
+    if raw_hash(packet_path) != next(x['sha256'] for x in evidence['supporting_evidence']
+                                    if x['path'] == packet_path.relative_to(ROOT).as_posix()) or \
+            {row['minecraft_version'] for row in packet_index['observations']} != {'1.20.5', '1.21.10', '1.21.11', '26.3'}:
+        fail('LZ4 region/packet representative capture identity mismatch')
+    for observation in packet_index['observations']:
+        for capture in observation['all_captures']:
+            path = ROOT / capture['javap_path']
+            if raw_hash(path) != capture.get('javap_sha256'):
+                fail('LZ4 region/packet javap capture checksum mismatch: ' + capture['javap_path'])
+        if observation.get('minecraft_version') == '26.3':
+            if observation.get('chunk_packet_classes') or observation.get('client_packet_listener_classes'):
+                fail('26.3 packet path is marked captured without mapped classes')
+            continue
+        for role in ('chunk_packet_classes', 'client_packet_listener_classes'):
+            if not observation.get(role):
+                fail('representative vanilla packet path missing class captures: ' + observation['minecraft_version'])
+            for capture in observation[role]:
+                path = ROOT / capture['javap_path']
+                contents = path.read_text()
+                if raw_hash(path) != capture.get('javap_sha256') or 'LZ4BlockInputStream' in contents:
+                    fail('vanilla packet capture unexpectedly references LZ4 stream: ' + capture['javap_path'])
+    probe_path = lz4_dir / 'probe-results.json'
+    probe_results = load(probe_path)
+    if raw_hash(probe_path) != next(x['sha256'] for x in evidence['supporting_evidence']
+                                   if x['path'] == probe_path.relative_to(ROOT).as_posix()) or \
+            probe_results.get('all_passed') is not True or probe_results.get('observed_case_count') != 8 or \
+            probe_results.get('passed_case_count') != 8:
+        fail('LZ4 bounded component probe result mismatch')
+    probe_by_name = {row['name']: row for row in probe_results['cases']}
+    expected_probe_values = {
+        'lz4-advisory-1.8.0': ('net.jpountz.lz4.LZ4JNIFastDecompressor', 0, 923, 923),
+        'lz4-advisory-1.8.1': ('net.jpountz.lz4.LZ4JavaSafeFastDecompressor', 923, 923, 923),
+        'lz4-advisory-1.10.1': ('net.jpountz.lz4.LZ4JavaSafeFastDecompressor', 0, 0, 0),
+        'lz4-advisory-1.11.4': ('net.jpountz.lz4.LZ4JavaSafeFastDecompressor', 0, 0, 0),
+    }
+    for name, expected in expected_probe_values.items():
+        observed = probe_by_name.get(name, {}).get('observed', {})
+        actual = (observed.get('FASTEST_FAST_CLASS'), observed.get('FASTEST_FAST_NONZERO_OUTPUT_BYTES'),
+                  observed.get('SAFE_FAST_NONZERO_OUTPUT_BYTES'), observed.get('JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES'))
+        if actual != expected or observed.get('STREAM_BUFFERS_DISTINCT') != 1:
+            fail('LZ4 CMP6 test vector output/class mismatch: ' + name)
+
+    host_temp = load(lz4_dir / 'host-temp-observation.json')
+    if host_temp.get('tmp_directory', {}).get('mode_octal') != '0o1777' or \
+            host_temp.get('sysctls', {}).get('protected_regular') != '0' or \
+            host_temp.get('java_default_tmpdir') != '/tmp' or host_temp.get('security_clearance') is not False:
+        fail('LZ4 local temp-directory observation changed or overclaims')
+
+    cmp6_advisory = load(lz4_dir / 'GHSA-cmp6-m4wj-q63q.json')
+    vqf4_advisory = load(lz4_dir / 'GHSA-vqf4-7m7x-wgfc.json')
+    expected_ranges = {
+        'GHSA-cmp6-m4wj-q63q': [
+            {'package': 'at.yawk.lz4:lz4-java', 'vulnerable_version_range': '<= 1.10.0', 'first_patched_version': '1.10.1'},
+            {'package': 'org.lz4:lz4-java', 'vulnerable_version_range': '<= 1.8.1', 'first_patched_version': None}],
+        'GHSA-vqf4-7m7x-wgfc': [
+            {'package': 'at.yawk.lz4:lz4-java', 'vulnerable_version_range': '< 1.8.1', 'first_patched_version': '1.8.1'},
+            {'package': 'org.lz4:lz4-java', 'vulnerable_version_range': '< 1.8.1', 'first_patched_version': '1.8.1'}],
+    }
+    for advisory, snapshot in (("GHSA-cmp6-m4wj-q63q", cmp6_advisory), ("GHSA-vqf4-7m7x-wgfc", vqf4_advisory)):
+        ranges = [{'package': row['package']['name'], 'vulnerable_version_range': row.get('vulnerable_version_range'),
+                   'first_patched_version': row.get('first_patched_version')}
+                  for row in snapshot.get('vulnerabilities', [])
+                  if row.get('package', {}).get('name') in {'at.yawk.lz4:lz4-java', 'org.lz4:lz4-java'}]
+        if snapshot.get('ghsa_id') != advisory or sorted(ranges, key=lambda x: x['package']) != \
+                sorted(expected_ranges[advisory], key=lambda x: x['package']) or \
+                sorted(lz4_by_id[advisory]['upstream_affected_ranges'], key=lambda x: x['package']) != \
+                sorted(expected_ranges[advisory], key=lambda x: x['package']):
+            fail('LZ4 authoritative affected/fixed version range mismatch: ' + advisory)
+    cmp6_patch = lz4_dir / 'cmp6-fix.patch.gz'
+    mcr4_patch = lz4_dir / 'mcr4-fix.patch.gz'
+    cmp6_patch_raw = gzip.decompress(cmp6_patch.read_bytes())
+    mcr4_patch_raw = gzip.decompress(mcr4_patch.read_bytes())
+    patch_refs = lz4.get('source_provenance', {}).get('upstream_patches', {})
+    if hashlib.sha256(cmp6_patch_raw).hexdigest() != patch_refs.get('cmp6-fix.patch', {}).get('sha256_uncompressed') or \
+            hashlib.sha256(mcr4_patch_raw).hexdigest() != patch_refs.get('mcr4-fix.patch', {}).get('sha256_uncompressed') or \
+            raw_hash(cmp6_patch) != patch_refs.get('cmp6-fix.patch', {}).get('sha256_gzip') or \
+            raw_hash(mcr4_patch) != patch_refs.get('mcr4-fix.patch', {}).get('sha256_gzip') or \
+            '33d180cb70c4d93c80fb0dc3ab3002f457e93840' not in cmp6_patch_raw.decode() or \
+            '7a48b7f6b8099b9dab6541e4ac2ee0979dc55aa3' not in mcr4_patch_raw.decode():
+        fail('LZ4 upstream fix evidence commit references mismatch')
+    for release_name, expected_tag in (('v1.8.1-release.json', 'v1.8.1'),
+                                       ('v1.10.1-release.json', 'v1.10.1'),
+                                       ('v1.11.4-release.json', 'v1.11.4')):
+        release = load(lz4_dir / release_name)
+        if release.get('tag_name') != expected_tag:
+            fail('LZ4 upstream release snapshot mismatch: ' + expected_tag)
+
     run_reference = evidence.get('log4j_chat_input_probe_run', {})
     if run_reference.get('path') != chat_probe_path.relative_to(ROOT).as_posix() or \
             run_reference.get('sha256') != raw_hash(chat_probe_path) or \
             run_reference.get('observations') != 34 or run_reference.get('parameterized_chat_cases') != 6 or \
             run_reference.get('all_passed') is not True or run_reference.get('security_clearance') is not False:
         fail('source-bound Log4j chat probe reference mismatch')
-    if evidence.get('targeted_high_occurrences') != 60:
+    if evidence.get('targeted_high_occurrences') != 71:
         fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):
         fail('component probe report hash mismatch')
@@ -840,10 +1071,11 @@ def validate():
     reference = ledger.get('critical_reachability_evidence', {})
     if reference.get('path') != EVIDENCE.relative_to(ROOT).as_posix() or reference.get('sha256') != raw_hash(EVIDENCE):
         fail('structured advisory ledger does not reference this evidence')
-    if reference.get('targeted_high_occurrences') != 60 or reference.get('targeted_critical_occurrences') != 22 or \
-            reference.get('targeted_occurrences') != 82 or \
-            reference.get('guava_deserialization_reachability') != guava_pointer:
-        fail('structured advisory ledger Guava counts/pointer mismatch')
+    if reference.get('targeted_high_occurrences') != 71 or reference.get('targeted_critical_occurrences') != 22 or \
+            reference.get('targeted_occurrences') != 93 or \
+            reference.get('guava_deserialization_reachability') != guava_pointer or \
+            reference.get('lz4_runtime_reachability') != lz4_pointer:
+        fail('structured advisory ledger focused counts or Guava/LZ4 pointer mismatch')
     updated = [row for row in ledger['records'] if 'latest_source_observation' in row]
     if len(updated) != reference.get('updated_integrated_occurrence_records'):
         fail('structured ledger source-observation count mismatch')

@@ -148,13 +148,15 @@ def run_experiments(cache, java_home, download):
             classpath = os.pathsep.join([str(classes), *[str(paths[c]) for c in coordinates]])
             command = [str(java)]
             private_tmp = None
-            if main == 'Lz4NativeProbe':
+            if main in ('Lz4NativeProbe', 'Lz4AdvisoryProbe'):
                 empty_native_path = directory / 'empty-native-path'
                 empty_native_path.mkdir()
                 private_tmp = directory / 'private-tmp'
                 private_tmp.mkdir(mode=0o700)
                 command.append('-Djava.io.tmpdir=' + str(private_tmp))
                 command.append('-Djava.library.path=' + str(empty_native_path))
+                if main == 'Lz4AdvisoryProbe':
+                    command.append('-Xmx128m')
             if config:
                 command.append('-Dlog4j.configurationFile=' + str(configs[config]))
             if no_lookups:
@@ -169,10 +171,17 @@ def run_experiments(cache, java_home, download):
                           'SMUGGLED_REQUESTS', 'CREDENTIAL_NAMES_PRESENT',
                           'NATIVE_LOADED_BEFORE', 'NATIVE_LOADED_AFTER', 'TEMP_LOCK_FILES',
                           'TEMP_PREFIX_FILES', 'JAVA_TMPDIR_PRIVATE', 'NATIVE_LIBRARY_PATH_ISOLATED',
-                          'FIRST_FRAGMENT_FALLBACKS', 'FINAL_FALLBACKS', 'HOST_SELECTIONS'):
+                          'FIRST_FRAGMENT_FALLBACKS', 'FINAL_FALLBACKS', 'HOST_SELECTIONS',
+                          'FASTEST_FAST_NONZERO_OUTPUT_BYTES', 'SAFE_FAST_NONZERO_OUTPUT_BYTES',
+                          'JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES', 'STREAM_BUFFERS_DISTINCT'):
                 match = re.search(r'^' + field + r'=(\d+)$', completed.stdout, re.MULTILINE)
                 if match:
                     observations[field] = int(match.group(1))
+            for field in ('FASTEST_FAST_CLASS', 'SAFE_FAST_CLASS', 'JAVA_ONLY_FAST_CLASS',
+                          'STREAM_DECOMPRESSOR_CLASS'):
+                match = re.search(r'^' + field + r'=([A-Za-z0-9_.$]+)$', completed.stdout, re.MULTILINE)
+                if match:
+                    observations[field] = match.group(1)
             if main == 'LogLookupProbe':
                 observations['expanded_stdout'] = 'LOCAL_LOOKUP_EXPANDED' in completed.stdout
                 observations['literal_stdout'] = '${sys:issue45.safe.marker}' in completed.stdout
@@ -242,6 +251,35 @@ def run_experiments(cache, java_home, download):
                      'JAVA_TMPDIR_PRIVATE': 1, 'NATIVE_LIBRARY_PATH_ISOLATED': 1,
                      **({'TEMP_LOCK_FILES': 0, 'TEMP_PREFIX_FILES': 1}
                         if lz4_version == '1.11.4' else {})})
+            expected_fast = {
+                '1.8.0': {
+                    'FASTEST_FAST_CLASS': 'net.jpountz.lz4.LZ4JNIFastDecompressor',
+                    'FASTEST_FAST_NONZERO_OUTPUT_BYTES': 0,
+                    'SAFE_FAST_NONZERO_OUTPUT_BYTES': 923,
+                    'JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES': 923,
+                },
+                '1.8.1': {
+                    'FASTEST_FAST_CLASS': 'net.jpountz.lz4.LZ4JavaSafeFastDecompressor',
+                    'FASTEST_FAST_NONZERO_OUTPUT_BYTES': 923,
+                    'SAFE_FAST_NONZERO_OUTPUT_BYTES': 923,
+                    'JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES': 923,
+                },
+                '1.10.1': {
+                    'FASTEST_FAST_CLASS': 'net.jpountz.lz4.LZ4JavaSafeFastDecompressor',
+                    'FASTEST_FAST_NONZERO_OUTPUT_BYTES': 0,
+                    'SAFE_FAST_NONZERO_OUTPUT_BYTES': 0,
+                    'JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES': 0,
+                },
+                '1.11.4': {
+                    'FASTEST_FAST_CLASS': 'net.jpountz.lz4.LZ4JavaSafeFastDecompressor',
+                    'FASTEST_FAST_NONZERO_OUTPUT_BYTES': 0,
+                    'SAFE_FAST_NONZERO_OUTPUT_BYTES': 0,
+                    'JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES': 0,
+                },
+            }[lz4_version]
+            expected_fast.update({'NATIVE_LOADED_AFTER': 1, 'STREAM_BUFFERS_DISTINCT': 1,
+                                  'STREAM_DECOMPRESSOR_CLASS': expected_fast['FASTEST_FAST_CLASS']})
+            execute('lz4-advisory-' + lz4_version, 'Lz4AdvisoryProbe', [coordinate], expected_fast)
     return {'schema': 1, 'observed_at': datetime.now(timezone.utc).isoformat(),
             'status': 'complete', 'security_clearance': False,
             'purpose': 'Component-level reachability experiments with local synthetic inputs. Advisory gates remain separate.',

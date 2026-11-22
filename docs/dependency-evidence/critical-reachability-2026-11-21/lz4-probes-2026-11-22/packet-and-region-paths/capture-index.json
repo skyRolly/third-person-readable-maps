@@ -1,0 +1,457 @@
+{
+  "observations": [
+    {
+      "all_captures": [
+        {
+          "class": "adu",
+          "class_path": "adu.class",
+          "class_sha256": "13d123a4784136dee41f1ffd554786aeae5f6e296c60784e2c15e31e52e99dfa",
+          "javap_bytes": 4738,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-adu.javap.txt",
+          "javap_sha256": "5f8a1be9eeab44db2830f3ef9046e668c447cdfc81dbb9dd4975000ed423b1d0",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        },
+        {
+          "class": "dvg",
+          "class_path": "dvg.class",
+          "class_sha256": "e0c0e9a6dec40454d546339f1ee8dc6755f1b232ad13195c38b4f5e67690fbe4",
+          "javap_bytes": 9458,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvg.javap.txt",
+          "javap_sha256": "cc84c2fbe82a7c870638792e0d7e44257694b478b4aad3c5bddbb97557a7d92f",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.ChunkStorage"
+        },
+        {
+          "class": "dvm",
+          "class_path": "dvm.class",
+          "class_sha256": "c0c0bdd6f967f7140d6ba8a3792e1e79dea4b788df0c8721116be7545ff2be84",
+          "javap_bytes": 44440,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvm.javap.txt",
+          "javap_sha256": "c9f3e88d39b804f35f30cec86db6942d2bd165a3a109c4564f05038c9b43a66c",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+        },
+        {
+          "class": "dvn",
+          "class_path": "dvn.class",
+          "class_sha256": "0313be04731977bbe16a01540b325923361d226b8b03fcfcad4de9f98650e6dd",
+          "javap_bytes": 11330,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvn.javap.txt",
+          "javap_sha256": "51723cc9aadc810e1a215f7e91dd76c1746fb42da2b7fa570b8cdb7eaa13eb44",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        },
+        {
+          "class": "dvo",
+          "class_path": "dvo.class",
+          "class_sha256": "dfa88724c24165a31618f453e3bd81452d967aca6939cfb7f567fe2822e873a9",
+          "javap_bytes": 13031,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvo.javap.txt",
+          "javap_sha256": "537106857238826db51c2e3e62ddb9dcee0210d530b675de3b848c89f28d2b13",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+        },
+        {
+          "class": "fxs",
+          "class_path": "fxs.class",
+          "class_sha256": "bf176aa251b3e0c0a1b2d417f32d2016b5baa258f9ed63cf94ae7790dac21abf",
+          "javap_bytes": 15932,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-fxs.javap.txt",
+          "javap_sha256": "b2366137cf447c69f892fbede270d146528ce803b4be98851941a1410ffac00f",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientChunkCache"
+        },
+        {
+          "class": "fxx",
+          "class_path": "fxx.class",
+          "class_sha256": "5b3d0dc3ac40b3ffbb950209c79abac3c7e9fb114291c062ea1c6fea13960156",
+          "javap_bytes": 273424,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-fxx.javap.txt",
+          "javap_sha256": "e6a7249e2334bed72dabbace932ef1c2b43bc3a24f8101d724aba55237f6dfc4",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "chunk_packet_classes": [
+        {
+          "class": "adu",
+          "class_path": "adu.class",
+          "class_sha256": "13d123a4784136dee41f1ffd554786aeae5f6e296c60784e2c15e31e52e99dfa",
+          "javap_bytes": 4738,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-adu.javap.txt",
+          "javap_sha256": "5f8a1be9eeab44db2830f3ef9046e668c447cdfc81dbb9dd4975000ed423b1d0",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        }
+      ],
+      "client_packet_listener_classes": [
+        {
+          "class": "fxx",
+          "class_path": "fxx.class",
+          "class_sha256": "5b3d0dc3ac40b3ffbb950209c79abac3c7e9fb114291c062ea1c6fea13960156",
+          "javap_bytes": 273424,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-fxx.javap.txt",
+          "javap_sha256": "e6a7249e2334bed72dabbace932ef1c2b43bc3a24f8101d724aba55237f6dfc4",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+      "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510",
+      "lz4_stream_direct_caller": [
+        "dvo.class"
+      ],
+      "metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+      "minecraft_version": "1.20.5",
+      "official_mapping_sha1": "65b1468c44fbf34382716416b5c1a16d2949217a",
+      "region_file_class": {
+        "class": "dvm",
+        "class_path": "dvm.class",
+        "class_sha256": "c0c0bdd6f967f7140d6ba8a3792e1e79dea4b788df0c8721116be7545ff2be84",
+        "javap_bytes": 44440,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvm.javap.txt",
+        "javap_sha256": "c9f3e88d39b804f35f30cec86db6942d2bd165a3a109c4564f05038c9b43a66c",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+      },
+      "region_file_storage_classes": [
+        {
+          "class": "dvn",
+          "class_path": "dvn.class",
+          "class_sha256": "0313be04731977bbe16a01540b325923361d226b8b03fcfcad4de9f98650e6dd",
+          "javap_bytes": 11330,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvn.javap.txt",
+          "javap_sha256": "51723cc9aadc810e1a215f7e91dd76c1746fb42da2b7fa570b8cdb7eaa13eb44",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        }
+      ],
+      "region_file_version_class": {
+        "class": "dvo",
+        "class_path": "dvo.class",
+        "class_sha256": "dfa88724c24165a31618f453e3bd81452d967aca6939cfb7f567fe2822e873a9",
+        "javap_bytes": 13031,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.20.5-dvo.javap.txt",
+        "javap_sha256": "537106857238826db51c2e3e62ddb9dcee0210d530b675de3b848c89f28d2b13",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+      }
+    },
+    {
+      "all_captures": [
+        {
+          "class": "aei",
+          "class_path": "aei.class",
+          "class_sha256": "a0f4012f986c91907a4db62389d1a2767ae13266ea2228c0956e2d5520aca847",
+          "javap_bytes": 4749,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-aei.javap.txt",
+          "javap_sha256": "945848f2694e91a30bb416af02aef49ff6f16af83c2ac49c7850cae5522729d5",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        },
+        {
+          "class": "emx",
+          "class_path": "emx.class",
+          "class_sha256": "07199d6e862ba909107177d39ba914a7af0e8bc31800fe8dd19dc46821e937f9",
+          "javap_bytes": 10646,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-emx.javap.txt",
+          "javap_sha256": "9315e8cf9b329b19cb5eaaf0250fc8cb9ab9ea3b05d505ca10eec521d0fe7024",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.ChunkStorage"
+        },
+        {
+          "class": "end",
+          "class_path": "end.class",
+          "class_sha256": "9706aefc8d78c68adf450749e2e29e6ef151337e4e3e4caad92723a9f5afbc3b",
+          "javap_bytes": 44440,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-end.javap.txt",
+          "javap_sha256": "1df512c01c76686f635d0ef234a06372efd286afbdf809563ed83adc3016315a",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+        },
+        {
+          "class": "ene",
+          "class_path": "ene.class",
+          "class_sha256": "cbab2a2a8bec99f45591143ec4211641153d8819a6a657943643d1584f464927",
+          "javap_bytes": 11560,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-ene.javap.txt",
+          "javap_sha256": "e8e158b7300c8ca317e5acef872c37b5cc27b1312774d2942ba9ad4eef2df318",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        },
+        {
+          "class": "enf",
+          "class_path": "enf.class",
+          "class_sha256": "1c5f8f83aae205a8439ee70d961f1600a171d72f491e1b717ca80da5f51f228c",
+          "javap_bytes": 13031,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-enf.javap.txt",
+          "javap_sha256": "65cf0462f098cf4ca2220641164429d558222811bae7f7d1ae08d55474b29221",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+        },
+        {
+          "class": "gzh",
+          "class_path": "gzh.class",
+          "class_sha256": "947b4cd8f624ebfc4eaa6369584817494fefb91698325938b20076bc127ded40",
+          "javap_bytes": 16688,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-gzh.javap.txt",
+          "javap_sha256": "a1fe4c6fbd70981b658bf4157db759a086ecd73a0e465c73cccdf432a200dcf1",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientChunkCache"
+        },
+        {
+          "class": "gzo",
+          "class_path": "gzo.class",
+          "class_sha256": "6c9393ab21be90bb46ff1e788ebe5f426cc9038e4305fafb09df8607f7bb362a",
+          "javap_bytes": 307331,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-gzo.javap.txt",
+          "javap_sha256": "c4ad7044342d0ac0ff67f98d2c9759e8fbdc3024bcce511bc1b806d00948d757",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "chunk_packet_classes": [
+        {
+          "class": "aei",
+          "class_path": "aei.class",
+          "class_sha256": "a0f4012f986c91907a4db62389d1a2767ae13266ea2228c0956e2d5520aca847",
+          "javap_bytes": 4749,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-aei.javap.txt",
+          "javap_sha256": "945848f2694e91a30bb416af02aef49ff6f16af83c2ac49c7850cae5522729d5",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        }
+      ],
+      "client_packet_listener_classes": [
+        {
+          "class": "gzo",
+          "class_path": "gzo.class",
+          "class_sha256": "6c9393ab21be90bb46ff1e788ebe5f426cc9038e4305fafb09df8607f7bb362a",
+          "javap_bytes": 307331,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-gzo.javap.txt",
+          "javap_sha256": "c4ad7044342d0ac0ff67f98d2c9759e8fbdc3024bcce511bc1b806d00948d757",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+      "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+      "lz4_stream_direct_caller": [
+        "enf.class"
+      ],
+      "metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+      "minecraft_version": "1.21.10",
+      "official_mapping_sha1": "7e62354a697f95cf5e7d5981face0583676a9ef7",
+      "region_file_class": {
+        "class": "end",
+        "class_path": "end.class",
+        "class_sha256": "9706aefc8d78c68adf450749e2e29e6ef151337e4e3e4caad92723a9f5afbc3b",
+        "javap_bytes": 44440,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-end.javap.txt",
+        "javap_sha256": "1df512c01c76686f635d0ef234a06372efd286afbdf809563ed83adc3016315a",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+      },
+      "region_file_storage_classes": [
+        {
+          "class": "ene",
+          "class_path": "ene.class",
+          "class_sha256": "cbab2a2a8bec99f45591143ec4211641153d8819a6a657943643d1584f464927",
+          "javap_bytes": 11560,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-ene.javap.txt",
+          "javap_sha256": "e8e158b7300c8ca317e5acef872c37b5cc27b1312774d2942ba9ad4eef2df318",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        }
+      ],
+      "region_file_version_class": {
+        "class": "enf",
+        "class_path": "enf.class",
+        "class_sha256": "1c5f8f83aae205a8439ee70d961f1600a171d72f491e1b717ca80da5f51f228c",
+        "javap_bytes": 13031,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.10-enf.javap.txt",
+        "javap_sha256": "65cf0462f098cf4ca2220641164429d558222811bae7f7d1ae08d55474b29221",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+      }
+    },
+    {
+      "all_captures": [
+        {
+          "class": "aer",
+          "class_path": "aer.class",
+          "class_sha256": "3a2c500a11f7e884a6c6fa5863533c6ae125af5f44566ec58cf37259b75cf70d",
+          "javap_bytes": 4749,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-aer.javap.txt",
+          "javap_sha256": "4deb9d9aaec8ddf45e9cba5548d724c5b3f6183c57ab21b4ce50af0429f2bb3a",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        },
+        {
+          "class": "erx",
+          "class_path": "erx.class",
+          "class_sha256": "4756316e7b06c2e3173839e0e8b0584e89008a290831f6be213706819596cdcd",
+          "javap_bytes": 44441,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-erx.javap.txt",
+          "javap_sha256": "d85b6559894a17e84208e0cb56c82db53cc8d231ad9132cb7ad17336959db8b4",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+        },
+        {
+          "class": "ery",
+          "class_path": "ery.class",
+          "class_sha256": "91e7a9d0d9b516be152cf5e759e4e3ff8df6dd34a7a54f1cd47fac7c9aaf24ea",
+          "javap_bytes": 11560,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-ery.javap.txt",
+          "javap_sha256": "bcd33ef3c0efd2127cf9ba8f5b2ef4d43cdab9f3ff4fc8840acceb2d13aa64d8",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        },
+        {
+          "class": "erz",
+          "class_path": "erz.class",
+          "class_sha256": "b72cdb7aac4edfff70468da55eb6f395aebbd71daf496117b7b1882451d157a1",
+          "javap_bytes": 13031,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-erz.javap.txt",
+          "javap_sha256": "ac59994f16206a3246b059175d80a1f9aaae8ebda37f09c76d4d2520599b5179",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+        },
+        {
+          "class": "esd",
+          "class_path": "esd.class",
+          "class_sha256": "e8bdba9af54c850c9e8b9d9a46f8d345e0177532871bec067851adb1044fbdef",
+          "javap_bytes": 9557,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-esd.javap.txt",
+          "javap_sha256": "3cea6242e6830b1bf8cfbeff3f9370b19afbcde7ccb4087eeed2580bdfe39a43",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.SimpleRegionStorage"
+        },
+        {
+          "class": "hhz",
+          "class_path": "hhz.class",
+          "class_sha256": "697fdb9930b072d858955dd8f40e313e50f2f8c7b3b93c7ab912ff6909870edd",
+          "javap_bytes": 16688,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-hhz.javap.txt",
+          "javap_sha256": "518363167ca9603e4f2c6b9cc257539927812638f8499c1e3b1a6ad80fe8ed89",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientChunkCache"
+        },
+        {
+          "class": "hig",
+          "class_path": "hig.class",
+          "class_sha256": "2e88dabfb74f5633a04ee7a588ce6e8e8bc1b1103d01d14f8cec3fba98193605",
+          "javap_bytes": 311074,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-hig.javap.txt",
+          "javap_sha256": "1e5e61c435c4fcbe1f4481a83638adc79158aa9203f0c94a68c8f7a87b459656",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "chunk_packet_classes": [
+        {
+          "class": "aer",
+          "class_path": "aer.class",
+          "class_sha256": "3a2c500a11f7e884a6c6fa5863533c6ae125af5f44566ec58cf37259b75cf70d",
+          "javap_bytes": 4749,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-aer.javap.txt",
+          "javap_sha256": "4deb9d9aaec8ddf45e9cba5548d724c5b3f6183c57ab21b4ce50af0429f2bb3a",
+          "mapped_class": "net.minecraft.network.protocol.game.ClientboundLevelChunkWithLightPacket"
+        }
+      ],
+      "client_packet_listener_classes": [
+        {
+          "class": "hig",
+          "class_path": "hig.class",
+          "class_sha256": "2e88dabfb74f5633a04ee7a588ce6e8e8bc1b1103d01d14f8cec3fba98193605",
+          "javap_bytes": 311074,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-hig.javap.txt",
+          "javap_sha256": "1e5e61c435c4fcbe1f4481a83638adc79158aa9203f0c94a68c8f7a87b459656",
+          "mapped_class": "net.minecraft.client.multiplayer.ClientPacketListener"
+        }
+      ],
+      "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+      "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd",
+      "lz4_stream_direct_caller": [
+        "erz.class"
+      ],
+      "metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "minecraft_version": "1.21.11",
+      "official_mapping_sha1": "031a68bebf55d824f66d6573d8c752f0e1bf232a",
+      "region_file_class": {
+        "class": "erx",
+        "class_path": "erx.class",
+        "class_sha256": "4756316e7b06c2e3173839e0e8b0584e89008a290831f6be213706819596cdcd",
+        "javap_bytes": 44441,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-erx.javap.txt",
+        "javap_sha256": "d85b6559894a17e84208e0cb56c82db53cc8d231ad9132cb7ad17336959db8b4",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+      },
+      "region_file_storage_classes": [
+        {
+          "class": "ery",
+          "class_path": "ery.class",
+          "class_sha256": "91e7a9d0d9b516be152cf5e759e4e3ff8df6dd34a7a54f1cd47fac7c9aaf24ea",
+          "javap_bytes": 11560,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-ery.javap.txt",
+          "javap_sha256": "bcd33ef3c0efd2127cf9ba8f5b2ef4d43cdab9f3ff4fc8840acceb2d13aa64d8",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        }
+      ],
+      "region_file_version_class": {
+        "class": "erz",
+        "class_path": "erz.class",
+        "class_sha256": "b72cdb7aac4edfff70468da55eb6f395aebbd71daf496117b7b1882451d157a1",
+        "javap_bytes": 13031,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/1.21.11-erz.javap.txt",
+        "javap_sha256": "ac59994f16206a3246b059175d80a1f9aaae8ebda37f09c76d4d2520599b5179",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+      }
+    },
+    {
+      "all_captures": [
+        {
+          "class": "net.minecraft.world.level.chunk.storage.RegionFile",
+          "class_path": "net/minecraft/world/level/chunk/storage/RegionFile.class",
+          "class_sha256": "aea05164286eafda34b6b9107251a930d8184e27ccc370a3c4f03f7283f2938b",
+          "javap_bytes": 50277,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFile.javap.txt",
+          "javap_sha256": "b4093f4e40948bd0cd5688d73a0082b51c2f165c67dae141b701e88c68da5b71",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+        },
+        {
+          "class": "net.minecraft.world.level.chunk.storage.RegionFileStorage",
+          "class_path": "net/minecraft/world/level/chunk/storage/RegionFileStorage.class",
+          "class_sha256": "50f1567655714128baf97dd863931853c11d136c2b415f155707b89ef3c7815b",
+          "javap_bytes": 17831,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFileStorage.javap.txt",
+          "javap_sha256": "71d0c7b6a1d39eb7a1f9d70df30a20961ff980645585069b2a8199344eb60283",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        },
+        {
+          "class": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+          "class_path": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+          "class_sha256": "683603eb50b543f76260cb4029c94d989a97642ab5c7a076972cbc07f25f37ec",
+          "javap_bytes": 18191,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFileVersion.javap.txt",
+          "javap_sha256": "89debb5b5ca1294862eba88189812194a673939e8b9f0a43476b64f469869b39",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+        }
+      ],
+      "chunk_packet_classes": [],
+      "client_packet_listener_classes": [],
+      "client_sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+      "client_sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+      "lz4_stream_direct_caller": [
+        "net/minecraft/world/level/chunk/storage/RegionFileVersion.class"
+      ],
+      "metadata_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+      "minecraft_version": "26.3",
+      "official_mapping_sha1": null,
+      "region_file_class": {
+        "class": "net.minecraft.world.level.chunk.storage.RegionFile",
+        "class_path": "net/minecraft/world/level/chunk/storage/RegionFile.class",
+        "class_sha256": "aea05164286eafda34b6b9107251a930d8184e27ccc370a3c4f03f7283f2938b",
+        "javap_bytes": 50277,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFile.javap.txt",
+        "javap_sha256": "b4093f4e40948bd0cd5688d73a0082b51c2f165c67dae141b701e88c68da5b71",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFile"
+      },
+      "region_file_storage_classes": [
+        {
+          "class": "net.minecraft.world.level.chunk.storage.RegionFileStorage",
+          "class_path": "net/minecraft/world/level/chunk/storage/RegionFileStorage.class",
+          "class_sha256": "50f1567655714128baf97dd863931853c11d136c2b415f155707b89ef3c7815b",
+          "javap_bytes": 17831,
+          "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFileStorage.javap.txt",
+          "javap_sha256": "71d0c7b6a1d39eb7a1f9d70df30a20961ff980645585069b2a8199344eb60283",
+          "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileStorage"
+        }
+      ],
+      "region_file_version_class": {
+        "class": "net.minecraft.world.level.chunk.storage.RegionFileVersion",
+        "class_path": "net/minecraft/world/level/chunk/storage/RegionFileVersion.class",
+        "class_sha256": "683603eb50b543f76260cb4029c94d989a97642ab5c7a076972cbc07f25f37ec",
+        "javap_bytes": 18191,
+        "javap_path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/packet-and-region-paths/26.3-net_minecraft_world_level_chunk_storage_RegionFileVersion.javap.txt",
+        "javap_sha256": "89debb5b5ca1294862eba88189812194a673939e8b9f0a43476b64f469869b39",
+        "mapped_class": "net.minecraft.world.level.chunk.storage.RegionFileVersion"
+      }
+    }
+  ],
+  "observed_on": "2026-11-22",
+  "schema": 1,
+  "scope": "Representative vanilla integrated-server region-file paths in 1.20.5, 1.21.10, 1.21.11 and 26.3; separate vanilla packet-path captures in 1.20.5, 1.21.10 and 1.21.11 only. 26.3 packet classes are not mapped/captured here.",
+  "security_clearance": false,
+  "tool": "OpenJDK 21.0.12.1 javap plus SHA-256 of class bytes extracted from exact Mojang client jars"
+}

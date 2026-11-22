@@ -1,0 +1,252 @@
+Compiled from "SourceFile"
+public class dvg implements java.lang.AutoCloseable {
+  public static final int d;
+
+  private final dvi a;
+
+  protected final com.mojang.datafixers.DataFixer e;
+
+  private volatile eig b;
+
+  public dvg(dvp, java.nio.file.Path, com.mojang.datafixers.DataFixer, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #27                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_3
+       6: putfield      #29                 // Field e:Lcom/mojang/datafixers/DataFixer;
+       9: aload_0
+      10: new           #31                 // class dvi
+      13: dup
+      14: aload_1
+      15: aload_2
+      16: iload         4
+      18: invokespecial #34                 // Method dvi."<init>":(Ldvp;Ljava/nio/file/Path;Z)V
+      21: putfield      #36                 // Field a:Ldvi;
+      24: return
+
+  public boolean b(dbg, int);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field a:Ldvi;
+       4: aload_1
+       5: iload_2
+       6: invokevirtual #48                 // Method dvi.a:(Ldbg;I)Z
+       9: ireturn
+
+  public us a(ale<dbz>, java.util.function.Supplier<epr>, us, java.util.Optional<ale<com.mojang.serialization.MapCodec<? extends dua>>>);
+    Code:
+       0: aload_3
+       1: invokestatic  #56                 // Method a:(Lus;)I
+       4: istore        5
+       6: iload         5
+       8: sipush        1493
+      11: if_icmpge     60
+      14: getstatic     #62                 // Field bag.c:Lbag;
+      17: aload_0
+      18: getfield      #29                 // Field e:Lcom/mojang/datafixers/DataFixer;
+      21: aload_3
+      22: iload         5
+      24: sipush        1493
+      27: invokevirtual #65                 // Method bag.a:(Lcom/mojang/datafixers/DataFixer;Lus;II)Lus;
+      30: astore_3
+      31: aload_3
+      32: ldc           #67                 // String Level
+      34: invokevirtual #73                 // Method us.p:(Ljava/lang/String;)Lus;
+      37: ldc           #75                 // String hasLegacyStructureData
+      39: invokevirtual #79                 // Method us.q:(Ljava/lang/String;)Z
+      42: ifeq          60
+      45: aload_0
+      46: aload_1
+      47: aload_2
+      48: invokevirtual #82                 // Method a:(Lale;Ljava/util/function/Supplier;)Leig;
+      51: astore        6
+      53: aload         6
+      55: aload_3
+      56: invokevirtual #87                 // Method eig.a:(Lus;)Lus;
+      59: astore_3
+      60: aload_3
+      61: aload_1
+      62: aload         4
+      64: invokestatic  #94                 // Method a:(Lus;Lale;Ljava/util/Optional;)V
+      67: getstatic     #62                 // Field bag.c:Lbag;
+      70: aload_0
+      71: getfield      #29                 // Field e:Lcom/mojang/datafixers/DataFixer;
+      74: aload_3
+      75: sipush        1493
+      78: iload         5
+      80: invokestatic  #100                // Method java/lang/Math.max:(II)I
+      83: invokevirtual #103                // Method bag.a:(Lcom/mojang/datafixers/DataFixer;Lus;I)Lus;
+      86: astore_3
+      87: iload         5
+      89: invokestatic  #108                // Method aa.b:()Lad;
+      92: invokeinterface #113,  1          // InterfaceMethod ad.d:()Lepp;
+      97: invokevirtual #118                // Method epp.c:()I
+     100: if_icmpge     108
+     103: aload_3
+     104: invokestatic  #122                // Method vh.e:(Lus;)Lus;
+     107: pop
+     108: aload_3
+     109: ldc           #124                // String __context
+     111: invokevirtual #128                // Method us.r:(Ljava/lang/String;)V
+     114: aload_3
+     115: areturn
+     116: astore        6
+     118: aload         6
+     120: ldc           #130                // String Updated chunk
+     122: invokestatic  #135                // Method o.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lo;
+     125: astore        7
+     127: aload         7
+     129: ldc           #137                // String Updated chunk details
+     131: invokevirtual #140                // Method o.a:(Ljava/lang/String;)Lp;
+     134: astore        8
+     136: aload         8
+     138: ldc           #142                // String Data version
+     140: iload         5
+     142: invokestatic  #148                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     145: invokevirtual #152                // Method p.a:(Ljava/lang/String;Ljava/lang/Object;)Lp;
+     148: pop
+     149: new           #154                // class y
+     152: dup
+     153: aload         7
+     155: invokespecial #157                // Method y."<init>":(Lo;)V
+     158: athrow
+    Exception table:
+       from    to  target type
+           6   115   116   Class java/lang/Exception
+
+  private eig a(ale<dbz>, java.util.function.Supplier<epr>);
+    Code:
+       0: aload_0
+       1: getfield      #175                // Field b:Leig;
+       4: astore_3
+       5: aload_3
+       6: ifnonnull     56
+       9: aload_0
+      10: dup
+      11: astore        4
+      13: monitorenter
+      14: aload_0
+      15: getfield      #175                // Field b:Leig;
+      18: astore_3
+      19: aload_3
+      20: ifnonnull     42
+      23: aload_0
+      24: aload_1
+      25: aload_2
+      26: invokeinterface #181,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      31: checkcast     #183                // class epr
+      34: invokestatic  #186                // Method eig.a:(Lale;Lepr;)Leig;
+      37: dup
+      38: astore_3
+      39: putfield      #175                // Field b:Leig;
+      42: aload         4
+      44: monitorexit
+      45: goto          56
+      48: astore        5
+      50: aload         4
+      52: monitorexit
+      53: aload         5
+      55: athrow
+      56: aload_3
+      57: areturn
+    Exception table:
+       from    to  target type
+          14    45    48   any
+          48    53    48   any
+
+  public static void a(us, ale<dbz>, java.util.Optional<ale<com.mojang.serialization.MapCodec<? extends dua>>>);
+    Code:
+       0: new           #69                 // class us
+       3: dup
+       4: invokespecial #190                // Method us."<init>":()V
+       7: astore_3
+       8: aload_3
+       9: ldc           #192                // String dimension
+      11: aload_1
+      12: invokevirtual #195                // Method ale.a:()Lalf;
+      15: invokevirtual #201                // Method alf.toString:()Ljava/lang/String;
+      18: invokevirtual #204                // Method us.a:(Ljava/lang/String;Ljava/lang/String;)V
+      21: aload_2
+      22: aload_3
+      23: invokedynamic #223,  0            // InvokeDynamic #0:accept:(Lus;)Ljava/util/function/Consumer;
+      28: invokevirtual #227                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      31: aload_0
+      32: ldc           #124                // String __context
+      34: aload_3
+      35: invokevirtual #230                // Method us.a:(Ljava/lang/String;Lvp;)Lvp;
+      38: pop
+      39: return
+
+  public static int a(us);
+    Code:
+       0: aload_0
+       1: iconst_m1
+       2: invokestatic  #233                // Method vh.b:(Lus;I)I
+       5: ireturn
+
+  public java.util.concurrent.CompletableFuture<java.util.Optional<us>> e(dbg);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field a:Ldvi;
+       4: aload_1
+       5: invokevirtual #237                // Method dvi.a:(Ldbg;)Ljava/util/concurrent/CompletableFuture;
+       8: areturn
+
+  public java.util.concurrent.CompletableFuture<java.lang.Void> a(dbg, us);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #243                // Method f:(Ldbg;)V
+       5: aload_0
+       6: getfield      #36                 // Field a:Ldvi;
+       9: aload_1
+      10: aload_2
+      11: invokevirtual #245                // Method dvi.a:(Ldbg;Lus;)Ljava/util/concurrent/CompletableFuture;
+      14: areturn
+
+  protected void f(dbg);
+    Code:
+       0: aload_0
+       1: getfield      #175                // Field b:Leig;
+       4: ifnull        18
+       7: aload_0
+       8: getfield      #175                // Field b:Leig;
+      11: aload_1
+      12: invokevirtual #250                // Method dbg.a:()J
+      15: invokevirtual #253                // Method eig.a:(J)V
+      18: return
+
+  public void o();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field a:Ldvi;
+       4: iconst_1
+       5: invokevirtual #256                // Method dvi.a:(Z)Ljava/util/concurrent/CompletableFuture;
+       8: invokevirtual #261                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+      11: pop
+      12: return
+
+  public void close() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field a:Ldvi;
+       4: invokevirtual #266                // Method dvi.close:()V
+       7: return
+
+  public dve p();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field a:Ldvi;
+       4: areturn
+
+  private static void a(us, ale);
+    Code:
+       0: aload_0
+       1: ldc_w         #269                // String generator
+       4: aload_1
+       5: invokevirtual #195                // Method ale.a:()Lalf;
+       8: invokevirtual #201                // Method alf.toString:()Ljava/lang/String;
+      11: invokevirtual #204                // Method us.a:(Ljava/lang/String;Ljava/lang/String;)V
+      14: return
+}

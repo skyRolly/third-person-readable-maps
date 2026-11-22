@@ -1,0 +1,443 @@
+Compiled from "SourceFile"
+public class hhz extends eqj {
+  static final org.slf4j.Logger a;
+
+  private final eqq b;
+
+  private final fkq c;
+
+  volatile hhz$a d;
+
+  final hif e;
+
+  public hhz(hif, int);
+    Code:
+       0: aload_0
+       1: invokespecial #39                 // Method eqj."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #41                 // Field e:Lhif;
+       9: aload_0
+      10: new           #43                 // class eqm
+      13: dup
+      14: aload_1
+      15: new           #45                 // class dvu
+      18: dup
+      19: iconst_0
+      20: iconst_0
+      21: invokespecial #48                 // Method dvu."<init>":(II)V
+      24: aload_1
+      25: invokevirtual #54                 // Method hif.J_:()Ljr;
+      28: getstatic     #60                 // Field mj.aS:Lamt;
+      31: invokeinterface #66,  2           // InterfaceMethod jr.f:(Lamt;)Ljq;
+      36: getstatic     #70                 // Field dxv.b:Lamt;
+      39: invokeinterface #75,  2           // InterfaceMethod jq.b:(Lamt;)Ljd$c;
+      44: invokespecial #78                 // Method eqm."<init>":(Ldwo;Ldvu;Ljd;)V
+      47: putfield      #80                 // Field b:Leqq;
+      50: aload_0
+      51: new           #82                 // class fkq
+      54: dup
+      55: aload_0
+      56: iconst_1
+      57: aload_1
+      58: invokevirtual #86                 // Method hif.F_:()Lesh;
+      61: invokevirtual #91                 // Method esh.e:()Z
+      64: invokespecial #94                 // Method fkq."<init>":(Leqt;ZZ)V
+      67: putfield      #96                 // Field c:Lfkq;
+      70: aload_0
+      71: new           #7                  // class hhz$a
+      74: dup
+      75: aload_0
+      76: iload_2
+      77: invokestatic  #99                 // Method b:(I)I
+      80: invokespecial #102                // Method hhz$a."<init>":(Lhhz;I)V
+      83: putfield      #104                // Field d:Lhhz$a;
+      86: return
+
+  public fkq r();
+    Code:
+       0: aload_0
+       1: getfield      #96                 // Field c:Lfkq;
+       4: areturn
+
+  private static boolean a(eqq, int, int);
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: iconst_0
+       5: ireturn
+       6: aload_0
+       7: invokevirtual #118                // Method eqq.f:()Ldvu;
+      10: astore_3
+      11: aload_3
+      12: getfield      #121                // Field dvu.h:I
+      15: iload_1
+      16: if_icmpne     31
+      19: aload_3
+      20: getfield      #124                // Field dvu.i:I
+      23: iload_2
+      24: if_icmpne     31
+      27: iconst_1
+      28: goto          32
+      31: iconst_0
+      32: ireturn
+
+  public void a(dvu);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: aload_1
+       5: getfield      #121                // Field dvu.h:I
+       8: aload_1
+       9: getfield      #124                // Field dvu.i:I
+      12: invokevirtual #131                // Method hhz$a.b:(II)Z
+      15: ifne          19
+      18: return
+      19: aload_0
+      20: getfield      #104                // Field d:Lhhz$a;
+      23: aload_1
+      24: getfield      #121                // Field dvu.h:I
+      27: aload_1
+      28: getfield      #124                // Field dvu.i:I
+      31: invokevirtual #134                // Method hhz$a.a:(II)I
+      34: istore_2
+      35: aload_0
+      36: getfield      #104                // Field d:Lhhz$a;
+      39: iload_2
+      40: invokevirtual #137                // Method hhz$a.a:(I)Leqq;
+      43: astore_3
+      44: aload_3
+      45: aload_1
+      46: getfield      #121                // Field dvu.h:I
+      49: aload_1
+      50: getfield      #124                // Field dvu.i:I
+      53: invokestatic  #139                // Method a:(Leqq;II)Z
+      56: ifeq          68
+      59: aload_0
+      60: getfield      #104                // Field d:Lhhz$a;
+      63: iload_2
+      64: aload_3
+      65: invokevirtual #142                // Method hhz$a.b:(ILeqq;)V
+      68: return
+
+  public eqq b(int, int, erj, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #131                // Method hhz$a.b:(II)Z
+       9: ifeq          43
+      12: aload_0
+      13: getfield      #104                // Field d:Lhhz$a;
+      16: aload_0
+      17: getfield      #104                // Field d:Lhhz$a;
+      20: iload_1
+      21: iload_2
+      22: invokevirtual #134                // Method hhz$a.a:(II)I
+      25: invokevirtual #137                // Method hhz$a.a:(I)Leqq;
+      28: astore        5
+      30: aload         5
+      32: iload_1
+      33: iload_2
+      34: invokestatic  #139                // Method a:(Leqq;II)Z
+      37: ifeq          43
+      40: aload         5
+      42: areturn
+      43: iload         4
+      45: ifeq          53
+      48: aload_0
+      49: getfield      #80                 // Field b:Leqq;
+      52: areturn
+      53: aconst_null
+      54: areturn
+
+  public dvt s();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field e:Lhif;
+       4: areturn
+
+  public void a(int, int, wx);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #131                // Method hhz$a.b:(II)Z
+       9: ifne          31
+      12: getstatic     #151                // Field a:Lorg/slf4j/Logger;
+      15: ldc           #153                // String Ignoring chunk since it\'s not in the view range: {}, {}
+      17: iload_1
+      18: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      21: iload_2
+      22: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: invokeinterface #165,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      30: return
+      31: aload_0
+      32: getfield      #104                // Field d:Lhhz$a;
+      35: iload_1
+      36: iload_2
+      37: invokevirtual #134                // Method hhz$a.a:(II)I
+      40: istore        4
+      42: aload_0
+      43: getfield      #104                // Field d:Lhhz$a;
+      46: getfield      #168                // Field hhz$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      49: iload         4
+      51: invokevirtual #174                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      54: checkcast     #115                // class eqq
+      57: astore        5
+      59: aload         5
+      61: iload_1
+      62: iload_2
+      63: invokestatic  #139                // Method a:(Leqq;II)Z
+      66: ifne          90
+      69: getstatic     #151                // Field a:Lorg/slf4j/Logger;
+      72: ldc           #176                // String Ignoring chunk since it\'s not present: {}, {}
+      74: iload_1
+      75: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      78: iload_2
+      79: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      82: invokeinterface #165,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      87: goto          96
+      90: aload         5
+      92: aload_3
+      93: invokevirtual #181                // Method eqq.a:(Lwx;)V
+      96: return
+
+  public eqq a(int, int, wx, java.util.Map<euq$a, long[]>, java.util.function.Consumer<aeq$b>);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #131                // Method hhz$a.b:(II)Z
+       9: ifne          32
+      12: getstatic     #151                // Field a:Lorg/slf4j/Logger;
+      15: ldc           #153                // String Ignoring chunk since it\'s not in the view range: {}, {}
+      17: iload_1
+      18: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      21: iload_2
+      22: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: invokeinterface #165,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      30: aconst_null
+      31: areturn
+      32: aload_0
+      33: getfield      #104                // Field d:Lhhz$a;
+      36: iload_1
+      37: iload_2
+      38: invokevirtual #134                // Method hhz$a.a:(II)I
+      41: istore        6
+      43: aload_0
+      44: getfield      #104                // Field d:Lhhz$a;
+      47: getfield      #168                // Field hhz$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      50: iload         6
+      52: invokevirtual #174                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      55: checkcast     #115                // class eqq
+      58: astore        7
+      60: new           #45                 // class dvu
+      63: dup
+      64: iload_1
+      65: iload_2
+      66: invokespecial #48                 // Method dvu."<init>":(II)V
+      69: astore        8
+      71: aload         7
+      73: iload_1
+      74: iload_2
+      75: invokestatic  #139                // Method a:(Leqq;II)Z
+      78: ifne          120
+      81: new           #115                // class eqq
+      84: dup
+      85: aload_0
+      86: getfield      #41                 // Field e:Lhif;
+      89: aload         8
+      91: invokespecial #187                // Method eqq."<init>":(Ldwo;Ldvu;)V
+      94: astore        7
+      96: aload         7
+      98: aload_3
+      99: aload         4
+     101: aload         5
+     103: invokevirtual #190                // Method eqq.a:(Lwx;Ljava/util/Map;Ljava/util/function/Consumer;)V
+     106: aload_0
+     107: getfield      #104                // Field d:Lhhz$a;
+     110: iload         6
+     112: aload         7
+     114: invokevirtual #192                // Method hhz$a.a:(ILeqq;)V
+     117: goto          139
+     120: aload         7
+     122: aload_3
+     123: aload         4
+     125: aload         5
+     127: invokevirtual #190                // Method eqq.a:(Lwx;Ljava/util/Map;Ljava/util/function/Consumer;)V
+     130: aload_0
+     131: getfield      #104                // Field d:Lhhz$a;
+     134: aload         7
+     136: invokevirtual #199                // Method hhz$a.c:(Leqq;)V
+     139: aload_0
+     140: getfield      #41                 // Field e:Lhif;
+     143: aload         8
+     145: invokevirtual #201                // Method hif.a:(Ldvu;)V
+     148: aload         7
+     150: areturn
+
+  public void a(java.util.function.BooleanSupplier, boolean);
+    Code:
+       0: return
+
+  public void d(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: iload_1
+       5: putfield      #212                // Field hhz$a.f:I
+       8: aload_0
+       9: getfield      #104                // Field d:Lhhz$a;
+      12: iload_2
+      13: putfield      #215                // Field hhz$a.g:I
+      16: return
+
+  public void a(int);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: getfield      #218                // Field hhz$a.d:I
+       7: istore_2
+       8: iload_1
+       9: invokestatic  #99                 // Method b:(I)I
+      12: istore_3
+      13: iload_2
+      14: iload_3
+      15: if_icmpeq     152
+      18: new           #7                  // class hhz$a
+      21: dup
+      22: aload_0
+      23: iload_3
+      24: invokespecial #102                // Method hhz$a."<init>":(Lhhz;I)V
+      27: astore        4
+      29: aload         4
+      31: aload_0
+      32: getfield      #104                // Field d:Lhhz$a;
+      35: getfield      #212                // Field hhz$a.f:I
+      38: putfield      #212                // Field hhz$a.f:I
+      41: aload         4
+      43: aload_0
+      44: getfield      #104                // Field d:Lhhz$a;
+      47: getfield      #215                // Field hhz$a.g:I
+      50: putfield      #215                // Field hhz$a.g:I
+      53: iconst_0
+      54: istore        5
+      56: iload         5
+      58: aload_0
+      59: getfield      #104                // Field d:Lhhz$a;
+      62: getfield      #168                // Field hhz$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      65: invokevirtual #222                // Method java/util/concurrent/atomic/AtomicReferenceArray.length:()I
+      68: if_icmpge     146
+      71: aload_0
+      72: getfield      #104                // Field d:Lhhz$a;
+      75: getfield      #168                // Field hhz$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      78: iload         5
+      80: invokevirtual #174                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      83: checkcast     #115                // class eqq
+      86: astore        6
+      88: aload         6
+      90: ifnull        140
+      93: aload         6
+      95: invokevirtual #118                // Method eqq.f:()Ldvu;
+      98: astore        7
+     100: aload         4
+     102: aload         7
+     104: getfield      #121                // Field dvu.h:I
+     107: aload         7
+     109: getfield      #124                // Field dvu.i:I
+     112: invokevirtual #131                // Method hhz$a.b:(II)Z
+     115: ifeq          140
+     118: aload         4
+     120: aload         4
+     122: aload         7
+     124: getfield      #121                // Field dvu.h:I
+     127: aload         7
+     129: getfield      #124                // Field dvu.i:I
+     132: invokevirtual #134                // Method hhz$a.a:(II)I
+     135: aload         6
+     137: invokevirtual #192                // Method hhz$a.a:(ILeqq;)V
+     140: iinc          5, 1
+     143: goto          56
+     146: aload_0
+     147: aload         4
+     149: putfield      #104                // Field d:Lhhz$a;
+     152: return
+
+  private static int b(int);
+    Code:
+       0: iconst_2
+       1: iload_0
+       2: invokestatic  #227                // Method java/lang/Math.max:(II)I
+       5: iconst_3
+       6: iadd
+       7: ireturn
+
+  public java.lang.String e();
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: getfield      #168                // Field hhz$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+       7: invokevirtual #222                // Method java/util/concurrent/atomic/AtomicReferenceArray.length:()I
+      10: aload_0
+      11: invokevirtual #231                // Method j:()I
+      14: invokedynamic #243,  0            // InvokeDynamic #0:makeConcatWithConstants:(II)Ljava/lang/String;
+      19: areturn
+
+  public int j();
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: getfield      #244                // Field hhz$a.h:I
+       7: ireturn
+
+  public void a(dww, jw);
+    Code:
+       0: invokestatic  #251                // Method gfj.V:()Lgfj;
+       3: getfield      #254                // Field gfj.e:Lhoh;
+       6: aload_2
+       7: invokevirtual #258                // Method jw.a:()I
+      10: aload_2
+      11: invokevirtual #260                // Method jw.b:()I
+      14: aload_2
+      15: invokevirtual #262                // Method jw.c:()I
+      18: invokevirtual #267                // Method hoh.b:(III)V
+      21: return
+
+  public it.unimi.dsi.fastutil.longs.LongOpenHashSet a();
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: getfield      #273                // Field hhz$a.c:Lit/unimi/dsi/fastutil/longs/LongOpenHashSet;
+       7: areturn
+
+  public void a(int, int, int, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field d:Lhhz$a;
+       4: iload_1
+       5: iload_2
+       6: iload_3
+       7: iload         4
+       9: invokevirtual #276                // Method hhz$a.a:(IIIZ)V
+      12: return
+
+  public eqf a(int, int, erj, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: aload_3
+       4: iload         4
+       6: invokevirtual #279                // Method b:(IILerj;Z)Leqq;
+       9: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #286                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #151                // Field a:Lorg/slf4j/Logger;
+       6: return
+}

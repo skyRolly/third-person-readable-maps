@@ -38,6 +38,13 @@ The [Guava investigation](dependency-evidence/critical-reachability-2026-11-21/g
 
 The focused record now covers 22 Critical and 60 High occurrences; all 82 remain blocking. The complete candidate/integrated inventory remains 490 failing occurrences. No finding is cleared or accepted by the Guava investigation.
 
+
+## LZ4 runtime reachability follow-up — 2026-11-22
+
+The [source-bound LZ4 investigation](dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json) covers `GHSA-cmp6-m4wj-q63q` (6 High occurrences), `GHSA-vqf4-7m7x-wgfc` (5), and the existing `GHSA-mcr4-qmvw-px4g` (8). These rows overlap and do not represent 19 independent vulnerabilities. Exact scans cover 19 Minecraft clients across eight source groups. The vanilla region-file path reads the per-chunk compression id and can construct `LZ4BlockInputStream`; a local imported world is a plausible input. Representative vanilla network chunk packet paths are separate. The component probe reproduced CMP6 behavior in affected Java decompressor variants and verified the upstream-fixed 1.10.1 and 1.11.4 behavior. Native extraction was observed in vulnerable artifacts, but the shared-temp race and a game-level malformed region file were not tested.
+
+All 19 LZ4 advisory occurrences remain **Further investigation**, failing, and release-blocking because Minecraft owns the runtime libraries and no game-side fix or complete exploit/mitigation test is available. Eleven newly source-bound High occurrences bring the focused set to 22 Critical and 71 High (93 total); the full inventory remains 490 failing occurrences. No risk is accepted or clearance claimed.
+
 ## Additional static evidence
 
 [Runtime feature evidence](dependency-evidence/runtime-features.json) preserves the earlier six-client survey. The new source-bound inspection covers the official client binaries and 557 non-Netty game-library artifacts. It confirms `RegionFileVersion` constructs `LZ4BlockInputStream(InputStream)` and records the actual native-load path; this does not exhaust reflective paths or prove a remote multiplayer input path. Mojang's `LegacyXMLLayout` implementation is now inspected and its exact default configuration was exercised with local harmless markers. Netty and Log4j component tests reproduced vulnerable behavior only in isolated harnesses; there was no full Minecraft exploit test. None of these observations justifies a game-wide Not applicable disposition. Specific evidence and remaining proof gaps are linked from every new source-bound record.

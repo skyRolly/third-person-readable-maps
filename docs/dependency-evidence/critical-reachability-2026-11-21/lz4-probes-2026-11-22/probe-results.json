@@ -1,0 +1,310 @@
+{
+  "all_passed": true,
+  "artifact_manifest": {
+    "path": "tests/fixtures/critical_reachability/artifacts.json",
+    "sha256": "38f9077b1363f6928c7901d9430005f5a8155d639dac95abcfccc691d829417c"
+  },
+  "artifacts": {
+    "at.yawk.lz4:lz4-java:1.10.1": {
+      "minecraft": "26.2",
+      "minecraft_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+      "sha1": "f541d7f910fe3d76f38f799c507c48cc81b12ecb",
+      "sha256": "a58a84c4271e50df4c96ed916ccb7e48a869f8ed9cdcda1ad5d3d4c33b0214a3",
+      "size": 910232,
+      "url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar",
+      "verified_against": "Mojang version manifest"
+    },
+    "at.yawk.lz4:lz4-java:1.11.4": {
+      "checksum_url": "https://repo.maven.apache.org/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar.sha256",
+      "sha1": "a27ccbac6c886771d3db36f91b144950bdb5082a",
+      "sha256": "58c8e0b813960d2a248e050c353baea73139b48a2ffc55382d42c69707e17325",
+      "size": 899910,
+      "url": "https://repo.maven.apache.org/maven2/at/yawk/lz4/lz4-java/1.11.4/lz4-java-1.11.4.jar",
+      "verified_against": "Maven Central SHA-256 sidecar; advisory-patched release"
+    },
+    "at.yawk.lz4:lz4-java:1.8.1": {
+      "minecraft": "1.21.11",
+      "minecraft_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "sha1": "1f30a180ee04ccd53339a716aec13cae60a013b5",
+      "sha256": "1de8ff91b90fba9d4896b8617ed3594c2e4390d321d5a92c34f80e62e406c1b0",
+      "size": 683071,
+      "url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar",
+      "verified_against": "Mojang version manifest"
+    },
+    "org.lz4:lz4-java:1.8.0": {
+      "minecraft": "1.21.9",
+      "minecraft_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+      "sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
+      "sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef",
+      "size": 682804,
+      "url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+      "verified_against": "Mojang version manifest"
+    }
+  },
+  "cases": [
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "org.lz4:lz4-java:1.8.0"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4NativeProbe",
+      "name": "lz4-native-1.8.0",
+      "observed": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "org.lz4:lz4-java:1.8.0"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JNIFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JNIFastDecompressor"
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4AdvisoryProbe",
+      "name": "lz4-advisory-1.8.0",
+      "observed": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JNIFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_CLASS": "net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor",
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JNIFastDecompressor"
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "NATIVE_LOADED_AFTER=1\nFASTEST_FAST_CLASS=net.jpountz.lz4.LZ4JNIFastDecompressor\nSAFE_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nJAVA_ONLY_FAST_CLASS=net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=923\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=923\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=923\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=923\nFASTEST_FAST_NONZERO_OUTPUT_BYTES=0\nSAFE_FAST_NONZERO_OUTPUT_BYTES=923\nJAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES=923\nSTREAM_DECOMPRESSOR_CLASS=net.jpountz.lz4.LZ4JNIFastDecompressor\nSTREAM_BUFFERS_DISTINCT=1\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.8.1"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4NativeProbe",
+      "name": "lz4-native-1.8.1",
+      "observed": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.8.1"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4AdvisoryProbe",
+      "name": "lz4-advisory-1.8.1",
+      "observed": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "JAVA_ONLY_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 923,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "NATIVE_LOADED_AFTER=1\nFASTEST_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSAFE_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nJAVA_ONLY_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=923\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=923\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=923\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=923\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=923\nFASTEST_FAST_NONZERO_OUTPUT_BYTES=923\nSAFE_FAST_NONZERO_OUTPUT_BYTES=923\nJAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES=923\nSTREAM_DECOMPRESSOR_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSTREAM_BUFFERS_DISTINCT=1\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.10.1"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4NativeProbe",
+      "name": "lz4-native-1.10.1",
+      "observed": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0,
+        "TEMP_LOCK_FILES": 1,
+        "TEMP_PREFIX_FILES": 2
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=1\nTEMP_PREFIX_FILES=2\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.10.1"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4AdvisoryProbe",
+      "name": "lz4-advisory-1.10.1",
+      "observed": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "NATIVE_LOADED_AFTER=1\nFASTEST_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSAFE_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nJAVA_ONLY_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nFASTEST_FAST_NONZERO_OUTPUT_BYTES=0\nSAFE_FAST_NONZERO_OUTPUT_BYTES=0\nJAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES=0\nSTREAM_DECOMPRESSOR_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSTREAM_BUFFERS_DISTINCT=1\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.11.4"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0,
+        "TEMP_LOCK_FILES": 0,
+        "TEMP_PREFIX_FILES": 1
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4NativeProbe",
+      "name": "lz4-native-1.11.4",
+      "observed": {
+        "JAVA_TMPDIR_PRIVATE": 1,
+        "NATIVE_LIBRARY_PATH_ISOLATED": 1,
+        "NATIVE_LOADED_AFTER": 1,
+        "NATIVE_LOADED_BEFORE": 0,
+        "TEMP_LOCK_FILES": 0,
+        "TEMP_PREFIX_FILES": 1
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "JAVA_TMPDIR_PRIVATE=1\nNATIVE_LIBRARY_PATH_ISOLATED=1\nNATIVE_LOADED_BEFORE=0\nNATIVE_LOADED_AFTER=1\nTEMP_LOCK_FILES=0\nTEMP_PREFIX_FILES=1\n"
+    },
+    {
+      "configuration": null,
+      "coordinates_in_order": [
+        "at.yawk.lz4:lz4-java:1.11.4"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "formatMsgNoLookups": false,
+      "main": "Lz4AdvisoryProbe",
+      "name": "lz4-advisory-1.11.4",
+      "observed": {
+        "FASTEST_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "FASTEST_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "JAVA_ONLY_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "JAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "NATIVE_LOADED_AFTER": 1,
+        "SAFE_FAST_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor",
+        "SAFE_FAST_NONZERO_OUTPUT_BYTES": 0,
+        "STREAM_BUFFERS_DISTINCT": 1,
+        "STREAM_DECOMPRESSOR_CLASS": "net.jpountz.lz4.LZ4JavaSafeFastDecompressor"
+      },
+      "passed": true,
+      "stderr": "",
+      "stdout": "NATIVE_LOADED_AFTER=1\nFASTEST_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSAFE_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nJAVA_ONLY_FAST_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nFAST_CASES=105\nFAST_EXCEPTIONS=0\nFAST_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nSAFE_CASES=105\nSAFE_EXCEPTIONS=0\nSAFE_NONZERO_OUTPUT_BYTES=0\nFASTEST_FAST_NONZERO_OUTPUT_BYTES=0\nSAFE_FAST_NONZERO_OUTPUT_BYTES=0\nJAVA_ONLY_FAST_NONZERO_OUTPUT_BYTES=0\nSTREAM_DECOMPRESSOR_CLASS=net.jpountz.lz4.LZ4JavaSafeFastDecompressor\nSTREAM_BUFFERS_DISTINCT=1\n"
+    }
+  ],
+  "java_version": "openjdk version \"21.0.12.1\" 2026-08-18\nOpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)",
+  "not_tested": [
+    "No malicious Minecraft region file was opened in a running game.",
+    "No OOB/CVE-2025-12183 exploit payload was run; its vulnerable class selection and upstream patch were verified instead.",
+    "Windows native selection is delegated to hosted Windows CI.",
+    "No local shared-temporary-directory race was attempted."
+  ],
+  "observed_at": "2026-11-22",
+  "observed_case_count": 8,
+  "passed_case_count": 8,
+  "platform": "Linux x86_64 runner (local isolated process; Windows counterpart is hosted CI)",
+  "probe_source": {
+    "path": "tests/fixtures/critical_reachability/Lz4AdvisoryProbe.java",
+    "sha256": "42970ed0058a2a4daf536aa456d2a1f86db5c479f58462e5497a597e4f79367d",
+    "upstream_vector": "GHSA-cmp6-m4wj-q63q upstream commit 33d180cb70c4d93c80fb0dc3ab3002f457e93840, OutOfBoundsTest.copyBeyondOutput"
+  },
+  "risk_accepted": false,
+  "runner_sha256": "d7088e5abc2190158c019e396a859cee9be8bc92ef9e66ef2c501485a5fe2c72",
+  "schema": 1,
+  "scope": "Four pinned LZ4 Maven artifacts; each Linux probe runs with a private temporary directory, empty java.library.path, and -Xmx128m. The CMP6 test uses 105 bounded upstream vectors for each fast/safe API variant and compares nonzero output bytes. The stream-isolation observation inspects separate per-stream arrays and the exact decompressor stored in LZ4BlockInputStream.",
+  "security_clearance": false,
+  "status": "complete"
+}

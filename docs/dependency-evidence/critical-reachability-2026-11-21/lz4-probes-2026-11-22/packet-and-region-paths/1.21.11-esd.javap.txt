@@ -1,0 +1,243 @@
+Compiled from "SourceFile"
+public class esd implements java.lang.AutoCloseable {
+  private final ert a;
+
+  private final com.mojang.datafixers.DataFixer b;
+
+  private final bhz c;
+
+  private final java.util.function.Supplier<eru> d;
+
+  public esd(esa, java.nio.file.Path, com.mojang.datafixers.DataFixer, boolean, bhz);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: iload         4
+       6: aload         5
+       8: getstatic     #27                 // Field eru.a:Ljava/util/function/Supplier;
+      11: invokespecial #30                 // Method "<init>":(Lesa;Ljava/nio/file/Path;Lcom/mojang/datafixers/DataFixer;ZLbhz;Ljava/util/function/Supplier;)V
+      14: return
+
+  public esd(esa, java.nio.file.Path, com.mojang.datafixers.DataFixer, boolean, bhz, java.util.function.Supplier<eru>);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_3
+       6: putfield      #46                 // Field b:Lcom/mojang/datafixers/DataFixer;
+       9: aload_0
+      10: aload         5
+      12: putfield      #48                 // Field c:Lbhz;
+      15: aload_0
+      16: new           #50                 // class ert
+      19: dup
+      20: aload_1
+      21: aload_2
+      22: iload         4
+      24: invokespecial #53                 // Method ert."<init>":(Lesa;Ljava/nio/file/Path;Z)V
+      27: putfield      #55                 // Field a:Lert;
+      30: aload_0
+      31: aload         6
+      33: dup
+      34: invokestatic  #61                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      37: pop
+      38: invokedynamic #81,  0             // InvokeDynamic #0:get:(Ljava/util/function/Supplier;)Lcom/google/common/base/Supplier;
+      43: invokestatic  #87                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+      46: putfield      #89                 // Field d:Ljava/util/function/Supplier;
+      49: return
+
+  public boolean b(dvu, int);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: aload_1
+       5: iload_2
+       6: invokevirtual #93                 // Method ert.a:(Ldvu;I)Z
+       9: ireturn
+
+  public java.util.concurrent.CompletableFuture<java.util.Optional<uz>> d(dvu);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: aload_1
+       5: invokevirtual #99                 // Method ert.a:(Ldvu;)Ljava/util/concurrent/CompletableFuture;
+       8: areturn
+
+  public java.util.concurrent.CompletableFuture<java.lang.Void> a(dvu, uz);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokedynamic #110,  0            // InvokeDynamic #1:get:(Luz;)Ljava/util/function/Supplier;
+       8: invokevirtual #113                // Method a:(Ldvu;Ljava/util/function/Supplier;)Ljava/util/concurrent/CompletableFuture;
+      11: areturn
+
+  public java.util.concurrent.CompletableFuture<java.lang.Void> a(dvu, java.util.function.Supplier<uz>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #119                // Method e:(Ldvu;)V
+       5: aload_0
+       6: getfield      #55                 // Field a:Lert;
+       9: aload_1
+      10: aload_2
+      11: invokevirtual #120                // Method ert.a:(Ldvu;Ljava/util/function/Supplier;)Ljava/util/concurrent/CompletableFuture;
+      14: areturn
+
+  public uz a(uz, int, uz);
+    Code:
+       0: aload_1
+       1: iload_2
+       2: invokestatic  #130                // Method vo.b:(Luz;I)I
+       5: istore        4
+       7: iload         4
+       9: invokestatic  #135                // Method w.b:()Laa;
+      12: invokeinterface #140,  1          // InterfaceMethod aa.a:()Lfna;
+      17: invokevirtual #145                // Method fna.b:()I
+      20: if_icmpne     25
+      23: aload_1
+      24: areturn
+      25: aload_0
+      26: getfield      #89                 // Field d:Ljava/util/function/Supplier;
+      29: invokeinterface #68,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      34: checkcast     #25                 // class eru
+      37: aload_1
+      38: invokeinterface #150,  2          // InterfaceMethod eru.applyFix:(Luz;)Luz;
+      43: astore_1
+      44: aload_1
+      45: aload_3
+      46: invokestatic  #153                // Method a:(Luz;Luz;)V
+      49: aload_0
+      50: getfield      #48                 // Field c:Lbhz;
+      53: aload_0
+      54: getfield      #46                 // Field b:Lcom/mojang/datafixers/DataFixer;
+      57: aload_1
+      58: aload_0
+      59: getfield      #89                 // Field d:Ljava/util/function/Supplier;
+      62: invokeinterface #68,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      67: checkcast     #25                 // class eru
+      70: invokeinterface #156,  1          // InterfaceMethod eru.targetDataVersion:()I
+      75: iload         4
+      77: invokestatic  #162                // Method java/lang/Math.max:(II)I
+      80: invokevirtual #167                // Method bhz.a:(Lcom/mojang/datafixers/DataFixer;Luz;I)Luz;
+      83: astore_1
+      84: aload_1
+      85: invokestatic  #170                // Method a:(Luz;)V
+      88: aload_1
+      89: invokestatic  #172                // Method vo.e:(Luz;)Luz;
+      92: pop
+      93: aload_1
+      94: areturn
+      95: astore        5
+      97: aload         5
+      99: ldc           #174                // String Updated chunk
+     101: invokestatic  #179                // Method m.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lm;
+     104: astore        6
+     106: aload         6
+     108: ldc           #181                // String Updated chunk details
+     110: invokevirtual #184                // Method m.a:(Ljava/lang/String;)Ln;
+     113: astore        7
+     115: aload         7
+     117: ldc           #186                // String Data version
+     119: iload         4
+     121: invokestatic  #192                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     124: invokevirtual #197                // Method n.a:(Ljava/lang/String;Ljava/lang/Object;)Ln;
+     127: pop
+     128: new           #199                // class v
+     131: dup
+     132: aload         6
+     134: invokespecial #202                // Method v."<init>":(Lm;)V
+     137: athrow
+    Exception table:
+       from    to  target type
+          25    94    95   Class java/lang/Exception
+
+  public uz a(uz, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aconst_null
+       4: invokevirtual #209                // Method a:(Luz;ILuz;)Luz;
+       7: areturn
+
+  public com.mojang.serialization.Dynamic<vz> a(com.mojang.serialization.Dynamic<vz>, int);
+    Code:
+       0: new           #213                // class com/mojang/serialization/Dynamic
+       3: dup
+       4: aload_1
+       5: invokevirtual #217                // Method com/mojang/serialization/Dynamic.getOps:()Lcom/mojang/serialization/DynamicOps;
+       8: aload_0
+       9: aload_1
+      10: invokevirtual #220                // Method com/mojang/serialization/Dynamic.getValue:()Ljava/lang/Object;
+      13: checkcast     #147                // class uz
+      16: iload_2
+      17: aconst_null
+      18: invokevirtual #209                // Method a:(Luz;ILuz;)Luz;
+      21: invokespecial #223                // Method com/mojang/serialization/Dynamic."<init>":(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)V
+      24: areturn
+
+  public static void a(uz, uz);
+    Code:
+       0: aload_1
+       1: ifnull        12
+       4: aload_0
+       5: ldc           #227                // String __context
+       7: aload_1
+       8: invokevirtual #230                // Method uz.a:(Ljava/lang/String;Lvz;)Lvz;
+      11: pop
+      12: return
+
+  private static void a(uz);
+    Code:
+       0: aload_0
+       1: ldc           #227                // String __context
+       3: invokevirtual #234                // Method uz.r:(Ljava/lang/String;)Lvz;
+       6: pop
+       7: return
+
+  protected void e(dvu);
+    Code:
+       0: aload_0
+       1: getfield      #89                 // Field d:Ljava/util/function/Supplier;
+       4: invokeinterface #68,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #25                 // class eru
+      12: aload_1
+      13: invokeinterface #237,  2          // InterfaceMethod eru.markChunkDone:(Ldvu;)V
+      18: return
+
+  public java.util.concurrent.CompletableFuture<java.lang.Void> b(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: iload_1
+       5: invokevirtual #241                // Method ert.a:(Z)Ljava/util/concurrent/CompletableFuture;
+       8: areturn
+
+  public void close() throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: invokevirtual #246                // Method ert.close:()V
+       7: return
+
+  public err m();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: areturn
+
+  public esa n();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:Lert;
+       4: invokevirtual #250                // Method ert.a:()Lesa;
+       7: areturn
+
+  private static uz b(uz);
+    Code:
+       0: aload_0
+       1: areturn
+}

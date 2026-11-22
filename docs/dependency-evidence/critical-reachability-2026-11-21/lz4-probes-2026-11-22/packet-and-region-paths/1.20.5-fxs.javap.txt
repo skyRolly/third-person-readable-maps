@@ -1,0 +1,423 @@
+Compiled from "SourceFile"
+public class fxs extends dud {
+  static final org.slf4j.Logger a;
+
+  private final duj b;
+
+  private final enl c;
+
+  volatile fxs$a d;
+
+  final fxw e;
+
+  public fxs(fxw, int);
+    Code:
+       0: aload_0
+       1: invokespecial #35                 // Method dud."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #37                 // Field e:Lfxw;
+       9: aload_0
+      10: new           #39                 // class duf
+      13: dup
+      14: aload_1
+      15: new           #41                 // class dbg
+      18: dup
+      19: iconst_0
+      20: iconst_0
+      21: invokespecial #44                 // Method dbg."<init>":(II)V
+      24: aload_1
+      25: invokevirtual #50                 // Method fxw.H_:()Ljw;
+      28: getstatic     #56                 // Field lq.az:Lale;
+      31: invokeinterface #61,  2           // InterfaceMethod jw.d:(Lale;)Ljv;
+      36: getstatic     #65                 // Field ddf.b:Lale;
+      39: invokeinterface #71,  2           // InterfaceMethod jv.g:(Lale;)Lji$c;
+      44: invokespecial #74                 // Method duf."<init>":(Ldbz;Ldbg;Lji;)V
+      47: putfield      #76                 // Field b:Lduj;
+      50: aload_0
+      51: new           #78                 // class enl
+      54: dup
+      55: aload_0
+      56: iconst_1
+      57: aload_1
+      58: invokevirtual #82                 // Method fxw.D_:()Ldvv;
+      61: invokevirtual #87                 // Method dvv.g:()Z
+      64: invokespecial #90                 // Method enl."<init>":(Ldum;ZZ)V
+      67: putfield      #92                 // Field c:Lenl;
+      70: aload_0
+      71: new           #7                  // class fxs$a
+      74: dup
+      75: aload_0
+      76: iload_2
+      77: invokestatic  #95                 // Method b:(I)I
+      80: invokespecial #98                 // Method fxs$a."<init>":(Lfxs;I)V
+      83: putfield      #100                // Field d:Lfxs$a;
+      86: return
+
+  public enl p();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field c:Lenl;
+       4: areturn
+
+  private static boolean a(duj, int, int);
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: iconst_0
+       5: ireturn
+       6: aload_0
+       7: invokevirtual #115                // Method duj.f:()Ldbg;
+      10: astore_3
+      11: aload_3
+      12: getfield      #117                // Field dbg.e:I
+      15: iload_1
+      16: if_icmpne     31
+      19: aload_3
+      20: getfield      #119                // Field dbg.f:I
+      23: iload_2
+      24: if_icmpne     31
+      27: iconst_1
+      28: goto          32
+      31: iconst_0
+      32: ireturn
+
+  public void a(dbg);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: aload_1
+       5: getfield      #117                // Field dbg.e:I
+       8: aload_1
+       9: getfield      #119                // Field dbg.f:I
+      12: invokevirtual #126                // Method fxs$a.b:(II)Z
+      15: ifne          19
+      18: return
+      19: aload_0
+      20: getfield      #100                // Field d:Lfxs$a;
+      23: aload_1
+      24: getfield      #117                // Field dbg.e:I
+      27: aload_1
+      28: getfield      #119                // Field dbg.f:I
+      31: invokevirtual #129                // Method fxs$a.a:(II)I
+      34: istore_2
+      35: aload_0
+      36: getfield      #100                // Field d:Lfxs$a;
+      39: iload_2
+      40: invokevirtual #132                // Method fxs$a.a:(I)Lduj;
+      43: astore_3
+      44: aload_3
+      45: aload_1
+      46: getfield      #117                // Field dbg.e:I
+      49: aload_1
+      50: getfield      #119                // Field dbg.f:I
+      53: invokestatic  #134                // Method a:(Lduj;II)Z
+      56: ifeq          70
+      59: aload_0
+      60: getfield      #100                // Field d:Lfxs$a;
+      63: iload_2
+      64: aload_3
+      65: aconst_null
+      66: invokevirtual #137                // Method fxs$a.a:(ILduj;Lduj;)Lduj;
+      69: pop
+      70: return
+
+  public duj b(int, int, duy, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #126                // Method fxs$a.b:(II)Z
+       9: ifeq          43
+      12: aload_0
+      13: getfield      #100                // Field d:Lfxs$a;
+      16: aload_0
+      17: getfield      #100                // Field d:Lfxs$a;
+      20: iload_1
+      21: iload_2
+      22: invokevirtual #129                // Method fxs$a.a:(II)I
+      25: invokevirtual #132                // Method fxs$a.a:(I)Lduj;
+      28: astore        5
+      30: aload         5
+      32: iload_1
+      33: iload_2
+      34: invokestatic  #134                // Method a:(Lduj;II)Z
+      37: ifeq          43
+      40: aload         5
+      42: areturn
+      43: iload         4
+      45: ifeq          53
+      48: aload_0
+      49: getfield      #76                 // Field b:Lduj;
+      52: areturn
+      53: aconst_null
+      54: areturn
+
+  public dbf q();
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field e:Lfxw;
+       4: areturn
+
+  public void a(int, int, wm);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #126                // Method fxs$a.b:(II)Z
+       9: ifne          31
+      12: getstatic     #146                // Field a:Lorg/slf4j/Logger;
+      15: ldc           #148                // String Ignoring chunk since it\'s not in the view range: {}, {}
+      17: iload_1
+      18: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      21: iload_2
+      22: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: invokeinterface #160,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      30: return
+      31: aload_0
+      32: getfield      #100                // Field d:Lfxs$a;
+      35: iload_1
+      36: iload_2
+      37: invokevirtual #129                // Method fxs$a.a:(II)I
+      40: istore        4
+      42: aload_0
+      43: getfield      #100                // Field d:Lfxs$a;
+      46: getfield      #163                // Field fxs$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      49: iload         4
+      51: invokevirtual #169                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      54: checkcast     #111                // class duj
+      57: astore        5
+      59: aload         5
+      61: iload_1
+      62: iload_2
+      63: invokestatic  #134                // Method a:(Lduj;II)Z
+      66: ifne          90
+      69: getstatic     #146                // Field a:Lorg/slf4j/Logger;
+      72: ldc           #171                // String Ignoring chunk since it\'s not present: {}, {}
+      74: iload_1
+      75: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      78: iload_2
+      79: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      82: invokeinterface #160,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      87: goto          96
+      90: aload         5
+      92: aload_3
+      93: invokevirtual #176                // Method duj.a:(Lwm;)V
+      96: return
+
+  public duj a(int, int, wm, us, java.util.function.Consumer<adt$b>);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: iload_1
+       5: iload_2
+       6: invokevirtual #126                // Method fxs$a.b:(II)Z
+       9: ifne          32
+      12: getstatic     #146                // Field a:Lorg/slf4j/Logger;
+      15: ldc           #148                // String Ignoring chunk since it\'s not in the view range: {}, {}
+      17: iload_1
+      18: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      21: iload_2
+      22: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      25: invokeinterface #160,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      30: aconst_null
+      31: areturn
+      32: aload_0
+      33: getfield      #100                // Field d:Lfxs$a;
+      36: iload_1
+      37: iload_2
+      38: invokevirtual #129                // Method fxs$a.a:(II)I
+      41: istore        6
+      43: aload_0
+      44: getfield      #100                // Field d:Lfxs$a;
+      47: getfield      #163                // Field fxs$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      50: iload         6
+      52: invokevirtual #169                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      55: checkcast     #111                // class duj
+      58: astore        7
+      60: new           #41                 // class dbg
+      63: dup
+      64: iload_1
+      65: iload_2
+      66: invokespecial #44                 // Method dbg."<init>":(II)V
+      69: astore        8
+      71: aload         7
+      73: iload_1
+      74: iload_2
+      75: invokestatic  #134                // Method a:(Lduj;II)Z
+      78: ifne          120
+      81: new           #111                // class duj
+      84: dup
+      85: aload_0
+      86: getfield      #37                 // Field e:Lfxw;
+      89: aload         8
+      91: invokespecial #182                // Method duj."<init>":(Ldbz;Ldbg;)V
+      94: astore        7
+      96: aload         7
+      98: aload_3
+      99: aload         4
+     101: aload         5
+     103: invokevirtual #185                // Method duj.a:(Lwm;Lus;Ljava/util/function/Consumer;)V
+     106: aload_0
+     107: getfield      #100                // Field d:Lfxs$a;
+     110: iload         6
+     112: aload         7
+     114: invokevirtual #188                // Method fxs$a.a:(ILduj;)V
+     117: goto          130
+     120: aload         7
+     122: aload_3
+     123: aload         4
+     125: aload         5
+     127: invokevirtual #185                // Method duj.a:(Lwm;Lus;Ljava/util/function/Consumer;)V
+     130: aload_0
+     131: getfield      #37                 // Field e:Lfxw;
+     134: aload         8
+     136: invokevirtual #194                // Method fxw.a:(Ldbg;)V
+     139: aload         7
+     141: areturn
+
+  public void a(java.util.function.BooleanSupplier, boolean);
+    Code:
+       0: return
+
+  public void d(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: iload_1
+       5: putfield      #203                // Field fxs$a.e:I
+       8: aload_0
+       9: getfield      #100                // Field d:Lfxs$a;
+      12: iload_2
+      13: putfield      #204                // Field fxs$a.f:I
+      16: return
+
+  public void a(int);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: getfield      #207                // Field fxs$a.c:I
+       7: istore_2
+       8: iload_1
+       9: invokestatic  #95                 // Method b:(I)I
+      12: istore_3
+      13: iload_2
+      14: iload_3
+      15: if_icmpeq     152
+      18: new           #7                  // class fxs$a
+      21: dup
+      22: aload_0
+      23: iload_3
+      24: invokespecial #98                 // Method fxs$a."<init>":(Lfxs;I)V
+      27: astore        4
+      29: aload         4
+      31: aload_0
+      32: getfield      #100                // Field d:Lfxs$a;
+      35: getfield      #203                // Field fxs$a.e:I
+      38: putfield      #203                // Field fxs$a.e:I
+      41: aload         4
+      43: aload_0
+      44: getfield      #100                // Field d:Lfxs$a;
+      47: getfield      #204                // Field fxs$a.f:I
+      50: putfield      #204                // Field fxs$a.f:I
+      53: iconst_0
+      54: istore        5
+      56: iload         5
+      58: aload_0
+      59: getfield      #100                // Field d:Lfxs$a;
+      62: getfield      #163                // Field fxs$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      65: invokevirtual #211                // Method java/util/concurrent/atomic/AtomicReferenceArray.length:()I
+      68: if_icmpge     146
+      71: aload_0
+      72: getfield      #100                // Field d:Lfxs$a;
+      75: getfield      #163                // Field fxs$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+      78: iload         5
+      80: invokevirtual #169                // Method java/util/concurrent/atomic/AtomicReferenceArray.get:(I)Ljava/lang/Object;
+      83: checkcast     #111                // class duj
+      86: astore        6
+      88: aload         6
+      90: ifnull        140
+      93: aload         6
+      95: invokevirtual #115                // Method duj.f:()Ldbg;
+      98: astore        7
+     100: aload         4
+     102: aload         7
+     104: getfield      #117                // Field dbg.e:I
+     107: aload         7
+     109: getfield      #119                // Field dbg.f:I
+     112: invokevirtual #126                // Method fxs$a.b:(II)Z
+     115: ifeq          140
+     118: aload         4
+     120: aload         4
+     122: aload         7
+     124: getfield      #117                // Field dbg.e:I
+     127: aload         7
+     129: getfield      #119                // Field dbg.f:I
+     132: invokevirtual #129                // Method fxs$a.a:(II)I
+     135: aload         6
+     137: invokevirtual #188                // Method fxs$a.a:(ILduj;)V
+     140: iinc          5, 1
+     143: goto          56
+     146: aload_0
+     147: aload         4
+     149: putfield      #100                // Field d:Lfxs$a;
+     152: return
+
+  private static int b(int);
+    Code:
+       0: iconst_2
+       1: iload_0
+       2: invokestatic  #216                // Method java/lang/Math.max:(II)I
+       5: iconst_3
+       6: iadd
+       7: ireturn
+
+  public java.lang.String e();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: getfield      #163                // Field fxs$a.b:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+       7: invokevirtual #211                // Method java/util/concurrent/atomic/AtomicReferenceArray.length:()I
+      10: aload_0
+      11: invokevirtual #220                // Method j:()I
+      14: invokedynamic #232,  0            // InvokeDynamic #0:makeConcatWithConstants:(II)Ljava/lang/String;
+      19: areturn
+
+  public int j();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field d:Lfxs$a;
+       4: getfield      #234                // Field fxs$a.g:I
+       7: ireturn
+
+  public void a(dci, kb);
+    Code:
+       0: invokestatic  #241                // Method ffg.Q:()Lffg;
+       3: getfield      #244                // Field ffg.f:Lgdn;
+       6: aload_2
+       7: invokevirtual #248                // Method kb.a:()I
+      10: aload_2
+      11: invokevirtual #250                // Method kb.b:()I
+      14: aload_2
+      15: invokevirtual #252                // Method kb.c:()I
+      18: invokevirtual #257                // Method gdn.b:(III)V
+      21: return
+
+  public dtz a(int, int, duy, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: aload_3
+       4: iload         4
+       6: invokevirtual #262                // Method b:(IILduy;Z)Lduj;
+       9: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #269                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #146                // Field a:Lorg/slf4j/Logger;
+       6: return
+}

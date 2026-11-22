@@ -76,7 +76,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '21.0.13+9'
-      - name: Check local-only Log4j and Netty behavior
+      - name: Check local-only Log4j, Netty, and LZ4 behavior
         run: python scripts/probe_dependency_reachability.py --cache .probe-cache --download --output reachability-probes.json
       - name: Retain experiment results
         if: always()
