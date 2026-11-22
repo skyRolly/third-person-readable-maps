@@ -6,6 +6,7 @@ import hashlib
 from io import BytesIO, StringIO
 import inspect
 import json
+import os
 from pathlib import Path
 import socket
 import sys
@@ -158,6 +159,20 @@ class KnownHitsCacheCliTests(unittest.TestCase):
             invalid.write_bytes(b'not a directory')
             self.assert_invalid(fixture, 'Netty cache is not a directory', cache=invalid)
             self.assert_invalid(fixture, 'network cache paths are not allowed', cache='//server/share')
+
+    def test_windows_extended_local_path_is_distinct_from_unc_paths(self):
+        self.assertFalse(sni.is_network_cache_path(r'C:\cache'))
+        self.assertFalse(sni.is_network_cache_path(r'\\?\C:\cache'))
+        self.assertTrue(sni.is_network_cache_path(r'\\server\share\cache'))
+        self.assertTrue(sni.is_network_cache_path(r'\\?\UNC\server\share\cache'))
+        if os.name == 'nt':
+            with tempfile.TemporaryDirectory() as directory:
+                fixture = self.fixture(Path(directory))
+                self.assert_valid(fixture)
+                extended = '\\\\?\\' + str(fixture['root'].resolve())
+                result, error, reads = self.invoke(fixture, cache=extended)
+                self.assertEqual(result, 0, error)
+                self.assertEqual(len(reads), 6)
 
     def test_acquisition_verifies_bytes_and_cleans_partial_cache(self):
         with tempfile.TemporaryDirectory() as directory:

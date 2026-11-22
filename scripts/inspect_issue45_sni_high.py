@@ -185,9 +185,19 @@ def verify_known_cached_library(raw, library, known):
                     'known cached ClientHello literal or class digest differs')
 
 
+def is_network_cache_path(path):
+    value = str(path).replace('/', '\\')
+    if value.startswith('\\\\?\\'):
+        # Windows extended local drive paths (\\?\C:\...) are not UNC shares.
+        tail = value[4:]
+        return not (len(tail) >= 3 and tail[0].isascii() and tail[0].isalpha() and
+                    tail[1:3] == ':\\')
+    return value.startswith('\\\\')
+
+
 def verify_known_hits_cache(cache, catalog, known, scan):
     """Verify all six SHA-1-keyed cache files against retained artifact data."""
-    require(not str(cache).startswith(('\\\\', '//')), 'network cache paths are not allowed')
+    require(not is_network_cache_path(cache), 'network cache paths are not allowed')
     root = cache.resolve()
     require(root.is_dir(), 'Netty cache is not a directory')
     artifacts = scan['runtime_classpath_scan']['all_artifacts']
