@@ -22,6 +22,9 @@ def read_json(path):
 
 
 def resolve_repo_path(value):
+    # Reports produced on Windows contain Windows separators; accept those
+    # when validating an artifact on Linux, while retaining the root check.
+    value = value.replace('\\', '/')
     path = (ROOT / value).resolve()
     if not path.is_relative_to(ROOT.resolve()):
         raise ValueError('report references a path outside the repository: ' + value)
