@@ -1,5 +1,12 @@
 # Security advisory ledger
 
+The [High Netty SNI follow-up](worklogs/issue-45-netty-sni-high-2026-11-22.md)
+adds source-bound investigation of `GHSA-x4gw-5cx5-pgmh` for 12 occurrences.
+The [current priority register](dependency-evidence/issue45-netty-sni-high-2026-11-22/priority-register-v2.json)
+now links focused evidence for 105 Critical/High occurrences across 21 advisory
+IDs. All 490 matches remain blocking; 94 High occurrences remain outside the
+focused investigations. No new non-applicability or risk acceptance is claimed.
+
 The [2026-11-22 live follow-up](worklogs/issue-45-live-validation-2026-11-22.md) independently re-resolved and rescanned all 13 source groups. Its [Critical/High register](dependency-evidence/issue45-live-source-2026-11-22/priority-register.json) preserves source commits, audit archive identities, scopes, affected ranges and the existing dispositions. All 490 findings remain blocking; no new risk acceptance or dependency fix is asserted.
 
 The [2026-11-21 exact-source finding index](dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json), [source-bound critical/high investigation](worklogs/issue-45-critical-reachability-2026-11-21.md), and [structured disposition evidence](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) preserve candidate and integrated scans separately. All 385 candidate and 105 integrated matches remain failing. New component and pipeline evidence does not remove a scanner occurrence, authorize risk acceptance, or provide release clearance.
