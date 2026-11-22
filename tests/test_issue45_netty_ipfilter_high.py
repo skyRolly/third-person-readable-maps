@@ -3,6 +3,7 @@ import copy
 from contextlib import redirect_stderr, redirect_stdout
 import hashlib
 from io import BytesIO, StringIO
+import inspect
 import json
 from pathlib import Path
 import sys
@@ -198,6 +199,23 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
         self.assertEqual(forged_known, forged_scan)  # the former cross-record comparison accepted this
         with self.assertRaisesRegex(ValueError, 'downloaded Netty class observations differ'):
             ipfilter.verify_known_library(raw, library, forged_known, count)
+
+    def test_cli_requires_independent_download_verification_when_requested(self):
+        source = inspect.getsource(ipfilter.main)
+        block = ("        if args.verify_known_download:\n"
+                 "            verify_known_downloads(catalog, prior, known)\n"
+                 "            print('Verified 66 known IP-filter class hits against six Mojang JARs')\n")
+        self.assertEqual(source.count(block), 1)
+        mutant = {}
+        exec(compile(source.replace(block, ''), '<download-check-removed>', 'exec'),
+             ipfilter.__dict__, mutant)
+        out, err = StringIO(), StringIO()
+        with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py', '--verify-known-download']), \
+             patch.object(ipfilter, 'verify_known_downloads', side_effect=ValueError('independent check failed')), \
+             redirect_stdout(out), redirect_stderr(err):
+            self.assertEqual(mutant['main'](), 0)
+            self.assertEqual(ipfilter.main(), 1)
+        self.assertIn('independent check failed', err.getvalue())
 
     def test_download_rejects_untrusted_urls_and_redirects_before_following(self):
         with patch.object(ipfilter, 'build_opener') as opener:
