@@ -10,6 +10,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,10 @@ spec = importlib.util.spec_from_file_location('pr54_priority_export',
     ROOT / 'tests/fixtures/issue45_pr54_priority_export.py')
 legacy = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(legacy)
+prior_spec = importlib.util.spec_from_file_location('pr55_focused_review',
+    ROOT / 'tests/fixtures/issue45_pr55_focused_review.py')
+prior = importlib.util.module_from_spec(prior_spec)
+prior_spec.loader.exec_module(prior)
 
 EVIDENCE = 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
 INDEX = 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json'
@@ -94,6 +99,27 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
                     match['scopes'] = sorted(s for s, items in report['inventories'].items() if purl in items)
         self.mutate_report('candidate-dependency-audit-0', edit)
         self.assert_legacy_accepts_but_current_rejects('focused review stale: dependency scopes')
+
+    def test_changed_runtime_manifest_invalidates_prior_review(self):
+        self.mutate_report('candidate-dependency-audit-0',
+            lambda report: report['runtime_manifests']['1.14'].update(sha1='0' * 40))
+        old_index, _, _ = live.historic(self.root)
+        live.verify_live(self.live, old_index)
+        # The merged PR #55 check accepted the same source/scopes/fingerprint.
+        with patch.object(live, 'validate_focused_review', prior.validate_focused_review):
+            self.assertTrue(live.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'focused review stale: runtime manifest identity'):
+            live.priority_register(self.live, self.root)
+
+    def test_missing_reviewed_runtime_manifest_is_rejected(self):
+        def edit(evidence):
+            finding = next(row for row in evidence['findings'] if row['advisory_id'] == ADVISORY)
+            finding['occurrences'][0]['minecraft_artifacts'].pop()
+        self.mutate_focused(edit)
+        with patch.object(live, 'validate_focused_review', prior.validate_focused_review):
+            self.assertTrue(live.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'focused review stale: runtime manifest coverage'):
+            live.priority_register(self.live, self.root)
 
     def test_changed_advisory_fingerprint_invalidates_review(self):
         def edit(report):
@@ -195,6 +221,26 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
             row = next(item for item in report['advisories'] if item['advisory_id'] == ADVISORY)
             return row['focused_evidence'], row['reviewer'], row['review_date'], row['follow_up']
         self.assertEqual(provenance(before), provenance(after))
+
+    def test_mixed_administrative_timestamps_preserve_review_and_source_values(self):
+        before = live.priority_register(self.live, self.root)
+        self.mutate_report('candidate-dependency-audit-0', lambda report:
+            report['advisories'][ADVISORY].update(modified='2026-11-23T00:00:00Z'))
+        # The former exporter rejected mixed timestamps before checking review applicability.
+        with self.assertRaisesRegex(ValueError, 'inconsistent advisory metadata'):
+            legacy.priority_register(self.live, self.root)
+        after = live.priority_register(self.live, self.root)
+        def focused(report):
+            return next(row for row in report['advisories'] if row['advisory_id'] == ADVISORY)
+        old, new = focused(before), focused(after)
+        self.assertEqual((new['focused_evidence'], new['reviewer'], new['review_date'], new['follow_up']),
+                         (old['focused_evidence'], old['reviewer'], old['review_date'], old['follow_up']))
+        self.assertIsNone(new['modified'])
+        self.assertEqual(new['modified_by_source']['candidate|1.14-1.14.4'], '2026-11-23T00:00:00Z')
+        self.assertEqual(len(new['modified_by_source']), 3)
+        scan = live.reconcile(self.live, self.root)
+        self.assertIn('candidate|1.14-1.14.4|' + ADVISORY, scan['metadata_changed'])
+        self.assertEqual(scan['failing_occurrences'], 490)
 
 
 if __name__ == '__main__':
