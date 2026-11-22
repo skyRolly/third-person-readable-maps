@@ -20,7 +20,13 @@ The [historical-game logging survey and critical disposition record](dependency-
 
 ## Source-bound critical and focused high evidence — 2026-11-21
 
-The [current source-bound record](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) adds exact package versions, source SHAs, manifests, artifact hashes, local test results, and proof gaps for all four Critical advisory IDs and six focused High advisory IDs. The matching [artifact and probe files](dependency-evidence/critical-reachability-2026-11-21/) retain source reports and checksums. The record covers 22 Critical and 23 focused High occurrences; all remain blocking. No finding is classified as Fixed or Not applicable, and no risk is accepted.
+The initial 2026-11-21 source-bound snapshot covered 22 Critical and 23 focused High occurrences. Its source reports and checksums remain preserved.
+
+## Jackson runtime reachability follow-up — 2026-11-22
+
+The [updated source-bound record](dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json) adds exact Mojang metadata, Minecraft client and Log4j artifact identities, client call-path observations, MSAL bytecode scans, and bounded parser probes for seven Jackson High advisories. The [Jackson/MSAL and Log4j analysis](dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json) binds 21 occurrences to candidate source SHAs. The current focused record covers 22 Critical and 44 High occurrences; all 66 remain blocking. The full inventory remains 490 failing occurrences. No finding is Fixed, Not applicable, or Risk accepted.
+
+The vanilla integrated server returns `TextFilter.DUMMY`; the optional dedicated-server text-filter path can reach MSAL Jackson parsing when configured. Log4j Core also exposes Jackson-backed parser and JSON-configuration APIs, although Mojang's captured default client XML does not select them. The report records unresolved custom-launcher and third-party-mod paths. No mod-controlled upgrade exists and no Minecraft-managed library was overridden.
 
 The additional [Commons Compress reachability record](dependency-evidence/critical-reachability-2026-11-21/commons-compress-reachability-2026-11-21.json) traces the vulnerable `TarArchiveInputStream` path through Mojang's Realms runtime library for Minecraft 1.14–1.14.3, and through the client binary for 1.14.4–1.17.1. The optional download action receives a Realms API-provided archive, but exploit-specific TAR header control has not been established. Related 7z and ZIP API searches found no direct vanilla call sites; those findings remain blocking because the inspection is not a full call graph and does not include arbitrary mods.
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "observed_on": "2026-11-21",
+  "observed_on": "2026-11-22",
   "status": "incomplete-investigation-all-findings-remain-blocking",
   "security_clearance": false,
   "risk_accepted": false,
@@ -45,7 +45,7 @@
   "critical_occurrences_in_scope": 22,
   "high_occurrences_in_scope": 177,
   "targeted_critical_occurrences": 22,
-  "targeted_high_occurrences": 23,
+  "targeted_high_occurrences": 44,
   "findings": [
     {
       "advisory_id": "GHSA-c4c3-7fpv-j4q5",
@@ -4279,6 +4279,1846 @@
         "Review any game parsing path and untrusted input source before assigning Not applicable.",
         "Request a game-side Commons Compress update for affected game lines; do not override it in the mod."
       ]
+    },
+    {
+      "advisory_id": "GHSA-7hhh-6rmp-j9qf",
+      "aliases": [
+        "CVE-2026-89425"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-7hhh-6rmp-j9qf",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-core/security-advisories/GHSA-7hhh-6rmp-j9qf",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": ">= 2.19.0, <= 2.21.6",
+          "first_patched_version": "2.21.7"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": ">= 2.22.0, <= 2.22.2",
+          "first_patched_version": "2.22.3"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": ">= 2.8.0, <= 2.18.10",
+          "first_patched_version": "2.18.11"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "b4306a05e8d6758c90bd291b6aa99d4cc60880ad3e19434883cb648cc200b424",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "b4306a05e8d6758c90bd291b6aa99d4cc60880ad3e19434883cb648cc200b424",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "b4306a05e8d6758c90bd291b6aa99d4cc60880ad3e19434883cb648cc200b424",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "com.fasterxml.jackson.core.json.UTF8DataInputJsonParser._reportInvalidToken; reached only through JsonFactory.createParser(DataInput)",
+      "actual_call_path": "MSAL JsonHelper in the observed Minecraft route calls ObjectMapper.readValue(String, Class) and readTree(String). No MSAL bytecode references DataInput or UTF8DataInputJsonParser; Minecraft client classes also have no direct Jackson references. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "MSAL JsonHelper in the observed Minecraft route calls ObjectMapper.readValue(String, Class) and readTree(String). No MSAL bytecode references DataInput or UTF8DataInputJsonParser; Minecraft client classes also have no direct Jackson references. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "The direct first-party MSAL route does not use DataInput. Third-party mods, custom launchers, reflection, and other runtime callers were not exhaustively inventoried. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-cxp5-3px4-pw24",
+      "aliases": [
+        "CVE-2026-91777"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-cxp5-3px4-pw24",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-databind/security-advisories/GHSA-cxp5-3px4-pw24",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.19.0, <= 2.21.6",
+          "first_patched_version": "2.21.7"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.5.0, <= 2.18.10",
+          "first_patched_version": "2.18.11"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.22.0, <= 2.22.2",
+          "first_patched_version": "2.22.3"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "06d7d00c4e35aa8d6da6709436dbf93d8038c206821879423d8461f1e627f446",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "06d7d00c4e35aa8d6da6709436dbf93d8038c206821879423d8461f1e627f446",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "06d7d00c4e35aa8d6da6709436dbf93d8038c206821879423d8461f1e627f446",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "CollectionDeserializer.CollectionReferringAccumulator.resolveForwardReference and the corresponding map path; requires @JsonIdentityInfo collection/map models with unresolved references resolved in reverse order.",
+      "actual_call_path": "Both manifest MSAL versions use a default ObjectMapper for typed DTOs and JsonNode; scanned MSAL classes have no JsonIdentityInfo annotation descriptor or annotation use. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "Both manifest MSAL versions use a default ObjectMapper for typed DTOs and JsonNode; scanned MSAL classes have no JsonIdentityInfo annotation descriptor or annotation use. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "Other installed mods or launcher-added code may define identity-enabled models using the same process classpath. That environment was not inventoried. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-h46c-h94j-95f3",
+      "aliases": [
+        "CVE-2025-52999"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-h46c-h94j-95f3",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-core/security-advisories/GHSA-h46c-h94j-95f3",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": "< 2.15.0",
+          "first_patched_version": "2.15.0"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "d649ebb6a2d2bfeeb8f3596599f9111747826235cebf4abe19115966aa9845c7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "d649ebb6a2d2bfeeb8f3596599f9111747826235cebf4abe19115966aa9845c7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "d649ebb6a2d2bfeeb8f3596599f9111747826235cebf4abe19115966aa9845c7",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "Jackson synchronous JSON parser nested-container recursion; fixed upstream by StreamReadConstraints with default nesting depth 1000 in 2.15.0.",
+      "actual_call_path": "When optional dedicated-server text filtering is enabled, MSAL parses Microsoft identity discovery/token JSON through ObjectMapper.readValue(String, Class) and readTree(String). The integrated server uses MinecraftServer.createTextFilterForPlayer(), which returns TextFilter.DUMMY; it does not create PlayerSafetyServiceTextFilter. The identity endpoint is HTTPS login.microsoftonline.com; gameplay chat is encoded and decoded in ServerTextFilter using Gson, not Jackson. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "When optional dedicated-server text filtering is enabled, MSAL parses Microsoft identity discovery/token JSON through ObjectMapper.readValue(String, Class) and readTree(String). The integrated server uses MinecraftServer.createTextFilterForPlayer(), which returns TextFilter.DUMMY; it does not create PlayerSafetyServiceTextFilter. The identity endpoint is HTTPS login.microsoftonline.com; gameplay chat is encoded and decoded in ServerTextFilter using Gson, not Jackson. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "The configured identity provider response path is visible, but control of those responses by a remote attacker, server owner configuration in practice, and all custom launcher trust-store/other-mod behavior are not established. The default identity configuration and empty text-filter config reduce default reachability but are not general clearance. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-j3rv-43j4-c7qm",
+      "aliases": [
+        "CVE-2026-54512"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-j3rv-43j4-c7qm",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-databind/security-advisories/GHSA-j3rv-43j4-c7qm",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.10.0, <= 2.18.7",
+          "first_patched_version": "2.18.8"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 3.0.0, <= 3.1.3",
+          "first_patched_version": "3.1.4"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.19.0, <= 2.21.3",
+          "first_patched_version": "2.21.4"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "802c6ab25e04a33d9eeae8bd546798deedaf3af28fd42985d7ef280084ac50b6",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "802c6ab25e04a33d9eeae8bd546798deedaf3af28fd42985d7ef280084ac50b6",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "802c6ab25e04a33d9eeae8bd546798deedaf3af28fd42985d7ef280084ac50b6",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "PolymorphicTypeValidator generic type parameter validation; requires polymorphic typing and a configured PTV.",
+      "actual_call_path": "MSAL JsonHelper constructs a default ObjectMapper and configures FAIL_ON_UNKNOWN_PROPERTIES, ALLOW_UNQUOTED_CONTROL_CHARS, and NON_NULL only. Full MSAL bytecode scan found no activateDefaultTyping, enableDefaultTyping, or PolymorphicTypeValidator use. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "MSAL JsonHelper constructs a default ObjectMapper and configures FAIL_ON_UNKNOWN_PROPERTIES, ALLOW_UNQUOTED_CONTROL_CHARS, and NON_NULL only. Full MSAL bytecode scan found no activateDefaultTyping, enableDefaultTyping, or PolymorphicTypeValidator use. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "Other mods or custom launchers may alter Jackson configuration or call APIs; runtime-wide mapper mutation/reflection by arbitrary installed code is outside this first-party scan. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-r7wm-3cxj-wff9",
+      "aliases": [
+        "CVE-2026-68494"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-core",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-r7wm-3cxj-wff9",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-core/security-advisories/GHSA-r7wm-3cxj-wff9",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": "< 2.18.8",
+          "first_patched_version": "2.18.8"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-core",
+          "vulnerable_version_range": ">= 2.19.0, < 2.21.4",
+          "first_patched_version": "2.21.4"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "069a1ec25cbaf8ddab80994ec402a8de28bb3b39d77a65b4bc35554a589d90db",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "069a1ec25cbaf8ddab80994ec402a8de28bb3b39d77a65b4bc35554a589d90db",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.13.4",
+          "package_version": "2.13.4",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+          "dependency_artifact_sha1": "0cf934c681294b97ef6d80082faeefbe1edadf56",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-core/2.13.4/jackson-core-2.13.4.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "069a1ec25cbaf8ddab80994ec402a8de28bb3b39d77a65b4bc35554a589d90db",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "NonBlockingJsonParserBase async number accumulation; the advisory concerns chunked feeds through createNonBlockingByteArrayParser or createNonBlockingByteBufferParser.",
+      "actual_call_path": "MSAL JsonHelper only calls synchronous ObjectMapper.readValue(String, Class) and readTree(String). A full bytecode scan of both manifest MSAL versions found no async parser creation call. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "MSAL JsonHelper only calls synchronous ObjectMapper.readValue(String, Class) and readTree(String). A full bytecode scan of both manifest MSAL versions found no async parser creation call. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "Third-party mods and other classpath callers may use async parsing. No complete runtime call graph or mod inventory is available. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-rmj7-2vxq-3g9f",
+      "aliases": [
+        "CVE-2026-54513"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-rmj7-2vxq-3g9f",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-databind/security-advisories/GHSA-rmj7-2vxq-3g9f",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.10.0, < 2.18.8",
+          "first_patched_version": "2.18.8"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.19.0, < 2.21.4",
+          "first_patched_version": "2.21.4"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 3.0.0, < 3.1.4",
+          "first_patched_version": "3.1.4"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "3ebb82179aa4cd5885cdc4bf6497c30e20aeaf7b657c9ba4f51fcf65131b6607",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "3ebb82179aa4cd5885cdc4bf6497c30e20aeaf7b657c9ba4f51fcf65131b6607",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "3ebb82179aa4cd5885cdc4bf6497c30e20aeaf7b657c9ba4f51fcf65131b6607",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "BasicPolymorphicTypeValidator.Builder.allowIfSubTypeIsArray; requires a PTV using the array allow rule and attacker-controlled polymorphic input.",
+      "actual_call_path": "MSAL JsonHelper uses a default ObjectMapper with no PTV, no default typing activation, and no BasicPolymorphicTypeValidator references in either exact manifest MSAL artifact. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "MSAL JsonHelper uses a default ObjectMapper with no PTV, no default typing activation, and no BasicPolymorphicTypeValidator references in either exact manifest MSAL artifact. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "External mod/launcher code could use or mutate Jackson independently; not inventoried. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
+    },
+    {
+      "advisory_id": "GHSA-wv8q-qhhj-9h54",
+      "aliases": [
+        "CVE-2026-91776"
+      ],
+      "severity": "HIGH",
+      "component": "com.fasterxml.jackson.core:jackson-databind",
+      "upstream_authority": "https://api.github.com/advisories/GHSA-wv8q-qhhj-9h54",
+      "upstream_advisory_authority": "https://api.github.com/repos/FasterXML/jackson-databind/security-advisories/GHSA-wv8q-qhhj-9h54",
+      "upstream_affected_ranges": [
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.0.0, <= 2.18.10",
+          "first_patched_version": "2.18.11"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.19.0, <= 2.21.6",
+          "first_patched_version": "2.21.7"
+        },
+        {
+          "package": "com.fasterxml.jackson.core:jackson-databind",
+          "vulnerable_version_range": ">= 2.22.0, <= 2.22.2",
+          "first_patched_version": "2.22.3"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.21.2-1.21.3",
+        "1.21.4-1.21.8",
+        "1.21.9-1.21.10"
+      ],
+      "occurrences": [
+        {
+          "source_kind": "candidate",
+          "group": "1.21.2-1.21.3",
+          "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d",
+          "minecraft_versions": [
+            "1.21.2",
+            "1.21.3"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.2",
+              "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+              "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+              "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c"
+            },
+            {
+              "minecraft_version": "1.21.3",
+              "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+              "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+              "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.2",
+            "runtime/1.21.3"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-7/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "72d7d3ca5839073ceb12fd900227c908c50e8c247f641a3f685a67f34913a69a"
+          },
+          "fingerprint": "237fe46e0ab5dd8aa91c039261a39cb232ddfd538ade64356fed5ae3d77af76d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.2",
+              "1.21.3"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.4-1.21.8",
+          "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c",
+          "minecraft_versions": [
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.4",
+              "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+              "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+              "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e"
+            },
+            {
+              "minecraft_version": "1.21.5",
+              "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+              "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+              "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11"
+            },
+            {
+              "minecraft_version": "1.21.6",
+              "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+              "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+              "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a"
+            },
+            {
+              "minecraft_version": "1.21.7",
+              "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+              "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+              "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9"
+            },
+            {
+              "minecraft_version": "1.21.8",
+              "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+              "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+              "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.4",
+            "runtime/1.21.5",
+            "runtime/1.21.6",
+            "runtime/1.21.7",
+            "runtime/1.21.8"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-8/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b874b1e685ba72161443f1217f97b65d4dd5d598edb6611361ffd2c6225fd5a9"
+          },
+          "fingerprint": "237fe46e0ab5dd8aa91c039261a39cb232ddfd538ade64356fed5ae3d77af76d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.4",
+              "1.21.5",
+              "1.21.6",
+              "1.21.7",
+              "1.21.8"
+            ]
+          }
+        },
+        {
+          "source_kind": "candidate",
+          "group": "1.21.9-1.21.10",
+          "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+          "minecraft_versions": [
+            "1.21.10",
+            "1.21.9"
+          ],
+          "minecraft_artifacts": [
+            {
+              "minecraft_version": "1.21.10",
+              "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+              "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+              "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482"
+            },
+            {
+              "minecraft_version": "1.21.9",
+              "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+              "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+              "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b"
+            }
+          ],
+          "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.13.4.2",
+          "package_version": "2.13.4.2",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.21.10",
+            "runtime/1.21.9"
+          ],
+          "dependency_owner": "Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)",
+          "scope_interpretation": "Mojang manifest runtime scopes identify the game-provided package. The Gradle scope is the matching resolved game-library graph and is not a Gradle plugin/build-tool declaration.",
+          "dependency_artifact_sha256": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b",
+          "dependency_artifact_sha1": "325c06bdfeb628cfb80ebaaf1a26cc1eb558a585",
+          "dependency_manifest_artifact_url": "https://libraries.minecraft.net/com/fasterxml/jackson/core/jackson-databind/2.13.4.2/jackson-databind-2.13.4.2.jar",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-9/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "5ba06f360393c7bc1852cdb927cc3f93530d73392300e000b15bdf8e78a1f5c7"
+          },
+          "fingerprint": "237fe46e0ab5dd8aa91c039261a39cb232ddfd538ade64356fed5ae3d77af76d",
+          "severity": "HIGH",
+          "disposition": "Further investigation",
+          "failing": true,
+          "risk_accepted": false,
+          "release_blocking": true,
+          "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+          "reviewer": "Codex automated technical investigation; independent human review pending",
+          "review_date": "2026-11-22",
+          "follow_up_requirements": [
+            "Keep this occurrence blocking until a compatible Minecraft-managed library update or a complete supported-runtime proof of non-reachability is reviewed.",
+            "Inventory supported launchers, installed mods, and reflective Jackson callers before narrowing the package-wide disposition."
+          ],
+          "dependency_artifact_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/high-family-inspection.json.gz",
+            "minecraft_versions": [
+              "1.21.10",
+              "1.21.9"
+            ]
+          }
+        }
+      ],
+      "vulnerable_api_or_class": "TypeDeserializerBase._findDeserializer unknown name-based type ID cache; requires @JsonTypeInfo(use=NAME, defaultImpl=...) or equivalent name-based polymorphic fallback.",
+      "actual_call_path": "MSAL DTO classes and JsonHelper contain no JsonTypeInfo annotation descriptor and JsonHelper does not enable default typing. The typed DTO and JsonNode parsing calls do not establish this polymorphic fallback. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "reachability_finding": "MSAL DTO classes and JsonHelper contain no JsonTypeInfo annotation descriptor and JsonHelper does not enable default typing. The typed DTO and JsonNode parsing calls do not establish this polymorphic fallback. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
+      "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
+      "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
+      "remaining_uncertainty": "Other runtime code may use name-based polymorphic default implementations with attacker-influenced IDs; installed mods and custom launcher code are outside scope. Exact production launcher classpaths, third-party mod callers, and any runtime reflective mutation of Jackson are not exhaustively captured.",
+      "confidence": "High for exact official artifact identity and observed first-party bytecode call relationships; moderate for the first-party configuration boundary; low for conclusions about arbitrary modded launchers/processes.",
+      "disposition": "Further investigation",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "responsible_owner": "skyRolly (project security decision), Mojang (game-managed dependency update), FasterXML (library security fixes)",
+      "reviewer": "Codex automated technical investigation; independent human review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Obtain exact supported launcher classpaths and a complete installed-mod inventory for release targets.",
+        "Ask Mojang to update affected game-managed Jackson/MSAL versions or provide a supported compatibility statement.",
+        "For GHSA-h46c-h94j-95f3, determine whether a controllable identity response can reach MSAL JSON parsing under supported configurations.",
+        "Keep all seven findings release-blocking; no risk acceptance or scanner suppression is authorized."
+      ],
+      "supplemental_source_bound_evidence": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+          "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338"
+        }
+      ]
     }
   ],
   "component_probe_run": {
@@ -4406,8 +6246,8 @@
     },
     {
       "path": "scripts/validate_critical_reachability_evidence.py",
-      "sha256": "25f6edbc38533b979628c0ed81346738ef1a2ed91bf3c57992818d278a530147",
-      "size_bytes": 28177
+      "sha256": "b32bc3924d581eba50cfd49bbe9c9c17ac71a76c7bb3c108766fae63ab0d05c2",
+      "size_bytes": 48281
     },
     {
       "path": "scripts/verify_gradle_wrapper.py",
@@ -4459,6 +6299,86 @@
       "path": "tests/fixtures/critical_reachability/ChatJndiProbe.java",
       "sha256": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb",
       "size_bytes": 910
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+      "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338",
+      "size_bytes": 297306
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.10.json",
+      "sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651",
+      "size_bytes": 44496
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.2.json",
+      "sha256": "d2e96a066101672b163c908822f76989e5486499c2911678d6e62166ee36f570",
+      "size_bytes": 43728
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.3.json",
+      "sha256": "0cd08d9da800ecd395f25f1878afadfdfd2197397882db1132d4a6b6c32de68a",
+      "size_bytes": 43728
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.4.json",
+      "sha256": "767a39dd8282a858786d401df139c99110390373e3212e3d2be859634e89890d",
+      "size_bytes": 43778
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.5.json",
+      "sha256": "c82e3e9f8c8b3b9350e3fb6051cd0080bc6a0c257ab7deeaaefb57138e6c6b67",
+      "size_bytes": 43783
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.6.json",
+      "sha256": "73491945279675bb387c95b98838adac4146148df6bc6ad773406e8c1e3cd6f2",
+      "size_bytes": 43783
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.7.json",
+      "sha256": "e91db2a552a2e9b64e629ab18635e397b1ec2b4283820674929a3e7beb1201aa",
+      "size_bytes": 43783
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.8.json",
+      "sha256": "9ef73126c6b2e43fdae1da93519a4f89a9e5cbaf59d0f7617594fdc885f96f8b",
+      "size_bytes": 43783
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/1.21.9.json",
+      "sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b",
+      "size_bytes": 44495
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-metadata/version_manifest_v2.json",
+      "sha256": "ce1ef05314b872054c1d9b5abb7c9b9fabbfbe5893e0aa89fadcb3d676506e9e",
+      "size_bytes": 279726
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-logging-client-1.21.2.xml",
+      "sha256": "4a73b65f9ba949bdc90d408d49edc984ff7841759b45c86c3e54febe646d7279",
+      "size_bytes": 1073
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonDepthProbe.java",
+      "sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "size_bytes": 920
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonFixedDepthProbe.java",
+      "sha256": "6d9119353321c8787c6975c2a110444f2e8c61b8e5798e44f6b88163fb97615b",
+      "size_bytes": 685
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/JacksonObjectDepthProbe.java",
+      "sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "size_bytes": 663
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-probes-2026-11-22/jackson-depth-probe-results-2026-11-22.json",
+      "sha256": "9979f19f93e1432f6247024ee0c1ae041199f0ce00711051c4a8f2454796ab31",
+      "size_bytes": 7389
     }
   ],
   "limitations": [
@@ -4521,5 +6441,37 @@
     "all_passed": true,
     "security_clearance": false,
     "no_network_provider_used": true
+  },
+  "jackson_msal_runtime_reachability": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/jackson-msal-runtime-reachability-2026-11-22.json",
+    "sha256": "2ef21a59181074014d53c2768ef441e719525938aecc314d7046250b21d67338",
+    "advisories": [
+      "GHSA-7hhh-6rmp-j9qf",
+      "GHSA-cxp5-3px4-pw24",
+      "GHSA-h46c-h94j-95f3",
+      "GHSA-j3rv-43j4-c7qm",
+      "GHSA-r7wm-3cxj-wff9",
+      "GHSA-rmj7-2vxq-3g9f",
+      "GHSA-wv8q-qhhj-9h54"
+    ],
+    "occurrences": 21,
+    "release_blocking": true,
+    "security_clearance": false,
+    "source_groups": [
+      "1.21.2-1.21.3",
+      "1.21.4-1.21.8",
+      "1.21.9-1.21.10"
+    ],
+    "minecraft_versions": [
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8",
+      "1.21.9",
+      "1.21.10"
+    ]
   }
 }

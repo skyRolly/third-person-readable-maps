@@ -24,6 +24,13 @@ TARGET_COUNTS = {
     'GHSA-7hfm-57qf-j43q': 3,
     'GHSA-crv7-7245-f45f': 3,
     'GHSA-mc84-pj99-q6hh': 3,
+    'GHSA-7hhh-6rmp-j9qf': 3,
+    'GHSA-cxp5-3px4-pw24': 3,
+    'GHSA-h46c-h94j-95f3': 3,
+    'GHSA-j3rv-43j4-c7qm': 3,
+    'GHSA-r7wm-3cxj-wff9': 3,
+    'GHSA-rmj7-2vxq-3g9f': 3,
+    'GHSA-wv8q-qhhj-9h54': 3,
 }
 
 
@@ -332,13 +339,265 @@ def validate():
         references = finding.get('supplemental_source_bound_evidence', [])
         if references != [{'path': log4j_path.relative_to(ROOT).as_posix(), 'sha256': raw_hash(log4j_path)}]:
             fail('Log4j finding lacks current supplemental chat-path evidence for ' + advisory)
+
+    upstream_path = BASE / 'upstream-critical-high.json.gz'
+    jackson_path = BASE / 'jackson-msal-runtime-reachability-2026-11-22.json'
+    jackson = load(jackson_path)
+    jackson_ids = {
+        'GHSA-7hhh-6rmp-j9qf', 'GHSA-cxp5-3px4-pw24', 'GHSA-h46c-h94j-95f3',
+        'GHSA-j3rv-43j4-c7qm', 'GHSA-r7wm-3cxj-wff9', 'GHSA-rmj7-2vxq-3g9f',
+        'GHSA-wv8q-qhhj-9h54',
+    }
+    if jackson.get('security_clearance') is not False or jackson.get('risk_accepted') is not False or \
+            jackson.get('release_blocking') is not True or jackson.get('findings_remain_blocking') is not True:
+        fail('Jackson/MSAL reachability evidence must remain unresolved and blocking')
+    if set(jackson.get('advisories', {})) != jackson_ids or \
+            jackson.get('source_provenance', {}).get('finding_index', {}).get('sha256') != raw_hash(ARCHIVE / 'finding-index.json') or \
+            jackson.get('source_provenance', {}).get('high_family_inspection', {}).get('sha256') != raw_hash(high_family_path) or \
+            jackson.get('source_provenance', {}).get('upstream_advisory_archive', {}).get('sha256') != raw_hash(BASE / 'upstream-critical-high.json.gz'):
+        fail('Jackson/MSAL evidence is stale or has the wrong advisory/index scope')
+    logging_capture = jackson.get('source_provenance', {}).get('official_minecraft_logging_configuration', {})
+    logging_path = ROOT / logging_capture.get('path', '')
+    if not logging_path.is_file() or raw_hash(logging_path) != logging_capture.get('sha256') or \
+            hashlib.sha1(logging_path.read_bytes()).hexdigest() != logging_capture.get('sha1') or \
+            len(logging_path.read_bytes()) != logging_capture.get('size'):
+        fail('Jackson/Log4j external logging configuration source hash mismatch')
+    logging_text = logging_path.read_text()
+    if '<LegacyXMLLayout' not in logging_text or '<PatternLayout' not in logging_text or \
+            '<JsonLayout' in logging_text or '<YamlLayout' in logging_text or 'SocketServer' in logging_text:
+        fail('Mojang default logging configuration no longer matches the recorded XML/pattern layouts')
+    if len(jackson.get('source_occurrences', [])) != 21 or jackson['scope'].get('occurrences') != 21 or \
+            set(jackson['scope'].get('source_groups', [])) != {'1.21.2-1.21.3', '1.21.4-1.21.8', '1.21.9-1.21.10'}:
+        fail('Jackson/MSAL source occurrence coverage mismatch')
+    jackson_source_rows = [row for row in finding_index['records'] if row['advisory'] in jackson_ids]
+    if len(jackson_source_rows) != 21:
+        fail('Jackson findings are not represented by 21 exact-source index rows')
+    jackson_bindings = {(row['advisory_id'], row['source_kind'], row['group'], row['purl']): row
+                        for row in jackson.get('source_occurrences', [])}
+    if len(jackson_bindings) != 21:
+        fail('duplicate Jackson source occurrence binding')
+    for row in jackson_source_rows:
+        key = (row['advisory'], row['source_kind'], row['group'], row['purl'])
+        binding = jackson_bindings.get(key)
+        runtime_versions = sorted(scope.removeprefix('runtime/') for scope in row['scopes']
+                                  if scope.startswith('runtime/'))
+        if binding is None or row['source_kind'] != 'candidate' or \
+                binding.get('source_sha') != row['source_sha'] or \
+                binding.get('runtime_versions') != runtime_versions or \
+                binding.get('source_report_sha256_uncompressed') != row['report_sha256_uncompressed'] or \
+                binding.get('finding_fingerprint') != row['fingerprint'] or \
+                binding.get('purl') != row['purl']:
+            fail('Jackson occurrence is not bound to its exact candidate source/report: ' + str(key))
+    version_rows = {row['minecraft_version']: row for row in jackson.get('minecraft_versions', [])}
+    jackson_versions = ['1.21.2', '1.21.3', '1.21.4', '1.21.5', '1.21.6',
+                        '1.21.7', '1.21.8', '1.21.9', '1.21.10']
+    if set(version_rows) != set(jackson_versions):
+        fail('Jackson Minecraft artifact coverage does not cover 1.21.2-1.21.10')
+    official_versions_path = BASE / 'upstream-minecraft-metadata/version_manifest_v2.json'
+    official_versions = load(official_versions_path)
+    manifest_reference = jackson.get('source_provenance', {}).get('official_minecraft_version_manifest', {})
+    if manifest_reference.get('sha256') != raw_hash(official_versions_path) or \
+            manifest_reference.get('path') != official_versions_path.relative_to(ROOT).as_posix():
+        fail('Jackson source report is not bound to the captured official version manifest')
+    manifest_versions = {row['id']: row for row in official_versions['versions']}
+    jackson_high_family = json.loads(gzip.decompress(high_family_path.read_bytes()))
+    jackson_libraries = {coordinate: row for row in jackson_high_family['libraries']
+                         for coordinate in row.get('coordinates', [])}
+    expected_groups = {
+        '1.21.2': '1.21.2-1.21.3', '1.21.3': '1.21.2-1.21.3',
+        '1.21.4': '1.21.4-1.21.8', '1.21.5': '1.21.4-1.21.8',
+        '1.21.6': '1.21.4-1.21.8', '1.21.7': '1.21.4-1.21.8',
+        '1.21.8': '1.21.4-1.21.8', '1.21.9': '1.21.9-1.21.10',
+        '1.21.10': '1.21.9-1.21.10',
+    }
+    for version, observation in version_rows.items():
+        metadata_path = ROOT / observation['version_metadata']['path']
+        metadata = load(metadata_path)
+        manifest = manifest_versions.get(version)
+        group = expected_groups[version]
+        source_sha = next(row['source_sha'] for row in jackson_source_rows
+                          if row['source_kind'] == 'candidate' and row['group'] == group)
+        game = jackson_high_family['games'].get(version)
+        if manifest is None or hashlib.sha1(metadata_path.read_bytes()).hexdigest() != manifest['sha1'] or \
+                observation['version_metadata'].get('sha256') != raw_hash(metadata_path) or \
+                observation['version_metadata'].get('url') != manifest['url'] or \
+                observation['version_metadata'].get('id') != version or \
+                observation.get('source_group') != group or observation.get('source_sha') != source_sha or \
+                observation.get('source_kind') != 'candidate' or game is None or \
+                observation.get('metadata_sha1_in_high_family') != manifest['sha1']:
+            fail('Jackson version metadata/source binding mismatch for Minecraft ' + version)
+        client = metadata['downloads']['client']
+        mappings = metadata['downloads']['client_mappings']
+        client_observation = observation['client_artifact']
+        mappings_observation = observation['client_mappings']
+        if any(client_observation.get(field) != client.get(field) for field in ('url', 'sha1', 'size')) or \
+                client_observation.get('sha256') != game['client_sha256'] or \
+                game.get('client', {}).get('sha1') != client['sha1'] or \
+                game.get('client', {}).get('size') != client['size'] or \
+                client_observation.get('sha1_and_size_verified') is not True:
+            fail('Jackson client binary is not bound to Mojang metadata/high-family hash for ' + version)
+        if any(mappings_observation.get(field) != mappings.get(field) for field in ('url', 'sha1', 'size')) or \
+                not DIGEST.fullmatch(mappings_observation.get('sha256', '')) or \
+                mappings_observation.get('sha1_and_size_verified') is not True:
+            fail('Jackson official mapping artifact identity mismatch for ' + version)
+        if set(observation.get('class_observations', {})) != {
+                'player_safety_filter', 'server_text_filter', 'dedicated_server',
+                'dedicated_server_properties', 'minecraft_server', 'integrated_server',
+                'text_filter_interface'}:
+            fail('Jackson client class observations incomplete for ' + version)
+        for class_observation in observation['class_observations'].values():
+            if not DIGEST.fullmatch(class_observation.get('sha256', '')):
+                fail('Jackson client class hash missing for Minecraft ' + version)
+        relationships = observation['constant_pool_relationships']
+        if relationships.get('player_safety_superclass_is_server_text_filter') is not True or \
+                relationships.get('dedicated_server_constant_pool_references_server_text_filter') is not True or \
+                relationships.get('integrated_server_constant_pool_references_server_text_filter') is not False or \
+                relationships.get('integrated_server_constant_pool_references_player_safety_filter') is not False or \
+                relationships.get('player_safety_class_references_jackson') is not False:
+            fail('Jackson first-party client call-graph observations changed for Minecraft ' + version)
+        for label, coordinate in (
+                ('jackson_core', 'com.fasterxml.jackson.core:jackson-core:2.13.4'),
+                ('jackson_databind', 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2')):
+            manifest_matches = [library for library in metadata['libraries'] if library['name'] == coordinate]
+            package_observation = observation['runtime_dependencies'].get(label, {})
+            artifact = manifest_matches[0]['downloads']['artifact'] if len(manifest_matches) == 1 else None
+            inspected = jackson_libraries.get(coordinate)
+            if artifact is None or inspected is None or \
+                    package_observation.get('manifest_artifact') != artifact or \
+                    package_observation.get('observed_sha256') != inspected['sha256'] or \
+                    inspected['artifact']['sha1'] != artifact['sha1'] or inspected['artifact']['size'] != artifact['size']:
+                fail('Jackson runtime library artifact mismatch for ' + coordinate + ' Minecraft ' + version)
+        msal_version = '1.15.0' if version in ('1.21.2', '1.21.3') else '1.17.2'
+        msal_coordinate = 'com.microsoft.azure:msal4j:' + msal_version
+        msal_observation = observation['runtime_dependencies'].get('msal4j', {})
+        msal_manifest = [library for library in metadata['libraries'] if library['name'] == msal_coordinate]
+        if len(msal_manifest) != 1 or msal_observation.get('coordinate') != msal_coordinate or \
+                msal_observation.get('manifest_artifact') != msal_manifest[0]['downloads']['artifact']:
+            fail('MSAL runtime library does not match the official manifest for Minecraft ' + version)
+        logging_metadata = metadata['logging']['client']
+        logging_observation = observation.get('logging_configuration', {})
+        if logging_observation.get('jvm_argument_from_official_metadata') != logging_metadata['argument'] or \
+                logging_observation.get('default_client_config_file') != logging_metadata['file'] or \
+                logging_metadata['file'].get('sha1') != logging_capture.get('sha1') or \
+                logging_observation.get('production_launcher_arguments_verified') is not False:
+            fail('Jackson/Log4j launcher metadata mismatch for Minecraft ' + version)
+        log4j_core = observation.get('runtime_dependencies', {}).get('log4j_core', {})
+        log4j_coordinate = log4j_core.get('coordinate')
+        manifest_log4j = [library for library in metadata['libraries'] if library['name'] == log4j_coordinate]
+        inspected_log4j = jackson_libraries.get(log4j_coordinate)
+        if len(manifest_log4j) != 1 or inspected_log4j is None or \
+                log4j_core.get('manifest_artifact') != manifest_log4j[0]['downloads']['artifact'] or \
+                log4j_core.get('observed_sha256') != inspected_log4j['sha256']:
+            fail('Log4j Core is not source-bound to the official manifest for Minecraft ' + version)
+    for msal in jackson.get('msal_artifacts_and_bytecode', []):
+        coordinate = msal['coordinate']
+        inspected = jackson_libraries.get(coordinate)
+        expected_class_count = {'com.microsoft.azure:msal4j:1.15.0': 241,
+                                'com.microsoft.azure:msal4j:1.17.2': 247}.get(coordinate)
+        if inspected is None or msal.get('sha256') != inspected['sha256'] or \
+                msal.get('sha1') != inspected['artifact']['sha1'] or msal.get('size') != inspected['artifact']['size'] or \
+                msal.get('class_files_scanned') != expected_class_count or \
+                msal.get('url') != inspected['artifact']['url']:
+            fail('MSAL artifact identity or bytecode scan count mismatch for ' + coordinate)
+        scan = msal.get('reference_scan', {})
+        if scan.get('JsonHelper') != ['com/microsoft/aad/msal4j/JsonHelper.class'] or \
+                not DIGEST.fullmatch(msal.get('json_helper_class_sha256', '')) or any(scan.get(key) for key in (
+                'JsonIdentityInfo_uses', 'JsonTypeInfo_uses', 'PolymorphicTypeValidator_uses',
+                'default_typing_activation_uses', 'async_parser_creation_uses',
+                'data_input_parser_uses', 'classloader_reflection_uses')):
+            fail('MSAL bytecode scan unexpectedly includes a Jackson advisory trigger for ' + coordinate)
+    expected_log4j_versions = {
+        'org.apache.logging.log4j:log4j-core:2.22.1': {'1.21.2', '1.21.3'},
+        'org.apache.logging.log4j:log4j-core:2.24.1':
+            {'1.21.4', '1.21.5', '1.21.6', '1.21.7', '1.21.8', '1.21.9', '1.21.10'},
+    }
+    log4j_rows = {row['coordinate']: row for row in jackson.get('log4j_core_runtime_analysis', [])}
+    if set(log4j_rows) != set(expected_log4j_versions):
+        fail('Jackson evidence is missing exact Log4j Core parser versions')
+    for coordinate, expected_versions in expected_log4j_versions.items():
+        observation = log4j_rows[coordinate]
+        inspected = jackson_libraries.get(coordinate)
+        if inspected is None or set(observation.get('versions', [])) != expected_versions or \
+                observation.get('sha256') != inspected['sha256'] or \
+                observation.get('manifest_artifact') != inspected['artifact'] or \
+                observation.get('class_files') != inspected['class_files'] or \
+                observation.get('jackson_object_mapper_reference_classes') != \
+                inspected['literal_reference_matches'].get('com/fasterxml/jackson/databind/ObjectMapper'):
+            fail('Log4j Core Jackson class references are not bound to the inspected artifact: ' + coordinate)
+        if any(not DIGEST.fullmatch(value) for value in observation.get('class_hashes', {}).values()) or \
+                any(observation.get('advisory_precondition_bytecode_scan', {}).values()) or \
+                observation.get('built_in_socket_server_or_input_stream_bridge_classes_present'):
+            fail('Log4j parser precondition or socket-server findings changed for ' + coordinate)
+    expected_caller_inventory = []
+    for version in jackson_versions:
+        callers = []
+        for library in jackson_high_family['libraries']:
+            if version not in library.get('versions', []):
+                continue
+            references = library.get('literal_reference_matches', {}).get(
+                'com/fasterxml/jackson/databind/ObjectMapper', [])
+            if references and not any(c.startswith('com.fasterxml.jackson.core:jackson-databind:')
+                                      for c in library.get('coordinates', [])):
+                callers.append({'coordinates': library['coordinates'], 'class_files': references})
+        expected_caller_inventory.append({'minecraft_version': version, 'manifest_library_callers': callers})
+    if jackson.get('runtime_manifest_object_mapper_caller_inventory') != expected_caller_inventory:
+        fail('Jackson runtime manifest ObjectMapper caller inventory mismatch')
+    probe = jackson['first_party_call_path']['isolated_dynamic_probe']
+    probe_result_path = ROOT / probe['result_report']['path']
+    probe_result = load(probe_result_path)
+    if raw_hash(probe_result_path) != probe['result_report']['sha256'] or \
+            jackson.get('source_provenance', {}).get('dynamic_probe_results', {}).get('sha256') != raw_hash(probe_result_path) or \
+            len(probe_result.get('cases', [])) != 16:
+        fail('Jackson depth probe result/source hash mismatch')
+    for source in probe['probe_sources']:
+        path = ROOT / source['path']
+        if not path.is_file() or raw_hash(path) != source['sha256'] or path.stat().st_size != source['size_bytes']:
+            fail('Jackson local probe source checksum mismatch: ' + source['path'])
+    old_depth_cases = [row for row in probe_result['cases']
+                       if row['probe_class'] in ('JacksonDepthProbe', 'JacksonObjectDepthProbe')]
+    fixed_depth_cases = [row for row in probe_result['cases'] if row['probe_class'] == 'JacksonFixedDepthProbe']
+    if len(old_depth_cases) != 15 or any(row['exit_code'] != 0 or 'parsed depth=' not in row['stdout']
+                                         for row in old_depth_cases) or \
+            len(fixed_depth_cases) != 1 or fixed_depth_cases[0]['exit_code'] != 0 or \
+            'StreamConstraintsException' not in fixed_depth_cases[0]['stdout'] or \
+            'Depth (1001) exceeds the maximum allowed nesting depth (1000)' not in fixed_depth_cases[0]['stdout']:
+        fail('Jackson fixed-version depth-limit observation mismatch')
+    if probe_result.get('fixed_artifact_sha1_verified_from_maven_checksum_files') != {
+            'jackson-core': '12f334a1dc9c6d2854c43ae314024dde8b3ad572',
+            'jackson-databind': '0d41caa3a4e9f85382702a059a65c512f85ac230',
+            'jackson-annotations': '89b0fd554928425a776a6e97ed010034312af21d'}:
+        fail('Jackson upstream fixed artifact checksum comparison mismatch')
+    if probe_result.get('fixed_artifacts') != {
+            'jackson-core-2.15.0.jar': '5b483f68fa9dd6aa37da37d1f79dd5c4b9464238f4f0660a242cb6b5c724950c',
+            'jackson-databind-2.15.0.jar': '00c5a5d5ae71ac8e8d5b8da606841e2251c806355939cb5d51c4cdc6b644a0dc',
+            'jackson-annotations-2.15.0.jar': '91adcd3dcf5fd9a16499934e7536a23d456692a0093e3d4fd52f138c3936348c'}:
+        fail('Jackson fixed dependency artifact hash comparison mismatch')
+    upstream_advisories = json.loads(gzip.decompress(upstream_path.read_bytes()))['advisories']
+    for advisory in jackson_ids:
+        source_finding = seen[advisory]
+        supplemental = source_finding.get('supplemental_source_bound_evidence', [])
+        if source_finding.get('severity') != 'HIGH' or supplemental != [
+                {'path': jackson_path.relative_to(ROOT).as_posix(), 'sha256': raw_hash(jackson_path)}]:
+            fail('Jackson finding lacks current source-bound reachability evidence for ' + advisory)
+        if any(occurrence.get('dependency_owner') !=
+               'Minecraft version manifest (game-managed runtime; Gradle scope is the resolved game-library development graph)'
+               for occurrence in source_finding['occurrences']):
+            fail('Jackson dependency ownership is not recorded as Minecraft-managed for ' + advisory)
+        source_advisory = upstream_advisories[advisory]
+        if jackson['advisories'][advisory]['upstream_authority'] != source_advisory['url']:
+            fail('Jackson advisory authority mismatch for ' + advisory)
+    jackson_pointer = evidence.get('jackson_msal_runtime_reachability', {})
+    if jackson_pointer.get('path') != jackson_path.relative_to(ROOT).as_posix() or \
+            jackson_pointer.get('sha256') != raw_hash(jackson_path) or jackson_pointer.get('occurrences') != 21 or \
+            jackson_pointer.get('security_clearance') is not False or jackson_pointer.get('release_blocking') is not True:
+        fail('source-bound Jackson/MASL report pointer mismatch')
     run_reference = evidence.get('log4j_chat_input_probe_run', {})
     if run_reference.get('path') != chat_probe_path.relative_to(ROOT).as_posix() or \
             run_reference.get('sha256') != raw_hash(chat_probe_path) or \
             run_reference.get('observations') != 34 or run_reference.get('parameterized_chat_cases') != 6 or \
             run_reference.get('all_passed') is not True or run_reference.get('security_clearance') is not False:
         fail('source-bound Log4j chat probe reference mismatch')
-    if evidence.get('targeted_high_occurrences') != 23:
+    if evidence.get('targeted_high_occurrences') != 44:
         fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):
         fail('component probe report hash mismatch')

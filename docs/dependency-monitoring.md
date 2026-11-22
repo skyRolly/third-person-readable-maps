@@ -4,6 +4,8 @@ The [2026-11-21 source-bound scan archive and worklist](worklogs/issue-45-securi
 
 The [critical/high reachability follow-up](worklogs/issue-45-critical-reachability-2026-11-21.md) adds source-bound runtime observations without removing any finding. All 13 candidate and integrated source heads still match the finding index; their Gradle 9.9.2 Wrapper files passed hash checks against Gradle's published values. The ten open legacy PR heads also match their indexed source SHAs and their exact-head Linux, Windows, Wrapper, and packaged API checks passed. They remain blocked by unresolved findings. Candidate (385) and integrated (105) monitoring remain separate, and all 490 occurrences continue to fail.
 
+The [2026-11-22 Jackson runtime follow-up](worklogs/issue-45-jackson-runtime-followup-2026-11-22.md) adds 21 source-bound High observations to the focused reachability set. It narrows specific first-party paths and records the unresolved Minecraft-managed Jackson and Log4j surfaces; all 44 focused High and 22 focused Critical occurrences remain release-blocking.
+
 Verified on 2026-11-04 against the initial maintained heads recorded in the
 [maintenance report](maintenance-2026-11-04.md). Proposed maintenance PRs do not
 change dependency versions or build resolution. Their hosted results must be

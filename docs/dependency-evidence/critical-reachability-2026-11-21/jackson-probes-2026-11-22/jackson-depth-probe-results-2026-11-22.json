@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "jdk": "openjdk version \"21.0.13\" 2026-10-20 LTS",
+  "commands": "javac -cp <exact listed artifacts> -d <temporary directory> <probe source>; java -Xmx96m -Xss256k -cp <compiled probe and exact artifacts> <class> <depth>",
+  "old_artifacts": {
+    "jackson-core-2.13.4.jar": "4c2e043200edd9ee7ba6fc378bd5c17784a5bf2388e152d208068b51fd0839cf",
+    "jackson-annotations-2.13.4.jar": "ac5b27a634942391ca113850ee7db01df1499a240174021263501c05fc653b44",
+    "jackson-databind-2.13.4.2.jar": "ba1a368137f9b92f48dd07f299ff7a782a69487b853ef5578215426fcde8f08b"
+  },
+  "fixed_artifact_sha1_verified_from_maven_checksum_files": {
+    "jackson-core": "12f334a1dc9c6d2854c43ae314024dde8b3ad572",
+    "jackson-databind": "0d41caa3a4e9f85382702a059a65c512f85ac230",
+    "jackson-annotations": "89b0fd554928425a776a6e97ed010034312af21d"
+  },
+  "fixed_artifacts": {
+    "jackson-core-2.15.0.jar": "5b483f68fa9dd6aa37da37d1f79dd5c4b9464238f4f0660a242cb6b5c724950c",
+    "jackson-annotations-2.15.0.jar": "91adcd3dcf5fd9a16499934e7536a23d456692a0093e3d4fd52f138c3936348c",
+    "jackson-databind-2.15.0.jar": "00c5a5d5ae71ac8e8d5b8da606841e2251c806355939cb5d51c4cdc6b644a0dc"
+  },
+  "cases": [
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 256,
+      "exit_code": 0,
+      "stdout": "parsed depth=256 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 512,
+      "exit_code": 0,
+      "stdout": "parsed depth=512 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 1024,
+      "exit_code": 0,
+      "stdout": "parsed depth=1024 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 2048,
+      "exit_code": 0,
+      "stdout": "parsed depth=2048 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 4096,
+      "exit_code": 0,
+      "stdout": "parsed depth=4096 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 8192,
+      "exit_code": 0,
+      "stdout": "parsed depth=8192 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 16384,
+      "exit_code": 0,
+      "stdout": "parsed depth=16384 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonDepthProbe.java",
+      "source_sha256": "ad17acfaccac6c50fc6aa229a2c0b9da247c3de8ae3ee6c3743c7198d9b4706f",
+      "probe_class": "JacksonDepthProbe",
+      "depth": 32768,
+      "exit_code": 0,
+      "stdout": "parsed depth=32768 node=ARRAY",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 256,
+      "exit_code": 0,
+      "stdout": "parsed depth=256",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 512,
+      "exit_code": 0,
+      "stdout": "parsed depth=512",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 1024,
+      "exit_code": 0,
+      "stdout": "parsed depth=1024",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 2048,
+      "exit_code": 0,
+      "stdout": "parsed depth=2048",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 4096,
+      "exit_code": 0,
+      "stdout": "parsed depth=4096",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 8192,
+      "exit_code": 0,
+      "stdout": "parsed depth=8192",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonObjectDepthProbe.java",
+      "source_sha256": "4cf24645da1565d8edc311ced3c15181ac9a9d530a27f48b636368c291fbad05",
+      "probe_class": "JacksonObjectDepthProbe",
+      "depth": 16384,
+      "exit_code": 0,
+      "stdout": "parsed depth=16384",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    },
+    {
+      "source": "JacksonFixedDepthProbe.java",
+      "source_sha256": "6d9119353321c8787c6975c2a110444f2e8c61b8e5798e44f6b88163fb97615b",
+      "probe_class": "JacksonFixedDepthProbe",
+      "depth": 4096,
+      "exit_code": 0,
+      "stdout": "com.fasterxml.jackson.core.exc.StreamConstraintsException depth=4096 message=Depth (1001) exceeds the maximum allowed nesting depth (1000)",
+      "stderr": "",
+      "heap": "96 MiB",
+      "stack": "256 KiB",
+      "network_used": false
+    }
+  ]
+}
