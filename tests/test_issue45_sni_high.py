@@ -41,7 +41,7 @@ class HighSniEvidenceTests(unittest.TestCase):
         self.assertTrue(all(row['release_blocking'] and not row['risk_accepted']
                             for advisory in current['advisories'] for row in advisory['occurrences']))
         sni.validate_ledger_reference(self.ledger, current_raw)
-        ref = self.ledger['latest_focused_priority_register']
+        ref = self.ledger['sni_high_focused_priority_register']
         self.assertEqual((ref['path'], ref['sha256']), (sni.CURRENT, hashlib.sha256(current_raw).hexdigest()))
 
     def test_ledger_summary_fields_cannot_drift(self):
@@ -52,7 +52,7 @@ class HighSniEvidenceTests(unittest.TestCase):
                              ('path', 'wrong.json'), ('sha256', '0' * 64)):
             with self.subTest(field=field):
                 ledger = copy.deepcopy(self.ledger)
-                ref = ledger['latest_focused_priority_register']
+                ref = ledger['sni_high_focused_priority_register']
                 ref[field] = value
                 if field not in ('path', 'sha256'):
                     # PR #56's CI checked only these two fields and accepted this mutation.
@@ -77,7 +77,7 @@ class HighSniEvidenceTests(unittest.TestCase):
 
         self.assertEqual(invoke(self.ledger)[0], 0)
         altered = copy.deepcopy(self.ledger)
-        altered['latest_focused_priority_register']['focused_occurrences'] += 1
+        altered['sni_high_focused_priority_register']['focused_occurrences'] += 1
         result, _, error = invoke(altered)
         self.assertEqual(result, 1)
         self.assertIn('current priority ledger reference differs', error)
