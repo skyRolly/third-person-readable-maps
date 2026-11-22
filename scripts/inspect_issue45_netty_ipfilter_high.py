@@ -12,6 +12,8 @@ from io import BytesIO
 import json
 from pathlib import Path
 import sys
+from urllib.parse import urlsplit
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 from zipfile import BadZipFile, ZipFile
 
 import inspect_issue45_mod_jars as products
@@ -115,6 +117,53 @@ def scan_runtime_artifact(cache, artifact, versions):
     return {'sha1': artifact['sha1'], 'sha256': artifact['sha256'], 'size_bytes': len(raw),
             'coordinates': artifact['coordinates'], 'minecraft_versions': sorted(set(artifact['minecraft_versions']) & set(versions)),
             'class_files_scanned': count, 'literal_hits': hits}
+
+
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise ValueError('unexpected Mojang artifact redirect')
+
+
+def download_mojang_library(url, size):
+    parsed = urlsplit(url)
+    require(parsed.scheme == 'https' and parsed.hostname == 'libraries.minecraft.net' and
+            parsed.port in (None, 443) and not parsed.username and not parsed.password and
+            not parsed.query and not parsed.fragment and 0 < size <= 8 * 1024 * 1024,
+            'invalid Mojang library URL or size')
+    request = Request(url, headers={'User-Agent': 'issue45-netty-ipfilter-verifier'})
+    with build_opener(NoRedirect()).open(request, timeout=45) as response:
+        require(response.geturl() == url, 'unexpected Mojang artifact redirect')
+        raw = response.read(size + 1)
+    require(len(raw) == size, 'Mojang library size differs')
+    return raw
+
+
+def verify_known_library(raw, library, expected_hits, expected_count):
+    # Verify the reviewed JAR hashes independently before inspecting class bytes.
+    sni.inspect_library(raw, library)
+    count, hits = scan_jar(raw)
+    require(count == expected_count and hits == expected_hits,
+            'downloaded Netty class observations differ')
+
+
+def verify_known_downloads(catalog, prior_scan, known):
+    ref = prior_scan['source_provenance']['netty_artifact_inventory']
+    inventory = read_json(ref['path'], ref['sha256'])
+    saved = {row['sha1']: row for row in known['libraries']}
+    prior = {row['sha1']: row for row in prior_scan['runtime_classpath_scan']['all_artifacts']}
+    for library in catalog:
+        coordinate = 'io.netty:netty-handler:' + library['version']
+        matches = [row for row in inventory['netty_artifacts'] if row['coordinate'] == coordinate and
+                   row['sha1'] == library['sha1'] and row['sha256'] == library['sha256']]
+        require(len(matches) == 1, 'missing source-bound Mojang Netty artifact')
+        item = matches[0]
+        expected_url = ('https://libraries.minecraft.net/io/netty/netty-handler/' + library['version'] +
+                        '/netty-handler-' + library['version'] + '.jar')
+        require(item['url'] == expected_url and item['size'] == prior[library['sha1']]['size_bytes'],
+                'Mojang Netty source URL or size differs')
+        raw = download_mojang_library(expected_url, item['size'])
+        verify_known_library(raw, library, saved[library['sha1']]['literal_hits'],
+                             prior[library['sha1']]['class_files_scanned'])
 
 
 def selected_artifacts(prior_scan, versions):
@@ -272,10 +321,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime-cache', type=Path)
     parser.add_argument('--fabric-jar', type=Path)
+    parser.add_argument('--verify-known-download', action='store_true',
+                        help='download six source-bound Mojang Netty JARs and verify their class hits')
     parser.add_argument('--write-inputs', action='store_true')
     parser.add_argument('--write-review', action='store_true')
     args = parser.parse_args()
     try:
+        require(not (args.write_inputs and args.verify_known_download),
+                'input generation and independent download verification must run separately')
         ledger, v2, target, previous, catalog, versions, prior = context()
         if args.write_inputs:
             require(args.runtime_cache and args.fabric_jar and not args.write_review, 'both cached inputs are required')
@@ -305,6 +358,9 @@ def main():
         known, scan, fabric, product = (json.loads(records[path], object_pairs_hook=unique_object)
                                         for path in (KNOWN, SCAN, FABRIC, PRODUCT))
         validate_inputs(ledger, prior, versions, catalog, known, scan, fabric, product)
+        if args.verify_known_download:
+            verify_known_downloads(catalog, prior, known)
+            print('Verified 66 known IP-filter class hits against six Mojang JARs')
         if args.runtime_cache:
             with ThreadPoolExecutor(max_workers=4) as pool:
                 rows = list(pool.map(lambda item: scan_runtime_artifact(args.runtime_cache, item, versions),

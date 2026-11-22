@@ -17,7 +17,11 @@ class files against their retained hashes. It found 66 selected literal-referenc
 hits inside the six Netty IP-filter implementations and none outside them. A
 separate reinspection of the six Netty JARs pins the 66 known class entries;
 the validator requires their complete identities and checks all artifact rows.
-No remote vulnerability test or exploitation was performed.
+The offline validator checks retained record relationships; the hosted
+`--verify-known-download` check independently fetches the six exact Mojang
+Netty JARs, verifies their pinned sizes and hashes, and compares the 66 observed
+class entries with those bytes. No remote vulnerability test or exploitation
+was performed.
 
 The [product JAR scan](../dependency-evidence/issue45-netty-ipfilter-high-2026-11-22/product-jar-static-scan.json)
 rechecked 13 retained source-bound JARs and 30 classes with no selected literal

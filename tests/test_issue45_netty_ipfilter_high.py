@@ -50,6 +50,7 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
         self.assertEqual((ref['path'], ref['sha256']), (ipfilter.CURRENT, hashlib.sha256(current_raw).hexdigest()))
         out, err = StringIO(), StringIO()
         with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py']), \
+             patch.object(ipfilter, 'download_mojang_library', side_effect=AssertionError('unexpected network')), \
              redirect_stdout(out), redirect_stderr(err):
             self.assertEqual(ipfilter.main(), 0, err.getvalue())
 
@@ -178,6 +179,42 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
             (root / 'fixture.jar').write_bytes(raw + b'changed')
             with self.assertRaisesRegex(ValueError, 'runtime artifact checksum differs'):
                 ipfilter.scan_runtime_artifact(root, artifact, ['1.19'])
+
+    def test_independent_jar_bytes_reject_matching_forged_class_digests(self):
+        out = BytesIO()
+        with ZipFile(out, 'w', ZIP_DEFLATED) as archive:
+            archive.writestr('example/Caller.class', b'IpSubnetFilter example')
+            archive.writestr('example/Other.class', b'unrelated')
+        raw = out.getvalue()
+        count, hits = ipfilter.scan_jar(raw)
+        library = {'version': 'fixture', 'sha1': hashlib.sha1(raw).hexdigest(),
+                   'sha256': hashlib.sha256(raw).hexdigest(),
+                   'classes': [{'path': 'example/Caller.class',
+                                'sha256': hashlib.sha256(b'IpSubnetFilter example').hexdigest()}]}
+        ipfilter.verify_known_library(raw, library, hits, count)
+        forged_known = copy.deepcopy(hits)
+        forged_known[0]['sha256'] = '0' * 64
+        forged_scan = copy.deepcopy(forged_known)
+        self.assertEqual(forged_known, forged_scan)  # the former cross-record comparison accepted this
+        with self.assertRaisesRegex(ValueError, 'downloaded Netty class observations differ'):
+            ipfilter.verify_known_library(raw, library, forged_known, count)
+
+    def test_download_rejects_untrusted_urls_and_redirects_before_following(self):
+        with patch.object(ipfilter, 'build_opener') as opener:
+            with self.assertRaisesRegex(ValueError, 'invalid Mojang library URL'):
+                ipfilter.download_mojang_library('https://example.invalid/netty.jar', 10)
+            opener.assert_not_called()
+        with self.assertRaisesRegex(ValueError, 'unexpected Mojang artifact redirect'):
+            ipfilter.NoRedirect().redirect_request(None, None, 302, None, None, 'https://example.invalid/')
+
+    def test_input_generation_cannot_silently_skip_requested_download_verification(self):
+        out, err = StringIO(), StringIO()
+        with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py', '--write-inputs',
+                                       '--verify-known-download']), \
+             patch.object(ipfilter, 'context') as context, redirect_stdout(out), redirect_stderr(err):
+            self.assertEqual(ipfilter.main(), 1)
+        context.assert_not_called()
+        self.assertIn('must run separately', err.getvalue())
 
 
 if __name__ == '__main__':
