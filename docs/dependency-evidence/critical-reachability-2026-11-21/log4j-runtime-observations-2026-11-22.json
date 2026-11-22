@@ -1,0 +1,685 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "status": "Linux runtime observation complete; Windows exact-runtime CI pending",
+  "analysis_commit": "0b49c544a31221b4c852657efeb5f694b071d1eb",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "advisory_ids": [
+    "GHSA-jfh8-c2jp-5v3q",
+    "GHSA-7rjr-3q55-vv33",
+    "GHSA-fxph-q3j8-mv87"
+  ],
+  "scope": {
+    "candidate_occurrences": 385,
+    "integrated_occurrences": 105,
+    "total_occurrences": 490,
+    "critical_occurrences": 22,
+    "high_occurrences": 177,
+    "counts_changed": false,
+    "note": "These are scoped advisory occurrences, not independent exploit instances."
+  },
+  "source_provenance": {
+    "previous_disposition_path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+    "previous_disposition_sha256": "b32bf236a1d1d5582a55940cb96112e9589b1362b8b45dbdce6a62b72e94de21",
+    "previous_exact_client_report_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
+    "previous_exact_client_report_sha256": "1606d1a2ff9618cb75a5134de965f2a31c87129748a638a6cad2c9d1fc8e4ad4",
+    "exact_source_groups": [
+      {
+        "source_kind": "candidate",
+        "group": "1.14-1.14.4",
+        "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+        "minecraft_versions": [
+          "1.14",
+          "1.14.1",
+          "1.14.2",
+          "1.14.3",
+          "1.14.4"
+        ],
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+        },
+        "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+        "package_version": "2.8.1",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.14",
+          "runtime/1.14.1",
+          "runtime/1.14.2",
+          "runtime/1.14.3",
+          "runtime/1.14.4"
+        ],
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+        "advisory_occurrences": [
+          "GHSA-7rjr-3q55-vv33",
+          "GHSA-fxph-q3j8-mv87",
+          "GHSA-jfh8-c2jp-5v3q"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.15-1.16.5",
+        "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+        "minecraft_versions": [
+          "1.15",
+          "1.15.1",
+          "1.15.2",
+          "1.16",
+          "1.16.1",
+          "1.16.2",
+          "1.16.3",
+          "1.16.4",
+          "1.16.5"
+        ],
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+        },
+        "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+        "package_version": "2.8.1",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.15",
+          "runtime/1.15.1",
+          "runtime/1.15.2",
+          "runtime/1.16",
+          "runtime/1.16.1",
+          "runtime/1.16.2",
+          "runtime/1.16.3",
+          "runtime/1.16.4",
+          "runtime/1.16.5"
+        ],
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+        "advisory_occurrences": [
+          "GHSA-7rjr-3q55-vv33",
+          "GHSA-fxph-q3j8-mv87",
+          "GHSA-jfh8-c2jp-5v3q"
+        ]
+      },
+      {
+        "source_kind": "candidate",
+        "group": "1.17-1.19.2",
+        "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+        "minecraft_versions": [
+          "1.17",
+          "1.17.1",
+          "1.18",
+          "1.18.1"
+        ],
+        "source_report": {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+          "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+        },
+        "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+        "package_version": "2.14.1",
+        "dependency_scopes": [
+          "gradle",
+          "runtime/1.17",
+          "runtime/1.17.1",
+          "runtime/1.18",
+          "runtime/1.18.1"
+        ],
+        "dependency_owner": "Minecraft version manifest / game runtime",
+        "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+        "advisory_occurrences": [
+          "GHSA-7rjr-3q55-vv33",
+          "GHSA-jfh8-c2jp-5v3q"
+        ]
+      }
+    ]
+  },
+  "runtime_probe": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json",
+    "sha256": "cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e",
+    "platform": "linux",
+    "status": "complete",
+    "passed": true,
+    "case_count": 27,
+    "security_clearance": false,
+    "risk_accepted": false,
+    "release_blocking": true
+  },
+  "current_metadata_republications": [
+    {
+      "minecraft_version": "1.18",
+      "retained_sha1": "7367ea8b7cad7c7830192441bb2846be0d2ceeac",
+      "current_manifest_sha1": "ec767156930dbb04a5aa5444e3a97b33c8a6ca41",
+      "security_relevant_metadata_equal": true,
+      "current_snapshot": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/current-version-metadata/1.18-ec767156930dbb04a5aa5444e3a97b33c8a6ca41.json"
+    },
+    {
+      "minecraft_version": "1.18.1",
+      "retained_sha1": "7ff864e988a2c29907154d5f9701e87e5d5e554a",
+      "current_manifest_sha1": "2acae2f1f84120846115c6e24810791cafa791d1",
+      "security_relevant_metadata_equal": true,
+      "current_snapshot": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/current-version-metadata/1.18.1-2acae2f1f84120846115c6e24810791cafa791d1.json"
+    }
+  ],
+  "findings": [
+    {
+      "advisory_id": "GHSA-jfh8-c2jp-5v3q",
+      "aliases": [
+        "CVE-2021-44228"
+      ],
+      "severity": "CRITICAL",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.15.0",
+          "first_patched_version": "2.15.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0-beta9, < 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "source_group_occurrences": [
+        {
+          "source_kind": "candidate",
+          "source_group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3"
+        },
+        {
+          "source_kind": "candidate",
+          "source_group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3"
+        },
+        {
+          "source_kind": "candidate",
+          "source_group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1",
+            "1.18",
+            "1.18.1"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+          "package_version": "2.14.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1",
+            "runtime/1.18",
+            "runtime/1.18.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "c72e676dbd44f32ad610f28e3c710fea03af5887293a77f92bdd0a1bac76e0b3"
+        }
+      ],
+      "disposition": "Further investigation",
+      "failing": true,
+      "risk_accepted": false,
+      "release_blocking": true,
+      "technical_justification": "The exact Minecraft chat path sends server-controlled text to the [CHAT] Log4j logger in 1.14.4 and 1.17.1. On all three exact Linux runtime samples, Mojang launcher XML kept the marker literal and the local synthetic context received zero calls. Under embedded fallback XML, Log4j 2.14.1 issued two local synthetic JNDI calls; Log4j 2.8.1 issued none with manifest Patchy-first order but issued two when the test reversed the classpath. The JDK LDAP decoder accepted a harmless serialized String on Linux JRE 8u202 and Java 16.0.1, while Java 17.0.15 blocked it. No network lookup or gadget was used. Thus the default metadata configuration mitigates the tested chat path, but the underlying JNDI path is reachable under alternate logging/classpath conditions and the Java 8/16 runtimes accept LDAP serialized data.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json",
+          "sha256": "cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.14.4-launcher-chat-jndi",
+            "1.14.4-embedded-chat-jndi",
+            "1.14.4-embedded-core-first-chat-jndi",
+            "1.14.4-jndi-codebase-policy",
+            "1.14.4-ldap-serialized-data",
+            "1.17.1-launcher-message",
+            "1.17.1-launcher-chat-jndi",
+            "1.17.1-embedded-chat-jndi",
+            "1.17.1-jndi-codebase-policy",
+            "1.17.1-ldap-serialized-data",
+            "1.18.1-launcher-message",
+            "1.18.1-launcher-chat-jndi",
+            "1.18.1-embedded-chat-jndi",
+            "1.18.1-jndi-codebase-policy",
+            "1.18.1-ldap-serialized-data"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
+          "sha256": "1606d1a2ff9618cb75a5134de965f2a31c87129748a638a6cad2c9d1fc8e4ad4"
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+          "sha256": "b32bf236a1d1d5582a55940cb96112e9589b1362b8b45dbdce6a62b72e94de21"
+        },
+        {
+          "url": "https://logging.apache.org/security.html",
+          "use": "Authoritative Log4j affected/fixed ranges and vulnerability preconditions."
+        },
+        {
+          "url": "https://logging.apache.org/log4j/2.x/release-notes.html",
+          "use": "Log4j 2.15/2.16 security changes and Java compatibility notes."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/16/docs/api/java.naming/module-summary.html",
+          "use": "JDK16 LDAP provider documentation."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/module-summary.html",
+          "use": "JDK17 LDAP trustSerialData behavior."
+        },
+        {
+          "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
+          "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        }
+      ],
+      "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
+      "reviewer": "Codex technical investigation; accountable owner review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Capture actual JVM arguments and loaded classpath for every supported launcher.",
+        "Verify the Windows Java 8u51 runtime result in Windows CI; current local execution covers Linux only.",
+        "Establish whether the intended launcher can be constrained to the verified XML and whether mod, agent, or custom configuration paths are part of the supported threat model.",
+        "Obtain a compatible upstream Minecraft update carrying a Log4j release that fixes the full advisory set, then run game and mod compatibility verification."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-7rjr-3q55-vv33",
+      "aliases": [
+        "CVE-2021-45046"
+      ],
+      "severity": "CRITICAL",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.16.0",
+          "first_patched_version": "2.16.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4.0, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": "< 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "occurrence_count": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "source_group_occurrences": [
+        {
+          "source_kind": "candidate",
+          "source_group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36"
+        },
+        {
+          "source_kind": "candidate",
+          "source_group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36"
+        },
+        {
+          "source_kind": "candidate",
+          "source_group": "1.17-1.19.2",
+          "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+          "minecraft_versions": [
+            "1.17",
+            "1.17.1",
+            "1.18",
+            "1.18.1"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1",
+          "package_version": "2.14.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.17",
+            "runtime/1.17.1",
+            "runtime/1.18",
+            "runtime/1.18.1"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "ade7402a70667a727635d5c4c29495f4ff96f061f12539763f6f123973b465b0",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-2/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "3f04d0b5c0c568921e994e5a259f5238da5eac0f55767eefd85d580275a7e0e7"
+          },
+          "fingerprint": "d5fd813cd22116e578ad07a45532cd9627816cd522ae47a177302581fc14ce36"
+        }
+      ],
+      "disposition": "Further investigation",
+      "failing": true,
+      "risk_accepted": false,
+      "release_blocking": true,
+      "technical_justification": "Minecraft chat reaches the Log4j message logger, but the inspected exact vanilla path does not place that text in ThreadContext/MDC and the retained launcher XML has no context lookup pattern. The exact-runtime launcher ThreadContext probes made zero local JNDI calls. A synthetic non-default context layout on Log4j 2.14.1 did perform a local JNDI call, confirming the vulnerable functionality is active when those conditions are introduced. Third-party mods and custom logging configurations were not enumerated, so the vanilla result cannot clear the wider client environment.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json",
+          "sha256": "cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e",
+          "case_names": [
+            "1.14.4-launcher-thread-context",
+            "1.17.1-launcher-thread-context",
+            "1.17.1-synthetic-context-lookup",
+            "1.18.1-launcher-thread-context",
+            "1.18.1-synthetic-context-lookup"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
+          "sha256": "1606d1a2ff9618cb75a5134de965f2a31c87129748a638a6cad2c9d1fc8e4ad4"
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+          "sha256": "b32bf236a1d1d5582a55940cb96112e9589b1362b8b45dbdce6a62b72e94de21"
+        },
+        {
+          "url": "https://logging.apache.org/security.html",
+          "use": "Authoritative Log4j affected/fixed ranges and vulnerability preconditions."
+        },
+        {
+          "url": "https://logging.apache.org/log4j/2.x/release-notes.html",
+          "use": "Log4j 2.15/2.16 security changes and Java compatibility notes."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/16/docs/api/java.naming/module-summary.html",
+          "use": "JDK16 LDAP provider documentation."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/module-summary.html",
+          "use": "JDK17 LDAP trustSerialData behavior."
+        },
+        {
+          "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
+          "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        }
+      ],
+      "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
+      "reviewer": "Codex technical investigation; accountable owner review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Capture the production launcher configuration and installed mod set.",
+        "Trace ThreadContext population and custom layouts across supported launchers/modpacks.",
+        "Obtain and compatibility-test an upstream game-managed Log4j update fixing CVE-2021-45046 and the related critical Log4j findings."
+      ]
+    },
+    {
+      "advisory_id": "GHSA-fxph-q3j8-mv87",
+      "aliases": [
+        "CVE-2017-5645"
+      ],
+      "severity": "CRITICAL",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0, < 2.8.2",
+          "first_patched_version": "2.8.2"
+        }
+      ],
+      "occurrence_count": 2,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5"
+      ],
+      "source_group_occurrences": [
+        {
+          "source_kind": "candidate",
+          "source_group": "1.14-1.14.4",
+          "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379",
+          "minecraft_versions": [
+            "1.14",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.14",
+            "runtime/1.14.1",
+            "runtime/1.14.2",
+            "runtime/1.14.3",
+            "runtime/1.14.4"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-0/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "245e13ca01fd0bd7197d7311268926f7771b8790e853b0519a04fbeccd3465ce"
+          },
+          "fingerprint": "2de29e72ba0a392231fdcc7b429be733bd4abb23b7499ef7e6637d3067b8d05a"
+        },
+        {
+          "source_kind": "candidate",
+          "source_group": "1.15-1.16.5",
+          "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9",
+          "minecraft_versions": [
+            "1.15",
+            "1.15.1",
+            "1.15.2",
+            "1.16",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5"
+          ],
+          "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.8.1",
+          "package_version": "2.8.1",
+          "dependency_scopes": [
+            "gradle",
+            "runtime/1.15",
+            "runtime/1.15.1",
+            "runtime/1.15.2",
+            "runtime/1.16",
+            "runtime/1.16.1",
+            "runtime/1.16.2",
+            "runtime/1.16.3",
+            "runtime/1.16.4",
+            "runtime/1.16.5"
+          ],
+          "dependency_owner": "Minecraft version manifest / game runtime",
+          "dependency_artifact_sha256": "815a73e20e90a413662eefe8594414684df3d5723edcd76070e1a5aee864616e",
+          "source_report": {
+            "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/candidate/candidate-dependency-audit-1/candidate-dependency-audit.json.gz",
+            "sha256_uncompressed": "b544e2b0a46344601ee67e8de78224957d2e6f0ed144e08aec4701ce463f5a6e"
+          },
+          "fingerprint": "2de29e72ba0a392231fdcc7b429be733bd4abb23b7499ef7e6637d3067b8d05a"
+        }
+      ],
+      "disposition": "Further investigation",
+      "failing": true,
+      "risk_accepted": false,
+      "release_blocking": true,
+      "technical_justification": "Apache documents CVE-2017-5645 as an issue in Log4j Core TCP/UDP socket servers that deserialize network log events. The retained exact default Minecraft logging XML does not configure those servers, and the previous exact-client scan found no direct TcpSocketServer/UdpSocketServer reference. The new LDAP serialized-data probe is a separate JDK LDAP path and is not treated as evidence for this socket-server advisory. Custom appenders, mods, reflection, and custom launchers were not exhaustively enumerated.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json",
+          "sha256": "cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.17.1-launcher-message",
+            "1.18.1-launcher-message"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json",
+          "sha256": "1606d1a2ff9618cb75a5134de965f2a31c87129748a638a6cad2c9d1fc8e4ad4"
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
+          "sha256": "b32bf236a1d1d5582a55940cb96112e9589b1362b8b45dbdce6a62b72e94de21"
+        },
+        {
+          "url": "https://logging.apache.org/security.html",
+          "use": "Authoritative Log4j affected/fixed ranges and vulnerability preconditions."
+        },
+        {
+          "url": "https://logging.apache.org/log4j/2.x/release-notes.html",
+          "use": "Log4j 2.15/2.16 security changes and Java compatibility notes."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/16/docs/api/java.naming/module-summary.html",
+          "use": "JDK16 LDAP provider documentation."
+        },
+        {
+          "url": "https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/module-summary.html",
+          "use": "JDK17 LDAP trustSerialData behavior."
+        },
+        {
+          "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
+          "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        }
+      ],
+      "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
+      "reviewer": "Codex technical investigation; accountable owner review pending",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Retain the exact client/config literal-scan evidence and verify it covers every affected Minecraft client artifact.",
+        "Capture a full supported launcher process and enumerate custom appenders or mod-created socket servers.",
+        "Obtain a compatible upstream game-managed Log4j update; Apache identifies 2.8.2 as the first fix for this issue, while a later Java 8-compatible Log4j release is needed to clear the entire critical family."
+      ]
+    }
+  ],
+  "cross_cutting_limitations": [
+    "No full Minecraft process or actual official launcher process arguments/classpath were captured.",
+    "No external LDAP, DNS, or remote class loading was attempted. The LDAP serialized-data test uses only a harmless local String and direct local decoder invocation.",
+    "Custom launchers, installed mods, plugin/reflection paths, Java agents, and runtime-generated classes were not exhaustively scanned.",
+    "Linux Mojang runtime packages were executed in this evidence run. Windows execution is assigned to the new Windows CI matrix job; macOS and user-selected JVMs remain untested.",
+    "The dependency owner is Minecraft/Mojang. No mod-side override or risk acceptance is claimed.",
+    "This investigation does not satisfy Issue #46 graphical, hardware-GPU, or multiplayer acceptance."
+  ],
+  "credential_security_status": "Unchanged: historical repository-write-capable GH_TOKEN incident remains release-blocking pending token-owner audit/rotation assessment."
+}
