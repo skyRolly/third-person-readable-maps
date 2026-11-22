@@ -15178,7 +15178,7 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "a661dca4953cdcd49c4217f079b33bd5b660832fd11287cfb3cf945521e33696",
+    "sha256": "328a4eedead78aeaefa19c851a86f866526dda2f79275ed796dec3b6f6985d88",
     "review_date": "2026-11-22",
     "security_clearance": false,
     "risk_accepted": false,
@@ -15262,7 +15262,7 @@
     },
     "lz4_runtime_reachability": {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-      "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
+      "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
       "advisories": [
         "GHSA-cmp6-m4wj-q63q",
         "GHSA-vqf4-7m7x-wgfc",
@@ -15272,7 +15272,8 @@
       "source_groups": 8,
       "minecraft_versions": 19,
       "security_clearance": false,
-      "release_blocking": true
+      "release_blocking": true,
+      "hosted_ci_run": 44977010612
     }
   }
 }

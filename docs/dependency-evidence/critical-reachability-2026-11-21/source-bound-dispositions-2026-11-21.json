@@ -2789,7 +2789,7 @@
       ],
       "supplemental_source_bound_evidence": {
         "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-        "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
+        "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
         "advisory_ids": [
           "GHSA-mcr4-qmvw-px4g",
           "GHSA-cmp6-m4wj-q63q",
@@ -11536,7 +11536,7 @@
       ],
       "supplemental_source_bound_evidence": {
         "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-        "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
+        "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
         "advisory_id": "GHSA-cmp6-m4wj-q63q",
         "occurrences": 6
       }
@@ -11861,7 +11861,7 @@
       ],
       "supplemental_source_bound_evidence": {
         "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-        "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
+        "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
         "advisory_id": "GHSA-vqf4-7m7x-wgfc",
         "occurrences": 5
       }
@@ -12178,8 +12178,8 @@
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-      "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
-      "size_bytes": 56367
+      "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
+      "size_bytes": 57444
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-probes-2026-11-22/runtime-scan.json",
@@ -12265,8 +12265,8 @@
     },
     {
       "path": "docs/worklogs/issue-45-lz4-runtime-followup-2026-11-22.md",
-      "sha256": "fdfd0da721182003e086af3678b14e5647faac29c642a38124790a6d51fbcd80",
-      "size_bytes": 3316
+      "sha256": "a08a8f28e093735a9da451d7937807ed7c25751071fbc1bd01f6ee2f0955225e",
+      "size_bytes": 3790
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -12275,8 +12275,13 @@
     },
     {
       "path": "scripts/validate_critical_reachability_evidence.py",
-      "sha256": "6770ddd43dbe7830d59e662bb2e29d6c340b53fe5194f717a6184b4e24714308",
-      "size_bytes": 78865
+      "sha256": "65fbb951d160de06f78d14ada6d15908ded4f5bf2f9c7a6f73a7dad481474039",
+      "size_bytes": 80576
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "size_bytes": 2087
     }
   ],
   "limitations": [
@@ -12447,7 +12452,7 @@
   },
   "lz4_runtime_reachability": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-reachability-2026-11-22.json",
-    "sha256": "409be2e1d46318af4544daf892057c180d1b350f4b301c03edd655403d682d9d",
+    "sha256": "9b4fa16e80a42a1f0048c84c54ca460f925d1ce91a482da78e56ea8f8ef1b78d",
     "advisories": [
       "GHSA-cmp6-m4wj-q63q",
       "GHSA-vqf4-7m7x-wgfc",
@@ -12457,6 +12462,7 @@
     "source_groups": 8,
     "minecraft_versions": 19,
     "security_clearance": false,
-    "release_blocking": true
+    "release_blocking": true,
+    "hosted_ci_run": 44977010612
   }
 }

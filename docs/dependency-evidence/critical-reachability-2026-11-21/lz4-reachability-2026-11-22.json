@@ -46,6 +46,15 @@
         "sha256_uncompressed": "e7cf647e8cc98c0e1fb1505291e691df71975fe7b9a23cde7d756aea51072965",
         "sha256_gzip": "d4243933b203e0fda4b8d53ba1d20df921ae15ff14c9beda7c7ea3737d129d44"
       }
+    },
+    "hosted_ci_verification": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "run_id": 44977010612,
+      "head_sha": "a800917f9fa111df3bf9a0720fbd976e67ecbeb3",
+      "conclusion": "success",
+      "linux_and_windows_reachability_jobs_passed": true,
+      "security_clearance": false
     }
   },
   "findings": [
@@ -1014,8 +1023,19 @@
       "No malicious Minecraft region file was opened in a running game.",
       "No CVE-2025-12183 memory-corruption or denial-of-service payload was run.",
       "No local shared-temporary-directory race was attempted.",
-      "Windows and macOS native/fallback selection awaits hosted or controlled platform runs."
-    ]
+      "macOS native/fallback selection remains unverified.",
+      "Hosted component probes did not run a full Minecraft client or a malicious region file.",
+      "No local shared-temporary-directory race or CVE-2025-12183 exploit payload was run."
+    ],
+    "hosted_cross_platform_verification": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/lz4-hosted-ci-verification-2026-11-22.json",
+      "sha256": "929b78e31b5ed13d9d61c45ec826aac39398ecb80c5b3bd9637105e7ec8685a5",
+      "run_id": 44977010612,
+      "head_sha": "a800917f9fa111df3bf9a0720fbd976e67ecbeb3",
+      "conclusion": "success",
+      "linux_and_windows_reachability_jobs_passed": true,
+      "security_clearance": false
+    }
   },
   "upstream_fixes_and_compatibility": {
     "cmp6": "GHSA-cmp6 upstream patch at commit 33d180cb70c4d93c80fb0dc3ab3002f457e93840; first fixed at.yawk release 1.10.1.",

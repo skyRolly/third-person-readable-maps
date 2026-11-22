@@ -779,6 +779,29 @@ def validate():
             lz4['scope'].get('focused_critical_high_occurrences') != 93 or \
             lz4['scope'].get('finding_index_records') != len(finding_index['records']):
         fail('LZ4 focused or full source counts mismatch')
+    hosted_ci_path = BASE / 'lz4-hosted-ci-verification-2026-11-22.json'
+    hosted_ci = load(hosted_ci_path)
+    hosted_ref = lz4.get('source_provenance', {}).get('hosted_ci_verification', {})
+    expected_hosted_jobs = {
+        'Verify reachability experiments (ubuntu-latest)',
+        'Verify reachability experiments (windows-latest)',
+        'Validate coordination',
+        'Validate live release prerequisites',
+    }
+    if raw_hash(hosted_ci_path) != hosted_ref.get('sha256') or \
+            hosted_ref.get('path') != hosted_ci_path.relative_to(ROOT).as_posix() or \
+            hosted_ref.get('run_id') != 44977010612 or lz4_pointer.get('hosted_ci_run') != 44977010612 or \
+            hosted_ci.get('workflow_run_id') != 44977010612 or \
+            hosted_ci.get('head_sha') != 'a800917f9fa111df3bf9a0720fbd976e67ecbeb3' or \
+            hosted_ci.get('status') != 'completed' or hosted_ci.get('conclusion') != 'success' or \
+            {row['name'] for row in hosted_ci.get('jobs', []) if row.get('conclusion') == 'success'} != expected_hosted_jobs or \
+            lz4.get('component_tests', {}).get('hosted_cross_platform_verification') != hosted_ref:
+        fail('LZ4 hosted Linux/Windows verification is not source-bound or did not pass')
+    if {row['name'] for row in hosted_ci.get('artifacts', [])} != {
+            'reachability-probes-ubuntu-latest', 'reachability-probes-windows-latest'} or \
+            any(not DIGEST.fullmatch(row.get('sha256', '')) for row in hosted_ci.get('artifacts', [])) or \
+            hosted_ci.get('security_clearance') is not False or hosted_ci.get('risk_accepted') is not False:
+        fail('LZ4 hosted probe artifacts or clearance status mismatch')
 
     lz4_by_id = {row['advisory_id']: row for row in lz4.get('findings', [])}
     lz4_source_by_id = {row['advisory_id']: row for row in evidence['findings']
