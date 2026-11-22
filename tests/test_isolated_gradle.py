@@ -14,7 +14,7 @@ class IsolatedGradleTests(unittest.TestCase):
     def test_allowlist_excludes_credentials_and_isolates_gradle_home(self):
         home = Path('/tmp/isolated-home')
         env = build_environment({'PATH': '/bin', 'JAVA_HOME': '/java', 'GH_TOKEN': 'secret',
-                                 'GITHUB_TOKEN': 'secret', 'HTTP_PROXY': 'secret',
+                                 'GITHUB_TOKEN': 'secret', 'INPUT_GITHUB-TOKEN': 'secret', 'HTTP_PROXY': 'secret',
                                  'GRADLE_OPTS': 'secret', 'SSH_AUTH_SOCK': 'secret'}, home)
         self.assertEqual(set(env), {'PATH', 'JAVA_HOME', 'HOME', 'GRADLE_USER_HOME', 'TMPDIR', 'TMP', 'TEMP'})
         self.assertEqual(env['GRADLE_USER_HOME'], str(home / '.gradle'))
