@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "observed_on": "2026-11-22",
-  "status": "Linux runtime observation complete; Windows exact-runtime CI pending",
-  "analysis_commit": "0b49c544a31221b4c852657efeb5f694b071d1eb",
+  "status": "Linux and Windows hosted runtime matrices completed; all three Log4j advisories remain release-blocking.",
+  "analysis_commit": "ba3ba1aa2a75ac0e5a76810637545d56cf43b4d9",
   "security_clearance": false,
   "risk_accepted": false,
   "release_blocking": true,
@@ -141,7 +141,8 @@
     "case_count": 27,
     "security_clearance": false,
     "risk_accepted": false,
-    "release_blocking": true
+    "release_blocking": true,
+    "analysis_commit": "0b49c544a31221b4c852657efeb5f694b071d1eb"
   },
   "current_metadata_republications": [
     {
@@ -340,6 +341,59 @@
         {
           "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
           "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-report.json",
+          "sha256": "41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.14.4-launcher-chat-jndi",
+            "1.14.4-embedded-chat-jndi",
+            "1.14.4-embedded-core-first-chat-jndi",
+            "1.14.4-jndi-codebase-policy",
+            "1.14.4-ldap-serialized-data",
+            "1.17.1-launcher-message",
+            "1.17.1-launcher-chat-jndi",
+            "1.17.1-embedded-chat-jndi",
+            "1.17.1-jndi-codebase-policy",
+            "1.17.1-ldap-serialized-data",
+            "1.18.1-launcher-message",
+            "1.18.1-launcher-chat-jndi",
+            "1.18.1-embedded-chat-jndi",
+            "1.18.1-jndi-codebase-policy",
+            "1.18.1-ldap-serialized-data"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-report.json",
+          "sha256": "3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.14.4-launcher-chat-jndi",
+            "1.14.4-embedded-chat-jndi",
+            "1.14.4-embedded-core-first-chat-jndi",
+            "1.14.4-jndi-codebase-policy",
+            "1.14.4-ldap-serialized-data",
+            "1.17.1-launcher-message",
+            "1.17.1-launcher-chat-jndi",
+            "1.17.1-embedded-chat-jndi",
+            "1.17.1-jndi-codebase-policy",
+            "1.17.1-ldap-serialized-data",
+            "1.18.1-launcher-message",
+            "1.18.1-launcher-chat-jndi",
+            "1.18.1-embedded-chat-jndi",
+            "1.18.1-jndi-codebase-policy",
+            "1.18.1-ldap-serialized-data"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "not_applicable_scope": [
+            "1.19",
+            "1.19.1",
+            "1.19.2"
+          ]
         }
       ],
       "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
@@ -521,6 +575,37 @@
         {
           "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
           "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-report.json",
+          "sha256": "41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d",
+          "case_names": [
+            "1.14.4-launcher-thread-context",
+            "1.17.1-launcher-thread-context",
+            "1.17.1-synthetic-context-lookup",
+            "1.18.1-launcher-thread-context",
+            "1.18.1-synthetic-context-lookup"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-report.json",
+          "sha256": "3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14",
+          "case_names": [
+            "1.14.4-launcher-thread-context",
+            "1.17.1-launcher-thread-context",
+            "1.17.1-synthetic-context-lookup",
+            "1.18.1-launcher-thread-context",
+            "1.18.1-synthetic-context-lookup"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "not_applicable_scope": [
+            "1.19",
+            "1.19.1",
+            "1.19.2"
+          ]
         }
       ],
       "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
@@ -661,6 +746,33 @@
         {
           "url": "https://www.oracle.com/java/technologies/javase/8u291-relnotes.html",
           "use": "Oracle records the later JDK 8 update that changes trustSerialData default to false."
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-report.json",
+          "sha256": "41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.17.1-launcher-message",
+            "1.18.1-launcher-message"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-report.json",
+          "sha256": "3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14",
+          "case_names": [
+            "1.14.4-launcher-message",
+            "1.17.1-launcher-message",
+            "1.18.1-launcher-message"
+          ]
+        },
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "not_applicable_scope": [
+            "1.19",
+            "1.19.1",
+            "1.19.2"
+          ]
         }
       ],
       "responsible_owner": "skyRolly (project and supported-launcher policy) and Mojang (Minecraft-managed Log4j/JRE dependencies)",
@@ -681,5 +793,263 @@
     "The dependency owner is Minecraft/Mojang. No mod-side override or risk acceptance is claimed.",
     "This investigation does not satisfy Issue #46 graphical, hardware-GPU, or multiplayer acceptance."
   ],
-  "credential_security_status": "Unchanged: historical repository-write-capable GH_TOKEN incident remains release-blocking pending token-owner audit/rotation assessment."
+  "credential_security_status": "Unchanged: historical repository-write-capable GH_TOKEN incident remains release-blocking pending token-owner audit/rotation assessment.",
+  "source_branch_head": "cdfbb61f6049bacfe7454095f9bbc68547ab6224",
+  "hosted_runtime_matrix": {
+    "workflow": {
+      "name": "Log4j runtime reachability",
+      "run_id": 44990273341,
+      "run_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273341",
+      "conclusion": "success",
+      "source_branch": "security/issue45-runtime-reachability",
+      "source_branch_head": "cdfbb61f6049bacfe7454095f9bbc68547ab6224",
+      "analysis_commit": "ba3ba1aa2a75ac0e5a76810637545d56cf43b4d9",
+      "jobs": {
+        "Probe exact Mojang runtimes (ubuntu-latest)": "success",
+        "Probe exact Mojang runtimes (windows-latest)": "success"
+      }
+    },
+    "related_ci": {
+      "name": "CI",
+      "run_id": 44990273351,
+      "run_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273351",
+      "conclusion": "success",
+      "jobs": {
+        "Validate coordination": "success",
+        "Validate live release prerequisites": "success",
+        "Verify reachability experiments (ubuntu-latest)": "success",
+        "Verify reachability experiments (windows-latest)": "success"
+      }
+    },
+    "platform_reports": {
+      "linux": {
+        "report_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-report.json",
+        "report_sha256": "41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d",
+        "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/linux-artifact.zip",
+        "artifact_id": 14741436865,
+        "artifact_name": "mojang-log4j-runtime-probes-ubuntu-latest",
+        "artifact_size_bytes": 378703,
+        "artifact_sha256": "9087acdf23f0676386f95b1080dc02bb2146cc43fa9766679be10de5cab5bb09",
+        "platform": "linux",
+        "runtime_versions": {
+          "jre-legacy": "8u202",
+          "java-runtime-alpha": "16.0.1.9.1",
+          "java-runtime-beta": "17.0.15"
+        },
+        "case_count": 27,
+        "passed": true,
+        "security_clearance": false,
+        "risk_accepted": false,
+        "release_blocking": true
+      },
+      "windows": {
+        "report_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-report.json",
+        "report_sha256": "3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14",
+        "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/windows-artifact.zip",
+        "artifact_id": 14742015228,
+        "artifact_name": "mojang-log4j-runtime-probes-windows-latest",
+        "artifact_size_bytes": 384669,
+        "artifact_sha256": "dc05be5705c7f46bdc2692e92aff07bcb04e0f7782a7ee5ec9537989dfc29e4c",
+        "platform": "windows-x64",
+        "runtime_versions": {
+          "jre-legacy": "8u51-cacert462b08",
+          "java-runtime-alpha": "16.0.1.9.1",
+          "java-runtime-beta": "17.0.15"
+        },
+        "case_count": 27,
+        "passed": true,
+        "security_clearance": false,
+        "risk_accepted": false,
+        "release_blocking": true
+      }
+    },
+    "report_validation": "Both archived platform reports passed scripts/validate_mojang_log4j_runtime_probes.py. The retained artifact ZIP SHA-256 values match GitHub Actions, and each ZIP contains the byte-identical report and the same content-addressed metadata snapshots committed in this repository."
+  },
+  "version_scope_dispositions": [
+    {
+      "advisory_id": "GHSA-jfh8-c2jp-5v3q",
+      "alias": "CVE-2021-44228",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "exact_package_version": "2.17.0",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
+      "source_kind": "candidate",
+      "source_group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "minecraft_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "dependency_scope": "Minecraft client/game runtime from exact Mojang version metadata.",
+      "dependency_owner": "Mojang owns game runtime library selection; skyRolly owns the repository disposition.",
+      "disposition": "Not applicable",
+      "failing": false,
+      "risk_accepted": false,
+      "release_blocking": false,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.15.0",
+          "first_patched_version": "2.15.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0-beta9, < 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "technical_justification": "Exact Mojang metadata selects log4j-core 2.17.0 in all three versions. The downloaded official artifact matches the declared SHA-1 and size and is retained by SHA-256. Apache lists a fixed version below 2.17.0 for this advisory. This disposition applies only to this exact version scope and these three advisory IDs; earlier 2.8.1/2.14.1 occurrences and unrelated 2.17.0 advisories remain unchanged and blocking.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-metadata/log4j-core-2.17.0.jar",
+          "artifact_sha256": "65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60"
+        },
+        {
+          "url": "https://logging.apache.org/security.html"
+        },
+        {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+          "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+        }
+      ],
+      "responsible_owner": "skyRolly (repository disposition) and Mojang (game-managed runtime dependency).",
+      "reviewer": "Codex technical verification; accountable repository owner remains skyRolly.",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Repeat this check if the exact-source inventory is refreshed or Mojang republishes these metadata records.",
+        "Keep unrelated 2.17.0 Log4j advisory occurrences in their existing dispositions."
+      ],
+      "scope_note": "This Not applicable result is limited to Minecraft 1.19\u20131.19.2 using Log4j Core 2.17.0 for this advisory ID. It does not disposition other Log4j advisories attached to 2.17.0 or earlier 2.8.1/2.14.1 occurrences."
+    },
+    {
+      "advisory_id": "GHSA-7rjr-3q55-vv33",
+      "alias": "CVE-2021-45046",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "exact_package_version": "2.17.0",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
+      "source_kind": "candidate",
+      "source_group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "minecraft_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "dependency_scope": "Minecraft client/game runtime from exact Mojang version metadata.",
+      "dependency_owner": "Mojang owns game runtime library selection; skyRolly owns the repository disposition.",
+      "disposition": "Not applicable",
+      "failing": false,
+      "risk_accepted": false,
+      "release_blocking": false,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.13.0, < 2.16.0",
+          "first_patched_version": "2.16.0"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.4.0, < 2.12.2",
+          "first_patched_version": "2.12.2"
+        },
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": "< 2.3.1",
+          "first_patched_version": "2.3.1"
+        }
+      ],
+      "technical_justification": "Exact Mojang metadata selects log4j-core 2.17.0 in all three versions. The downloaded official artifact matches the declared SHA-1 and size and is retained by SHA-256. Apache lists a fixed version below 2.17.0 for this advisory. This disposition applies only to this exact version scope and these three advisory IDs; earlier 2.8.1/2.14.1 occurrences and unrelated 2.17.0 advisories remain unchanged and blocking.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-metadata/log4j-core-2.17.0.jar",
+          "artifact_sha256": "65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60"
+        },
+        {
+          "url": "https://logging.apache.org/security.html"
+        },
+        {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+          "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+        }
+      ],
+      "responsible_owner": "skyRolly (repository disposition) and Mojang (game-managed runtime dependency).",
+      "reviewer": "Codex technical verification; accountable repository owner remains skyRolly.",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Repeat this check if the exact-source inventory is refreshed or Mojang republishes these metadata records.",
+        "Keep unrelated 2.17.0 Log4j advisory occurrences in their existing dispositions."
+      ],
+      "scope_note": "This Not applicable result is limited to Minecraft 1.19\u20131.19.2 using Log4j Core 2.17.0 for this advisory ID. It does not disposition other Log4j advisories attached to 2.17.0 or earlier 2.8.1/2.14.1 occurrences."
+    },
+    {
+      "advisory_id": "GHSA-fxph-q3j8-mv87",
+      "alias": "CVE-2017-5645",
+      "package": "org.apache.logging.log4j:log4j-core",
+      "exact_package_version": "2.17.0",
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0",
+      "source_kind": "candidate",
+      "source_group": "1.17-1.19.2",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0",
+      "minecraft_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "dependency_scope": "Minecraft client/game runtime from exact Mojang version metadata.",
+      "dependency_owner": "Mojang owns game runtime library selection; skyRolly owns the repository disposition.",
+      "disposition": "Not applicable",
+      "failing": false,
+      "risk_accepted": false,
+      "release_blocking": false,
+      "upstream_affected_ranges": [
+        {
+          "package": "org.apache.logging.log4j:log4j-core",
+          "vulnerable_version_range": ">= 2.0, < 2.8.2",
+          "first_patched_version": "2.8.2"
+        }
+      ],
+      "technical_justification": "Exact Mojang metadata selects log4j-core 2.17.0 in all three versions. The downloaded official artifact matches the declared SHA-1 and size and is retained by SHA-256. Apache lists a fixed version below 2.17.0 for this advisory. This disposition applies only to this exact version scope and these three advisory IDs; earlier 2.8.1/2.14.1 occurrences and unrelated 2.17.0 advisories remain unchanged and blocking.",
+      "evidence_references": [
+        {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+          "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+          "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-metadata/log4j-core-2.17.0.jar",
+          "artifact_sha256": "65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60"
+        },
+        {
+          "url": "https://logging.apache.org/security.html"
+        },
+        {
+          "path": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+          "sha256": "a31630d49a85f64f78b1cf0081cfbf8923b45e12d424e213c3affcdbf078d193"
+        }
+      ],
+      "responsible_owner": "skyRolly (repository disposition) and Mojang (game-managed runtime dependency).",
+      "reviewer": "Codex technical verification; accountable repository owner remains skyRolly.",
+      "review_date": "2026-11-22",
+      "follow_up_requirements": [
+        "Repeat this check if the exact-source inventory is refreshed or Mojang republishes these metadata records.",
+        "Keep unrelated 2.17.0 Log4j advisory occurrences in their existing dispositions."
+      ],
+      "scope_note": "This Not applicable result is limited to Minecraft 1.19\u20131.19.2 using Log4j Core 2.17.0 for this advisory ID. It does not disposition other Log4j advisories attached to 2.17.0 or earlier 2.8.1/2.14.1 occurrences."
+    }
+  ],
+  "minecraft_1_19_version_check": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json",
+    "sha256": "6dbf9039854ba4ef693a20a9790a288f99ef4acd0004cf22cc85c38692bf9beb",
+    "metadata_versions": 3,
+    "log4j_core_version": "2.17.0",
+    "artifact_sha256": "65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60",
+    "advisory_dispositions": 3,
+    "artifact_path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-metadata/log4j-core-2.17.0.jar"
+  }
 }

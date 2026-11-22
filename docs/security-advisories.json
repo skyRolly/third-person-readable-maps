@@ -15334,6 +15334,30 @@
       "disposition": "Further investigation with the 26.2 occurrence retaining its source-bound Upstream-dependent remediation classification",
       "scanner_script_path": "scripts/inspect_netty_sni_client_reachability.py",
       "scanner_script_sha256": "ac207c8d65657e610dfb5f02b73bb85303552582402e7783470852e640abf4ab"
+    },
+    "log4j_runtime_reachability": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-observations-2026-11-22.json",
+      "sha256": "2bae5e79d86a7edf72809981f1d652505d31e189e95d652a954c3fb87e787f25",
+      "review_date": "2026-11-22",
+      "advisory_ids": [
+        "GHSA-jfh8-c2jp-5v3q",
+        "GHSA-7rjr-3q55-vv33",
+        "GHSA-fxph-q3j8-mv87"
+      ],
+      "blocking_finding_index_rows": 8,
+      "version_scoped_not_applicable_records": 3,
+      "source_groups": [
+        "1.14-1.14.4",
+        "1.15-1.16.5",
+        "1.17-1.19.2"
+      ],
+      "hosted_runtime_workflow_run": 44990273341,
+      "related_ci_workflow_run": 44990273351,
+      "source_branch_head": "cdfbb61f6049bacfe7454095f9bbc68547ab6224",
+      "security_clearance": false,
+      "risk_accepted": false,
+      "release_blocking": true,
+      "note": "The three Not applicable records apply only to Minecraft 1.19–1.19.2 using exact Mojang Log4j Core 2.17.0 for these advisory IDs. The eight existing 2.8.1/2.14.1 finding-index rows remain blocking; inventory counts are unchanged."
     }
   }
 }

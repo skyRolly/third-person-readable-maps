@@ -2,7 +2,7 @@
 
 ## Status
 
-This is a new source-bound observation. Earlier audit reports remain unchanged. The Linux Mojang runtime matrix completed 27/27 expected component observations against analysis commit `0b49c544a31221b4c852657efeb5f694b071d1eb`. Its JSON SHA-256 is `cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e`. It does not clear security findings. The Windows runtime matrix is now part of Linux/Windows CI and remains pending that run.
+This is a new source-bound observation. Earlier audit reports remain unchanged. The local Linux matrix completed 27/27 expected component observations against analysis commit `0b49c544a31221b4c852657efeb5f694b071d1eb`. Hosted Linux and Windows matrices then each completed 27/27 on PR #53's source head `cdfbb61f6049bacfe7454095f9bbc68547ab6224`; both reports were independently revalidated after download. The hosted run and artifact hashes are recorded below and in the disposition overlay. These probes do not clear the remaining Log4j findings.
 
 The overall inventory is unchanged: 490 blocking advisory occurrences (22 Critical, 177 High), including 385 legacy-candidate and 105 integrated-maintenance occurrences. No risk has been accepted.
 
@@ -18,6 +18,8 @@ All three findings are on Minecraft-managed `org.apache.logging.log4j:log4j-core
 
 The `gradle` scope in the source inventory is the resolved Minecraft development graph; it does not make Log4j a Gradle plugin dependency. The runtime artifacts come from Minecraft version metadata. No library override was made.
 
+The affected Log4j occurrence rows in this broad source group end at Minecraft 1.18.1. I separately checked current Mojang metadata and the exact Mojang Log4j Core JAR for 1.19, 1.19.1, and 1.19.2. All three select `log4j-core:2.17.0`; the downloaded JAR matched the metadata SHA-1 and size and is retained with SHA-256 `65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60`. Apache lists 2.17.0 above the fixed releases for all three targeted advisories. Those exact version slices are recorded as **Not applicable** for these three advisory IDs only, without changing earlier 2.8.1/2.14.1 occurrences or counts. Other Log4j advisory occurrences attached to 2.17.0 remain in the inventory and are not cleared by this check.
+
 Mojang’s current version manifest has republished metadata for 1.18 and 1.18.1. The retained content-addressed metadata still matches the historical launcher index, and the new report retains both versions. The current and retained records match on Java selection, Log4j/Patchy coordinates and order, logging argument, and logging configuration identity. The current snapshots and hashes are in the runtime evidence directory.
 
 ## Exact runtime observations
@@ -27,6 +29,7 @@ The Linux run downloaded the pinned Mojang runtime files and verified their mani
 - 1.14.4: Mojang `jre-legacy` Java 8u202. The LDAP remote-codebase gate read `false`; no serial-data gate method was present in this runtime helper. The exact JDK LDAP `Obj` decoder accepted a harmless local serialized `String`, with zero network requests.
 - 1.17.1: Mojang `java-runtime-alpha` Java 16.0.1. The codebase gate was `false`, while `trustSerialData` was `true` with the property unset. The exact LDAP decoder accepted the harmless local serialized `String`, with zero network requests.
 - 1.18.1: Mojang `java-runtime-beta` Java 17.0.15. The codebase and serial-data gates were `false`; the exact LDAP decoder blocked the harmless serialized `String`, with zero network requests.
+- Windows CI reproduced the same component behavior on its exact runtimes: Mojang Java 8u51 accepted the harmless serialized `String`; Java 16.0.1 accepted it; Java 17.0.15 blocked it. The JNDI codebase gate was `false` on each tested runtime. All three Windows decoder probes made zero network requests.
 
 The serialized-data test invokes the JDK LDAP `Obj.decodeObject` locally. It proves only the exact runtime’s handling of a benign serialized value. It does not use a remote LDAP server, a gadget, executable object, or network connection, and does not prove a remote exploit.
 
@@ -50,19 +53,28 @@ All three findings remain **Further investigation**, failing, and release-blocki
 
 Apache identifies Log4j 2.15.0 as the first fix for CVE-2021-44228, 2.16.0 for CVE-2021-45046, and 2.8.2 for CVE-2017-5645. Apache documents 2.17.2 as Java 8 compatible. A later compatible Log4j release is a possible upstream remediation target for the combined family, but compatibility with each historical Minecraft client and its mod ecosystem has not been tested. Minecraft owns these dependencies, so this repository did not force an override.
 
+## Hosted verification and corrections
+
+- Dedicated runtime workflow [44990273341](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273341) passed both exact Mojang runtime jobs. Main CI [44990273351](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44990273351) passed all four jobs, including the source-bound advisory validator on Linux and Windows.
+- Archived report SHA-256 values: Linux `41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d`; Windows `3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14`. GitHub artifact ZIP hashes are Linux `9087acdf23f0676386f95b1080dc02bb2146cc43fa9766679be10de5cab5bb09` and Windows `dc05be5705c7f46bdc2692e92aff07bcb04e0f7782a7ee5ec9537989dfc29e4c`. The archived ZIPs match GitHub's digests and contain the byte-identical reports and metadata snapshots.
+- An earlier attempt to add the probe job to `.github/workflows/ci.yml` changed a file hash pinned by the source-bound evidence validator. Run `44989629297` correctly failed at that validator. I restored the pinned workflow byte-for-byte and placed the probe in a dedicated workflow; no evidence hash or security gate was relaxed.
+- The first dedicated run, `44989857254`, passed Windows but Linux stopped before its first case because the relative runtime-cache path became invalid after the probe changed working directories. Commit `b0c625e` resolves the cache path before subprocess launches. A local rerun using a relative cache path passed 27/27, and the later hosted Linux and Windows jobs both passed 27/27.
+- The exact Mojang version metadata and Log4j Core 2.17.0 artifact for 1.19–1.19.2 are retained in [the 1.19 version check](../dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json) and its SHA-256 verified JAR.
+
 ## Remaining work
 
-1. Complete the Windows CI run against the exact Mojang Windows runtimes, especially `jre-legacy` 8u51, and inspect its JSON artifact.
-2. Capture actual supported-launcher JVM arguments and classpaths, and verify the logging resource that the process loads.
-3. Bound the supported mod/agent/custom-launcher threat model and trace custom layouts, ThreadContext writes, reflective entry points, and socket-server creation.
-4. Ask Mojang for a compatible game-managed Log4j update and verify it across the affected versions before calling anything fixed.
-5. Resolve the historical `GH_TOKEN` incident with the token owner’s audit and revoke/rotation action. The credential status is unchanged.
+1. Capture actual supported-launcher JVM arguments and classpaths, and verify the logging resource that the process loads.
+2. Bound the supported mod/agent/custom-launcher threat model and trace custom layouts, ThreadContext writes, reflective entry points, and socket-server creation.
+3. Ask Mojang for a compatible game-managed Log4j update and verify it across the affected versions before calling anything fixed.
+4. Resolve the historical `GH_TOKEN` incident with the token owner’s audit and revoke/rotation action. The credential status is unchanged.
 
 Issue #45 remains open. Issue #46’s graphics, hardware-GPU, and multiplayer acceptance is still separate.
 
 ## Evidence files
 
 - [Linux exact-runtime probe JSON](../dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/mojang-log4j-runtime-probes-linux.json)
+- [Hosted Linux and Windows reports and original artifact ZIPs](../dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/)
+- [Exact 1.19–1.19.2 Log4j version check](../dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-hosted-2026-11-22/minecraft-1.19-log4j-version-check.json)
 - [New source-bound Log4j disposition overlay](../dependency-evidence/critical-reachability-2026-11-21/log4j-runtime-observations-2026-11-22.json)
 - [Prior exact-client chat-to-logger evidence](../dependency-evidence/critical-reachability-2026-11-21/log4j-chat-input-reachability-2026-11-21.json)
 - [Immutable Mojang runtime and version metadata snapshots](../dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/)

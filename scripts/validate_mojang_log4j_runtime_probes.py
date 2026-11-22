@@ -7,10 +7,19 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/dependency-evidence/critical-reachability-2026-11-21'
 SOURCE_REPORT = EVIDENCE / 'log4j-chat-input-reachability-2026-11-21.json'
+DISPOSITION_REPORT = EVIDENCE / 'log4j-runtime-observations-2026-11-22.json'
+FINDING_INDEX = ROOT / 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json'
+HOSTED_EVIDENCE = EVIDENCE / 'log4j-runtime-hosted-2026-11-22'
+VERSION_SCOPE_REPORT = HOSTED_EVIDENCE / 'minecraft-1.19-log4j-version-check.json'
+LOG4J_METADATA_DIR = EVIDENCE / 'log4j-mojang-runtime-2026-11-22/metadata'
+TARGETED_LOG4J_ADVISORIES = {
+    'GHSA-jfh8-c2jp-5v3q', 'GHSA-7rjr-3q55-vv33', 'GHSA-fxph-q3j8-mv87'
+}
 
 
 def digest_bytes(data, algorithm):
@@ -294,6 +303,179 @@ def validate(report_path):
             'security_clearance': False, 'release_blocking': True}
 
 
+def validate_static_dispositions():
+    overlay = read_json(DISPOSITION_REPORT)
+    require(overlay.get('schema') == 1 and overlay.get('security_clearance') is False and
+            overlay.get('risk_accepted') is False and overlay.get('release_blocking') is True,
+            'source-bound Log4j overlay must remain incomplete, unaccepted, and release-blocking')
+    scope = overlay.get('scope', {})
+    require(scope.get('total_occurrences') == 490 and scope.get('candidate_occurrences') == 385 and
+            scope.get('integrated_occurrences') == 105 and scope.get('counts_changed') is False,
+            'Log4j update must preserve the inventory counts')
+    ledger = read_json(ROOT / 'docs/security-advisories.json')
+    ledger_pointer = ledger.get('critical_reachability_evidence', {}).get('log4j_runtime_reachability', {})
+    require(ledger_pointer.get('path') == DISPOSITION_REPORT.relative_to(ROOT).as_posix() and
+            ledger_pointer.get('sha256') == digest_bytes(DISPOSITION_REPORT.read_bytes(), 'sha256') and
+            set(ledger_pointer.get('advisory_ids', [])) == TARGETED_LOG4J_ADVISORIES and
+            ledger_pointer.get('blocking_finding_index_rows') == 8 and
+            ledger_pointer.get('version_scoped_not_applicable_records') == 3 and
+            ledger_pointer.get('security_clearance') is False and
+            ledger_pointer.get('risk_accepted') is False and
+            ledger_pointer.get('release_blocking') is True,
+            'structured advisory ledger does not point to the blocking Log4j runtime overlay')
+    findings = {row.get('advisory_id'): row for row in overlay.get('findings', [])}
+    require(set(findings) == TARGETED_LOG4J_ADVISORIES,
+            'source-bound overlay advisory set differs from the three targeted Log4j advisories')
+    for advisory, finding in findings.items():
+        require(finding.get('disposition') == 'Further investigation' and finding.get('failing') is True and
+                finding.get('release_blocking') is True and finding.get('risk_accepted') is False,
+                'vulnerable Log4j occurrence was incorrectly cleared: ' + advisory)
+    finding_index = read_json(FINDING_INDEX)
+    indexed_rows = [row for row in finding_index.get('records', [])
+                    if row.get('advisory') in TARGETED_LOG4J_ADVISORIES and
+                    row.get('purl', '').startswith('pkg:maven/org.apache.logging.log4j/log4j-core@')]
+    expected_rows = {}
+    for advisory, finding in findings.items():
+        for source in finding.get('source_group_occurrences', []):
+            key = (advisory, source.get('source_kind'), source.get('source_group'),
+                   source.get('source_sha'), source.get('purl'))
+            expected_rows[key] = source
+    actual_rows = {}
+    for row in indexed_rows:
+        key = (row.get('advisory'), row.get('source_kind'), row.get('group'),
+               row.get('source_sha'), row.get('purl'))
+        actual_rows[key] = row
+    require(len(indexed_rows) == 8 and set(actual_rows) == set(expected_rows) and
+            all(row.get('failing') is True and row.get('disposition') == 'Further investigation'
+                for row in indexed_rows),
+            'the eight critical Log4j findings no longer match exact source-bound index rows')
+
+    local_probe = overlay.get('runtime_probe', {})
+    local_path = resolve_repo_path(local_probe['path'])
+    require(digest_bytes(local_path.read_bytes(), 'sha256') == local_probe['sha256'],
+            'local Linux Log4j report checksum differs from the disposition overlay')
+    hosted = overlay.get('hosted_runtime_matrix', {})
+    workflow = hosted.get('workflow', {})
+    require(workflow.get('conclusion') == 'success' and workflow.get('run_id') == 44990273341,
+            'hosted Log4j matrix run is not the retained successful run')
+    require(hosted.get('related_ci', {}).get('conclusion') == 'success',
+            'related source-bound CI run is not successful')
+    platform_reports = hosted.get('platform_reports', {})
+    require(set(platform_reports) == {'linux', 'windows'}, 'hosted matrix must retain Linux and Windows reports')
+    for platform, entry in platform_reports.items():
+        report_path = resolve_repo_path(entry['report_path'])
+        report_bytes = report_path.read_bytes()
+        require(digest_bytes(report_bytes, 'sha256') == entry['report_sha256'],
+                'hosted ' + platform + ' report checksum mismatch')
+        report = read_json(report_path)
+        require(report.get('platform') == entry['platform'] and report.get('status') == 'complete' and
+                report.get('passed') is True and len(report.get('cases', [])) == 27 and
+                report.get('security_clearance') is False and report.get('risk_accepted') is False and
+                report.get('release_blocking') is True,
+                'hosted ' + platform + ' report has invalid status or disposition flags')
+        require(report.get('analysis_commit') == workflow.get('analysis_commit'),
+                'hosted ' + platform + ' report analysis commit differs from the run record')
+        require({name: value.get('version_name') for name, value in report.get('runtime_components', {}).items()} ==
+                entry.get('runtime_versions'),
+                'hosted ' + platform + ' runtime versions differ from the disposition overlay')
+        archive_path = resolve_repo_path(entry['artifact_path'])
+        archive_bytes = archive_path.read_bytes()
+        require(digest_bytes(archive_bytes, 'sha256') == entry['artifact_sha256'] and
+                len(archive_bytes) == entry['artifact_size_bytes'],
+                'hosted ' + platform + ' artifact checksum or size mismatch')
+        with zipfile.ZipFile(archive_path) as archive:
+            require(archive.read('mojang-log4j-runtime-probes.json') == report_bytes,
+                    'hosted ' + platform + ' archive does not contain the retained JSON report')
+            prefix = str(LOG4J_METADATA_DIR.relative_to(ROOT)) + '/'
+            members = [name for name in archive.namelist() if name.startswith(prefix) and not name.endswith('/')]
+            require(bool(members), 'hosted ' + platform + ' archive has no pinned Mojang metadata')
+            for member in members:
+                require(resolve_repo_path(member).read_bytes() == archive.read(member),
+                        'hosted ' + platform + ' archive metadata differs from the committed snapshot: ' + member)
+        validate(report_path)
+
+    version_record = overlay.get('minecraft_1_19_version_check', {})
+    version_path = resolve_repo_path(version_record['path'])
+    version_bytes = version_path.read_bytes()
+    require(digest_bytes(version_bytes, 'sha256') == version_record['sha256'],
+            '1.19 Log4j version-scope report checksum mismatch')
+    version_report = read_json(version_path)
+    require(version_report.get('disposition', {}).get('classification') == 'Not applicable' and
+            version_report['disposition'].get('risk_accepted') is False and
+            version_record.get('advisory_dispositions') == 3,
+            '1.19 version exclusion must remain a supported, narrow Not applicable disposition')
+    require(version_report.get('source_group_binding', {}).get('source_sha') ==
+            '06b350856605011c1549d51d6edd3d351c5021c0',
+            '1.19 version-scope report has the wrong candidate source SHA')
+    require(digest_bytes(FINDING_INDEX.read_bytes(), 'sha256') ==
+            version_report.get('finding_index', {}).get('sha256'),
+            '1.19 version-scope report finding-index hash mismatch')
+    metadata_manifest_path = resolve_repo_path(version_report['minecraft_version_manifest']['path'])
+    manifest_bytes = metadata_manifest_path.read_bytes()
+    require(digest_bytes(manifest_bytes, 'sha256') == version_report['minecraft_version_manifest']['sha256'],
+            '1.19 metadata manifest hash mismatch')
+    version_manifest = {row['id']: row for row in json.loads(manifest_bytes)['versions']}
+    expected_versions = {'1.19', '1.19.1', '1.19.2'}
+    rows = version_report.get('metadata_observations', [])
+    require({row.get('minecraft_version') for row in rows} == expected_versions,
+            '1.19 version-scope report does not cover exactly 1.19 through 1.19.2')
+    artifact = version_report.get('verified_log4j_core_artifact', {})
+    artifact_path = resolve_repo_path(artifact['path'])
+    artifact_bytes = artifact_path.read_bytes()
+    require(len(artifact_bytes) == artifact['size_bytes'] and
+            digest_bytes(artifact_bytes, 'sha1') == artifact['sha1'] and
+            digest_bytes(artifact_bytes, 'sha256') == artifact['sha256'],
+            'retained Log4j Core 2.17.0 JAR hash or size mismatch')
+    for row in rows:
+        version = row['minecraft_version']
+        version_row = version_manifest.get(version)
+        require(version_row is not None and version_row.get('url') == row['metadata_url'] and
+                version_row.get('sha1') == row['metadata_sha1'],
+                '1.19 metadata row differs from current Mojang manifest: ' + version)
+        snapshot_path = resolve_repo_path(row['metadata_snapshot_path'])
+        snapshot_bytes = snapshot_path.read_bytes()
+        require(digest_bytes(snapshot_bytes, 'sha1') == row['metadata_sha1'] and
+                digest_bytes(snapshot_bytes, 'sha256') == row['metadata_sha256'] and
+                len(snapshot_bytes) == row['metadata_size_bytes'],
+                '1.19 metadata snapshot checksum mismatch: ' + version)
+        metadata = json.loads(snapshot_bytes)
+        require(metadata.get('id') == version and metadata.get('javaVersion', {}).get('component') == 'java-runtime-gamma' and
+                metadata.get('javaVersion', {}).get('majorVersion') == 17,
+                '1.19 Java runtime selection differs from exact metadata: ' + version)
+        core = [library for library in metadata.get('libraries', [])
+                if library.get('name') == 'org.apache.logging.log4j:log4j-core:2.17.0']
+        require(len(core) == 1, '1.19 exact metadata lacks a unique Log4j Core 2.17.0: ' + version)
+        spec = core[0]['downloads']['artifact']
+        require(spec.get('sha1') == artifact['sha1'] and spec.get('size') == artifact['size_bytes'] and
+                spec.get('url') == artifact['url'],
+                '1.19 Mojang library identity differs from retained Log4j JAR: ' + version)
+    purl = 'pkg:maven/org.apache.logging.log4j/log4j-core@2.17.0'
+    for item in version_report['advisories']:
+        advisory = item['advisory_id']
+        require(advisory in TARGETED_LOG4J_ADVISORIES and item.get('purl') == purl and
+                item.get('disposition') == 'Not applicable' and item.get('risk_accepted') is False and
+                item.get('release_blocking') is False and item.get('review_date') == '2026-11-22' and
+                item.get('source_sha') == '06b350856605011c1549d51d6edd3d351c5021c0',
+                '1.19 advisory disposition is incomplete or overly broad: ' + advisory)
+        require(not any(row.get('purl') == purl and row.get('advisory') == advisory
+                        for row in finding_index['records']),
+                'finding index contains a targeted advisory occurrence for Log4j 2.17.0: ' + advisory)
+        require(item.get('upstream_affected_ranges') == item.get('affected_ranges'),
+                '1.19 upstream affected-range evidence is inconsistent: ' + advisory)
+    require({item.get('advisory_id') for item in version_report['advisories']} == TARGETED_LOG4J_ADVISORIES,
+            '1.19 version-scope advisory set mismatch')
+    overlay_exclusions = {item.get('advisory_id'): item for item in overlay.get('version_scope_dispositions', [])}
+    require(set(overlay_exclusions) == TARGETED_LOG4J_ADVISORIES,
+            'overlay does not retain the three narrow 1.19 version-scope dispositions')
+    for advisory, item in overlay_exclusions.items():
+        require(item.get('disposition') == 'Not applicable' and item.get('risk_accepted') is False and
+                item.get('release_blocking') is False and item.get('purl') == purl and
+                item.get('source_sha') == '06b350856605011c1549d51d6edd3d351c5021c0' and
+                item.get('minecraft_versions') == ['1.19', '1.19.1', '1.19.2'],
+                'overlay 1.19 disposition is too broad or inconsistent: ' + advisory)
+    return {'hosted_reports': len(platform_reports), 'version_scope_dispositions': len(overlay_exclusions)}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True)
@@ -301,6 +483,7 @@ def main():
     args = parser.parse_args()
     try:
         result = validate(args.report)
+        static_result = validate_static_dispositions()
         if args.expected_analysis_commit:
             report = read_json(args.report)
             require(report.get('analysis_commit') == args.expected_analysis_commit,
@@ -310,7 +493,9 @@ def main():
         return 1
     print('Mojang Log4j runtime evidence validated:', result['case_count'], 'cases on', result['platform'],
           'across', result['source_versions'], 'Minecraft metadata versions and',
-          result['runtime_components'], 'runtime components; security remains release-blocking.')
+          result['runtime_components'], 'runtime components; static records include',
+          static_result['hosted_reports'], 'verified hosted reports and',
+          static_result['version_scope_dispositions'], 'narrow Not applicable version scopes; security remains release-blocking.')
     return 0
 
 
