@@ -2,10 +2,12 @@
 """Validate source-bound Issue #45 reachability observations and hashes."""
 import gzip
 import hashlib
+from io import BytesIO
 import json
 from pathlib import Path
 import re
 import sys
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'docs/dependency-evidence/critical-reachability-2026-11-21'
@@ -24,6 +26,8 @@ REVIEW_INSPECTION = BASE / 'issue45-review-2026-11-22/artifact-byte-inspection.j
 REVIEW_INSPECTION_SHA256 = 'ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5'
 LOG4J_ATTRIBUTION = BASE / 'issue45-review-2026-11-22/log4j-configuration-attribution.json'
 LOG4J_ATTRIBUTION_SHA256 = '3be3323b84b18b92dfd462b46059e21883af0922967c7e208c35caaf4ab3ddfd'
+EXACT_RUNTIME = BASE / 'issue45-review-2026-11-22/exact-runtime-verification.json'
+EXACT_RUNTIME_SHA256 = '9a2d260a5ead12851ee67e310dda692b9f8f9848488b02adfc0d29e11f237dbf'
 REALMS_CALLER_PATHS = {'realms/c.class', 'realms/ah.class', 'realms/ab.class'}
 REALMS_VERSIONS = {'1.14': '1.14.14', '1.14.1': '1.14.15',
                    '1.14.2': '1.14.16', '1.14.3': '1.14.17'}
@@ -208,6 +212,64 @@ def validate_historical_log4j_attribution(correction, inspection, chat_probe, hi
             matches = [case for case in report['cases'] if case['name'] == row['runtime_case']]
             if len(matches) != 1 or matches[0]['logging_configuration'] != row['historical_fixture']:
                 fail('historical Log4j runtime configuration differs from correction: ' + row['runtime_case'])
+
+
+def validate_corrected_runtime_artifacts(record, inspection):
+    if record.get('source_branch_head') != '5989d8c0d61adf3bb9e4f7e247965929b21a0b2a' or \
+            record.get('analysis_commit') != '285f3037d40db0861d9f1649df66dbd478e2d8b0' or \
+            record.get('workflow_run') != 45010716782 or \
+            record.get('inspection_sha256') != REVIEW_INSPECTION_SHA256 or \
+            record.get('security_clearance') is not False or record.get('risk_accepted') is not False or \
+            record.get('release_blocking') is not True:
+        fail('corrected Log4j runtime record has invalid provenance or disposition')
+    platforms = record.get('platforms', {})
+    if set(platforms) != {'linux', 'windows'}:
+        fail('corrected Log4j runtime record lacks a platform')
+    client = next(row for row in inspection['clients'] if row['minecraft_version'] == '1.17.1')
+    for platform, item in platforms.items():
+        path = (ROOT / item['archive_path']).resolve()
+        if not path.is_relative_to(BASE.resolve()) or not path.is_file():
+            fail('missing corrected Log4j runtime artifact: ' + platform)
+        packed = path.read_bytes()
+        if len(packed) != item['archive_size_bytes'] or hashlib.sha256(packed).hexdigest() != item['archive_sha256']:
+            fail('corrected Log4j runtime artifact checksum mismatch: ' + platform)
+        with ZipFile(BytesIO(packed)) as archive:
+            if archive.testzip() is not None:
+                fail('corrected Log4j runtime ZIP is corrupt: ' + platform)
+            raw = archive.read('mojang-log4j-runtime-probes.json')
+            if hashlib.sha256(raw).hexdigest() != item['report_sha256']:
+                fail('corrected Log4j runtime report checksum mismatch: ' + platform)
+            report = json.loads(raw)
+            prefix = 'docs/dependency-evidence/critical-reachability-2026-11-21/log4j-mojang-runtime-2026-11-22/metadata/'
+            members = [name for name in archive.namelist() if name.startswith(prefix) and not name.endswith('/')]
+            if len(members) != 44 or len(set(members)) != 44:
+                fail('corrected Log4j artifact metadata coverage mismatch: ' + platform)
+            for member in members:
+                snapshot = (ROOT / member).resolve()
+                if not snapshot.is_relative_to(ROOT.resolve()) or not snapshot.is_file() or \
+                        snapshot.read_bytes() != archive.read(member):
+                    fail('corrected Log4j artifact metadata mismatch: ' + member)
+        if report.get('analysis_commit') != record['analysis_commit'] or \
+                report.get('platform') != item['report_platform'] or report.get('passed') is not True or \
+                report.get('security_clearance') is not False or report.get('risk_accepted') is not False or \
+                report.get('release_blocking') is not True or len(report.get('cases', [])) != 27 or \
+                any(case.get('passed') is not True for case in report['cases']):
+            fail('corrected Log4j runtime report is incomplete or claims clearance: ' + platform)
+        cases = [case for case in report['cases'] if case['name'] == '1.17.1-embedded-chat-jndi']
+        if len(cases) != 1:
+            fail('corrected 1.17.1 runtime case is missing or duplicated: ' + platform)
+        case = cases[0]
+        if item['case_name'] != case['name'] or case['source_sha'] != item['case_source_sha'] or \
+                case['source_sha'] != '06b350856605011c1549d51d6edd3d351c5021c0' or \
+                case['java_runtime_name'] != item['java_runtime_name'] or item['java_runtime_name'] != '16.0.1.9.1' or \
+                case['logging_configuration'] != item['configuration'] or item['configuration'] != '1.14.4-embedded.xml' or \
+                case['configuration_scope'] != 'exact_client_embedded' or \
+                item['configuration_scope'] != case['configuration_scope'] or \
+                case['configuration_sha256'] != client['entry_sha256'] or \
+                item['configuration_sha256'] != client['entry_sha256'] or \
+                case['observed'].get('NO_NETWORK_CONTEXT_CALLS') != 2 or item['local_jndi_context_calls'] != 2 or \
+                case.get('safe_no_network_context_factory') is not True or item.get('passed') is not True:
+            fail('corrected 1.17.1 exact configuration binding or result mismatch: ' + platform)
 
 
 def validate():
@@ -418,6 +480,9 @@ def validate():
             attribution.get('risk_accepted') is not False or attribution.get('release_blocking') is not True:
         fail('Log4j configuration correction provenance or disposition mismatch')
     validate_historical_log4j_attribution(attribution, review_inspection, chat_probe, high_family)
+    if raw_hash(EXACT_RUNTIME) != EXACT_RUNTIME_SHA256:
+        fail('corrected Log4j runtime verification checksum mismatch')
+    validate_corrected_runtime_artifacts(load(EXACT_RUNTIME), review_inspection)
     expected_chat_cases = {
         '2.8.1-launcher-chat-jndi': 0,
         '2.8.1-launcher-chat-jndi-core-first': 0,
@@ -1342,6 +1407,13 @@ def validate():
             'historical_1_17_1_result': 'representative_not_exact',
             'security_clearance': False, 'risk_accepted': False, 'release_blocking': True}:
         fail('structured advisory ledger lacks the Log4j configuration correction')
+    exact_runtime_pointer = reference.get('log4j_runtime_reachability', {}).get('review_exact_runtime', {})
+    if exact_runtime_pointer != {'path': EXACT_RUNTIME.relative_to(ROOT).as_posix(),
+                                 'sha256': EXACT_RUNTIME_SHA256,
+                                 'source_branch_head': '5989d8c0d61adf3bb9e4f7e247965929b21a0b2a',
+                                 'workflow_run': 45010716782, 'security_clearance': False,
+                                 'risk_accepted': False, 'release_blocking': True}:
+        fail('structured advisory ledger lacks the corrected exact-runtime evidence')
     commons_pointer = evidence.get('commons_compress_tar_reachability', {}).get('latest_followup', {})
     commons_path = ROOT / commons_pointer.get('path', '')
     commons = load(commons_path) if commons_path.is_file() else {}

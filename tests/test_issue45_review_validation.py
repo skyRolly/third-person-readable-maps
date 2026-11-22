@@ -175,6 +175,25 @@ class FindingCoverageRegressionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'does not match exact client bytes'):
             mojang.validate_embedded_configurations(new, inspection, historical=False)
 
+    def test_corrected_runtime_archives_validate_on_both_platforms(self):
+        import tempfile
+        from zipfile import ZipFile
+        index = current.load(current.EXACT_RUNTIME)
+        inspection = current.load(current.REVIEW_INSPECTION)
+        current.validate_corrected_runtime_artifacts(index, inspection)
+        with tempfile.TemporaryDirectory() as temporary:
+            for platform, row in index['platforms'].items():
+                with self.subTest(platform=platform), ZipFile(ROOT / row['archive_path']) as archive:
+                    report_path = Path(temporary) / (platform + '.json')
+                    report_path.write_bytes(archive.read('mojang-log4j-runtime-probes.json'))
+                    result = mojang.validate(report_path)
+                    self.assertEqual(result['case_count'], 27)
+                    report = json.loads(report_path.read_bytes())
+                    self.assertEqual(report['analysis_commit'], index['analysis_commit'])
+                    case = next(case for case in report['cases'] if case['name'] == '1.17.1-embedded-chat-jndi')
+                    self.assertEqual(case['configuration_sha256'], row['configuration_sha256'])
+                    self.assertEqual(case['observed']['NO_NETWORK_CONTEXT_CALLS'], 2)
+
 
 if __name__ == '__main__':
     unittest.main()

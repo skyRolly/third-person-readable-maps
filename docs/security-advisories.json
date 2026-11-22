@@ -15366,6 +15366,15 @@
         "security_clearance": false,
         "risk_accepted": false,
         "release_blocking": true
+      },
+      "review_exact_runtime": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/exact-runtime-verification.json",
+        "sha256": "9a2d260a5ead12851ee67e310dda692b9f8f9848488b02adfc0d29e11f237dbf",
+        "source_branch_head": "5989d8c0d61adf3bb9e4f7e247965929b21a0b2a",
+        "workflow_run": 45010716782,
+        "security_clearance": false,
+        "risk_accepted": false,
+        "release_blocking": true
       }
     }
   }
