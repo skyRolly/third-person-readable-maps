@@ -35,3 +35,10 @@ The three 7Z/ZIP findings remain **Further investigation** and release-blocking.
 2. Request a compatible Minecraft/Realms update to Commons Compress 1.21 or later for the affected releases; do not override the library in this mod.
 3. Complete supported launcher, third-party mod, and reflection call-path review for 7Z/ZIP findings.
 4. Keep all 12 rows blocking until the applicable reachability and upstream remediation questions are resolved.
+
+
+## Hosted matrix failure and fixture isolation — 2026-11-22
+
+Hosted run [44980126217](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980126217) failed in both Linux and Windows reachability jobs. The existing Log4j/Netty/LZ4 runner compiles top-level Java fixtures against its own pinned classpath; the new Commons probe had been placed at that same level, so compilation failed with missing `org.apache.commons.compress` packages before either runner executed. The follow-up artifact upload then failed because its producer step was skipped. The coordination and live-prerequisite jobs passed.
+
+The Commons fixture is now isolated under `tests/fixtures/critical_reachability/commons_compress/`, outside the existing runner's top-level source glob. The Commons-specific runner remains the only code that compiles it and supplies the exact pinned library classpath. This records a test-harness packaging defect; it does not change any security disposition or inventory count. A full Linux/Windows rerun is required before hosted probe evidence is recorded.

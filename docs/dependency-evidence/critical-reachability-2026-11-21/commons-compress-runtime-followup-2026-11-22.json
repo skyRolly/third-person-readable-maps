@@ -112,7 +112,7 @@
       "actual_pax_entry_size": 17
     },
     "probe_source": {
-      "path": "tests/fixtures/critical_reachability/CommonsTarGzipPipelineProbe.java",
+      "path": "tests/fixtures/critical_reachability/commons_compress/CommonsTarGzipPipelineProbe.java",
       "sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
       "size": 931
     },

@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/dependency-evidence/critical-reachability-2026-11-21'
 PROBE_DIR = EVIDENCE / 'commons-compress-probes-2026-11-22'
 FIXTURE = PROBE_DIR / 'pax-oversize-length.tar.gz'
-JAVA_SOURCE = ROOT / 'tests/fixtures/critical_reachability/CommonsTarGzipPipelineProbe.java'
+JAVA_SOURCE = ROOT / 'tests/fixtures/critical_reachability/commons_compress/CommonsTarGzipPipelineProbe.java'
 LEGACY_REPORT = EVIDENCE / 'commons-compress-reachability-2026-11-21.json'
 DISPOSITIONS = EVIDENCE / 'source-bound-dispositions-2026-11-21.json'
 FOLLOWUP = EVIDENCE / 'commons-compress-runtime-followup-2026-11-22.json'
@@ -54,7 +54,7 @@ ARTIFACTS = {
     },
 }
 EXPECTED_BASE_REPORT_SHA256 = 'bec556dc9aae4440a41f37432f5e1b4e4c4d5dfbbc471857a5cb38139a740095'
-EXPECTED_FOLLOWUP_SHA256 = '6fcf266f703b3a34536977fe00aac21e714de32a2010276b89ca4d214545d065'
+EXPECTED_FOLLOWUP_SHA256 = '7801ff83b843447db050529d3a9885584b4eac971a324181454e4399a4453ed4'
 EXPECTED_FIXTURE_SHA256 = 'd96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957'
 EXPECTED_PROBE_SHA256 = '96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf'
 EXPECTED_SOURCES = {
