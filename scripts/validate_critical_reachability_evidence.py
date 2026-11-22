@@ -1043,6 +1043,97 @@ def validate():
         if ':netty-handler:' in artifact['coordinate'] and not any(
                 row['path'] == 'io/netty/handler/ssl/SniHandler.class' for row in artifact['classes']):
             fail('SniHandler class hash missing from exact Netty handler artifact')
+
+    netty_finding = next(row for row in evidence['findings'] if row['advisory_id'] == 'GHSA-c4c3-7fpv-j4q5')
+    netty_followup = netty_finding.get('supplemental_source_bound_evidence', {}).get('reachability_report', {})
+    netty_report_path = ROOT / netty_followup.get('path', '')
+    if netty_followup.get('path') != (BASE / 'netty-sni-runtime-reachability-2026-11-22.json').relative_to(ROOT).as_posix() or \
+            not netty_report_path.is_file() or netty_followup.get('sha256') != raw_hash(netty_report_path):
+        fail('source-bound Netty runtime reachability report reference mismatch')
+    netty_runtime = load(netty_report_path)
+    scanner = netty_runtime.get('scanner_script', {})
+    scanner_path = ROOT / scanner.get('path', '')
+    if scanner.get('path') != 'scripts/inspect_netty_sni_client_reachability.py' or \
+            not scanner_path.is_file() or scanner.get('sha256') != raw_hash(scanner_path) or \
+            scanner.get('source_bound_records_commit') != '956c28254afa347d222304947e4a9878e78d209a':
+        fail('Netty scan generator provenance mismatch')
+    scan_ref = netty_runtime.get('exact_official_classpath_scan', {})
+    netty_scan_path = ROOT / scan_ref.get('path', '')
+    bytecode_ref = netty_runtime.get('focused_exact_bytecode', {})
+    bytecode_index_path = ROOT / bytecode_ref.get('index_path', '')
+    if netty_runtime.get('analysis_source_commit') != '956c28254afa347d222304947e4a9878e78d209a' or \
+            scan_ref.get('analysis_source_commit') != netty_runtime.get('analysis_source_commit') or \
+            scan_ref.get('path') != (BASE / 'netty-vanilla-classpath-scan-2026-11-22.json').relative_to(ROOT).as_posix() or \
+            not netty_scan_path.is_file() or scan_ref.get('sha256') != raw_hash(netty_scan_path):
+        fail('Netty classpath scan source binding or checksum mismatch')
+    netty_scan = load(netty_scan_path)
+    runtime_scan = netty_scan.get('runtime_classpath_scan', {})
+    if netty_scan.get('status') != 'complete_hash_verified_official_vanilla_classpath_scan' or \
+            netty_scan.get('security_clearance') is not False or netty_scan.get('risk_accepted') is not False or \
+            netty_scan.get('release_blocking') is not True or \
+            len(netty_scan.get('minecraft_versions', [])) != 29 or \
+            runtime_scan.get('distinct_client_and_runtime_jars') != 612 or \
+            runtime_scan.get('total_class_files_scanned') != 414135 or \
+            runtime_scan.get('all_artifact_sizes_and_sha1_verified') is not True or \
+            len(runtime_scan.get('per_minecraft_client_scan', {})) != 29:
+        fail('Netty classpath scan is incomplete or claims clearance')
+    raw_sni_hits = runtime_scan.get('sni_handler_string_reference_hits', [])
+    implementation_hits = runtime_scan.get('netty_handler_implementation_reference_hits', [])
+    if len(raw_sni_hits) != 46 or len(implementation_hits) != len(raw_sni_hits) or \
+            runtime_scan.get('non_self_sni_handler_callers') != [] or any(
+                not any(c.startswith('io.netty:netty-handler:') for c in hit.get('coordinates', [])) or
+                not hit.get('class_file', '').startswith('io/netty/handler/ssl/') for hit in implementation_hits):
+        fail('Netty scan SNI caller classification mismatch')
+    expected_netty_rows = {(o['source_kind'], o['group'], o['source_sha'], o['purl'], o['package_version'],
+                            tuple(o['minecraft_versions']), o['dependency_artifact_sha256'])
+                           for o in netty_finding['occurrences']}
+    actual_netty_rows = {(o['source_kind'], o['group'], o['source_sha'], o['purl'], o['package_version'],
+                          tuple(o['minecraft_versions']), o['dependency_artifact_sha256'])
+                         for o in netty_runtime.get('source_scope', {}).get('occurrences', [])}
+    if expected_netty_rows != actual_netty_rows or len(actual_netty_rows) != 14 or \
+            len(netty_runtime['source_scope'].get('source_groups', [])) != 11 or \
+            set(netty_runtime['exact_official_classpath_scan'].get('netty_handler_versions', [])) != {
+                'io.netty:netty-handler:4.1.77.Final', 'io.netty:netty-handler:4.1.82.Final',
+                'io.netty:netty-handler:4.1.97.Final', 'io.netty:netty-handler:4.1.115.Final',
+                'io.netty:netty-handler:4.1.118.Final', 'io.netty:netty-handler:4.2.7.Final',
+                'io.netty:netty-handler:4.2.15.Final', 'io.netty:netty-handler:4.2.16.Final'}:
+        fail('Netty source-bound occurrence/version coverage mismatch')
+    if netty_runtime.get('reachability_conclusion', {}).get('release_blocking') is not True or \
+            netty_runtime['reachability_conclusion'].get('security_clearance') is not False or \
+            netty_runtime['reachability_conclusion'].get('risk_accepted') is not False or \
+            'Further investigation' not in netty_runtime['reachability_conclusion'].get('disposition', ''):
+        fail('Netty reachability report changed the unresolved disposition')
+    if bytecode_ref.get('index_path') != (BASE / 'netty-callpath-bytecode-index-2026-11-22.json').relative_to(ROOT).as_posix() or \
+            not bytecode_index_path.is_file() or bytecode_ref.get('index_sha256') != raw_hash(bytecode_index_path):
+        fail('Netty focused bytecode index reference mismatch')
+    bytecode_index = load(bytecode_index_path)
+    if bytecode_index.get('analysis_source_commit') != netty_runtime.get('analysis_source_commit'):
+        fail('Netty bytecode index analysis source mismatch')
+    exact_builder_captures = [row for row in bytecode_index.get('evidence_files', [])
+                              if row.get('symbol') == 'io.netty.handler.ssl.SslContextBuilder']
+    if len(exact_builder_captures) != 8 or any(row.get('verified_default_client_auth') != 'ClientAuth.NONE'
+                                               for row in exact_builder_captures):
+        fail('Netty SslContextBuilder defaults are not verified for all affected versions')
+    for row in bytecode_index.get('evidence_files', []):
+        path = ROOT / row.get('javap_path', '')
+        if not path.is_file() or raw_hash(path) != row.get('javap_sha256'):
+            fail('Netty focused javap capture checksum mismatch')
+    for row in bytecode_index.get('mapping_sources', []):
+        path = ROOT / row.get('excerpt_path', '')
+        if not path.is_file() or raw_hash(path) != row.get('excerpt_sha256'):
+            fail('Netty official mapping excerpt checksum mismatch')
+    integrated_checks = bytecode_index.get('integrated_server_constant_pool_reference_checks', [])
+    if len(integrated_checks) != 3 or any(
+            row.get(key) is not False for row in integrated_checks
+            for key in ('management_server_class_marker_found', 'SniHandler_marker_found',
+                        'SslHandler_marker_found', 'SslContext_marker_found')):
+        fail('Netty integrated-server reference checks mismatch')
+    component_probe = netty_runtime.get('component_probe', {})
+    component_path = ROOT / component_probe.get('path', '')
+    if component_probe.get('path') != (BASE / 'reachability-probes-2026-11-21-rerun.json').relative_to(ROOT).as_posix() or \
+            not component_path.is_file() or component_probe.get('sha256') != raw_hash(component_path) or \
+            component_probe.get('passed') is not True or len(component_probe.get('sni_cases', [])) != 5:
+        fail('Netty upstream component probe reference mismatch')
     for finding in evidence['findings']:
         for occurrence in finding['occurrences']:
             if not DIGEST.fullmatch(occurrence.get('dependency_artifact_sha256', '')):

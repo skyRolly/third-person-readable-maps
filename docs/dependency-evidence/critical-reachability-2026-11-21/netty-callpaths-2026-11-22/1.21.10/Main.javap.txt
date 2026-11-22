@@ -1,0 +1,777 @@
+Compiled from "SourceFile"
+public class net.minecraft.server.Main {
+  private static final org.slf4j.Logger a;
+
+  public net.minecraft.server.Main();
+    Code:
+       0: aload_0
+       1: invokespecial #72                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: invokestatic  #91                 // Method ac.a:()V
+       3: new           #93                 // class joptsimple/OptionParser
+       6: dup
+       7: invokespecial #94                 // Method joptsimple/OptionParser."<init>":()V
+      10: astore_1
+      11: aload_1
+      12: ldc           #96                 // String nogui
+      14: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      17: astore_2
+      18: aload_1
+      19: ldc           #102                // String initSettings
+      21: ldc           #104                // String Initializes \'server.properties\' and \'eula.txt\', then quits
+      23: invokevirtual #107                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      26: astore_3
+      27: aload_1
+      28: ldc           #109                // String demo
+      30: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      33: astore        4
+      35: aload_1
+      36: ldc           #111                // String bonusChest
+      38: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      41: astore        5
+      43: aload_1
+      44: ldc           #113                // String forceUpgrade
+      46: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      49: astore        6
+      51: aload_1
+      52: ldc           #115                // String eraseCache
+      54: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      57: astore        7
+      59: aload_1
+      60: ldc           #117                // String recreateRegionFiles
+      62: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      65: astore        8
+      67: aload_1
+      68: ldc           #119                // String safeMode
+      70: ldc           #121                // String Loads level with vanilla datapack only
+      72: invokevirtual #107                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      75: astore        9
+      77: aload_1
+      78: ldc           #123                // String help
+      80: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      83: invokevirtual #129                // Method joptsimple/OptionSpecBuilder.forHelp:()Ljoptsimple/AbstractOptionSpec;
+      86: astore        10
+      88: aload_1
+      89: ldc           #131                // String universe
+      91: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+      94: invokevirtual #135                // Method joptsimple/OptionSpecBuilder.withRequiredArg:()Ljoptsimple/ArgumentAcceptingOptionSpec;
+      97: ldc           #137                // String .
+      99: iconst_0
+     100: anewarray     #139                // class java/lang/String
+     103: invokevirtual #145                // Method joptsimple/ArgumentAcceptingOptionSpec.defaultsTo:(Ljava/lang/Object;[Ljava/lang/Object;)Ljoptsimple/ArgumentAcceptingOptionSpec;
+     106: astore        11
+     108: aload_1
+     109: ldc           #147                // String world
+     111: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+     114: invokevirtual #135                // Method joptsimple/OptionSpecBuilder.withRequiredArg:()Ljoptsimple/ArgumentAcceptingOptionSpec;
+     117: astore        12
+     119: aload_1
+     120: ldc           #149                // String port
+     122: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+     125: invokevirtual #135                // Method joptsimple/OptionSpecBuilder.withRequiredArg:()Ljoptsimple/ArgumentAcceptingOptionSpec;
+     128: ldc           #151                // class java/lang/Integer
+     130: invokevirtual #155                // Method joptsimple/ArgumentAcceptingOptionSpec.ofType:(Ljava/lang/Class;)Ljoptsimple/ArgumentAcceptingOptionSpec;
+     133: iconst_m1
+     134: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     137: iconst_0
+     138: anewarray     #151                // class java/lang/Integer
+     141: invokevirtual #145                // Method joptsimple/ArgumentAcceptingOptionSpec.defaultsTo:(Ljava/lang/Object;[Ljava/lang/Object;)Ljoptsimple/ArgumentAcceptingOptionSpec;
+     144: astore        13
+     146: aload_1
+     147: ldc           #161                // String serverId
+     149: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+     152: invokevirtual #135                // Method joptsimple/OptionSpecBuilder.withRequiredArg:()Ljoptsimple/ArgumentAcceptingOptionSpec;
+     155: astore        14
+     157: aload_1
+     158: ldc           #163                // String jfrProfile
+     160: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+     163: astore        15
+     165: aload_1
+     166: ldc           #165                // String pidFile
+     168: invokevirtual #100                // Method joptsimple/OptionParser.accepts:(Ljava/lang/String;)Ljoptsimple/OptionSpecBuilder;
+     171: invokevirtual #135                // Method joptsimple/OptionSpecBuilder.withRequiredArg:()Ljoptsimple/ArgumentAcceptingOptionSpec;
+     174: new           #167                // class joptsimple/util/PathConverter
+     177: dup
+     178: iconst_0
+     179: anewarray     #169                // class joptsimple/util/PathProperties
+     182: invokespecial #172                // Method joptsimple/util/PathConverter."<init>":([Ljoptsimple/util/PathProperties;)V
+     185: invokevirtual #176                // Method joptsimple/ArgumentAcceptingOptionSpec.withValuesConvertedBy:(Ljoptsimple/ValueConverter;)Ljoptsimple/ArgumentAcceptingOptionSpec;
+     188: astore        16
+     190: aload_1
+     191: invokevirtual #180                // Method joptsimple/OptionParser.nonOptions:()Ljoptsimple/NonOptionArgumentSpec;
+     194: astore        17
+     196: aload_1
+     197: aload_0
+     198: invokevirtual #184                // Method joptsimple/OptionParser.parse:([Ljava/lang/String;)Ljoptsimple/OptionSet;
+     201: astore        18
+     203: aload         18
+     205: aload         10
+     207: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     210: ifeq          221
+     213: aload_1
+     214: getstatic     #196                // Field java/lang/System.err:Ljava/io/PrintStream;
+     217: invokevirtual #200                // Method joptsimple/OptionParser.printHelpOn:(Ljava/io/OutputStream;)V
+     220: return
+     221: aload         18
+     223: aload         16
+     225: invokevirtual #205                // Method joptsimple/OptionSet.valueOf:(Ljoptsimple/OptionSpec;)Ljava/lang/Object;
+     228: checkcast     #207                // class java/nio/file/Path
+     231: astore        19
+     233: aload         19
+     235: ifnull        243
+     238: aload         19
+     240: invokestatic  #210                // Method a:(Ljava/nio/file/Path;)V
+     243: invokestatic  #215                // Method p.g:()V
+     246: aload         18
+     248: aload         15
+     250: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     253: ifeq          268
+     256: getstatic     #220                // Field byi.f:Lbyi;
+     259: getstatic     #225                // Field byg.b:Lbyg;
+     262: invokeinterface #228,  2          // InterfaceMethod byi.a:(Lbyg;)Z
+     267: pop
+     268: invokestatic  #231                // Method aml.a:()V
+     271: invokestatic  #233                // Method aml.c:()V
+     274: invokestatic  #237                // Method ag.p:()V
+     277: ldc           #239                // String server.properties
+     279: iconst_0
+     280: anewarray     #139                // class java/lang/String
+     283: invokestatic  #245                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+     286: astore        20
+     288: new           #247                // class arq
+     291: dup
+     292: aload         20
+     294: invokespecial #249                // Method arq."<init>":(Ljava/nio/file/Path;)V
+     297: astore        21
+     299: aload         21
+     301: invokevirtual #251                // Method arq.b:()V
+     304: aload         21
+     306: invokevirtual #254                // Method arq.a:()Larp;
+     309: getfield      #260                // Field arp.T:Ljava/lang/String;
+     312: invokestatic  #265                // Method enf.a:(Ljava/lang/String;)V
+     315: ldc_w         #267                // String eula.txt
+     318: iconst_0
+     319: anewarray     #139                // class java/lang/String
+     322: invokestatic  #245                // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+     325: astore        22
+     327: new           #269                // class amp
+     330: dup
+     331: aload         22
+     333: invokespecial #270                // Method amp."<init>":(Ljava/nio/file/Path;)V
+     336: astore        23
+     338: aload         18
+     340: aload_3
+     341: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     344: ifeq          373
+     347: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     350: ldc_w         #274                // String Initialized \'{}\' and \'{}\'
+     353: aload         20
+     355: invokeinterface #278,  1          // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+     360: aload         22
+     362: invokeinterface #278,  1          // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+     367: invokeinterface #284,  4          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     372: return
+     373: aload         23
+     375: invokevirtual #287                // Method amp.a:()Z
+     378: ifne          393
+     381: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     384: ldc_w         #289                // String You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+     387: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     392: return
+     393: new           #293                // class java/io/File
+     396: dup
+     397: aload         18
+     399: aload         11
+     401: invokevirtual #205                // Method joptsimple/OptionSet.valueOf:(Ljoptsimple/OptionSpec;)Ljava/lang/Object;
+     404: checkcast     #139                // class java/lang/String
+     407: invokespecial #295                // Method java/io/File."<init>":(Ljava/lang/String;)V
+     410: astore        24
+     412: new           #297                // class com/mojang/authlib/yggdrasil/YggdrasilAuthenticationService
+     415: dup
+     416: getstatic     #303                // Field java/net/Proxy.NO_PROXY:Ljava/net/Proxy;
+     419: invokespecial #306                // Method com/mojang/authlib/yggdrasil/YggdrasilAuthenticationService."<init>":(Ljava/net/Proxy;)V
+     422: aload         24
+     424: invokestatic  #311                // Method ane.a:(Lcom/mojang/authlib/yggdrasil/YggdrasilAuthenticationService;Ljava/io/File;)Lane;
+     427: astore        25
+     429: aload         18
+     431: aload         12
+     433: invokevirtual #205                // Method joptsimple/OptionSet.valueOf:(Ljoptsimple/OptionSpec;)Ljava/lang/Object;
+     436: checkcast     #139                // class java/lang/String
+     439: invokestatic  #317                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+     442: aload         21
+     444: invokevirtual #254                // Method arq.a:()Larp;
+     447: getfield      #320                // Field arp.o:Ljava/lang/String;
+     450: invokevirtual #324                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     453: checkcast     #139                // class java/lang/String
+     456: astore        26
+     458: aload         24
+     460: invokevirtual #327                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+     463: invokestatic  #330                // Method fih.b:(Ljava/nio/file/Path;)Lfih;
+     466: astore        27
+     468: aload         27
+     470: aload         26
+     472: invokevirtual #333                // Method fih.d:(Ljava/lang/String;)Lfih$c;
+     475: astore        28
+     477: aload         28
+     479: invokevirtual #336                // Method fih$c.m:()Z
+     482: ifeq          652
+     485: aload         28
+     487: invokevirtual #340                // Method fih$c.h:()Lcom/mojang/serialization/Dynamic;
+     490: astore        29
+     492: aload         28
+     494: aload         29
+     496: invokevirtual #343                // Method fih$c.a:(Lcom/mojang/serialization/Dynamic;)Lfii;
+     499: astore        30
+     501: goto          609
+     504: astore        31
+     506: aload         28
+     508: invokevirtual #346                // Method fih$c.e:()Lfih$b;
+     511: astore        32
+     513: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     516: ldc_w         #348                // String Failed to load world data from {}
+     519: aload         32
+     521: invokevirtual #350                // Method fih$b.b:()Ljava/nio/file/Path;
+     524: aload         31
+     526: invokeinterface #353,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     531: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     534: ldc_w         #355                // String Attempting to use fallback
+     537: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     542: aload         28
+     544: invokevirtual #358                // Method fih$c.i:()Lcom/mojang/serialization/Dynamic;
+     547: astore        29
+     549: aload         28
+     551: aload         29
+     553: invokevirtual #343                // Method fih$c.a:(Lcom/mojang/serialization/Dynamic;)Lfii;
+     556: astore        30
+     558: goto          603
+     561: astore        33
+     563: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     566: ldc_w         #348                // String Failed to load world data from {}
+     569: aload         32
+     571: invokevirtual #360                // Method fih$b.c:()Ljava/nio/file/Path;
+     574: aload         33
+     576: invokeinterface #363,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     581: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     584: ldc_w         #365                // String Failed to load world data from {} and {}. World files may be corrupted. Shutting down.
+     587: aload         32
+     589: invokevirtual #350                // Method fih$b.b:()Ljava/nio/file/Path;
+     592: aload         32
+     594: invokevirtual #360                // Method fih$b.c:()Ljava/nio/file/Path;
+     597: invokeinterface #363,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     602: return
+     603: aload         28
+     605: invokevirtual #372                // Method fih$c.n:()Z
+     608: pop
+     609: aload         30
+     611: invokevirtual #374                // Method fii.d:()Z
+     614: ifeq          629
+     617: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     620: ldc_w         #376                // String This world must be opened in an older version (like 1.6.4) to be safely converted
+     623: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     628: return
+     629: aload         30
+     631: invokevirtual #379                // Method fii.r:()Z
+     634: ifne          649
+     637: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     640: ldc_w         #381                // String This world was created by an incompatible version.
+     643: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     648: return
+     649: goto          655
+     652: aconst_null
+     653: astore        29
+     655: aload         29
+     657: astore        30
+     659: aload         18
+     661: aload         9
+     663: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     666: istore        31
+     668: iload         31
+     670: ifeq          684
+     673: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     676: ldc_w         #383                // String Safe mode active, only vanilla datapack will be loaded
+     679: invokeinterface #385,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     684: aload         28
+     686: invokestatic  #390                // Method bad.a:(Lfih$c;)Lbaa;
+     689: astore        32
+     691: aload         21
+     693: invokevirtual #254                // Method arq.a:()Larp;
+     696: aload         30
+     698: iload         31
+     700: aload         32
+     702: invokestatic  #393                // Method a:(Larp;Lcom/mojang/serialization/Dynamic;ZLbaa;)Lanh$c;
+     705: astore        34
+     707: aload         34
+     709: aload         30
+     711: aload         21
+     713: aload         18
+     715: aload         4
+     717: aload         5
+     719: invokedynamic #411,  0            // InvokeDynamic #0:apply:(Lanh$c;Lcom/mojang/serialization/Dynamic;Larq;Ljoptsimple/OptionSet;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;)Ljava/util/function/Function;
+     724: invokestatic  #414                // Method ag.c:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+     727: invokevirtual #419                // Method java/util/concurrent/CompletableFuture.get:()Ljava/lang/Object;
+     730: checkcast     #421                // class ani
+     733: astore        33
+     735: goto          754
+     738: astore        34
+     740: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     743: ldc_w         #423                // String Failed to load datapacks, can\'t proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode
+     746: aload         34
+     748: invokeinterface #426,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     753: return
+     754: aload         33
+     756: invokevirtual #431                // Method ani.c:()Ljr;
+     759: invokevirtual #436                // Method jr.a:()Ljy$b;
+     762: astore        34
+     764: aload         33
+     766: invokevirtual #439                // Method ani.d:()Lfis;
+     769: astore        35
+     771: aload         18
+     773: aload         8
+     775: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     778: istore        36
+     780: aload         18
+     782: aload         6
+     784: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     787: ifne          795
+     790: iload         36
+     792: ifeq          821
+     795: aload         28
+     797: aload         35
+     799: invokestatic  #446                // Method bgy.a:()Lcom/mojang/datafixers/DataFixer;
+     802: aload         18
+     804: aload         7
+     806: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+     809: invokedynamic #453,  0            // InvokeDynamic #1:getAsBoolean:()Ljava/util/function/BooleanSupplier;
+     814: aload         34
+     816: iload         36
+     818: invokestatic  #456                // Method a:(Lfih$c;Lfis;Lcom/mojang/datafixers/DataFixer;ZLjava/util/function/BooleanSupplier;Ljy;Z)V
+     821: aload         28
+     823: aload         34
+     825: aload         35
+     827: invokevirtual #459                // Method fih$c.a:(Ljy;Lfis;)V
+     830: aload         28
+     832: aload         32
+     834: aload         33
+     836: aload         21
+     838: aload         25
+     840: aload         18
+     842: aload         13
+     844: aload         4
+     846: aload         14
+     848: aload_2
+     849: aload         17
+     851: invokedynamic #468,  0            // InvokeDynamic #2:apply:(Lfih$c;Lbaa;Lani;Larq;Lane;Ljoptsimple/OptionSet;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;)Ljava/util/function/Function;
+     856: invokestatic  #473                // Method net/minecraft/server/MinecraftServer.a:(Ljava/util/function/Function;)Lnet/minecraft/server/MinecraftServer;
+     859: checkcast     #475                // class aro
+     862: astore        37
+     864: new           #7                  // class net/minecraft/server/Main$1
+     867: dup
+     868: ldc_w         #477                // String Server Shutdown Thread
+     871: aload         37
+     873: invokespecial #480                // Method net/minecraft/server/Main$1."<init>":(Ljava/lang/String;Laro;)V
+     876: astore        38
+     878: aload         38
+     880: new           #482                // class s
+     883: dup
+     884: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     887: invokespecial #485                // Method s."<init>":(Lorg/slf4j/Logger;)V
+     890: invokevirtual #489                // Method java/lang/Thread.setUncaughtExceptionHandler:(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+     893: invokestatic  #495                // Method java/lang/Runtime.getRuntime:()Ljava/lang/Runtime;
+     896: aload         38
+     898: invokevirtual #499                // Method java/lang/Runtime.addShutdownHook:(Ljava/lang/Thread;)V
+     901: goto          922
+     904: astore        18
+     906: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     909: getstatic     #505                // Field com/mojang/logging/LogUtils.FATAL_MARKER:Lorg/slf4j/Marker;
+     912: ldc_w         #507                // String Failed to start the minecraft server
+     915: aload         18
+     917: invokeinterface #510,  4          // InterfaceMethod org/slf4j/Logger.error:(Lorg/slf4j/Marker;Ljava/lang/String;Ljava/lang/Throwable;)V
+     922: return
+    Exception table:
+       from    to  target type
+         485   501   504   Class java/io/IOException
+         485   501   504   Class va
+         485   501   504   Class vh
+         542   558   561   Class java/io/IOException
+         542   558   561   Class va
+         542   558   561   Class vh
+         691   735   738   Class java/lang/Exception
+         196   220   904   Class java/lang/Exception
+         221   372   904   Class java/lang/Exception
+         373   392   904   Class java/lang/Exception
+         393   602   904   Class java/lang/Exception
+         603   628   904   Class java/lang/Exception
+         629   648   904   Class java/lang/Exception
+         649   753   904   Class java/lang/Exception
+         754   901   904   Class java/lang/Exception
+
+  private static anh$b<fis> a(arq, anh$a, jx<eno>, boolean, boolean);
+    Code:
+       0: iload_3
+       1: ifeq          26
+       4: getstatic     #595                // Field net/minecraft/server/MinecraftServer.e:Ldru;
+       7: astore        5
+       9: getstatic     #600                // Field eqn.b:Leqn;
+      12: astore        6
+      14: aload_1
+      15: invokevirtual #603                // Method anh$a.c:()Ljm$a;
+      18: invokestatic  #608                // Method fad.a:(Ljm$a;)Leqk;
+      21: astore        7
+      23: goto          127
+      26: aload_0
+      27: invokevirtual #254                // Method arq.a:()Larp;
+      30: astore        8
+      32: new           #612                // class dru
+      35: dup
+      36: aload         8
+      38: getfield      #320                // Field arp.o:Ljava/lang/String;
+      41: aload         8
+      43: getfield      #615                // Field arp.n:Lars$a;
+      46: invokevirtual #616                // Method ars$a.get:()Ljava/lang/Object;
+      49: checkcast     #618                // class drn
+      52: aload         8
+      54: getfield      #621                // Field arp.D:Z
+      57: aload         8
+      59: getfield      #623                // Field arp.m:Lars$a;
+      62: invokevirtual #616                // Method ars$a.get:()Ljava/lang/Object;
+      65: checkcast     #625                // class cbn
+      68: iconst_0
+      69: new           #627                // class drm
+      72: dup
+      73: aload_1
+      74: invokevirtual #630                // Method anh$a.b:()Ldso;
+      77: invokevirtual #635                // Method dso.b:()Ldcx;
+      80: invokespecial #638                // Method drm."<init>":(Ldcx;)V
+      83: aload_1
+      84: invokevirtual #630                // Method anh$a.b:()Ldso;
+      87: invokespecial #641                // Method dru."<init>":(Ljava/lang/String;Ldrn;ZLcbn;ZLdrm;Ldso;)V
+      90: astore        5
+      92: iload         4
+      94: ifeq          109
+      97: aload         8
+      99: getfield      #644                // Field arp.ai:Leqn;
+     102: iconst_1
+     103: invokevirtual #647                // Method eqn.a:(Z)Leqn;
+     106: goto          114
+     109: aload         8
+     111: getfield      #644                // Field arp.ai:Leqn;
+     114: astore        6
+     116: aload         8
+     118: aload_1
+     119: invokevirtual #603                // Method anh$a.c:()Ljm$a;
+     122: invokevirtual #648                // Method arp.a:(Ljm$a;)Leqk;
+     125: astore        7
+     127: aload         7
+     129: aload_2
+     130: invokevirtual #651                // Method eqk.a:(Ljx;)Leqk$b;
+     133: astore        8
+     135: aload         8
+     137: invokevirtual #654                // Method eqk$b.a:()Lcom/mojang/serialization/Lifecycle;
+     140: aload_1
+     141: invokevirtual #603                // Method anh$a.c:()Ljm$a;
+     144: invokeinterface #656,  1          // InterfaceMethod jm$a.d:()Lcom/mojang/serialization/Lifecycle;
+     149: invokevirtual #662                // Method com/mojang/serialization/Lifecycle.add:(Lcom/mojang/serialization/Lifecycle;)Lcom/mojang/serialization/Lifecycle;
+     152: astore        9
+     154: new           #45                 // class anh$b
+     157: dup
+     158: new           #49                 // class fil
+     161: dup
+     162: aload         5
+     164: aload         6
+     166: aload         8
+     168: invokevirtual #665                // Method eqk$b.d:()Lfil$a;
+     171: aload         9
+     173: invokespecial #668                // Method fil."<init>":(Ldru;Leqn;Lfil$a;Lcom/mojang/serialization/Lifecycle;)V
+     176: aload         8
+     178: invokevirtual #670                // Method eqk$b.b:()Ljy$b;
+     181: invokespecial #673                // Method anh$b."<init>":(Ljava/lang/Object;Ljy$b;)V
+     184: areturn
+
+  private static void a(java.nio.file.Path);
+    Code:
+       0: invokestatic  #686                // InterfaceMethod java/lang/ProcessHandle.current:()Ljava/lang/ProcessHandle;
+       3: invokeinterface #690,  1          // InterfaceMethod java/lang/ProcessHandle.pid:()J
+       8: lstore_1
+       9: aload_0
+      10: lload_1
+      11: invokestatic  #696                // Method java/lang/Long.toString:(J)Ljava/lang/String;
+      14: iconst_0
+      15: anewarray     #698                // class java/nio/file/OpenOption
+      18: invokestatic  #704                // Method java/nio/file/Files.writeString:(Ljava/nio/file/Path;Ljava/lang/CharSequence;[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;
+      21: pop
+      22: goto          35
+      25: astore_1
+      26: new           #706                // class java/io/UncheckedIOException
+      29: dup
+      30: aload_1
+      31: invokespecial #709                // Method java/io/UncheckedIOException."<init>":(Ljava/io/IOException;)V
+      34: athrow
+      35: return
+    Exception table:
+       from    to  target type
+           0    22    25   Class java/io/IOException
+
+  private static anh$c a(arp, com.mojang.serialization.Dynamic<?>, boolean, baa);
+    Code:
+       0: aload_1
+       1: ifnull        20
+       4: aload_1
+       5: invokestatic  #716                // Method fih.a:(Lcom/mojang/serialization/Dynamic;)Ldso;
+       8: astore        6
+      10: iconst_0
+      11: istore        4
+      13: aload         6
+      15: astore        5
+      17: goto          39
+      20: iconst_1
+      21: istore        4
+      23: new           #632                // class dso
+      26: dup
+      27: aload_0
+      28: getfield      #720                // Field arp.ab:Ldrd;
+      31: getstatic     #725                // Field dcz.h:Ldcx;
+      34: invokespecial #728                // Method dso."<init>":(Ldrd;Ldcx;)V
+      37: astore        5
+      39: new           #51                 // class anh$d
+      42: dup
+      43: aload_3
+      44: aload         5
+      46: iload_2
+      47: iload         4
+      49: invokespecial #731                // Method anh$d."<init>":(Lbaa;Ldso;ZZ)V
+      52: astore        6
+      54: new           #17                 // class anh$c
+      57: dup
+      58: aload         6
+      60: getstatic     #734                // Field ek$a.b:Lek$a;
+      63: aload_0
+      64: getfield      #738                // Field arp.H:I
+      67: invokespecial #741                // Method anh$c."<init>":(Lanh$d;Lek$a;I)V
+      70: areturn
+
+  private static void a(fih$c, fis, com.mojang.datafixers.DataFixer, boolean, java.util.function.BooleanSupplier, jy, boolean);
+    Code:
+       0: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+       3: ldc_w         #749                // String Forcing world upgrade!
+       6: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      11: new           #751                // class cbe
+      14: dup
+      15: aload_0
+      16: aload_2
+      17: aload_1
+      18: aload         5
+      20: iload_3
+      21: iload         6
+      23: invokespecial #754                // Method cbe."<init>":(Lfih$c;Lcom/mojang/datafixers/DataFixer;Lfis;Ljy;ZZ)V
+      26: astore        7
+      28: aconst_null
+      29: astore        8
+      31: aload         7
+      33: invokevirtual #760                // Method cbe.b:()Z
+      36: ifne          183
+      39: aload         7
+      41: invokevirtual #763                // Method cbe.h:()Lxx;
+      44: astore        9
+      46: aload         8
+      48: aload         9
+      50: if_acmpeq     75
+      53: aload         9
+      55: astore        8
+      57: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+      60: aload         7
+      62: invokevirtual #763                // Method cbe.h:()Lxx;
+      65: invokeinterface #767,  1          // InterfaceMethod xx.getString:()Ljava/lang/String;
+      70: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      75: aload         7
+      77: invokevirtual #770                // Method cbe.e:()I
+      80: istore        10
+      82: iload         10
+      84: ifle          151
+      87: aload         7
+      89: invokevirtual #772                // Method cbe.f:()I
+      92: aload         7
+      94: invokevirtual #774                // Method cbe.g:()I
+      97: iadd
+      98: istore        11
+     100: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+     103: ldc_w         #776                // String {}% completed ({} / {} chunks)...
+     106: iconst_3
+     107: anewarray     #4                  // class java/lang/Object
+     110: dup
+     111: iconst_0
+     112: iload         11
+     114: i2f
+     115: iload         10
+     117: i2f
+     118: fdiv
+     119: ldc_w         #777                // float 100.0f
+     122: fmul
+     123: invokestatic  #782                // Method bfh.d:(F)I
+     126: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     129: aastore
+     130: dup
+     131: iconst_1
+     132: iload         11
+     134: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     137: aastore
+     138: dup
+     139: iconst_2
+     140: iload         10
+     142: invokestatic  #159                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     145: aastore
+     146: invokeinterface #785,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;[Ljava/lang/Object;)V
+     151: aload         4
+     153: invokeinterface #787,  1          // InterfaceMethod java/util/function/BooleanSupplier.getAsBoolean:()Z
+     158: ifne          169
+     161: aload         7
+     163: invokevirtual #788                // Method cbe.a:()V
+     166: goto          180
+     169: ldc2_w        #789                // long 1000l
+     172: invokestatic  #794                // Method java/lang/Thread.sleep:(J)V
+     175: goto          180
+     178: astore        11
+     180: goto          31
+     183: aload         7
+     185: invokevirtual #797                // Method cbe.close:()V
+     188: goto          213
+     191: astore        8
+     193: aload         7
+     195: invokevirtual #797                // Method cbe.close:()V
+     198: goto          210
+     201: astore        9
+     203: aload         8
+     205: aload         9
+     207: invokevirtual #801                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     210: aload         8
+     212: athrow
+     213: return
+    Exception table:
+       from    to  target type
+         169   175   178   Class java/lang/InterruptedException
+          28   183   191   Class java/lang/Throwable
+         193   198   201   Class java/lang/Throwable
+
+  private static aro a(fih$c, baa, ani, arq, ane, joptsimple.OptionSet, joptsimple.OptionSpec, joptsimple.OptionSpec, joptsimple.OptionSpec, joptsimple.OptionSpec, joptsimple.OptionSpec, java.lang.Thread);
+    Code:
+       0: new           #475                // class aro
+       3: dup
+       4: aload         11
+       6: aload_0
+       7: aload_1
+       8: aload_2
+       9: aload_3
+      10: invokestatic  #446                // Method bgy.a:()Lcom/mojang/datafixers/DataFixer;
+      13: aload         4
+      15: invokespecial #809                // Method aro."<init>":(Ljava/lang/Thread;Lfih$c;Lbaa;Lani;Larq;Lcom/mojang/datafixers/DataFixer;Lane;)V
+      18: astore        12
+      20: aload         12
+      22: aload         5
+      24: aload         6
+      26: invokevirtual #205                // Method joptsimple/OptionSet.valueOf:(Ljoptsimple/OptionSpec;)Ljava/lang/Object;
+      29: checkcast     #151                // class java/lang/Integer
+      32: invokevirtual #812                // Method java/lang/Integer.intValue:()I
+      35: invokevirtual #815                // Method aro.b:(I)V
+      38: aload         12
+      40: aload         5
+      42: aload         7
+      44: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+      47: invokevirtual #818                // Method aro.c:(Z)V
+      50: aload         12
+      52: aload         5
+      54: aload         8
+      56: invokevirtual #205                // Method joptsimple/OptionSet.valueOf:(Ljoptsimple/OptionSpec;)Ljava/lang/Object;
+      59: checkcast     #139                // class java/lang/String
+      62: invokevirtual #820                // Method aro.b:(Ljava/lang/String;)V
+      65: aload         5
+      67: aload         9
+      69: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+      72: ifne          96
+      75: aload         5
+      77: aload         10
+      79: invokevirtual #824                // Method joptsimple/OptionSet.valuesOf:(Ljoptsimple/OptionSpec;)Ljava/util/List;
+      82: ldc           #96                 // String nogui
+      84: invokeinterface #830,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      89: ifne          96
+      92: iconst_1
+      93: goto          97
+      96: iconst_0
+      97: istore        13
+      99: iload         13
+     101: ifeq          115
+     104: invokestatic  #835                // Method java/awt/GraphicsEnvironment.isHeadless:()Z
+     107: ifne          115
+     110: aload         12
+     112: invokevirtual #838                // Method aro.bF:()V
+     115: aload         12
+     117: areturn
+
+  private static boolean a();
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  private static java.util.concurrent.CompletableFuture a(anh$c, com.mojang.serialization.Dynamic, arq, joptsimple.OptionSet, joptsimple.OptionSpec, joptsimple.OptionSpec, java.util.concurrent.Executor);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aload         5
+       8: invokedynamic #847,  0            // InvokeDynamic #3:get:(Lcom/mojang/serialization/Dynamic;Larq;Ljoptsimple/OptionSet;Ljoptsimple/OptionSpec;Ljoptsimple/OptionSpec;)Lanh$f;
+      13: invokedynamic #859,  0            // InvokeDynamic #4:create:()Lanh$e;
+      18: invokestatic  #862                // Method ag.h:()Laf;
+      21: aload         6
+      23: invokestatic  #865                // Method anh.a:(Lanh$c;Lanh$f;Lanh$e;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+      26: areturn
+
+  private static anh$b a(com.mojang.serialization.Dynamic, arq, joptsimple.OptionSet, joptsimple.OptionSpec, joptsimple.OptionSpec, anh$a);
+    Code:
+       0: aload         5
+       2: invokevirtual #868                // Method anh$a.d:()Ljy$b;
+       5: getstatic     #874                // Field mp.by:Lami;
+       8: invokeinterface #877,  2          // InterfaceMethod jy$b.f:(Lami;)Ljx;
+      13: astore        6
+      15: aload_0
+      16: ifnull        58
+      19: aload_0
+      20: aload         5
+      22: invokevirtual #630                // Method anh$a.b:()Ldso;
+      25: aload         6
+      27: aload         5
+      29: invokevirtual #603                // Method anh$a.c:()Ljm$a;
+      32: invokestatic  #880                // Method fih.a:(Lcom/mojang/serialization/Dynamic;Ldso;Ljx;Ljm$a;)Lfie;
+      35: astore        7
+      37: new           #45                 // class anh$b
+      40: dup
+      41: aload         7
+      43: invokevirtual #884                // Method fie.a:()Lfis;
+      46: aload         7
+      48: invokevirtual #887                // Method fie.b:()Leqk$b;
+      51: invokevirtual #670                // Method eqk$b.b:()Ljy$b;
+      54: invokespecial #673                // Method anh$b."<init>":(Ljava/lang/Object;Ljy$b;)V
+      57: areturn
+      58: getstatic     #272                // Field a:Lorg/slf4j/Logger;
+      61: ldc_w         #891                // String No existing world data, creating new world
+      64: invokeinterface #291,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      69: aload_1
+      70: aload         5
+      72: aload         6
+      74: aload_2
+      75: aload_3
+      76: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+      79: aload_2
+      80: aload         4
+      82: invokevirtual #190                // Method joptsimple/OptionSet.has:(Ljoptsimple/OptionSpec;)Z
+      85: invokestatic  #893                // Method a:(Larq;Lanh$a;Ljx;ZZ)Lanh$b;
+      88: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #899                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #272                // Field a:Lorg/slf4j/Logger;
+       6: return
+}

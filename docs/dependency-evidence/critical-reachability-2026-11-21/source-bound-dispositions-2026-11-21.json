@@ -134,7 +134,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -163,6 +163,13 @@
               "1.19.1",
               "1.19.2"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -201,7 +208,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -231,6 +238,13 @@
               "1.20",
               "1.20.1"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -285,7 +299,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -315,6 +329,13 @@
               "1.20",
               "1.20.1"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -368,7 +389,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -403,6 +424,13 @@
               "1.21.2",
               "1.21.3"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -449,7 +477,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -484,6 +512,13 @@
               "1.21.2",
               "1.21.3"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -530,7 +565,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -565,6 +600,13 @@
               "1.21.2",
               "1.21.3"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -611,7 +653,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -646,6 +688,13 @@
               "1.21.2",
               "1.21.3"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -684,7 +733,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -711,6 +760,13 @@
             "minecraft_versions": [
               "1.21.4"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -772,7 +828,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -804,6 +860,13 @@
               "1.21.8",
               "1.21.9"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -850,7 +913,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -882,6 +945,13 @@
               "1.21.8",
               "1.21.9"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -920,7 +990,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -950,6 +1020,13 @@
               "26.1.1",
               "26.1.2"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -987,7 +1064,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -1014,6 +1091,13 @@
             "minecraft_versions": [
               "26.2"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -1068,7 +1152,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -1098,6 +1182,13 @@
               "26.1.1",
               "26.1.2"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         },
         {
@@ -1136,7 +1227,7 @@
           "release_blocking": true,
           "responsible_owner": "skyRolly (project security decision) and Mojang (game-managed dependency update)",
           "reviewer": "Codex automated technical investigation; independent human review pending",
-          "review_date": "2026-11-21",
+          "review_date": "2026-11-22",
           "follow_up_requirements": [
             "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
             "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
@@ -1163,28 +1254,61 @@
             "minecraft_versions": [
               "26.3"
             ]
+          },
+          "supplemental_source_bound_evidence": {
+            "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+            "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+            "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+            "risk_accepted": false,
+            "release_blocking": true
           }
         }
       ],
       "vulnerable_api_or_class": "io.netty.handler.ssl.SniHandler / AbstractSniHandler ClientHello routing and default SslContext fallback",
-      "actual_call_path": "The fragmented-ClientHello behavior is reproduced in a local EmbeddedChannel probe against pinned vulnerable Netty artifacts. Static inspection of the hash-verified Minecraft client JARs found no direct SniHandler, AbstractSniHandler, or SslClientHelloHandler references. In Minecraft 1.21.9 through 26.3, the inspected optional management JSON-RPC path constructs an SslHandler from SslContext and uses HttpServerCodec, HttpObjectAggregator, and WebSocketServerProtocolHandler; it does not install SNI routing. Earlier inspected clients do not contain direct Netty SNI handler references.",
-      "effective_configuration": "Mojang management-server configuration defaults management-server-enabled to false. If explicitly enabled, the traced management server has no SNI routing and no client-auth requirement in the constructed server SslContext. Its AuthenticationHandler checks an API key on each request; this was verified in source-bound bytecode inspection. Launcher additions, arbitrary installed mods, reflective calls, and operator-selected server contexts are not captured.",
-      "reachability_finding": "No first-party SNI fallback path or mTLS-only authentication gate was located in inspected game code. The required advisory authentication-bypass preconditions were not demonstrated for the inspected built-in management server. The isolated component probe confirms that affected Netty handlers do route a fragmented ClientHello to the default context; this does not reproduce an authentication bypass in Minecraft.",
-      "verified_mitigation": "For the inspected built-in optional management server, disabled-by-default configuration, absence of SNI routing, lack of mTLS-only authentication, and per-request API-key validation remove the specific advisory preconditions in that path. These observations do not mitigate arbitrary additional handlers or launcher/mod behavior.",
+      "actual_call_path": "A complete SHA-1/size-verified scan of all 29 affected official Mojang client JARs and every default libraries.artifact JAR (612 unique JARs, 414,135 classes) found 46 SniHandler string hits, all in Netty handler implementation classes, and zero non-Netty caller/reflection hits. Exact 1.21.10, 1.21.11 and 26.3 bytecode confirms the optional TLS JSON-RPC listener is a DedicatedServer feature. Its channel initializer adds SslContext.newHandler() as an SslHandler directly and never installs SniHandler. The ordinary client/integrated-server packet captures show a separate game packet pipeline; exact IntegratedServer class constant pools in 1.21.10, 1.21.11 and 26.3 contain no SNI or TLS references.",
+      "effective_configuration": "DedicatedServerProperties defaults management-server-enabled=false and host=localhost; management-server-tls-enabled defaults true if the dedicated management endpoint is explicitly enabled. An operator can change the bind host. The TLS provider calls SslContextBuilder.forServer(keyManager).trustManager(trustManager).build() without clientAuth(); all eight exact affected SslContextBuilder class captures initialize ClientAuth.NONE. ManagementServer$1 adds an SslHandler, then HTTP codec/aggregator, AuthenticationHandler and WebSocket/JSON-RPC handlers. The application uses a per-request API key. This does not configure per-SNI mTLS.",
+      "reachability_finding": "The component-level EmbeddedChannel probe reproduces the advisory fallback with affected Netty versions and verifies the upstream fixed endpoints. In the exact official unmodified client and integrated-server classpaths, no non-Netty SniHandler construction or reflection name was found. The optional dedicated management endpoint can accept remote TLS if an operator enables and binds it remotely, but its inspected pipeline uses direct SslHandler without SNI routing and the builder client-auth mode is NONE; the advisory-specific fragmented-SNI/mTLS bypass preconditions were not found in that first-party path. This does not clear custom or modded classpaths.",
+      "verified_mitigation": "No SNI fallback path exists in the scanned official vanilla first-party code. The dedicated-server management TLS path uses SslHandler directly, ClientAuth.NONE, and API-key authentication. This is a path-specific non-reachability observation, not a dependency fix or mitigation against third-party mods, Java agents, reflective runtime insertion or changed launch classpaths.",
       "compatible_remediation": "The advisory identifies Netty 4.1.137.Final for the 4.1 line and 4.2.17.Final for the 4.2 line. Netty is supplied by Minecraft manifests in these findings; no library override was made. A game-side update must keep the Netty module set binary compatible.",
-      "remaining_uncertainty": "No full Minecraft process was instrumented. No search can exhaust arbitrary reflection, generated code, runtime-added agents, launcher classpath changes, or third-party mods. No actual authenticated handshake or exploit attempt was run. The game-managed library versions remain affected according to upstream ranges.",
-      "confidence": "Medium for the inspected first-party class and pipeline paths; low for all configurations of the host process.",
+      "remaining_uncertainty": "Arbitrary third-party mods, launcher-added libraries, Java agents, runtime-generated classes, instrumentation and operator-modified pipelines were not captured. The full game process was not instrumented and no Minecraft-level fragmented ClientHello or authentication-bypass attempt was run. Mojang still supplies vulnerable versions in all 14 source occurrences.",
+      "confidence": "High for the exact official unmodified Mojang client/runtime classpaths and inspected dedicated-management TLS code; insufficient to clear modded/custom-launcher deployments.",
       "disposition": "Further investigation with the single 26.2 occurrence retaining its source-bound Upstream-dependent remediation classification",
       "release_blocking": true,
       "risk_accepted": false,
       "responsible_owner": "skyRolly (project security decision) and the upstream game/library owners for runtime updates",
       "reviewer": "Codex automated technical investigation; independent human review pending",
-      "review_date": "2026-11-21",
+      "review_date": "2026-11-22",
       "follow_up_requirements": [
-        "Inspect exact supported-launcher classpaths and actual runtime pipeline construction for each affected game line.",
-        "Determine whether other supported components create SniHandler instances or configure mTLS fallback.",
-        "Request compatible Mojang updates to the fixed Netty release lines if affected behavior is reachable; do not override game libraries in the mod."
-      ]
+        "Inspect concrete supported third-party mod sets, launcher classpaths and Java agents, or define and verify a bounded supported runtime before changing the overall disposition.",
+        "Request/consume compatible Mojang updates to Netty 4.1.137.Final or 4.2.17.Final for game lines that remain supported; do not override game-managed libraries in the mod.",
+        "Retain the release blocker pending upstream remediation and the required human security review."
+      ],
+      "supplemental_source_bound_evidence": {
+        "reachability_report": {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+          "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+          "analysis_source_commit": "956c28254afa347d222304947e4a9878e78d209a",
+          "occurrences": 14,
+          "source_groups": 11,
+          "minecraft_versions": 29,
+          "risk_accepted": false,
+          "security_clearance": false,
+          "release_blocking": true,
+          "scanner_script_path": "scripts/inspect_netty_sni_client_reachability.py",
+          "scanner_script_sha256": "ac207c8d65657e610dfb5f02b73bb85303552582402e7783470852e640abf4ab"
+        },
+        "vanilla_classpath_scan": {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-vanilla-classpath-scan-2026-11-22.json",
+          "sha256": "6a4fbbe49d5c496e73b47b0a523a462a4c411e7f9c6c58fd84e2e3672fdaaacc",
+          "unique_jars": 612,
+          "class_files_scanned": 414135,
+          "non_netty_sni_callers": 0
+        },
+        "focused_bytecode_index": {
+          "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpath-bytecode-index-2026-11-22.json",
+          "sha256": "1bce553e20bf51590387228967eccb4660bbd92158dd5d074a7ed29f0afd42a2"
+        }
+      }
     },
     {
       "advisory_id": "GHSA-jfh8-c2jp-5v3q",
@@ -1782,7 +1906,7 @@
       "actual_call_path": "The 1.14.4 and 1.17.1 network chat paths reach Logger.info(\"[CHAT] {}\", component.getString()). The inspected Minecraft path does not set ThreadContext/MDC for that value; the default and embedded Mojang XML do not configure an MDC/context lookup pattern. Synthetic context-layout probes are separately preserved.",
       "effective_configuration": "The observed default launcher config does not activate the tested MDC/context lookup pattern. Actual launcher overrides, third-party appenders/layouts, and mod-installed logging plugins remain outside the evidence.",
       "reachability_finding": "The actual remote chat message path is confirmed, but it is logged as the message argument rather than through an observed ThreadContext/MDC value. The exact default and embedded XML samples do not activate a context lookup layout. The advisory condition is not established in the inspected vanilla path; custom appenders/layouts, plugin code and MDC population remain unresolved.",
-      "verified_mitigation": "Default-layout inspection shows the tested context lookup feature is not configured on the observed path. This is conditional on using Mojang’s exact configuration and does not establish general non-applicability.",
+      "verified_mitigation": "Default-layout inspection shows the tested context lookup feature is not configured on the observed path. This is conditional on using Mojang\u2019s exact configuration and does not establish general non-applicability.",
       "compatible_remediation": "The advisory identifies 2.12.2 for the 2.12 line and 2.16.0 for the 2.13+ line. Minecraft supplies these versions; no override was made. A compatible update must also address GHSA-jfh8-c2jp-5v3q and GHSA-fxph-q3j8-mv87.",
       "remaining_uncertainty": "Production launcher configuration and full classpath were not captured; mod/plugin ThreadContext population, custom layouts, reflective paths, and every affected client patch remain unexamined. Synthetic layout probes show the vulnerable behavior but do not establish a vanilla input flow.",
       "confidence": "Medium for default configuration and component behavior; low for all launcher/mod layouts and MDC input reachability.",
@@ -2764,7 +2888,7 @@
           ]
         }
       ],
-      "vulnerable_api_or_class": "LZ4BlockInputStream construction initializes LZ4Factory.nativeInstance/fastestInstance, which extracts a JNI library into java.io.tmpdir without the fixed release’s protected extraction behavior.",
+      "vulnerable_api_or_class": "LZ4BlockInputStream construction initializes LZ4Factory.nativeInstance/fastestInstance, which extracts a JNI library into java.io.tmpdir without the fixed release\u2019s protected extraction behavior.",
       "actual_call_path": "The exact vanilla client scan found RegionFileVersion as the LZ4BlockInputStream caller in all 19 LZ4-bearing client versions across eight groups. RegionFile reads each chunk record, resolves compression id 4 to lz4, and invokes the stream wrapper. The library fastest factory loads native code where available; the native extraction path is separately observed in pinned artifact probes.",
       "effective_configuration": "LZ4 is registered as region compression id 4; new writes default to deflate id 2, but the reader selects the codec from the existing per-chunk header. This runner used java.io.tmpdir=/tmp (mode 1777, protected_regular=0); this is not a launcher guarantee. server.properties controls the write default but not whether existing id-4 chunks are read.",
       "reachability_finding": "The first-party vanilla path can load local user-selected or imported region files and reaches the LZ4 native extraction code for native-enabled artifacts. This is a local-host shared-temp race, not a vanilla network chunk packet path. The race itself was not attempted, so exploitability on actual launchers remains unresolved.",
@@ -2772,7 +2896,7 @@
       "compatible_remediation": "The advisory identifies at.yawk.lz4:lz4-java 1.11.4 as fixed; the org.lz4 line has no first_patched_version in the advisory through 1.8.1. The audited game libraries are Minecraft-supplied at.yawk 1.8.1/1.10.1 or org.lz4 1.8.0. Minecraft compatibility and API behavior at the fixed version are not validated, so no override was made.",
       "remaining_uncertainty": [
         "No local attacker race experiment was run.",
-        "Supported launchers’ java.io.tmpdir, native loading choices, and multi-user host policies are not verified.",
+        "Supported launchers\u2019 java.io.tmpdir, native loading choices, and multi-user host policies are not verified.",
         "No actual Minecraft world file or full game process was tested."
       ],
       "confidence": "High that the game calls LZ4BlockInputStream from region-file decoding and that pinned vulnerable artifacts extract native files; low-to-medium for whether a supported user environment meets the shared-temp race preconditions.",
@@ -4534,7 +4658,7 @@
       ],
       "vulnerable_api_or_class": "com.fasterxml.jackson.core.json.UTF8DataInputJsonParser._reportInvalidToken; reached only through JsonFactory.createParser(DataInput)",
       "actual_call_path": "MSAL JsonHelper in the observed Minecraft route calls ObjectMapper.readValue(String, Class) and readTree(String). No MSAL bytecode references DataInput or UTF8DataInputJsonParser; Minecraft client classes also have no direct Jackson references. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "MSAL JsonHelper in the observed Minecraft route calls ObjectMapper.readValue(String, Class) and readTree(String). No MSAL bytecode references DataInput or UTF8DataInputJsonParser; Minecraft client classes also have no direct Jackson references. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -4799,7 +4923,7 @@
       ],
       "vulnerable_api_or_class": "CollectionDeserializer.CollectionReferringAccumulator.resolveForwardReference and the corresponding map path; requires @JsonIdentityInfo collection/map models with unresolved references resolved in reverse order.",
       "actual_call_path": "Both manifest MSAL versions use a default ObjectMapper for typed DTOs and JsonNode; scanned MSAL classes have no JsonIdentityInfo annotation descriptor or annotation use. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "Both manifest MSAL versions use a default ObjectMapper for typed DTOs and JsonNode; scanned MSAL classes have no JsonIdentityInfo annotation descriptor or annotation use. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -5054,7 +5178,7 @@
       ],
       "vulnerable_api_or_class": "Jackson synchronous JSON parser nested-container recursion; fixed upstream by StreamReadConstraints with default nesting depth 1000 in 2.15.0.",
       "actual_call_path": "When optional dedicated-server text filtering is enabled, MSAL parses Microsoft identity discovery/token JSON through ObjectMapper.readValue(String, Class) and readTree(String). The integrated server uses MinecraftServer.createTextFilterForPlayer(), which returns TextFilter.DUMMY; it does not create PlayerSafetyServiceTextFilter. The identity endpoint is HTTPS login.microsoftonline.com; gameplay chat is encoded and decoded in ServerTextFilter using Gson, not Jackson. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "When optional dedicated-server text filtering is enabled, MSAL parses Microsoft identity discovery/token JSON through ObjectMapper.readValue(String, Class) and readTree(String). The integrated server uses MinecraftServer.createTextFilterForPlayer(), which returns TextFilter.DUMMY; it does not create PlayerSafetyServiceTextFilter. The identity endpoint is HTTPS login.microsoftonline.com; gameplay chat is encoded and decoded in ServerTextFilter using Gson, not Jackson. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -5319,7 +5443,7 @@
       ],
       "vulnerable_api_or_class": "PolymorphicTypeValidator generic type parameter validation; requires polymorphic typing and a configured PTV.",
       "actual_call_path": "MSAL JsonHelper constructs a default ObjectMapper and configures FAIL_ON_UNKNOWN_PROPERTIES, ALLOW_UNQUOTED_CONTROL_CHARS, and NON_NULL only. Full MSAL bytecode scan found no activateDefaultTyping, enableDefaultTyping, or PolymorphicTypeValidator use. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "MSAL JsonHelper constructs a default ObjectMapper and configures FAIL_ON_UNKNOWN_PROPERTIES, ALLOW_UNQUOTED_CONTROL_CHARS, and NON_NULL only. Full MSAL bytecode scan found no activateDefaultTyping, enableDefaultTyping, or PolymorphicTypeValidator use. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -5579,7 +5703,7 @@
       ],
       "vulnerable_api_or_class": "NonBlockingJsonParserBase async number accumulation; the advisory concerns chunked feeds through createNonBlockingByteArrayParser or createNonBlockingByteBufferParser.",
       "actual_call_path": "MSAL JsonHelper only calls synchronous ObjectMapper.readValue(String, Class) and readTree(String). A full bytecode scan of both manifest MSAL versions found no async parser creation call. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "MSAL JsonHelper only calls synchronous ObjectMapper.readValue(String, Class) and readTree(String). A full bytecode scan of both manifest MSAL versions found no async parser creation call. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -5844,7 +5968,7 @@
       ],
       "vulnerable_api_or_class": "BasicPolymorphicTypeValidator.Builder.allowIfSubTypeIsArray; requires a PTV using the array allow rule and attacker-controlled polymorphic input.",
       "actual_call_path": "MSAL JsonHelper uses a default ObjectMapper with no PTV, no default typing activation, and no BasicPolymorphicTypeValidator references in either exact manifest MSAL artifact. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "MSAL JsonHelper uses a default ObjectMapper with no PTV, no default typing activation, and no BasicPolymorphicTypeValidator references in either exact manifest MSAL artifact. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -6109,7 +6233,7 @@
       ],
       "vulnerable_api_or_class": "TypeDeserializerBase._findDeserializer unknown name-based type ID cache; requires @JsonTypeInfo(use=NAME, defaultImpl=...) or equivalent name-based polymorphic fallback.",
       "actual_call_path": "MSAL DTO classes and JsonHelper contain no JsonTypeInfo annotation descriptor and JsonHelper does not enable default typing. The typed DTO and JsonNode parsing calls do not establish this polymorphic fallback. Exact Log4j Core 2.22.1/2.24.1 JSON config/parser APIs also use Jackson, but the default Mojang config is XML/pattern based and no built-in socket listener or internal event-parser caller was found; custom launchers/mods remain out of scope.",
-      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2–1.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
+      "effective_configuration": "All observed occurrences are game-managed versions in official Minecraft manifests. Minecraft 1.21.2\u20131.21.10 DedicatedServerProperties defaults text-filtering-config to empty and text-filtering-version to 0. ServerTextFilter.createFromConfig returns null for blank configuration; version 1 creates PlayerSafetyServiceTextFilter. IntegratedServer inherits MinecraftServer.createTextFilterForPlayer, which returns TextFilter.DUMMY. A dedicated server owner can provide a non-empty configuration and select filtering version 1. Mojang default client config path is external XML with LegacyXMLLayout and PatternLayout; production arguments are unverified.",
       "reachability_finding": "MSAL DTO classes and JsonHelper contain no JsonTypeInfo annotation descriptor and JsonHelper does not enable default typing. The typed DTO and JsonNode parsing calls do not establish this polymorphic fallback. This establishes that the affected library is loaded with the runtime and a narrow MSAL parser path exists for enabled dedicated-server text filtering; it does not establish that untrusted game chat reaches Jackson. The other six advisory-specific APIs/configurations were not found in the first-party MSAL route. Log4j exposes Jackson-backed JSON parsing/configuration APIs, but the default configuration does not select them; third-party/mod code may.",
       "verified_mitigation": "No package-wide mitigation verified. Default integrated-server filtering is dummy and dedicated-server text filtering is blank/version 0 by default, but this does not protect custom server configuration, other mods, or launchers.",
       "compatible_remediation": "Minecraft/Mojang controls these runtime library versions. Upstream package fixes exist in the recorded advisory references; no mod-controlled dependency or compatibility-approved game override was identified. Request compatible Mojang updates and do not override the runtime classpath from this mod.",
@@ -12240,8 +12364,8 @@
     },
     {
       "path": "scripts/validate_critical_reachability_evidence.py",
-      "sha256": "6e4d670498f790ccb6ab4a94300236aad569589a15012175a5255d9d1091c292",
-      "size_bytes": 83697
+      "sha256": "a10cd1384d8c81584a6249ac8fc971eb34f297a94449484dfb487a2d46fe5c61",
+      "size_bytes": 91202
     },
     {
       "path": "scripts/verify_gradle_wrapper.py",

@@ -1,0 +1,365 @@
+Compiled from "SourceFile"
+public class avx extends io.netty.channel.ChannelDuplexHandler {
+  private final org.slf4j.Logger b;
+
+  private static final io.netty.util.AttributeKey<java.lang.Boolean> c;
+
+  private static final io.netty.util.AttributeKey<java.lang.Boolean> d;
+
+  private static final java.lang.String e;
+
+  private static final java.lang.String f;
+
+  public static final java.lang.String a;
+
+  private final avz g;
+
+  private final java.util.Set<java.lang.String> h;
+
+  public avx(avz, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokespecial #44                 // Method io/netty/channel/ChannelDuplexHandler."<init>":()V
+       4: aload_0
+       5: invokestatic  #50                 // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       8: putfield      #52                 // Field b:Lorg/slf4j/Logger;
+      11: aload_0
+      12: aload_1
+      13: putfield      #54                 // Field g:Lavz;
+      16: aload_0
+      17: aload_2
+      18: ldc           #56                 // String ,
+      20: invokevirtual #62                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      23: invokestatic  #68                 // Method com/google/common/collect/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+      26: putfield      #70                 // Field h:Ljava/util/Set;
+      29: return
+
+  public void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) throws java.lang.Exception;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #81                 // Method a:(Lio/netty/channel/ChannelHandlerContext;)Ljava/lang/String;
+       5: astore_3
+       6: aload_2
+       7: instanceof    #83                 // class io/netty/handler/codec/http/HttpRequest
+      10: ifeq          142
+      13: aload_2
+      14: checkcast     #83                 // class io/netty/handler/codec/http/HttpRequest
+      17: astore        4
+      19: aload_0
+      20: aload         4
+      22: invokevirtual #86                 // Method a:(Lio/netty/handler/codec/http/HttpRequest;)Lavx$a;
+      25: astore        5
+      27: aload         5
+      29: invokevirtual #89                 // Method avx$a.b:()Z
+      32: ifeq          91
+      35: aload_1
+      36: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      41: getstatic     #97                 // Field c:Lio/netty/util/AttributeKey;
+      44: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+      49: iconst_1
+      50: invokestatic  #109                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      53: invokeinterface #115,  2          // InterfaceMethod io/netty/util/Attribute.set:(Ljava/lang/Object;)V
+      58: aload         5
+      60: invokevirtual #117                // Method avx$a.d:()Z
+      63: ifeq          142
+      66: aload_1
+      67: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      72: getstatic     #119                // Field d:Lio/netty/util/AttributeKey;
+      75: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+      80: getstatic     #123                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      83: invokeinterface #115,  2          // InterfaceMethod io/netty/util/Attribute.set:(Ljava/lang/Object;)V
+      88: goto          142
+      91: aload_0
+      92: getfield      #52                 // Field b:Lorg/slf4j/Logger;
+      95: ldc           #125                // String Authentication rejected for connection with ip {}: {}
+      97: aload_3
+      98: aload         5
+     100: invokevirtual #128                // Method avx$a.c:()Ljava/lang/String;
+     103: invokeinterface #134,  4          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     108: aload_1
+     109: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+     114: getstatic     #97                 // Field c:Lio/netty/util/AttributeKey;
+     117: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+     122: iconst_0
+     123: invokestatic  #109                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     126: invokeinterface #115,  2          // InterfaceMethod io/netty/util/Attribute.set:(Ljava/lang/Object;)V
+     131: aload_0
+     132: aload_1
+     133: aload         5
+     135: invokevirtual #128                // Method avx$a.c:()Ljava/lang/String;
+     138: invokevirtual #137                // Method a:(Lio/netty/channel/ChannelHandlerContext;Ljava/lang/String;)V
+     141: return
+     142: aload_1
+     143: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+     148: getstatic     #97                 // Field c:Lio/netty/util/AttributeKey;
+     151: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+     156: invokeinterface #143,  1          // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+     161: checkcast     #105                // class java/lang/Boolean
+     164: astore        4
+     166: getstatic     #123                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+     169: aload         4
+     171: invokevirtual #147                // Method java/lang/Boolean.equals:(Ljava/lang/Object;)Z
+     174: ifeq          186
+     177: aload_0
+     178: aload_1
+     179: aload_2
+     180: invokespecial #149                // Method io/netty/channel/ChannelDuplexHandler.channelRead:(Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Object;)V
+     183: goto          205
+     186: aload_0
+     187: getfield      #52                 // Field b:Lorg/slf4j/Logger;
+     190: ldc           #151                // String Dropping unauthenticated connection with ip {}
+     192: aload_3
+     193: invokeinterface #154,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+     198: aload_1
+     199: invokeinterface #158,  1          // InterfaceMethod io/netty/channel/ChannelHandlerContext.close:()Lio/netty/channel/ChannelFuture;
+     204: pop
+     205: return
+
+  public void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) throws java.lang.Exception;
+    Code:
+       0: aload_2
+       1: instanceof    #170                // class io/netty/handler/codec/http/HttpResponse
+       4: ifeq          101
+       7: aload_2
+       8: checkcast     #170                // class io/netty/handler/codec/http/HttpResponse
+      11: astore        4
+      13: aload         4
+      15: invokeinterface #174,  1          // InterfaceMethod io/netty/handler/codec/http/HttpResponse.status:()Lio/netty/handler/codec/http/HttpResponseStatus;
+      20: invokevirtual #180                // Method io/netty/handler/codec/http/HttpResponseStatus.code:()I
+      23: getstatic     #184                // Field io/netty/handler/codec/http/HttpResponseStatus.SWITCHING_PROTOCOLS:Lio/netty/handler/codec/http/HttpResponseStatus;
+      26: invokevirtual #180                // Method io/netty/handler/codec/http/HttpResponseStatus.code:()I
+      29: if_icmpne     101
+      32: aload_1
+      33: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      38: getstatic     #119                // Field d:Lio/netty/util/AttributeKey;
+      41: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+      46: invokeinterface #143,  1          // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+      51: ifnull        101
+      54: aload_1
+      55: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      60: getstatic     #119                // Field d:Lio/netty/util/AttributeKey;
+      63: invokeinterface #103,  2          // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+      68: invokeinterface #143,  1          // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+      73: checkcast     #105                // class java/lang/Boolean
+      76: getstatic     #123                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      79: invokevirtual #147                // Method java/lang/Boolean.equals:(Ljava/lang/Object;)Z
+      82: ifeq          101
+      85: aload         4
+      87: invokeinterface #188,  1          // InterfaceMethod io/netty/handler/codec/http/HttpResponse.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+      92: getstatic     #194                // Field io/netty/handler/codec/http/HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL:Lio/netty/util/AsciiString;
+      95: ldc           #29                 // String minecraft-v1
+      97: invokevirtual #199                // Method io/netty/handler/codec/http/HttpHeaders.set:(Ljava/lang/CharSequence;Ljava/lang/Object;)Lio/netty/handler/codec/http/HttpHeaders;
+     100: pop
+     101: aload_0
+     102: aload_1
+     103: aload_2
+     104: aload_3
+     105: invokespecial #201                // Method io/netty/channel/ChannelDuplexHandler.write:(Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Object;Lio/netty/channel/ChannelPromise;)V
+     108: return
+
+  private avx$a a(io.netty.handler.codec.http.HttpRequest);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #206                // Method c:(Lio/netty/handler/codec/http/HttpRequest;)Ljava/lang/String;
+       5: astore_2
+       6: aload_2
+       7: ifnull        28
+      10: aload_0
+      11: aload_2
+      12: invokevirtual #209                // Method a:(Ljava/lang/String;)Z
+      15: ifeq          22
+      18: invokestatic  #212                // Method avx$a.a:()Lavx$a;
+      21: areturn
+      22: ldc           #214                // String Invalid API key
+      24: invokestatic  #217                // Method avx$a.a:(Ljava/lang/String;)Lavx$a;
+      27: areturn
+      28: aload_0
+      29: aload_1
+      30: invokevirtual #219                // Method d:(Lio/netty/handler/codec/http/HttpRequest;)Ljava/lang/String;
+      33: astore_3
+      34: aload_3
+      35: ifnull        71
+      38: aload_0
+      39: aload_1
+      40: invokevirtual #222                // Method b:(Lio/netty/handler/codec/http/HttpRequest;)Z
+      43: ifne          52
+      46: ldc           #224                // String Origin Not Allowed
+      48: invokestatic  #217                // Method avx$a.a:(Ljava/lang/String;)Lavx$a;
+      51: areturn
+      52: aload_0
+      53: aload_3
+      54: invokevirtual #209                // Method a:(Ljava/lang/String;)Z
+      57: ifeq          65
+      60: iconst_1
+      61: invokestatic  #227                // Method avx$a.a:(Z)Lavx$a;
+      64: areturn
+      65: ldc           #214                // String Invalid API key
+      67: invokestatic  #217                // Method avx$a.a:(Ljava/lang/String;)Lavx$a;
+      70: areturn
+      71: ldc           #229                // String Missing API key
+      73: invokestatic  #217                // Method avx$a.a:(Ljava/lang/String;)Lavx$a;
+      76: areturn
+
+  private boolean b(io.netty.handler.codec.http.HttpRequest);
+    Code:
+       0: aload_1
+       1: invokeinterface #230,  1          // InterfaceMethod io/netty/handler/codec/http/HttpRequest.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+       6: getstatic     #233                // Field io/netty/handler/codec/http/HttpHeaderNames.ORIGIN:Lio/netty/util/AsciiString;
+       9: invokevirtual #236                // Method io/netty/handler/codec/http/HttpHeaders.get:(Ljava/lang/CharSequence;)Ljava/lang/String;
+      12: astore_2
+      13: aload_2
+      14: ifnull        24
+      17: aload_2
+      18: invokevirtual #239                // Method java/lang/String.isEmpty:()Z
+      21: ifeq          26
+      24: iconst_0
+      25: ireturn
+      26: aload_0
+      27: getfield      #70                 // Field h:Ljava/util/Set;
+      30: aload_2
+      31: invokeinterface #244,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      36: ireturn
+
+  private java.lang.String c(io.netty.handler.codec.http.HttpRequest);
+    Code:
+       0: aload_1
+       1: invokeinterface #230,  1          // InterfaceMethod io/netty/handler/codec/http/HttpRequest.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+       6: getstatic     #248                // Field io/netty/handler/codec/http/HttpHeaderNames.AUTHORIZATION:Lio/netty/util/AsciiString;
+       9: invokevirtual #236                // Method io/netty/handler/codec/http/HttpHeaders.get:(Ljava/lang/CharSequence;)Ljava/lang/String;
+      12: astore_2
+      13: aload_2
+      14: ifnull        39
+      17: aload_2
+      18: ldc           #34                 // String Bearer
+      20: invokevirtual #251                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      23: ifeq          39
+      26: aload_2
+      27: ldc           #34                 // String Bearer
+      29: invokevirtual #254                // Method java/lang/String.length:()I
+      32: invokevirtual #258                // Method java/lang/String.substring:(I)Ljava/lang/String;
+      35: invokevirtual #261                // Method java/lang/String.trim:()Ljava/lang/String;
+      38: areturn
+      39: aconst_null
+      40: areturn
+
+  private java.lang.String d(io.netty.handler.codec.http.HttpRequest);
+    Code:
+       0: aload_1
+       1: invokeinterface #230,  1          // InterfaceMethod io/netty/handler/codec/http/HttpRequest.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+       6: getstatic     #194                // Field io/netty/handler/codec/http/HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL:Lio/netty/util/AsciiString;
+       9: invokevirtual #236                // Method io/netty/handler/codec/http/HttpHeaders.get:(Ljava/lang/CharSequence;)Ljava/lang/String;
+      12: astore_2
+      13: aload_2
+      14: ifnull        39
+      17: aload_2
+      18: ldc           #32                 // String minecraft-v1,
+      20: invokevirtual #251                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      23: ifeq          39
+      26: aload_2
+      27: ldc           #32                 // String minecraft-v1,
+      29: invokevirtual #254                // Method java/lang/String.length:()I
+      32: invokevirtual #258                // Method java/lang/String.substring:(I)Ljava/lang/String;
+      35: invokevirtual #261                // Method java/lang/String.trim:()Ljava/lang/String;
+      38: areturn
+      39: aconst_null
+      40: areturn
+
+  public boolean a(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokevirtual #239                // Method java/lang/String.isEmpty:()Z
+       4: ifeq          9
+       7: iconst_0
+       8: ireturn
+       9: aload_1
+      10: getstatic     #267                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      13: invokevirtual #271                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+      16: astore_2
+      17: aload_0
+      18: getfield      #54                 // Field g:Lavz;
+      21: invokevirtual #275                // Method avz.b:()Ljava/lang/String;
+      24: getstatic     #267                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      27: invokevirtual #271                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+      30: astore_3
+      31: aload_2
+      32: aload_3
+      33: invokestatic  #281                // Method java/security/MessageDigest.isEqual:([B[B)Z
+      36: ireturn
+
+  private java.lang.String a(io.netty.channel.ChannelHandlerContext);
+    Code:
+       0: aload_1
+       1: invokeinterface #95,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+       6: invokeinterface #286,  1          // InterfaceMethod io/netty/channel/Channel.remoteAddress:()Ljava/net/SocketAddress;
+      11: checkcast     #288                // class java/net/InetSocketAddress
+      14: astore_2
+      15: aload_2
+      16: invokevirtual #292                // Method java/net/InetSocketAddress.getAddress:()Ljava/net/InetAddress;
+      19: invokevirtual #297                // Method java/net/InetAddress.getHostAddress:()Ljava/lang/String;
+      22: areturn
+
+  private void a(io.netty.channel.ChannelHandlerContext, java.lang.String);
+    Code:
+       0: aload_2
+       1: invokedynamic #310,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: astore_3
+       7: aload_3
+       8: getstatic     #267                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+      11: invokevirtual #271                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+      14: astore        4
+      16: new           #312                // class io/netty/handler/codec/http/DefaultFullHttpResponse
+      19: dup
+      20: getstatic     #318                // Field io/netty/handler/codec/http/HttpVersion.HTTP_1_1:Lio/netty/handler/codec/http/HttpVersion;
+      23: getstatic     #321                // Field io/netty/handler/codec/http/HttpResponseStatus.UNAUTHORIZED:Lio/netty/handler/codec/http/HttpResponseStatus;
+      26: aload         4
+      28: invokestatic  #327                // Method io/netty/buffer/Unpooled.wrappedBuffer:([B)Lio/netty/buffer/ByteBuf;
+      31: invokespecial #330                // Method io/netty/handler/codec/http/DefaultFullHttpResponse."<init>":(Lio/netty/handler/codec/http/HttpVersion;Lio/netty/handler/codec/http/HttpResponseStatus;Lio/netty/buffer/ByteBuf;)V
+      34: astore        5
+      36: aload         5
+      38: invokevirtual #331                // Method io/netty/handler/codec/http/DefaultFullHttpResponse.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+      41: getstatic     #334                // Field io/netty/handler/codec/http/HttpHeaderNames.CONTENT_TYPE:Lio/netty/util/AsciiString;
+      44: ldc_w         #336                // String application/json
+      47: invokevirtual #199                // Method io/netty/handler/codec/http/HttpHeaders.set:(Ljava/lang/CharSequence;Ljava/lang/Object;)Lio/netty/handler/codec/http/HttpHeaders;
+      50: pop
+      51: aload         5
+      53: invokevirtual #331                // Method io/netty/handler/codec/http/DefaultFullHttpResponse.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+      56: getstatic     #339                // Field io/netty/handler/codec/http/HttpHeaderNames.CONTENT_LENGTH:Lio/netty/util/AsciiString;
+      59: aload         4
+      61: arraylength
+      62: invokestatic  #344                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      65: invokevirtual #199                // Method io/netty/handler/codec/http/HttpHeaders.set:(Ljava/lang/CharSequence;Ljava/lang/Object;)Lio/netty/handler/codec/http/HttpHeaders;
+      68: pop
+      69: aload         5
+      71: invokevirtual #331                // Method io/netty/handler/codec/http/DefaultFullHttpResponse.headers:()Lio/netty/handler/codec/http/HttpHeaders;
+      74: getstatic     #347                // Field io/netty/handler/codec/http/HttpHeaderNames.CONNECTION:Lio/netty/util/AsciiString;
+      77: ldc_w         #348                // String close
+      80: invokevirtual #199                // Method io/netty/handler/codec/http/HttpHeaders.set:(Ljava/lang/CharSequence;Ljava/lang/Object;)Lio/netty/handler/codec/http/HttpHeaders;
+      83: pop
+      84: aload_1
+      85: aload         5
+      87: invokeinterface #352,  2          // InterfaceMethod io/netty/channel/ChannelHandlerContext.writeAndFlush:(Ljava/lang/Object;)Lio/netty/channel/ChannelFuture;
+      92: aload_1
+      93: invokedynamic #369,  0            // InvokeDynamic #1:operationComplete:(Lio/netty/channel/ChannelHandlerContext;)Lio/netty/util/concurrent/GenericFutureListener;
+      98: invokeinterface #375,  2          // InterfaceMethod io/netty/channel/ChannelFuture.addListener:(Lio/netty/util/concurrent/GenericFutureListener;)Lio/netty/channel/ChannelFuture;
+     103: pop
+     104: return
+
+  private static void a(io.netty.channel.ChannelHandlerContext, io.netty.util.concurrent.Future) throws java.lang.Exception;
+    Code:
+       0: aload_0
+       1: invokeinterface #158,  1          // InterfaceMethod io/netty/channel/ChannelHandlerContext.close:()Lio/netty/channel/ChannelFuture;
+       6: pop
+       7: return
+
+  static {};
+    Code:
+       0: ldc_w         #380                // String authenticated
+       3: invokestatic  #385                // Method io/netty/util/AttributeKey.valueOf:(Ljava/lang/String;)Lio/netty/util/AttributeKey;
+       6: putstatic     #97                 // Field c:Lio/netty/util/AttributeKey;
+       9: ldc_w         #387                // String websocket_auth_allowed
+      12: invokestatic  #385                // Method io/netty/util/AttributeKey.valueOf:(Ljava/lang/String;)Lio/netty/util/AttributeKey;
+      15: putstatic     #119                // Field d:Lio/netty/util/AttributeKey;
+      18: return
+}

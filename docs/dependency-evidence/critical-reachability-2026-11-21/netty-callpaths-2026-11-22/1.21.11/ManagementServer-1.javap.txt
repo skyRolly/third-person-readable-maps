@@ -1,0 +1,137 @@
+Compiled from "SourceFile"
+class aty$1 extends io.netty.channel.ChannelInitializer<io.netty.channel.Channel> {
+  final io.netty.handler.ssl.SslContext a;
+
+  final auo b;
+
+  final atw c;
+
+  final aty d;
+
+  aty$1(aty, io.netty.handler.ssl.SslContext, auo, atw);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #22                 // Field d:Laty;
+       5: aload_0
+       6: aload_2
+       7: putfield      #24                 // Field a:Lio/netty/handler/ssl/SslContext;
+      10: aload_0
+      11: aload_3
+      12: putfield      #26                 // Field b:Lauo;
+      15: aload_0
+      16: aload         4
+      18: putfield      #28                 // Field c:Latw;
+      21: aload_0
+      22: invokespecial #31                 // Method io/netty/channel/ChannelInitializer."<init>":()V
+      25: return
+
+  protected void initChannel(io.netty.channel.Channel);
+    Code:
+       0: aload_1
+       1: invokeinterface #44,  1           // InterfaceMethod io/netty/channel/Channel.config:()Lio/netty/channel/ChannelConfig;
+       6: getstatic     #50                 // Field io/netty/channel/ChannelOption.TCP_NODELAY:Lio/netty/channel/ChannelOption;
+       9: iconst_1
+      10: invokestatic  #56                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      13: invokeinterface #62,  3           // InterfaceMethod io/netty/channel/ChannelConfig.setOption:(Lio/netty/channel/ChannelOption;Ljava/lang/Object;)Z
+      18: pop
+      19: goto          23
+      22: astore_2
+      23: aload_1
+      24: invokeinterface #66,  1           // InterfaceMethod io/netty/channel/Channel.pipeline:()Lio/netty/channel/ChannelPipeline;
+      29: astore_2
+      30: aload_0
+      31: getfield      #24                 // Field a:Lio/netty/handler/ssl/SslContext;
+      34: ifnull        64
+      37: aload_2
+      38: iconst_1
+      39: anewarray     #68                 // class io/netty/channel/ChannelHandler
+      42: dup
+      43: iconst_0
+      44: aload_0
+      45: getfield      #24                 // Field a:Lio/netty/handler/ssl/SslContext;
+      48: aload_1
+      49: invokeinterface #72,  1           // InterfaceMethod io/netty/channel/Channel.alloc:()Lio/netty/buffer/ByteBufAllocator;
+      54: invokevirtual #78                 // Method io/netty/handler/ssl/SslContext.newHandler:(Lio/netty/buffer/ByteBufAllocator;)Lio/netty/handler/ssl/SslHandler;
+      57: aastore
+      58: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      63: pop
+      64: aload_2
+      65: iconst_1
+      66: anewarray     #68                 // class io/netty/channel/ChannelHandler
+      69: dup
+      70: iconst_0
+      71: new           #86                 // class io/netty/handler/codec/http/HttpServerCodec
+      74: dup
+      75: invokespecial #87                 // Method io/netty/handler/codec/http/HttpServerCodec."<init>":()V
+      78: aastore
+      79: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      84: iconst_1
+      85: anewarray     #68                 // class io/netty/channel/ChannelHandler
+      88: dup
+      89: iconst_0
+      90: new           #89                 // class io/netty/handler/codec/http/HttpObjectAggregator
+      93: dup
+      94: ldc           #90                 // int 65536
+      96: invokespecial #93                 // Method io/netty/handler/codec/http/HttpObjectAggregator."<init>":(I)V
+      99: aastore
+     100: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     105: iconst_1
+     106: anewarray     #68                 // class io/netty/channel/ChannelHandler
+     109: dup
+     110: iconst_0
+     111: aload_0
+     112: getfield      #22                 // Field d:Laty;
+     115: getfield      #96                 // Field aty.c:Lavx;
+     118: aastore
+     119: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     124: iconst_1
+     125: anewarray     #68                 // class io/netty/channel/ChannelHandler
+     128: dup
+     129: iconst_0
+     130: new           #98                 // class io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler
+     133: dup
+     134: ldc           #100                // String /
+     136: invokespecial #103                // Method io/netty/handler/codec/http/websocketx/WebSocketServerProtocolHandler."<init>":(Ljava/lang/String;)V
+     139: aastore
+     140: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     145: iconst_1
+     146: anewarray     #68                 // class io/netty/channel/ChannelHandler
+     149: dup
+     150: iconst_0
+     151: new           #105                // class awc
+     154: dup
+     155: invokespecial #106                // Method awc."<init>":()V
+     158: aastore
+     159: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     164: iconst_1
+     165: anewarray     #68                 // class io/netty/channel/ChannelHandler
+     168: dup
+     169: iconst_0
+     170: new           #108                // class awb
+     173: dup
+     174: invokespecial #109                // Method awb."<init>":()V
+     177: aastore
+     178: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     183: iconst_1
+     184: anewarray     #68                 // class io/netty/channel/ChannelHandler
+     187: dup
+     188: iconst_0
+     189: new           #111                // class atr
+     192: dup
+     193: aload_1
+     194: aload_0
+     195: getfield      #22                 // Field d:Laty;
+     198: aload_0
+     199: getfield      #26                 // Field b:Lauo;
+     202: aload_0
+     203: getfield      #28                 // Field c:Latw;
+     206: invokespecial #114                // Method atr."<init>":(Lio/netty/channel/Channel;Laty;Lauo;Latw;)V
+     209: aastore
+     210: invokeinterface #84,  2           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:([Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+     215: pop
+     216: return
+    Exception table:
+       from    to  target type
+           0    19    22   Class io/netty/channel/ChannelException
+}

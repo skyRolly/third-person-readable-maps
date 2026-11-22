@@ -4638,7 +4638,20 @@
           "type": "CVSS_V4",
           "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
         }
-      ]
+      ],
+      "source_bound_runtime_reachability": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+        "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+        "review_date": "2026-11-22",
+        "affected_source_occurrences": 14,
+        "minecraft_versions_scanned": 29,
+        "official_runtime_jars_sha1_verified": 612,
+        "external_sni_handler_callers_found": 0,
+        "risk_accepted": false,
+        "release_blocking": true,
+        "scanner_script_path": "scripts/inspect_netty_sni_client_reachability.py",
+        "scanner_script_sha256": "ac207c8d65657e610dfb5f02b73bb85303552582402e7783470852e640abf4ab"
+      }
     },
     "GHSA-8c42-7qj2-3j46": {
       "id": "GHSA-8c42-7qj2-3j46",
@@ -15178,7 +15191,7 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "c7389c94823b5e0516b17cfb70aa1d6d3158af167ed6a565d4153ccb1a68c64a",
+    "sha256": "b32bf236a1d1d5582a55940cb96112e9589b1362b8b45dbdce6a62b72e94de21",
     "review_date": "2026-11-22",
     "security_clearance": false,
     "risk_accepted": false,
@@ -15301,6 +15314,26 @@
         "security_clearance": false,
         "release_blocking": true
       }
+    },
+    "netty_sni_runtime_reachability": {
+      "advisory_id": "GHSA-c4c3-7fpv-j4q5",
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-sni-runtime-reachability-2026-11-22.json",
+      "sha256": "ce1b8457688e3d05c931137ff8374e42e045f626e73d6e82601c63ecb7a38bf2",
+      "scan_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-vanilla-classpath-scan-2026-11-22.json",
+      "scan_sha256": "6a4fbbe49d5c496e73b47b0a523a462a4c411e7f9c6c58fd84e2e3672fdaaacc",
+      "bytecode_index_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpath-bytecode-index-2026-11-22.json",
+      "bytecode_index_sha256": "1bce553e20bf51590387228967eccb4660bbd92158dd5d074a7ed29f0afd42a2",
+      "occurrences": 14,
+      "source_groups": 11,
+      "minecraft_versions": 29,
+      "netty_handler_versions": 8,
+      "non_netty_sni_callers": 0,
+      "release_blocking": true,
+      "security_clearance": false,
+      "risk_accepted": false,
+      "disposition": "Further investigation with the 26.2 occurrence retaining its source-bound Upstream-dependent remediation classification",
+      "scanner_script_path": "scripts/inspect_netty_sni_client_reachability.py",
+      "scanner_script_sha256": "ac207c8d65657e610dfb5f02b73bb85303552582402e7783470852e640abf4ab"
     }
   }
 }
