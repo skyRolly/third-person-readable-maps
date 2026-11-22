@@ -18,3 +18,5 @@ docs/protected-access-trace-2026-11-14/*.log -text whitespace=-blank-at-eol
 docs/legacy-dry-run-1.0.0-2026-11-14/*.log -text whitespace=-blank-at-eol
 # Preserve raw, checksum-bound multiplayer client and harness output.
 docs/multiplayer-smoke-2026-11-14/**/*.log -text whitespace=-blank-at-eol
+# Preserve Mojang's byte-exact client logging configuration for hash-bound evidence.
+docs/dependency-evidence/critical-reachability-2026-11-21/upstream-minecraft-logging-client-1.21.2.xml -text whitespace=-blank-at-eol
