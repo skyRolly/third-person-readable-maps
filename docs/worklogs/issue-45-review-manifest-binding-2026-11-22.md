@@ -14,8 +14,12 @@ validator rejects each. The normal source-bound register remains byte-identical
 to the retained baseline, and its findings remain blocking.
 
 Independent scans can observe different `modified` timestamps for otherwise
-identical advisory content. The exporter now records every differing timestamp
-by source instead of selecting one or treating the difference alone as stale
-review. Changes to other advisory fields or fingerprints still require review.
+identical advisory content. The exporter first requires all non-timestamp
+advisory fields to match across sources, including for unfocused advisories;
+otherwise it rejects the export instead of overwriting an affected range. When
+only timestamps differ, schema 2 records each timestamp by source and uses a
+null single-value timestamp. An unchanged single-timestamp export retains its
+original schema 1 and bytes. Changes to other advisory fields or fingerprints
+still require review.
 The audit reconciliation continues to report timestamp changes and returns a
 blocking exit status while unresolved findings remain. No risk is accepted.

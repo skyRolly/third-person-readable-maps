@@ -309,12 +309,17 @@ def priority_register(live=LIVE, root=ROOT):
                 'incomplete focused advisory coverage: ' + severity)
     grouped = {}
     modified_by_source = defaultdict(dict)
+    advisory_content = {}
     for ident, row in sorted(rows.items()):
         if row['severity'] not in ('CRITICAL', 'HIGH'):
             continue
         kind, group, purl, identifier = ident
         report, _, item = reports[kind + '|' + group]
         advisory = report['advisories'][identifier]
+        content = {key: value for key, value in advisory.items() if key != 'modified'}
+        require(identifier not in advisory_content or advisory_content[identifier] == content,
+                'inconsistent advisory content across sources: ' + identifier)
+        advisory_content[identifier] = content
         focus = focused.get(identifier)
         require(row['disposition'] != 'Risk accepted', 'risk acceptance requires separate review: ' + identifier)
         owner = ('Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle'
@@ -346,21 +351,27 @@ def priority_register(live=LIVE, root=ROOT):
             'source_report_member': 'candidate-dependency-audit.json' if kind == 'candidate' else 'dependency-audit.json',
             'dependency_owner': owner,
             'disposition': row['disposition'], 'release_blocking': row['failing'], 'risk_accepted': False})
+    mixed_timestamps = False
     for identifier, observations in modified_by_source.items():
         if len(set(observations.values())) > 1:
             # Independent runs may observe administrative timestamp updates at
             # different times. Preserve each value without choosing one as current.
             grouped[identifier]['modified'] = None
             grouped[identifier]['modified_by_source'] = dict(sorted(observations.items()))
+            mixed_timestamps = True
     for identifier, finding in focused.items():
         observed = grouped.get(identifier, {}).get('occurrences', [])
         validate_focused_review(identifier, finding, observed, rows, old_rows, old_reports, reports)
-    return {'schema': 1, 'coordinator_sha': index['coordinator_sha'],
+    result = {'schema': 2 if mixed_timestamps else 1, 'coordinator_sha': index['coordinator_sha'],
             'candidate_run': index['candidate_run'], 'maintenance_run': index['maintenance_run'],
             'focused_evidence_sha256': digest(evidence_raw), 'advisory_ids': len(grouped),
             'occurrences': sum(len(value['occurrences']) for value in grouped.values()),
             'review_status': 'No new security disposition or risk acceptance is implied by this index.',
             'security_clearance': False, 'advisories': [grouped[key] for key in sorted(grouped)]}
+    if mixed_timestamps:
+        result['schema_note'] = ('Schema 2 records differing advisory modified timestamps by source; '
+                                 'a null modified value means there is no single observed timestamp.')
+    return result
 
 
 def main():

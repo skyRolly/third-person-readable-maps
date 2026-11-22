@@ -26,6 +26,10 @@ prior_spec = importlib.util.spec_from_file_location('pr55_focused_review',
     ROOT / 'tests/fixtures/issue45_pr55_focused_review.py')
 prior = importlib.util.module_from_spec(prior_spec)
 prior_spec.loader.exec_module(prior)
+candidate_spec = importlib.util.spec_from_file_location('pr58_priority_export',
+    ROOT / 'tests/fixtures/issue45_pr58_priority_export.py')
+candidate = importlib.util.module_from_spec(candidate_spec)
+candidate_spec.loader.exec_module(candidate)
 
 EVIDENCE = 'docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json'
 INDEX = 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json'
@@ -80,6 +84,19 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         ledger['critical_reachability_evidence']['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
         ledger_path.write_text(json.dumps(ledger, indent=2) + '\n')
 
+    def labels_with_advisory(self, identifier):
+        index = json.loads((self.live / 'artifact-index.json').read_bytes())
+        labels = []
+        for item in index['artifacts']:
+            if not item['name'].startswith(('candidate-dependency-audit-', 'dependency-audit-')):
+                continue
+            with ZipFile(self.live / 'raw' / (str(item['id']) + '.zip')) as archive:
+                member = ('candidate-dependency-audit.json' if item['name'].startswith('candidate-')
+                          else 'dependency-audit.json')
+                if identifier in json.loads(archive.read(member))['advisories']:
+                    labels.append(item['name'])
+        return labels
+
     def assert_legacy_accepts_but_current_rejects(self, reason):
         # Ensure the mutated report is internally sound and the previous exporter
         # really accepted it, rather than failing for an unrelated ZIP checksum.
@@ -128,13 +145,15 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
             for match in report['matches']:
                 if match['advisory'] == ADVISORY:
                     match['fingerprint'] = audit.advisory_fingerprint(advisory)
-        self.mutate_report('candidate-dependency-audit-0', edit)
+        for label in self.labels_with_advisory(ADVISORY):
+            self.mutate_report(label, edit)
         self.assert_legacy_accepts_but_current_rejects('focused review stale: advisory fingerprint')
 
     def test_changed_review_relevant_metadata_invalidates_review(self):
         def edit(report):
             report['advisories'][ADVISORY]['summary'] += ' changed'
-        self.mutate_report('candidate-dependency-audit-0', edit)
+        for label in self.labels_with_advisory(ADVISORY):
+            self.mutate_report(label, edit)
         self.assert_legacy_accepts_but_current_rejects('focused review stale: advisory metadata')
 
     def test_changed_disposition_invalidates_review(self):
@@ -180,8 +199,9 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
 
     def test_unrelated_advisory_change_keeps_focused_review(self):
         before = live.priority_register(self.live, self.root)
-        self.mutate_report('candidate-dependency-audit-0',
-                           lambda report: report['advisories']['GHSA-4jrv-ppp4-jm57'].update(summary='changed'))
+        for label in self.labels_with_advisory('GHSA-4jrv-ppp4-jm57'):
+            self.mutate_report(label,
+                lambda report: report['advisories']['GHSA-4jrv-ppp4-jm57'].update(summary='changed'))
         after = live.priority_register(self.live, self.root)
         def focused(report):
             row = copy.deepcopy(next(row for row in report['advisories'] if row['advisory_id'] == ADVISORY))
@@ -202,21 +222,13 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
 
     def test_advisory_modified_timestamp_alone_does_not_stale_review(self):
         before = live.priority_register(self.live, self.root)
-        index = json.loads((self.live / 'artifact-index.json').read_bytes())
-        labels = []
-        for item in index['artifacts']:
-            if not item['name'].startswith(('candidate-dependency-audit-', 'dependency-audit-')):
-                continue
-            with ZipFile(self.live / 'raw' / (str(item['id']) + '.zip')) as archive:
-                member = ('candidate-dependency-audit.json' if item['name'].startswith('candidate-')
-                          else 'dependency-audit.json')
-                if ADVISORY in json.loads(archive.read(member))['advisories']:
-                    labels.append(item['name'])
+        labels = self.labels_with_advisory(ADVISORY)
         self.assertEqual(len(labels), 3)
         for label in labels:
             self.mutate_report(label, lambda report: report['advisories'][ADVISORY].update(
                 modified='2026-11-23T00:00:00Z'))
         after = live.priority_register(self.live, self.root)
+        self.assertEqual(after['schema'], 1)
         def provenance(report):
             row = next(item for item in report['advisories'] if item['advisory_id'] == ADVISORY)
             return row['focused_evidence'], row['reviewer'], row['review_date'], row['follow_up']
@@ -230,6 +242,8 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'inconsistent advisory metadata'):
             legacy.priority_register(self.live, self.root)
         after = live.priority_register(self.live, self.root)
+        self.assertEqual(after['schema'], 2)
+        self.assertIn('Schema 2', after['schema_note'])
         def focused(report):
             return next(row for row in report['advisories'] if row['advisory_id'] == ADVISORY)
         old, new = focused(before), focused(after)
@@ -241,6 +255,23 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         scan = live.reconcile(self.live, self.root)
         self.assertIn('candidate|1.14-1.14.4|' + ADVISORY, scan['metadata_changed'])
         self.assertEqual(scan['failing_occurrences'], 490)
+
+    def test_mixed_timestamps_with_changed_unfocused_range_fail_closed(self):
+        identifier = 'GHSA-4jrv-ppp4-jm57'
+        def edit(report):
+            advisory = report['advisories'][identifier]
+            advisory['modified'] = '2026-11-23T00:00:00Z'
+            advisory['affected'][0]['ranges'][0]['events'][-1]['fixed'] = '2.9.0'
+            for row in report['matches']:
+                if row['advisory'] == identifier:
+                    row['fingerprint'] = audit.advisory_fingerprint(advisory)
+        self.mutate_report('candidate-dependency-audit-0', edit)
+        index, _, _ = live.historic(self.root)
+        live.verify_live(self.live, index)
+        # The initial PR #58 implementation accepted the mixed revisions.
+        self.assertTrue(candidate.priority_register(self.live, self.root)['advisories'])
+        with self.assertRaisesRegex(ValueError, 'inconsistent advisory content across sources'):
+            live.priority_register(self.live, self.root)
 
 
 if __name__ == '__main__':
