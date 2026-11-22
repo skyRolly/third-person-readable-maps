@@ -1104,11 +1104,33 @@ def validate():
             commons_pointer.get('release_blocking') is not True or commons.get('security_clearance') is not False or \
             commons.get('risk_accepted') is not False or commons.get('release_blocking') is not True:
         fail('Commons Compress source-bound TAR follow-up is missing, cleared, or inconsistent')
+    hosted_pointer = commons_pointer.get('hosted_ci_verification', {})
+    hosted_path = ROOT / hosted_pointer.get('path', '')
+    hosted = load(hosted_path) if hosted_path.is_file() else {}
+    expected_hosted_path = (BASE / 'commons-compress-hosted-verification-2026-11-22.json').relative_to(ROOT).as_posix()
+    if hosted_pointer.get('path') != expected_hosted_path or hosted_pointer.get('sha256') != raw_hash(hosted_path) or \
+            hosted_pointer.get('run_id') != 44980595788 or hosted_pointer.get('source_commit') != '51ec66fb9ace4506dcb43c738ba3ae407fafbdc3' or \
+            hosted.get('status') != 'hosted_matrix_passed_and_artifacts_hash_verified' or hosted.get('security_clearance') is not False or \
+            hosted.get('risk_accepted') is not False or hosted.get('release_blocking') is not True or \
+            hosted.get('workflow', {}).get('conclusion') != 'success' or hosted.get('source_commit') != hosted_pointer.get('source_commit'):
+        fail('Commons Compress hosted verification is missing, changed, or cleared')
+    artifact_rows = hosted.get('hosted_artifacts', [])
+    if {row.get('os') for row in artifact_rows} != {'ubuntu-latest', 'windows-latest'} or len(artifact_rows) != 2 or \
+            any(row.get('passed') is not True or not row.get('artifact_zip_sha256') for row in artifact_rows):
+        fail('Commons Compress hosted matrix does not contain two verified passing artifacts')
+    for artifact in artifact_rows:
+        payload = ROOT / artifact.get('payload_path', '')
+        results = artifact.get('results', [])
+        if not payload.is_file() or raw_hash(payload) != artifact.get('payload_sha256') or \
+                len(results) != 2 or any(result.get('passed') is not True for result in results):
+            fail('Commons Compress hosted payload is missing or does not record two passing cases')
+    if reference.get('commons_compress_tar_reachability') != commons_pointer:
+        fail('structured advisory ledger Commons Compress pointer mismatch')
     if reference.get('targeted_high_occurrences') != 71 or reference.get('targeted_critical_occurrences') != 22 or \
             reference.get('targeted_occurrences') != 93 or \
             reference.get('guava_deserialization_reachability') != guava_pointer or \
             reference.get('lz4_runtime_reachability') != lz4_pointer or \
-            reference.get('commons_compress_tar_reachability') != commons_pointer:
+            reference.get('commons_compress_tar_reachability', {}).get('hosted_ci_verification') != hosted_pointer:
         fail('structured advisory ledger focused counts or Guava/LZ4/Commons pointer mismatch')
     updated = [row for row in ledger['records'] if 'latest_source_observation' in row]
     if len(updated) != reference.get('updated_integrated_occurrence_records'):

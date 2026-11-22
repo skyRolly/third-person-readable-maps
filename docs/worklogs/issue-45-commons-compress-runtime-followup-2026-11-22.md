@@ -26,7 +26,7 @@ The three 7Z/ZIP findings remain **Further investigation** and release-blocking.
 ## Verification
 
 - Local Linux probe: 2/2 outcomes matched the expected vulnerable/fixed behavior.
-- The PR CI will run the same pinned fixture and exact artifacts on Linux and Windows, validate the report against exact source SHAs, and retain probe results.
+- Hosted run [44980595788](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980595788) passed all four jobs on commit `51ec66fb9ace4506dcb43c738ba3ae407fafbdc3`. Both Linux and Windows Commons artifacts passed 2/2 cases; the downloaded ZIP SHA-256 values match the GitHub artifact digests. Their raw payloads and hashes are preserved in the hosted verification index.
 - This coordination repository does not build or launch Minecraft. This evidence does not satisfy Issue #46 graphical, hardware-GPU, or multiplayer acceptance.
 
 ## Remaining actions
@@ -42,3 +42,8 @@ The three 7Z/ZIP findings remain **Further investigation** and release-blocking.
 Hosted run [44980126217](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980126217) failed in both Linux and Windows reachability jobs. The existing Log4j/Netty/LZ4 runner compiles top-level Java fixtures against its own pinned classpath; the new Commons probe had been placed at that same level, so compilation failed with missing `org.apache.commons.compress` packages before either runner executed. The follow-up artifact upload then failed because its producer step was skipped. The coordination and live-prerequisite jobs passed.
 
 The Commons fixture is now isolated under `tests/fixtures/critical_reachability/commons_compress/`, outside the existing runner's top-level source glob. The Commons-specific runner remains the only code that compiles it and supplies the exact pinned library classpath. This records a test-harness packaging defect; it does not change any security disposition or inventory count. A full Linux/Windows rerun is required before hosted probe evidence is recorded.
+
+
+## Successful hosted rerun — 2026-11-22
+
+Run [44980595788](https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980595788), run 815, passed `Validate coordination`, `Validate live release prerequisites`, and both reachability jobs on source commit `51ec66fb9ace4506dcb43c738ba3ae407fafbdc3`. The Linux artifact zip SHA-256 `d44383985756c5ebf968b0d8ee0f0cb9ab5ab9275c8eec52f5696568ee85d404` matched GitHub's digest; its JSON payload SHA-256 is `4784ecd22e13ecd22aa2ff1ca4089badbfd8aaf0a0d5b0bb41d818ba2cb26725`. The Windows zip SHA-256 `1da228c197b105b9e094e651dbb8f76453511e7deb10a310c28577fe16520587` matched GitHub's digest; its JSON payload SHA-256 is `e8a0b06f7dd886d6f59002b23d814b2a8ddce0f05e882dfec41fbd96fb797798`. On both platforms, the isolated 1.8.1 probe caught `OutOfMemoryError` and fixed 1.21 rejected the identical PAX fixture before allocation. The initial failed run remains separately retained above. These component results still do not establish Realm-service attacker control or clear any advisory.

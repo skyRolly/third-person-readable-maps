@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "observed_on": "2026-11-22",
+  "status": "hosted_matrix_passed_and_artifacts_hash_verified",
+  "security_clearance": false,
+  "risk_accepted": false,
+  "release_blocking": true,
+  "source_commit": "51ec66fb9ace4506dcb43c738ba3ae407fafbdc3",
+  "source_branch": "security/issue45-runtime-reachability",
+  "workflow": {
+    "name": "CI",
+    "run_id": 44980595788,
+    "run_number": 815,
+    "run_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/44980595788",
+    "conclusion": "success",
+    "jobs": {
+      "Validate coordination": "success",
+      "Validate live release prerequisites": "success",
+      "Verify reachability experiments (ubuntu-latest)": "success",
+      "Verify reachability experiments (windows-latest)": "success"
+    }
+  },
+  "prior_attempt": {
+    "run_id": 44980126217,
+    "run_number": 814,
+    "source_commit": "a67df95480193065b2ca255d24c99fb08c3961e0",
+    "conclusion": "failure",
+    "cause": "The generic probe compiled all top-level critical-reachability Java fixtures with a classpath that omitted Commons Compress; the Commons probe fixture was moved into a dedicated subdirectory. The artifact upload then failed because its producer step was skipped. No security disposition changed."
+  },
+  "probe": {
+    "fixture_path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-probes-2026-11-22/pax-oversize-length.tar.gz",
+    "fixture_sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+    "probe_source_path": "tests/fixtures/critical_reachability/commons_compress/CommonsTarGzipPipelineProbe.java",
+    "probe_source_sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
+    "vulnerable_artifact": "org.apache.commons:commons-compress:1.8.1",
+    "fixed_artifact": "org.apache.commons:commons-compress:1.21",
+    "max_heap": "32 MiB",
+    "network_used_by_probe": false
+  },
+  "hosted_artifacts": [
+    {
+      "os": "ubuntu-latest",
+      "artifact_id": 14737189793,
+      "artifact_name": "commons-compress-probe-ubuntu-latest",
+      "artifact_zip_sha256": "d44383985756c5ebf968b0d8ee0f0cb9ab5ab9275c8eec52f5696568ee85d404",
+      "artifact_zip_size_bytes": 1164,
+      "payload_path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-probes-2026-11-22/linux.json",
+      "payload_sha256": "4784ecd22e13ecd22aa2ff1ca4089badbfd8aaf0a0d5b0bb41d818ba2cb26725",
+      "payload_size_bytes": 2575,
+      "java_version": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+      "passed": true,
+      "results": [
+        {
+          "name": "vulnerable_1.8.1",
+          "passed": true,
+          "exit_code": 0,
+          "stdout": "RESULT=OUT_OF_MEMORY"
+        },
+        {
+          "name": "fixed_1.21",
+          "passed": true,
+          "exit_code": 0,
+          "stdout": "RESULT=java.io.IOException:Paxheader value size 99999985 exceeds size of header record"
+        }
+      ]
+    },
+    {
+      "os": "windows-latest",
+      "artifact_id": 14737995702,
+      "artifact_name": "commons-compress-probe-windows-latest",
+      "artifact_zip_sha256": "1da228c197b105b9e094e651dbb8f76453511e7deb10a310c28577fe16520587",
+      "artifact_zip_size_bytes": 1176,
+      "payload_path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-probes-2026-11-22/windows.json",
+      "payload_sha256": "e8a0b06f7dd886d6f59002b23d814b2a8ddce0f05e882dfec41fbd96fb797798",
+      "payload_size_bytes": 2638,
+      "java_version": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+      "passed": true,
+      "results": [
+        {
+          "name": "vulnerable_1.8.1",
+          "passed": true,
+          "exit_code": 0,
+          "stdout": "RESULT=OUT_OF_MEMORY"
+        },
+        {
+          "name": "fixed_1.21",
+          "passed": true,
+          "exit_code": 0,
+          "stdout": "RESULT=java.io.IOException:Paxheader value size 99999985 exceeds size of header record"
+        }
+      ]
+    }
+  ],
+  "inventory_counts_unchanged": {
+    "total_occurrences": 490,
+    "targeted_critical_occurrences": 22,
+    "targeted_high_occurrences": 71,
+    "targeted_occurrences": 93
+  }
+}

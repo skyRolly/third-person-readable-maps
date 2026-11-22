@@ -15178,7 +15178,7 @@
   },
   "critical_reachability_evidence": {
     "path": "docs/dependency-evidence/critical-reachability-2026-11-21/source-bound-dispositions-2026-11-21.json",
-    "sha256": "697d226c2944b0177223f3a9ea4ec5c04568650cbfe96eec140e7942b54fc3e6",
+    "sha256": "c7389c94823b5e0516b17cfb70aa1d6d3158af167ed6a565d4153ccb1a68c64a",
     "review_date": "2026-11-22",
     "security_clearance": false,
     "risk_accepted": false,
@@ -15292,7 +15292,15 @@
       "attacker_control": "unresolved; Realm server produces the downloaded archive and no test Realm was available",
       "security_clearance": false,
       "risk_accepted": false,
-      "release_blocking": true
+      "release_blocking": true,
+      "hosted_ci_verification": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json",
+        "sha256": "c8d6ceccab751822d3a496ec30558645a1dd6f6c4a1d85f352fa968bdff8033e",
+        "run_id": 44980595788,
+        "source_commit": "51ec66fb9ace4506dcb43c738ba3ae407fafbdc3",
+        "security_clearance": false,
+        "release_blocking": true
+      }
     }
   }
 }

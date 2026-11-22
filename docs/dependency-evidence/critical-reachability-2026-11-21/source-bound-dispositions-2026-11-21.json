@@ -11882,6 +11882,11 @@
   },
   "supporting_evidence": [
     {
+      "path": ".gitattributes",
+      "sha256": "ca2641a5b98a5f8e5955391837049be2cf0d64be90d220b6ddbbf55ccc20207e",
+      "size_bytes": 1867
+    },
+    {
       "path": ".github/workflows/ci.yml",
       "sha256": "43d94700ed4460dd7e9a534daccff3302fed5eb70e870166dbd96cc6fb6666b3",
       "size_bytes": 3819
@@ -11891,6 +11896,21 @@
       "sha256": "3fa5310f3283a1be050ad631438f9231ab2cadee58cd6eeb08e97eb2cd9ae701",
       "size_bytes": 75503,
       "sha256_uncompressed": "0d5f9689280754148149036c03f82eb35f4bd10c23b065b5f4256d9cb98f2802"
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-probes-2026-11-22/linux.json",
+      "sha256": "4784ecd22e13ecd22aa2ff1ca4089badbfd8aaf0a0d5b0bb41d818ba2cb26725",
+      "size_bytes": 2575
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-probes-2026-11-22/windows.json",
+      "sha256": "e8a0b06f7dd886d6f59002b23d814b2a8ddce0f05e882dfec41fbd96fb797798",
+      "size_bytes": 2638
+    },
+    {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json",
+      "sha256": "c8d6ceccab751822d3a496ec30558645a1dd6f6c4a1d85f352fa968bdff8033e",
+      "size_bytes": 4496
     },
     {
       "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-probes-2026-11-22/pax-oversize-length.tar.gz",
@@ -12181,8 +12201,8 @@
     },
     {
       "path": "docs/worklogs/issue-45-commons-compress-runtime-followup-2026-11-22.md",
-      "sha256": "ba84e8dd8c187513992fbfde3bcf2135c819c3f00aff68f4049838ed81f65f76",
-      "size_bytes": 4788
+      "sha256": "be0a4228b73e8741b96bf14c66c41b965816ac9f8617fb7e7b6fa49cc72397c6",
+      "size_bytes": 6059
     },
     {
       "path": "docs/worklogs/issue-45-lz4-runtime-followup-2026-11-22.md",
@@ -12220,8 +12240,8 @@
     },
     {
       "path": "scripts/validate_critical_reachability_evidence.py",
-      "sha256": "52cff4c45fae103744c93f366a6dab2b5230fa2a59495bd0943862d022ce2e76",
-      "size_bytes": 81651
+      "sha256": "6e4d670498f790ccb6ab4a94300236aad569589a15012175a5255d9d1091c292",
+      "size_bytes": 83697
     },
     {
       "path": "scripts/verify_gradle_wrapper.py",
@@ -12242,11 +12262,6 @@
       "path": "tests/fixtures/critical_reachability/ChatJndiProbe.java",
       "sha256": "af1063713a142a8ccaca07316ec6c69875d2a6ae92d61e8e7b9c38b06dc61dcb",
       "size_bytes": 910
-    },
-    {
-      "path": "tests/fixtures/critical_reachability/commons_compress/CommonsTarGzipPipelineProbe.java",
-      "sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
-      "size_bytes": 931
     },
     {
       "path": "tests/fixtures/critical_reachability/EnvironmentProbe.java",
@@ -12297,6 +12312,11 @@
       "path": "tests/fixtures/critical_reachability/artifacts.json",
       "sha256": "38f9077b1363f6928c7901d9430005f5a8155d639dac95abcfccc691d829417c",
       "size_bytes": 23369
+    },
+    {
+      "path": "tests/fixtures/critical_reachability/commons_compress/CommonsTarGzipPipelineProbe.java",
+      "sha256": "96d131c1e78557aa63bfb28c2309a6698246c172c004d0d5ab1c6ec98feb54cf",
+      "size_bytes": 931
     },
     {
       "path": "tests/fixtures/critical_reachability/synthetic-context.xml",
@@ -12370,6 +12390,24 @@
       "vulnerable_parser_probe": "OutOfMemoryError reproduced under -Xmx32m using exact Minecraft manifest Commons Compress 1.8.1 and Commons IO 2.5.",
       "fixed_parser_probe": "Commons Compress 1.21 rejected the identical gzip TAR before allocation.",
       "attacker_control": "unresolved; Realm server produces the downloaded archive and no test Realm was available",
+      "security_clearance": false,
+      "risk_accepted": false,
+      "release_blocking": true,
+      "hosted_ci_verification": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json",
+        "sha256": "c8d6ceccab751822d3a496ec30558645a1dd6f6c4a1d85f352fa968bdff8033e",
+        "run_id": 44980595788,
+        "source_commit": "51ec66fb9ace4506dcb43c738ba3ae407fafbdc3",
+        "security_clearance": false,
+        "release_blocking": true
+      }
+    },
+    "hosted_ci_verification": {
+      "path": "docs/dependency-evidence/critical-reachability-2026-11-21/commons-compress-hosted-verification-2026-11-22.json",
+      "sha256": "c8d6ceccab751822d3a496ec30558645a1dd6f6c4a1d85f352fa968bdff8033e",
+      "run_id": 44980595788,
+      "run_number": 815,
+      "source_commit": "51ec66fb9ace4506dcb43c738ba3ae407fafbdc3",
       "security_clearance": false,
       "risk_accepted": false,
       "release_blocking": true

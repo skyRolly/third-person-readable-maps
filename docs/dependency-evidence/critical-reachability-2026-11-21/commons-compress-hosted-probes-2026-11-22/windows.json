@@ -1,0 +1,59 @@
+{
+  "artifacts": {
+    "commons-compress-1.21": {
+      "coordinate": "org.apache.commons:commons-compress:1.21",
+      "sha1": "4ec95b60d4e86b5c95a0e919cb172a0af98011ef",
+      "sha256": "6aecfd5459728a595601cfa07258d131972ffc39b492eb48bdd596577a2f244a",
+      "size": 1018316,
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.21/commons-compress-1.21.jar"
+    },
+    "commons-compress-1.8.1": {
+      "coordinate": "org.apache.commons:commons-compress:1.8.1",
+      "sha1": "a698750c16740fd5b3871425f4cb3bbaa87f529d",
+      "sha256": "5fca136503f86ecc6cb61fbd17b137d59e56b45c7a5494e6b8fd3cabd4697fbd",
+      "size": 365552,
+      "url": "https://libraries.minecraft.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar"
+    },
+    "commons-io-2.5": {
+      "coordinate": "commons-io:commons-io:2.5",
+      "sha1": "2852e6e05fbb95076fc091f6d1780f1f8fe35e0f",
+      "sha256": "a10418348d234968600ccb1d988efcbbd08716e1d96936ccc1880e7d22513474",
+      "size": 208700,
+      "url": "https://libraries.minecraft.net/commons-io/commons-io/2.5/commons-io-2.5.jar"
+    }
+  },
+  "fixture": {
+    "path": "docs\\dependency-evidence\\critical-reachability-2026-11-21\\commons-compress-probes-2026-11-22\\pax-oversize-length.tar.gz",
+    "sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+    "size": 111
+  },
+  "java_version": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)",
+  "network_used_by_probe": false,
+  "observed_at": "2026-11-22T03:26:44.287448+00:00",
+  "passed": true,
+  "results": [
+    {
+      "commons_compress": "org.apache.commons:commons-compress:1.8.1",
+      "commons_io": "commons-io:commons-io:2.5",
+      "exit_code": 0,
+      "fixture_sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+      "max_heap": "32m",
+      "name": "vulnerable_1.8.1",
+      "passed": true,
+      "stderr": "",
+      "stdout": "RESULT=OUT_OF_MEMORY"
+    },
+    {
+      "commons_compress": "org.apache.commons:commons-compress:1.21",
+      "commons_io": "commons-io:commons-io:2.5",
+      "exit_code": 0,
+      "fixture_sha256": "d96b8f41faf3710f1707e69e15783f2c44df6d334ff6ddc98b5547b0f972a957",
+      "max_heap": "32m",
+      "name": "fixed_1.21",
+      "passed": true,
+      "stderr": "",
+      "stdout": "RESULT=java.io.IOException:Paxheader value size 99999985 exceeds size of header record"
+    }
+  ],
+  "schema": 1
+}
