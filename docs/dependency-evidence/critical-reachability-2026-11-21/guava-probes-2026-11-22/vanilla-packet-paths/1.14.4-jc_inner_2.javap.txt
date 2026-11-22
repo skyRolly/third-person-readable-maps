@@ -1,0 +1,24 @@
+Compiled from "SourceFile"
+final class jc$2 extends io.netty.channel.ChannelInitializer<io.netty.channel.Channel> {
+  final jc a;
+
+  jc$2(jc);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #16                 // Field a:Ljc;
+       5: aload_0
+       6: invokespecial #19                 // Method io/netty/channel/ChannelInitializer."<init>":()V
+       9: return
+
+  protected void initChannel(io.netty.channel.Channel) throws java.lang.Exception;
+    Code:
+       0: aload_1
+       1: invokeinterface #31,  1           // InterfaceMethod io/netty/channel/Channel.pipeline:()Lio/netty/channel/ChannelPipeline;
+       6: ldc           #33                 // String packet_handler
+       8: aload_0
+       9: getfield      #16                 // Field a:Ljc;
+      12: invokeinterface #39,  3           // InterfaceMethod io/netty/channel/ChannelPipeline.addLast:(Ljava/lang/String;Lio/netty/channel/ChannelHandler;)Lio/netty/channel/ChannelPipeline;
+      17: pop
+      18: return
+}

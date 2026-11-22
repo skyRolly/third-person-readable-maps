@@ -31,6 +31,7 @@ TARGET_COUNTS = {
     'GHSA-r7wm-3cxj-wff9': 3,
     'GHSA-rmj7-2vxq-3g9f': 3,
     'GHSA-wv8q-qhhj-9h54': 3,
+    'GHSA-xxph-c9ww-hj94': 16,
 }
 
 
@@ -591,13 +592,179 @@ def validate():
             jackson_pointer.get('sha256') != raw_hash(jackson_path) or jackson_pointer.get('occurrences') != 21 or \
             jackson_pointer.get('security_clearance') is not False or jackson_pointer.get('release_blocking') is not True:
         fail('source-bound Jackson/MASL report pointer mismatch')
+
+    guava_id = 'GHSA-xxph-c9ww-hj94'
+    guava_path = BASE / 'guava-deserialization-reachability-2026-11-22.json'
+    guava = load(guava_path)
+    guava_pointer = evidence.get('guava_deserialization_reachability', {})
+    if guava.get('advisory', {}).get('advisory_id') != guava_id or \
+            guava.get('security_clearance') is not False or guava.get('risk_accepted') is not False or \
+            guava.get('release_blocking') is not True or guava.get('findings_remain_blocking') is not True:
+        fail('Guava deserialization finding must remain unresolved and release-blocking')
+    if guava.get('source_provenance', {}).get('finding_index', {}).get('sha256') != raw_hash(ARCHIVE / 'finding-index.json') or \
+            guava_pointer.get('path') != guava_path.relative_to(ROOT).as_posix() or \
+            guava_pointer.get('sha256') != raw_hash(guava_path) or guava_pointer.get('occurrences') != 16 or \
+            guava_pointer.get('security_clearance') is not False or guava_pointer.get('release_blocking') is not True:
+        fail('Guava reachability report/source pointer mismatch')
+
+    guava_index_rows = [row for row in finding_index['records'] if row['advisory'] == guava_id]
+    guava_source_rows = [row for row in evidence['findings'] if row['advisory_id'] == guava_id]
+    if len(guava_index_rows) != 16 or len(guava_source_rows) != 1:
+        fail('Guava exact-source occurrence coverage mismatch')
+    guava_finding = guava_source_rows[0]
+    if guava_finding.get('disposition') != 'Further investigation' or \
+            guava_finding.get('release_blocking') is not True or guava_finding.get('risk_accepted') is not False or \
+            guava_finding.get('occurrence_count') != 16:
+        fail('Guava occurrence disposition unexpectedly cleared')
+    guava_bindings = {(row['source_kind'], row['group'], row['source_sha'], row['purl']): row
+                      for row in guava.get('source_occurrences', [])}
+    if len(guava_bindings) != 16 or len(guava_finding['occurrences']) != 16:
+        fail('Guava duplicate or missing source occurrence bindings')
+    for row in guava_index_rows:
+        key = (row['source_kind'], row['group'], row['source_sha'], row['purl'])
+        binding = guava_bindings.get(key)
+        occurrence = next((item for item in guava_finding['occurrences']
+                           if (item['source_kind'], item['group'], item['source_sha'], item['purl']) == key), None)
+        versions = sorted(scope.removeprefix('runtime/') for scope in row['scopes']
+                          if scope.startswith('runtime/'))
+        if binding is None or occurrence is None or binding.get('minecraft_versions') != versions or \
+                binding.get('dependency_scopes') != row['scopes'] or binding.get('fingerprint') != row['fingerprint'] or \
+                binding.get('source_report') != {'path': row['report'],
+                                                  'sha256_uncompressed': row['report_sha256_uncompressed']} or \
+                occurrence.get('minecraft_versions') != versions or occurrence.get('dependency_scopes') != row['scopes'] or \
+                occurrence.get('fingerprint') != row['fingerprint'] or occurrence.get('severity') != 'HIGH' or \
+                occurrence.get('disposition') != row['disposition'] or occurrence.get('failing') is not True or \
+                occurrence.get('risk_accepted') is not False or occurrence.get('release_blocking') is not True:
+            fail('Guava finding is not bound to its exact indexed source/report: ' + str(key))
+
+    guava_advisory_path = BASE / 'guava-probes-2026-11-22/guava-upstream-advisory.json'
+    guava_advisory = load(guava_advisory_path)
+    if guava.get('source_provenance', {}).get('upstream_advisory_snapshot', {}).get('sha256') != raw_hash(guava_advisory_path) or \
+            guava_advisory.get('ghsa_id') != guava_id or guava_advisory.get('cve_id') != 'CVE-2026-102554':
+        fail('Guava authoritative advisory response mismatch')
+    expected_guava_range = [{'package': 'com.google.guava:guava',
+                             'vulnerable_version_range': '>= 4.0, <= 33.7.1',
+                             'first_patched_version': '33.7.2'}]
+    if guava_finding.get('upstream_affected_ranges') != expected_guava_range or \
+            guava_advisory['vulnerabilities'][0].get('vulnerable_version_range') != '>= 4.0, <= 33.7.1' or \
+            guava_advisory['vulnerabilities'][0].get('first_patched_version') != '33.7.2':
+        fail('Guava upstream affected/fixed range mismatch')
+    patch_path = BASE / 'guava-probes-2026-11-22/upstream-fix.patch'
+    patch_text = patch_path.read_text()
+    if guava.get('source_provenance', {}).get('upstream_fix', {}).get('patch_sha256') != raw_hash(patch_path) or \
+            'b931fe9d6d5cf00bc55714ad3308d086f71850fe' not in patch_text or \
+            patch_text.count('min(elementCount, 256)') < 4 or patch_text.count('min(size, 256)') < 2:
+        fail('Guava upstream fix patch identity or capacity caps mismatch')
+    release_path = BASE / 'guava-probes-2026-11-22/guava-release.json'
+    release = load(release_path)
+    if guava.get('source_provenance', {}).get('upstream_release_snapshot', {}).get('sha256') != raw_hash(release_path) or \
+            release.get('tag_name') != 'v33.7.2':
+        fail('Guava fixed release snapshot mismatch')
+
+    guava_scan_ref = guava['source_provenance']['minecraft_runtime_scan']
+    guava_scan_path = ROOT / guava_scan_ref['result_path']
+    guava_scan_raw = gzip.decompress(guava_scan_path.read_bytes())
+    guava_scan = json.loads(guava_scan_raw)
+    if raw_hash(guava_scan_path) != guava_scan_ref.get('result_sha256') or \
+            hashlib.sha256(guava_scan_raw).hexdigest() != guava_scan_ref.get('result_sha256_uncompressed') or \
+            guava_scan.get('finding_index_sha256') != raw_hash(ARCHIVE / 'finding-index.json') or \
+            guava_scan.get('high_family_inspection_sha256') != raw_hash(high_family_path):
+        fail('Guava runtime scan source hashes mismatch')
+    if guava_scan['counts'] != {
+            'minecraft_clients': 48, 'runtime_artifacts': 655,
+            'game_clients_with_literal_target_references': 0,
+            'runtime_artifacts_with_literal_target_references': 86} or \
+            len(guava_scan.get('minecraft_versions', [])) != 48 or \
+            len(guava_scan.get('runtime_artifacts_scanned', [])) != 655:
+        fail('Guava runtime scan coverage/count mismatch')
+    scan_versions = {row['minecraft_version']: row for row in guava_scan['minecraft_versions']}
+    if set(scan_versions) != {scope.removeprefix('runtime/') for row in guava_index_rows
+                             for scope in row['scopes'] if scope.startswith('runtime/')}:
+        fail('Guava exact runtime version set mismatch')
+    for version, game in scan_versions.items():
+        expected_bindings = {(row['source_kind'], row['group'], row['source_sha'], row['purl'])
+                             for row in guava_index_rows if 'runtime/' + version in row['scopes']}
+        actual_bindings = {(row['source_kind'], row['group'], row['source_sha'], row['purl'])
+                           for row in game['source_bindings']}
+        official = high_family['games'].get(version)
+        if actual_bindings != expected_bindings or game['client_artifact'].get('constant_pool_matches') or \
+                official is None or game['version_metadata'].get('sha1') != official.get('metadata_sha1') or \
+                game['client_artifact'].get('sha1') != official.get('client', {}).get('sha1') or \
+                game['client_artifact'].get('sha256') != official.get('client_sha256'):
+            fail('Guava Minecraft client/source artifact binding mismatch for ' + version)
+    scan_libraries = guava_scan['runtime_artifacts_scanned']
+    if len({row['artifact']['sha1'] for row in scan_libraries}) != 655:
+        fail('Guava scan runtime artifacts are not uniquely hash identified')
+    guava_runtime_artifacts = {}
+    for artifact in scan_libraries:
+        for coordinate in artifact.get('coordinates', []):
+            if coordinate.startswith('com.google.guava:guava:'):
+                guava_runtime_artifacts[coordinate.rsplit(':', 1)[-1]] = artifact
+    expected_guava_versions = {row['purl'].rsplit('@', 1)[-1] for row in guava_index_rows}
+    if set(guava_runtime_artifacts) != expected_guava_versions or \
+            {row['version'] for row in guava.get('package_versions', [])} != expected_guava_versions:
+        fail('Guava exact package-version artifact set mismatch')
+    for occurrence in guava_finding['occurrences']:
+        artifact = guava_runtime_artifacts.get(occurrence['package_version'])
+        if artifact is None or occurrence.get('dependency_artifact_sha1') != artifact['artifact']['sha1'] or \
+                occurrence.get('dependency_artifact_sha256') != artifact['artifact']['sha256'] or \
+                occurrence.get('dependency_manifest_artifact_url') != artifact['artifact']['url']:
+            fail('Guava runtime artifact identity mismatch for ' + occurrence['package_version'])
+
+    probe_source_path = BASE / 'guava-probes-2026-11-22/GuavaDeserializationProbe.java'
+    probe_result_path = BASE / 'guava-probes-2026-11-22/probe-results.json'
+    probe_results = load(probe_result_path)
+    probe_ref = guava['source_provenance']['deserialization_probe']
+    if raw_hash(probe_source_path) != probe_ref.get('source_sha256') or \
+            raw_hash(probe_result_path) != probe_ref.get('results_sha256') or \
+            len(probe_results.get('cases', [])) != 3:
+        fail('Guava bounded probe source/result hash mismatch')
+    by_artifact = {row['artifact']: row for row in probe_results['cases']}
+    vulnerable_probe = by_artifact.get('guava-33.6.0-jre.jar', {})
+    fixed_probe = by_artifact.get('guava-33.7.2-jre.jar', {})
+    if vulnerable_probe.get('exit_code') != 0 or sum('OutOfMemoryError' in line for line in vulnerable_probe.get('stdout', [])) != 3 or \
+            fixed_probe.get('exit_code') != 0 or \
+            not any('OptionalDataException' in line for line in fixed_probe.get('stdout', [])) or \
+            not any('MapMakerInternalMap: unexpected object returned' in line for line in fixed_probe.get('stdout', [])):
+        fail('Guava vulnerable/fixed component probe result mismatch')
+    sha1_sidecar = (BASE / 'guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha1').read_text().strip()
+    sha256_sidecar = (BASE / 'guava-probes-2026-11-22/guava-33.7.2-jre.jar.sha256').read_text().strip()
+    fixed_case = by_artifact['guava-33.7.2-jre.jar']
+    if sha1_sidecar != fixed_case.get('sha1') or sha256_sidecar != fixed_case.get('sha256'):
+        fail('Guava fixed artifact Maven sidecar mismatch')
+
+    packet_index_path = BASE / 'guava-probes-2026-11-22/vanilla-packet-paths/capture-index.json'
+    packet_index = load(packet_index_path)
+    if raw_hash(packet_index_path) != guava['source_provenance']['vanilla_packet_path_capture'].get('capture_index_sha256') or \
+            {row['minecraft_version'] for row in packet_index.get('observations', [])} != {'1.14.4', '1.21.10', '26.3'}:
+        fail('Guava vanilla packet path evidence identity mismatch')
+    for observation in packet_index['observations']:
+        if scan_versions[observation['minecraft_version']]['client_artifact'].get('sha256') != observation['client_sha256']:
+            fail('Guava packet capture is bound to a different Minecraft client')
+        class_texts = []
+        for class_observation in observation['classes']:
+            if not DIGEST.fullmatch(class_observation.get('class_sha256', '')):
+                fail('Minecraft packet path class hash missing')
+            capture = ROOT / class_observation['javap_path']
+            if raw_hash(capture) != class_observation['javap_sha256']:
+                fail('Minecraft javap capture checksum mismatch')
+            class_texts.append(capture.read_text())
+        joined = '\n'.join(class_texts)
+        connection_text = '\n'.join(text for item, text in zip(observation['classes'], class_texts)
+                                     if item['class'].endswith('Connection') or item['class'] in ('jc$1', 'wk'))
+        expected_decoder = {'1.14.4': 'jf', '1.21.10': 'wy', '26.3': 'net/minecraft/network/PacketDecoder'}[
+            observation['minecraft_version']]
+        if 'ByteToMessageDecoder' not in joined or 'ObjectInputStream' in joined or \
+                expected_decoder not in connection_text:
+            fail('Minecraft packet path does not match the recorded typed-decoder observation')
+
     run_reference = evidence.get('log4j_chat_input_probe_run', {})
     if run_reference.get('path') != chat_probe_path.relative_to(ROOT).as_posix() or \
             run_reference.get('sha256') != raw_hash(chat_probe_path) or \
             run_reference.get('observations') != 34 or run_reference.get('parameterized_chat_cases') != 6 or \
             run_reference.get('all_passed') is not True or run_reference.get('security_clearance') is not False:
         fail('source-bound Log4j chat probe reference mismatch')
-    if evidence.get('targeted_high_occurrences') != 44:
+    if evidence.get('targeted_high_occurrences') != 60:
         fail('targeted High occurrence count mismatch')
     if evidence['component_probe_run']['sha256'] != raw_hash(BASE / 'reachability-probes-2026-11-21-rerun.json'):
         fail('component probe report hash mismatch')
@@ -639,10 +806,11 @@ def validate():
 
     upstream_path = BASE / 'upstream-critical-high.json.gz'
     upstream = json.loads(gzip.decompress(upstream_path.read_bytes()))
-    if set(TARGET_COUNTS) - set(upstream['advisories']):
+    archived_target_ids = set(TARGET_COUNTS) - {guava_id}
+    if archived_target_ids - set(upstream['advisories']):
         fail('upstream advisory responses missing for focused findings')
     for finding in evidence['findings']:
-        authoritative = upstream['advisories'][finding['advisory_id']]
+        authoritative = guava_advisory if finding['advisory_id'] == guava_id else upstream['advisories'][finding['advisory_id']]
         packages = set(finding['component'].split('; '))
         ranges = [{'package': item['package']['name'],
                    'vulnerable_version_range': item.get('vulnerable_version_range'),
@@ -672,6 +840,10 @@ def validate():
     reference = ledger.get('critical_reachability_evidence', {})
     if reference.get('path') != EVIDENCE.relative_to(ROOT).as_posix() or reference.get('sha256') != raw_hash(EVIDENCE):
         fail('structured advisory ledger does not reference this evidence')
+    if reference.get('targeted_high_occurrences') != 60 or reference.get('targeted_critical_occurrences') != 22 or \
+            reference.get('targeted_occurrences') != 82 or \
+            reference.get('guava_deserialization_reachability') != guava_pointer:
+        fail('structured advisory ledger Guava counts/pointer mismatch')
     updated = [row for row in ledger['records'] if 'latest_source_observation' in row]
     if len(updated) != reference.get('updated_integrated_occurrence_records'):
         fail('structured ledger source-observation count mismatch')

@@ -6,6 +6,8 @@ The [critical/high reachability follow-up](worklogs/issue-45-critical-reachabili
 
 The [2026-11-22 Jackson runtime follow-up](worklogs/issue-45-jackson-runtime-followup-2026-11-22.md) adds 21 source-bound High observations to the focused reachability set. It narrows specific first-party paths and records the unresolved Minecraft-managed Jackson and Log4j surfaces; all 44 focused High and 22 focused Critical occurrences remain release-blocking.
 
+The [2026-11-22 Guava runtime follow-up](worklogs/issue-45-guava-runtime-followup-2026-11-22.md) adds 16 source-bound High observations across 13 groups and 48 Minecraft versions. The component probe reproduces affected deserialization allocation behavior and checks upstream-fixed Guava 33.7.2; official runtime scanning covers 48 clients and 655 libraries. The sampled vanilla packet paths do not use Java object deserialization, but supported modded runtime reachability remains unknown. All 60 focused High and 22 focused Critical occurrences remain release-blocking; the full 490 occurrence inventory is unchanged.
+
 Verified on 2026-11-04 against the initial maintained heads recorded in the
 [maintenance report](maintenance-2026-11-04.md). Proposed maintenance PRs do not
 change dependency versions or build resolution. Their hosted results must be

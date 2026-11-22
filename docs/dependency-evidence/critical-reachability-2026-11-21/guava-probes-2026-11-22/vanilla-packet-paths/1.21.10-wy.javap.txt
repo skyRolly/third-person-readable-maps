@@ -1,0 +1,122 @@
+Compiled from "SourceFile"
+public class wy<T extends xa> extends io.netty.handler.codec.ByteToMessageDecoder implements xe {
+  private static final org.slf4j.Logger a;
+
+  private final xd<T> b;
+
+  public wy(xd<T>);
+    Code:
+       0: aload_0
+       1: invokespecial #24                 // Method io/netty/handler/codec/ByteToMessageDecoder."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #26                 // Field b:Lxd;
+       9: return
+
+  protected void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List<java.lang.Object>) throws java.lang.Exception;
+    Code:
+       0: aload_2
+       1: invokevirtual #41                 // Method io/netty/buffer/ByteBuf.readableBytes:()I
+       4: istore        4
+       6: aload_0
+       7: getfield      #26                 // Field b:Lxd;
+      10: invokeinterface #47,  1           // InterfaceMethod xd.c:()Laae;
+      15: aload_2
+      16: invokeinterface #52,  2           // InterfaceMethod aae.decode:(Ljava/lang/Object;)Ljava/lang/Object;
+      21: checkcast     #54                 // class aao
+      24: astore        5
+      26: goto          51
+      29: astore        6
+      31: aload         6
+      33: instanceof    #56                 // class xk
+      36: ifeq          48
+      39: aload_2
+      40: aload_2
+      41: invokevirtual #41                 // Method io/netty/buffer/ByteBuf.readableBytes:()I
+      44: invokevirtual #60                 // Method io/netty/buffer/ByteBuf.skipBytes:(I)Lio/netty/buffer/ByteBuf;
+      47: pop
+      48: aload         6
+      50: athrow
+      51: aload         5
+      53: invokeinterface #67,  1           // InterfaceMethod aao.a:()Laaq;
+      58: astore        6
+      60: getstatic     #73                 // Field byi.f:Lbyi;
+      63: aload_0
+      64: getfield      #26                 // Field b:Lxd;
+      67: invokeinterface #76,  1           // InterfaceMethod xd.a:()Lwl;
+      72: aload         6
+      74: aload_1
+      75: invokeinterface #80,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      80: invokeinterface #86,  1           // InterfaceMethod io/netty/channel/Channel.remoteAddress:()Ljava/net/SocketAddress;
+      85: iload         4
+      87: invokeinterface #89,  5           // InterfaceMethod byi.a:(Lwl;Laaq;Ljava/net/SocketAddress;I)V
+      92: aload_2
+      93: invokevirtual #41                 // Method io/netty/buffer/ByteBuf.readableBytes:()I
+      96: ifle          148
+      99: new           #91                 // class java/io/IOException
+     102: dup
+     103: aload_0
+     104: getfield      #26                 // Field b:Lxd;
+     107: invokeinterface #76,  1           // InterfaceMethod xd.a:()Lwl;
+     112: invokevirtual #96                 // Method wl.a:()Ljava/lang/String;
+     115: aload         6
+     117: invokestatic  #102                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     120: aload         5
+     122: invokeinterface #106,  1          // InterfaceMethod aao.getClass:()Ljava/lang/Class;
+     127: invokevirtual #111                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+     130: aload_2
+     131: invokevirtual #41                 // Method io/netty/buffer/ByteBuf.readableBytes:()I
+     134: aload         6
+     136: invokestatic  #102                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     139: invokedynamic #123,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+     144: invokespecial #126                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     147: athrow
+     148: aload_3
+     149: aload         5
+     151: invokeinterface #132,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     156: pop
+     157: getstatic     #134                // Field a:Lorg/slf4j/Logger;
+     160: invokeinterface #140,  1          // InterfaceMethod org/slf4j/Logger.isDebugEnabled:()Z
+     165: ifeq          226
+     168: getstatic     #134                // Field a:Lorg/slf4j/Logger;
+     171: getstatic     #145                // Field wk.c:Lorg/slf4j/Marker;
+     174: ldc           #147                // String  IN: [{}:{}] {} -> {} bytes
+     176: iconst_4
+     177: anewarray     #149                // class java/lang/Object
+     180: dup
+     181: iconst_0
+     182: aload_0
+     183: getfield      #26                 // Field b:Lxd;
+     186: invokeinterface #76,  1           // InterfaceMethod xd.a:()Lwl;
+     191: invokevirtual #96                 // Method wl.a:()Ljava/lang/String;
+     194: aastore
+     195: dup
+     196: iconst_1
+     197: aload         6
+     199: aastore
+     200: dup
+     201: iconst_2
+     202: aload         5
+     204: invokeinterface #106,  1          // InterfaceMethod aao.getClass:()Ljava/lang/Class;
+     209: invokevirtual #152                // Method java/lang/Class.getName:()Ljava/lang/String;
+     212: aastore
+     213: dup
+     214: iconst_3
+     215: iload         4
+     217: invokestatic  #157                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     220: aastore
+     221: invokeinterface #161,  4          // InterfaceMethod org/slf4j/Logger.debug:(Lorg/slf4j/Marker;Ljava/lang/String;[Ljava/lang/Object;)V
+     226: aload_1
+     227: aload         5
+     229: invokestatic  #164                // InterfaceMethod xe.a:(Lio/netty/channel/ChannelHandlerContext;Laao;)V
+     232: return
+    Exception table:
+       from    to  target type
+           6    26    29   Class java/lang/Exception
+
+  static {};
+    Code:
+       0: invokestatic  #188                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #134                // Field a:Lorg/slf4j/Logger;
+       6: return
+}

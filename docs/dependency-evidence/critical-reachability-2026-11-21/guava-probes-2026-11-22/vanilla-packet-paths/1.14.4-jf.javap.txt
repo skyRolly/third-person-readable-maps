@@ -1,0 +1,132 @@
+Compiled from "SourceFile"
+public class jf extends io.netty.handler.codec.ByteToMessageDecoder {
+  private static final org.apache.logging.log4j.Logger a;
+
+  private static final org.apache.logging.log4j.Marker b;
+
+  private final kd c;
+
+  public jf(kd);
+    Code:
+       0: aload_0
+       1: invokespecial #16                 // Method io/netty/handler/codec/ByteToMessageDecoder."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #18                 // Field c:Lkd;
+       9: return
+
+  protected void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List<java.lang.Object>) throws java.lang.Exception;
+    Code:
+       0: aload_2
+       1: invokevirtual #31                 // Method io/netty/buffer/ByteBuf.readableBytes:()I
+       4: ifne          8
+       7: return
+       8: new           #33                 // class je
+      11: dup
+      12: aload_2
+      13: invokespecial #36                 // Method je."<init>":(Lio/netty/buffer/ByteBuf;)V
+      16: astore        4
+      18: aload         4
+      20: invokevirtual #39                 // Method je.i:()I
+      23: istore        5
+      25: aload_1
+      26: invokeinterface #45,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+      31: getstatic     #50                 // Field jc.c:Lio/netty/util/AttributeKey;
+      34: invokeinterface #56,  2           // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+      39: invokeinterface #62,  1           // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+      44: checkcast     #64                 // class jd
+      47: aload_0
+      48: getfield      #18                 // Field c:Lkd;
+      51: iload         5
+      53: invokevirtual #67                 // Method jd.a:(Lkd;I)Lkc;
+      56: astore        6
+      58: aload         6
+      60: ifnonnull     91
+      63: new           #69                 // class java/io/IOException
+      66: dup
+      67: new           #71                 // class java/lang/StringBuilder
+      70: dup
+      71: invokespecial #72                 // Method java/lang/StringBuilder."<init>":()V
+      74: ldc           #74                 // String Bad packet id
+      76: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      79: iload         5
+      81: invokevirtual #81                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      84: invokevirtual #85                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      87: invokespecial #88                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+      90: athrow
+      91: aload         6
+      93: aload         4
+      95: invokeinterface #95,  2           // InterfaceMethod kc.a:(Lje;)V
+     100: aload         4
+     102: invokevirtual #96                 // Method je.readableBytes:()I
+     105: ifle          208
+     108: new           #69                 // class java/io/IOException
+     111: dup
+     112: new           #71                 // class java/lang/StringBuilder
+     115: dup
+     116: invokespecial #72                 // Method java/lang/StringBuilder."<init>":()V
+     119: ldc           #98                 // String Packet
+     121: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     124: aload_1
+     125: invokeinterface #45,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+     130: getstatic     #50                 // Field jc.c:Lio/netty/util/AttributeKey;
+     133: invokeinterface #56,  2           // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+     138: invokeinterface #62,  1           // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+     143: checkcast     #64                 // class jd
+     146: invokevirtual #100                // Method jd.a:()I
+     149: invokevirtual #81                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     152: ldc           #102                // String /
+     154: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     157: iload         5
+     159: invokevirtual #81                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     162: ldc           #104                // String  (
+     164: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     167: aload         6
+     169: invokevirtual #110                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     172: invokevirtual #115                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+     175: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     178: ldc           #117                // String ) was larger than I expected, found
+     180: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     183: aload         4
+     185: invokevirtual #96                 // Method je.readableBytes:()I
+     188: invokevirtual #81                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     191: ldc           #119                // String  bytes extra whilst reading packet
+     193: invokevirtual #78                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     196: iload         5
+     198: invokevirtual #81                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     201: invokevirtual #85                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     204: invokespecial #88                 // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+     207: athrow
+     208: aload_3
+     209: aload         6
+     211: invokeinterface #123,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     216: pop
+     217: getstatic     #125                // Field a:Lorg/apache/logging/log4j/Logger;
+     220: invokeinterface #131,  1          // InterfaceMethod org/apache/logging/log4j/Logger.isDebugEnabled:()Z
+     225: ifeq          273
+     228: getstatic     #125                // Field a:Lorg/apache/logging/log4j/Logger;
+     231: getstatic     #133                // Field b:Lorg/apache/logging/log4j/Marker;
+     234: ldc           #135                // String  IN: [{}:{}] {}
+     236: aload_1
+     237: invokeinterface #45,  1           // InterfaceMethod io/netty/channel/ChannelHandlerContext.channel:()Lio/netty/channel/Channel;
+     242: getstatic     #50                 // Field jc.c:Lio/netty/util/AttributeKey;
+     245: invokeinterface #56,  2           // InterfaceMethod io/netty/channel/Channel.attr:(Lio/netty/util/AttributeKey;)Lio/netty/util/Attribute;
+     250: invokeinterface #62,  1           // InterfaceMethod io/netty/util/Attribute.get:()Ljava/lang/Object;
+     255: iload         5
+     257: invokestatic  #141                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     260: aload         6
+     262: invokevirtual #110                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     265: invokevirtual #144                // Method java/lang/Class.getName:()Ljava/lang/String;
+     268: invokeinterface #148,  6          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Lorg/apache/logging/log4j/Marker;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+     273: return
+
+  static {};
+    Code:
+       0: invokestatic  #163                // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+       3: putstatic     #125                // Field a:Lorg/apache/logging/log4j/Logger;
+       6: ldc           #165                // String PACKET_RECEIVED
+       8: getstatic     #166                // Field jc.b:Lorg/apache/logging/log4j/Marker;
+      11: invokestatic  #172                // Method org/apache/logging/log4j/MarkerManager.getMarker:(Ljava/lang/String;Lorg/apache/logging/log4j/Marker;)Lorg/apache/logging/log4j/Marker;
+      14: putstatic     #133                // Field b:Lorg/apache/logging/log4j/Marker;
+      17: return
+}

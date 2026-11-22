@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {
+      "artifact": "guava-21.0.jar",
+      "exit_code": 0,
+      "sha1": "3a3d111be1be1b745edfa7d91678a12d7ed38709",
+      "sha256": "972139718abc8a4893fa78cba8cf7b2c903f35c97aaf44fa3031b0669948b480",
+      "size": 2521113,
+      "stderr": [],
+      "stdout": [
+        "com.google.common.collect.CompactHashMap: absent from this Guava artifact",
+        "com.google.common.collect.CompactHashSet: absent from this Guava artifact",
+        "MapMakerInternalMap: unbounded allocation observed; java.lang.OutOfMemoryError"
+      ]
+    },
+    {
+      "artifact": "guava-33.6.0-jre.jar",
+      "exit_code": 0,
+      "sha1": "c376b13067cc99a5774403530953f7b05a91e218",
+      "sha256": "dc573e1fca4fd5454f4a5fd3d7da2df03002876a4175bafc14a95980dd7713b3",
+      "size": 3064793,
+      "stderr": [],
+      "stdout": [
+        "CompactHashMap: unbounded allocation observed; java.lang.OutOfMemoryError",
+        "CompactHashSet: unbounded allocation observed; java.lang.OutOfMemoryError",
+        "MapMakerInternalMap: unbounded allocation observed; java.lang.OutOfMemoryError"
+      ]
+    },
+    {
+      "artifact": "guava-33.7.2-jre.jar",
+      "exit_code": 0,
+      "sha1": "e70def5b06cfb109ea050de99870e79c8ce80dbc",
+      "sha256": "b530942257fb935f8b2cfaa5f8eb5bd59c555fd8e8d01b8ce98912e077ea606c",
+      "size": 3057659,
+      "stderr": [],
+      "stdout": [
+        "CompactHashMap: other I/O failure; java.io.OptionalDataException: null",
+        "CompactHashSet: other I/O failure; java.io.OptionalDataException: null",
+        "MapMakerInternalMap: unexpected object returned com.google.common.collect.MapMakerInternalMap"
+      ]
+    }
+  ],
+  "environment": {
+    "java_version": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "max_heap": "64m",
+    "max_stack": "256k",
+    "network": "no network calls made by the probe process"
+  },
+  "method": "The probe serializes a small valid Guava collection, then overrides ObjectInputStream.readInt() to consume but return Integer.MAX_VALUE for the collection size. This tests oversized-length allocation handling; it is not an exploit against a live Minecraft connection.",
+  "observed_on": "2026-11-22",
+  "probe_source": {
+    "file": "GuavaDeserializationProbe.java",
+    "sha256": "80e144d56252eb683f35cb1a31298739bebe72a6e550b2119998548f1df15487",
+    "size": 3396
+  },
+  "schema": 1
+}
