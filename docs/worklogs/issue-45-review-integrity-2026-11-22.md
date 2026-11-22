@@ -8,6 +8,14 @@ PowerShell step. A successful second command could mask a failed first command
 because the shell propagated only the last native exit status. The suites now run
 in separate steps on both platforms, so GitHub Actions stops the job when either
 step fails. The credential guard and existing workflow permissions are retained.
+The temporary Windows control workflow at commit
+`7930766348b4c85743059f7c496320e7aff3ee4e` ran in
+[45018747363](https://github.com/skyRolly/third-person-readable-maps/actions/runs/45018747363):
+the first-fails/second-passes scenario failed at the first step and skipped the
+second; the first-passes/second-fails scenario failed at the second; and the
+both-pass scenario succeeded. These failures are intentional controls. The
+temporary workflow is removed from the final PR head; this run remains public
+evidence and does not replace the final-head Windows tests.
 
 The priority exporter previously reused focused reviewer details after checking
 only occurrence identity. It now requires exact, unique source and package
