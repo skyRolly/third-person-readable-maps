@@ -1,0 +1,36 @@
+{
+  "aliases_shared_by_distinct_returned_ids": {},
+  "candidate_run": 45013904609,
+  "changed_occurrences": {
+    "disposition": [],
+    "failing": [],
+    "fingerprint": [],
+    "scopes": [],
+    "severity": []
+  },
+  "coordinator_sha": "048b6e0a00aff2be37565e14ea25f9e76a872b8d",
+  "current_occurrences": 490,
+  "distinct_advisory_ids": 89,
+  "distinct_package_version_advisory_pairs": 243,
+  "failing_by_severity": {
+    "CRITICAL": 22,
+    "HIGH": 177,
+    "LOW": 17,
+    "MODERATE": 274
+  },
+  "failing_by_source_kind": {
+    "candidate": 385,
+    "integrated": 105
+  },
+  "failing_occurrences": 490,
+  "gradle_tool_advisories": 0,
+  "historical_occurrences": 490,
+  "maintenance_run": 45013904999,
+  "metadata_changed": [],
+  "missing_occurrences_requiring_review": [],
+  "new_occurrences": [],
+  "reported_resolutions_needing_review": {},
+  "returned_withdrawn_advisories": [],
+  "schema": 1,
+  "security_clearance": false
+}

@@ -2,6 +2,23 @@
   "schema": 1,
   "reviewed_on": "2026-11-04",
   "latest_source_audit_evidence": "docs/dependency-evidence/issue45-exact-source-2026-11-21-v2/finding-index.json",
+  "latest_live_source_audit": {
+    "coordinator_sha": "048b6e0a00aff2be37565e14ea25f9e76a872b8d",
+    "candidate_run": 45013904609,
+    "maintenance_run": 45013904999,
+    "artifact_index": {
+      "path": "docs/dependency-evidence/issue45-live-source-2026-11-22/artifact-index.json",
+      "sha256": "4568ae0b4a129915508000d933912a6bed91f63dc59d9dccbc30b76dd2aa1b7d"
+    },
+    "comparison": {
+      "path": "docs/dependency-evidence/issue45-live-source-2026-11-22/comparison.json",
+      "sha256": "d4eb7ea0b6edc0f66cfa1bbddeae6b8933c3c2efca502e41d0dd6c4c5e37f707"
+    },
+    "priority_register": {
+      "path": "docs/dependency-evidence/issue45-live-source-2026-11-22/priority-register.json",
+      "sha256": "2750fc939183df315590b9efc369e30073f89e8b1a80b9a2148824a7a3bc1482"
+    }
+  },
   "scope": "Version-level matches; static mod-source review, no game-wide exploitability proof or risk acceptance.",
   "inventories": {
     "1.21.11": {

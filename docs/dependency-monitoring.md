@@ -1,6 +1,6 @@
 # Dependency monitoring and coverage
 
-The [2026-11-21 source-bound scan archive and worklist](worklogs/issue-45-security-followup-2026-11-21.md) records the current candidate and integrated runs separately. It preserves original reports, snapshots and checksums without replacing prior baselines. The current reports retain 385 candidate and 105 integrated failing matches.
+The [2026-11-22 live audit follow-up](worklogs/issue-45-live-validation-2026-11-22.md) records new candidate and integrated runs separately, including the original workflow artifacts and a source, scope, advisory-fingerprint and alias comparison. It preserves the [2026-11-21 archive and worklist](worklogs/issue-45-security-followup-2026-11-21.md). The fresh reports retain 385 candidate and 105 integrated failing matches; no occurrence was cleared.
 
 The [critical/high reachability follow-up](worklogs/issue-45-critical-reachability-2026-11-21.md) adds source-bound runtime observations without removing any finding. All 13 candidate and integrated source heads still match the finding index; their Gradle 9.9.2 Wrapper files passed hash checks against Gradle's published values. The ten open legacy PR heads also match their indexed source SHAs and their exact-head Linux, Windows, Wrapper, and packaged API checks passed. They remain blocked by unresolved findings. Candidate (385) and integrated (105) monitoring remain separate, and all 490 occurrences continue to fail.
 
