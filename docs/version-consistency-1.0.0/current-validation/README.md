@@ -30,6 +30,14 @@ security inventory and runtime evidence remain pending for these branches;
 earlier source-bound scans and runtime reports keep their original identities
 in the preserved snapshot and historical records.
 
+The [continuity erratum](../../dependency-evidence/issue45-review-fixes-2026-11-22/build-continuity-erratum.json)
+clarifies a stale `same_as_previous` value in the retained November 22 build
+snapshot for these three groups. Their source commits changed, while their
+previous and integrated JAR hashes match. The erratum verifies the retained
+archives and separates source identity from artifact identity; it leaves the
+original snapshot bytes unchanged. Run
+`python3 scripts/validate_issue45_build_continuity.py` to check it.
+
 The Gradle 9.9.2 update changes the distribution and the JAR manifest version
 field. Fresh source-bound dependency resolutions and advisory scans are being
 collected. Earlier OSV reports and runtime observations retain their original
