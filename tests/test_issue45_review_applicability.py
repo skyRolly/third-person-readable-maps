@@ -508,7 +508,7 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
         baseline = live.priority_register(self.live, self.root)
         self.assertEqual(baseline['schema'], 2)
         live.validate_priority_schema(baseline, observations)
-        for kind in ('schema_one', 'missing', 'extra', 'wrong_type', 'wrong_value', 'nonnull'):
+        for kind in ('schema_one', 'missing', 'extra', 'wrong_type', 'wrong_value', 'nonnull', 'missing_modified'):
             with self.subTest(kind=kind):
                 result = copy.deepcopy(baseline)
                 row = next(a for a in result['advisories'] if a['advisory_id'] == identifier)
@@ -524,6 +524,16 @@ class FocusedReviewApplicabilityTests(unittest.TestCase):
                     values[key] = None
                 elif kind == 'wrong_value':
                     values[key] = '2026-11-24T00:00:00Z'
+                elif kind == 'missing_modified':
+                    del row['modified']
+                    source = inspect.getsource(live.validate_priority_schema)
+                    guard = "'modified' in row and row['modified'] is None"
+                    self.assertEqual(source.count(guard), 1)
+                    mutant = {}
+                    exec(compile(source.replace(guard, "row.get('modified') is None"),
+                                 '<missing-null-accepted>', 'exec'), live.__dict__, mutant)
+                    # PR #59's first revision treated a missing field as null.
+                    mutant['validate_priority_schema'](result, observations)
                 else:
                     row['modified'] = '2026-11-23T00:00:00Z'
                 with self.assertRaisesRegex(ValueError, 'invalid mixed priority timestamps or source attribution'):

@@ -369,7 +369,7 @@ def validate_priority_schema(register, observations):
                     'modified_by_source' not in row, 'invalid single priority timestamp: ' + identifier)
         else:
             mixed_count += 1
-            require(schema == 2 and row.get('modified') is None and
+            require(schema == 2 and 'modified' in row and row['modified'] is None and
                     isinstance(row.get('modified_by_source'), dict) and row['modified_by_source'] == expected,
                     'invalid mixed priority timestamps or source attribution: ' + identifier)
     require((schema == 2) == (mixed_count > 0), 'priority schema does not match timestamp observations')
