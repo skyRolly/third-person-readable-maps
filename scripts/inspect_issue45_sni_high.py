@@ -185,6 +185,30 @@ def verify_known_cached_library(raw, library, known):
                     'known cached ClientHello literal or class digest differs')
 
 
+def verify_known_hits_cache(cache, catalog, known, scan):
+    """Verify all six SHA-1-keyed cache files against retained artifact data."""
+    require(not str(cache).startswith(('\\\\', '//')), 'network cache paths are not allowed')
+    root = cache.resolve()
+    require(root.is_dir(), 'Netty cache is not a directory')
+    artifacts = scan['runtime_classpath_scan']['all_artifacts']
+    by_sha = {row['sha1']: row for row in artifacts}
+    require(len(by_sha) == len(artifacts), 'duplicate Netty cache source artifact')
+    for library in catalog:
+        identifier = library['sha1']
+        require(isinstance(identifier, str) and re.fullmatch(r'[a-f0-9]{40}', identifier),
+                'invalid Netty cache artifact identity')
+        source = by_sha.get(identifier)
+        require(source is not None and source['sha256'] == library['sha256'] and
+                'io.netty:netty-handler:' + library['version'] in source['coordinates'] and
+                type(source['size_bytes']) is int and source['size_bytes'] > 0,
+                'Netty cache source artifact differs')
+        path = (root / identifier).resolve()
+        require(path.is_relative_to(root), 'Netty cache artifact path escapes root')
+        raw = path.read_bytes()
+        require(len(raw) == source['size_bytes'], 'cached Netty library size mismatch')
+        verify_known_cached_library(raw, library, known[identifier])
+
+
 def validate_base_scan(base_scan, scan, critical, versions, catalog):
     prior = critical['supplemental_source_bound_evidence']['vanilla_classpath_scan']
     require(base_scan.get('schema') == 1 and base_scan.get('security_clearance') is False and
@@ -407,9 +431,7 @@ def main():
             print('Verified six Netty JARs and their SNI class hashes locally')
         elif args.verify_known_hits_cache:
             known = known_hit_inventory(catalog)
-            for row in catalog:
-                verify_known_cached_library((args.verify_known_hits_cache / row['sha1']).read_bytes(), row,
-                                            known[row['sha1']])
+            verify_known_hits_cache(args.verify_known_hits_cache, catalog, known, scan)
             print('Verified 18 known literal-bearing class entries in six Netty JARs; no reachability is implied')
         elif args.scan_clienthello_cache:
             selected = [item for item in scan['runtime_classpath_scan']['all_artifacts']

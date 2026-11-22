@@ -1,4 +1,5 @@
 """Source and static-evidence controls for the High Netty IP-filter review."""
+import ast
 import copy
 from contextlib import redirect_stderr, redirect_stdout
 import hashlib
@@ -201,21 +202,61 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
             ipfilter.verify_known_library(raw, library, forged_known, count)
 
     def test_cli_requires_independent_download_verification_when_requested(self):
-        source = inspect.getsource(ipfilter.main)
-        block = ("        if args.verify_known_download:\n"
-                 "            verify_known_downloads(catalog, prior, known)\n"
-                 "            print('Verified 66 known IP-filter class hits against six Mojang JARs')\n")
-        self.assertEqual(source.count(block), 1)
-        mutant = {}
-        exec(compile(source.replace(block, ''), '<download-check-removed>', 'exec'),
-             ipfilter.__dict__, mutant)
-        out, err = StringIO(), StringIO()
-        with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py', '--verify-known-download']), \
-             patch.object(ipfilter, 'verify_known_downloads', side_effect=ValueError('independent check failed')), \
-             redirect_stdout(out), redirect_stderr(err):
-            self.assertEqual(mutant['main'](), 0)
-            self.assertEqual(ipfilter.main(), 1)
-        self.assertIn('independent check failed', err.getvalue())
+        def mutant(change):
+            tree = ast.parse(inspect.getsource(ipfilter.main))
+            for node in ast.walk(tree):
+                if (isinstance(node, ast.If) and isinstance(node.test, ast.Attribute) and
+                        node.test.attr == 'verify_known_download'):
+                    calls = [statement for statement in node.body if isinstance(statement, ast.Expr) and
+                             isinstance(statement.value, ast.Call) and isinstance(statement.value.func, ast.Name)]
+                    selected = [statement for statement in calls if statement.value.func.id ==
+                                ('verify_known_downloads' if change == 'omit' else 'print')]
+                    self.assertEqual(len(selected), 1)
+                    if change == 'omit':
+                        node.body.remove(selected[0])
+                    else:
+                        selected[0].value.args = [ast.Constant('Different success wording')]
+                    break
+            else:
+                self.fail('download verification branch not found')
+            namespace = {}
+            exec(compile(ast.fix_missing_locations(tree), '<download-cli-mutation>', 'exec'),
+                 ipfilter.__dict__, namespace)
+            return namespace['main']
+
+        def invoke(main, failure=False):
+            out, err = StringIO(), StringIO()
+            with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py', '--verify-known-download']), \
+                 patch.object(ipfilter, 'verify_known_downloads',
+                              side_effect=ValueError('independent check failed') if failure else None) as verify, \
+                 patch('socket.socket.connect', side_effect=AssertionError('unexpected network')), \
+                 patch('urllib.request.urlopen', side_effect=AssertionError('unexpected network')), \
+                 redirect_stdout(out), redirect_stderr(err):
+                result = main()
+            return result, err.getvalue(), verify
+
+        def assert_success(main):
+            result, error, verify = invoke(main)
+            self.assertEqual(result, 0, error)
+            verify.assert_called_once_with(self.catalog, self.prior, self.known)
+
+        def assert_failure(main):
+            result, error, verify = invoke(main, failure=True)
+            self.assertEqual(result, 1)
+            self.assertIn('independent check failed', error)
+            verify.assert_called_once_with(self.catalog, self.prior, self.known)
+
+        # A wording-only edit leaves both behavioral checks valid. Removing the
+        # invocation fails both the call-count and failure-propagation controls.
+        wording = mutant('wording')
+        missing = mutant('omit')
+        for main in (ipfilter.main, wording):
+            assert_success(main)
+            assert_failure(main)
+        with self.assertRaises(AssertionError):
+            assert_success(missing)
+        with self.assertRaises(AssertionError):
+            assert_failure(missing)
 
     def test_download_rejects_untrusted_urls_and_redirects_before_following(self):
         with patch.object(ipfilter, 'build_opener') as opener:
