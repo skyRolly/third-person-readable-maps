@@ -12,6 +12,21 @@ BASE = ROOT / 'docs/dependency-evidence/critical-reachability-2026-11-21'
 ARCHIVE = ROOT / 'docs/dependency-evidence/issue45-exact-source-2026-11-21-v2'
 EVIDENCE = BASE / 'source-bound-dispositions-2026-11-21.json'
 LEDGER = ROOT / 'docs/security-advisories.json'
+HISTORICAL_SCRIPTS = BASE / 'issue45-review-2026-11-22/historical-scripts'
+# These scripts were modified after the immutable source-bound report was
+# recorded. Validate the exact historical bytes retained alongside this review.
+HISTORICAL_SCRIPT_PATHS = {
+    'scripts/validate_critical_reachability_evidence.py',
+    'scripts/probe_dependency_reachability.py',
+    'scripts/inspect_netty_manifest_artifacts.py',
+}
+REVIEW_INSPECTION = BASE / 'issue45-review-2026-11-22/artifact-byte-inspection.json'
+REVIEW_INSPECTION_SHA256 = 'ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5'
+LOG4J_ATTRIBUTION = BASE / 'issue45-review-2026-11-22/log4j-configuration-attribution.json'
+LOG4J_ATTRIBUTION_SHA256 = '3be3323b84b18b92dfd462b46059e21883af0922967c7e208c35caaf4ab3ddfd'
+REALMS_CALLER_PATHS = {'realms/c.class', 'realms/ah.class', 'realms/ab.class'}
+REALMS_VERSIONS = {'1.14': '1.14.14', '1.14.1': '1.14.15',
+                   '1.14.2': '1.14.16', '1.14.3': '1.14.17'}
 DIGEST = re.compile(r'^[0-9a-f]{64}$')
 TARGET_COUNTS = {
     'GHSA-c4c3-7fpv-j4q5': 14,
@@ -47,6 +62,152 @@ def raw_hash(path):
 
 def load(path):
     return json.loads(path.read_text())
+
+
+def occurrence_key(advisory, row):
+    """Identity in the finding index; source SHA is validated separately."""
+    return (advisory, row['source_kind'], row['group'], row['purl'])
+
+
+def validate_occurrence_coverage(evidence, finding_index):
+    """Require exactly one evidence row for every targeted index occurrence."""
+    indexed = {}
+    for row in finding_index['records']:
+        key = occurrence_key(row['advisory'], row)
+        if key in indexed:
+            fail('duplicate occurrence in finding index: ' + str(key))
+        indexed[key] = row
+
+    seen = {}
+    for finding in evidence.get('findings', []):
+        advisory = finding['advisory_id']
+        if advisory in seen:
+            fail('duplicate advisory evidence: ' + advisory)
+        seen[advisory] = finding
+        occurrences = finding['occurrences']
+        if len(occurrences) != TARGET_COUNTS.get(advisory):
+            fail('wrong occurrence count for ' + advisory)
+        if finding.get('release_blocking') is not True or finding.get('risk_accepted') is not False:
+            fail('targeted advisory must remain blocking: ' + advisory)
+        actual = set()
+        expected = {key for key in indexed if key[0] == advisory}
+        for row in occurrences:
+            key = occurrence_key(advisory, row)
+            if key in actual:
+                fail('duplicate evidence occurrence: ' + str(key))
+            actual.add(key)
+            match = indexed.get(key)
+            if match is None:
+                fail('unexpected evidence occurrence: ' + str(key))
+            for field in ('source_sha', 'scopes', 'fingerprint', 'severity', 'disposition'):
+                actual_value = row['dependency_scopes'] if field == 'scopes' else row[field]
+                if actual_value != match[field]:
+                    fail(f'{field} mismatch for {row["group"]} {advisory}')
+            if row.get('package_version') != row['purl'].rsplit('@', 1)[-1]:
+                fail('package version mismatch for ' + str(key))
+            if row.get('failing') is not True or row.get('release_blocking') is not True or row.get('risk_accepted') is not False:
+                fail('target occurrence is not retained as a blocking failure')
+            source_report = row['source_report']
+            if source_report.get('path') != match['report'] or \
+                    source_report.get('sha256_uncompressed') != match['report_sha256_uncompressed']:
+                fail('source report does not match indexed dependency audit: ' + str(key))
+            report_bytes = gzip.decompress((ROOT / source_report['path']).read_bytes())
+            if hashlib.sha256(report_bytes).hexdigest() != source_report['sha256_uncompressed']:
+                fail('source report checksum mismatch')
+            if json.loads(report_bytes).get('source_sha') != row['source_sha']:
+                fail('source report SHA mismatch')
+        if actual != expected:
+            fail('occurrence coverage mismatch for ' + advisory + ': missing=' +
+                 str(sorted(expected - actual)) + ' unexpected=' + str(sorted(actual - expected)))
+    if set(seen) != set(TARGET_COUNTS):
+        fail('targeted advisory set mismatch')
+    targeted = [row for key, row in indexed.items() if key[0] in TARGET_COUNTS]
+    if len(TARGET_COUNTS) != 20 or len(targeted) != 93 or \
+            sum(row['severity'] == 'CRITICAL' for row in targeted) != 22 or \
+            sum(row['severity'] == 'HIGH' for row in targeted) != 71:
+        fail('focused Critical/High index counts changed')
+    return seen
+
+
+def validate_realms_caller_equivalence(runtime_rows, inspection, high_family):
+    """Bind every cited caller class to the independently inspected JAR."""
+    inspected_rows = inspection.get('realms', [])
+    if len(runtime_rows) != len(REALMS_VERSIONS) or len(inspected_rows) != len(REALMS_VERSIONS) or \
+            {row['minecraft_version'] for row in runtime_rows} != set(REALMS_VERSIONS) or \
+            {row['minecraft_version'] for row in inspected_rows} != set(REALMS_VERSIONS):
+        fail('Mojang Realms caller version coverage mismatch')
+    inspected_by_version = {row['minecraft_version']: row for row in inspected_rows}
+    equivalent = []
+    for observation in runtime_rows:
+        version = observation['minecraft_version']
+        inspected = inspected_by_version[version]
+        coordinate = 'com.mojang:realms:' + REALMS_VERSIONS[version]
+        libraries = [row for row in high_family['libraries']
+                     if coordinate in row.get('coordinates', []) and version in row.get('versions', [])]
+        if len(libraries) != 1 or inspected.get('coordinate') != coordinate or \
+                inspected.get('artifact') != libraries[0]['artifact'] or \
+                inspected.get('artifact_sha256') != libraries[0]['sha256'] or \
+                inspected.get('metadata_sha1') != high_family['games'][version]['metadata_sha1']:
+            fail('Realms independent artifact inspection mismatch for ' + version)
+        mappings = []
+        for label, rows in (('observation', observation.get('related_call_path_classes', [])),
+                            ('inspection', inspected.get('related_call_path_classes', []))):
+            paths = [row.get('path') for row in rows]
+            if len(paths) != len(REALMS_CALLER_PATHS) or set(paths) != REALMS_CALLER_PATHS:
+                fail('Realms caller class set is incomplete, duplicated, or unexpected: ' + version + ' ' + label)
+            mapping = {row['path']: row.get('sha256', '') for row in rows}
+            if any(not DIGEST.fullmatch(value) for value in mapping.values()):
+                fail('Realms caller class digest is invalid: ' + version)
+            mappings.append(mapping)
+        if mappings[0] != mappings[1]:
+            fail('Realms caller class digest differs from inspected artifact: ' + version)
+        equivalent.append(mappings[1])
+    if any(mapping != equivalent[0] for mapping in equivalent[1:]):
+        fail('Realms caller bytecode differs across versions where equivalence is claimed')
+
+
+def validate_historical_log4j_attribution(correction, inspection, chat_probe, high_family):
+    """Separate actual client XML from the configurations used in older probes."""
+    clients = {row['minecraft_version']: row for row in inspection['clients']}
+    rows = correction.get('historical_runtime_case_attributions', [])
+    if len(rows) != 3 or {row['minecraft_version'] for row in rows} != {'1.14.4', '1.17.1', '1.18.1'}:
+        fail('Log4j configuration correction lacks exact client coverage')
+    fixtures = chat_probe['specification']['configurations']
+    for row in rows:
+        version = row['minecraft_version']
+        client = clients[version]
+        game = high_family['games'][version]
+        if row['client_sha256'] != client['artifact_sha256'] or \
+                row['client_sha256'] != game['client_sha256'] or \
+                row['client_embedded_xml_sha256'] != client['entry_sha256'] or \
+                row['client_embedded_xml_sha256'] != game['embedded_log4j2_sha256']:
+            fail('Log4j exact client XML inspection mismatch: ' + version)
+        fixture = fixtures[row['historical_fixture']]
+        if row['historical_fixture_sha256'] != fixture['sha256'] or \
+                raw_hash(ROOT / fixture['path']) != fixture['sha256']:
+            fail('Log4j historical component configuration hash mismatch: ' + version)
+        exact = row['client_embedded_xml_sha256'] == row['historical_fixture_sha256']
+        if row['historical_attribution'] != ('exact_client_embedded' if exact else 'representative_not_exact'):
+            fail('Log4j historical configuration attribution does not match client bytes: ' + version)
+        if version == '1.17.1' and (exact or row['historical_fixture'] != '1.18.1-embedded.xml'):
+            fail('historical 1.17.1 fallback result must remain representative')
+    component = correction['component_2_14_1_case']
+    cases = [row for row in chat_probe['cases'] if row['name'] == component['case_name']]
+    if len(cases) != 1 or cases[0]['configuration'] != component['configuration'] or \
+            component['configuration_sha256'] != fixtures[component['configuration']]['sha256'] or \
+            component['actual_1_17_1_embedded_xml_sha256'] != clients['1.17.1']['entry_sha256'] or \
+            component['configuration_sha256'] == component['actual_1_17_1_embedded_xml_sha256'] or \
+            component['attribution_for_1_17_1'] != 'representative_not_exact':
+        fail('Log4j 2.14.1 component case was incorrectly attributed to exact 1.17.1 XML')
+    for report_ref in correction['historical_runtime_reports']:
+        path = ROOT / report_ref['path']
+        if raw_hash(path) != report_ref['sha256']:
+            fail('historical Log4j runtime report checksum mismatch')
+        report = load(path)
+        for row in rows:
+            matches = [case for case in report['cases'] if case['name'] == row['runtime_case']]
+            if len(matches) != 1 or matches[0]['logging_configuration'] != row['historical_fixture']:
+                fail('historical Log4j runtime configuration differs from correction: ' + row['runtime_case'])
 
 
 def validate():
@@ -95,37 +256,7 @@ def validate():
         digest, report = reports[row['report']]
         if digest != row['report_sha256_uncompressed'] or report.get('source_sha') != row['source_sha']:
             fail('finding index report checksum or source mismatch: ' + row['report'])
-    seen = {}
-    for finding in evidence.get('findings', []):
-        advisory = finding['advisory_id']
-        if advisory in seen:
-            fail('duplicate advisory evidence: ' + advisory)
-        seen[advisory] = finding
-        occurrences = finding['occurrences']
-        if len(occurrences) != TARGET_COUNTS.get(advisory):
-            fail('wrong occurrence count for ' + advisory)
-        if finding.get('release_blocking') is not True or finding.get('risk_accepted') is not False:
-            fail('targeted advisory must remain blocking: ' + advisory)
-        for row in occurrences:
-            key = (advisory, row['group'], row['source_kind'], row['purl'])
-            match = indexed.get(key)
-            if match is None:
-                fail('source occurrence not found in exact-source index: ' + str(key))
-            for field in ('source_sha', 'scopes', 'fingerprint', 'severity', 'disposition'):
-                actual = row['source_sha'] if field == 'source_sha' else (
-                    row['dependency_scopes'] if field == 'scopes' else row[field])
-                if actual != match[field]:
-                    fail(f'{field} mismatch for {row["group"]} {advisory}')
-            if row.get('failing') is not True or row.get('release_blocking') is not True or row.get('risk_accepted') is not False:
-                fail('target occurrence is not retained as a blocking failure')
-            report_path = ROOT / row['source_report']['path']
-            report_bytes = gzip.decompress(report_path.read_bytes())
-            if hashlib.sha256(report_bytes).hexdigest() != row['source_report']['sha256_uncompressed']:
-                fail('source report checksum mismatch')
-            if json.loads(report_bytes).get('source_sha') != row['source_sha']:
-                fail('source report SHA mismatch')
-    if set(seen) != set(TARGET_COUNTS):
-        fail('targeted advisory set mismatch')
+    seen = validate_occurrence_coverage(evidence, finding_index)
 
     expected_counts = {'candidate': {}, 'integrated': {}}
     for kind in expected_counts:
@@ -146,6 +277,10 @@ def validate():
         path = (ROOT / item['path']).resolve()
         if not path.is_relative_to(ROOT.resolve()) or not path.is_file():
             fail('missing or out-of-repository evidence: ' + item['path'])
+        if item['path'] in HISTORICAL_SCRIPT_PATHS:
+            path = HISTORICAL_SCRIPTS / Path(item['path']).name
+            if not path.is_file():
+                fail('missing archived historical script: ' + item['path'])
         if raw_hash(path) != item['sha256']:
             fail('supporting evidence hash mismatch: ' + item['path'])
         if item.get('sha256_uncompressed'):
@@ -192,13 +327,17 @@ def validate():
                     fail('Commons Compress client reference evidence mismatch for ' + target)
             if occurrence.get('dependency_owner') != 'Minecraft runtime manifest':
                 fail('Commons Compress dependency owner is not source-bound to Minecraft')
-    expected_realms = {
-        '1.14': '1.14.14', '1.14.1': '1.14.15',
-        '1.14.2': '1.14.16', '1.14.3': '1.14.17',
-    }
+    expected_realms = REALMS_VERSIONS
     runtime_rows = commons.get('additional_runtime_library_callers', [])
-    if {row['minecraft_version'] for row in runtime_rows} != set(expected_realms):
-        fail('Mojang Realms TAR caller observations do not cover Minecraft 1.14.0-1.14.3')
+    if raw_hash(REVIEW_INSPECTION) != REVIEW_INSPECTION_SHA256:
+        fail('review artifact inspection checksum mismatch')
+    review_inspection = load(REVIEW_INSPECTION)
+    if review_inspection.get('high_family_sha256') != raw_hash(high_family_path) or \
+            review_inspection.get('security_clearance') is not False or \
+            review_inspection.get('risk_accepted') is not False or \
+            review_inspection.get('release_blocking') is not True:
+        fail('review artifact inspection has invalid provenance or clearance')
+    validate_realms_caller_equivalence(runtime_rows, review_inspection, high_family)
     for observation in runtime_rows:
         version = observation['minecraft_version']
         coordinate = 'com.mojang:realms:' + expected_realms[version]
@@ -231,7 +370,7 @@ def validate():
             runtime = next(row for row in runtime_rows
                            if row['minecraft_version'] == observation['minecraft_version'])
             for field in ('coordinate', 'artifact', 'artifact_sha256', 'literal_reference_matches',
-                          'class_sha256', 'class_path'):
+                          'class_sha256', 'class_path', 'related_call_path_classes'):
                 if observation.get(field) != runtime.get(field):
                     fail('Mojang Realms source-bound observation mismatch for ' + field)
     if set(commons['reachability_scope']['tar_parser_reference_versions']) != \
@@ -269,6 +408,16 @@ def validate():
     if log4j['source_provenance']['new_parameterized_chat_probe_report']['sha256'] != raw_hash(chat_probe_path) or \
             chat_probe.get('passed') is not True or len(chat_probe.get('cases', [])) != 34:
         fail('parameterized Log4j chat probe report is missing or incomplete')
+    if raw_hash(LOG4J_ATTRIBUTION) != LOG4J_ATTRIBUTION_SHA256:
+        fail('Log4j configuration correction checksum mismatch')
+    attribution = load(LOG4J_ATTRIBUTION)
+    if attribution.get('artifact_inspection', {}).get('sha256') != REVIEW_INSPECTION_SHA256 or \
+            attribution.get('historical_static_chat_report', {}).get('sha256') != raw_hash(log4j_path) or \
+            attribution.get('historical_component_report', {}).get('sha256') != raw_hash(chat_probe_path) or \
+            attribution.get('security_clearance') is not False or \
+            attribution.get('risk_accepted') is not False or attribution.get('release_blocking') is not True:
+        fail('Log4j configuration correction provenance or disposition mismatch')
+    validate_historical_log4j_attribution(attribution, review_inspection, chat_probe, high_family)
     expected_chat_cases = {
         '2.8.1-launcher-chat-jndi': 0,
         '2.8.1-launcher-chat-jndi-core-first': 0,
@@ -1185,6 +1334,14 @@ def validate():
     reference = ledger.get('critical_reachability_evidence', {})
     if reference.get('path') != EVIDENCE.relative_to(ROOT).as_posix() or reference.get('sha256') != raw_hash(EVIDENCE):
         fail('structured advisory ledger does not reference this evidence')
+    correction_pointer = reference.get('log4j_runtime_reachability', {}).get('configuration_attribution_correction', {})
+    if correction_pointer != {
+            'path': LOG4J_ATTRIBUTION.relative_to(ROOT).as_posix(),
+            'sha256': LOG4J_ATTRIBUTION_SHA256,
+            'artifact_inspection_sha256': REVIEW_INSPECTION_SHA256,
+            'historical_1_17_1_result': 'representative_not_exact',
+            'security_clearance': False, 'risk_accepted': False, 'release_blocking': True}:
+        fail('structured advisory ledger lacks the Log4j configuration correction')
     commons_pointer = evidence.get('commons_compress_tar_reachability', {}).get('latest_followup', {})
     commons_path = ROOT / commons_pointer.get('path', '')
     commons = load(commons_path) if commons_path.is_file() else {}

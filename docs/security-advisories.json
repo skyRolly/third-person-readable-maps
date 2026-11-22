@@ -15357,7 +15357,16 @@
       "security_clearance": false,
       "risk_accepted": false,
       "release_blocking": true,
-      "note": "The three Not applicable records apply only to Minecraft 1.19–1.19.2 using exact Mojang Log4j Core 2.17.0 for these advisory IDs. The eight existing 2.8.1/2.14.1 finding-index rows remain blocking; inventory counts are unchanged."
+      "note": "The three Not applicable records apply only to Minecraft 1.19–1.19.2 using exact Mojang Log4j Core 2.17.0 for these advisory IDs. The eight existing 2.8.1/2.14.1 finding-index rows remain blocking; inventory counts are unchanged.",
+      "configuration_attribution_correction": {
+        "path": "docs/dependency-evidence/critical-reachability-2026-11-21/issue45-review-2026-11-22/log4j-configuration-attribution.json",
+        "sha256": "3be3323b84b18b92dfd462b46059e21883af0922967c7e208c35caaf4ab3ddfd",
+        "artifact_inspection_sha256": "ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5",
+        "historical_1_17_1_result": "representative_not_exact",
+        "security_clearance": false,
+        "risk_accepted": false,
+        "release_blocking": true
+      }
     }
   }
 }

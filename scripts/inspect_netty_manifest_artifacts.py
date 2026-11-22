@@ -50,6 +50,15 @@ def verify_digest(data, algorithm, expected, label):
     return actual
 
 
+def display_output_path(path):
+    """Display repository paths relatively and external paths absolutely."""
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return resolved.as_posix()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT / 'docs/dependency-evidence/critical-reachability-2026-11-21/netty-manifest-artifacts-2026-11-21.json')
@@ -144,7 +153,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(output, indent=2) + '\n')
     print(json.dumps({'manifests': len(output['minecraft_manifests']), 'artifacts': len(output['netty_artifacts']),
-                      'source_occurrences': len(source_rows), 'output': args.output.relative_to(ROOT).as_posix()}))
+                      'source_occurrences': len(source_rows), 'output': display_output_path(args.output)}))
     return 0
 
 

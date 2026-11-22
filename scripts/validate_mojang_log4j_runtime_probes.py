@@ -20,6 +20,15 @@ LOG4J_METADATA_DIR = EVIDENCE / 'log4j-mojang-runtime-2026-11-22/metadata'
 TARGETED_LOG4J_ADVISORIES = {
     'GHSA-jfh8-c2jp-5v3q', 'GHSA-7rjr-3q55-vv33', 'GHSA-fxph-q3j8-mv87'
 }
+REVIEW_INSPECTION = EVIDENCE / 'issue45-review-2026-11-22/artifact-byte-inspection.json'
+REVIEW_INSPECTION_SHA256 = 'ae4ed2d30e5cad4e3eff624c01428368b54e2055106d8b890cb34f535671e7d5'
+# These immutable reports used the 1.18.1 XML for the 1.17.1 case. Their
+# observation remains representative and is never promoted to an exact match.
+HISTORICAL_REPORT_SHA256 = {
+    'cc9196e73b1928acac20a8975ef489344a81715436545bee82b24dc949e4623e',
+    '41654455bcc7d157efe9fd92fcebca5d0bca78290d6cba404d204fc066c6a33d',
+    '3ccc71df7a299ada2f5f33ed93f653a765de13c4912e11afa53fb058785aca14',
+}
 
 
 def digest_bytes(data, algorithm):
@@ -43,6 +52,45 @@ def resolve_repo_path(value):
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def validate_embedded_configurations(report, inspection, historical):
+    clients = {row['minecraft_version']: row for row in inspection.get('clients', [])}
+    require(len(inspection.get('clients', [])) == 3 and set(clients) == {'1.14.4', '1.17.1', '1.18.1'},
+            'independent client configuration inspection is incomplete')
+    expected_configs = {'1.14.4': '1.14.4-embedded.xml',
+                        '1.17.1': '1.14.4-embedded.xml',
+                        '1.18.1': '1.18.1-embedded.xml'}
+    paths = report.get('configuration_evidence', {}).get('embedded_config_paths', {})
+    cases = {row['name']: row for row in report.get('cases', [])}
+    case_versions = {version + '-embedded-chat-jndi': version for version in expected_configs}
+    case_versions['1.14.4-embedded-core-first-chat-jndi'] = '1.14.4'
+    claimed_exact = {row['name'] for row in report.get('cases', [])
+                     if row.get('configuration_scope') == 'exact_client_embedded'}
+    require(not (claimed_exact - set(case_versions)), 'unexpected exact embedded configuration claim')
+    for name, version in case_versions.items():
+        expected_name = expected_configs[version]
+        require(name in cases, 'missing embedded configuration case: ' + name)
+        case = cases[name]
+        require(case.get('minecraft_version') == version, 'embedded case version mismatch: ' + name)
+        fixture_name = case.get('logging_configuration')
+        fixture_path = paths.get(fixture_name)
+        require(fixture_path is not None and fixture_path.replace('\\', '/') ==
+                'tests/fixtures/critical_reachability/' + str(fixture_name),
+                'embedded configuration fixture path mismatch: ' + name)
+        fixture_digest = digest_bytes(resolve_repo_path(fixture_path).read_bytes(), 'sha256')
+        exact_digest = clients[version]['entry_sha256']
+        if historical and version == '1.17.1':
+            require(fixture_name == '1.18.1-embedded.xml' and fixture_digest != exact_digest and
+                    case.get('configuration_scope') is None,
+                    'historical 1.17.1 result must remain explicitly representative')
+        else:
+            require(fixture_name == expected_name and fixture_digest == exact_digest,
+                    'embedded configuration does not match exact client bytes: ' + name)
+            if not historical:
+                require(case.get('configuration_scope') == 'exact_client_embedded' and
+                        case.get('configuration_sha256') == exact_digest,
+                        'exact embedded configuration claim lacks matching hash: ' + name)
 
 
 def log4j_relevant_metadata(metadata):
@@ -74,6 +122,11 @@ def log4j_relevant_metadata(metadata):
 def validate(report_path):
     report_path = Path(report_path).resolve()
     report = read_json(report_path)
+    inspection_bytes = REVIEW_INSPECTION.read_bytes()
+    require(digest_bytes(inspection_bytes, 'sha256') == REVIEW_INSPECTION_SHA256,
+            'review artifact inspection checksum mismatch')
+    historical = digest_bytes(report_path.read_bytes(), 'sha256') in HISTORICAL_REPORT_SHA256
+    validate_embedded_configurations(report, json.loads(inspection_bytes), historical)
     source = read_json(SOURCE_REPORT)
     launcher_index_path = resolve_repo_path(report['launcher_metadata_index_path'])
     require(digest_bytes(launcher_index_path.read_bytes(), 'sha256') == report['launcher_metadata_index_sha256'],

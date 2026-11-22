@@ -11,40 +11,69 @@ import subprocess
 import sys
 import tempfile
 from urllib.parse import urlsplit
-from urllib.request import urlopen
+from urllib.request import HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / 'tests/fixtures/critical_reachability'
 
 
-def verified_artifact(spec, cache, download):
+class RejectRedirects(HTTPRedirectHandler):
+    """Pinned artifact URLs have no authorized redirect targets."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise ValueError('unexpected redirect while fetching pinned evidence')
+
+
+def validate_source_url(url, allowed_hosts):
+    parsed = urlsplit(url)
+    if (parsed.scheme != 'https' or parsed.hostname not in allowed_hosts or
+            parsed.username or parsed.password or parsed.port not in (None, 443) or
+            parsed.query or parsed.fragment):
+        raise ValueError('untrusted source URL')
+
+
+def fetch_https(url, allowed_hosts, max_bytes):
+    validate_source_url(url, allowed_hosts)
+    with build_opener(RejectRedirects()).open(url, timeout=60) as response:
+        if response.geturl() != url:
+            raise ValueError('unexpected redirect while fetching pinned evidence')
+        data = response.read(max_bytes + 1)
+    if len(data) > max_bytes:
+        raise ValueError('source exceeds expected maximum size')
+    return data
+
+
+def verified_artifact(spec, cache, download, verification=None):
     sha1 = spec['sha1']
     if not re.fullmatch(r'[a-f0-9]{40}', sha1):
         raise ValueError('invalid artifact identity')
+    if download:
+        validate_source_url(spec['url'], {'libraries.minecraft.net', 'repo.maven.apache.org'})
     path = cache / sha1
+    source = 'cache'
     if not path.exists():
         if not download:
             raise ValueError('missing cached artifact ' + sha1)
-        url = urlsplit(spec['url'])
-        if (url.scheme != 'https' or url.hostname not in
-                ('libraries.minecraft.net', 'repo.maven.apache.org') or
-                url.username or url.password or url.port not in (None, 443)):
-            raise ValueError('untrusted artifact URL')
-        with urlopen(spec['url'], timeout=60) as response:
-            raw = response.read()
+        raw = fetch_https(spec['url'], {'libraries.minecraft.net', 'repo.maven.apache.org'}, spec['size'])
         # Validate before publishing a cache entry.
         validate_bytes(raw, spec)
         path.write_bytes(raw)
+        source = 'download'
     validate_bytes(path.read_bytes(), spec)
     checksum_url = spec.get('checksum_url')
-    if checksum_url:
-        checksum = urlsplit(checksum_url)
-        if (checksum.scheme != 'https' or checksum.hostname != 'repo.maven.apache.org' or
-                checksum.username or checksum.password or checksum.port not in (None, 443)):
-            raise ValueError('untrusted upstream checksum URL')
-        declared = urlopen(checksum_url, timeout=60).read().decode('ascii').strip().split()[0]
+    sidecar = 'not_applicable' if not checksum_url else 'not_retrieved_offline'
+    if checksum_url and download:
+        raw_checksum = fetch_https(checksum_url, {'repo.maven.apache.org'}, 1024)
+        fields = raw_checksum.decode('ascii').strip().split()
+        if not fields:
+            raise ValueError('empty upstream checksum sidecar')
+        declared = fields[0]
         if declared != spec['sha256']:
             raise ValueError('upstream SHA-256 sidecar mismatch for ' + sha1)
+        sidecar = 'retrieved_and_verified'
+    if verification is not None:
+        verification.update({'artifact_source': source, 'size_sha1_sha256_verified': True,
+                             'upstream_checksum': sidecar, 'checksum_url': checksum_url,
+                             'previously_recorded_provenance': spec.get('verified_against')})
     return path.resolve()
 
 
@@ -60,7 +89,7 @@ def verified_minecraft_manifest(version, spec, cache, download):
     if not path.exists():
         if not download:
             raise ValueError('missing cached Minecraft manifest ' + sha1)
-        raw = urlopen(spec['url'], timeout=60).read()
+        raw = fetch_https(spec['url'], {'piston-meta.mojang.com'}, 8 * 1024 * 1024)
         if hashlib.sha1(raw).hexdigest() != sha1:
             raise ValueError('Minecraft manifest digest mismatch for ' + version)
         path.write_bytes(raw)
@@ -112,8 +141,11 @@ def run_experiments(cache, java_home, download):
         item = declared[0]
         if any(spec.get(field) != item.get(field) for field in ('url', 'sha1', 'size')):
             raise ValueError('artifact does not match Minecraft manifest: ' + coordinate)
-    paths = {name: verified_artifact(spec, cache, download)
-             for name, spec in specification['artifacts'].items()}
+    artifact_verification = {}
+    paths = {}
+    for name, spec in specification['artifacts'].items():
+        artifact_verification[name] = {}
+        paths[name] = verified_artifact(spec, cache, download, artifact_verification[name])
     configs = {}
     for name, spec in specification['configurations'].items():
         path = ROOT / spec['path']
@@ -218,6 +250,11 @@ def run_experiments(cache, java_home, download):
                             {'NO_NETWORK_CONTEXT_CALLS': 0 if literal else 2}, configuration)
                     execute(prefix + '-chat-jndi-core-first', 'ChatJndiProbe', list(reversed(normal)),
                             {'NO_NETWORK_CONTEXT_CALLS': 0 if literal else 2}, configuration)
+            if core == '2.14.1':
+                # The 1.17.1 client embeds the same XML bytes as the 1.14.4
+                # fixture; the 1.18.1 fixture is a distinct configuration.
+                execute('2.14.1-1.17.1-exact-embedded-chat-jndi', 'ChatJndiProbe', normal,
+                        {'NO_NETWORK_CONTEXT_CALLS': 2}, '1.14.4-embedded.xml')
         context_coordinates = ['com.mojang:patchy:2.1.6', 'org.apache.logging.log4j:log4j-api:2.14.1',
                                'org.apache.logging.log4j:log4j-core:2.14.1']
         for configuration in ('launcher', 'synthetic-context.xml'):
@@ -284,6 +321,8 @@ def run_experiments(cache, java_home, download):
             'status': 'complete', 'security_clearance': False,
             'purpose': 'Component-level reachability experiments with local synthetic inputs. Advisory gates remain separate.',
             'java_version': java_version_result.stderr.strip(), 'specification': specification,
+            'artifact_verification_mode': 'download_and_verify_upstream_sidecars' if download else 'offline_pinned_hashes',
+            'artifact_verification': artifact_verification,
             'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'harness_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(FIXTURES.glob('*.java'))},
             'cases': cases, 'passed': all(case['passed'] for case in cases)}

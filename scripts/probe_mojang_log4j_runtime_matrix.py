@@ -526,7 +526,8 @@ def run_matrix(cache, compiler_home):
             launcher_cp = classpath_orders[version]
             if not launcher_cp or launcher_cp.index(patchy_coord) > launcher_cp.index(core_coord):
                 raise ValueError('official metadata does not place Patchy before Log4j Core: ' + version)
-            embedded = '1.14.4-embedded.xml' if core == '2.8.1' else '1.18.1-embedded.xml'
+            # Mojang 1.17.1 embeds the 1.14.4 XML bytes, not 1.18.1's XML.
+            embedded = '1.14.4-embedded.xml' if version in ('1.14.4', '1.17.1') else '1.18.1-embedded.xml'
             runtime_name = runtime['row']['version']['name']
 
             def execute(name, main_class, coordinates, configuration, expected):
@@ -610,6 +611,10 @@ def run_matrix(cache, compiler_home):
                     'java_component': component, 'java_runtime_name': runtime['row']['version']['name'],
                     'log4j_core_version': core, 'patchy_version': patchy,
                     'coordinates_in_order': coordinates, 'logging_configuration': configuration,
+                    'configuration_scope': ('exact_client_embedded' if 'embedded' in name else
+                                            'launcher' if configuration == 'launcher' else
+                                            'synthetic' if configuration else None),
+                    'configuration_sha256': sha256(configs[configuration].read_bytes()) if configuration else None,
                     'expected': expected, 'observed': observed, 'passed': expected_ok,
                     'stdout': clean_source_paths(run.stdout, replacements),
                     'stderr': clean_source_paths(run.stderr, replacements),
