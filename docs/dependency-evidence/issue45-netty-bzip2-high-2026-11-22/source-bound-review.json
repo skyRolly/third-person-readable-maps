@@ -1,0 +1,699 @@
+{
+  "advisory_id": "GHSA-558v-64gr-wgg4",
+  "aliases": [
+    "CVE-2026-59901"
+  ],
+  "analysis_base_commit": "9548d03bff815bf0576e3b23e2e007f5be84e0af",
+  "baseline_priority_register": {
+    "advisory_ids": 22,
+    "focused_occurrences": 117,
+    "path": "docs/dependency-evidence/issue45-netty-ipfilter-high-2026-11-22/priority-register-v3.json",
+    "remaining_unfocused_high_occurrences": 82,
+    "security_clearance": false,
+    "sha256": "adb05b1d0621b89abc26c51c50c7c9cbe8313da3064947cdba3c513da41f8aef"
+  },
+  "dependency_owner": "Minecraft runtime manifests; some coordinates also occur in Gradle resolution.",
+  "disposition": "Further investigation",
+  "evidence": {
+    "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/codec-artifacts.json": "a1eaaf4a1955ee68a4c8d0af86af3a6ebc984786aab159bb35ffa96e3211387b",
+    "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/fabric-loader-static-scan.json": "e39d2152a7a721e51bf69d1e8e5d9f20e2e0eacf2fb80933ada16211f154a151",
+    "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/minecraft-26.2-pipeline-observation.json": "870513a9d1414171f3330edc5864b076ebfa2a0f737b0546ff12bf3a548be286",
+    "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/minecraft-client-scan.json": "5e3941b93d86cfbc4420a53b72d5bfe31b3be249659a9f86c9ba22f22ebc24d4",
+    "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/product-jar-static-scan.json": "8e3613417f5d9387b235bfa2fafc4040e690de346697a9fd441506c82b6b510f"
+  },
+  "follow_up_requirements": [
+    "Observe supported launcher, Fabric and dedicated-server pipelines and their input boundaries.",
+    "Verify a compatible upstream update addressing this and the Critical SNI advisory."
+  ],
+  "input_boundary": "The advisory concerns the Bzip2 decoder processing compressed input; whether a supported configuration installs it for untrusted input remains unverified.",
+  "limitations": [
+    "No launcher, Fabric or game process was run; build resolution does not prove runtime classpath.",
+    "Other runtime libraries, dedicated servers, other mods, agents and generated paths remain unverified.",
+    "No malformed input, remote test or vulnerability reproduction was performed.",
+    "Compatibility of newer libraries with affected older Minecraft versions is not established."
+  ],
+  "minecraft_version_count": 28,
+  "minecraft_versions": [
+    "1.19",
+    "1.19.1",
+    "1.19.2",
+    "1.19.3",
+    "1.19.4",
+    "1.20",
+    "1.20.1",
+    "1.20.2",
+    "1.20.3",
+    "1.20.4",
+    "1.20.5",
+    "1.20.6",
+    "1.21",
+    "1.21.1",
+    "1.21.10",
+    "1.21.11",
+    "1.21.2",
+    "1.21.3",
+    "1.21.4",
+    "1.21.5",
+    "1.21.6",
+    "1.21.7",
+    "1.21.8",
+    "1.21.9",
+    "26.1",
+    "26.1.1",
+    "26.1.2",
+    "26.2"
+  ],
+  "observed_on": "2026-11-22",
+  "occurrence_count": 13,
+  "occurrences": [
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+        "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+        "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+        "size_bytes": 337017,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.17-1.19.2",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "c0898ec7c6a5a2eaa317770203a1554260699994",
+          "client_sha256": "ffd4fb3037d4110085b4d3d2dc47b760695528eb14292c3e5f7c758983c6d764",
+          "minecraft_version": "1.19",
+          "version_metadata_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+          "version_metadata_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac"
+        },
+        {
+          "client_sha1": "90d438c3e432add8848a9f9f368ce5a52f6bc4a7",
+          "client_sha256": "146d4018cfed50c5e77483940653091f186d2eea9ad42fc40939f5c72d6b7f52",
+          "minecraft_version": "1.19.1",
+          "version_metadata_sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+          "version_metadata_sha256": "ce9d1863936a147d95e5914ed7e78a7c5afd756fab426755c1508a634eba1ab8"
+        },
+        {
+          "client_sha1": "055b30d860ead928cba3849ba920c88b6950b654",
+          "client_sha256": "e1ac65de9b471b6916cc457fdcff00c1bafac17027aa79100c4df893b3d956db",
+          "minecraft_version": "1.19.2",
+          "version_metadata_sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+          "version_metadata_sha256": "5b4ed0444276fe04346ac1147e22ade7f1779695baf3dc4daca6acf3901a14c7"
+        }
+      ],
+      "product_jar_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "runtime/1.19",
+        "runtime/1.19.1",
+        "runtime/1.19.2"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "55633fc5b4b4be3004a22df80cc747d29fff8ad6046bfeea9b5f1ace6e6f8271",
+      "source_report_artifact_id": 14751296722,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+        "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+        "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+        "size_bytes": 339155,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.19.3",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "977727ec9ab8b4631e5c12839f064092f17663f8",
+          "client_sha256": "b7228c23dbc8988129561af3918dd469577de842d2eb3c7dabe00316bf9a44d6",
+          "minecraft_version": "1.19.3",
+          "version_metadata_sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+          "version_metadata_sha256": "aa0f93889b1819934e23512732718b512f3d70cf58c9d9705abf670a75c98b19"
+        }
+      ],
+      "product_jar_sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "2c43d7af2e0d0ec5e31011599075c75470de5c9968441bafc0a3990e82d6b4b0",
+      "source_report_artifact_id": 14750747329,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+        "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+        "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+        "size_bytes": 339155,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.19.4-1.20.4",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "958928a560c9167687bea0cefeb7375da1e552a8",
+          "client_sha256": "0e79cf7f07c107e9a1fe22ed703e472372b44149e64114944f0811abbd25f3ec",
+          "minecraft_version": "1.19.4",
+          "version_metadata_sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+          "version_metadata_sha256": "03c4a79051999cab186a20be762b70cc1686567847f68e16c5a4b3a574894a04"
+        },
+        {
+          "client_sha1": "e575a48efda46cf88111ba05b624ef90c520eef1",
+          "client_sha256": "5ac9ead135746f5f27048f2e01d8d5bdc2dabc4d91422f73ef2435f4c3d24aff",
+          "minecraft_version": "1.20",
+          "version_metadata_sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+          "version_metadata_sha256": "6f97e5ee8d3ce9844aab5062c4803c91da987e3443e86addf36abac33cd8ad9c"
+        },
+        {
+          "client_sha1": "0c3ec587af28e5a785c0b4a7b8a30f9a8f78f838",
+          "client_sha256": "56b71336d2b4fdffd197f56595b0da93e32a946f78f382a299b8f4b92758bb0f",
+          "minecraft_version": "1.20.1",
+          "version_metadata_sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+          "version_metadata_sha256": "937be3886f3c7e435912832cbe497e9933ea2b8df4c5e9a1a41f3605b8af5548"
+        }
+      ],
+      "product_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.19.4",
+        "runtime/1.20",
+        "runtime/1.20.1"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "793f655f64b50e31dc6075038b830a98c0fc2ca37851daf957a68126183e6d7a",
+      "source_report_artifact_id": 14750243667,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+        "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+        "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+        "size_bytes": 345274,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.19.4-1.20.4",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "82d1974e75fc984c5ed4b038e764e50958ac61a0",
+          "client_sha256": "fa1a19be56a506426308abbc1cad85f299a7fc6dae4335559351ba0246713fda",
+          "minecraft_version": "1.20.2",
+          "version_metadata_sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+          "version_metadata_sha256": "e17e1d550a08e949f419a6c0a81643326b0d5383706729f8b964673b0bd94f19"
+        },
+        {
+          "client_sha1": "b178a327a96f2cf1c9f98a45e5588d654a3e4369",
+          "client_sha256": "bef21938224902dd925e2d89dcfe1d2540656d4cf7a5abd2b93e0402d135c655",
+          "minecraft_version": "1.20.3",
+          "version_metadata_sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+          "version_metadata_sha256": "09a0cbd10dafee9d060a77183665825dc60725afd0734d70fc1feab56eb62d4b"
+        },
+        {
+          "client_sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+          "client_sha256": "9221ab461a491bf9661cd8e773a5e662aaa43d600fa7970b8c12bbfb0431b838",
+          "minecraft_version": "1.20.4",
+          "version_metadata_sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+          "version_metadata_sha256": "bb3e1e8935d115e6450664613a3a7d9cd1c89f6fcf9c34c84f324e825cd413f6"
+        }
+      ],
+      "product_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "runtime/1.20.2",
+        "runtime/1.20.3",
+        "runtime/1.20.4"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "793f655f64b50e31dc6075038b830a98c0fc2ca37851daf957a68126183e6d7a",
+      "source_report_artifact_id": 14750243667,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+        "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+        "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+        "size_bytes": 345274,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.20.5-1.20.6",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+          "client_sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510",
+          "minecraft_version": "1.20.5",
+          "version_metadata_sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+          "version_metadata_sha256": "eef0b257cf2fbe75debc1e21a18e3c0dd73ac093856148f0a5da52b21e5a99b4"
+        },
+        {
+          "client_sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+          "client_sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2",
+          "minecraft_version": "1.20.6",
+          "version_metadata_sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+          "version_metadata_sha256": "58b58c1ace5cb056f609da14e04c54c6fbe8f0b651f77be383a32d67de0a580d"
+        }
+      ],
+      "product_jar_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.20.5",
+        "runtime/1.20.6"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "55747aeeb23b570891baa2c567d6bdf036a1f593429b6359c2ffb55184a3a398",
+      "source_report_artifact_id": 14750608792,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+        "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+        "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+        "size_bytes": 345274,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21-1.21.1",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+          "client_sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8",
+          "minecraft_version": "1.21",
+          "version_metadata_sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+          "version_metadata_sha256": "93455424ecb43394b987a2f90f5aa5b1958df974a2abb5714f9eff73278e32de"
+        },
+        {
+          "client_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+          "client_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+          "minecraft_version": "1.21.1",
+          "version_metadata_sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+          "version_metadata_sha256": "ab07658fe972925ed0036e383a09e3b4ca6b3f4ee07634233c02a5a1d49a39c9"
+        }
+      ],
+      "product_jar_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.21",
+        "runtime/1.21.1"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1292c1aae193175433429e099c53769cab15fbd3ca56777a968686e82e477bac",
+      "source_report_artifact_id": 14751321534,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+        "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+        "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+        "size_bytes": 345274,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21.2-1.21.3",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+          "client_sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c",
+          "minecraft_version": "1.21.2",
+          "version_metadata_sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+          "version_metadata_sha256": "d2e96a066101672b163c908822f76989e5486499c2911678d6e62166ee36f570"
+        },
+        {
+          "client_sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+          "client_sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b",
+          "minecraft_version": "1.21.3",
+          "version_metadata_sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+          "version_metadata_sha256": "0cd08d9da800ecd395f25f1878afadfdfd2197397882db1132d4a6b6c32de68a"
+        }
+      ],
+      "product_jar_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.21.2",
+        "runtime/1.21.3"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1ebdb460a7e9e5a24de9fcd0c61101436b923dc689fa353389226015e97fad9b",
+      "source_report_artifact_id": 14750069686,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
+        "sha1": "d326bf3a4c785b272da3db6941779a1bd5448378",
+        "sha256": "cd189afb70ec6eacfcdfdd3a5f472b4e705a5c91d5bd3ef0386421f2ae15ec77",
+        "size_bytes": 352900,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21.4-1.21.8",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+          "client_sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e",
+          "minecraft_version": "1.21.4",
+          "version_metadata_sha1": "c88775961e316f2be09859c54e13017660ee7770",
+          "version_metadata_sha256": "767a39dd8282a858786d401df139c99110390373e3212e3d2be859634e89890d"
+        }
+      ],
+      "product_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.21.4"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "ce77351f1497ba10f25752658273f7b235d425c2d286515d1e4a8e58dfc0c1b3",
+      "source_report_artifact_id": 14750838365,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+        "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+        "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+        "size_bytes": 355199,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21.4-1.21.8",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+          "client_sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11",
+          "minecraft_version": "1.21.5",
+          "version_metadata_sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+          "version_metadata_sha256": "c82e3e9f8c8b3b9350e3fb6051cd0080bc6a0c257ab7deeaaefb57138e6c6b67"
+        },
+        {
+          "client_sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+          "client_sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a",
+          "minecraft_version": "1.21.6",
+          "version_metadata_sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+          "version_metadata_sha256": "73491945279675bb387c95b98838adac4146148df6bc6ad773406e8c1e3cd6f2"
+        },
+        {
+          "client_sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+          "client_sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9",
+          "minecraft_version": "1.21.7",
+          "version_metadata_sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+          "version_metadata_sha256": "e91db2a552a2e9b64e629ab18635e397b1ec2b4283820674929a3e7beb1201aa"
+        },
+        {
+          "client_sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+          "client_sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f",
+          "minecraft_version": "1.21.8",
+          "version_metadata_sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+          "version_metadata_sha256": "9ef73126c6b2e43fdae1da93519a4f89a9e5cbaf59d0f7617594fdc885f96f8b"
+        }
+      ],
+      "product_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "runtime/1.21.5",
+        "runtime/1.21.6",
+        "runtime/1.21.7",
+        "runtime/1.21.8"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "ce77351f1497ba10f25752658273f7b235d425c2d286515d1e4a8e58dfc0c1b3",
+      "source_report_artifact_id": 14750838365,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "e5e0758d70cc3607876b482f5da51457eafd75ad475fa8a8d1fbed5308e38e86",
+        "class_size_bytes": 7569,
+        "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+        "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+        "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+        "size_bytes": 355199,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21.9-1.21.10",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+          "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+          "minecraft_version": "1.21.10",
+          "version_metadata_sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+          "version_metadata_sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651"
+        },
+        {
+          "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+          "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b",
+          "minecraft_version": "1.21.9",
+          "version_metadata_sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+          "version_metadata_sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b"
+        }
+      ],
+      "product_jar_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.21.10",
+        "runtime/1.21.9"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1f04e3f7f3d6f955e00db23824ad13dc9f01627b67400ce1d7343227b93b9360",
+      "source_report_artifact_id": 14751310876,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "7ad54797ec5310d5c3e51d32e510a837c9087ba00d8a5d512b8f14bd40a1ead8",
+        "class_size_bytes": 7545,
+        "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+        "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+        "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+        "size_bytes": 182886,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "1.21.11",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+          "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd",
+          "minecraft_version": "1.21.11",
+          "version_metadata_sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+          "version_metadata_sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad"
+        }
+      ],
+      "product_jar_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/1.21.11"
+      ],
+      "source_kind": "integrated",
+      "source_report_archive_sha256": "1f62b9998c80d633a1ec64290cc50b585f2ad9618adfc04fdfffe896c52dfbee",
+      "source_report_artifact_id": 14750962839,
+      "source_report_member": "dependency-audit.json",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "7ad54797ec5310d5c3e51d32e510a837c9087ba00d8a5d512b8f14bd40a1ead8",
+        "class_size_bytes": 7545,
+        "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.15.Final",
+        "sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+        "sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+        "size_bytes": 183091,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "26.1-26.2",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+          "client_sha256": "40896ee9f1e2bec3c934daac7e93d41e9e3d9c2f8ae0ca366d52ffbfd1afa290",
+          "minecraft_version": "26.2",
+          "version_metadata_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+          "version_metadata_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a"
+        }
+      ],
+      "product_jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.15.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "runtime/26.2"
+      ],
+      "source_kind": "integrated",
+      "source_report_archive_sha256": "4737f2eb6a990b19a76362c28c4cbd96866d5562fa4c80a9c2691de44ce39c4a",
+      "source_report_artifact_id": 14750303406,
+      "source_report_member": "dependency-audit.json",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+    },
+    {
+      "codec_artifact": {
+        "class_file": "io/netty/handler/codec/compression/Bzip2Decoder.class",
+        "class_sha256": "7ad54797ec5310d5c3e51d32e510a837c9087ba00d8a5d512b8f14bd40a1ead8",
+        "class_size_bytes": 7545,
+        "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+        "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+        "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+        "size_bytes": 182886,
+        "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+      },
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "group": "26.1-26.2",
+      "minecraft_artifacts": [
+        {
+          "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+          "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840",
+          "minecraft_version": "26.1",
+          "version_metadata_sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+          "version_metadata_sha256": "9ee99d30a7efca85e33866231625474be36456dfbafc0bbc010db9ec08a4ca96"
+        },
+        {
+          "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+          "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3",
+          "minecraft_version": "26.1.1",
+          "version_metadata_sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+          "version_metadata_sha256": "95527a36610fc96ddc0bfb542f9e2a0daf60d8e42373873627fadc7e9dea0938"
+        },
+        {
+          "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+          "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0",
+          "minecraft_version": "26.1.2",
+          "version_metadata_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+          "version_metadata_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7"
+        }
+      ],
+      "product_jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "scopes": [
+        "gradle",
+        "runtime/26.1",
+        "runtime/26.1.1",
+        "runtime/26.1.2"
+      ],
+      "source_kind": "integrated",
+      "source_report_archive_sha256": "4737f2eb6a990b19a76362c28c4cbd96866d5562fa4c80a9c2691de44ce39c4a",
+      "source_report_artifact_id": 14750303406,
+      "source_report_member": "dependency-audit.json",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+    }
+  ],
+  "reachability": "The inspected vanilla client JARs, retained product JARs and one Fabric Loader JAR had no selected Bzip2 class-name literals. Static Minecraft 26.2 bytecode shows its normal compression setup installing a Minecraft inflater-based decoder. Neither observation establishes the effective pipeline or excludes indirect, generated or third-party paths.",
+  "release_blocking": true,
+  "remediation": "A compatible Minecraft-managed update is required; no library replacement was made. The separate Critical Netty SNI advisory requires later fixed versions.",
+  "responsible_owner": "Project maintainer and upstream Minecraft/library owners",
+  "review_date": "2026-11-22",
+  "reviewer": "Codex automated static investigation; human security review pending",
+  "risk_accepted": false,
+  "schema": 1,
+  "security_clearance": false,
+  "severity": "HIGH",
+  "source_group_count": 10,
+  "upstream_advisory": {
+    "path": "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/upstream-advisory.json",
+    "sha256": "8678d3ce1f792642a618b917250ea69fe83d4d4451e69fa4cd5cee369ddd0126"
+  },
+  "upstream_fixed_versions": {
+    "4.1.x": "4.1.136.Final",
+    "4.2.x": "4.2.16.Final"
+  }
+}

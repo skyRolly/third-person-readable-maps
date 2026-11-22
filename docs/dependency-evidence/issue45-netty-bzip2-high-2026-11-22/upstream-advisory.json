@@ -1,0 +1,23 @@
+{
+  "advisory_url": "https://github.com/netty/netty/security/advisories/GHSA-558v-64gr-wgg4",
+  "cve_id": "CVE-2026-59901",
+  "ghsa_id": "GHSA-558v-64gr-wgg4",
+  "published_at": "2026-07-14T19:58:34Z",
+  "severity": "high",
+  "source_url": "https://api.github.com/repos/netty/netty/security-advisories/GHSA-558v-64gr-wgg4",
+  "summary": "[Bzip2Decoder] Infinite Loop in RLE State Machine Leads to Event-Loop Thread Hang",
+  "updated_at": "2026-07-14T19:58:34Z",
+  "vulnerabilities": [
+    {
+      "package": "io.netty:netty-codec-compression",
+      "patched": "4.2.16.Final",
+      "range": ">=4.2.0.Final, < 4.2.16.Final"
+    },
+    {
+      "package": "io.netty:netty-codec",
+      "patched": "4.1.136.Final",
+      "range": "< 4.1.136.Final"
+    }
+  ],
+  "withdrawn_at": null
+}

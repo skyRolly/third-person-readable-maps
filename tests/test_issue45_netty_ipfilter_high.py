@@ -48,7 +48,7 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
             'high_occurrences': 95, 'total_occurrences': 117, 'high_occurrences_without_focused_evidence': 82})
         self.assertTrue(all(row['release_blocking'] and not row['risk_accepted']
                             for advisory in current['advisories'] for row in advisory['occurrences']))
-        ref = self.ledger['latest_focused_priority_register']
+        ref = self.ledger['ipfilter_high_focused_priority_register']
         self.assertEqual((ref['path'], ref['sha256']), (ipfilter.CURRENT, hashlib.sha256(current_raw).hexdigest()))
         out, err = StringIO(), StringIO()
         with patch.object(sys, 'argv', ['inspect_issue45_netty_ipfilter_high.py']), \

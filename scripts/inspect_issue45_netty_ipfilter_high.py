@@ -380,7 +380,7 @@ def main():
         current_raw = sni.read(ROOT, CURRENT)
         require(json.loads(current_raw, object_pairs_hook=unique_object) == make_register(v2, review, review_raw),
                 'IP-filter priority register differs')
-        reference = ledger['latest_focused_priority_register']
+        reference = ledger['ipfilter_high_focused_priority_register']
         require(reference == {'path': CURRENT, 'sha256': sha(current_raw), 'advisory_ids': 22,
             'focused_occurrences': 117, 'remaining_unfocused_high_occurrences': 82, 'security_clearance': False},
             'IP-filter priority ledger reference differs')
