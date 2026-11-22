@@ -1,0 +1,41 @@
+{
+  "preservation": "Byte-for-byte copy of selected current evidence before exact integrated-source reconciliation.",
+  "files": {
+    "docs/version-consistency-1.0.0/current-heads.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/current-heads.json",
+      "sha256": "5420515164bddf20c67a378600ba60087d7c7c233ba0a42608e3d411ea9906b8"
+    },
+    "docs/version-consistency-1.0.0/current-evidence.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/current-evidence.json",
+      "sha256": "7c9ef548068d9bd9dc4e6963c9ce7006f431a0c6df04d56d3cc326e5e6f52ec4"
+    },
+    "docs/version-consistency-1.0.0/current-validation/builds.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/builds.json",
+      "sha256": "e4a6b2f5fe93c6ce808da8d1437dd877e7dbf43540b3dd7d31cc0ec8c090bd21"
+    },
+    "docs/version-consistency-1.0.0/current-validation/artifact-metadata.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/artifact-metadata.json",
+      "sha256": "13e69cd53a929a52d8a2b58e339073efc885b17ad62e2783973aeb0b7645d572"
+    },
+    "docs/version-consistency-1.0.0/current-validation/static.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/static.json",
+      "sha256": "5bdadb1d36a9fe43b467fe600b7ffa7572bc48d71f2247b8cd2d5355cae45710"
+    },
+    "docs/version-consistency-1.0.0/current-validation/hosted-checks.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/hosted-checks.json",
+      "sha256": "fda4d03eac1f4192e97e3b3b20f9ee732828c346d6383f83538a5b06578bda6d"
+    },
+    "docs/version-consistency-1.0.0/current-validation/validation-logs.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/validation-logs.json",
+      "sha256": "fd4ee1f2c3dae62abb8422fd9fe9f2f3696f54ec7100e52183cdb468498bb53b"
+    },
+    "docs/version-consistency-1.0.0/current-validation/fixture-entrypoints.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/fixture-entrypoints.json",
+      "sha256": "5bac6761f203bbf8f95471f6083812d3d9c1374e2e346dff027bebcafcf7a5ad"
+    },
+    "release/maintenance-targets.json": {
+      "snapshot_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/superseded-current-state/maintenance-targets.json",
+      "sha256": "e570bdce9738d69ca5618f188f2eaed3885528be0c4602393f78568d4238778e"
+    }
+  }
+}

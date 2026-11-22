@@ -26,6 +26,7 @@ class WrapperWorkflowTests(unittest.TestCase):
         self.assertLess(build.index('path: .coordination-tools'),check)
         self.assertLess(check,build.index('gradle/actions/setup-gradle@'))
         self.assertLess(check,build.index('./gradlew '))
+        self.assertIn('--init-script "$GITHUB_WORKSPACE/.coordination-tools/.github/gradle/no-github-credentials.init.gradle"', build)
         self.assertNotIn('continue-on-error',build)
         self.assertNotIn('secrets.',build)
 

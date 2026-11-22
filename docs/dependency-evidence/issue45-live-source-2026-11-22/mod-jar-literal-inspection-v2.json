@@ -1,0 +1,325 @@
+{
+  "build_snapshot": {
+    "path": "docs/dependency-evidence/issue45-live-source-2026-11-22/product-builds-snapshot.json",
+    "sha256": "1c98da271fbf0bb4d6ce94e7831c7ae044e5a6bffceca36d0942e93be9820bd1"
+  },
+  "groups": {
+    "1.14-1.14.4": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701133542.zip",
+      "archive_sha256": "2d8206d294d4e023ef7b2c3cb6a056760d445bec12bd6da8856f13aa04115da4",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "5d5c31368d4c1ffc45e46539ccdea03aaa2fb199efbec12b117892b6fe0a4bc0"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "2edfb046583ea25c504c4ffbabf8ab902ddf3768819ee4b7fbb8d26d35336ea9"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
+      "jar_sha256": "2e7ad78a5d80ca4739139dfc33605428df229269155fd14b80151517034fb00d",
+      "nested_jar_entries": [],
+      "source_sha": "b6f7632af554a0e51c7d8c421c17adc893cc1379"
+    },
+    "1.15-1.16.5": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701711316.zip",
+      "archive_sha256": "fe58fe01f6becb26940dd018045f780f1f2901b54ea4b89942e1cff5754cbddf",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "c108e31df1adddb68ca988def8e7939ebb87e5d3fed21e86422f9abf0759ae39"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "ee5c4fbf996715720e7678ca02ded59da12ce50e77d6f30c1983dc236b5d7f85"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
+      "jar_sha256": "a97f481ae23d97500cc50f0a2ca92d09c0d1adb097df689d4190376e3a848470",
+      "nested_jar_entries": [],
+      "source_sha": "4231b420749db2bbab3cf3e3a7825fc2516511d9"
+    },
+    "1.17-1.19.2": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700749694.zip",
+      "archive_sha256": "67f3635b026d889c89e0b4958bf678dbbe923a5d2ed45466cbfcaae8bbb6476a",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "c057d00e9886d93de72667a7d6805ca28df5bc0d9e854079f0f739ac53a6313e"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "e30e95dbf71f6cfcd27bfa3d1e77275a508fb37244e73e3cfe4ac4b29772bdb3"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
+      "jar_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0",
+      "nested_jar_entries": [],
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0"
+    },
+    "1.19.3": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701128524.zip",
+      "archive_sha256": "e75a3b3121ec8dfa162a9a478050c3f9b1ddc8283280229414ec0ed7f700e1b7",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "52f6e08cf32229797ce8e607f0d71f81e02a025a47c6c8042867030fa70dacb4"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "a697c2dc8a1fc230d412ac28f477c5c270646af4b1cefa8969ba683992baa70a"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
+      "jar_sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a",
+      "nested_jar_entries": [],
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71"
+    },
+    "1.19.4-1.20.4": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701248459.zip",
+      "archive_sha256": "7aca1a33418ba3b5b55e64f73a703303b7a27063970d4413ca32023b73459049",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "52f6e08cf32229797ce8e607f0d71f81e02a025a47c6c8042867030fa70dacb4"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "1bc20eef1255d92f5ccdcec9bd60783d5e69adb6cfe0247e4bf7f402544004a1"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
+      "jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4",
+      "nested_jar_entries": [],
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    "1.20.5-1.20.6": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701706238.zip",
+      "archive_sha256": "f9d0561752889482082ddcf63acbd3f9dd77702fa81aa79e94a5cba3221b9358",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "49bcc6e52edd6d7eaa5aeb6abddd672a3bd75216ea9866a56e92de7adac29239"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "879edda63555379b2869f8e9a2420b3af408958e05208435962ef34ec9448d3b"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
+      "jar_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723",
+      "nested_jar_entries": [],
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624"
+    },
+    "1.21-1.21.1": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14700848073.zip",
+      "archive_sha256": "9ba478be500786c64996f13845494b56fc0941fe5f0a06ea487b928380988159",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "7d6e380b4350627561b8e9f3781972680a00a5e5ce2da81d2e582ab4175bd3d1"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "879edda63555379b2869f8e9a2420b3af408958e05208435962ef34ec9448d3b"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
+      "jar_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57",
+      "nested_jar_entries": [],
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d"
+    },
+    "1.21.11": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14715714408.zip",
+      "archive_sha256": "e3a72fc27edc8c3a3be80611d3743071f75a09d68325a8551bd2e4503c18edca",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "248a17a2c1db4d25419cac768837adebae21e0169f5bc8fbe1adafc64c0283f9"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "3f12825e846ee780f862ceca86e20a332946945d33175ab29d82e240c2fde375"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.21.11.jar",
+      "jar_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4",
+      "nested_jar_entries": [],
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1"
+    },
+    "1.21.2-1.21.3": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701627060.zip",
+      "archive_sha256": "4d3446818dcfb02824b3beffbc39a696c232a4be55902c2f3c6aceadd0fbc0c8",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "c8398cc88fa48ef3582d7e2c19cd4f8ce086c9c1819cfedff54dcf786db5f8d1"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "c8bbb9991164b0c35e482b6a1282d1aa220a0a1a5582fd1cc2c2a0b0e618a487"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
+      "jar_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e",
+      "nested_jar_entries": [],
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d"
+    },
+    "1.21.4-1.21.8": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701760801.zip",
+      "archive_sha256": "62c60b98e11ef557a3fcbe89097da26a491232dfaf12236060e891076389c50e",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapHands.class",
+          "sha256": "fb3d665e2ad12b2cf5d26b1b9ad31563437e568271fcc0ed42d0aecefefb7d67"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "7858f8a54889c9d7e641d8a4d67d7c5b237dd4c74b31f7876aa2c0bbc7c19993"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ArmedEntityRenderStateMixin.class",
+          "sha256": "6ff9bef2830b60b42e8c28a0bca81f097e69c247a73248180cfa53e9399a03d4"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "d07b9ec6a92143e949710d572909bfe62533bdd46b7c0bdcea4ecd5e27302de5"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
+      "jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a",
+      "nested_jar_entries": [],
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    "1.21.9-1.21.10": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14701268523.zip",
+      "archive_sha256": "c77a654358619ab27e417e6f0170371bcfbfa01cf93daaf79cbeb1baddb57313",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapHands.class",
+          "sha256": "fb3d665e2ad12b2cf5d26b1b9ad31563437e568271fcc0ed42d0aecefefb7d67"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "693d004c384e4a87dc10a737e2a8a914438b4d9257ac4ae17f29b551c3ebc3f3"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ArmedEntityRenderStateMixin.class",
+          "sha256": "6ff9bef2830b60b42e8c28a0bca81f097e69c247a73248180cfa53e9399a03d4"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "7837d5a5c4fb99bd9d3ef3ef12b0e8d0beb4dd7ffd30af1fc1de1fe0a9e04e12"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
+      "jar_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055",
+      "nested_jar_entries": [],
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb"
+    },
+    "26.1-26.2": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14716437227.zip",
+      "archive_sha256": "482087332edbea6a0af9da2aaff32f9af1c24878fcabc99e225c4069f6dae1d3",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "7cb4ef57c4e6de33d6e1e38a8df8083d6bd78145447ed344b828de53e16c13ea"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "96c74c1343104303031b737b11a7070f3774dbfedd255ccb683c4acc3ed54249"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc26.1-26.2.jar",
+      "jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537",
+      "nested_jar_entries": [],
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+    },
+    "26.3": {
+      "archive_path": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/inputs/14716236667.zip",
+      "archive_sha256": "cac485531f3de0c72921db232f678a2a5eeaec49d6027c4a094d099127652711",
+      "classes": [
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class",
+          "sha256": "3560b0513f626d4bd83c40c8deb99199043a5ae877e7721122251c6c00364e38"
+        },
+        {
+          "matches": [],
+          "path": "tech/rolly/thirdpersonreadablemaps/mixin/ReadableMapLayerMixin.class",
+          "sha256": "d7dbaba1ae208b60c258b2a60d71f27c5b87ced04a3bc33a3a7d1de306fd398f"
+        }
+      ],
+      "fabric_declared_jars": [],
+      "jar_filename": "third-person-readable-maps-1.0.0-mc26.3.jar",
+      "jar_sha256": "ddbd4a13a46d1ffdcf4e64e2792b6eb19720b7c01587aea27a9c961b9064117e",
+      "nested_jar_entries": [],
+      "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a"
+    }
+  },
+  "input_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/artifact-inputs.json",
+  "input_record_sha256": "43534e0d7d1d7e309a42f29bc8533df20c3d9871741a11bebe0136992623e2a8",
+  "limitations": "No runtime launch, indirect paths, generated strings, other mods or agents are excluded.",
+  "schema": 1,
+  "scope": "selected literal class-file byte references in retained product JARs",
+  "search_terms": [
+    "io/netty/",
+    "io.netty.",
+    "SniHandler",
+    "SslHandler",
+    "ChannelPipeline",
+    "org/apache/logging/log4j",
+    "org.apache.logging.log4j",
+    "ThreadContext",
+    "javax/naming/",
+    "javax.naming.",
+    "Jndi",
+    "jndi"
+  ],
+  "security_clearance": false,
+  "source_snapshot": {
+    "path": "docs/dependency-evidence/issue45-live-source-2026-11-22/product-heads-snapshot.json",
+    "sha256": "49e23765f2bbe912112cf18198b2d6b2933e479b2d3568b7bcd6a92fb676eb13"
+  }
+}

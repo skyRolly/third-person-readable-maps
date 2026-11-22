@@ -1,0 +1,5 @@
+Verified 13 exact-head hosted Linux and Windows archives against their source, archive, JAR, build, static, and CI records.
+Verified candidate source refs against the current remote heads.
+Validated 13 artifacts for 1.0.0 (candidate=True)
+REJECTED candidate-publication, changed-artifact-after-checksum, duplicate-artifact, duplicate-game-version, failed-static-evidence, missing-group, missing-static-evidence, missing-strict-runtime-evidence, missing-wrapper-preflight-evidence, mixed-0.0.2-and-1.0.0-artifacts, overlapping-game-version, strict-rejects-candidate-config, wrong-artifact-classifier, wrong-candidate-source, wrong-game-metadata, wrong-mod-version, wrong-namespace, wrong-remote-source-commit
+REHEARSAL COMPLETE 13 groups; 48 versions; coordinator 2abc17ccc0761e363ce66411b28671a2112d558b

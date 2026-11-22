@@ -1,0 +1,32 @@
+{
+  "candidate": true,
+  "authorizes_release": false,
+  "coordinator_code_commit": "2abc17ccc0761e363ce66411b28671a2112d558b",
+  "coordinator_code_sha256": {
+    ".github/workflows/release.yml": "fb23d8ab4500d4821dd76bb22bda994ad032f301cfeeb89b561d78ff0b3b70d1",
+    "scripts/release.py": "071213a3f00eda4fc94316cb1e5c67e76895eafa7429aaeee7da198ec0a4ffc8",
+    "scripts/release_github.py": "2fb37ad4f166743082d78cd44ba12d87cbf63b94979af53095901b0f89a4eb1b",
+    "scripts/verify_gradle_wrapper.py": "2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481",
+    "scripts/audit_gradle_tool.py": "f5da282f27e2c4c83472474de5f92edc6b48e770908363732830dc780acb69e3",
+    "scripts/validate_current_evidence.py": "e97e72784fb51fd5044eb8b2176cab652d7e77950ad8fc73b2d64497bd7a7426",
+    "scripts/authorize_release.py": "8975706cf6076701b0ff0c2d04611cb493b2c192eeb038ae2ae098813ef46ca4",
+    "release/current-version.json": "77cbd795932bd2c48bb1bcb3d3cb462cc36ed1e8d76074c2d20f9d9d21dda615"
+  },
+  "runner_base": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/rehearse.py",
+  "runner_base_sha256": "46369de967e32d65b64ebb7143235a71c7b6cf49da03292c60966775be428f3d",
+  "runner_sha256": "46369de967e32d65b64ebb7143235a71c7b6cf49da03292c60966775be428f3d",
+  "runner_substitutions": {},
+  "harness_controls": [
+    "missing-static-evidence",
+    "failed-static-evidence",
+    "missing-wrapper-preflight-evidence"
+  ],
+  "other_controls": 15,
+  "log_sha256": "5c9327cb0231f773936ac3a7c15db656a2bba6ed340e7bd797094bd71d59d884",
+  "scope": "Non-publishing aggregation replay using retained prior Linux/Windows artifacts and current coordinator code. It does not execute the guarded build; security, runtime, and publication gates remain open.",
+  "candidate_compatibility_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/candidate-compatibility.json",
+  "candidate_compatibility_sha256": "7964647b689799a5bba7378ded64fe3364df2aa568710561f62e9b99716202b7",
+  "candidate_matrix_sha256": "1311a9179ca8965ea0134bc6dae321340ff7defab5fee461c0e13676ef8155c8",
+  "input_record": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/artifact-inputs.json",
+  "input_record_sha256": "43534e0d7d1d7e309a42f29bc8533df20c3d9871741a11bebe0136992623e2a8"
+}

@@ -371,11 +371,11 @@
   "mod_version": "1.0.0",
   "candidate_rehearsal": {
     "state": "observed",
-    "index": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/index.json",
-    "manifest": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/bundle/release-manifest.json",
-    "plan": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/candidate-plan.json",
-    "checksums": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/bundle/SHA256SUMS",
-    "controls": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-21-owner-policy/negative-controls.json"
+    "index": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/index.json",
+    "manifest": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/bundle/release-manifest.json",
+    "plan": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/candidate-plan.json",
+    "checksums": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/bundle/SHA256SUMS",
+    "controls": "docs/version-consistency-1.0.0/current-validation/rehearsal-2026-11-22-credential-guard/negative-controls.json"
   },
   "hosted_checks": {
     "state": "observed",
