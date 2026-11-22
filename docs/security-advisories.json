@@ -19,6 +19,14 @@
       "sha256": "2750fc939183df315590b9efc369e30073f89e8b1a80b9a2148824a7a3bc1482"
     }
   },
+  "latest_focused_priority_register": {
+    "path": "docs/dependency-evidence/issue45-netty-sni-high-2026-11-22/priority-register-v2.json",
+    "sha256": "2f940da56cb513e0138c01dc66c26a98eaf988ab971700b7d4eaff3a543ca269",
+    "advisory_ids": 21,
+    "focused_occurrences": 105,
+    "remaining_unfocused_high_occurrences": 94,
+    "security_clearance": false
+  },
   "scope": "Version-level matches; static mod-source review, no game-wide exploitability proof or risk acceptance.",
   "inventories": {
     "1.21.11": {
