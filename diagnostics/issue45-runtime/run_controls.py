@@ -12,6 +12,7 @@ import shutil
 import stat
 import subprocess
 import sys
+import tempfile
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -71,15 +72,14 @@ def windows_system_icacls() -> str:
     return str(tool)
 
 
-def prepare_control_classes(classes: Path) -> None:
-    """Discard obsolete compiled class files before generating new controls."""
-    if classes.is_symlink():
-        raise SystemExit("control classes output must not be a symlink")
-    if classes.exists():
-        if not classes.is_dir():
-            raise SystemExit("control classes output is not a directory")
-        shutil.rmtree(classes)
-    classes.mkdir(parents=True, exist_ok=False)
+def compile_control_jar(profile_root: Path, compiler: Path, source: Path,
+                        compile_cp: str, destination: Path) -> None:
+    """Compile in an isolated fresh directory, never a reused class-output tree."""
+    with tempfile.TemporaryDirectory(prefix="test-classes-", dir=profile_root) as temporary:
+        classes = Path(temporary)
+        subprocess.run(["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
+                        "-classpath", compile_cp, "-d", str(classes), str(source)], check=True)
+        package_control_classes(classes, destination)
 
 
 def package_control_classes(classes: Path, destination: Path) -> None:
@@ -87,11 +87,17 @@ def package_control_classes(classes: Path, destination: Path) -> None:
     temporary = destination.with_name(destination.name + "." + uuid.uuid4().hex + ".part")
     try:
         with zipfile.ZipFile(temporary, "x", compression=zipfile.ZIP_STORED) as archive:
-            for class_file in sorted(classes.rglob("*.class")):
-                # ZipFile.write includes source filesystem timestamps. Pin
-                # archive metadata so identical compiled bytes yield identical
-                # JAR hashes on Linux, Windows and repeated runs.
-                name = class_file.relative_to(classes).as_posix()
+            entries = [(file.relative_to(classes).as_posix(), file)
+                       for file in classes.rglob("*.class")]
+            # Windows Path comparison is case-insensitive. Sort on the POSIX
+            # member names' UTF-8 bytes to preserve *identical* ordering.
+            entries.sort(key=lambda item: item[0].encode("utf-8"))
+            folded = [name.casefold() for name, _ in entries]
+            if len(folded) != len(set(folded)):
+                raise ValueError("ambiguous case-insensitive control class names")
+            for name, class_file in entries:
+                # ZipFile.write includes host timestamps and platform metadata.
+                # Serialize a canonical member header and its exact class bytes.
                 entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
                 entry.compress_type = zipfile.ZIP_STORED
                 entry.create_system = 3
@@ -170,12 +176,10 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("pinned test-only LZ4 helper SHA-256 mismatch")
     artifacts.append(lz4_helper)
 
-    test_classes = profile_root / "test-classes"
-    prepare_control_classes(test_classes)
     source = HERE / "src/test/java/dev/skyrolly/issue45/ControlMain.java"
     compile_cp = os.pathsep.join(str(path) for path in artifacts)
-    subprocess.run(["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
-                    "-classpath", compile_cp, "-d", str(test_classes), str(source)], check=True)
+    control_jar = profile_root / "issue45-synthetic-control.jar"
+    compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
 
     config = profile_root / "control.properties"
     report = profile_root / ("control-" + uuid.uuid4().hex + ".jsonl")
@@ -183,10 +187,8 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         "output=" + report.as_posix(), "minecraftVersion=" + profile["minecraftVersion"],
         "distribution=synthetic", "launcher=local-control", "sourceSha=" + source_sha, "",
     ]), encoding="utf-8")
-    # The initializer produces callbacks, so its classes must load from a
-    # hash-verifiable JAR. Repeated controls regenerate the JAR atomically.
-    control_jar = profile_root / "issue45-synthetic-control.jar"
-    package_control_classes(test_classes, control_jar)
+    # The initializer produces callbacks from the fresh, hash-verifiable JAR.
+    # Old compiler output is neither reused nor included in this classpath.
     if os.name == "nt":
         # A fake executable in the untrusted working directory must never be
         # used by the real agent; its presence detects unsafe executable lookup.

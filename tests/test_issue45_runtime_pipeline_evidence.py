@@ -326,7 +326,7 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             self.assertTrue(any("process_end" in error for error in errors), errors)
 
 
-    def test_control_jar_can_be_rebuilt_in_place_without_stale_members(self):
+    def test_control_packager_atomically_replaces_existing_jar(self):
         with tempfile.TemporaryDirectory(prefix="issue45-control-jar-") as tmp:
             root = Path(tmp)
             classes = root / "test-classes"
@@ -346,53 +346,94 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 self.assertEqual(b"compiled-control-v2", jar.read("ControlMain.class"))
             self.assertFalse(list(root.glob("*.part")))
 
-    def test_recompilation_drops_stale_control_class_files(self):
-        with tempfile.TemporaryDirectory(prefix="issue45-classes-clean-") as temp:
-            output = Path(temp) / "test-classes"
-            CONTROLS.prepare_control_classes(output)
-            (output / "Obsolete.class").write_bytes(b"old-build-output")
-            CONTROLS.prepare_control_classes(output)
-            self.assertTrue(output.is_dir())
-            self.assertEqual([], list(output.rglob("*.class")))
-            (output / "ControlMain.class").write_bytes(b"fresh-build-output")
-            destination = Path(temp) / "control.jar"
-            CONTROLS.package_control_classes(output, destination)
-            with zipfile.ZipFile(destination) as jar:
-                self.assertEqual(["ControlMain.class"], jar.namelist())
-                self.assertNotIn("Obsolete.class", jar.namelist())
-
-    def test_control_jar_hash_is_stable_across_rebuilds_and_file_timestamps(self):
-        with tempfile.TemporaryDirectory(prefix="issue45-repro-zip-") as temp:
-            output = Path(temp) / "classes"
-            output.mkdir()
-            nested = output / "dev" / "skyrolly"
-            nested.mkdir(parents=True)
-            item = nested / "Control.class"
-            item.write_bytes(b"identical synthetic bytecode")
-            destination = Path(temp) / "control.jar"
-            CONTROLS.package_control_classes(output, destination)
-            original_hash = hashlib.sha256(destination.read_bytes()).hexdigest()
-            with zipfile.ZipFile(destination) as jar:
-                record = jar.getinfo("dev/skyrolly/Control.class")
-                self.assertEqual((1980, 1, 1, 0, 0, 0), record.date_time)
-            import os
-            os.utime(item, (1_000_000_000, 1_000_000_000))
-            CONTROLS.package_control_classes(output, destination)
-            self.assertEqual(original_hash, hashlib.sha256(destination.read_bytes()).hexdigest())
-
-    def test_rejects_symlinked_compiler_output_directory(self):
-        with tempfile.TemporaryDirectory(prefix="issue45-class-symlink-") as temp:
+    def test_fresh_compilation_excludes_deleted_or_renamed_bytecode(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-fresh-classes-") as temp:
             root = Path(temp)
-            external = root / "other"
-            external.mkdir()
-            linked = root / "classes"
-            try:
-                linked.symlink_to(external, target_is_directory=True)
-            except (OSError, NotImplementedError):
-                self.skipTest("host does not permit symlinks")
-            with self.assertRaisesRegex(SystemExit, "must not be a symlink"):
-                CONTROLS.prepare_control_classes(linked)
-            self.assertTrue(external.is_dir())
+            old_output = root / "test-classes"
+            old_output.mkdir()
+            (old_output / "Obsolete.class").write_bytes(b"prior persistent build output")
+            destination = root / "control.jar"
+            builds = []
+
+            def compile_fake(command, check):
+                self.assertTrue(check)
+                self.assertIn("-d", command)
+                compiled = Path(command[command.index("-d") + 1])
+                self.assertNotEqual(old_output, compiled)
+                self.assertTrue(compiled.is_dir())
+                if not builds:
+                    (compiled / "LegacyInitializer.class").write_bytes(b"legacy initializer")
+                    (compiled / "ControlMain.class").write_bytes(b"v1")
+                else:
+                    (compiled / "CurrentInitializer.class").write_bytes(b"current initializer")
+                    (compiled / "ControlMain.class").write_bytes(b"v2")
+                builds.append(compiled)
+                return subprocess.CompletedProcess(command, 0)
+
+            with patch.object(CONTROLS.subprocess, "run", side_effect=compile_fake):
+                CONTROLS.compile_control_jar(root, root / "compiler.jar",
+                                             root / "ControlMain.java", "pinned-classpath",
+                                             destination)
+                with zipfile.ZipFile(destination) as archive:
+                    self.assertEqual({"LegacyInitializer.class", "ControlMain.class"},
+                                     set(archive.namelist()))
+                CONTROLS.compile_control_jar(root, root / "compiler.jar",
+                                             root / "ControlMain.java", "pinned-classpath",
+                                             destination)
+            with zipfile.ZipFile(destination) as archive:
+                self.assertEqual({"CurrentInitializer.class", "ControlMain.class"},
+                                 set(archive.namelist()))
+                self.assertEqual(b"v2", archive.read("ControlMain.class"))
+                self.assertNotIn("LegacyInitializer.class", archive.namelist())
+                self.assertNotIn("Obsolete.class", archive.namelist())
+            self.assertNotEqual(builds[0], builds[1])
+            self.assertFalse(any(path.exists() for path in builds))
+            self.assertEqual(b"prior persistent build output",
+                             (old_output / "Obsolete.class").read_bytes())
+
+    def test_control_jar_uses_canonical_order_and_zip_metadata_across_rebuilds(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-canonical-zip-") as temp:
+            root = Path(temp)
+            classes = root / "classes"
+            for name, data in (
+                ("nested/alpha.class", b"a"),
+                ("nested/Bee.class", b"b"),
+                ("nested/Zeta.class", b"z"),
+                ("Top.class", b"top")
+            ):
+                destination = classes / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(data)
+            jar = root / "control.jar"
+            CONTROLS.package_control_classes(classes, jar)
+            baseline_hash = hashlib.sha256(jar.read_bytes()).hexdigest()
+            expected_order = ["Top.class", "nested/Bee.class", "nested/Zeta.class",
+                              "nested/alpha.class"]
+            with zipfile.ZipFile(jar) as archive:
+                self.assertEqual(expected_order, archive.namelist())
+                for name in expected_order:
+                    info = archive.getinfo(name)
+                    self.assertEqual((1980, 1, 1, 0, 0, 0), info.date_time)
+                    self.assertEqual(3, info.create_system)
+                    self.assertEqual(0o100644, info.external_attr >> 16)
+                    self.assertEqual(zipfile.ZIP_STORED, info.compress_type)
+            import os
+            for member in classes.rglob("*.class"):
+                os.utime(member, (1_000_000_000, 1_000_000_000))
+            CONTROLS.package_control_classes(classes, jar)
+            self.assertEqual(baseline_hash, hashlib.sha256(jar.read_bytes()).hexdigest())
+
+    def test_case_colliding_class_names_are_rejected(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-name-collision-") as temp:
+            root = Path(temp)
+            classes = root / "classes"
+            classes.mkdir()
+            (classes / "Apple.class").write_bytes(b"first")
+            (classes / "apple.class").write_bytes(b"second")
+            if len(list(classes.iterdir())) != 2:
+                self.skipTest("filesystem is case-insensitive")
+            with self.assertRaisesRegex(ValueError, "case-insensitive"):
+                CONTROLS.package_control_classes(classes, root / "control.jar")
 
     def test_valid_final_json_object_without_lf_is_only_allowed_for_failed_runs(self):
         with tempfile.TemporaryDirectory(prefix="issue45-lf-tail-") as tmp:
