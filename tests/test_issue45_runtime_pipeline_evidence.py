@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import importlib.util
 import json
 import shutil
@@ -216,6 +217,51 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                      "launcher": "local-control", "fabric_loader_expected": None,
                      "expected_netty_codec": "4.1.77.Final"}, ROOT, require_remote_pipeline=True)
         self.assertTrue(any("connected socket" in error for error in errors), errors)
+
+    def test_failed_launch_without_shutdown_is_preserved_but_not_accepted(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-failed-capture-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            matrix_path = archive / "environment-matrix.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            env = matrix["environments"][0]
+            env["status"] = "not_passed"
+            env["not_passed_reason"] = "Synthetic test: process exited before shutdown hook"
+            env.pop("not_executed_reason", None)
+            env["operator_exit_code"] = 1
+            env["operator_startup_outcome"] = "failed"
+            start = copy.deepcopy(next(event for event in self.profiles[
+                "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+            start.update(minecraft_version=env["minecraft_version"],
+                         distribution=env["distribution"], launcher=env["launcher"])
+            observation = json.dumps(start, sort_keys=True) + "\\n"
+            capture = archive / "captures" / "failed.jsonl"
+            capture.parent.mkdir(parents=True, exist_ok=True)
+            capture.write_text(observation, encoding="utf-8", newline="\\n")
+            env["observations_file"] = "captures/failed.jsonl"
+            env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, summary = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertEqual([], errors)
+            self.assertEqual(0, summary["captured_runtime_environment_count"])
+            env["status"] = "captured"
+            env["operator_exit_code"] = 0
+            env["operator_startup_outcome"] = "started"
+            matrix["captured_observations"] = [env["environment_id"]]
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("process_end" in error for error in errors), errors)
+
+    def test_failed_launch_rejects_mixed_process_ids(self):
+        start = copy.deepcopy(next(event for event in self.profiles[
+            "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+        environment = {"minecraft_version": start["minecraft_version"],
+                       "distribution": start["distribution"], "launcher": start["launcher"],
+                       "fabric_loader_expected": None}
+        changed = dict(start, event="pipeline_transform_error", run_id="other-run")
+        errors = VALIDATOR.validate_incomplete_run_events([start, changed], environment)
+        self.assertTrue(any("one nonempty run identity" in error or "another process" in error
+                            for error in errors), errors)
 
     def test_duplicate_environment_identity_is_rejected(self):
         with tempfile.TemporaryDirectory(prefix="issue45-duplicate-env-") as temp:
