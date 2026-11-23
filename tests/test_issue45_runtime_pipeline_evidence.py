@@ -346,6 +346,54 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 self.assertEqual(b"compiled-control-v2", jar.read("ControlMain.class"))
             self.assertFalse(list(root.glob("*.part")))
 
+    def test_recompilation_drops_stale_control_class_files(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-classes-clean-") as temp:
+            output = Path(temp) / "test-classes"
+            CONTROLS.prepare_control_classes(output)
+            (output / "Obsolete.class").write_bytes(b"old-build-output")
+            CONTROLS.prepare_control_classes(output)
+            self.assertTrue(output.is_dir())
+            self.assertEqual([], list(output.rglob("*.class")))
+            (output / "ControlMain.class").write_bytes(b"fresh-build-output")
+            destination = Path(temp) / "control.jar"
+            CONTROLS.package_control_classes(output, destination)
+            with zipfile.ZipFile(destination) as jar:
+                self.assertEqual(["ControlMain.class"], jar.namelist())
+                self.assertNotIn("Obsolete.class", jar.namelist())
+
+    def test_control_jar_hash_is_stable_across_rebuilds_and_file_timestamps(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-repro-zip-") as temp:
+            output = Path(temp) / "classes"
+            output.mkdir()
+            nested = output / "dev" / "skyrolly"
+            nested.mkdir(parents=True)
+            item = nested / "Control.class"
+            item.write_bytes(b"identical synthetic bytecode")
+            destination = Path(temp) / "control.jar"
+            CONTROLS.package_control_classes(output, destination)
+            original_hash = hashlib.sha256(destination.read_bytes()).hexdigest()
+            with zipfile.ZipFile(destination) as jar:
+                record = jar.getinfo("dev/skyrolly/Control.class")
+                self.assertEqual((1980, 1, 1, 0, 0, 0), record.date_time)
+            import os
+            os.utime(item, (1_000_000_000, 1_000_000_000))
+            CONTROLS.package_control_classes(output, destination)
+            self.assertEqual(original_hash, hashlib.sha256(destination.read_bytes()).hexdigest())
+
+    def test_rejects_symlinked_compiler_output_directory(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-class-symlink-") as temp:
+            root = Path(temp)
+            external = root / "other"
+            external.mkdir()
+            linked = root / "classes"
+            try:
+                linked.symlink_to(external, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest("host does not permit symlinks")
+            with self.assertRaisesRegex(SystemExit, "must not be a symlink"):
+                CONTROLS.prepare_control_classes(linked)
+            self.assertTrue(external.is_dir())
+
     def test_valid_final_json_object_without_lf_is_only_allowed_for_failed_runs(self):
         with tempfile.TemporaryDirectory(prefix="issue45-lf-tail-") as tmp:
             archive = Path(tmp) / "evidence"
