@@ -34,6 +34,37 @@ class NettyFocusErratumTests(unittest.TestCase):
         cls.register = json.loads(REGISTER.read_text(encoding="utf-8"))
         cls.report = json.loads(CORRECTED.read_text(encoding="utf-8"))
 
+    def test_cross_platform_java_tests_have_independent_native_exit_codes(self):
+        workflow = (ROOT / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        archive_cmd = ("python diagnostics/issue45-runtime/validate_runtime_evidence.py "
+                       "--evidence-dir docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23")
+        runtime_cmd = ('python -m unittest discover -s tests '
+                       '-p "test_issue45_runtime_pipeline_evidence.py" -v')
+        erratum_cmd = ('python -m unittest discover -s tests '
+                       '-p "test_issue45_netty_compatibility_focus.py" -v')
+        for major in (21, 25):
+            for label, cmd in (
+                    (f"Validate regenerated Java {major} runtime archive", archive_cmd),
+                    (f"Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
+                    (f"Test Java {major} Netty erratum mutation regressions", erratum_cmd)):
+                with self.subTest(java=major, step=label):
+                    # GitHub checks individual native process exit codes only
+                    # when each command has its own step, not a PowerShell
+                    # multiline script whose last command masks previous ones.
+                    self.assertIn(f"      - name: {label}\n        run: {cmd}\n",
+                                  workflow)
+        self.assertEqual(2, workflow.count(f"        run: {archive_cmd}"))
+        self.assertEqual(2, workflow.count(f"        run: {runtime_cmd}"))
+        self.assertEqual(2, workflow.count(f"        run: {erratum_cmd}"))
+        # Regression control: silently combining commands into one multiline
+        # step must invalidate the explicit fail-closed workflow invariant.
+        masked = workflow.replace(f"        run: {archive_cmd}",
+                                  f"        run: |\n          {archive_cmd}", 1)
+        self.assertNotIn(
+            f"      - name: Validate regenerated Java 21 runtime archive\n"
+            f"        run: {archive_cmd}\n", masked)
+
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
             "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09",
