@@ -1,0 +1,236 @@
+{
+  "compatibility_poms": [
+    {
+      "java_release": null,
+      "java_source_target": null,
+      "module_pom": true,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.133.Final-module-pom.xml",
+      "sha256": "3d542c35892ffe5c65d008f56eb1868ed1d7b204fbd17a2680567dae38130ee7"
+    },
+    {
+      "java_release": 8,
+      "java_source_target": 8,
+      "module_pom": false,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.133.Final-root-pom.xml",
+      "sha256": "381cded637c9df7c3fc6c72520a5ecd4cc3f27ed4b22078055d5ff263be2ff2c"
+    },
+    {
+      "java_release": null,
+      "java_source_target": null,
+      "module_pom": true,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.135.Final-module-pom.xml",
+      "sha256": "c7fbaaf7fd5c425e0caa602adc4a154b71895062825d69d79766bbe51a7ca3bd"
+    },
+    {
+      "java_release": 8,
+      "java_source_target": 8,
+      "module_pom": false,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.135.Final-root-pom.xml",
+      "sha256": "57fba2cf45d7151f0019c12da97e414515a9b28fafa5ac332ae429dc6c09003e"
+    },
+    {
+      "java_release": null,
+      "java_source_target": null,
+      "module_pom": true,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.13.Final-module-pom.xml",
+      "sha256": "b24cff1d2ea518c06abe7f3841b557b4fc987e5861b9c286ff56dc2424615b77"
+    },
+    {
+      "java_release": 8,
+      "java_source_target": 8,
+      "module_pom": false,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.13.Final-root-pom.xml",
+      "sha256": "98d3eb48dde1a8e0724c93d0d2df78ef5d6accb8a6fc89dcaeb19d112de6d491"
+    },
+    {
+      "java_release": null,
+      "java_source_target": null,
+      "module_pom": true,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.15.Final-module-pom.xml",
+      "sha256": "5a672c723d97d0a913fa4f92fb92f33d56b7fe4e3ff9f013dfcbd5fa69ce702e"
+    },
+    {
+      "java_release": 8,
+      "java_source_target": 8,
+      "module_pom": false,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.15.Final-root-pom.xml",
+      "sha256": "e065158c6a9e5a238d2e5058bdb41e4aa3b83c9b0b57da4f5bc9029ed45ae7af"
+    }
+  ],
+  "fixed_release_note": "4.1.133.Final and 4.2.13.Final add a configurable per-decoder maximum. The default remains MAX_BLOCK_SIZE (32 MiB); this is not evidence of an application-level per-channel or aggregate limit.",
+  "lz4_constants": [
+    {
+      "header_length_bytes": 21,
+      "max_block_size_bytes": 33554432,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.1.133.Final.java",
+      "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+    },
+    {
+      "header_length_bytes": 21,
+      "max_block_size_bytes": 33554432,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.1.77.Final.java",
+      "sha256": "9fe095da91e408bc30b042808e8e15ec874f95d5b0d272d3fbaef26979ff3737"
+    },
+    {
+      "header_length_bytes": 21,
+      "max_block_size_bytes": 33554432,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.2.13.Final.java",
+      "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+    },
+    {
+      "header_length_bytes": 21,
+      "max_block_size_bytes": 33554432,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.2.7.Final.java",
+      "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+    }
+  ],
+  "mechanism": "The compressed path trusts a header-declared decompressed length when sizing ByteBuf before LZ4 decompression.",
+  "schema": 1,
+  "security_clearance": false,
+  "snapshots": [
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.76.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.76.Final.java",
+      "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.76.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.76.Final",
+      "tag_commit": "3b3420ffc4f19fdfcfbe7865277a159a347b510e"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.77.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.77.Final.java",
+      "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.77.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.77.Final",
+      "tag_commit": "764975699608f10e39f1a1e75ffcc6abee8fa1af"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.82.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.82.Final.java",
+      "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.82.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.82.Final",
+      "tag_commit": "dfcc831c8eea51af78796ade02660d141e521848"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.97.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.97.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.97.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.97.Final",
+      "tag_commit": "b202efcb282765fd5369c7715f5802c85cee6e5e"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.115.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.115.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.115.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.115.Final",
+      "tag_commit": "91c92b5454727d993e6bca30b5c44b9e7a466b40"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.118.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.118.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.118.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.118.Final",
+      "tag_commit": "07db0d26ed3199578d4b3ba5439af6584d6f5652"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec:4.1.132.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.132.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.132.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.132.Final",
+      "tag_commit": "92bdca0f99c202b7b0f46de6f86cf216ad7f5b2e"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": true,
+      "coordinate": "io.netty:netty-codec:4.1.133.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.133.Final.java",
+      "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.133.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.1.133.Final",
+      "tag_commit": "4374d71208b0c9bfb2844fab610d3bfaf24f4733"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.7.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.7.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.2.7.Final",
+      "tag_commit": "2fdba8c02a8f9b049c2f0d3a9bdd41ddd438efd6"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": false,
+      "coordinate": "io.netty:netty-codec-compression:4.2.12.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.12.Final.java",
+      "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.12.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.2.12.Final",
+      "tag_commit": "c2ed1e8456f6e46e07f627828744f9257ef52ddb"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": true,
+      "coordinate": "io.netty:netty-codec-compression:4.2.13.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.13.Final.java",
+      "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.13.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.2.13.Final",
+      "tag_commit": "51df6d50dbd29df3e8f214e133d4363b89a7c624"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": true,
+      "coordinate": "io.netty:netty-codec-compression:4.2.15.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.15.Final.java",
+      "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.15.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.2.15.Final",
+      "tag_commit": "54004fa26dd12da3880b6caa4ed4436c5f1d985a"
+    },
+    {
+      "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+      "configurable_max": true,
+      "coordinate": "io.netty:netty-codec-compression:4.2.16.Final",
+      "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.16.Final.java",
+      "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+      "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.16.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+      "tag": "netty-4.2.16.Final",
+      "tag_commit": "260c56c410a39f7b74a00b0e79b9b51d3ceec6cd"
+    }
+  ],
+  "source_url": "https://github.com/netty/netty"
+}

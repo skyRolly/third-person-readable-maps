@@ -1,0 +1,2789 @@
+{
+  "advisory_id": "GHSA-mj4r-2hfc-f8p6",
+  "aliases": [
+    "CVE-2026-42583"
+  ],
+  "baseline_priority_register": {
+    "advisory_ids": 24,
+    "focused_occurrences": 142,
+    "path": "docs/dependency-evidence/issue45-netty-trust-high-2026-11-23/priority-register-v5.json",
+    "remaining_unfocused_high_occurrences": 57,
+    "security_clearance": false,
+    "sha256": "d787fd93bbea9fc6315729ca78d6b02661ccdcfa2595f1b7f3fad1dac507ea05"
+  },
+  "disposition": "Further investigation",
+  "evidence": {
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json": "54ec69848fb933583bf72774be7c1c5af63a0072be1a34d8c7f4336dbed3fae6",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/fabric-loader-static-scan.json": "562429e9c255a26223b34f13056a8e19bdb5801233339d02636ac261c770717f",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/fixed-boundary-runtime.json": "0374b2ca686ec0ad2931d9bb159ea10c17b5e6e87370ea3a95933dc31b188ad1",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-source-observations.json": "e8f19d65fa1e49a12ddeb683871cf55be79f7aadf58d8f7c9c8b632540586a13",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/pipeline-static-observations.json": "879b43baa17b0cb90e5599cf31bad16e20467bc5d152c4a047c4e08dade06351",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/product-jar-static-scan.json": "079b21fa0ed93dded3a55a5ca9679da6cff684a6951089b0d2decd08167137bb",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/runtime-classpath-scan.json": "133ce1a751d0fb30e75fa7123d6c5f34681fe1ced8b3d964647bd2f8318cad67",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/upstream-advisory.json": "cfaeba6cf6352a1708c76d39db0c360fc6e54cbef7505f8704dadaee6693da4b"
+  },
+  "follow_up_requirements": [
+    "Reconcile the additional 1.19 dedicated-server Netty 4.1.76.Final observation with source audit scope.",
+    "Observe actual supported client, Fabric, and dedicated-server classpaths and pipelines separately.",
+    "Check per-channel and aggregate limits if any supported pipeline installs Lz4FrameDecoder.",
+    "Ask Minecraft/Fabric owners for compatible updates across affected game lines, including the Critical SNI fix.",
+    "Keep all 12 indexed occurrences release-blocking until the source-bound review and owner decision are complete."
+  ],
+  "input_boundary": "The advisory requires the affected decoder to process untrusted LZ4 frames. The statically inspected Minecraft 26.1.2 client/server setup path uses Minecraft CompressionDecoder backed by java.util.zip.Inflater. No Lz4FrameDecoder path was observed, but no running channel or arbitrary modpack was inspected.",
+  "java_compatibility": {
+    "assessment": "Upstream Netty fixed modules compile for Java 8, below the Java 17, 21, and 25 requirements in retained Minecraft manifests. Java bytecode level alone does not establish Minecraft, Fabric, module-family, or ABI compatibility; no override was tested.",
+    "fixed_game_line_major_versions": [
+      25
+    ],
+    "minecraft_runtime_major_versions": [
+      17,
+      21,
+      25
+    ],
+    "netty_fixed_release_compiler_target": 8
+  },
+  "limitations": [
+    "No Minecraft client, server, Fabric runtime, launcher, or modpack was started.",
+    "No untrusted frame, PoC, remote target, or resource-exhaustion behavior was exercised.",
+    "Static literal search does not exclude reflective, generated, agent, native, or uninspected third-party mod paths.",
+    "No per-channel or aggregate memory-control behavior was measured.",
+    "Compatibility of fixed Netty modules with affected Minecraft/Fabric versions was not tested.",
+    "The 1.19 server bundle 4.1.76.Final observation is outside the indexed 12 occurrence set and remains to be reconciled."
+  ],
+  "minecraft_manifest_identities": {
+    "1.19": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+      "sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+      "sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac"
+    },
+    "1.19.1": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.1.json",
+      "sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+      "sha256": "ce9d1863936a147d95e5914ed7e78a7c5afd756fab426755c1508a634eba1ab8"
+    },
+    "1.19.2": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.2.json",
+      "sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+      "sha256": "5b4ed0444276fe04346ac1147e22ade7f1779695baf3dc4daca6acf3901a14c7"
+    },
+    "1.19.3": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.3.json",
+      "sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+      "sha256": "aa0f93889b1819934e23512732718b512f3d70cf58c9d9705abf670a75c98b19"
+    },
+    "1.19.4": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.4.json",
+      "sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+      "sha256": "03c4a79051999cab186a20be762b70cc1686567847f68e16c5a4b3a574894a04"
+    },
+    "1.20": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.json",
+      "sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+      "sha256": "6f97e5ee8d3ce9844aab5062c4803c91da987e3443e86addf36abac33cd8ad9c"
+    },
+    "1.20.1": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.1.json",
+      "sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+      "sha256": "937be3886f3c7e435912832cbe497e9933ea2b8df4c5e9a1a41f3605b8af5548"
+    },
+    "1.20.2": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.2.json",
+      "sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+      "sha256": "e17e1d550a08e949f419a6c0a81643326b0d5383706729f8b964673b0bd94f19"
+    },
+    "1.20.3": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.3.json",
+      "sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+      "sha256": "09a0cbd10dafee9d060a77183665825dc60725afd0734d70fc1feab56eb62d4b"
+    },
+    "1.20.4": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.4.json",
+      "sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+      "sha256": "bb3e1e8935d115e6450664613a3a7d9cd1c89f6fcf9c34c84f324e825cd413f6"
+    },
+    "1.20.5": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.5.json",
+      "sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+      "sha256": "eef0b257cf2fbe75debc1e21a18e3c0dd73ac093856148f0a5da52b21e5a99b4"
+    },
+    "1.20.6": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.20.6.json",
+      "sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+      "sha256": "58b58c1ace5cb056f609da14e04c54c6fbe8f0b651f77be383a32d67de0a580d"
+    },
+    "1.21": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.json",
+      "sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+      "sha256": "93455424ecb43394b987a2f90f5aa5b1958df974a2abb5714f9eff73278e32de"
+    },
+    "1.21.1": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.1.json",
+      "sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+      "sha256": "ab07658fe972925ed0036e383a09e3b4ca6b3f4ee07634233c02a5a1d49a39c9"
+    },
+    "1.21.10": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.10.json",
+      "sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+      "sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651"
+    },
+    "1.21.11": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.11.json",
+      "sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+      "sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad"
+    },
+    "1.21.2": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.2.json",
+      "sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+      "sha256": "d2e96a066101672b163c908822f76989e5486499c2911678d6e62166ee36f570"
+    },
+    "1.21.3": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.3.json",
+      "sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+      "sha256": "0cd08d9da800ecd395f25f1878afadfdfd2197397882db1132d4a6b6c32de68a"
+    },
+    "1.21.4": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.4.json",
+      "sha1": "c88775961e316f2be09859c54e13017660ee7770",
+      "sha256": "767a39dd8282a858786d401df139c99110390373e3212e3d2be859634e89890d"
+    },
+    "1.21.5": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.5.json",
+      "sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+      "sha256": "c82e3e9f8c8b3b9350e3fb6051cd0080bc6a0c257ab7deeaaefb57138e6c6b67"
+    },
+    "1.21.6": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.6.json",
+      "sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+      "sha256": "73491945279675bb387c95b98838adac4146148df6bc6ad773406e8c1e3cd6f2"
+    },
+    "1.21.7": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.7.json",
+      "sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+      "sha256": "e91db2a552a2e9b64e629ab18635e397b1ec2b4283820674929a3e7beb1201aa"
+    },
+    "1.21.8": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.8.json",
+      "sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+      "sha256": "9ef73126c6b2e43fdae1da93519a4f89a9e5cbaf59d0f7617594fdc885f96f8b"
+    },
+    "1.21.9": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.9.json",
+      "sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+      "sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b"
+    },
+    "26.1": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.json",
+      "sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+      "sha256": "9ee99d30a7efca85e33866231625474be36456dfbafc0bbc010db9ec08a4ca96"
+    },
+    "26.1.1": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.1.json",
+      "sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+      "sha256": "95527a36610fc96ddc0bfb542f9e2a0daf60d8e42373873627fadc7e9dea0938"
+    },
+    "26.1.2": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+      "sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+      "sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7"
+    },
+    "26.2": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.2.json",
+      "sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+      "sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a"
+    },
+    "26.3": {
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.3.json",
+      "sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+      "sha256": "43f99ada2af68d760f03840cd66eb3afba96c870fe1f521900fe5be08985d4f4"
+    }
+  },
+  "minecraft_version_count": 27,
+  "minecraft_versions": [
+    "1.19",
+    "1.19.1",
+    "1.19.2",
+    "1.19.3",
+    "1.19.4",
+    "1.20",
+    "1.20.1",
+    "1.20.2",
+    "1.20.3",
+    "1.20.4",
+    "1.20.5",
+    "1.20.6",
+    "1.21",
+    "1.21.1",
+    "1.21.10",
+    "1.21.11",
+    "1.21.2",
+    "1.21.3",
+    "1.21.4",
+    "1.21.5",
+    "1.21.6",
+    "1.21.7",
+    "1.21.8",
+    "1.21.9",
+    "26.1",
+    "26.1.1",
+    "26.1.2"
+  ],
+  "observed_on": "2026-11-23",
+  "occurrence_count": 12,
+  "occurrences": [
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.17-1.19.2",
+      "minecraft_versions": [
+        "1.19",
+        "1.19.1",
+        "1.19.2"
+      ],
+      "package_version": "4.1.77.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "c0898ec7c6a5a2eaa317770203a1554260699994",
+            "sha256": "ffd4fb3037d4110085b4d3d2dc47b760695528eb14292c3e5f7c758983c6d764",
+            "size_bytes": 21462385
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.76.Final/netty-codec-4.1.76.Final.jar",
+                "sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+                "sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc",
+                "size_bytes": 337018
+              }
+            ],
+            "sha1": "e00c4052dac1d59a1188b2aa9d5a87113aaf1122",
+            "sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+            "size_bytes": 45538778
+          },
+          "manifest": {
+            "sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+            "sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+            "size_bytes": 34562,
+            "url": "https://piston-meta.mojang.com/v1/packages/a78840abb2308ea20e02f1092dffc410b771379c/1.19.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.19",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.77.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+            "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+            "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+            "size_bytes": 337017,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+          },
+          "product_mod_jar_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0"
+        },
+        {
+          "client": {
+            "sha1": "90d438c3e432add8848a9f9f368ce5a52f6bc4a7",
+            "sha256": "146d4018cfed50c5e77483940653091f186d2eea9ad42fc40939f5c72d6b7f52",
+            "size_bytes": 21643604
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar",
+                "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+                "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+                "size_bytes": 337017
+              }
+            ],
+            "sha1": "8399e1211e95faa421c1507b322dbeae86d604df",
+            "sha256": "f15b93c25ac7343ae8db6e7883a97f11777baaee924e7a3c7aeed826b155b233",
+            "size_bytes": 45609936
+          },
+          "manifest": {
+            "sha1": "68a9d61fb59bdff45833070b0bd0cbf2aabb39a4",
+            "sha256": "ce9d1863936a147d95e5914ed7e78a7c5afd756fab426755c1508a634eba1ab8",
+            "size_bytes": 34569,
+            "url": "https://piston-meta.mojang.com/v1/packages/68a9d61fb59bdff45833070b0bd0cbf2aabb39a4/1.19.1.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.19.1",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.77.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+            "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+            "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+            "size_bytes": 337017,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+          },
+          "product_mod_jar_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0"
+        },
+        {
+          "client": {
+            "sha1": "055b30d860ead928cba3849ba920c88b6950b654",
+            "sha256": "e1ac65de9b471b6916cc457fdcff00c1bafac17027aa79100c4df893b3d956db",
+            "size_bytes": 21644740
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar",
+                "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+                "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+                "size_bytes": 337017
+              }
+            ],
+            "sha1": "f69c284232d7c7580bd89a5a4931c3581eae1378",
+            "sha256": "b26727069ef5f61c704add9a378ac90e3d271fd7876c0bd3dcfbe9fd0bec4d96",
+            "size_bytes": 45609512
+          },
+          "manifest": {
+            "sha1": "9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb",
+            "sha256": "5b4ed0444276fe04346ac1147e22ade7f1779695baf3dc4daca6acf3901a14c7",
+            "size_bytes": 34569,
+            "url": "https://piston-meta.mojang.com/v1/packages/9ffd2bd611f007a11d9f1429f74b3d01bb8e84eb/1.19.2.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.19.2",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.77.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.77.Final",
+            "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+            "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+            "size_bytes": 337017,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+          },
+          "product_mod_jar_sha256": "2ebdeb306ca991a8cb8a3d65e0fdc0f05fe8379a627a78fb6487747fbe5db7f0"
+        }
+      ],
+      "scopes": [
+        "runtime/1.19",
+        "runtime/1.19.1",
+        "runtime/1.19.2"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "55633fc5b4b4be3004a22df80cc747d29fff8ad6046bfeea9b5f1ace6e6f8271",
+      "source_report_artifact_id": 14751296722,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-2",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "a8b4e93cd2efae73cf9fbf5a385324bd1d0352c579a2ad1bef7e353b4942a941",
+      "source_sha": "06b350856605011c1549d51d6edd3d351c5021c0"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.19.3",
+      "minecraft_versions": [
+        "1.19.3"
+      ],
+      "package_version": "4.1.82.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "977727ec9ab8b4631e5c12839f064092f17663f8",
+            "sha256": "b7228c23dbc8988129561af3918dd469577de842d2eb3c7dabe00316bf9a44d6",
+            "size_bytes": 22704188
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar",
+                "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+                "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+                "size_bytes": 339155
+              }
+            ],
+            "sha1": "c9df48efed58511cdd0213c56b9013a7b5c9ac1f",
+            "sha256": "4ebd3ad142512953d0193ae3a1d1a30c896907de7c68780977151f6cc79f1e1b",
+            "size_bytes": 47162712
+          },
+          "manifest": {
+            "sha1": "e3d4830def0774ed63394c0f72c894bfbdc9abd2",
+            "sha256": "aa0f93889b1819934e23512732718b512f3d70cf58c9d9705abf670a75c98b19",
+            "size_bytes": 34768,
+            "url": "https://piston-meta.mojang.com/v1/packages/e3d4830def0774ed63394c0f72c894bfbdc9abd2/1.19.3.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.19.3",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.82.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+            "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+            "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+            "size_bytes": 339155,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+          },
+          "product_mod_jar_sha256": "915b7f5f6f06a748f6e3554f63b187ce57f4ac5becc93ee3e387cc1d90577a5a"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "2c43d7af2e0d0ec5e31011599075c75470de5c9968441bafc0a3990e82d6b4b0",
+      "source_report_artifact_id": 14750747329,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-3",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "29379df2eb59bbcca7c5348c794cfc04b91a6b047b74cd9763be921201bc7012",
+      "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.19.4-1.20.4",
+      "minecraft_versions": [
+        "1.19.4",
+        "1.20",
+        "1.20.1"
+      ],
+      "package_version": "4.1.82.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "958928a560c9167687bea0cefeb7375da1e552a8",
+            "sha256": "0e79cf7f07c107e9a1fe22ed703e472372b44149e64114944f0811abbd25f3ec",
+            "size_bytes": 23476620
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar",
+                "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+                "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+                "size_bytes": 339155
+              }
+            ],
+            "sha1": "8f3112a1049751cc472ec13e397eade5336ca7ae",
+            "sha256": "a524a10da550741785c8c3a0fb39047f106b0c7c2cfa255e8278cb6f1abe3f53",
+            "size_bytes": 47515675
+          },
+          "manifest": {
+            "sha1": "59b9f6eaf77cbeb53fe65454e9f83236e57efd42",
+            "sha256": "03c4a79051999cab186a20be762b70cc1686567847f68e16c5a4b3a574894a04",
+            "size_bytes": 34471,
+            "url": "https://piston-meta.mojang.com/v1/packages/59b9f6eaf77cbeb53fe65454e9f83236e57efd42/1.19.4.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.19.4",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.82.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+            "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+            "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+            "size_bytes": 339155,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        },
+        {
+          "client": {
+            "sha1": "e575a48efda46cf88111ba05b624ef90c520eef1",
+            "sha256": "5ac9ead135746f5f27048f2e01d8d5bdc2dabc4d91422f73ef2435f4c3d24aff",
+            "size_bytes": 23028278
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar",
+                "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+                "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+                "size_bytes": 339155
+              }
+            ],
+            "sha1": "15c777e2cfe0556eef19aab534b186c0c6f277e1",
+            "sha256": "ff41c542cec182ce74508a5e42194e0f4009341de75f0a7bf770d18cf701d56b",
+            "size_bytes": 47787288
+          },
+          "manifest": {
+            "sha1": "376c1bc4668ad64347f834f339ae9482c23bbdac",
+            "sha256": "6f97e5ee8d3ce9844aab5062c4803c91da987e3443e86addf36abac33cd8ad9c",
+            "size_bytes": 35036,
+            "url": "https://piston-meta.mojang.com/v1/packages/376c1bc4668ad64347f834f339ae9482c23bbdac/1.20.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.20",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.82.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+            "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+            "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+            "size_bytes": 339155,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        },
+        {
+          "client": {
+            "sha1": "0c3ec587af28e5a785c0b4a7b8a30f9a8f78f838",
+            "sha256": "56b71336d2b4fdffd197f56595b0da93e32a946f78f382a299b8f4b92758bb0f",
+            "size_bytes": 23028853
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 212,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar",
+                "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+                "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+                "size_bytes": 339155
+              }
+            ],
+            "sha1": "84194a2f286ef7c14ed7ce0090dba59902951553",
+            "sha256": "3af73a9dc5a102e38147946360dd27d4d70bae7055bf91cf2151cd5d121b79e0",
+            "size_bytes": 47791053
+          },
+          "manifest": {
+            "sha1": "fb730d2829f057fe26a41e5ecdc9e3307333bef5",
+            "sha256": "937be3886f3c7e435912832cbe497e9933ea2b8df4c5e9a1a41f3605b8af5548",
+            "size_bytes": 35038,
+            "url": "https://piston-meta.mojang.com/v1/packages/fb730d2829f057fe26a41e5ecdc9e3307333bef5/1.20.1.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.20.1",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.82.Final",
+            "lz4_frame_decoder_class_sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+            "sha1": "b77200379acb345a9ffdece1c605e591ac3e4e0a",
+            "sha256": "170c0ce091c2e1cc1d952d87a6a30deb773922507bbc609b962b539f03f53407",
+            "size_bytes": 339155,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.82.Final/netty-codec-4.1.82.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.19.4",
+        "runtime/1.20",
+        "runtime/1.20.1"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "793f655f64b50e31dc6075038b830a98c0fc2ca37851daf957a68126183e6d7a",
+      "source_report_artifact_id": 14750243667,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-4",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "0c30fd898481046aad05d7a987e846b686b2045e0d5841d108931fbb00fda7f3",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.19.4-1.20.4",
+      "minecraft_versions": [
+        "1.20.2",
+        "1.20.3",
+        "1.20.4"
+      ],
+      "package_version": "4.1.97.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "82d1974e75fc984c5ed4b038e764e50958ac61a0",
+            "sha256": "fa1a19be56a506426308abbc1cad85f299a7fc6dae4335559351ba0246713fda",
+            "size_bytes": 23186213
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "5b868151bd02b41319f54c8d4061b8cae84e665c",
+            "sha256": "1daee4838569ad46e41f0a6f459684c500c7f2685356a40cfb7e838d6e78eae8",
+            "size_bytes": 48285806
+          },
+          "manifest": {
+            "sha1": "2de0c0ee516b632aab03cd5ea4d34e5aafcdf130",
+            "sha256": "e17e1d550a08e949f419a6c0a81643326b0d5383706729f8b964673b0bd94f19",
+            "size_bytes": 35075,
+            "url": "https://piston-meta.mojang.com/v1/packages/2de0c0ee516b632aab03cd5ea4d34e5aafcdf130/1.20.2.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.20.2",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        },
+        {
+          "client": {
+            "sha1": "b178a327a96f2cf1c9f98a45e5588d654a3e4369",
+            "sha256": "bef21938224902dd925e2d89dcfe1d2540656d4cf7a5abd2b93e0402d135c655",
+            "size_bytes": 24445920
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "4fb536bfd4a83d61cdbaf684b8d311e66e7d4c49",
+            "sha256": "36ed89be93f182034df0678bce957b5442f0c6905f41e94ff6a0521b2e138bae",
+            "size_bytes": 49152320
+          },
+          "manifest": {
+            "sha1": "b64d934f068566415107a4a835d3e2099a86af3f",
+            "sha256": "09a0cbd10dafee9d060a77183665825dc60725afd0734d70fc1feab56eb62d4b",
+            "size_bytes": 35078,
+            "url": "https://piston-meta.mojang.com/v1/packages/b64d934f068566415107a4a835d3e2099a86af3f/1.20.3.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.20.3",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        },
+        {
+          "client": {
+            "sha1": "fd19469fed4a4b4c15b2d5133985f0e3e7816a8a",
+            "sha256": "9221ab461a491bf9661cd8e773a5e662aaa43d600fa7970b8c12bbfb0431b838",
+            "size_bytes": 24445539
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "8dd1a28015f51b1803213892b50b7b4fc76e594d",
+            "sha256": "c03fa6f39daa69ddf413c965a3a83084db746a7a138ce535a693293b5472d363",
+            "size_bytes": 49150256
+          },
+          "manifest": {
+            "sha1": "417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330",
+            "sha256": "bb3e1e8935d115e6450664613a3a7d9cd1c89f6fcf9c34c84f324e825cd413f6",
+            "size_bytes": 35078,
+            "url": "https://piston-meta.mojang.com/v1/packages/417a1afaf3fc8a3c35e573e9d3c76a90a7fc7330/1.20.4.json"
+          },
+          "minecraft_java_major_version": 17,
+          "minecraft_version": "1.20.4",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "9e9006e0c84d1cf7d017aa38af895cdb93d8afdc5a0d0c780b2089f8f40627c4"
+        }
+      ],
+      "scopes": [
+        "runtime/1.20.2",
+        "runtime/1.20.3",
+        "runtime/1.20.4"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "793f655f64b50e31dc6075038b830a98c0fc2ca37851daf957a68126183e6d7a",
+      "source_report_artifact_id": 14750243667,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-4",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "0c30fd898481046aad05d7a987e846b686b2045e0d5841d108931fbb00fda7f3",
+      "source_sha": "9326fbbbdfa79d54512b655282c53739d3a4be25"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.20.5-1.20.6",
+      "minecraft_versions": [
+        "1.20.5",
+        "1.20.6"
+      ],
+      "package_version": "4.1.97.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "c6b92b2374a629f20802bb284f98a4ee790e950a",
+            "sha256": "49d5949adbb1021a7eb00c1b949f9e39934b10249cbf86d25004774d1b3ff510",
+            "size_bytes": 26565623
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "79493072f65e17243fd36a699c9a96b4381feb91",
+            "sha256": "f8f6a38fededc12d6bbac21e5341c168a7c9bf4ef90193fcf0abcc1366c42bac",
+            "size_bytes": 51424012
+          },
+          "manifest": {
+            "sha1": "5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446",
+            "sha256": "eef0b257cf2fbe75debc1e21a18e3c0dd73ac093856148f0a5da52b21e5a99b4",
+            "size_bytes": 38467,
+            "url": "https://piston-meta.mojang.com/v1/packages/5aed5fd00ddc6b1f1c0ad4a8ed191eb6f1b77446/1.20.5.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.20.5",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723"
+        },
+        {
+          "client": {
+            "sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
+            "sha256": "02dfd345ac1ad55692d5dbc8486ac7e4fea72cd54ac494a79cd48963048e56b2",
+            "size_bytes": 26565641
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "145ff0858209bcfc164859ba735d4199aafa1eea",
+            "sha256": "c6d01d018ca782e506f0ec60652d47fd565078be9122b625c1681bc86c29c7ec",
+            "size_bytes": 51420480
+          },
+          "manifest": {
+            "sha1": "e614a15052d9bf81d314ff0111aaa21f7144115d",
+            "sha256": "58b58c1ace5cb056f609da14e04c54c6fbe8f0b651f77be383a32d67de0a580d",
+            "size_bytes": 38467,
+            "url": "https://piston-meta.mojang.com/v1/packages/e614a15052d9bf81d314ff0111aaa21f7144115d/1.20.6.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.20.6",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "ca03e7b2eaff7e9b7ce596e916bd6304105426a4d417f4b54afbc3af35d9d723"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.20.5",
+        "runtime/1.20.6"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "55747aeeb23b570891baa2c567d6bdf036a1f593429b6359c2ffb55184a3a398",
+      "source_report_artifact_id": 14750608792,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-5",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "fbef7e10406dd5bcc0b9da1476f2f970e0cecb573cf0c63621fd1e82baa930d3",
+      "source_sha": "aa64abb6fd47c0a634dad03fb445634f3715a624"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21-1.21.1",
+      "minecraft_versions": [
+        "1.21",
+        "1.21.1"
+      ],
+      "package_version": "4.1.97.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "0e9a07b9bb3390602f977073aa12884a4ce12431",
+            "sha256": "4b56bc9b44de7e88f9fbb52e716c18240da34469fcbafa5ed2e75b04d60617e8",
+            "size_bytes": 26836080
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "450698d1863ab5180c25d7c804ef0fe6369dd1ba",
+            "sha256": "c96394da86f9d9f9ef7ca2d2ee1f2f0980c29b7aa5c94b43c02c50435dbcf53f",
+            "size_bytes": 51623779
+          },
+          "manifest": {
+            "sha1": "cf0560d5dc4f926b801e6ff12f189d9ffe0720b1",
+            "sha256": "93455424ecb43394b987a2f90f5aa5b1958df974a2abb5714f9eff73278e32de",
+            "size_bytes": 38465,
+            "url": "https://piston-meta.mojang.com/v1/packages/cf0560d5dc4f926b801e6ff12f189d9ffe0720b1/1.21.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57"
+        },
+        {
+          "client": {
+            "sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+            "sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+            "size_bytes": 26836906
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "59353fb40c36d304f2035d51e7d6e6baa98dc05c",
+            "sha256": "e3bc55693e93cda0188f2e60aea28113fc647c5e85a15fa3d1b347349231b4bb",
+            "size_bytes": 51627615
+          },
+          "manifest": {
+            "sha1": "ff7ef54488da4a711f3c8a781a9f79105bbe801a",
+            "sha256": "ab07658fe972925ed0036e383a09e3b4ca6b3f4ee07634233c02a5a1d49a39c9",
+            "size_bytes": 38472,
+            "url": "https://piston-meta.mojang.com/v1/packages/ff7ef54488da4a711f3c8a781a9f79105bbe801a/1.21.1.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.1",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "e2e1d7403c2f7a72b337aa51752a8e9053fb1a820bbdfcc2ee267965949fda57"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.21",
+        "runtime/1.21.1"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1292c1aae193175433429e099c53769cab15fbd3ca56777a968686e82e477bac",
+      "source_report_artifact_id": 14751321534,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-6",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "6c05bd9950388edb42bea3c3994b34857678d2e7666eb22c2580f800bbc65d0b",
+      "source_sha": "a62780429512a4e4072b56348e06059d127cfb1d"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21.2-1.21.3",
+      "minecraft_versions": [
+        "1.21.2",
+        "1.21.3"
+      ],
+      "package_version": "4.1.97.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "c7ac2d0d86f4ca416cab9064ff8a281852ad0c7b",
+            "sha256": "613091da0f62426ae8dcf9afb30eb639485f493b81cda3a2b96b1fb8a6b9976c",
+            "size_bytes": 27842947
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "7bf95409b0d9b5388bfea3704ec92012d273c14c",
+            "sha256": "3bcbca82b23b0a13f745e25ca5956e33a6f4ccfb5ed451b961c943c0f790418d",
+            "size_bytes": 56120171
+          },
+          "manifest": {
+            "sha1": "ec780c60f9c5a6cc2494f279eadf338ff6f70ecc",
+            "sha256": "d2e96a066101672b163c908822f76989e5486499c2911678d6e62166ee36f570",
+            "size_bytes": 43728,
+            "url": "https://piston-meta.mojang.com/v1/packages/ec780c60f9c5a6cc2494f279eadf338ff6f70ecc/1.21.2.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.2",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e"
+        },
+        {
+          "client": {
+            "sha1": "6f67d19b4467240639cb2c368ffd4b94ba889705",
+            "sha256": "25190c556bc56d11070638ccab3b3c6efd76bb9684c92a2680a4de01c3c7138b",
+            "size_bytes": 27844259
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 214,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar",
+                "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+                "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+                "size_bytes": 345274
+              }
+            ],
+            "sha1": "45810d238246d90e811d896f87b14695b7fb6839",
+            "sha256": "e153b89b02c0839cdf5e8c1d57c80dd42a3fffb80c60817632080c041bf8afb5",
+            "size_bytes": 56122038
+          },
+          "manifest": {
+            "sha1": "31d677732ca6cd2c29ab7071008870ba0fe13a55",
+            "sha256": "0cd08d9da800ecd395f25f1878afadfdfd2197397882db1132d4a6b6c32de68a",
+            "size_bytes": 43728,
+            "url": "https://piston-meta.mojang.com/v1/packages/31d677732ca6cd2c29ab7071008870ba0fe13a55/1.21.3.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.3",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.97.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.97.Final",
+            "sha1": "384ba4d75670befbedb45c4d3b497a93639c206d",
+            "sha256": "bcc96737a0f912fcf031cf8c45ebda352a90a40437db0832caad3d5a63618b38",
+            "size_bytes": 345274,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.97.Final/netty-codec-4.1.97.Final.jar"
+          },
+          "product_mod_jar_sha256": "3e110fea2a58efffe361ba83fb1c5004ee90c6fa1a4e1d38494f6ac35d47258e"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.21.2",
+        "runtime/1.21.3"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1ebdb460a7e9e5a24de9fcd0c61101436b923dc689fa353389226015e97fad9b",
+      "source_report_artifact_id": 14750069686,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-7",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "1186aedc13d6f9d5ef91dcdb95a0eaf1da7db979db55cfa868df4a8164dcbee3",
+      "source_sha": "d823a91c96b9bc80446116b44cd7568c70048c0d"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21.4-1.21.8",
+      "minecraft_versions": [
+        "1.21.4"
+      ],
+      "package_version": "4.1.115.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "a7e5a6024bfd3cd614625aa05629adf760020304",
+            "sha256": "c17c450c6e72cc51297daa57ce38f800aa01cf022b743daa21a0512d326d894e",
+            "size_bytes": 28335587
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 219,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar",
+                "sha1": "d326bf3a4c785b272da3db6941779a1bd5448378",
+                "sha256": "cd189afb70ec6eacfcdfdd3a5f472b4e705a5c91d5bd3ef0386421f2ae15ec77",
+                "size_bytes": 352900
+              }
+            ],
+            "sha1": "4707d00eb834b446575d89a61a11b5d548d8c001",
+            "sha256": "1066970b09e9c671844572291c4a871cc1ac2b85838bf7004fa0e778e10f1358",
+            "size_bytes": 56880250
+          },
+          "manifest": {
+            "sha1": "c88775961e316f2be09859c54e13017660ee7770",
+            "sha256": "767a39dd8282a858786d401df139c99110390373e3212e3d2be859634e89890d",
+            "size_bytes": 43778,
+            "url": "https://piston-meta.mojang.com/v1/packages/c88775961e316f2be09859c54e13017660ee7770/1.21.4.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.4",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.115.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.115.Final",
+            "sha1": "d326bf3a4c785b272da3db6941779a1bd5448378",
+            "sha256": "cd189afb70ec6eacfcdfdd3a5f472b4e705a5c91d5bd3ef0386421f2ae15ec77",
+            "size_bytes": 352900,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.115.Final/netty-codec-4.1.115.Final.jar"
+          },
+          "product_mod_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.21.4"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "ce77351f1497ba10f25752658273f7b235d425c2d286515d1e4a8e58dfc0c1b3",
+      "source_report_artifact_id": 14750838365,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-8",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "9c45ecb8126cf2735ef7e2aa2f2415798d58ed060233efaaa14f3f14475cf124",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21.4-1.21.8",
+      "minecraft_versions": [
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8"
+      ],
+      "package_version": "4.1.118.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "b88808bbb3da8d9f453694b5d8f74a3396f1a533",
+            "sha256": "522672ad20b460c02c2e39b6c5035ef6a849af28eb11ab2ac7eb293d395a8c11",
+            "size_bytes": 28984409
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "e6ec2f64e6080b9b5d9b471b291c33cc7f509733",
+            "sha256": "ae7681dadce21b6b4017d28e7eb567d86b6c100a6969994f540b9e54f812dc29",
+            "size_bytes": 57269758
+          },
+          "manifest": {
+            "sha1": "d7eabdfb864d74c6d3942cdb864405778e948f28",
+            "sha256": "c82e3e9f8c8b3b9350e3fb6051cd0080bc6a0c257ab7deeaaefb57138e6c6b67",
+            "size_bytes": 43783,
+            "url": "https://piston-meta.mojang.com/v1/packages/d7eabdfb864d74c6d3942cdb864405778e948f28/1.21.5.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.5",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a"
+        },
+        {
+          "client": {
+            "sha1": "740a125b83dd3447feaa3c5e891ead7fbb21ae28",
+            "sha256": "9592df8587d6d3ec0334c873ad432dc76006d6129afdce9a7eac52638339a24a",
+            "size_bytes": 29516555
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "6e64dcabba3c01a7271b4fa6bd898483b794c59b",
+            "sha256": "08abf384c48afb9e822144ad8a99166482857994389269e26c6a04c6c91d9171",
+            "size_bytes": 57554576
+          },
+          "manifest": {
+            "sha1": "6d057cfccf6b8589ec6c9663902b07b7c1170538",
+            "sha256": "73491945279675bb387c95b98838adac4146148df6bc6ad773406e8c1e3cd6f2",
+            "size_bytes": 43783,
+            "url": "https://piston-meta.mojang.com/v1/packages/6d057cfccf6b8589ec6c9663902b07b7c1170538/1.21.6.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.6",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a"
+        },
+        {
+          "client": {
+            "sha1": "a2db1ea98c37b2d00c83f6867fb8bb581a593e07",
+            "sha256": "6d0aa64c6a0aee3270253317f51e9e816f94cd3b16b44f5d605615c39fc62fb9",
+            "size_bytes": 29522178
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "05e4b48fbc01f0385adb74bcff9751d34552486c",
+            "sha256": "b955b8f75d811cc326179472174941358eeaf97a68999ee119ccd3873350c4ee",
+            "size_bytes": 57556704
+          },
+          "manifest": {
+            "sha1": "5149e9aa052c041683a5b2d80aecaaabde953b87",
+            "sha256": "e91db2a552a2e9b64e629ab18635e397b1ec2b4283820674929a3e7beb1201aa",
+            "size_bytes": 43783,
+            "url": "https://piston-meta.mojang.com/v1/packages/5149e9aa052c041683a5b2d80aecaaabde953b87/1.21.7.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.7",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a"
+        },
+        {
+          "client": {
+            "sha1": "a19d9badbea944a4369fd0059e53bf7286597576",
+            "sha256": "ea74e9c5e92d01f95f3d39196ddb734e19a077a58b4c433c34109487d600276f",
+            "size_bytes": 29525242
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "6bce4ef400e4efaa63a13d5e6f6b500be969ef81",
+            "sha256": "2349d9a8f0d4be2c40e7692890ef46a4b07015e7955b075460d02793be7fbbe7",
+            "size_bytes": 57555044
+          },
+          "manifest": {
+            "sha1": "e7625384d0bdf069fb75349992292ca86198c851",
+            "sha256": "9ef73126c6b2e43fdae1da93519a4f89a9e5cbaf59d0f7617594fdc885f96f8b",
+            "size_bytes": 43783,
+            "url": "https://piston-meta.mojang.com/v1/packages/e7625384d0bdf069fb75349992292ca86198c851/1.21.8.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.8",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "9c90cc95508d17ed78927be3304fbaa77eb3821380cab65fea8ac5795932081a"
+        }
+      ],
+      "scopes": [
+        "runtime/1.21.5",
+        "runtime/1.21.6",
+        "runtime/1.21.7",
+        "runtime/1.21.8"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "ce77351f1497ba10f25752658273f7b235d425c2d286515d1e4a8e58dfc0c1b3",
+      "source_report_artifact_id": 14750838365,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-8",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "9c45ecb8126cf2735ef7e2aa2f2415798d58ed060233efaaa14f3f14475cf124",
+      "source_sha": "f63e12da0ccbf70acb41393211c864b057f5cd7c"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21.9-1.21.10",
+      "minecraft_versions": [
+        "1.21.10",
+        "1.21.9"
+      ],
+      "package_version": "4.1.118.Final",
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+            "sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+            "size_bytes": 30592168
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "95495a7f485eedd84ce928cef5e223b757d2f764",
+            "sha256": "5bb64dc47379903e8f288bd6a4b276e889075c5c0f4c0b714e958d835c1874e7",
+            "size_bytes": 58642415
+          },
+          "manifest": {
+            "sha1": "563e8381e10c8d807c6531da30fa4a57bbc79f3c",
+            "sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651",
+            "size_bytes": 44496,
+            "url": "https://piston-meta.mojang.com/v1/packages/563e8381e10c8d807c6531da30fa4a57bbc79f3c/1.21.10.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.10",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055"
+        },
+        {
+          "client": {
+            "sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+            "sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b",
+            "size_bytes": 30591861
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 221,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar",
+                "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+                "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+                "size_bytes": 355199
+              }
+            ],
+            "sha1": "11e54c2081420a4d49db3007e66c80a22579ff2a",
+            "sha256": "ebc5161abcd57523c14a04ce108f0b671da0d0d74a28926b19a7d139ebabaf31",
+            "size_bytes": 58638725
+          },
+          "manifest": {
+            "sha1": "61826f3fa6b54439cac19731be4305bb2f388c78",
+            "sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b",
+            "size_bytes": 44495,
+            "url": "https://piston-meta.mojang.com/v1/packages/61826f3fa6b54439cac19731be4305bb2f388c78/1.21.9.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.9",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec:4.1.118.Final",
+            "lz4_frame_decoder_class_sha256": "15ebf8c8a8101e14e86c50d45bfb81693e76197d3480b20115e9179250a83de9",
+            "purl": "pkg:maven/io.netty/netty-codec@4.1.118.Final",
+            "sha1": "307f665c08ce57333121de4f460479fc0c3c94d4",
+            "sha256": "4abd215fd1ed7ce86509d169cc9cbede5042176c265a79b3b70602b017226c3f",
+            "size_bytes": 355199,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.118.Final/netty-codec-4.1.118.Final.jar"
+          },
+          "product_mod_jar_sha256": "dc0f36bc8fcf88fec0e75d9176728bbaba9bc26955a0f3c78876fdb2a5c61055"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.21.10",
+        "runtime/1.21.9"
+      ],
+      "source_kind": "candidate",
+      "source_report_archive_sha256": "1f04e3f7f3d6f955e00db23824ad13dc9f01627b67400ce1d7343227b93b9360",
+      "source_report_artifact_id": 14751310876,
+      "source_report_member": "candidate-dependency-audit.json",
+      "source_report_name": "candidate-dependency-audit-9",
+      "source_report_run": 45013904609,
+      "source_report_sha256_uncompressed": "7cdaec434fba98e39e76e3338e8ae386d8376fc77b0f913cd31773bd09fe3a52",
+      "source_sha": "5dd5d433fd785bf51f13827babf51a76d09f7cdb"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "1.21.11",
+      "minecraft_versions": [
+        "1.21.11"
+      ],
+      "package_version": "4.2.7.Final",
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+            "sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd",
+            "size_bytes": 31152600
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 101,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "98f6550654d969f94d68687694e03593e785629f1a47798c988bd70e059429f2",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "acaffa5f0fb9b4daebad40f46b0fa72ed3d993b375fe332cd984f76722e60186",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+                "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+                "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+                "size_bytes": 182886
+              }
+            ],
+            "sha1": "64bb6d763bed0a9f1d632ec347938594144943ed",
+            "sha256": "f83b8e093865806f931c7e34aae41b177d4c076335263dd124c75d6d65dd1726",
+            "size_bytes": 56327581
+          },
+          "manifest": {
+            "sha1": "a969d96978af7b52dba8df44e177f48ec4ebe0d8",
+            "sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad",
+            "size_bytes": 42248,
+            "url": "https://piston-meta.mojang.com/v1/packages/a969d96978af7b52dba8df44e177f48ec4ebe0d8/1.21.11.json"
+          },
+          "minecraft_java_major_version": 21,
+          "minecraft_version": "1.21.11",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+            "lz4_frame_decoder_class_sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+            "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+            "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+            "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+            "size_bytes": 182886,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+          },
+          "product_mod_jar_sha256": "d37fc732bbeea6f85bdd8b4391e6488cdeafd860ef50fa4ca7260efa8b161ee4"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/1.21.11"
+      ],
+      "source_kind": "integrated",
+      "source_report_archive_sha256": "1f62b9998c80d633a1ec64290cc50b585f2ad9618adfc04fdfffe896c52dfbee",
+      "source_report_artifact_id": 14750962839,
+      "source_report_member": "dependency-audit.json",
+      "source_report_name": "dependency-audit-0",
+      "source_report_run": 45013904999,
+      "source_report_sha256_uncompressed": "5e69c05d13211124243adca82a7ecbae4d6a5a35c6c2ad3aa1ac1b54aff256a7",
+      "source_sha": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1"
+    },
+    {
+      "dependency_owner": "Minecraft runtime manifest; Gradle resolution also contains this coordinate when scoped gradle",
+      "disposition": "Further investigation",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "group": "26.1-26.2",
+      "minecraft_versions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "package_version": "4.2.7.Final",
+      "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+      "release_blocking": true,
+      "risk_accepted": false,
+      "runtime_artifacts": [
+        {
+          "client": {
+            "sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+            "sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840",
+            "size_bytes": 38113398
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 101,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "98f6550654d969f94d68687694e03593e785629f1a47798c988bd70e059429f2",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "acaffa5f0fb9b4daebad40f46b0fa72ed3d993b375fe332cd984f76722e60186",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+                "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+                "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+                "size_bytes": 182886
+              }
+            ],
+            "sha1": "3872a7f07a1a595e651aef8b058dfc2bb3772f46",
+            "sha256": "98ab064389a8b34d48ac3d4c5ed858dd9433d0dfd1a12e1cbbda916448d92994",
+            "size_bytes": 60417588
+          },
+          "manifest": {
+            "sha1": "224ef4d5ccb0a181b750765f2fdc591e0072bd3a",
+            "sha256": "9ee99d30a7efca85e33866231625474be36456dfbafc0bbc010db9ec08a4ca96",
+            "size_bytes": 42553,
+            "url": "https://piston-meta.mojang.com/v1/packages/224ef4d5ccb0a181b750765f2fdc591e0072bd3a/26.1.json"
+          },
+          "minecraft_java_major_version": 25,
+          "minecraft_version": "26.1",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+            "lz4_frame_decoder_class_sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+            "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+            "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+            "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+            "size_bytes": 182886,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+          },
+          "product_mod_jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537"
+        },
+        {
+          "client": {
+            "sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+            "sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3",
+            "size_bytes": 38113231
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 101,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "98f6550654d969f94d68687694e03593e785629f1a47798c988bd70e059429f2",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "acaffa5f0fb9b4daebad40f46b0fa72ed3d993b375fe332cd984f76722e60186",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+                "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+                "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+                "size_bytes": 182886
+              }
+            ],
+            "sha1": "49c8195703ad0ba4f0a4efbccfd85a4a8ca57431",
+            "sha256": "d792784979722dc35144acffb953554e707445c62450550044c4281e632cbbcc",
+            "size_bytes": 60417481
+          },
+          "manifest": {
+            "sha1": "3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a",
+            "sha256": "95527a36610fc96ddc0bfb542f9e2a0daf60d8e42373873627fadc7e9dea0938",
+            "size_bytes": 42555,
+            "url": "https://piston-meta.mojang.com/v1/packages/3b4b2a18cae8ce8e7dc9255035cb951165ff1c5a/26.1.1.json"
+          },
+          "minecraft_java_major_version": 25,
+          "minecraft_version": "26.1.1",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+            "lz4_frame_decoder_class_sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+            "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+            "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+            "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+            "size_bytes": 182886,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+          },
+          "product_mod_jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537"
+        },
+        {
+          "client": {
+            "sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+            "sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0",
+            "size_bytes": 38113927
+          },
+          "dedicated_server": {
+            "netty_codec_artifacts": [
+              {
+                "class_files_scanned": 101,
+                "decoder_reference_hits": [
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+                    "sha256": "98f6550654d969f94d68687694e03593e785629f1a47798c988bd70e059429f2",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+                    "sha256": "acaffa5f0fb9b4daebad40f46b0fa72ed3d993b375fe332cd984f76722e60186",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  },
+                  {
+                    "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+                    "sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+                    "terms": [
+                      "io/netty/handler/codec/compression/Lz4FrameDecoder"
+                    ]
+                  }
+                ],
+                "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+                "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+                "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+                "size_bytes": 182886
+              }
+            ],
+            "sha1": "97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51",
+            "sha256": "cd47e7c38328f64768fd17af8fcd8b22496b40b63d4ffee81e71ae059fedcb42",
+            "size_bytes": 60417480
+          },
+          "manifest": {
+            "sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+            "sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+            "size_bytes": 42555,
+            "url": "https://piston-meta.mojang.com/v1/packages/80bb32e704c07fb2c44066a2c1774cb460d7e22b/26.1.2.json"
+          },
+          "minecraft_java_major_version": 25,
+          "minecraft_version": "26.1.2",
+          "netty_codec": {
+            "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+            "lz4_frame_decoder_class_sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+            "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.7.Final",
+            "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+            "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+            "size_bytes": 182886,
+            "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar"
+          },
+          "product_mod_jar_sha256": "29d0d0d685beadfe22bd5d7bec2b9e8bca5353323b22c60c1855befe1c7cd537"
+        }
+      ],
+      "scopes": [
+        "gradle",
+        "runtime/26.1",
+        "runtime/26.1.1",
+        "runtime/26.1.2"
+      ],
+      "source_kind": "integrated",
+      "source_report_archive_sha256": "4737f2eb6a990b19a76362c28c4cbd96866d5562fa4c80a9c2691de44ce39c4a",
+      "source_report_artifact_id": 14750303406,
+      "source_report_member": "dependency-audit.json",
+      "source_report_name": "dependency-audit-1",
+      "source_report_run": 45013904999,
+      "source_report_sha256_uncompressed": "20814820aed09817ef9d5a4c73e86479433defe8326d77b55782356fa027fb61",
+      "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+    }
+  ],
+  "reachability": "Across the exact selected client/runtime artifact set, the only decoder-name references are the decoder and its two inner classes in the six affected Netty JARs. The same pattern is present in the exact server bundles. No non-Netty literal caller or Lz4FrameDecoder installation was observed in the inspected Minecraft client/server or Fabric Loader bytecode. This bounded static search does not rule out reflective, generated, agent, or third-party mod paths.",
+  "release_blocking": true,
+  "remediation": "Netty publishes 4.1.133.Final and 4.2.13.Final as Lz4 fixed boundaries. The separate Critical Netty SNI finding requires 4.1.135.Final or 4.2.15.Final, so an Lz4-only override would not resolve that blocker. Minecraft 26.2/26.3 now ship 4.2.15/4.2.16, but older game lines remain on affected versions. No Minecraft-managed dependency override was made.",
+  "responsible_owner": "Project maintainer and upstream Minecraft/Netty owners",
+  "review_date": "2026-11-23",
+  "reviewer": "Codex automated source-bound static investigation; human security review pending",
+  "risk_accepted": false,
+  "schema": 1,
+  "scope_separation": "This is Netty Lz4FrameDecoder / CVE-2026-42583. It is separate from Netty Bzip2Decoder / CVE-2026-59901, LZ4 Java LZ4BlockInputStream findings, Netty SNI, and Netty Trust Manager findings.",
+  "security_clearance": false,
+  "server_occurrence_difference": {
+    "assessment": "Affected by the same upstream range. Reconcile the server/client dependency discrepancy with the dependency owner.",
+    "minecraft_version": "1.19",
+    "netty_codec_artifact": {
+      "class_files_scanned": 212,
+      "decoder_reference_hits": [
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+          "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+          "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+          "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        }
+      ],
+      "path": "META-INF/libraries/io/netty/netty-codec/4.1.76.Final/netty-codec-4.1.76.Final.jar",
+      "sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+      "sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc",
+      "size_bytes": 337018
+    },
+    "package_version": "4.1.76.Final",
+    "scope": "Additional artifact observation outside the indexed 12 source-audit occurrences; not added to or counted in that exact occurrence set.",
+    "server_sha1": "e00c4052dac1d59a1188b2aa9d5a87113aaf1122",
+    "server_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2"
+  },
+  "severity": "HIGH",
+  "source_group_count": 10,
+  "static_observations": {
+    "dedicated_server_bundles": {
+      "class_files_scanned": 782120,
+      "decoder_reference_hits": 81,
+      "nested_jar_count": 983,
+      "non_netty_caller_count": 0,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json",
+      "scope": "Exact official server bundles and every bundled nested JAR scanned; no server launched.",
+      "server_artifact_count": 27
+    },
+    "fabric_loader": {
+      "classes_scanned": 1277,
+      "coordinate": "net.fabricmc:fabric-loader:0.20.1",
+      "decoder_reference_hits": 0,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/fabric-loader-static-scan.json"
+    },
+    "minecraft_client_and_runtime": {
+      "artifact_count": 471,
+      "class_files_scanned": 369335,
+      "decoder_reference_hits": 18,
+      "non_netty_caller_count": 0,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/runtime-classpath-scan.json",
+      "scope": "Exact manifest-listed client and runtime libraries; class-literal search only.",
+      "selected_version_manifests": 27
+    },
+    "pipeline_static_disassembly": {
+      "contexts": [
+        "client",
+        "dedicated-server"
+      ],
+      "minecraft_version": "26.1.2",
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/pipeline-static-observations.json",
+      "summary": "Static Connection.setupCompression installs Minecraft CompressionDecoder; that class uses java.util.zip.Inflater. No Netty Lz4FrameDecoder reference is present in those classes."
+    },
+    "product_mod_jars": {
+      "decoder_reference_hits": 0,
+      "jar_count": 13,
+      "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/product-jar-static-scan.json"
+    }
+  },
+  "upstream_advisory": {
+    "api_url": "https://api.github.com/advisories/GHSA-mj4r-2hfc-f8p6",
+    "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/upstream-advisory.json",
+    "sha256": "cfaeba6cf6352a1708c76d39db0c360fc6e54cbef7505f8704dadaee6693da4b",
+    "web_url": "https://github.com/advisories/GHSA-mj4r-2hfc-f8p6"
+  },
+  "upstream_game_update": {
+    "assessment": "The 26.2 and 26.3 Mojang version manifests and dedicated-server bundles select Netty 4.2.15.Final and 4.2.16.Final respectively, both beyond the advisory fixed boundary. These updates do not clear older supported Minecraft lines and do not prove a launcher selected a live classpath.",
+    "observations": [
+      {
+        "client": {
+          "class_files_scanned": 10952,
+          "decoder_reference_hits": [],
+          "sha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+          "sha256": "40896ee9f1e2bec3c934daac7e93d41e9e3d9c2f8ae0ca366d52ffbfd1afa290",
+          "size_bytes": 39193383,
+          "url": "https://piston-data.mojang.com/v1/objects/2dc72797acbc1b63fc16a11c4ac393605f453754/client.jar"
+        },
+        "codec": {
+          "class_files_scanned": 99,
+          "coordinate": "io.netty:netty-codec-compression:4.2.15.Final",
+          "decoder_reference_hits": [
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+              "sha256": "409530ec002169729cb62bfafebb673c86e28d378c1e90bd75d8e68ed570c80c",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+              "sha256": "f3237dc9f1d1970b65985bb366b75b5edfeace8ed193bf800be8b073360085cb",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+              "sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.15.Final",
+          "sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+          "sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+          "size_bytes": 183091,
+          "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar"
+        },
+        "java_component": "java-runtime-epsilon",
+        "java_major_version": 25,
+        "manifest_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+        "minecraft_version": "26.2",
+        "runtime_source": {
+          "group": "26.1-26.2",
+          "runtime_manifest_sha1": "cf103b8fab4900562221bf7f23b72725dd9a914a",
+          "runtime_scope": "runtime/26.2",
+          "source_kind": "integrated",
+          "source_report_archive_sha256": "4737f2eb6a990b19a76362c28c4cbd96866d5562fa4c80a9c2691de44ce39c4a",
+          "source_report_artifact_id": 14750303406,
+          "source_report_member": "dependency-audit.json",
+          "source_sha": "b7620ef8174180698cc36d273981aeadd3447941"
+        },
+        "server": {
+          "bundled_codec_compression": [
+            {
+              "class_files_scanned": 99,
+              "decoder_class_sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar",
+              "sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+              "sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+              "size_bytes": 183091
+            }
+          ],
+          "decoder_reference_hits": [
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+              "sha256": "409530ec002169729cb62bfafebb673c86e28d378c1e90bd75d8e68ed570c80c",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+              "sha256": "f3237dc9f1d1970b65985bb366b75b5edfeace8ed193bf800be8b073360085cb",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+              "sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            }
+          ],
+          "sha1": "823e2250d24b3ddac457a60c92a6a941943fcd6a",
+          "sha256": "cdacdfb25898de5e4b4b0e5ddcc2722f77067e46605709c2d886c000ebb63ec5",
+          "size_bytes": 60894273,
+          "top_level_class_files_scanned": 4,
+          "url": "https://piston-data.mojang.com/v1/objects/823e2250d24b3ddac457a60c92a6a941943fcd6a/server.jar"
+        }
+      },
+      {
+        "client": {
+          "class_files_scanned": 11383,
+          "decoder_reference_hits": [],
+          "sha1": "e877b6a07acd633fb3bb475002175cec036e7b87",
+          "sha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+          "size_bytes": 41483720,
+          "url": "https://piston-data.mojang.com/v1/objects/e877b6a07acd633fb3bb475002175cec036e7b87/client.jar"
+        },
+        "codec": {
+          "class_files_scanned": 99,
+          "coordinate": "io.netty:netty-codec-compression:4.2.16.Final",
+          "decoder_reference_hits": [
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+              "sha256": "409530ec002169729cb62bfafebb673c86e28d378c1e90bd75d8e68ed570c80c",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+              "sha256": "f3237dc9f1d1970b65985bb366b75b5edfeace8ed193bf800be8b073360085cb",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+              "sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            }
+          ],
+          "purl": "pkg:maven/io.netty/netty-codec-compression@4.2.16.Final",
+          "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+          "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11",
+          "size_bytes": 183349,
+          "url": "https://libraries.minecraft.net/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar"
+        },
+        "java_component": "java-runtime-epsilon",
+        "java_major_version": 25,
+        "manifest_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+        "minecraft_version": "26.3",
+        "runtime_source": {
+          "group": "26.3",
+          "runtime_manifest_sha1": "ead839cbccf0ddf013c3f935f2840080b5cb0d26",
+          "runtime_scope": "runtime/26.3",
+          "source_kind": "integrated",
+          "source_report_archive_sha256": "92e06d1bfbc9321f8b1fada385276ec881703b86f7cb614eb760d98d02034718",
+          "source_report_artifact_id": 14750753451,
+          "source_report_member": "dependency-audit.json",
+          "source_sha": "38bac1c010250838b47f6f16f98a5ced5e0d7b8a"
+        },
+        "server": {
+          "bundled_codec_compression": [
+            {
+              "class_files_scanned": 99,
+              "decoder_class_sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar",
+              "sha1": "bdbbcfcdbe217b95c14a04df4fc5d31213d5c27c",
+              "sha256": "13c8565414dd2115281303ef4ad1f7cc69bd7771d8d12c7d2fb31307dff26d11",
+              "size_bytes": 183349
+            }
+          ],
+          "decoder_reference_hits": [
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+              "sha256": "409530ec002169729cb62bfafebb673c86e28d378c1e90bd75d8e68ed570c80c",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+              "sha256": "f3237dc9f1d1970b65985bb366b75b5edfeace8ed193bf800be8b073360085cb",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            },
+            {
+              "class_file": "META-INF/libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar!io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+              "sha256": "dfda9abab6b4187ae29fdad8b10d2eafdb98bf926e8c6d97a4978441e91daab7",
+              "terms": [
+                "io/netty/handler/codec/compression/Lz4FrameDecoder"
+              ]
+            }
+          ],
+          "sha1": "33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c",
+          "sha256": "d052f14d7a173734fba553711e5b570162e2f2a313267ee31a21b975a679be64",
+          "size_bytes": 62294556,
+          "top_level_class_files_scanned": 4,
+          "url": "https://piston-data.mojang.com/v1/objects/33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c/server.jar"
+        }
+      }
+    ]
+  },
+  "upstream_implementation": {
+    "compatibility_poms": [
+      {
+        "java_release": null,
+        "java_source_target": null,
+        "module_pom": true,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.133.Final-module-pom.xml",
+        "sha256": "3d542c35892ffe5c65d008f56eb1868ed1d7b204fbd17a2680567dae38130ee7"
+      },
+      {
+        "java_release": 8,
+        "java_source_target": 8,
+        "module_pom": false,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.133.Final-root-pom.xml",
+        "sha256": "381cded637c9df7c3fc6c72520a5ecd4cc3f27ed4b22078055d5ff263be2ff2c"
+      },
+      {
+        "java_release": null,
+        "java_source_target": null,
+        "module_pom": true,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.135.Final-module-pom.xml",
+        "sha256": "c7fbaaf7fd5c425e0caa602adc4a154b71895062825d69d79766bbe51a7ca3bd"
+      },
+      {
+        "java_release": 8,
+        "java_source_target": 8,
+        "module_pom": false,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.1.135.Final-root-pom.xml",
+        "sha256": "57fba2cf45d7151f0019c12da97e414515a9b28fafa5ac332ae429dc6c09003e"
+      },
+      {
+        "java_release": null,
+        "java_source_target": null,
+        "module_pom": true,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.13.Final-module-pom.xml",
+        "sha256": "b24cff1d2ea518c06abe7f3841b557b4fc987e5861b9c286ff56dc2424615b77"
+      },
+      {
+        "java_release": 8,
+        "java_source_target": 8,
+        "module_pom": false,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.13.Final-root-pom.xml",
+        "sha256": "98d3eb48dde1a8e0724c93d0d2df78ef5d6accb8a6fc89dcaeb19d112de6d491"
+      },
+      {
+        "java_release": null,
+        "java_source_target": null,
+        "module_pom": true,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.15.Final-module-pom.xml",
+        "sha256": "5a672c723d97d0a913fa4f92fb92f33d56b7fe4e3ff9f013dfcbd5fa69ce702e"
+      },
+      {
+        "java_release": 8,
+        "java_source_target": 8,
+        "module_pom": false,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/netty-4.2.15.Final-root-pom.xml",
+        "sha256": "e065158c6a9e5a238d2e5058bdb41e4aa3b83c9b0b57da4f5bc9029ed45ae7af"
+      }
+    ],
+    "fixed_release_note": "4.1.133.Final and 4.2.13.Final add a configurable per-decoder maximum. The default remains MAX_BLOCK_SIZE (32 MiB); this is not evidence of an application-level per-channel or aggregate limit.",
+    "lz4_constants": [
+      {
+        "header_length_bytes": 21,
+        "max_block_size_bytes": 33554432,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.1.133.Final.java",
+        "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+      },
+      {
+        "header_length_bytes": 21,
+        "max_block_size_bytes": 33554432,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.1.77.Final.java",
+        "sha256": "9fe095da91e408bc30b042808e8e15ec874f95d5b0d272d3fbaef26979ff3737"
+      },
+      {
+        "header_length_bytes": 21,
+        "max_block_size_bytes": 33554432,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.2.13.Final.java",
+        "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+      },
+      {
+        "header_length_bytes": 21,
+        "max_block_size_bytes": 33554432,
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/Lz4Constants-4.2.7.Final.java",
+        "sha256": "d30a0b3bc32dd01844e6d5e496ad18a018493f6f435d00be4fff3400c24439a2"
+      }
+    ],
+    "mechanism": "The compressed path trusts a header-declared decompressed length when sizing ByteBuf before LZ4 decompression.",
+    "schema": 1,
+    "security_clearance": false,
+    "snapshots": [
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.76.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.76.Final.java",
+        "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.76.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.76.Final",
+        "tag_commit": "3b3420ffc4f19fdfcfbe7865277a159a347b510e"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.77.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.77.Final.java",
+        "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.77.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.77.Final",
+        "tag_commit": "764975699608f10e39f1a1e75ffcc6abee8fa1af"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.82.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.82.Final.java",
+        "sha256": "222eb9a7f9ec35dfe35cb81b03f0172389e37b8b98115249fa7642439dc955f1",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.82.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.82.Final",
+        "tag_commit": "dfcc831c8eea51af78796ade02660d141e521848"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.97.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.97.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.97.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.97.Final",
+        "tag_commit": "b202efcb282765fd5369c7715f5802c85cee6e5e"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.115.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.115.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.115.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.115.Final",
+        "tag_commit": "91c92b5454727d993e6bca30b5c44b9e7a466b40"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.118.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.118.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.118.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.118.Final",
+        "tag_commit": "07db0d26ed3199578d4b3ba5439af6584d6f5652"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec:4.1.132.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.132.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.132.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.132.Final",
+        "tag_commit": "92bdca0f99c202b7b0f46de6f86cf216ad7f5b2e"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": true,
+        "coordinate": "io.netty:netty-codec:4.1.133.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.1.133.Final.java",
+        "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.1.133.Final/codec/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.1.133.Final",
+        "tag_commit": "4374d71208b0c9bfb2844fab610d3bfaf24f4733"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.7.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.7.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.2.7.Final",
+        "tag_commit": "2fdba8c02a8f9b049c2f0d3a9bdd41ddd438efd6"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": false,
+        "coordinate": "io.netty:netty-codec-compression:4.2.12.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.12.Final.java",
+        "sha256": "da3c4808f53ac5540b09e42400ba6a00ef5da580faade9e11b7ad24d8240621b",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.12.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.2.12.Final",
+        "tag_commit": "c2ed1e8456f6e46e07f627828744f9257ef52ddb"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": true,
+        "coordinate": "io.netty:netty-codec-compression:4.2.13.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.13.Final.java",
+        "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.13.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.2.13.Final",
+        "tag_commit": "51df6d50dbd29df3e8f214e133d4363b89a7c624"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": true,
+        "coordinate": "io.netty:netty-codec-compression:4.2.15.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.15.Final.java",
+        "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.15.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.2.15.Final",
+        "tag_commit": "54004fa26dd12da3880b6caa4ed4436c5f1d985a"
+      },
+      {
+        "allocation_expression": "ctx.alloc().buffer(decompressedLength, decompressedLength)",
+        "configurable_max": true,
+        "coordinate": "io.netty:netty-codec-compression:4.2.16.Final",
+        "decompressed_length_source": "Integer.reverseBytes(in.readInt())",
+        "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/netty-upstream/4.2.16.Final.java",
+        "sha256": "b727ffc470ea2ebb1754f3fe11926cb49f9301ac525a71726acfc83b532635e6",
+        "source_url": "https://raw.githubusercontent.com/netty/netty/netty-4.2.16.Final/codec-compression/src/main/java/io/netty/handler/codec/compression/Lz4FrameDecoder.java",
+        "tag": "netty-4.2.16.Final",
+        "tag_commit": "260c56c410a39f7b74a00b0e79b9b51d3ceec6cd"
+      }
+    ],
+    "source_url": "https://github.com/netty/netty"
+  },
+  "upstream_mechanism": "The affected decoder reads an untrusted decompressedLength from the frame header and allocates ctx.alloc().buffer(decompressedLength, decompressedLength) before invoking the LZ4 decompressor. MAX_BLOCK_SIZE is 32 MiB. Fixed releases add a configurable per-decoder cap; their default remains 32 MiB, and no aggregate or per-channel application limit is established here."
+}

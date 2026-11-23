@@ -601,7 +601,7 @@ def main():
         current_raw = sni.read(ROOT, CURRENT)
         require(json.loads(current_raw, object_pairs_hook=unique_object) == make_register(v4, review, review_raw),
                 'Trust Manager priority register differs')
-        require(ledger['latest_focused_priority_register'] == {'path': CURRENT, 'sha256': sha(current_raw),
+        require(ledger.get('trust_high_focused_priority_register') == {'path': CURRENT, 'sha256': sha(current_raw),
             'advisory_ids': 24, 'focused_occurrences': 142, 'remaining_unfocused_high_occurrences': 57,
             'security_clearance': False}, 'Trust Manager priority ledger reference differs')
         print('Validated 12 blocking Trust Manager occurrences and bounded static observations')

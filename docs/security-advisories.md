@@ -1,13 +1,14 @@
 # Security advisory ledger
 
-The [High Netty Trust Manager follow-up](worklogs/issue-45-netty-trust-high-2026-11-23.md)
-adds bounded source-bound investigation of `GHSA-c653-97m9-rcg9` for 12
-occurrences. The earlier [Bzip2](worklogs/issue-45-netty-bzip2-high-2026-11-22.md),
+The [Netty Lz4FrameDecoder follow-up](worklogs/issue-45-netty-lz4-high-2026-11-23.md)
+adds bounded source-bound investigation of `GHSA-mj4r-2hfc-f8p6` for 12
+occurrences. The [High Netty Trust Manager follow-up](worklogs/issue-45-netty-trust-high-2026-11-23.md)
+preserves its separate 12-occurrence evidence. The earlier [Bzip2](worklogs/issue-45-netty-bzip2-high-2026-11-22.md),
 [IP-filter](worklogs/issue-45-netty-ipfilter-high-2026-11-22.md) and
 [SNI](worklogs/issue-45-netty-sni-high-2026-11-22.md) follow-ups remain
-separately preserved. The [current priority register](dependency-evidence/issue45-netty-trust-high-2026-11-23/priority-register-v5.json)
-links focused evidence for 142 Critical/High occurrences across 24 advisory
-IDs. All 490 retained matches remain blocking; 57 High occurrences across 13
+separately preserved. The [current priority register](dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json)
+links focused evidence for 154 Critical/High occurrences across 25 advisory
+IDs. All 490 retained matches remain blocking; 45 High occurrences across 12
 advisory IDs remain outside the focused investigations. No non-applicability or
 risk acceptance is claimed.
 

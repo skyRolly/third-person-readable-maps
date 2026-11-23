@@ -67,7 +67,7 @@ class TrustEvidenceTests(unittest.TestCase):
             'high_occurrences': 120, 'total_occurrences': 142, 'high_occurrences_without_focused_evidence': 57})
         self.assertTrue(all(row['release_blocking'] and not row['risk_accepted']
                             for advisory in register['advisories'] for row in advisory['occurrences']))
-        self.assertEqual(self.ledger['latest_focused_priority_register']['sha256'], trust.sha(register_raw))
+        self.assertEqual(self.ledger['trust_high_focused_priority_register']['sha256'], trust.sha(register_raw))
 
     def test_occurrence_mutations_preserve_count_but_fail_identity_or_scope(self):
         trust.validate_target(self.target, self.previous)
