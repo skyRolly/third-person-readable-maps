@@ -220,8 +220,9 @@ def main() -> int:
     work = args.work_dir.resolve()
     work.mkdir(parents=True, exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
-    for key, filename in (("compiler", "ecj-3.39.0.jar"), ("byteBuddy", "byte-buddy-1.14.18.jar")):
+    for key in ("compiler", "byteBuddy"):
         dependency = LOCK[key]
+        filename = dependency["url"].rsplit("/", 1)[-1]
         path = CACHE / filename
         fetch(dependency["url"], path, dependency["sha256"])
         if hash_file(path, "sha256") != dependency["sha256"]:
