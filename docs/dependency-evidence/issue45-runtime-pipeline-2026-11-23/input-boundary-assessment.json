@@ -1,0 +1,76 @@
+{
+  "schema": "issue45-lz4-input-boundary-assessment/v1",
+  "scope": "observations from this task; synthetic channel tests are kept separate from Minecraft runtime claims",
+  "advisory_id": "GHSA-mj4r-2hfc-f8p6",
+  "vulnerability_mechanism": "The LZ4 frame header declares the decompressed length used for allocation before frame decompression.",
+  "reachability_levels": [
+    {
+      "level": 1,
+      "claim": "Vulnerable dependency appears in a manifest or server bundle",
+      "status": "confirmed_at_artifact_level",
+      "evidence": "Retained source-bound manifests show the vulnerable Netty families; the 1.19 client manifest and server bundle were targeted and hash-revalidated."
+    },
+    {
+      "level": 2,
+      "claim": "Dependency JAR exists on the supported runtime's disk",
+      "status": "not_observed_on_a_user_runtime",
+      "evidence": "Official artifact bytes were fetched and checked for source revalidation and synthetic tests; no Minecraft launcher library directory was inspected."
+    },
+    {
+      "level": 3,
+      "claim": "Dependency JAR is selected on an actual launched process classpath",
+      "status": "not_observed",
+      "evidence": "No Minecraft client, Fabric client, or dedicated server process was launched."
+    },
+    {
+      "level": 4,
+      "claim": "Vulnerable decoder class is loaded by a Minecraft process",
+      "status": "not_observed",
+      "evidence": "Loaded-class controls observed LZ4 only in four synthetic Netty JVMs."
+    },
+    {
+      "level": 5,
+      "claim": "Decoder is instantiated by a Minecraft process",
+      "status": "not_observed",
+      "evidence": "The only decoder instances constructed were synthetic test controls."
+    },
+    {
+      "level": 6,
+      "claim": "Decoder is installed in a Minecraft channel pipeline",
+      "status": "not_observed",
+      "evidence": "Pipeline add/remove hooks passed synthetic controls; no real game channel was observed."
+    },
+    {
+      "level": 7,
+      "claim": "Installed decoder receives untrusted bytes",
+      "status": "not_established",
+      "evidence": "No Minecraft pipeline, remote peer, protocol framing, authentication phase, or input source was captured. No socket was opened by synthetic tests."
+    },
+    {
+      "level": 8,
+      "claim": "The vulnerable declared-length condition can occur in a supported Minecraft configuration",
+      "status": "not_established",
+      "evidence": "No malicious or oversized frame was sent. No game-level, per-channel, aggregate, or pre-authentication resource limit was measured."
+    },
+    {
+      "level": 9,
+      "claim": "A compatible verified remediation is available for a supported game line",
+      "status": "not_verified",
+      "evidence": "Upstream fixed candidates passed isolated pipeline instrumentation controls, but Minecraft/Fabric ABI and supported-JVM runtime compatibility remain untested."
+    }
+  ],
+  "synthetic_control_pipeline_handlers": {
+    "netty_4_1_77": ["io.netty.handler.codec.compression.Lz4FrameDecoder", "io.netty.handler.codec.compression.JdkZlibDecoder", "io.netty.channel.ChannelInboundHandlerAdapter"],
+    "netty_4_2_15": ["io.netty.handler.codec.compression.Lz4FrameDecoder", "io.netty.handler.codec.compression.JdkZlibDecoder", "io.netty.channel.ChannelInboundHandlerAdapter"],
+    "netty_4_1_137_candidate": ["io.netty.handler.codec.compression.Lz4FrameDecoder", "io.netty.handler.codec.compression.JdkZlibDecoder", "io.netty.channel.ChannelInboundHandlerAdapter"],
+    "netty_4_2_17_candidate": ["io.netty.handler.codec.compression.Lz4FrameDecoder", "io.netty.handler.codec.compression.JdkZlibDecoder", "io.netty.channel.ChannelInboundHandlerAdapter"],
+    "socket_or_remote_input": false,
+    "frames_sent": false
+  },
+  "retained_static_scope": {
+    "minecraft_26_1_2": "Static disassembly records Minecraft CompressionDecoder using java.util.zip.Inflater. This is not a running-pipeline observation.",
+    "non_netty_literal_callers": "No caller found in the selected static search; reflection, agents, mods, or dynamically built pipelines are not excluded.",
+    "limits": "No supported runtime limit or aggregate memory bound is established by this task."
+  },
+  "conclusion": "No supported configuration can be classified at the loaded-class, decoder-installation, untrusted-input, or vulnerable-condition levels. Keep the LZ4 occurrences release-blocking pending captured supported-runtime pipeline and input-boundary evidence."
+}

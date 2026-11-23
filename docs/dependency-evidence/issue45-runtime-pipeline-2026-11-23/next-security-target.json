@@ -1,0 +1,30 @@
+{
+  "schema": "issue45-next-security-target/v1",
+  "source_priority_register": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json",
+  "source_priority_register_sha256": "f4e024727fea2fd9afebf19892e5a3982fc7868c1ca294f6e16396a106871798",
+  "security_inventory_unchanged": {
+    "total_occurrences": 490,
+    "unfocused_high_occurrences": 45,
+    "unfocused_high_advisory_ids": 12
+  },
+  "advisory_id": "GHSA-6jqx-86gh-f27w",
+  "alias": "CVE-2026-55831",
+  "severity": "High",
+  "unfocused_high_occurrences": 4,
+  "component": "io.netty:netty-codec-http",
+  "source_bound_versions": [
+    {"group": "1.21.9-1.21.10", "version": "4.1.118.Final", "scopes": ["runtime/1.21.9", "runtime/1.21.10"]},
+    {"group": "1.21.11", "version": "4.2.7.Final", "scopes": ["runtime/1.21.11"]},
+    {"group": "26.1-26.2", "version": "4.2.7.Final", "scopes": ["runtime/26.1", "runtime/26.1.1", "runtime/26.1.2"]},
+    {"group": "26.1-26.2", "version": "4.2.15.Final", "scopes": ["runtime/26.2"]}
+  ],
+  "upstream_fixed_boundaries_from_retained_register": {"4.1": "4.1.136.Final", "4.2": "4.2.16.Final"},
+  "priority_reason": "This unfocused HTTP codec advisory spans a 4.2.7 supported client and the 26.2 4.2.15 module that is one boundary below the retained fixed version. A protocol/input-path review could change runtime reachability and update decisions.",
+  "next_actions": [
+    "Bind the advisory details and vulnerable methods to the four exact indexed occurrences and retained source archive hashes.",
+    "Identify whether supported Minecraft/Fabric channels install the affected HTTP decoder and which untrusted source can control its input.",
+    "Use the runtime agent only in a supported environment and controlled local setup; do not send malformed frames to public services.",
+    "Compare Mojang-selected updates and isolated 4.2.16 component behavior; do not override Minecraft-managed modules without ABI/runtime validation.",
+    "Keep all four occurrences blocking until evidence justifies a separately reviewed disposition."
+  ]
+}

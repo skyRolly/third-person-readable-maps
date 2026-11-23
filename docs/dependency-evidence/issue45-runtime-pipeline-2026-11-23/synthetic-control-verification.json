@@ -1,0 +1,290 @@
+{
+  "agent_sha256": "3ab3774751792e3099cde363586273cf80a64c43ef287743e3330fc9fd457593",
+  "controls": {
+    "control-lz4": "io.netty.handler.codec.compression.Lz4FrameDecoder",
+    "control-plain": "io.netty.channel.ChannelInboundHandlerAdapter",
+    "control-zlib": "io.netty.handler.codec.compression.JdkZlibDecoder"
+  },
+  "instrumentation_negative_controls": [
+    "plain pipeline has neither decoder",
+    "missing pipeline hooks rejected"
+  ],
+  "malformed_or_large_frames_sent": false,
+  "profiles": [
+    {
+      "channel_creation_and_active_hooks_executed": true,
+      "dependency_lock_sha256": "",
+      "dependency_source": "official_minecraft_manifest",
+      "diagnostic_event_sha256": "3ab3774751792e3099cde363586273cf80a64c43ef287743e3330fc9fd457593",
+      "expected_and_loaded_netty_version": "4.1.77.Final",
+      "loaded_lz4_decoder_classes": 1,
+      "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "minecraft_manifest_version": "1.19",
+      "netty_artifacts": [
+        {
+          "coordinate": "io.netty:netty-buffer:4.1.77.Final",
+          "observed_sha256": "41b7ddc4dd124c7e75af33a13a426fda4e1ec87c387cd234971e7df4c0b51c26",
+          "official_sha1": "d97571f99e5e739d86824d0df99f35d295276b5f",
+          "path": "io/netty/netty-buffer/4.1.77.Final/netty-buffer-4.1.77.Final.jar",
+          "size_bytes": 303738
+        },
+        {
+          "coordinate": "io.netty:netty-codec:4.1.77.Final",
+          "observed_sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+          "official_sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+          "path": "io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar",
+          "size_bytes": 337017
+        },
+        {
+          "coordinate": "io.netty:netty-common:4.1.77.Final",
+          "observed_sha256": "40dd9b5ef14878f050a1f7f4d5647d53473f134e349665b47243bde56de7a51f",
+          "official_sha1": "ea0fc20f4e6178966b9d62017b7fcb83dfe0e713",
+          "path": "io/netty/netty-common/4.1.77.Final/netty-common-4.1.77.Final.jar",
+          "size_bytes": 653053
+        },
+        {
+          "coordinate": "io.netty:netty-handler:4.1.77.Final",
+          "observed_sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+          "official_sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+          "path": "io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.jar",
+          "size_bytes": 528268
+        },
+        {
+          "coordinate": "io.netty:netty-resolver:4.1.77.Final",
+          "observed_sha256": "0161cfe9544b3656ed0de67d8937828101859e94bcd0caaf58d21ac7011eabd4",
+          "official_sha1": "4a239dbf8d8bb5f98aa51462c35011c0516395fd",
+          "path": "io/netty/netty-resolver/4.1.77.Final/netty-resolver-4.1.77.Final.jar",
+          "size_bytes": 37776
+        },
+        {
+          "coordinate": "io.netty:netty-transport:4.1.77.Final",
+          "observed_sha256": "034cdf7d81feaad9977c3d8b4fc05611952bc9861dfb9085b8962e2c1de582aa",
+          "official_sha1": "2a3373bbd20d520c821f210bd5ee886788512043",
+          "path": "io/netty/netty-transport/4.1.77.Final/netty-transport-4.1.77.Final.jar",
+          "size_bytes": 480832
+        }
+      ],
+      "observation_file": "synthetic-control-observation-mc-1.19-netty-4.1.77.jsonl",
+      "observation_sha256": "4ce3b04259b7e52ff91c69be1014d1fb0a657c0f641e267acd49aa5bc5e6a323",
+      "operator_process_exit_code": 0,
+      "pipeline_handler_additions": 6,
+      "pipeline_handler_removals": 6,
+      "pipeline_hooks_executed": true,
+      "profile_id": "mc-1.19-netty-4.1.77",
+      "run_id": "a5bb8fe9-7b4a-4b13-9a76-f5fff97d9035",
+      "synthetic_process_minecraft_version": "synthetic-1.19",
+      "test_only_lz4_helper_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+    },
+    {
+      "channel_creation_and_active_hooks_executed": true,
+      "dependency_lock_sha256": "",
+      "dependency_source": "official_minecraft_manifest",
+      "diagnostic_event_sha256": "3ab3774751792e3099cde363586273cf80a64c43ef287743e3330fc9fd457593",
+      "expected_and_loaded_netty_version": "4.2.15.Final",
+      "loaded_lz4_decoder_classes": 1,
+      "manifest_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+      "minecraft_manifest_version": "26.2",
+      "netty_artifacts": [
+        {
+          "coordinate": "io.netty:netty-buffer:4.2.15.Final",
+          "observed_sha256": "1361fd9c9ba85b9831cf54a1b2e45ddc3ce34a768931726c099d3f5ef0efe4a3",
+          "official_sha1": "2beb620803bf871cda2dd5d46b8f831e8015dd34",
+          "path": "io/netty/netty-buffer/4.2.15.Final/netty-buffer-4.2.15.Final.jar",
+          "size_bytes": 371912
+        },
+        {
+          "coordinate": "io.netty:netty-codec-base:4.2.15.Final",
+          "observed_sha256": "2c6d39d7270628b8cfc3166fbd7a93d595958e59c461bc32ddb383c8c91bf811",
+          "official_sha1": "e97149fdd5fb04858efa90e314651c8d700dc68b",
+          "path": "io/netty/netty-codec-base/4.2.15.Final/netty-codec-base-4.2.15.Final.jar",
+          "size_bytes": 152914
+        },
+        {
+          "coordinate": "io.netty:netty-codec-compression:4.2.15.Final",
+          "observed_sha256": "4adaa5cdd4d2e9b50b23e4c3eff42e73de6eb40848718b3aa84cd5b454da6ce8",
+          "official_sha1": "89fc4a20b7ae6af974304b1695405e62c4f9b16d",
+          "path": "io/netty/netty-codec-compression/4.2.15.Final/netty-codec-compression-4.2.15.Final.jar",
+          "size_bytes": 183091
+        },
+        {
+          "coordinate": "io.netty:netty-common:4.2.15.Final",
+          "observed_sha256": "78206aa7f6d197caa926291408c01889b6b910ca0f74017d3fcbdaccf9562959",
+          "official_sha1": "7222492c1af9c2d4d78d521eea340a619e242fda",
+          "path": "io/netty/netty-common/4.2.15.Final/netty-common-4.2.15.Final.jar",
+          "size_bytes": 818260
+        },
+        {
+          "coordinate": "io.netty:netty-handler:4.2.15.Final",
+          "observed_sha256": "99b59e4bea72220d2aed52df8baf37d97431b06ade0b135226cdf73168975eab",
+          "official_sha1": "d5344afd1148e3b9927a74be019605ebb0937a93",
+          "path": "io/netty/netty-handler/4.2.15.Final/netty-handler-4.2.15.Final.jar",
+          "size_bytes": 586442
+        },
+        {
+          "coordinate": "io.netty:netty-resolver:4.2.15.Final",
+          "observed_sha256": "24318497f2a3a645964fed418f48879ba11365cab8e1f8d66c47fa7da15ef19a",
+          "official_sha1": "b961a16d379b508b473e064ba06842bba280f4e3",
+          "path": "io/netty/netty-resolver/4.2.15.Final/netty-resolver-4.2.15.Final.jar",
+          "size_bytes": 32977
+        },
+        {
+          "coordinate": "io.netty:netty-transport:4.2.15.Final",
+          "observed_sha256": "9fb671e96651066cf1a28dad3f1382c7c99df5b8326d4a214d9a375b311f8dc1",
+          "official_sha1": "a000c3a6196ee40207b73ac619dcb339409dd62f",
+          "path": "io/netty/netty-transport/4.2.15.Final/netty-transport-4.2.15.Final.jar",
+          "size_bytes": 549606
+        }
+      ],
+      "observation_file": "synthetic-control-observation-mc-26.2-netty-4.2.15.jsonl",
+      "observation_sha256": "e268c1c420477d28b318f91634b828e3b9ecb22a4f0bdc1002b0c57bae01ec75",
+      "operator_process_exit_code": 0,
+      "pipeline_handler_additions": 6,
+      "pipeline_handler_removals": 6,
+      "pipeline_hooks_executed": true,
+      "profile_id": "mc-26.2-netty-4.2.15",
+      "run_id": "e63ec476-6e17-469b-98ed-d5613fcea268",
+      "synthetic_process_minecraft_version": "synthetic-26.2",
+      "test_only_lz4_helper_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+    },
+    {
+      "channel_creation_and_active_hooks_executed": true,
+      "dependency_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9",
+      "dependency_source": "pinned_maven_fixed_candidate",
+      "diagnostic_event_sha256": "3ab3774751792e3099cde363586273cf80a64c43ef287743e3330fc9fd457593",
+      "expected_and_loaded_netty_version": "4.1.137.Final",
+      "loaded_lz4_decoder_classes": 1,
+      "manifest_sha256": "",
+      "minecraft_manifest_version": "",
+      "netty_artifacts": [
+        {
+          "coordinate": "io.netty:netty-buffer:4.1.137.Final",
+          "observed_sha256": "f474b14c7734f15e0540394cb6f39d67777b7581a42919e4ac89d253d4efd929",
+          "path": "io/netty/netty-buffer/4.1.137.Final/netty-buffer-4.1.137.Final.jar",
+          "size_bytes": 365383,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-codec:4.1.137.Final",
+          "observed_sha256": "9987b6a660b0a6b1f0d791485dae33180b3d1c63687c006fe6d3fd025e9e3798",
+          "path": "io/netty/netty-codec/4.1.137.Final/netty-codec-4.1.137.Final.jar",
+          "size_bytes": 360116,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-common:4.1.137.Final",
+          "observed_sha256": "d31926b01adcc07af86f5e27b81b6d6c115df17d366e835d1fc3f5a1924e7e52",
+          "path": "io/netty/netty-common/4.1.137.Final/netty-common-4.1.137.Final.jar",
+          "size_bytes": 740314,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-handler:4.1.137.Final",
+          "observed_sha256": "d0e4c6ee4779f59f6ab2fb5d388e4f57147c82270164b37945764bb9bda96a44",
+          "path": "io/netty/netty-handler/4.1.137.Final/netty-handler-4.1.137.Final.jar",
+          "size_bytes": 588804,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-resolver:4.1.137.Final",
+          "observed_sha256": "b4cf2aeedd9fc7c8c439bbfe574f63cfe5b83392e88bbc07ca0e8424b7cff955",
+          "path": "io/netty/netty-resolver/4.1.137.Final/netty-resolver-4.1.137.Final.jar",
+          "size_bytes": 37907,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-transport:4.1.137.Final",
+          "observed_sha256": "6251adc2a2921572382732a2db188d4f4f2251fd6ebb49c5d44bbf33d6bfb1a7",
+          "path": "io/netty/netty-transport/4.1.137.Final/netty-transport-4.1.137.Final.jar",
+          "size_bytes": 521982,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        }
+      ],
+      "observation_file": "synthetic-control-observation-upstream-netty-4.1.137.jsonl",
+      "observation_sha256": "31846bf4bd422166504b039dd3244c9591405fa77411990371fe0d3abd5eb672",
+      "operator_process_exit_code": 0,
+      "pipeline_handler_additions": 6,
+      "pipeline_handler_removals": 6,
+      "pipeline_hooks_executed": true,
+      "profile_id": "upstream-netty-4.1.137",
+      "run_id": "dd267fdd-fed4-4918-b4d6-8517a1e6b06b",
+      "synthetic_process_minecraft_version": "synthetic-netty-4.1.137",
+      "test_only_lz4_helper_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+    },
+    {
+      "channel_creation_and_active_hooks_executed": true,
+      "dependency_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9",
+      "dependency_source": "pinned_maven_fixed_candidate",
+      "diagnostic_event_sha256": "3ab3774751792e3099cde363586273cf80a64c43ef287743e3330fc9fd457593",
+      "expected_and_loaded_netty_version": "4.2.17.Final",
+      "loaded_lz4_decoder_classes": 1,
+      "manifest_sha256": "",
+      "minecraft_manifest_version": "",
+      "netty_artifacts": [
+        {
+          "coordinate": "io.netty:netty-buffer:4.2.17.Final",
+          "observed_sha256": "0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7",
+          "path": "io/netty/netty-buffer/4.2.17.Final/netty-buffer-4.2.17.Final.jar",
+          "size_bytes": 378264,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-codec-base:4.2.17.Final",
+          "observed_sha256": "3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352",
+          "path": "io/netty/netty-codec-base/4.2.17.Final/netty-codec-base-4.2.17.Final.jar",
+          "size_bytes": 155357,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-codec-compression:4.2.17.Final",
+          "observed_sha256": "425b287a1f36986a5c8edd76379a49decdf99d284f3454f3fa607a073bfb2c18",
+          "path": "io/netty/netty-codec-compression/4.2.17.Final/netty-codec-compression-4.2.17.Final.jar",
+          "size_bytes": 237078,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-common:4.2.17.Final",
+          "observed_sha256": "502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a",
+          "path": "io/netty/netty-common/4.2.17.Final/netty-common-4.2.17.Final.jar",
+          "size_bytes": 820948,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-handler:4.2.17.Final",
+          "observed_sha256": "4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126",
+          "path": "io/netty/netty-handler/4.2.17.Final/netty-handler-4.2.17.Final.jar",
+          "size_bytes": 588756,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-resolver:4.2.17.Final",
+          "observed_sha256": "7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623",
+          "path": "io/netty/netty-resolver/4.2.17.Final/netty-resolver-4.2.17.Final.jar",
+          "size_bytes": 32977,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        },
+        {
+          "coordinate": "io.netty:netty-transport:4.2.17.Final",
+          "observed_sha256": "d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc",
+          "path": "io/netty/netty-transport/4.2.17.Final/netty-transport-4.2.17.Final.jar",
+          "size_bytes": 549857,
+          "source_lock_sha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9"
+        }
+      ],
+      "observation_file": "synthetic-control-observation-upstream-netty-4.2.17.jsonl",
+      "observation_sha256": "3b30aeb9be3ffc1f308881b7d90db8cad79c317de2ce2a85826d2c03195098c9",
+      "operator_process_exit_code": 0,
+      "pipeline_handler_additions": 6,
+      "pipeline_handler_removals": 6,
+      "pipeline_hooks_executed": true,
+      "profile_id": "upstream-netty-4.2.17",
+      "run_id": "9a374d26-4d2f-4414-b5de-ab2e64dc6481",
+      "synthetic_process_minecraft_version": "synthetic-netty-4.2.17",
+      "test_only_lz4_helper_sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+    }
+  ],
+  "result": "pass",
+  "schema": "issue45-runtime-synthetic-controls/v1",
+  "scope": "synthetic_only",
+  "synthetic_observations_are_minecraft_runtime_evidence": false,
+  "synthetic_processes_used_network_sockets": false
+}

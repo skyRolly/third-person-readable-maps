@@ -1,0 +1,54 @@
+{
+  "schema": "issue45-runtime-diagnostic-dependencies/v1",
+  "byteBuddy": {
+    "coordinate": "net.bytebuddy:byte-buddy:1.14.18",
+    "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar",
+    "sha256": "52117af1696a53aa77c131353074ada25ccbdf2df511f2af33fad6704fa95104"
+  },
+  "compiler": {
+    "coordinate": "org.eclipse.jdt:ecj:3.39.0",
+    "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.39.0/ecj-3.39.0.jar",
+    "sha256": "01f5a92ac19bb2b3bf85e295a68f2c73c264369109158b566ce9b490af982948"
+  },
+  "syntheticProfiles": [
+    {
+      "profileId": "mc-1.19-netty-4.1.77",
+      "minecraftVersion": "synthetic-1.19",
+      "expectedNettyVersion": "4.1.77.Final",
+      "manifestPath": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+      "manifestSha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "modules": ["netty-common", "netty-buffer", "netty-codec", "netty-handler", "netty-resolver", "netty-transport"]
+    },
+    {
+      "profileId": "mc-26.2-netty-4.2.15",
+      "minecraftVersion": "synthetic-26.2",
+      "expectedNettyVersion": "4.2.15.Final",
+      "manifestPath": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.2.json",
+      "manifestSha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+      "modules": ["netty-common", "netty-buffer", "netty-codec-base", "netty-codec-compression", "netty-handler", "netty-resolver", "netty-transport"]
+    },
+    {
+      "profileId": "upstream-netty-4.1.137",
+      "minecraftVersion": "synthetic-netty-4.1.137",
+      "expectedNettyVersion": "4.1.137.Final",
+      "artifactLockName": "netty-4.1.137.Final",
+      "artifactLockPath": "diagnostics/issue45-runtime/upstream-netty-candidate-lock.json",
+      "artifactLockSha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9",
+      "modules": ["netty-common", "netty-buffer", "netty-codec", "netty-handler", "netty-resolver", "netty-transport"]
+    },
+    {
+      "profileId": "upstream-netty-4.2.17",
+      "minecraftVersion": "synthetic-netty-4.2.17",
+      "expectedNettyVersion": "4.2.17.Final",
+      "artifactLockName": "netty-4.2.17.Final",
+      "artifactLockPath": "diagnostics/issue45-runtime/upstream-netty-candidate-lock.json",
+      "artifactLockSha256": "10504b6494b2571e7865173e7f2aa10e0e7af1e8834308ccee17b6b3d8e479b9",
+      "modules": ["netty-common", "netty-buffer", "netty-codec-base", "netty-codec-compression", "netty-handler", "netty-resolver", "netty-transport"]
+    }
+  ],
+  "syntheticLz4Helper": {
+    "coordinate": "org.lz4:lz4-java:1.8.0",
+    "url": "https://repo.maven.apache.org/maven2/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
+    "sha256": "d74a3334fb35195009b338a951f918203d6bbca3d1d359033dc33edd1cadc9ef"
+  }
+}
