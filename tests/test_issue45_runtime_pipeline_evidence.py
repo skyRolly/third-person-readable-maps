@@ -66,6 +66,23 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             {"effective_classpath_sanitized": [changed]}, {}, pin)
         self.assertTrue(any("does not expose" in error for error in errors), errors)
 
+    def test_server_loader_path_can_bind_unloaded_netty_module_without_claiming_loading(self):
+        pin = {"path": "io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+               "sha1": "a" * 40, "size_bytes": 123, "sha256": "b" * 64}
+        loader_only = {"artifact": "netty-codec-compression-4.2.7.Final.jar",
+                       "sha1": "a" * 40, "size_bytes": 123, "sha256": "b" * 64,
+                       "hash_verified": True, "availability_only": True,
+                       "discovered_via": "loaded_class_loader_url"}
+        self.assertEqual([], VALIDATOR.validate_runtime_artifact_identity(
+            {"effective_classpath_sanitized": []},
+            {"loaded_netty_artifacts": [], "loaded_code_source_groups": [],
+             "loader_netty_artifacts": [loader_only]}, pin))
+        tampered = dict(loader_only, sha256="c" * 64)
+        errors = VALIDATOR.validate_runtime_artifact_identity(
+            {"effective_classpath_sanitized": []},
+            {"loader_netty_artifacts": [tampered]}, pin)
+        self.assertTrue(any("does not expose" in error for error in errors), errors)
+
     def test_current_and_fixed_netty_profiles_execute_hooks_and_controls(self):
         self.assertEqual(4, len(self.profiles))
         self.assertEqual({"4.1.77.Final", "4.2.15.Final", "4.1.137.Final", "4.2.17.Final"},
