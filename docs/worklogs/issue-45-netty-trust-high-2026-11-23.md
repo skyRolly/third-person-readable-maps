@@ -65,7 +65,10 @@ consistency alone is not independent class-byte verification. The hosted
 download mode does not download or dynamically launch all 27 clients.
 
 With the pinned SHA-1-keyed runtime cache and Fabric JAR available locally,
-reinspect the full cached classpath without network downloads:
+reinspect the full cached classpath without network downloads. In addition to
+the 471 scanned JARs, the runtime cache must contain the 26.2 handler JAR
+`d5344afd1148e3b9927a74be019605ebb0937a93`; the manifest cache must contain
+the matching `26.2.json` from the recorded Mojang metadata source:
 
 ```sh
 python scripts/inspect_issue45_netty_trust_high.py \

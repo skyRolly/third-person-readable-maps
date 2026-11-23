@@ -197,18 +197,53 @@ class TrustEvidenceTests(unittest.TestCase):
             self.validate(management=management)
 
     def test_independent_handler_bytes_reject_correlated_forged_hashes(self):
-        class_path = 'example/Sni.class'
-        trust_path = 'example/Trust.class'
-        raw = make_jar([(class_path, b'synthetic class'), (trust_path, trust.TERMS[0].encode())])
-        library = {'version': 'fixture', 'sha1': hashlib.sha1(raw).hexdigest(), 'sha256': trust.sha(raw),
-                   'classes': [{'path': class_path, 'sha256': trust.sha(b'synthetic class')}]}
+        prior, catalog = copy.deepcopy(self.prior), copy.deepcopy(self.catalog)
+        scan, known = copy.deepcopy(self.scan), copy.deepcopy(self.known)
+        library = catalog[0]
+        old_sha1 = library['sha1']
+        prior_row = next(row for row in prior['runtime_classpath_scan']['all_artifacts'] if row['sha1'] == old_sha1)
+        scan_row = next(row for row in scan['artifacts'] if row['sha1'] == old_sha1)
+        known_row = next(row for row in known['libraries'] if row['sha1'] == old_sha1)
+
+        # Replace one handler with a complete synthetic pinned artifact while
+        # preserving the real fixture's class count and all other source rows.
+        entries = [(path, ('synthetic:' + path + ':').encode() + b'|'.join(t.encode() for t in trust.TERMS))
+                   for path in sorted(trust.KNOWN_PATHS)]
+        sni_classes = [(row['path'], ('sni:' + row['path']).encode()) for row in library['classes']]
+        entries.extend(sni_classes)
+        entries.extend(('fixture/Filler' + str(i) + '.class', b'no selected literals')
+                       for i in range(prior_row['class_files_scanned'] - len(entries)))
+        raw = make_jar(entries)
+        identifier = hashlib.sha1(raw).hexdigest()
+        digest = trust.sha(raw)
         count, hits = trust.scan_jar(raw)
-        trust.verify_known_handler(raw, library, count, hits)
-        forged = copy.deepcopy(hits)
-        forged[0]['sha256'] = '0' * 64
-        self.assertEqual(forged, copy.deepcopy(forged))
+        self.assertEqual(count, prior_row['class_files_scanned'])
+        self.assertEqual({hit['class_file'] for hit in hits}, trust.KNOWN_PATHS)
+        library.update(sha1=identifier, sha256=digest,
+                       classes=[{'path': path, 'sha256': trust.sha(content)} for path, content in sni_classes])
+        prior_row.update(sha1=identifier, sha256=digest, size_bytes=len(raw), cache_object=identifier)
+        scan_row.update(sha1=identifier, sha256=digest, size_bytes=len(raw), literal_hits=copy.deepcopy(hits))
+        known_row.update(sha1=identifier, sha256=digest, literal_hits=copy.deepcopy(hits))
+        def validate():
+            trust.validate_inputs(prior, self.versions, catalog, self.index_ref, self.index,
+                                  scan, known, self.fabric, self.product, self.management)
+        validate()
+        trust.verify_known_handler(raw, library, count, known_row['literal_hits'])
+
+        # A matching forged digest in both retained records passes consistency,
+        # but independent verification against the same pinned JAR must fail.
+        target = next(iter(sorted(trust.KNOWN_PATHS)))
+        scan_hit = next(hit for hit in scan_row['literal_hits'] if hit['class_file'] == target)
+        known_hit = next(hit for hit in known_row['literal_hits'] if hit['class_file'] == target)
+        self.assertNotEqual(scan_hit['sha256'], '0' * 64)
+        scan_hit['sha256'] = known_hit['sha256'] = '0' * 64
+        self.assertEqual(scan_hit, known_hit)
+        validate()
         with self.assertRaisesRegex(ValueError, 'downloaded Trust Manager handler hits differ'):
-            trust.verify_known_handler(raw, library, count, forged)
+            trust.verify_known_handler(raw, library, count, known_row['literal_hits'])
+        # Bypassing the actual class-byte scan would accept the paired forgery.
+        with patch.object(trust, 'scan_jar', return_value=(count, known_row['literal_hits'])):
+            trust.verify_known_handler(raw, library, count, known_row['literal_hits'])
         with self.assertRaisesRegex(ValueError, 'cached Netty library checksum mismatch'):
             trust.verify_known_handler(raw + b'x', library, count, hits)
 
