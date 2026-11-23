@@ -86,7 +86,12 @@ python3 diagnostics/issue45-runtime/run_controls.py --work-dir build/issue45-con
 ```
 
 The harness packages its compiled control classes into a dedicated hash-verified
-JAR so that the initializer callbacks also have a verified code source. After
+JAR so that the initializer callbacks also have a verified code source.
+Repeated runs may reuse the same `--work-dir`: the control JAR is regenerated
+atomically, while every diagnostic JSONL output path remains unique.
+On Windows, the agent invokes only the absolute `SystemRoot\\System32\\icacls.exe`
+path; it never searches the game directory or PATH for that executable, and
+ACL-helper execution has a bounded timeout. After
 each regeneration, validate the archive:
 
 ```sh
@@ -132,10 +137,11 @@ The classpath is recorded with home-directory components redacted. Netty JARs
 on the launch classpath receive SHA-1/SHA-256 hashes; JARs that provide loaded
 Netty classes and pipeline handlers are hashed from their actual code sources.
 An interrupted attempt may be retained as `not_passed` with its original,
-unaltered JSONL SHA-256. Only a malformed *unterminated final* record may be
-excluded from failed-run event validation; the summary explicitly records
-`truncated_failed_capture_ids`. Malformed interior lines and all truncated
-`captured` runs remain invalid. Legacy completed v1 captures without a loader
+unaltered JSONL SHA-256. A malformed *unterminated final* fragment is excluded
+from failed-run event validation and reported in `truncated_failed_capture_ids`.
+A complete final JSON object without its terminal LF is retained and validated
+as an event; it is reported separately in `missing_lf_failed_capture_ids`.
+Malformed interior lines and all unterminated `captured` runs remain invalid. Legacy completed v1 captures without a loader
 availability field require a separately verified classpath or loaded-code-source
 JAR matching the pinned game dependency; this is not evidence of loader availability.
 
