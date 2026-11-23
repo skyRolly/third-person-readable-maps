@@ -52,7 +52,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     # GitHub checks individual native process exit codes only
                     # when each command has its own step, not a PowerShell
                     # multiline script whose last command masks previous ones.
-                    self.assertIn(f"      - name: {label}\\n        run: {cmd}\\n",
+                    self.assertIn(f"      - name: {label}\n        run: {cmd}\n",
                                   workflow)
         self.assertEqual(2, workflow.count(f"        run: {archive_cmd}"))
         self.assertEqual(2, workflow.count(f"        run: {runtime_cmd}"))
@@ -60,10 +60,10 @@ class NettyFocusErratumTests(unittest.TestCase):
         # Regression control: silently combining commands into one multiline
         # step must invalidate the explicit fail-closed workflow invariant.
         masked = workflow.replace(f"        run: {archive_cmd}",
-                                  f"        run: |\\n          {archive_cmd}", 1)
+                                  f"        run: |\n          {archive_cmd}", 1)
         self.assertNotIn(
-            f"      - name: Validate regenerated Java 21 runtime archive\\n"
-            f"        run: {archive_cmd}\\n", masked)
+            f"      - name: Validate regenerated Java 21 runtime archive\n"
+            f"        run: {archive_cmd}\n", masked)
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
