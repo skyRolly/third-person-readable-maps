@@ -1,10 +1,12 @@
 import copy
 import hashlib
+import io
 import importlib.util
 import json
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -14,6 +16,14 @@ VALIDATOR_PATH = ROOT / "diagnostics/issue45-runtime/validate_runtime_evidence.p
 SPEC = importlib.util.spec_from_file_location("issue45_runtime_validator", VALIDATOR_PATH)
 VALIDATOR = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VALIDATOR)
+BUILDER_SPEC = importlib.util.spec_from_file_location(
+    "issue45_agent_builder", ROOT / "diagnostics/issue45-runtime/build_agent.py")
+BUILDER = importlib.util.module_from_spec(BUILDER_SPEC)
+BUILDER_SPEC.loader.exec_module(BUILDER)
+CONTROLS_SPEC = importlib.util.spec_from_file_location(
+    "issue45_agent_controls", ROOT / "diagnostics/issue45-runtime/run_controls.py")
+CONTROLS = importlib.util.module_from_spec(CONTROLS_SPEC)
+CONTROLS_SPEC.loader.exec_module(CONTROLS)
 
 
 class RuntimePipelineEvidenceTests(unittest.TestCase):
@@ -25,6 +35,48 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             events = [json.loads(line) for line in
                       (EVIDENCE / profile["observation_file"]).read_text().splitlines() if line.strip()]
             cls.profiles[profile["profile_id"]] = (profile, events)
+
+    def test_partial_agent_dependency_cache_is_reacquired_and_verified(self):
+        data = b"synthetic pinned Byte Buddy bytes"
+        dep = {"url": "https://example.invalid/pinned.jar",
+               "sha256": hashlib.sha256(data).hexdigest()}
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "pinned.jar"
+            target.write_bytes(b"truncated")
+            with patch.object(BUILDER.urllib.request, "urlopen", return_value=io.BytesIO(data)) as fetch:
+                BUILDER.download_pinned(dep, target)
+                fetch.assert_called_once()
+            self.assertEqual(data, target.read_bytes())
+            with patch.object(BUILDER.urllib.request, "urlopen",
+                              side_effect=AssertionError("valid cache must be offline")):
+                BUILDER.download_pinned(dep, target)
+            target.write_bytes(b"corrupted")
+            with patch.object(BUILDER.urllib.request, "urlopen", return_value=io.BytesIO(b"wrong")):
+                with self.assertRaisesRegex(SystemExit, "downloaded dependency SHA-256"):
+                    BUILDER.download_pinned(dep, target)
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+    def test_partial_synthetic_control_cache_is_reacquired_and_verified(self):
+        data = b"synthetic pinned control JAR bytes"
+        digest = hashlib.sha256(data).hexdigest()
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "control.jar"
+            target.write_bytes(b"incomplete")
+            with patch.object(CONTROLS.urllib.request, "urlopen", return_value=io.BytesIO(data)) as fetch:
+                CONTROLS.fetch("https://example.invalid/control.jar", target,
+                               digest, expected_size=len(data))
+                fetch.assert_called_once()
+            self.assertEqual(data, target.read_bytes())
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=AssertionError("valid cache must be offline")):
+                CONTROLS.fetch("https://example.invalid/control.jar", target, digest,
+                               expected_size=len(data))
+            target.write_bytes(b"truncated")
+            with patch.object(CONTROLS.urllib.request, "urlopen", return_value=io.BytesIO(b"bad")):
+                with self.assertRaisesRegex(SystemExit, "hash or size differs"):
+                    CONTROLS.fetch("https://example.invalid/control.jar", target,
+                                   digest, expected_size=len(data))
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
 
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
         errors, result = VALIDATOR.validate_evidence(EVIDENCE, ROOT)
