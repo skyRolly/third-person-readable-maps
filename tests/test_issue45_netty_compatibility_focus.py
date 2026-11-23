@@ -1,0 +1,101 @@
+"""Regression coverage for the source-bound Netty compatibility focus erratum."""
+
+import copy
+import hashlib
+import importlib.util
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "diagnostics/issue45-runtime/assess_upstream_compatibility.py"
+REGISTER = ROOT / "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json"
+OLD = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json"
+CORRECTED = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility-v2.json"
+
+SPEC = importlib.util.spec_from_file_location("issue45_netty_focus", SCRIPT)
+FOCUS = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(FOCUS)
+
+
+class NettyFocusErratumTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.register = json.loads(REGISTER.read_text(encoding="utf-8"))
+        cls.report = json.loads(CORRECTED.read_text(encoding="utf-8"))
+
+    def test_historical_v1_report_is_immutable_and_source_bound(self):
+        self.assertEqual(
+            "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09",
+            hashlib.sha256(OLD.read_bytes()).hexdigest())
+        self.assertEqual(
+            "f4e024727fea2fd9afebf19892e5a3982fc7868c1ca294f6e16396a106871798",
+            hashlib.sha256(REGISTER.read_bytes()).hexdigest())
+        self.assertEqual([], FOCUS.validate_compatibility_erratum(self.report, self.register))
+
+    def test_15_indexed_boundaries_are_not_15_focused_investigations(self):
+        indexed = FOCUS.fixed_boundaries(self.register)
+        focused = [row for row in indexed if row["focused_evidence"]]
+        unfocused = [row for row in indexed if not row["focused_evidence"]]
+        self.assertEqual((15, 7, 8), (len(indexed), len(focused), len(unfocused)))
+        self.assertEqual({row["advisory_id"] for row in indexed},
+                         {row["advisory_id"] for row in focused} |
+                         {row["advisory_id"] for row in unfocused})
+        self.assertFalse({row["advisory_id"] for row in focused} &
+                         {row["advisory_id"] for row in unfocused})
+        self.assertEqual(
+            {"4.1": "4.1.137.Final", "4.2": "4.2.17.Final"},
+            FOCUS.maximum_fixed_boundaries(indexed))
+        self.assertEqual(
+            FOCUS.maximum_fixed_boundaries(indexed),
+            FOCUS.maximum_fixed_boundaries(focused))
+
+    def test_forged_unfocused_advisory_cannot_claim_review(self):
+        mutated = copy.deepcopy(self.register)
+        item = next(row for row in mutated["advisories"]
+                    if row["advisory_id"] == "GHSA-6jqx-86gh-f27w")
+        self.assertIsNone(item["focused_evidence"])
+        item["focused_evidence"] = "forged-review.json"
+        errors = FOCUS.validate_compatibility_erratum(self.report, mutated)
+        self.assertTrue(any("focus or fixed-boundary mismatch" in e for e in errors), errors)
+
+    def test_duplicate_advisory_identity_is_rejected(self):
+        mutated = copy.deepcopy(self.register)
+        mutated["advisories"].append(copy.deepcopy(mutated["advisories"][0]))
+        errors = FOCUS.validate_compatibility_erratum(self.report, mutated)
+        self.assertTrue(any("duplicate advisory identity" in e for e in errors), errors)
+
+    def test_modified_upstream_boundary_requires_review(self):
+        mutated = copy.deepcopy(self.register)
+        item = next(row for row in mutated["advisories"]
+                    if row["advisory_id"] == "GHSA-c4c3-7fpv-j4q5")
+        groups = item["affected_ranges"]["pkg:maven/io.netty/netty-handler"]
+        changed = False
+        for group in groups:
+            for entry in group:
+                for event in entry.get("events", []):
+                    if event.get("fixed") == "4.1.137.Final":
+                        event["fixed"] = "4.1.138.Final"
+                        changed = True
+        self.assertTrue(changed)
+        errors = FOCUS.validate_compatibility_erratum(self.report, mutated)
+        self.assertTrue(any("fixed-boundary mismatch" in e for e in errors), errors)
+
+    def test_wrong_historical_and_source_provenance_rejected(self):
+        for field, subfield in (("historical_v1_report", "sha256"),
+                                ("source_register", "sha256")):
+            with self.subTest(field=field):
+                mutated = copy.deepcopy(self.report)
+                mutated[field][subfield] = "0" * 64
+                errors = FOCUS.validate_compatibility_erratum(mutated, self.register)
+                self.assertTrue(any("report" in e or "register" in e for e in errors), errors)
+
+    def test_incorrect_environment_boundary_claim_is_rejected(self):
+        mutated = copy.deepcopy(self.report)
+        mutated["environments"][0]["all_indexed_netty_boundaries_met"] = True
+        errors = FOCUS.validate_compatibility_erratum(mutated, self.register)
+        self.assertTrue(any("environment classification" in e for e in errors), errors)
+
+
+if __name__ == "__main__":
+    unittest.main()
