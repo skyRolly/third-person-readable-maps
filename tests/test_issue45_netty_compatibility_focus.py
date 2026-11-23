@@ -192,7 +192,8 @@ class NettyFocusErratumTests(unittest.TestCase):
         mutated = copy.deepcopy(self.report)
         mutated["environments"][0]["all_indexed_netty_boundaries_met"] = True
         errors = FOCUS.validate_compatibility_erratum(mutated, self.register)
-        self.assertTrue(any("environment classification" in e for e in errors), errors)
+        self.assertTrue(any("incorrect all_indexed_netty_boundaries_met" in e
+                            for e in errors), errors)
 
 
 if __name__ == "__main__":
