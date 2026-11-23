@@ -449,8 +449,12 @@ def validate_run_events(events: list[dict], environment: dict, source_root: Path
     return errors
 
 
-def read_capture_jsonl(path: Path, allow_torn_final: bool) -> tuple[list[dict], bool]:
-    """Hash raw bytes separately; only failed runs may discard a torn EOF fragment."""
+def read_capture_jsonl(path: Path, allow_torn_final: bool) -> tuple[list[dict], str | None]:
+    """Retain complete failed-run events even when the final LF was not flushed.
+
+    Return the exact EOF condition separately; callers hash the original bytes
+    before invoking this parser. Complete archived runs require LF throughout.
+    """
     raw = path.read_bytes()
     complete = raw.split(b"\n")
     if raw.endswith(b"\n"):
@@ -463,17 +467,22 @@ def read_capture_jsonl(path: Path, allow_torn_final: bool) -> tuple[list[dict], 
         if not line.strip():
             raise ValueError("blank or malformed interior JSONL record " + str(index))
         events.append(json.loads(line.decode("utf-8")))
-    truncated = False
+    tail_status = None
     if tail:
         try:
-            json.loads(tail.decode("utf-8"))
+            last_event = json.loads(tail.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError):
             if not allow_torn_final:
                 raise ValueError("unterminated invalid final JSONL record")
-            truncated = True
+            tail_status = "torn_final_record"
         else:
-            raise ValueError("final JSONL record lacks required LF terminator")
-    return events, truncated
+            if not allow_torn_final:
+                raise ValueError("final JSONL record lacks required LF terminator")
+            if not isinstance(last_event, dict):
+                raise ValueError("unterminated final JSONL event must be an object")
+            events.append(last_event)
+            tail_status = "valid_final_record_missing_lf"
+    return events, tail_status
 
 
 def validate_loader_availability_contract(start: dict, end: dict,
@@ -511,6 +520,7 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
     run_ids: set[str] = set()
     captured = []
     truncated_failed_captures = []
+    missing_lf_failed_captures = []
     for row in envs:
         status = row.get("status")
         if status not in ("not_executed", "not_passed", "captured"):
@@ -554,12 +564,14 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
             errors.append("observation artifact missing or SHA-256 mismatch: " + str(obs_name))
             continue
         try:
-            events, torn = read_capture_jsonl(obs_path, allow_torn_final=status == "not_passed")
+            events, tail_status = read_capture_jsonl(obs_path, allow_torn_final=status == "not_passed")
         except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
             errors.append("observation file is not valid JSON Lines: " + str(error))
             continue
-        if torn:
+        if tail_status == "torn_final_record":
             truncated_failed_captures.append(row.get("environment_id"))
+        elif tail_status == "valid_final_record_missing_lf":
+            missing_lf_failed_captures.append(row.get("environment_id"))
         if any(not isinstance(item, dict) for item in events):
             errors.append("observation file contains a non-object JSON event: " + str(obs_name))
             continue
@@ -815,6 +827,8 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
 
     result = {"truncated_failed_capture_ids": truncated_failed_captures,
               "truncated_failed_capture_count": len(truncated_failed_captures),
+              "missing_lf_failed_capture_ids": missing_lf_failed_captures,
+              "missing_lf_failed_capture_count": len(missing_lf_failed_captures),
               "expected_environment_count": len(envs), "captured_runtime_environment_count": len(captured),
               "not_executed_environment_count": sum(row.get("status") == "not_executed" for row in envs),
               "captured_environments": captured,
