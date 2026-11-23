@@ -6,10 +6,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
+import uuid
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -27,6 +29,24 @@ def digest(path: Path) -> str:
     return value.hexdigest()
 
 
+def download_pinned(dependency: dict, target: Path) -> None:
+    """Reuse only hash-verified cache entries; atomically publish verified downloads."""
+    if target.is_file() and digest(target) == dependency["sha256"]:
+        return
+    if target.exists() and not target.is_file():
+        raise SystemExit("dependency cache target is not a file: " + str(target))
+    temporary = target.with_name(target.name + "." + uuid.uuid4().hex + ".part")
+    try:
+        request = urllib.request.Request(dependency["url"], headers={"User-Agent": "issue45-runtime-diagnostic/1"})
+        with urllib.request.urlopen(request, timeout=60) as response, temporary.open("xb") as stream:
+            shutil.copyfileobj(response, stream)
+        if digest(temporary) != dependency["sha256"]:
+            raise SystemExit("downloaded dependency SHA-256 does not match dependencies.lock.json")
+        os.replace(temporary, target)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True, type=Path)
@@ -37,18 +57,12 @@ def main() -> int:
     cache = args.cache_dir.expanduser().resolve()
     cache.mkdir(parents=True, exist_ok=True)
     byte_buddy = cache / "byte-buddy-1.14.18.jar"
-    if not byte_buddy.exists():
-        request = urllib.request.Request(dependency["url"], headers={"User-Agent": "issue45-runtime-diagnostic/1"})
-        with urllib.request.urlopen(request, timeout=60) as response, byte_buddy.open("wb") as target:
-            shutil.copyfileobj(response, target)
+    download_pinned(dependency, byte_buddy)
     if digest(byte_buddy) != dependency["sha256"]:
         raise SystemExit("Byte Buddy SHA-256 does not match dependencies.lock.json")
     compiler_dep = lock["compiler"]
     ecj = cache / "ecj-3.39.0.jar"
-    if not ecj.exists():
-        request = urllib.request.Request(compiler_dep["url"], headers={"User-Agent": "issue45-runtime-diagnostic/1"})
-        with urllib.request.urlopen(request, timeout=60) as response, ecj.open("wb") as target:
-            shutil.copyfileobj(response, target)
+    download_pinned(compiler_dep, ecj)
     if digest(ecj) != compiler_dep["sha256"]:
         raise SystemExit("ECJ SHA-256 does not match dependencies.lock.json")
 
