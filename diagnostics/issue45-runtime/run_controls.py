@@ -59,6 +59,30 @@ def fetch(url: str, path: Path, expected_hash: str, algorithm: str = "sha256",
         temporary.unlink(missing_ok=True)
 
 
+def windows_system_icacls() -> str:
+    """Never search the game directory or PATH for the Windows ACL tool."""
+    root = os.environ.get("SystemRoot")
+    if not root:
+        raise SystemExit("Windows SystemRoot is missing")
+    folder = Path(root)
+    tool = folder / "System32" / "icacls.exe"
+    if not folder.is_absolute() or not tool.is_file() or tool.is_symlink():
+        raise SystemExit("trusted Windows icacls.exe is unavailable")
+    return str(tool)
+
+
+def package_control_classes(classes: Path, destination: Path) -> None:
+    """Atomically refresh a deterministic control JAR on every harness invocation."""
+    temporary = destination.with_name(destination.name + "." + uuid.uuid4().hex + ".part")
+    try:
+        with zipfile.ZipFile(temporary, "x", compression=zipfile.ZIP_STORED) as archive:
+            for class_file in sorted(classes.rglob("*.class")):
+                archive.write(class_file, class_file.relative_to(classes).as_posix())
+        os.replace(temporary, destination)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
                 lz4_helper: Path, source_sha: str) -> dict:
     wanted = set(profile["modules"])
@@ -67,7 +91,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     if os.name == "nt":
         # Give Users an inheritable read grant on a disposable parent to prove
         # captures do not inherit it. Never use a real game/evidence folder.
-        subprocess.run(["icacls.exe", str(profile_root), "/grant",
+        subprocess.run([windows_system_icacls(), str(profile_root), "/grant",
                         "*S-1-5-32-545:(OI)(CI)R"], check=True,
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     dependency_root = profile_root / "dependencies"
@@ -140,12 +164,18 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         "output=" + report.as_posix(), "minecraftVersion=" + profile["minecraftVersion"],
         "distribution=synthetic", "launcher=local-control", "sourceSha=" + source_sha, "",
     ]), encoding="utf-8")
-    # The initializer itself produces pipeline callbacks. Package every compiled
-    # control class as a hash-verifiable JAR, not an unhashed classes directory.
+    # The initializer produces callbacks, so its classes must load from a
+    # hash-verifiable JAR. Repeated controls regenerate the JAR atomically.
     control_jar = profile_root / "issue45-synthetic-control.jar"
-    with zipfile.ZipFile(control_jar, "x", compression=zipfile.ZIP_STORED) as archive:
-        for class_file in sorted(test_classes.rglob("*.class")):
-            archive.write(class_file, class_file.relative_to(test_classes).as_posix())
+    package_control_classes(test_classes, control_jar)
+    if os.name == "nt":
+        # A fake executable in the untrusted working directory must never be
+        # used by the real agent; its presence detects unsafe executable lookup.
+        fake = profile_root / "icacls.exe"
+        java_launcher = shutil.which("java")
+        if java_launcher is None:
+            raise SystemExit("Java launcher is missing for Windows executable-path test")
+        shutil.copyfile(java_launcher, fake)
     run_cp = os.pathsep.join([str(control_jar)] + [str(path) for path in artifacts])
     command = ["java", "-DaccessToken=synthetic-secret-must-not-appear",
                "-Dsession:synthetic-secret-must-not-appear",
@@ -168,7 +198,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     if os.name == "nt":
         # icacls emits the host OEM encoding, not necessarily UTF-8. The ACL
         # markers being checked are ASCII bytes on every Windows locale.
-        acl = subprocess.run(["icacls.exe", str(report)], check=True,
+        acl = subprocess.run([windows_system_icacls(), str(report)], check=True,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if (b"(I)" in acl.stdout or b"BUILTIN\\Users" in acl.stdout
                 or b"S-1-5-32-545" in acl.stdout):
