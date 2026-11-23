@@ -183,7 +183,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     # The positive and negative decoder controls must exist in activation
     # snapshots, not just in post-activation handler callbacks.
     for name, class_name in EXPECTED_CONTROLS.items():
-        channel = by_name[name].get("channel_identity")
+        channel = by_name[name].get("channel_fingerprint")
         snapshot = snapshots.get(channel)
         if not snapshot or not any(handler.get("handler_name") == name
                                    and handler.get("handler_class") == class_name
