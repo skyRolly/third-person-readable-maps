@@ -28,7 +28,11 @@ def version_key(value: str) -> tuple[int, ...]:
 
 def fixed_boundaries(register: dict) -> list[dict]:
     result = []
+    seen = set()
     for advisory in register.get("advisories", []):
+        if advisory.get("advisory_id") in seen:
+            raise ValueError("duplicate advisory identity in compatibility register")
+        seen.add(advisory.get("advisory_id"))
         boundaries = {"4.1": set(), "4.2": set()}
         for purl, groups in advisory.get("affected_ranges", {}).items():
             if not purl.startswith("pkg:maven/io.netty/"):
@@ -44,6 +48,7 @@ def fixed_boundaries(register: dict) -> list[dict]:
         if boundaries["4.1"] or boundaries["4.2"]:
             result.append({"advisory_id": advisory["advisory_id"],
                            "aliases": advisory.get("aliases", []),
+                           "focused_evidence": advisory.get("focused_evidence") is not None,
                            "fixed_4_1": sorted(boundaries["4.1"], key=version_key),
                            "fixed_4_2": sorted(boundaries["4.2"], key=version_key)})
     return result
@@ -65,12 +70,17 @@ def versions_from_manifest(path: Path) -> dict:
 def main() -> int:
     register = json.loads(REGISTER.read_text(encoding="utf-8"))
     boundaries = fixed_boundaries(register)
-    if len(boundaries) != 15:
-        raise SystemExit("expected 15 focused Netty advisory IDs in retained priority register")
+    focused = [item for item in boundaries if item["focused_evidence"]]
+    unfocused = [item for item in boundaries if not item["focused_evidence"]]
+    if (len(boundaries), len(focused), len(unfocused)) != (15, 7, 8):
+        raise SystemExit("retained Netty indexed/focused/unfocused advisory sets changed; review required")
     max_41 = max((v for item in boundaries for v in item["fixed_4_1"]), key=version_key)
     max_42 = max((v for item in boundaries for v in item["fixed_4_2"]), key=version_key)
-    if max_41 != "4.1.137.Final" or max_42 != "4.2.17.Final":
-        raise SystemExit("focused Netty advisory boundary changed; review required")
+    focused_max_41 = max((v for item in focused for v in item["fixed_4_1"]), key=version_key)
+    focused_max_42 = max((v for item in focused for v in item["fixed_4_2"]), key=version_key)
+    if (max_41, max_42, focused_max_41, focused_max_42) != (
+            "4.1.137.Final", "4.2.17.Final", "4.1.137.Final", "4.2.17.Final"):
+        raise SystemExit("Netty indexed or focused fixed boundaries changed; review required")
     lz4 = next(item for item in boundaries if item["advisory_id"] == "GHSA-mj4r-2hfc-f8p6")
     lz4_min = {"4.1": "4.1.133.Final", "4.2": "4.2.13.Final"}
 
@@ -99,7 +109,9 @@ def main() -> int:
         version = version or "4.1.76.Final"
         family = "4.1" if version.startswith("4.1.") else "4.2"
         lz4_fixed = version_key(version) >= version_key(lz4_min[family])
-        whole_focused_set_fixed = version_key(version) >= version_key(max_41 if family == "4.1" else max_42)
+        all_indexed_fixed = version_key(version) >= version_key(max_41 if family == "4.1" else max_42)
+        focused_fixed = version_key(version) >= version_key(
+            focused_max_41 if family == "4.1" else focused_max_42)
         row = {
             "environment_id": environment["environment_id"],
             "minecraft_version": environment["minecraft_version"],
@@ -109,29 +121,42 @@ def main() -> int:
             ("module_family_consistent_at_source_bundle" if environment["distribution"] == "server"
              else "module_family_consistent_at_source_manifest"): True,
             "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": lz4_fixed,
-            "all_15_focused_netty_advisory_boundaries_met": whole_focused_set_fixed,
+            "all_indexed_netty_boundaries_met": all_indexed_fixed,
+            "focused_netty_boundaries_met": focused_fixed,
             "runtime_loader_selection_verified": False,
             "minecraft_fabric_abi_verified": False,
             "supported_jvm_execution_verified": False,
             "outcome": "minecraft-managed dependency blocker",
-            "reason": ("The official artifact version is below the maximum fixed boundary for the 15 focused Netty advisories; "
+            "reason": ("The official artifact version is below the maximum fixed boundary for 15 indexed Netty advisories; "
                        "no substitution is supported by game/Fabric ABI validation."),
             "no_dependency_override_performed": True
         }
         if environment["minecraft_version"] == "26.2":
             row["reason"] = ("4.2.15.Final meets this LZ4 advisory's 4.2.13.Final boundary, but remains below 4.2.17.Final, "
-                             "the maximum fixed boundary in the 15 focused Netty advisories. Runtime selection and ABI remain unverified.")
+                             "the maximum fixed boundary across 15 indexed Netty advisories (7 focused). Runtime selection and ABI remain unverified.")
         rows.append(row)
 
+    historical = OUT / "remediation-compatibility.json"
+    if not historical.is_file():
+        raise SystemExit("immutable historical compatibility report is missing")
     data = {
-        "schema": "issue45-netty-remediation-compatibility/v1",
+        "schema": "issue45-netty-remediation-compatibility/v2",
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
+        "historical_v1_report": {
+            "path": str(historical.relative_to(ROOT)), "sha256": digest(historical),
+            "status": "preserved_with_classification_erratum"},
         "source_register": {"path": str(REGISTER.relative_to(ROOT)), "sha256": digest(REGISTER)},
-        "scope": "derived from the retained priority register and exact retained Minecraft manifests; not a new advisory scan",
-        "focused_netty_advisory_count": len(boundaries),
-        "focused_netty_advisories": boundaries,
+        "scope": "source-bound classification erratum; fixed boundaries do not prove focused investigation or runtime compatibility",
+        "indexed_netty_advisory_count": len(boundaries),
+        "indexed_netty_advisories": boundaries,
+        "focused_netty_advisory_count": len(focused),
+        "focused_netty_advisories": focused,
+        "unfocused_netty_advisory_count": len(unfocused),
+        "unfocused_netty_advisories": unfocused,
         "minimum_versions_for_lz4_advisory_only": lz4_min,
-        "minimum_versions_covering_all_15_focused_netty_advisories": {"4.1": max_41, "4.2": max_42},
+        "minimum_versions_covering_all_indexed_netty_advisories": {"4.1": max_41, "4.2": max_42},
+        "minimum_versions_covering_focused_netty_advisories": {
+            "4.1": focused_max_41, "4.2": focused_max_42},
         "maximum_boundary_advisory": "GHSA-c4c3-7fpv-j4q5",
         "manifest_module_families": versions,
         "minecraft_1_19_server_bundle": {
@@ -163,9 +188,9 @@ def main() -> int:
         },
         "decision": "No upstream substitution is verified compatible for a supported Minecraft/Fabric environment. 4.2.15.Final clears only the LZ4 fixed boundary, not all focused Netty issues. Keep Minecraft-managed dependency blockers open and test an officially selected update in its exact game/loader runtime."
     }
-    destination = OUT / "remediation-compatibility.json"
+    destination = OUT / "remediation-compatibility-v2.json"
     destination.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(json.dumps({"result": "pass", "netty_advisories": len(boundaries),
+    print(json.dumps({"result": "pass", "indexed_netty_advisories": len(boundaries), "focused_netty_advisories": len(focused), "unfocused_netty_advisories": len(unfocused),
                       "minimum_4_1": max_41, "minimum_4_2": max_42,
                       "environments": len(rows), "runtime_compatibility_verified": False}, sort_keys=True))
     return 0
