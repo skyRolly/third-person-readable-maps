@@ -43,27 +43,48 @@ class NettyFocusErratumTests(unittest.TestCase):
                        '-p "test_issue45_runtime_pipeline_evidence.py" -v')
         erratum_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_netty_compatibility_focus.py" -v')
-        for major in (21, 25):
-            for label, cmd in (
-                    (f"Validate regenerated Java {major} runtime archive", archive_cmd),
-                    (f"Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
-                    (f"Test Java {major} Netty erratum mutation regressions", erratum_cmd)):
-                with self.subTest(java=major, step=label):
-                    # GitHub checks individual native process exit codes only
-                    # when each command has its own step, not a PowerShell
-                    # multiline script whose last command masks previous ones.
-                    self.assertIn(f"      - name: {label}\n        run: {cmd}\n",
-                                  workflow)
-        self.assertEqual(2, workflow.count(f"        run: {archive_cmd}"))
-        self.assertEqual(2, workflow.count(f"        run: {runtime_cmd}"))
-        self.assertEqual(2, workflow.count(f"        run: {erratum_cmd}"))
-        # Regression control: silently combining commands into one multiline
-        # step must invalidate the explicit fail-closed workflow invariant.
-        masked = workflow.replace(f"        run: {archive_cmd}",
-                                  f"        run: |\n          {archive_cmd}", 1)
-        self.assertNotIn(
+
+        def all_native_checks_isolated(source: str) -> bool:
+            # The *actual* same invariant is run on normal and mutated YAML.
+            # Each step has one native command, so a failed Python process
+            # fails that step on both PowerShell and POSIX shells.
+            names_and_commands = (
+                ("Validate regenerated Java {major} runtime archive", archive_cmd),
+                ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
+                ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
+            )
+            return (
+                all(
+                    (f"      - name: {label.format(major=major)}\n"
+                     f"        run: {command}\n") in source
+                    for major in (21, 25)
+                    for label, command in names_and_commands
+                )
+                and all(source.count(f"        run: {command}") == 2
+                        for command in (archive_cmd, runtime_cmd, erratum_cmd))
+            )
+
+        self.assertTrue(all_native_checks_isolated(workflow))
+        # Construct a real regression: replace two *separate* Java 21 steps
+        # with one PowerShell multiline step whose successful final command
+        # could overwrite the earlier failure's native exit status.
+        separate = (
             f"      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: {archive_cmd}\n", masked)
+            f"        run: {archive_cmd}\n"
+            f"      - name: Test Java 21 runtime evidence and privacy regressions\n"
+            f"        run: {runtime_cmd}\n"
+        )
+        combined = (
+            f"      - name: Validate regenerated Java 21 runtime archive\n"
+            f"        run: |\n"
+            f"          {archive_cmd}\n"
+            f"          {runtime_cmd}\n"
+        )
+        self.assertIn(separate, workflow)
+        mutant = workflow.replace(separate, combined, 1)
+        self.assertNotEqual(workflow, mutant)
+        self.assertIn(f"        run: |\n          {archive_cmd}\n          {runtime_cmd}\n", mutant)
+        self.assertFalse(all_native_checks_isolated(mutant))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
