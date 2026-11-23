@@ -64,8 +64,16 @@ def maximum_fixed_boundaries(rows: list[dict]) -> dict[str, str]:
     return result
 
 
-def validate_compatibility_erratum(report: dict, register: dict) -> list[str]:
-    """Compare all advisory IDs, focus classifications, and maxima to pinned inputs."""
+def validate_compatibility_erratum(
+        report: dict, register: dict, matrix: dict | None = None,
+        pinned_versions: dict[str, str] | None = None,
+        archive_v1_path: Path | None = None) -> list[str]:
+    """Bind the derived v2 report to actual archive v1 bytes and the pinned game matrix.
+
+    The physical archive's v1 path is separate from its canonical repository
+    provenance path. In the normal archive validator, pinned_versions comes from
+    individually source-verified client manifests or server bundles.
+    """
     errors: list[str] = []
     try:
         indexed = fixed_boundaries(register)
@@ -73,14 +81,16 @@ def validate_compatibility_erratum(report: dict, register: dict) -> list[str]:
         return [str(error)]
     focused = [row for row in indexed if row["focused_evidence"]]
     unfocused = [row for row in indexed if not row["focused_evidence"]]
+    indexed_maxima = maximum_fixed_boundaries(indexed)
+    focused_maxima = maximum_fixed_boundaries(focused)
     expected = {
         "indexed_netty_advisories": indexed, "focused_netty_advisories": focused,
         "unfocused_netty_advisories": unfocused,
         "indexed_netty_advisory_count": len(indexed),
         "focused_netty_advisory_count": len(focused),
         "unfocused_netty_advisory_count": len(unfocused),
-        "minimum_versions_covering_all_indexed_netty_advisories": maximum_fixed_boundaries(indexed),
-        "minimum_versions_covering_focused_netty_advisories": maximum_fixed_boundaries(focused),
+        "minimum_versions_covering_all_indexed_netty_advisories": indexed_maxima,
+        "minimum_versions_covering_focused_netty_advisories": focused_maxima,
     }
     if report.get("schema") != "issue45-netty-remediation-compatibility/v2":
         errors.append("corrected Netty compatibility schema mismatch")
@@ -90,28 +100,97 @@ def validate_compatibility_erratum(report: dict, register: dict) -> list[str]:
     if report.get("source_register") != {
             "path": REGISTER.relative_to(ROOT).as_posix(), "sha256": digest(REGISTER)}:
         errors.append("corrected Netty report is not bound to the retained source register")
-    historic = OUT / "remediation-compatibility.json"
+
+    lz4 = [row for row in indexed if row["advisory_id"] == "GHSA-mj4r-2hfc-f8p6"]
+    if len(lz4) != 1:
+        errors.append("source register lacks the exact LZ4 advisory")
+        return errors
+    lz4_min = maximum_fixed_boundaries(lz4)
+    if report.get("minimum_versions_for_lz4_advisory_only") != lz4_min:
+        errors.append("LZ4 fixed boundaries do not match the source register")
+
+    historical = OUT / "remediation-compatibility.json"
+    physical_v1 = archive_v1_path if archive_v1_path is not None else historical
+    expected_v1_sha = digest(historical)
     if report.get("historical_v1_report") != {
-            "path": historic.relative_to(ROOT).as_posix(), "sha256": digest(historic),
+            "path": historical.relative_to(ROOT).as_posix(), "sha256": expected_v1_sha,
             "status": "preserved_with_classification_erratum"}:
-        errors.append("Netty v1 historical report is missing or has changed")
-    for row in report.get("environments", []):
-        version, family = row.get("manifest_or_bundle_netty_version", ""), row.get("expected_dependency_family")
-        if family not in ("4.1", "4.2"):
-            errors.append("invalid Netty environment family in corrected compatibility")
+        errors.append("Netty v1 historical report source provenance mismatch")
+    if not physical_v1.is_file() or digest(physical_v1) != expected_v1_sha:
+        errors.append("archived Netty v1 historical report SHA-256 differs from the retained report")
+
+    if matrix is None:
+        matrix = json.loads((OUT / "environment-matrix.json").read_text(encoding="utf-8"))
+    matrix_rows = matrix.get("environments")
+    report_rows = report.get("environments")
+    if not isinstance(matrix_rows, list) or not matrix_rows or not all(
+            isinstance(row, dict) for row in matrix_rows):
+        errors.append("Netty source matrix is missing valid environment rows")
+        return errors
+    if not isinstance(report_rows, list) or not report_rows or not all(
+            isinstance(row, dict) for row in report_rows):
+        errors.append("corrected Netty report lacks its complete environment matrix")
+        return errors
+    matrix_ids = [row.get("environment_id") for row in matrix_rows]
+    report_ids = [row.get("environment_id") for row in report_rows]
+    if (len(matrix_ids) != len(set(matrix_ids)) or len(report_ids) != len(set(report_ids))
+            or set(matrix_ids) != set(report_ids)):
+        errors.append("corrected Netty environment identities are missing, duplicated or unexpected")
+        return errors
+
+    matrix_by_id = {row["environment_id"]: row for row in matrix_rows}
+    if pinned_versions is None:
+        # Direct unit validation uses the retained source-bound environment
+        # matrix; full archive validation *must* pass verified artifact pins.
+        pinned_versions = {
+            row["environment_id"]: row.get("expected_netty_codec")
+            or row.get("expected_bundled_netty_codec") for row in matrix_rows}
+    if set(pinned_versions) != set(matrix_ids):
+        errors.append("verified Netty artifact pins do not cover every environment")
+        return errors
+
+    for row in report_rows:
+        identity = row["environment_id"]
+        source = matrix_by_id[identity]
+        selected = pinned_versions.get(identity)
+        expected_version = (source.get("expected_netty_codec")
+                            or source.get("expected_bundled_netty_codec"))
+        if not isinstance(selected, str) or not selected or selected != expected_version:
+            errors.append("source matrix Netty version differs from the independently verified artifact pin: "
+                          + identity)
             continue
-        if row.get("all_indexed_netty_boundaries_met") != (
-                version_key(version) >= version_key(expected[
-                    "minimum_versions_covering_all_indexed_netty_advisories"][family])):
-            errors.append("incorrect indexed-Netty boundary environment classification")
-        if row.get("focused_netty_boundaries_met") != (
-                version_key(version) >= version_key(expected[
-                    "minimum_versions_covering_focused_netty_advisories"][family])):
-            errors.append("incorrect focused-Netty boundary environment classification")
+        family = "4.1" if selected.startswith("4.1.") else "4.2" if selected.startswith("4.2.") else None
+        if family is None:
+            errors.append("unsupported pinned Netty version family: " + identity)
+            continue
+        for field, value in (("minecraft_version", source.get("minecraft_version")),
+                             ("distribution", source.get("distribution")),
+                             ("manifest_or_bundle_netty_version", selected),
+                             ("expected_dependency_family", family)):
+            if row.get(field) != value:
+                errors.append("corrected Netty environment does not match pinned matrix: "
+                              + identity + ":" + field)
+        expected_flags = {
+            "lz4_advisory_fixed_boundary_met_by_selected_artifact_version":
+                version_key(selected) >= version_key(lz4_min[family]),
+            "all_indexed_netty_boundaries_met":
+                version_key(selected) >= version_key(indexed_maxima[family]),
+            "focused_netty_boundaries_met":
+                version_key(selected) >= version_key(focused_maxima[family]),
+        }
+        for field, value in expected_flags.items():
+            if row.get(field) is not value:
+                errors.append("incorrect " + field + " for pinned Netty environment: " + identity)
+        source_kind = ("module_family_consistent_at_source_bundle" if source["distribution"] == "server"
+                       else "module_family_consistent_at_source_manifest")
+        if row.get(source_kind) is not True:
+            errors.append("corrected Netty environment module family is not source-consistent: " + identity)
         if (row.get("runtime_loader_selection_verified") is not False
                 or row.get("minecraft_fabric_abi_verified") is not False
-                or row.get("no_dependency_override_performed") is not True):
-            errors.append("corrected compatibility report overstates runtime or remediation")
+                or row.get("supported_jvm_execution_verified") is not False
+                or row.get("no_dependency_override_performed") is not True
+                or row.get("outcome") != "minecraft-managed dependency blocker"):
+            errors.append("corrected Netty environment overstates runtime or remediation: " + identity)
     return errors
 
 
