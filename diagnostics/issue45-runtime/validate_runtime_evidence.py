@@ -751,6 +751,26 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
     except (OSError, json.JSONDecodeError) as error:
         errors.append("upstream remediation compatibility record missing or invalid: " + str(error))
 
+    # The original v1 compatibility report is retained unchanged for audit.
+    # Its historical "15 focused" name is corrected only by the source-bound
+    # derived v2 erratum, which must agree with the pinned register.
+    corrected_path = evidence_dir / "remediation-compatibility-v2.json"
+    try:
+        corrected = load_json(corrected_path)
+        priority_path = source_root / "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json"
+        priority = load_json(priority_path)
+        import importlib.util
+        compat_path = source_root / "diagnostics/issue45-runtime/assess_upstream_compatibility.py"
+        spec = importlib.util.spec_from_file_location("issue45_compatibility_erratum", compat_path)
+        if spec is None or spec.loader is None:
+            raise ValueError("compatibility erratum verifier could not load")
+        compat = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(compat)
+        errors.extend("corrected Netty compatibility: " + item
+                      for item in compat.validate_compatibility_erratum(corrected, priority))
+    except (OSError, KeyError, ValueError, json.JSONDecodeError) as error:
+        errors.append("corrected Netty compatibility record missing or invalid: " + str(error))
+
     input_path = evidence_dir / "input-boundary-assessment.json"
     try:
         boundary = load_json(input_path)

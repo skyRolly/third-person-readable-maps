@@ -1,0 +1,714 @@
+{
+  "decision": "No upstream substitution is verified Minecraft/Fabric compatible. 26.2's 4.2.15.Final meets the LZ4-only 4.2.13.Final boundary but not the maximum 4.2.17.Final across all 15 indexed Netty advisories (7 focused). Historical report v1 is preserved; this v2 report corrects its classification, not vulnerability disposition.",
+  "environments": [
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "client",
+      "environment_id": "minecraft-1.19-client",
+      "expected_dependency_family": "4.1",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": false,
+      "manifest_or_bundle_netty_version": "4.1.77.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "1.19",
+      "module_family_consistent_at_source_manifest": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "The official artifact version is below the maximum fixed boundary for the 15 indexed Netty advisories; no substitution is supported by game/Fabric ABI validation.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    },
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "server",
+      "environment_id": "minecraft-1.19-dedicated-server",
+      "expected_dependency_family": "4.1",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": false,
+      "manifest_or_bundle_netty_version": "4.1.76.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "1.19",
+      "module_family_consistent_at_source_bundle": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "The official artifact version is below the maximum fixed boundary for the 15 indexed Netty advisories; no substitution is supported by game/Fabric ABI validation.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    },
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "client",
+      "environment_id": "minecraft-1.21.11-fabric-client",
+      "expected_dependency_family": "4.2",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": false,
+      "manifest_or_bundle_netty_version": "4.2.7.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "1.21.11",
+      "module_family_consistent_at_source_manifest": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "The official artifact version is below the maximum fixed boundary for the 15 indexed Netty advisories; no substitution is supported by game/Fabric ABI validation.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    },
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "client",
+      "environment_id": "minecraft-26.1.2-client",
+      "expected_dependency_family": "4.2",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": false,
+      "manifest_or_bundle_netty_version": "4.2.7.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "26.1.2",
+      "module_family_consistent_at_source_manifest": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "The official artifact version is below the maximum fixed boundary for the 15 indexed Netty advisories; no substitution is supported by game/Fabric ABI validation.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    },
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "server",
+      "environment_id": "minecraft-26.1.2-dedicated-server",
+      "expected_dependency_family": "4.2",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": false,
+      "manifest_or_bundle_netty_version": "4.2.7.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "26.1.2",
+      "module_family_consistent_at_source_bundle": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "The official artifact version is below the maximum fixed boundary for the 15 indexed Netty advisories; no substitution is supported by game/Fabric ABI validation.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    },
+    {
+      "all_indexed_netty_boundaries_met": false,
+      "distribution": "client",
+      "environment_id": "minecraft-26.2-client",
+      "expected_dependency_family": "4.2",
+      "focused_netty_boundaries_met": false,
+      "lz4_advisory_fixed_boundary_met_by_selected_artifact_version": true,
+      "manifest_or_bundle_netty_version": "4.2.15.Final",
+      "minecraft_fabric_abi_verified": false,
+      "minecraft_version": "26.2",
+      "module_family_consistent_at_source_manifest": true,
+      "no_dependency_override_performed": true,
+      "outcome": "minecraft-managed dependency blocker",
+      "reason": "4.2.15.Final meets this LZ4 advisory's 4.2.13.Final boundary, but remains below 4.2.17.Final, the maximum fixed boundary in the 15 indexed Netty advisories. Runtime selection and ABI remain unverified.",
+      "runtime_loader_selection_verified": false,
+      "supported_jvm_execution_verified": false
+    }
+  ],
+  "fixed_candidate_synthetic_controls": {
+    "netty_4_1_137": "recorder and synthetic EmbeddedChannel channel-creation, active-snapshot, add/remove hooks passed on Java 21",
+    "netty_4_2_17": "recorder and synthetic EmbeddedChannel channel-creation, active-snapshot, add/remove hooks passed on Java 21",
+    "scope_limit": "No Minecraft/Fabric classes or networking ABI were exercised; these are component/diagnostic compatibility controls only."
+  },
+  "focused_netty_advisories": [
+    {
+      "advisory_id": "GHSA-3qp7-7mw8-wx86",
+      "aliases": [
+        "CVE-2026-44249"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-558v-64gr-wgg4",
+      "aliases": [
+        "CVE-2026-59901"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "fixed_4_1": [
+        "4.1.137.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.17.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-c653-97m9-rcg9",
+      "aliases": [
+        "CVE-2026-50010"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-mj4r-2hfc-f8p6",
+      "aliases": [
+        "CVE-2026-42583"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-pwqr-wmgm-9rr8",
+      "aliases": [
+        "CVE-2026-33870"
+      ],
+      "fixed_4_1": [
+        "4.1.132.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.10.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-x4gw-5cx5-pgmh",
+      "aliases": [
+        "CVE-2026-45416"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    }
+  ],
+  "focused_netty_advisory_count": 7,
+  "historical_v1_report": {
+    "path": "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json",
+    "sha256": "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09",
+    "status": "preserved_with_classification_erratum"
+  },
+  "indexed_netty_advisories": [
+    {
+      "advisory_id": "GHSA-3qp7-7mw8-wx86",
+      "aliases": [
+        "CVE-2026-44249"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-4g8c-wm8x-jfhw",
+      "aliases": [
+        "CVE-2025-24970"
+      ],
+      "fixed_4_1": [
+        "4.1.118.Final"
+      ],
+      "fixed_4_2": [],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-558v-64gr-wgg4",
+      "aliases": [
+        "CVE-2026-59901"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-57rv-r2g8-2cj3",
+      "aliases": [
+        "CVE-2026-42584"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-6jqx-86gh-f27w",
+      "aliases": [
+        "CVE-2026-55831"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-c4c3-7fpv-j4q5",
+      "aliases": [
+        "CVE-2026-75595"
+      ],
+      "fixed_4_1": [
+        "4.1.137.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.17.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-c653-97m9-rcg9",
+      "aliases": [
+        "CVE-2026-50010"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-f6hv-jmp6-3vwv",
+      "aliases": [
+        "CVE-2026-42587"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-jppx-w49h-x2qq",
+      "aliases": [
+        "CVE-2026-56745"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-mj4r-2hfc-f8p6",
+      "aliases": [
+        "CVE-2026-42583"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-mvh2-crg5-v77c",
+      "aliases": [
+        "CVE-2026-55833"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-p979-4mfw-53vg",
+      "aliases": [
+        "CVE-2019-16869"
+      ],
+      "fixed_4_1": [
+        "4.1.42.Final"
+      ],
+      "fixed_4_2": [],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-pwqr-wmgm-9rr8",
+      "aliases": [
+        "CVE-2026-33870"
+      ],
+      "fixed_4_1": [
+        "4.1.132.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.10.Final"
+      ],
+      "focused_evidence": true
+    },
+    {
+      "advisory_id": "GHSA-rwm7-x88c-3g2p",
+      "aliases": [
+        "CVE-2026-42577"
+      ],
+      "fixed_4_1": [],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-x4gw-5cx5-pgmh",
+      "aliases": [
+        "CVE-2026-45416"
+      ],
+      "fixed_4_1": [
+        "4.1.135.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.15.Final"
+      ],
+      "focused_evidence": true
+    }
+  ],
+  "indexed_netty_advisory_count": 15,
+  "jvm_compatibility": {
+    "class_file_level_alone_sufficient": false,
+    "java_17_supported_game_line_compatibility": "not tested by a Minecraft launch",
+    "java_21_fabric_client_compatibility": "not tested by a Minecraft launch",
+    "java_25_minecraft_26_compatibility": "not tested; synthetic tests on Java 21 do not establish Java 25 runtime behavior",
+    "tested_java_runtime": "21.0.12.1"
+  },
+  "manifest_module_families": {
+    "1.19": {
+      "java_major_required": 17,
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+      "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "minecraft_version": "1.19",
+      "module_family_consistent": true,
+      "netty_coordinates": [
+        "io.netty:netty-buffer:4.1.77.Final",
+        "io.netty:netty-codec:4.1.77.Final",
+        "io.netty:netty-common:4.1.77.Final",
+        "io.netty:netty-handler:4.1.77.Final",
+        "io.netty:netty-resolver:4.1.77.Final",
+        "io.netty:netty-transport-classes-epoll:4.1.77.Final",
+        "io.netty:netty-transport-native-epoll:4.1.77.Final:linux-aarch_64",
+        "io.netty:netty-transport-native-epoll:4.1.77.Final:linux-x86_64",
+        "io.netty:netty-transport-native-unix-common:4.1.77.Final",
+        "io.netty:netty-transport:4.1.77.Final"
+      ],
+      "netty_versions": [
+        "4.1.77.Final"
+      ]
+    },
+    "1.21.11": {
+      "java_major_required": 21,
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.11.json",
+      "manifest_sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad",
+      "minecraft_version": "1.21.11",
+      "module_family_consistent": true,
+      "netty_coordinates": [
+        "io.netty:netty-buffer:4.2.7.Final",
+        "io.netty:netty-codec-base:4.2.7.Final",
+        "io.netty:netty-codec-compression:4.2.7.Final",
+        "io.netty:netty-codec-http:4.2.7.Final",
+        "io.netty:netty-common:4.2.7.Final",
+        "io.netty:netty-handler:4.2.7.Final",
+        "io.netty:netty-resolver:4.2.7.Final",
+        "io.netty:netty-transport-classes-epoll:4.2.7.Final",
+        "io.netty:netty-transport-classes-kqueue:4.2.7.Final",
+        "io.netty:netty-transport-native-epoll:4.2.7.Final:linux-aarch_64",
+        "io.netty:netty-transport-native-epoll:4.2.7.Final:linux-x86_64",
+        "io.netty:netty-transport-native-kqueue:4.2.7.Final:osx-aarch_64",
+        "io.netty:netty-transport-native-kqueue:4.2.7.Final:osx-x86_64",
+        "io.netty:netty-transport-native-unix-common:4.2.7.Final",
+        "io.netty:netty-transport:4.2.7.Final"
+      ],
+      "netty_versions": [
+        "4.2.7.Final"
+      ]
+    },
+    "26.1.2": {
+      "java_major_required": 25,
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+      "manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+      "minecraft_version": "26.1.2",
+      "module_family_consistent": true,
+      "netty_coordinates": [
+        "io.netty:netty-buffer:4.2.7.Final",
+        "io.netty:netty-codec-base:4.2.7.Final",
+        "io.netty:netty-codec-compression:4.2.7.Final",
+        "io.netty:netty-codec-http:4.2.7.Final",
+        "io.netty:netty-common:4.2.7.Final",
+        "io.netty:netty-handler:4.2.7.Final",
+        "io.netty:netty-resolver:4.2.7.Final",
+        "io.netty:netty-transport-classes-epoll:4.2.7.Final",
+        "io.netty:netty-transport-classes-kqueue:4.2.7.Final",
+        "io.netty:netty-transport-native-epoll:4.2.7.Final:linux-aarch_64",
+        "io.netty:netty-transport-native-epoll:4.2.7.Final:linux-x86_64",
+        "io.netty:netty-transport-native-kqueue:4.2.7.Final:osx-aarch_64",
+        "io.netty:netty-transport-native-kqueue:4.2.7.Final:osx-x86_64",
+        "io.netty:netty-transport-native-unix-common:4.2.7.Final",
+        "io.netty:netty-transport:4.2.7.Final"
+      ],
+      "netty_versions": [
+        "4.2.7.Final"
+      ]
+    },
+    "26.2": {
+      "java_major_required": 25,
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.2.json",
+      "manifest_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+      "minecraft_version": "26.2",
+      "module_family_consistent": true,
+      "netty_coordinates": [
+        "io.netty:netty-buffer:4.2.15.Final",
+        "io.netty:netty-codec-base:4.2.15.Final",
+        "io.netty:netty-codec-compression:4.2.15.Final",
+        "io.netty:netty-codec-http:4.2.15.Final",
+        "io.netty:netty-common:4.2.15.Final",
+        "io.netty:netty-handler:4.2.15.Final",
+        "io.netty:netty-resolver:4.2.15.Final",
+        "io.netty:netty-transport-classes-epoll:4.2.15.Final",
+        "io.netty:netty-transport-classes-kqueue:4.2.15.Final",
+        "io.netty:netty-transport-native-epoll:4.2.15.Final:linux-aarch_64",
+        "io.netty:netty-transport-native-epoll:4.2.15.Final:linux-x86_64",
+        "io.netty:netty-transport-native-kqueue:4.2.15.Final:osx-aarch_64",
+        "io.netty:netty-transport-native-kqueue:4.2.15.Final:osx-x86_64",
+        "io.netty:netty-transport-native-unix-common:4.2.15.Final",
+        "io.netty:netty-transport:4.2.15.Final"
+      ],
+      "netty_versions": [
+        "4.2.15.Final"
+      ]
+    }
+  },
+  "maximum_boundary_advisory": "GHSA-c4c3-7fpv-j4q5",
+  "minecraft_1_19_server_bundle": {
+    "live_selection_verified": false,
+    "module_family_consistent": true,
+    "netty_codec_artifact": {
+      "class_files_scanned": 212,
+      "decoder_reference_hits": [
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+          "sha256": "69bcdb70c53bd10b3e7a392c0dfa4030d9109cb1410e73959a7beeab4f74a4ae",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+          "sha256": "ec4c7c17259a62ebe50dbca08920e96d9f819cd61519cacd71f691383574d56d",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+          "sha256": "45e91d41924b5e1d077fdd495ca9cd57e658a3928678073d96c7434a3b1f3649",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        }
+      ],
+      "path": "META-INF/libraries/io/netty/netty-codec/4.1.76.Final/netty-codec-4.1.76.Final.jar",
+      "sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+      "sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc",
+      "size_bytes": 337018
+    },
+    "netty_jar_count": 10,
+    "netty_module_versions": [
+      "4.1.76.Final"
+    ],
+    "server_bundle_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2"
+  },
+  "minecraft_26_1_2_server_bundle": {
+    "live_selection_verified": false,
+    "lz4_module_artifact": {
+      "class_files_scanned": 101,
+      "decoder_reference_hits": [
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$1.class",
+          "sha256": "98f6550654d969f94d68687694e03593e785629f1a47798c988bd70e059429f2",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder$State.class",
+          "sha256": "acaffa5f0fb9b4daebad40f46b0fa72ed3d993b375fe332cd984f76722e60186",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/codec/compression/Lz4FrameDecoder.class",
+          "sha256": "7ea25a15db981bb9e60cd6ce8a17539e2893d1ba52e43d939c1a7a5061ee7183",
+          "terms": [
+            "io/netty/handler/codec/compression/Lz4FrameDecoder"
+          ]
+        }
+      ],
+      "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+      "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+      "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+      "size_bytes": 182886
+    },
+    "module_family_consistent": true,
+    "netty_jar_count": 15,
+    "netty_module_versions": [
+      "4.2.7.Final"
+    ],
+    "server_bundle_sha256": "cd47e7c38328f64768fd17af8fcd8b22496b40b63d4ffee81e71ae059fedcb42"
+  },
+  "minimum_versions_covering_all_indexed_netty_advisories": {
+    "4.1": "4.1.137.Final",
+    "4.2": "4.2.17.Final"
+  },
+  "minimum_versions_covering_focused_netty_advisories": {
+    "4.1": "4.1.137.Final",
+    "4.2": "4.2.17.Final"
+  },
+  "minimum_versions_for_lz4_advisory_only": {
+    "4.1": "4.1.133.Final",
+    "4.2": "4.2.13.Final"
+  },
+  "observed_at_utc": "2026-11-23T18:14:00.397Z",
+  "schema": "issue45-netty-remediation-compatibility/v2",
+  "scope": "source-bound classification erratum; fixed boundaries do not prove focused investigation or runtime compatibility",
+  "source_register": {
+    "path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json",
+    "sha256": "f4e024727fea2fd9afebf19892e5a3982fc7868c1ca294f6e16396a106871798"
+  },
+  "unfocused_netty_advisories": [
+    {
+      "advisory_id": "GHSA-4g8c-wm8x-jfhw",
+      "aliases": [
+        "CVE-2025-24970"
+      ],
+      "fixed_4_1": [
+        "4.1.118.Final"
+      ],
+      "fixed_4_2": [],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-57rv-r2g8-2cj3",
+      "aliases": [
+        "CVE-2026-42584"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-6jqx-86gh-f27w",
+      "aliases": [
+        "CVE-2026-55831"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-f6hv-jmp6-3vwv",
+      "aliases": [
+        "CVE-2026-42587"
+      ],
+      "fixed_4_1": [
+        "4.1.133.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-jppx-w49h-x2qq",
+      "aliases": [
+        "CVE-2026-56745"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-mvh2-crg5-v77c",
+      "aliases": [
+        "CVE-2026-55833"
+      ],
+      "fixed_4_1": [
+        "4.1.136.Final"
+      ],
+      "fixed_4_2": [
+        "4.2.16.Final"
+      ],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-p979-4mfw-53vg",
+      "aliases": [
+        "CVE-2019-16869"
+      ],
+      "fixed_4_1": [
+        "4.1.42.Final"
+      ],
+      "fixed_4_2": [],
+      "focused_evidence": false
+    },
+    {
+      "advisory_id": "GHSA-rwm7-x88c-3g2p",
+      "aliases": [
+        "CVE-2026-42577"
+      ],
+      "fixed_4_1": [],
+      "fixed_4_2": [
+        "4.2.13.Final"
+      ],
+      "focused_evidence": false
+    }
+  ],
+  "unfocused_netty_advisory_count": 8
+}
