@@ -166,10 +166,12 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     if os.name == "posix" and stat.S_IMODE(report.stat().st_mode) & 0o077:
         raise SystemExit("diagnostic JSONL is accessible to non-owner users")
     if os.name == "nt":
+        # icacls emits the host OEM encoding, not necessarily UTF-8. The ACL
+        # markers being checked are ASCII bytes on every Windows locale.
         acl = subprocess.run(["icacls.exe", str(report)], check=True,
-                             capture_output=True, text=True)
-        if ("(I)" in acl.stdout or "BUILTIN\\Users" in acl.stdout
-                or "S-1-5-32-545" in acl.stdout):
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if (b"(I)" in acl.stdout or b"BUILTIN\\Users" in acl.stdout
+                or b"S-1-5-32-545" in acl.stdout):
             raise SystemExit("diagnostic JSONL inherited a non-owner Windows read grant")
     raw = raw_bytes.decode("utf-8")
     private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
