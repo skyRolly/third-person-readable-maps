@@ -87,10 +87,13 @@ python3 diagnostics/issue45-runtime/run_controls.py --work-dir build/issue45-con
 
 The harness packages its compiled control classes into a dedicated hash-verified
 JAR so that the initializer callbacks also have a verified code source.
-Repeated runs may reuse the same `--work-dir`: stale compiled control
-classes are discarded, and the control JAR is regenerated atomically with fixed
-ZIP entry timestamps and permissions for stable hashes when its bytecode is
-unchanged. Every diagnostic JSONL output path remains unique.
+Repeated runs may reuse the same `--work-dir`: every invocation compiles
+into an isolated temporary class directory that is deleted after packaging,
+so deleted or renamed classes cannot survive from prior builds. The control
+JAR is regenerated atomically with canonical UTF-8 member-name ordering, fixed
+ZIP timestamps, creator platform, storage method and permissions. Identical
+class bytes therefore yield identical JAR hashes across hosts. Case-colliding
+member names are rejected. Every diagnostic JSONL output path remains unique.
 On Windows, the agent invokes only the absolute `SystemRoot\\System32\\icacls.exe`
 path; it never searches the game directory or PATH for that executable, and
 ACL-helper execution has a bounded timeout. After
