@@ -232,13 +232,13 @@ class NettyFocusErratumTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="issue45-manifest-id-") as tmp:
             root = Path(tmp)
             manifest = ROOT / client["manifest_path"]
-            copy = root / client["manifest_path"]
-            copy.parent.mkdir(parents=True)
+            manifest_copy = root / client["manifest_path"]
+            manifest_copy.parent.mkdir(parents=True)
             value = json.loads(manifest.read_text(encoding="utf-8"))
             value["id"] = "26.2"
-            copy.write_text(json.dumps(value), encoding="utf-8")
+            manifest_copy.write_text(json.dumps(value), encoding="utf-8")
             modified = copy.deepcopy(client)
-            modified["manifest_sha256"] = hashlib.sha256(copy.read_bytes()).hexdigest()
+            modified["manifest_sha256"] = hashlib.sha256(manifest_copy.read_bytes()).hexdigest()
             # A tampered manifest or archive row cannot override the independent pin.
             errors, _ = VALIDATOR.validate_environment_artifact_pin(
                 modified, root, json.loads((evidence / "baseline-lock.json").read_text())["retained_files"])
