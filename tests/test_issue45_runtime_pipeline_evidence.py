@@ -4,6 +4,7 @@ import io
 import importlib.util
 import json
 import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -302,7 +303,9 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             start = copy.deepcopy(next(event for event in self.profiles[
                 "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
             start.update(minecraft_version=env["minecraft_version"],
-                         distribution=env["distribution"], launcher=env["launcher"])
+                         distribution=env["distribution"], launcher=env["launcher"],
+                         source_sha=subprocess.check_output(
+                             ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
             observation = json.dumps(start, sort_keys=True) + "\n"
             capture = archive / "captures" / "failed.jsonl"
             capture.parent.mkdir(parents=True, exist_ok=True)
@@ -353,7 +356,9 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             start = copy.deepcopy(next(event for event in self.profiles[
                 "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
             start.update(minecraft_version=env["minecraft_version"],
-                         distribution=env["distribution"], launcher=env["launcher"])
+                         distribution=env["distribution"], launcher=env["launcher"],
+                         source_sha=subprocess.check_output(
+                             ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
             capture = archive / "captures" / "torn.jsonl"
             capture.parent.mkdir(parents=True)
             complete = (json.dumps(start, sort_keys=True) + "\n").encode("utf-8")
