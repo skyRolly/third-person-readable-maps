@@ -234,10 +234,10 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
             start.update(minecraft_version=env["minecraft_version"],
                          distribution=env["distribution"], launcher=env["launcher"])
-            observation = json.dumps(start, sort_keys=True) + "\\n"
+            observation = json.dumps(start, sort_keys=True) + "\n"
             capture = archive / "captures" / "failed.jsonl"
             capture.parent.mkdir(parents=True, exist_ok=True)
-            capture.write_text(observation, encoding="utf-8", newline="\\n")
+            capture.write_text(observation, encoding="utf-8", newline="\n")
             env["observations_file"] = "captures/failed.jsonl"
             env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
             matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
