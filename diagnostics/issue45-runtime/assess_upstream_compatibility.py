@@ -122,7 +122,7 @@ def versions_from_manifest(path: Path) -> dict:
     versions = sorted(set(name.split(":")[2] for name in modules))
     if len(versions) != 1:
         raise SystemExit("retained manifest has inconsistent Netty module versions: " + str(path))
-    return {"minecraft_version": manifest["id"], "manifest_path": str(path.relative_to(ROOT)),
+    return {"minecraft_version": manifest["id"], "manifest_path": path.relative_to(ROOT).as_posix(),
             "manifest_sha256": digest(path), "netty_versions": versions,
             "netty_coordinates": sorted(modules), "module_family_consistent": True,
             "java_major_required": manifest.get("javaVersion", {}).get("majorVersion")}
