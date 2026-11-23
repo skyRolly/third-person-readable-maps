@@ -70,7 +70,7 @@ class Bzip2EvidenceTests(unittest.TestCase):
             'high_occurrences': 108, 'total_occurrences': 130, 'high_occurrences_without_focused_evidence': 69})
         self.assertTrue(all(o['release_blocking'] and not o['risk_accepted']
                             for a in register['advisories'] for o in a['occurrences']))
-        self.assertEqual(self.ledger['latest_focused_priority_register']['sha256'],
+        self.assertEqual(self.ledger['bzip2_high_focused_priority_register']['sha256'],
                          hashlib.sha256(register_raw).hexdigest())
 
     def test_source_binding_rejects_same_count_duplicate_and_identity_mutations(self):

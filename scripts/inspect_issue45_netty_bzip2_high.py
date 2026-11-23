@@ -499,7 +499,7 @@ def main():
         current_raw = sni.read(ROOT, CURRENT)
         require(json.loads(current_raw, object_pairs_hook=unique_object) == make_register(v3, review, review_raw),
                 'Bzip2 priority register differs')
-        require(ledger['latest_focused_priority_register'] == {'path': CURRENT, 'sha256': sha(current_raw),
+        require(ledger['bzip2_high_focused_priority_register'] == {'path': CURRENT, 'sha256': sha(current_raw),
             'advisory_ids': 23, 'focused_occurrences': 130, 'remaining_unfocused_high_occurrences': 69,
             'security_clearance': False}, 'Bzip2 priority ledger reference differs')
         print('Validated 13 blocking Bzip2 occurrences and bounded static observations')

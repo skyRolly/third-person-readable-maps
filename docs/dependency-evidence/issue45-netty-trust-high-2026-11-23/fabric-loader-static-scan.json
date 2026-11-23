@@ -1,0 +1,19 @@
+{
+  "class_files_scanned": 771,
+  "coordinate": "net.fabricmc:fabric-loader:0.20.1",
+  "literal_hits": [],
+  "nested_jars": [
+    {
+      "class_files_scanned": 506,
+      "literal_hits": [],
+      "path": "META-INF/jars/mixinextras-fabric-0.5.5.jar",
+      "sha256": "5da883dc4bfb16e4ceca3f16d8c4ad937bdfb1ce337ed5ba15472d4d81dd6242"
+    }
+  ],
+  "schema": 1,
+  "security_clearance": false,
+  "sha1": "7c7f9831e9f27b303d5d08decb5f4258a9f03296",
+  "sha256": "d0c5a082e07410aaff9de7ab196aa6b4236002870f9ba3ad5c1260fcce5110ad",
+  "size_bytes": 1988880,
+  "source_url": "https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.20.1/fabric-loader-0.20.1.jar"
+}

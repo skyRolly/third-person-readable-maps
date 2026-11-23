@@ -1,0 +1,18 @@
+{
+  "advisory_url": "https://github.com/netty/netty/security/advisories/GHSA-c653-97m9-rcg9",
+  "cve_id": "CVE-2026-50010",
+  "ghsa_id": "GHSA-c653-97m9-rcg9",
+  "published_at": "2026-06-05T19:03:33Z",
+  "severity": "high",
+  "source_url": "https://api.github.com/repos/netty/netty/security-advisories/GHSA-c653-97m9-rcg9",
+  "summary": "Wrapping plain trust manager silently disables hostname verification",
+  "updated_at": "2026-06-05T19:03:33Z",
+  "vulnerabilities": [
+    {
+      "package": "io.netty:netty-handler",
+      "patched": "4.1.135.Final, 4.2.15.Final",
+      "range": "<= 4.1.134.Final, <= 4.2.14.Final"
+    }
+  ],
+  "withdrawn_at": null
+}
