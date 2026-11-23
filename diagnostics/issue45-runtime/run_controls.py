@@ -147,7 +147,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("synthetic process failed for " + profile["profileId"] + "; inspect private work-dir logs")
 
     raw_bytes = report.read_bytes()
-    if b"\\r\\n" in raw_bytes:
+    if b"\r\n" in raw_bytes:
         raise SystemExit("diagnostic JSONL must use LF on every platform")
     if os.name == "posix" and stat.S_IMODE(report.stat().st_mode) & 0o077:
         raise SystemExit("diagnostic JSONL is accessible to non-owner users")
