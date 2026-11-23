@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+import zipfile
 from unittest.mock import patch
 from pathlib import Path
 
@@ -324,6 +325,87 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
             self.assertTrue(any("process_end" in error for error in errors), errors)
 
+
+    def test_control_jar_can_be_rebuilt_in_place_without_stale_members(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-control-jar-") as tmp:
+            root = Path(tmp)
+            classes = root / "test-classes"
+            classes.mkdir()
+            a = classes / "ControlMain.class"
+            a.write_bytes(b"compiled-control-v1")
+            archive = root / "issue45-synthetic-control.jar"
+            CONTROLS.package_control_classes(classes, archive)
+            with zipfile.ZipFile(archive) as jar:
+                self.assertEqual(b"compiled-control-v1", jar.read("ControlMain.class"))
+            a.write_bytes(b"compiled-control-v2")
+            b = classes / "Initializer.class"
+            b.write_bytes(b"second-control")
+            CONTROLS.package_control_classes(classes, archive)
+            with zipfile.ZipFile(archive) as jar:
+                self.assertEqual({"ControlMain.class", "Initializer.class"}, set(jar.namelist()))
+                self.assertEqual(b"compiled-control-v2", jar.read("ControlMain.class"))
+            self.assertFalse(list(root.glob("*.part")))
+
+    def test_valid_final_json_object_without_lf_is_only_allowed_for_failed_runs(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-lf-tail-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            matrix_path = archive / "environment-matrix.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            env = matrix["environments"][0]
+            env.update(status="not_passed",
+                       not_passed_reason="Operator interrupted JVM between JSON and LF writes",
+                       operator_exit_code=1, operator_startup_outcome="failed")
+            env.pop("not_executed_reason", None)
+            source_events = self.profiles["mc-1.19-netty-4.1.77"][1]
+            start = copy.deepcopy(next(event for event in source_events
+                                       if event["event"] == "process_start"))
+            diagnostic = copy.deepcopy(next(event for event in source_events
+                                            if event["event"] == "diagnostic"))
+            start.update(minecraft_version=env["minecraft_version"],
+                         distribution=env["distribution"], launcher=env["launcher"],
+                         source_sha=subprocess.check_output(
+                             ["git", "-C", str(ROOT), "rev-parse", "HEAD"],
+                             text=True).strip())
+            capture = archive / "captures" / "missing-final-lf.jsonl"
+            capture.parent.mkdir(parents=True)
+            prefix = (json.dumps(start) + "\n").encode("utf-8")
+            final_object = json.dumps(diagnostic).encode("utf-8")
+            capture.write_bytes(prefix + final_object)
+            env["observations_file"] = "captures/missing-final-lf.jsonl"
+            env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, summary = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertEqual([], errors)
+            self.assertEqual([env["environment_id"]], summary["missing_lf_failed_capture_ids"])
+            self.assertEqual([], summary["truncated_failed_capture_ids"])
+            self.assertEqual(0, summary["captured_runtime_environment_count"])
+            events, tail = VALIDATOR.read_capture_jsonl(capture, allow_torn_final=True)
+            self.assertEqual("valid_final_record_missing_lf", tail)
+            self.assertEqual(["process_start", "diagnostic"], [e["event"] for e in events])
+            with self.assertRaisesRegex(ValueError, "required LF"):
+                VALIDATOR.read_capture_jsonl(capture, allow_torn_final=False)
+            env["status"] = "captured"
+            env["operator_exit_code"] = 0
+            env["operator_startup_outcome"] = "started"
+            matrix["captured_observations"] = [env["environment_id"]]
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("valid JSON Lines" in item for item in errors), errors)
+            capture.write_bytes(prefix + final_object + b"\n")
+            # Exact original bytes remain protected by the archive hash.
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("SHA-256 mismatch" in item for item in errors), errors)
+
+    def test_missing_final_lf_does_not_hide_bad_interior_records(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-jsonl-interior-") as tmp:
+            path = Path(tmp) / "capture.jsonl"
+            path.write_bytes(b'{"event":"process_start"}\n{"bad":\n{"event":"diagnostic"}')
+            with self.assertRaises((ValueError, json.JSONDecodeError)):
+                VALIDATOR.read_capture_jsonl(path, allow_torn_final=True)
+            path.write_bytes(b'{"event":"process_start"}\n42')
+            with self.assertRaisesRegex(ValueError, "must be an object"):
+                VALIDATOR.read_capture_jsonl(path, allow_torn_final=True)
 
     def test_failed_run_rejects_unknown_git_commit_but_exempts_synthetic(self):
         start = copy.deepcopy(next(event for event in self.profiles[
