@@ -159,6 +159,51 @@ def validate_channel_assessments(end: dict, assessments: list[dict]) -> list[str
     return errors
 
 
+def validate_incomplete_run_events(events: list[dict], environment: dict) -> list[str]:
+    """Validate honest failed captures without claiming completed runtime coverage."""
+    if not events or any(not isinstance(event, dict) for event in events):
+        return ["failed-run observation must contain JSON object events"]
+    errors: list[str] = []
+    if any(event.get("schema") != SCHEMA for event in events):
+        errors.append("failed-run observation has an unknown or missing schema")
+    ids = {event.get("run_id") for event in events}
+    if len(ids) != 1 or not next(iter(ids), None):
+        errors.append("failed-run events do not belong to one nonempty run identity")
+    starts = [event for event in events if event.get("event") == "process_start"]
+    ends = [event for event in events if event.get("event") == "process_end"]
+    diagnostics = [event for event in events if event.get("event") == "diagnostic"]
+    if len(starts) != 1:
+        errors.append("failed run must have exactly one process_start")
+        return errors
+    if len(ends) > 1 or len(diagnostics) > 1:
+        errors.append("failed run contains duplicate process_end or diagnostic identity")
+    start = starts[0]
+    if any(event.get("run_id") != start.get("run_id") for event in events):
+        errors.append("failed-run event is associated with another process")
+    for key, expected in (("minecraft_version", environment.get("minecraft_version")),
+                          ("distribution", environment.get("distribution")),
+                          ("launcher", environment.get("launcher")),
+                          ("fabric_loader_version", environment.get("fabric_loader_expected") or "")):
+        if start.get(key) != expected:
+            errors.append("failed-run " + key + " does not match the environment")
+    if not HEX40.fullmatch(start.get("source_sha", "")):
+        errors.append("failed-run source SHA is missing or malformed")
+    if start.get("environment_variables_collected") is not False or start.get("process_command_collected") is not False:
+        errors.append("failed-run observation must not collect environment variables or raw commands")
+    if "jvm_arguments" in start or "process_command" in start:
+        errors.append("failed-run observation contains forbidden unsanitized process arguments")
+    if not isinstance(start.get("jvm_arguments_sanitized"), list):
+        errors.append("failed-run sanitized JVM arguments are missing")
+    for diagnostic in diagnostics:
+        if (not HEX64.fullmatch(diagnostic.get("diagnostic_agent_sha256", ""))
+                or diagnostic.get("diagnostic_artifact_verified") is not True):
+            errors.append("failed-run diagnostic artifact is not hash verified")
+    if re.search(r"(?i)(access[-_]?token|password|passwd|session|cookie|authorization|client[-_]?secret|username|uuid|xuid)(?:=|[:\\\" ]+)(?!<redacted>)[A-Za-z0-9._-]{8,}",
+                 json.dumps(events, sort_keys=True)):
+        errors.append("credential or account-like value appears in the failed-run observation")
+    return errors
+
+
 def validate_run_events(events: list[dict], environment: dict, source_root: Path,
                         require_remote_pipeline: bool = True) -> list[str]:
     errors: list[str] = []
@@ -469,10 +514,15 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
             errors.append("duplicate process/run identity: " + str(run_id))
         elif run_id:
             run_ids.add(run_id)
-        errors.extend(f"{row.get('environment_id')}: {item}" for item in validate_run_events(events, row, source_root))
+        if status == "captured":
+            errors.extend(f"{row.get('environment_id')}: {item}" for item in
+                          validate_run_events(events, row, source_root))
+        else:
+            errors.extend(f"{row.get('environment_id')}: {item}" for item in
+                          validate_incomplete_run_events(events, row))
         ends = [item for item in events if item.get("event") == "process_end"]
         starts = [item for item in events if item.get("event") == "process_start"]
-        if expected_artifact is not None and ends and starts:
+        if status == "captured" and expected_artifact is not None and ends and starts:
             errors.extend(f"{row.get('environment_id')}: {item}" for item in
                           validate_runtime_artifact_identity(starts[0], ends[0], expected_artifact))
         if status == "captured":
