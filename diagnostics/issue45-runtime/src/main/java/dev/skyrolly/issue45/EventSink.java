@@ -12,6 +12,8 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.nio.channels.Channels;
 import java.nio.channels.SeekableByteChannel;
@@ -35,6 +37,7 @@ import java.util.Enumeration;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -293,6 +296,7 @@ public final class EventSink {
                         "loaded_netty_artifacts", artifactGroups(allLoaded),
                         "loaded_fabric_loader_classes", loadedFabricClasses(),
                         "loaded_code_source_groups", loadedCodeSourceGroups(),
+                        "loader_netty_artifacts", loaderNettyArtifacts(),
                         "agent_errors", failed ? "one_or_more_observation_errors" : "none");
                 write(event("process_end", end));
                 if (output != null) output.close();
@@ -380,6 +384,42 @@ public final class EventSink {
             } catch (Throwable ignored) { }
         }
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(groups.values());
+        Collections.sort(result, new Comparator<Map<String, Object>>() {
+            @Override public int compare(Map<String, Object> a, Map<String, Object> b) {
+                return String.valueOf(a.get("artifact")).compareTo(String.valueOf(b.get("artifact")));
+            }
+        });
+        return result;
+    }
+
+    private static List<Map<String, Object>> loaderNettyArtifacts() {
+        // A server child loader may expose a Netty JAR without using its classes.
+        Set<ClassLoader> seen = Collections.newSetFromMap(new IdentityHashMap<ClassLoader, Boolean>());
+        Map<String, Map<String, Object>> found = new LinkedHashMap<String, Map<String, Object>>();
+        for (Class<?> type : instrumentation.getAllLoadedClasses()) {
+            ClassLoader loader = type.getClassLoader();
+            if (loader == null || !seen.add(loader) || !(loader instanceof URLClassLoader)) continue;
+            for (URL url : ((URLClassLoader) loader).getURLs()) {
+                try {
+                    if (!"file".equalsIgnoreCase(url.getProtocol())) continue;
+                    File file = new File(url.toURI()).getCanonicalFile();
+                    String name = file.getName().toLowerCase(java.util.Locale.ROOT);
+                    if (!name.startsWith("netty-") || !name.endsWith(".jar")
+                            || !file.isFile() || file.length() > 64L * 1024 * 1024) continue;
+                    String key = file.getCanonicalPath();
+                    if (!found.containsKey(key)) {
+                        found.put(key, map("artifact", file.getName(), "path_redacted",
+                                sanitizePath(file.getAbsolutePath()), "size_bytes", file.length(),
+                                "sha1", sha1File(file), "sha256", sha256File(file),
+                                "hash_verified", true, "availability_only", true,
+                                "discovered_via", "loaded_class_loader_url"));
+                    }
+                } catch (Throwable ignored) {
+                    // Inaccessible loader URLs are not evidence of module availability.
+                }
+            }
+        }
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(found.values());
         Collections.sort(result, new Comparator<Map<String, Object>>() {
             @Override public int compare(Map<String, Object> a, Map<String, Object> b) {
                 return String.valueOf(a.get("artifact")).compareTo(String.valueOf(b.get("artifact")));
