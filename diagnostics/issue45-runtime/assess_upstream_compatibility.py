@@ -218,7 +218,9 @@ def validate_compatibility_erratum(
                 or summary.get("module_family_consistent") is not True
                 or summary.get("server_bundle_sha256") != source.get("server_bundle_sha256")
                 or summary.get("netty_module_versions") != [pinned]
-                or summary.get(artifact_key) != official_artifact):
+                or not isinstance(summary.get(artifact_key), dict)
+                or any(summary[artifact_key].get(field) != official_artifact.get(field)
+                       for field in ("path", "sha1", "sha256", "size_bytes"))):
             errors.append("Netty server bundle summary contradicts verified source and runtime rows: " + identity)
 
     return errors
