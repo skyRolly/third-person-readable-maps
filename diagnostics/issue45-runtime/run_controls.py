@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import uuid
 import shutil
 import subprocess
 import sys
@@ -33,12 +34,27 @@ def hash_file(path: Path, algorithm: str) -> str:
     return digest.hexdigest()
 
 
-def fetch(url: str, path: Path) -> None:
+def fetch(url: str, path: Path, expected_hash: str, algorithm: str = "sha256",
+          expected_size: int | None = None) -> None:
+    """Reuse only hash-verified cache entries; atomically publish complete files."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    if not path.exists():
+    def valid(candidate: Path) -> bool:
+        return (candidate.is_file() and (expected_size is None or candidate.stat().st_size == expected_size)
+                and hash_file(candidate, algorithm) == expected_hash)
+    if valid(path):
+        return
+    if path.exists() and not path.is_file():
+        raise SystemExit("control cache target is not a file: " + str(path))
+    temporary = path.with_name(path.name + "." + uuid.uuid4().hex + ".part")
+    try:
         request = urllib.request.Request(url, headers={"User-Agent": "issue45-runtime-diagnostic/1"})
-        with urllib.request.urlopen(request, timeout=90) as response, path.open("wb") as target:
+        with urllib.request.urlopen(request, timeout=90) as response, temporary.open("xb") as target:
             shutil.copyfileobj(response, target)
+        if not valid(temporary):
+            raise SystemExit("downloaded control dependency hash or size differs: " + path.name)
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
@@ -63,7 +79,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
             relative = "io/netty/{}/{}/{}-{}.jar".format(module, version, module, version)
             path = dependency_root / relative
             url = "https://repo.maven.apache.org/maven2/" + relative
-            fetch(url, path)
+            fetch(url, path, item["sha256"], expected_size=item["size"])
             if path.stat().st_size != item["size"] or hash_file(path, "sha256") != item["sha256"]:
                 raise SystemExit("upstream fixed-candidate SHA-256/size mismatch: " + module)
             artifacts.append(path)
@@ -85,7 +101,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
             if not item:
                 raise SystemExit("missing exact artifact metadata for " + library["name"])
             path = dependency_root / item["path"]
-            fetch(item["url"], path)
+            fetch(item["url"], path, item["sha1"], algorithm="sha1", expected_size=item["size"])
             if path.stat().st_size != item["size"] or hash_file(path, "sha1") != item["sha1"]:
                 raise SystemExit("manifest-pinned Netty size/SHA-1 mismatch: " + item["path"])
             artifacts.append(path)
@@ -97,7 +113,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("exact Netty module-family selection incomplete for " + profile["profileId"])
 
     helper = LOCK["syntheticLz4Helper"]
-    fetch(helper["url"], lz4_helper)
+    fetch(helper["url"], lz4_helper, helper["sha256"])
     if hash_file(lz4_helper, "sha256") != helper["sha256"]:
         raise SystemExit("pinned test-only LZ4 helper SHA-256 mismatch")
     artifacts.append(lz4_helper)
@@ -110,7 +126,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
                     "-classpath", compile_cp, "-d", str(test_classes), str(source)], check=True)
 
     config = profile_root / "control.properties"
-    report = profile_root / "control.jsonl"
+    report = profile_root / ("control-" + uuid.uuid4().hex + ".jsonl")
     config.write_text("\n".join([
         "output=" + report.as_posix(), "minecraftVersion=" + profile["minecraftVersion"],
         "distribution=synthetic", "launcher=local-control", "sourceSha=" + source_sha, "",
@@ -120,6 +136,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
                "-Dsession:synthetic-secret-must-not-appear",
                "-Dserver=play.example.invalid:25565",
                "-Dusername=synthetic-player-identifier",
+               "-DapiKey=synthetic-unrecognized-api-key-must-not-appear",
                "-javaagent:" + str(agent) + "=" + str(config), "-classpath", run_cp,
                "dev.skyrolly.issue45.ControlMain"]
     completed = subprocess.run(command, cwd=profile_root, text=True, capture_output=True, timeout=90)
@@ -129,8 +146,8 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("synthetic process failed for " + profile["profileId"] + "; inspect private work-dir logs")
 
     raw = report.read_text(encoding="utf-8")
-    private_values = ("synthetic-secret-must-not-appear", "play.example.invalid",
-                      "25565", "synthetic-player-identifier")
+    private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
+                      "play.example.invalid", "25565", "synthetic-player-identifier", "-DapiKey")
     if any(value in raw for value in private_values):
         raise SystemExit("privacy sanitizer leaked a synthetic token, address, or account identifier")
     for sanitized in ("-DaccessToken=<redacted>", "-Dsession:<redacted>",
@@ -206,7 +223,7 @@ def main() -> int:
     for key, filename in (("compiler", "ecj-3.39.0.jar"), ("byteBuddy", "byte-buddy-1.14.18.jar")):
         dependency = LOCK[key]
         path = CACHE / filename
-        fetch(dependency["url"], path)
+        fetch(dependency["url"], path, dependency["sha256"])
         if hash_file(path, "sha256") != dependency["sha256"]:
             raise SystemExit(key + " dependency SHA-256 mismatch")
     helper_path = CACHE / "lz4-java-1.8.0.jar"
