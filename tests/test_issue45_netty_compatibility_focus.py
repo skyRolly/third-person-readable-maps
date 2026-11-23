@@ -116,6 +116,78 @@ class NettyFocusErratumTests(unittest.TestCase):
             self.assertTrue(any("corrected Netty compatibility record missing" in e
                                 for e in errors), errors)
 
+    def test_empty_duplicate_and_partial_v2_environment_matrices_are_rejected(self):
+        for changed in ([], [copy.deepcopy(self.report["environments"][0])],
+                        self.report["environments"][:-1]):
+            with self.subTest(rows=len(changed)):
+                modified = copy.deepcopy(self.report)
+                modified["environments"] = changed
+                errors = FOCUS.validate_compatibility_erratum(modified, self.register)
+                self.assertTrue(any("environment" in error for error in errors), errors)
+        duplicate = copy.deepcopy(self.report)
+        duplicate["environments"][1]["environment_id"] = duplicate["environments"][0]["environment_id"]
+        errors = FOCUS.validate_compatibility_erratum(duplicate, self.register)
+        self.assertTrue(any("duplicated" in error for error in errors), errors)
+
+    def test_26_2_forged_fixed_version_with_self_consistent_flags_is_rejected(self):
+        forged = copy.deepcopy(self.report)
+        row = next(row for row in forged["environments"]
+                   if row["environment_id"] == "minecraft-26.2-client")
+        row["manifest_or_bundle_netty_version"] = "4.2.17.Final"
+        row["all_indexed_netty_boundaries_met"] = True
+        row["focused_netty_boundaries_met"] = True
+        row["lz4_advisory_fixed_boundary_met_by_selected_artifact_version"] = True
+        errors = FOCUS.validate_compatibility_erratum(forged, self.register)
+        self.assertTrue(any("pinned matrix" in error for error in errors), errors)
+
+    def test_forged_matrix_version_cannot_override_independent_verified_pin(self):
+        matrix_path = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/environment-matrix.json"
+        matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+        trusted_pins = {
+            row["environment_id"]:
+            (row.get("expected_netty_codec") or row.get("expected_bundled_netty_codec"))
+            for row in matrix["environments"]}
+        modified = copy.deepcopy(matrix)
+        target = next(row for row in modified["environments"]
+                      if row["environment_id"] == "minecraft-26.2-client")
+        target["expected_netty_codec"] = "4.2.17.Final"
+        errors = FOCUS.validate_compatibility_erratum(
+            self.report, self.register, matrix=modified, pinned_versions=trusted_pins)
+        self.assertTrue(any("independently verified artifact pin" in error
+                            for error in errors), errors)
+
+    def test_wrong_lz4_flag_and_unsupported_runtime_claims_are_rejected(self):
+        mutations = (
+            ("lz4_advisory_fixed_boundary_met_by_selected_artifact_version", True,
+             "incorrect lz4_advisory"),
+            ("supported_jvm_execution_verified", True, "overstates runtime"),
+            ("runtime_loader_selection_verified", True, "overstates runtime"),
+            ("minecraft_fabric_abi_verified", True, "overstates runtime"),
+            ("no_dependency_override_performed", False, "overstates runtime"),
+            ("outcome", "fixed", "overstates runtime"),
+        )
+        for field, value, expected_error in mutations:
+            with self.subTest(field=field):
+                modified = copy.deepcopy(self.report)
+                modified["environments"][0][field] = value
+                errors = FOCUS.validate_compatibility_erratum(modified, self.register)
+                self.assertTrue(any(expected_error in error for error in errors), errors)
+
+    def test_archived_v1_reformat_without_value_change_is_rejected(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-v1-copy-") as tmp:
+            copied = Path(tmp) / "archive"
+            shutil.copytree(evidence, copied)
+            original = copied / "remediation-compatibility.json"
+            original.write_text(json.dumps(json.loads(original.read_text(encoding="utf-8")),
+                                           indent=3, sort_keys=False) + "\n",
+                                encoding="utf-8")
+            self.assertNotEqual(hashlib.sha256(OLD.read_bytes()).hexdigest(),
+                                hashlib.sha256(original.read_bytes()).hexdigest())
+            errors, _ = VALIDATOR.validate_evidence(copied, ROOT)
+            self.assertTrue(any("archived Netty v1 historical report SHA-256" in error
+                                for error in errors), errors)
+
     def test_incorrect_environment_boundary_claim_is_rejected(self):
         mutated = copy.deepcopy(self.report)
         mutated["environments"][0]["all_indexed_netty_boundaries_met"] = True
