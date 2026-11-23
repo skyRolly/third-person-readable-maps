@@ -1,0 +1,444 @@
+{
+  "libraries": [
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "dc7ccd86866e769ef549abac40b0f00b9c2c2e3007183d42ad295f298b975cb3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "b77dd5500e2e829d5b6dc0c7679784d6b1164020ef17fc3da07940df378295fd",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "1d61d85513feeb7cb99f128b5a3b51d9147261ca4a7bcf3956e87619791ebc5e",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "c3ee7a082d689a4d40d2770fcb00fca09847ca96a8d279844de72c5df050119d",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "e3f5f5bc70e5126198aa81488793d89259dd68ee5783d4785a5292d5af80394b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "fa16ec3c1d3e8e15df3aa80a2a4ff40c54cc8395acb6a99829621f12fd16f34b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "21f97502bbc08c46bf49a2f186a70810e88052e65d88286f5fbeff4af04b6a06",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "86c506f29c6a9009f4324ac456664f1ad68547fdd64b5d96ffe0341ddd1900e3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "e6a98333a7c04a4a168a2b899e7fed1a5a486b67ae3b0680cb733fc802287289",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "d54dbf68b9d88a98240107758c6b63da5e46e23a",
+      "sha256": "5972028cc863b74927ce0d11fb8d58f65da2560bef5602fe8ce8903bd306ca07",
+      "version": "4.1.115.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "dc7ccd86866e769ef549abac40b0f00b9c2c2e3007183d42ad295f298b975cb3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "b77dd5500e2e829d5b6dc0c7679784d6b1164020ef17fc3da07940df378295fd",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "1d61d85513feeb7cb99f128b5a3b51d9147261ca4a7bcf3956e87619791ebc5e",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "c3ee7a082d689a4d40d2770fcb00fca09847ca96a8d279844de72c5df050119d",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "e3f5f5bc70e5126198aa81488793d89259dd68ee5783d4785a5292d5af80394b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "fa16ec3c1d3e8e15df3aa80a2a4ff40c54cc8395acb6a99829621f12fd16f34b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "21f97502bbc08c46bf49a2f186a70810e88052e65d88286f5fbeff4af04b6a06",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "86c506f29c6a9009f4324ac456664f1ad68547fdd64b5d96ffe0341ddd1900e3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "e6a98333a7c04a4a168a2b899e7fed1a5a486b67ae3b0680cb733fc802287289",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "30ebb05b6b0fb071dbfcf713017c4a767a97bb9b",
+      "sha256": "26e3f8a5e859fd62cf3c13dc6d75e4e18879f000a5d0ad7f58f8679675d23dae",
+      "version": "4.1.118.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "d3cfb082a6f7d2198679ea59e117880d915853ac0d67105ccb37843082d7fcbd",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "b77dd5500e2e829d5b6dc0c7679784d6b1164020ef17fc3da07940df378295fd",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "1d61d85513feeb7cb99f128b5a3b51d9147261ca4a7bcf3956e87619791ebc5e",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "c3ee7a082d689a4d40d2770fcb00fca09847ca96a8d279844de72c5df050119d",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "e3f5f5bc70e5126198aa81488793d89259dd68ee5783d4785a5292d5af80394b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "fa16ec3c1d3e8e15df3aa80a2a4ff40c54cc8395acb6a99829621f12fd16f34b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "21f97502bbc08c46bf49a2f186a70810e88052e65d88286f5fbeff4af04b6a06",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "86c506f29c6a9009f4324ac456664f1ad68547fdd64b5d96ffe0341ddd1900e3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "e6a98333a7c04a4a168a2b899e7fed1a5a486b67ae3b0680cb733fc802287289",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "47a81089de03635a27f509f3e4e13386ae1db275",
+      "sha256": "7911becd4850ff3fc3d93b4be7c468a2f6444fb48c17eec03c807856faf11e0a",
+      "version": "4.1.77.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "d3cfb082a6f7d2198679ea59e117880d915853ac0d67105ccb37843082d7fcbd",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "b77dd5500e2e829d5b6dc0c7679784d6b1164020ef17fc3da07940df378295fd",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "1d61d85513feeb7cb99f128b5a3b51d9147261ca4a7bcf3956e87619791ebc5e",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "c3ee7a082d689a4d40d2770fcb00fca09847ca96a8d279844de72c5df050119d",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "e3f5f5bc70e5126198aa81488793d89259dd68ee5783d4785a5292d5af80394b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "fa16ec3c1d3e8e15df3aa80a2a4ff40c54cc8395acb6a99829621f12fd16f34b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "21f97502bbc08c46bf49a2f186a70810e88052e65d88286f5fbeff4af04b6a06",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "86c506f29c6a9009f4324ac456664f1ad68547fdd64b5d96ffe0341ddd1900e3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "e6a98333a7c04a4a168a2b899e7fed1a5a486b67ae3b0680cb733fc802287289",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "644041d1fa96a5d3130a29e8978630d716d76e38",
+      "sha256": "31015505983dc57eec491ad4873411ba51f0f3beb24d22d509336c72511019cb",
+      "version": "4.1.82.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "d0ddfdcc62bf50e9332811ba28a9994367394cd3bb742f70f53ed604e5730faf",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "b77dd5500e2e829d5b6dc0c7679784d6b1164020ef17fc3da07940df378295fd",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "1d61d85513feeb7cb99f128b5a3b51d9147261ca4a7bcf3956e87619791ebc5e",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "c3ee7a082d689a4d40d2770fcb00fca09847ca96a8d279844de72c5df050119d",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "e3f5f5bc70e5126198aa81488793d89259dd68ee5783d4785a5292d5af80394b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "fa16ec3c1d3e8e15df3aa80a2a4ff40c54cc8395acb6a99829621f12fd16f34b",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "21f97502bbc08c46bf49a2f186a70810e88052e65d88286f5fbeff4af04b6a06",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "86c506f29c6a9009f4324ac456664f1ad68547fdd64b5d96ffe0341ddd1900e3",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "e6a98333a7c04a4a168a2b899e7fed1a5a486b67ae3b0680cb733fc802287289",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36",
+      "sha256": "bd4771d19149cbc9c7464ed2d58035d79cdfed7adb59d38718b0d8e7a3dcc2de",
+      "version": "4.1.97.Final"
+    },
+    {
+      "literal_hits": [
+        {
+          "class_file": "io/netty/handler/ssl/SslContextBuilder.class",
+          "sha256": "09ce338859e37472b6c5f328f007a9d78422e3f109f7e6129a462a023cf94f63",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/SslContextBuilder"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/FingerprintTrustManagerFactory.class",
+          "sha256": "fce3cbaa50ca7478c997ad3d9381c5d52362f382aed30c322cb34a898b0cc4a1",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/InsecureTrustManagerFactory.class",
+          "sha256": "ef8995dba1398412ccfc3f75076bb6509d45ba55a5d30a6b07cf58889f913c92",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$1.class",
+          "sha256": "ed5334d7d04c848ea38bebe9493732767eb397a5ccc50ef2b7a1de60b8d60929",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$2.class",
+          "sha256": "c69cfb0d03baac651e745171c599a9f2557df3841f79509c90033c0ff9724976",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory$SimpleTrustManagerFactorySpi.class",
+          "sha256": "462844f610a2055662fbeb58291f74d9dc349b201a8d83e33d135f4a3a479085",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory",
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/SimpleTrustManagerFactory.class",
+          "sha256": "bdd49d9bacf464a03db35ef0bb7660039d0b76c1905e737b8d717c8e103a3e32",
+          "terms": [
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/TrustManagerFactoryWrapper.class",
+          "sha256": "326be49bfe86169dedc7e761996e41fbb38d3cd27304bd599c58aa6baf9f9c76",
+          "terms": [
+            "io/netty/handler/ssl/util/TrustManagerFactoryWrapper",
+            "io/netty/handler/ssl/util/SimpleTrustManagerFactory"
+          ]
+        },
+        {
+          "class_file": "io/netty/handler/ssl/util/X509TrustManagerWrapper.class",
+          "sha256": "6490e0f34b126de49fe05a7903d0dd31c73eaa8608c2411ed1ed6662ecb97c3a",
+          "terms": [
+            "io/netty/handler/ssl/util/X509TrustManagerWrapper"
+          ]
+        }
+      ],
+      "sha1": "7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b",
+      "sha256": "21d063409c12dbcec46d380c8856a0f7b6a5b68bb5f1d005eb065b4d64146cb3",
+      "version": "4.2.7.Final"
+    }
+  ],
+  "schema": 1,
+  "security_clearance": false
+}

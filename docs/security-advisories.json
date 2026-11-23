@@ -35,12 +35,20 @@
     "remaining_unfocused_high_occurrences": 82,
     "security_clearance": false
   },
-  "latest_focused_priority_register": {
+  "bzip2_high_focused_priority_register": {
     "path": "docs/dependency-evidence/issue45-netty-bzip2-high-2026-11-22/priority-register-v4.json",
     "sha256": "c7969cfd05f9672cc71fc34a90c550c2d350e858a6620ee2ea3f3a0ee9c1cd36",
     "advisory_ids": 23,
     "focused_occurrences": 130,
     "remaining_unfocused_high_occurrences": 69,
+    "security_clearance": false
+  },
+  "latest_focused_priority_register": {
+    "path": "docs/dependency-evidence/issue45-netty-trust-high-2026-11-23/priority-register-v5.json",
+    "sha256": "d787fd93bbea9fc6315729ca78d6b02661ccdcfa2595f1b7f3fad1dac507ea05",
+    "advisory_ids": 24,
+    "focused_occurrences": 142,
+    "remaining_unfocused_high_occurrences": 57,
     "security_clearance": false
   },
   "scope": "Version-level matches; static mod-source review, no game-wide exploitability proof or risk acceptance.",

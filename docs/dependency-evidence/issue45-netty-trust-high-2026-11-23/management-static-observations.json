@@ -1,0 +1,119 @@
+{
+  "observations": [
+    {
+      "class_file": "avq.class",
+      "class_sha256": "2ae20acf0a552241c47dbf8dbbc60116b0394aaecd18640548099db2f02b5d8c",
+      "client_sha1": "ce92fd8d1b2460c41ceda07ae7b3fe863a80d045",
+      "client_sha256": "40c0a32c46601f71f6a61dae9f126202ded5cc453cfb8da6e42ae73f2a3f5c1b",
+      "minecraft_version": "1.21.9",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "56aef0bfe49156d34cd7e6ed01166f4fec201c58087e324ec7c0ca25c32850a6",
+      "prior_disassembly_version": "1.21.10",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    },
+    {
+      "class_file": "avq.class",
+      "class_sha256": "2ae20acf0a552241c47dbf8dbbc60116b0394aaecd18640548099db2f02b5d8c",
+      "client_sha1": "d3bdf582a7fa723ce199f3665588dcfe6bf9aca8",
+      "client_sha256": "e65ca028bc58da12bf8413066c90ecd4d48c94fb351d9bbd22ecdff5c87f9482",
+      "minecraft_version": "1.21.10",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.10/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "56aef0bfe49156d34cd7e6ed01166f4fec201c58087e324ec7c0ca25c32850a6",
+      "prior_disassembly_version": "1.21.10",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    },
+    {
+      "class_file": "avy.class",
+      "class_sha256": "248cbf9c788f48b3096ae4cc160a4b680d3929ddb34f3baa1e202f7ba7491d7b",
+      "client_sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+      "client_sha256": "1473c9489ac50fda3c435049a76a70d61a10b8610db27f5ba9d8756b686cd3bd",
+      "minecraft_version": "1.21.11",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/1.21.11/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "ba981d883a1ef80dc5c6a64031a4670191320ab85a6131bd99893148e6d2f2d8",
+      "prior_disassembly_version": "1.21.11",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    },
+    {
+      "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+      "class_sha256": "81fd70815188dfc1bc7650b6de7fe4b0f3e09a3676a798923dd36ddd6841ed1c",
+      "client_sha1": "191771837687b766537a8c4607cb6fad79c533a1",
+      "client_sha256": "bc6194c61566b587f196090d730698f2191170f7580adb143e4ff839939d3840",
+      "minecraft_version": "26.1",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "90693e0f362b5f8c0d01ecab197bd31a213d72909d8c30887313d77e3a2e4987",
+      "prior_disassembly_version": "26.3",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    },
+    {
+      "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+      "class_sha256": "81fd70815188dfc1bc7650b6de7fe4b0f3e09a3676a798923dd36ddd6841ed1c",
+      "client_sha1": "377031a9e733ba8ab4d355959a8f6fb8eb707556",
+      "client_sha256": "8c109be6177f40d10d0afd820b06542f9609597874242b96e16c5b0dc9e1fef3",
+      "minecraft_version": "26.1.1",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "90693e0f362b5f8c0d01ecab197bd31a213d72909d8c30887313d77e3a2e4987",
+      "prior_disassembly_version": "26.3",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    },
+    {
+      "class_file": "net/minecraft/server/jsonrpc/security/JsonRpcSslContextProvider.class",
+      "class_sha256": "81fd70815188dfc1bc7650b6de7fe4b0f3e09a3676a798923dd36ddd6841ed1c",
+      "client_sha1": "4e618f09a0c649dde3fdf829df443ce0b8831e65",
+      "client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0",
+      "minecraft_version": "26.1.2",
+      "prior_disassembly_path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpaths-2026-11-22/26.3/JsonRpcSslContextProvider.javap.txt",
+      "prior_disassembly_sha256": "90693e0f362b5f8c0d01ecab197bd31a213d72909d8c30887313d77e3a2e4987",
+      "prior_disassembly_version": "26.3",
+      "selected_calls": [
+        "Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;",
+        "Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;",
+        "Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V",
+        "Method io/netty/handler/ssl/SslContextBuilder.forServer:(Ljavax/net/ssl/KeyManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.trustManager:(Ljavax/net/ssl/TrustManagerFactory;)Lio/netty/handler/ssl/SslContextBuilder;",
+        "Method io/netty/handler/ssl/SslContextBuilder.build:()Lio/netty/handler/ssl/SslContext;"
+      ]
+    }
+  ],
+  "prior_bytecode_index": {
+    "path": "docs/dependency-evidence/critical-reachability-2026-11-21/netty-callpath-bytecode-index-2026-11-22.json",
+    "sha256": "1bce553e20bf51590387228967eccb4660bbd92158dd5d074a7ed29f0afd42a2"
+  },
+  "schema": 1,
+  "scope": "Static class references and disassembly; no runtime pipeline was observed.",
+  "security_clearance": false
+}
