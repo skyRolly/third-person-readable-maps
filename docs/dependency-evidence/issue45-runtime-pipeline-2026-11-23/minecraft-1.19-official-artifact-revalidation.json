@@ -1,0 +1,66 @@
+{
+  "classification": {
+    "historical_audit_scope": "confirmed_outside_exact_12_occurrence_index; do_not_merge_counts",
+    "input_pipeline_reachability": "unresolved_without_live_pipeline_observation",
+    "official_artifact_dependency_divergence": "confirmed_at_official_client_manifest_and_server_bundle_level",
+    "server_process_runtime_selection": "unresolved_without_a_launched_official_server_process"
+  },
+  "client_netty_codec": {
+    "coordinate": "io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar",
+    "observed": {
+      "sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+      "sha256": "84e4e01dd5b345311e971289b5bc08c0dfd6054a28d16853f0416943c9a3e458",
+      "size_bytes": 337017
+    },
+    "official_manifest_sha1": "4efc5f59335301d6ba0d7cd31dd10651119b03c8",
+    "official_manifest_size": 337017,
+    "package_version": "4.1.77.Final",
+    "url": "https://libraries.minecraft.net/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"
+  },
+  "limitations": [
+    "No Minecraft process was launched.",
+    "The official bundled library is not proof that the launched JVM selected it.",
+    "No running class loader or channel pipeline was observed."
+  ],
+  "observed_at_utc": "2026-11-23T13:23:12.194940+00:00",
+  "official_version_index": {
+    "sha256": "ce1ef05314b872054c1d9b5abb7c9b9fabbfbe5893e0aa89fadcb3d676506e9e",
+    "url": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
+  },
+  "schema": "issue45-mc119-artifact-revalidation/v1",
+  "scope": "targeted_official_artifact_revalidation_only_no_class_scan_or_process_launch",
+  "server_bundle": {
+    "observed": {
+      "sha1": "e00c4052dac1d59a1188b2aa9d5a87113aaf1122",
+      "sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+      "size_bytes": 45538778
+    },
+    "retained_server_sha1": "e00c4052dac1d59a1188b2aa9d5a87113aaf1122",
+    "retained_server_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+    "url": "https://piston-data.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar"
+  },
+  "server_nested_netty_codec": {
+    "observed": {
+      "sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+      "sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc",
+      "size_bytes": 337018
+    },
+    "package_version": "4.1.76.Final",
+    "path": "META-INF/libraries/io/netty/netty-codec/4.1.76.Final/netty-codec-4.1.76.Final.jar",
+    "retained_sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+    "retained_sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc"
+  },
+  "version_manifest": {
+    "exact_byte_match": true,
+    "minecraft_version": "1.19",
+    "official_bytes": {
+      "sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+      "sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "size_bytes": 34562
+    },
+    "official_index_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+    "retained_source_bound_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+    "retained_source_bound_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+    "url": "https://piston-meta.mojang.com/v1/packages/a78840abb2308ea20e02f1092dffc410b771379c/1.19.json"
+  }
+}

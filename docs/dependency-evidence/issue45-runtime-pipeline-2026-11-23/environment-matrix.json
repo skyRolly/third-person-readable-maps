@@ -1,0 +1,117 @@
+{
+  "captured_observations": [],
+  "environments": [
+    {
+      "distribution": "client",
+      "environment_id": "minecraft-1.19-client",
+      "expected_netty_codec": "4.1.77.Final",
+      "fabric_loader_expected": null,
+      "launcher": "official",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+      "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "minecraft_version": "1.19",
+      "not_executed_reason": "No official Minecraft launcher/game installation or authenticated client session is available in this workspace.",
+      "status": "not_executed"
+    },
+    {
+      "distribution": "server",
+      "environment_id": "minecraft-1.19-dedicated-server",
+      "expected_bundled_netty_codec": "4.1.76.Final",
+      "expected_bundled_netty_module": "netty-codec",
+      "fabric_loader_expected": null,
+      "launcher": "official-server-bundle",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+      "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+      "minecraft_version": "1.19",
+      "not_executed_reason": "No launched server runtime is present. The owner's EULA decision is not supplied, and no process was started; pinned bundle bytes remain artifact-level evidence only.",
+      "server_bundle_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+      "server_bundle_source": {
+        "manifest_sha1": "a78840abb2308ea20e02f1092dffc410b771379c",
+        "nested_netty_artifact": {
+          "coordinate": "io.netty:netty-codec:4.1.76.Final",
+          "path": "META-INF/libraries/io/netty/netty-codec/4.1.76.Final/netty-codec-4.1.76.Final.jar",
+          "sha1": "042b95ef41b928284842acf36a22547ba8a09fe5",
+          "sha256": "8b50a48b7860056d393aa335818c04c4b3784bd560e669c25a75feefe9e346dc",
+          "size_bytes": 337018
+        },
+        "server_bundle_sha1": "e00c4052dac1d59a1188b2aa9d5a87113aaf1122",
+        "server_bundle_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+        "server_bundle_size_bytes": 45538778,
+        "source_scan_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json",
+        "source_scan_sha256": "54ec69848fb933583bf72774be7c1c5af63a0072be1a34d8c7f4336dbed3fae6"
+      },
+      "status": "not_executed"
+    },
+    {
+      "distribution": "client",
+      "environment_id": "minecraft-1.21.11-fabric-client",
+      "expected_netty_codec": "4.2.7.Final",
+      "fabric_loader_expected": "0.20.1",
+      "launcher": "official",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.11.json",
+      "manifest_sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad",
+      "minecraft_version": "1.21.11",
+      "not_executed_reason": "No Fabric/Minecraft installation, authenticated client session, or launched game process is available in this workspace.",
+      "status": "not_executed"
+    },
+    {
+      "distribution": "client",
+      "environment_id": "minecraft-26.1.2-client",
+      "expected_netty_codec": "4.2.7.Final",
+      "fabric_loader_expected": null,
+      "launcher": "official",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+      "manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+      "minecraft_version": "26.1.2",
+      "not_executed_reason": "No official Minecraft launcher/game installation or authenticated client session is available in this workspace.",
+      "status": "not_executed"
+    },
+    {
+      "distribution": "server",
+      "environment_id": "minecraft-26.1.2-dedicated-server",
+      "expected_bundled_netty_codec": "4.2.7.Final",
+      "expected_bundled_netty_module": "netty-codec-compression",
+      "fabric_loader_expected": null,
+      "launcher": "official-server-bundle",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+      "manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+      "minecraft_version": "26.1.2",
+      "not_executed_reason": "No launched server runtime is present. The owner's EULA decision is not supplied, and no process was started; pinned bundle bytes remain artifact-level evidence only.",
+      "server_bundle_sha256": "cd47e7c38328f64768fd17af8fcd8b22496b40b63d4ffee81e71ae059fedcb42",
+      "server_bundle_source": {
+        "manifest_sha1": "80bb32e704c07fb2c44066a2c1774cb460d7e22b",
+        "nested_netty_artifact": {
+          "coordinate": "io.netty:netty-codec-compression:4.2.7.Final",
+          "path": "META-INF/libraries/io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+          "sha1": "572341bc1ca90fd9d6e47f1d2694aab5258566e9",
+          "sha256": "edd53ad34991804301a46571113d8ffb4d6f67e6d874674dafbb915724275cb3",
+          "size_bytes": 182886
+        },
+        "server_bundle_sha1": "97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51",
+        "server_bundle_sha256": "cd47e7c38328f64768fd17af8fcd8b22496b40b63d4ffee81e71ae059fedcb42",
+        "server_bundle_size_bytes": 60417480,
+        "source_scan_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json",
+        "source_scan_sha256": "54ec69848fb933583bf72774be7c1c5af63a0072be1a34d8c7f4336dbed3fae6"
+      },
+      "status": "not_executed"
+    },
+    {
+      "distribution": "client",
+      "environment_id": "minecraft-26.2-client",
+      "expected_netty_codec": "4.2.15.Final",
+      "fabric_loader_expected": null,
+      "launcher": "official",
+      "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.2.json",
+      "manifest_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+      "minecraft_version": "26.2",
+      "not_executed_reason": "No official Minecraft launcher/game installation or authenticated client session is available in this workspace.",
+      "status": "not_executed"
+    }
+  ],
+  "schema": "issue45-runtime-environment-matrix/v1",
+  "status_semantics": {
+    "captured": "A complete exact-process observation passed source-bound validation.",
+    "not_executed": "No process launch was attempted; no runtime observation exists.",
+    "not_passed": "An attempted run did not meet runtime evidence requirements."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "main_sha_at_start": "8650a8a1195e04b865c8c977361ba99ae54b2dbc",
+  "retained_files": {
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json": "54ec69848fb933583bf72774be7c1c5af63a0072be1a34d8c7f4336dbed3fae6",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/priority-register-v6.json": "f4e024727fea2fd9afebf19892e5a3982fc7868c1ca294f6e16396a106871798",
+    "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/source-bound-review.json": "1a5c7795f1f8f42f99e5ed08389a46c03ca65c5da26536bbf7e916fadf44f4fe",
+    "docs/worklogs/issue-45-netty-lz4-high-2026-11-23.md": "6fa588d9f842f0bce1b6cd7e0c084d37d44fc2c29b136ec1f120b0111a1bc3db"
+  },
+  "retained_security_inventory": {
+    "critical": 22,
+    "focused_advisory_ids": 25,
+    "focused_critical_high_occurrences": 154,
+    "high": 177,
+    "low": 17,
+    "moderate": 274,
+    "scan_characterization": "historical_source_bound_audit_inventory_not_a_new_live_scan",
+    "total": 490,
+    "unfocused_high_advisory_ids": 12,
+    "unfocused_high_occurrences": 45
+  },
+  "schema": "issue45-runtime-evidence-baseline/v1"
+}

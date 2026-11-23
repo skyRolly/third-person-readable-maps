@@ -1,0 +1,23 @@
+{
+  "schema": "issue45-runtime-upstream-netty-candidate-lock/v1",
+  "source": "Maven Central immutable artifact paths; SHA-256 recorded at dependency retrieval",
+  "profiles": {
+    "netty-4.1.137.Final": [
+      {"module":"netty-common","size":740314,"sha256":"d31926b01adcc07af86f5e27b81b6d6c115df17d366e835d1fc3f5a1924e7e52"},
+      {"module":"netty-buffer","size":365383,"sha256":"f474b14c7734f15e0540394cb6f39d67777b7581a42919e4ac89d253d4efd929"},
+      {"module":"netty-codec","size":360116,"sha256":"9987b6a660b0a6b1f0d791485dae33180b3d1c63687c006fe6d3fd025e9e3798"},
+      {"module":"netty-handler","size":588804,"sha256":"d0e4c6ee4779f59f6ab2fb5d388e4f57147c82270164b37945764bb9bda96a44"},
+      {"module":"netty-resolver","size":37907,"sha256":"b4cf2aeedd9fc7c8c439bbfe574f63cfe5b83392e88bbc07ca0e8424b7cff955"},
+      {"module":"netty-transport","size":521982,"sha256":"6251adc2a2921572382732a2db188d4f4f2251fd6ebb49c5d44bbf33d6bfb1a7"}
+    ],
+    "netty-4.2.17.Final": [
+      {"module":"netty-common","size":820948,"sha256":"502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a"},
+      {"module":"netty-buffer","size":378264,"sha256":"0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7"},
+      {"module":"netty-codec-base","size":155357,"sha256":"3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352"},
+      {"module":"netty-codec-compression","size":237078,"sha256":"425b287a1f36986a5c8edd76379a49decdf99d284f3454f3fa607a073bfb2c18"},
+      {"module":"netty-handler","size":588756,"sha256":"4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126"},
+      {"module":"netty-resolver","size":32977,"sha256":"7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623"},
+      {"module":"netty-transport","size":549857,"sha256":"d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc"}
+    ]
+  }
+}
