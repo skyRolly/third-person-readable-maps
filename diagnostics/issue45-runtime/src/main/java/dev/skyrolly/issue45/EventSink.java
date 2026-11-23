@@ -3,7 +3,6 @@ package dev.skyrolly.issue45;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
@@ -92,6 +91,21 @@ public final class EventSink {
         }, "issue45-runtime-finalizer"));
     }
 
+    private static String trustedWindowsIcacls() throws IOException {
+        // Java process working directories and PATH can be supplied by a game launcher.
+        // Do not let an untrusted game directory choose our privileged ACL helper.
+        String systemRoot = System.getenv("SystemRoot");
+        if (systemRoot == null || systemRoot.isEmpty()) {
+            throw new IOException("Windows SystemRoot is not configured");
+        }
+        File root = new File(systemRoot);
+        Path executable = root.toPath().resolve("System32").resolve("icacls.exe").normalize();
+        if (!root.isAbsolute() || !Files.isRegularFile(executable) || Files.isSymbolicLink(executable)) {
+            throw new IOException("trusted Windows system ACL helper is unavailable");
+        }
+        return executable.toString();
+    }
+
     private static BufferedWriter openPrivateOutput(Path target) throws Exception {
         // CREATE_NEW prevents replacement of existing evidence or a symlink target.
         Set<OpenOption> options = new HashSet<OpenOption>();
@@ -115,14 +129,16 @@ public final class EventSink {
             // explicit acl:acl creation attribute is supplied. No capture bytes
             // may be written until inheritance is disabled and the DACL checked.
             try {
-                Process protect = new ProcessBuilder("icacls.exe", target.toString(), "/inheritance:r")
-                        .redirectErrorStream(true).start();
-                try (InputStream stream = protect.getInputStream()) {
-                    byte[] buffer = new byte[2048];
-                    while (stream.read(buffer) != -1) { /* discard tool output */ }
-                }
-                if (!protect.waitFor(15, TimeUnit.SECONDS) || protect.exitValue() != 0) {
+                Process protect = new ProcessBuilder(trustedWindowsIcacls(), target.toString(), "/inheritance:r")
+                        .redirectOutput(ProcessBuilder.Redirect.DISCARD)
+                        .redirectError(ProcessBuilder.Redirect.DISCARD).start();
+                // Wait for the *entire* helper operation within the timeout. Never
+                // block on an inherited output pipe before starting the clock.
+                if (!protect.waitFor(15, TimeUnit.SECONDS)) {
                     protect.destroyForcibly();
+                    throw new IOException("Windows capture ACL helper timed out");
+                }
+                if (protect.exitValue() != 0) {
                     throw new IOException("could not disable inherited Windows capture ACL entries");
                 }
                 AclFileAttributeView view = Files.getFileAttributeView(target, AclFileAttributeView.class);
