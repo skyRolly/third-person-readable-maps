@@ -13,6 +13,7 @@ import stat
 import subprocess
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -62,6 +63,13 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
                 lz4_helper: Path, source_sha: str) -> dict:
     wanted = set(profile["modules"])
     profile_root = work / profile["profileId"]
+    profile_root.mkdir(parents=True, exist_ok=True)
+    if os.name == "nt":
+        # Give Users an inheritable read grant on a disposable parent to prove
+        # captures do not inherit it. Never use a real game/evidence folder.
+        subprocess.run(["icacls.exe", str(profile_root), "/grant",
+                        "*S-1-5-32-545:(OI)(CI)R"], check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     dependency_root = profile_root / "dependencies"
     artifacts: list[Path] = []
     records = []
@@ -132,7 +140,13 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         "output=" + report.as_posix(), "minecraftVersion=" + profile["minecraftVersion"],
         "distribution=synthetic", "launcher=local-control", "sourceSha=" + source_sha, "",
     ]), encoding="utf-8")
-    run_cp = os.pathsep.join([str(test_classes)] + [str(path) for path in artifacts])
+    # The initializer itself produces pipeline callbacks. Package every compiled
+    # control class as a hash-verifiable JAR, not an unhashed classes directory.
+    control_jar = profile_root / "issue45-synthetic-control.jar"
+    with zipfile.ZipFile(control_jar, "x", compression=zipfile.ZIP_STORED) as archive:
+        for class_file in sorted(test_classes.rglob("*.class")):
+            archive.write(class_file, class_file.relative_to(test_classes).as_posix())
+    run_cp = os.pathsep.join([str(control_jar)] + [str(path) for path in artifacts])
     command = ["java", "-DaccessToken=synthetic-secret-must-not-appear",
                "-Dsession:synthetic-secret-must-not-appear",
                "-Dserver=play.example.invalid:25565",
@@ -151,6 +165,12 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("diagnostic JSONL must use LF on every platform")
     if os.name == "posix" and stat.S_IMODE(report.stat().st_mode) & 0o077:
         raise SystemExit("diagnostic JSONL is accessible to non-owner users")
+    if os.name == "nt":
+        acl = subprocess.run(["icacls.exe", str(report)], check=True,
+                             capture_output=True, text=True)
+        if ("(I)" in acl.stdout or "BUILTIN\\Users" in acl.stdout
+                or "S-1-5-32-545" in acl.stdout):
+            raise SystemExit("diagnostic JSONL inherited a non-owner Windows read grant")
     raw = raw_bytes.decode("utf-8")
     private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
                       "play.example.invalid", "25565", "synthetic-player-identifier", "-DapiKey")
