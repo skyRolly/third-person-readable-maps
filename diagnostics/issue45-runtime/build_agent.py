@@ -56,7 +56,7 @@ def main() -> int:
     dependency = lock["byteBuddy"]
     cache = args.cache_dir.expanduser().resolve()
     cache.mkdir(parents=True, exist_ok=True)
-    byte_buddy = cache / "byte-buddy-1.14.18.jar"
+    byte_buddy = cache / dependency["url"].rsplit("/", 1)[-1]
     download_pinned(dependency, byte_buddy)
     if digest(byte_buddy) != dependency["sha256"]:
         raise SystemExit("Byte Buddy SHA-256 does not match dependencies.lock.json")
