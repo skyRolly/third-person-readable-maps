@@ -4,6 +4,8 @@ import copy
 import hashlib
 import importlib.util
 import json
+import shutil
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -16,6 +18,11 @@ CORRECTED = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23
 SPEC = importlib.util.spec_from_file_location("issue45_netty_focus", SCRIPT)
 FOCUS = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(FOCUS)
+VALIDATOR_SPEC = importlib.util.spec_from_file_location(
+    "issue45_runtime_validator_for_focus",
+    ROOT / "diagnostics/issue45-runtime/validate_runtime_evidence.py")
+VALIDATOR = importlib.util.module_from_spec(VALIDATOR_SPEC)
+VALIDATOR_SPEC.loader.exec_module(VALIDATOR)
 
 
 class NettyFocusErratumTests(unittest.TestCase):
@@ -89,6 +96,25 @@ class NettyFocusErratumTests(unittest.TestCase):
                 mutated[field][subfield] = "0" * 64
                 errors = FOCUS.validate_compatibility_erratum(mutated, self.register)
                 self.assertTrue(any("report" in e or "register" in e for e in errors), errors)
+
+    def test_full_archive_fails_closed_on_tampered_or_missing_v2(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-focus-archive-") as tmp:
+            copied = Path(tmp) / "archive"
+            shutil.copytree(evidence, copied)
+            errors, result = VALIDATOR.validate_evidence(copied, ROOT)
+            self.assertEqual([], errors)
+            self.assertEqual(0, result["captured_runtime_environment_count"])
+            v2_path = copied / "remediation-compatibility-v2.json"
+            amended = json.loads(v2_path.read_text(encoding="utf-8"))
+            amended["focused_netty_advisory_count"] = 15
+            v2_path.write_text(json.dumps(amended), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(copied, ROOT)
+            self.assertTrue(any("corrected Netty compatibility" in e for e in errors), errors)
+            v2_path.unlink()
+            errors, _ = VALIDATOR.validate_evidence(copied, ROOT)
+            self.assertTrue(any("corrected Netty compatibility record missing" in e
+                                for e in errors), errors)
 
     def test_incorrect_environment_boundary_claim_is_rejected(self):
         mutated = copy.deepcopy(self.report)
