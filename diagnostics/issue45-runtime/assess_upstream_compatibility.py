@@ -88,11 +88,11 @@ def validate_compatibility_erratum(report: dict, register: dict) -> list[str]:
         if report.get(key) != value:
             errors.append("Netty compatibility focus or fixed-boundary mismatch: " + key)
     if report.get("source_register") != {
-            "path": str(REGISTER.relative_to(ROOT)), "sha256": digest(REGISTER)}:
+            "path": REGISTER.relative_to(ROOT).as_posix(), "sha256": digest(REGISTER)}:
         errors.append("corrected Netty report is not bound to the retained source register")
     historic = OUT / "remediation-compatibility.json"
     if report.get("historical_v1_report") != {
-            "path": str(historic.relative_to(ROOT)), "sha256": digest(historic),
+            "path": historic.relative_to(ROOT).as_posix(), "sha256": digest(historic),
             "status": "preserved_with_classification_erratum"}:
         errors.append("Netty v1 historical report is missing or has changed")
     for row in report.get("environments", []):
@@ -204,9 +204,9 @@ def main() -> int:
         "schema": "issue45-netty-remediation-compatibility/v2",
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
         "historical_v1_report": {
-            "path": str(historical.relative_to(ROOT)), "sha256": digest(historical),
+            "path": historical.relative_to(ROOT).as_posix(), "sha256": digest(historical),
             "status": "preserved_with_classification_erratum"},
-        "source_register": {"path": str(REGISTER.relative_to(ROOT)), "sha256": digest(REGISTER)},
+        "source_register": {"path": REGISTER.relative_to(ROOT).as_posix(), "sha256": digest(REGISTER)},
         "scope": "source-bound classification erratum; fixed boundaries do not prove focused investigation or runtime compatibility",
         "indexed_netty_advisory_count": len(boundaries),
         "indexed_netty_advisories": boundaries,
