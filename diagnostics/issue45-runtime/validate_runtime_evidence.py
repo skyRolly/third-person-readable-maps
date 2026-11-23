@@ -15,6 +15,52 @@ HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SCHEMA = "issue45-runtime-observation/v1"
 
+# This source-controlled matrix is intentionally independent of any mutable
+# operator archive. Changes require a reviewed source update, not just a
+# rewritten archive matrix and matching derived v2 flags.
+TRUSTED_ENVIRONMENTS = {
+    "minecraft-1.19-client": {
+        "minecraft_version": "1.19", "distribution": "client",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+        "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+        "expected_netty_codec": "4.1.77.Final",
+    },
+    "minecraft-1.19-dedicated-server": {
+        "minecraft_version": "1.19", "distribution": "server",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.19.json",
+        "manifest_sha256": "964a4002c27e149d5bace7a4996b0e346b86ac916c8b856052ff7db2bb3798ac",
+        "expected_bundled_netty_codec": "4.1.76.Final",
+        "expected_bundled_netty_module": "netty-codec",
+        "server_bundle_sha256": "deefd056f0cf89c3d7fd48d03f56a8a73943586e8c061fdabd0fd92d32ced2b2",
+    },
+    "minecraft-1.21.11-fabric-client": {
+        "minecraft_version": "1.21.11", "distribution": "client",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/1.21.11.json",
+        "manifest_sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad",
+        "expected_netty_codec": "4.2.7.Final",
+    },
+    "minecraft-26.1.2-client": {
+        "minecraft_version": "26.1.2", "distribution": "client",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+        "manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+        "expected_netty_codec": "4.2.7.Final",
+    },
+    "minecraft-26.1.2-dedicated-server": {
+        "minecraft_version": "26.1.2", "distribution": "server",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.1.2.json",
+        "manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+        "expected_bundled_netty_codec": "4.2.7.Final",
+        "expected_bundled_netty_module": "netty-codec-compression",
+        "server_bundle_sha256": "cd47e7c38328f64768fd17af8fcd8b22496b40b63d4ffee81e71ae059fedcb42",
+    },
+    "minecraft-26.2-client": {
+        "minecraft_version": "26.2", "distribution": "client",
+        "manifest_path": "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/26.2.json",
+        "manifest_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+        "expected_netty_codec": "4.2.15.Final",
+    },
+}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -31,6 +77,17 @@ def load_json(path: Path):
 def validate_environment_artifact_pin(environment: dict, source_root: Path,
                                      retained_files: dict) -> tuple[list[str], dict | None]:
     errors: list[str] = []
+    identity = environment.get("environment_id")
+    if not isinstance(identity, str) or not identity.strip():
+        return ["source-bound Netty artifact pin lacks a valid environment ID"], None
+    trusted = TRUSTED_ENVIRONMENTS.get(identity)
+    if trusted is None:
+        return ["source-bound Netty artifact pin has unknown environment ID: " + identity], None
+    for field, expected in trusted.items():
+        if environment.get(field) != expected:
+            errors.append("source-controlled environment pin mismatch: " + identity + ":" + field)
+    if errors:
+        return errors, None
     version = environment.get("expected_netty_codec") or environment.get("expected_bundled_netty_codec")
     module = environment.get("expected_bundled_netty_module")
     if not module:
@@ -75,6 +132,10 @@ def validate_environment_artifact_pin(environment: dict, source_root: Path,
         return ["client Netty source manifest is missing or has a digest mismatch"], None
     try:
         manifest = load_json(manifest_path)
+        if manifest.get("id") != trusted["minecraft_version"]:
+            errors.append("official Minecraft manifest id differs from source-controlled environment: " + identity)
+        if sha256(manifest_path) != trusted["manifest_sha256"]:
+            errors.append("official Minecraft manifest digest differs from source-controlled environment: " + identity)
         coordinate = "io.netty:" + module + ":" + str(version)
         library = next(item for item in manifest.get("libraries", []) if item.get("name") == coordinate)
         artifact = library["downloads"]["artifact"]
@@ -514,9 +575,22 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
         errors.append("historical security inventory total changed")
 
     envs = matrix.get("environments", [])
+    if not isinstance(envs, list) or not envs or any(not isinstance(row, dict) for row in envs):
+        errors.append("environment matrix is empty or contains malformed rows")
+        return errors, {"expected_environment_count": len(envs) if isinstance(envs, list) else 0,
+                        "captured_runtime_environment_count": 0, "not_executed_environment_count": 0,
+                        "captured_environments": [], "runtime_acceptance": "not_established",
+                        "synthetic_controls_are_game_evidence": False}
     ids = [row.get("environment_id") for row in envs]
-    if len(ids) != len(set(ids)) or not ids:
-        errors.append("environment matrix is empty or contains duplicate identities")
+    if (any(not isinstance(identity, str) or not identity.strip() for identity in ids)
+            or len(ids) != len(set(identity for identity in ids if isinstance(identity, str)))
+            or set(ids) != set(TRUSTED_ENVIRONMENTS)):
+        errors.append("environment matrix has missing, invalid, duplicated or unexpected identities")
+        return errors, {"expected_environment_count": len(envs),
+                        "captured_runtime_environment_count": 0,
+                        "not_executed_environment_count": sum(row.get("status") == "not_executed" for row in envs),
+                        "captured_environments": [], "runtime_acceptance": "not_established",
+                        "synthetic_controls_are_game_evidence": False}
     run_ids: set[str] = set()
     verified_netty_pins: dict[str, str] = {}
     captured = []
@@ -531,11 +605,14 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
             row, source_root, baseline.get("retained_files", {}))
         errors.extend(f"{row.get('environment_id')}: {item}" for item in pin_errors)
         if not pin_errors and expected_artifact is not None:
+            identity = row.get("environment_id")
             coordinate = expected_artifact.get("coordinate", "")
-            if not isinstance(coordinate, str) or len(coordinate.split(":")) != 3:
+            if not isinstance(identity, str) or not identity.strip():
+                errors.append("source-bound Netty artifact pin lacks a valid environment ID")
+            elif not isinstance(coordinate, str) or len(coordinate.split(":")) != 3:
                 errors.append("source-bound Netty artifact pin has a malformed coordinate")
             else:
-                verified_netty_pins[row["environment_id"]] = coordinate.split(":")[-1]
+                verified_netty_pins[identity] = coordinate.split(":")[-1]
         manifest_path = row.get("manifest_path")
         if manifest_path:
             manifest_file = source_root / manifest_path
