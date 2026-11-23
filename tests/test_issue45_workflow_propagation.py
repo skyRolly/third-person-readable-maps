@@ -11,6 +11,8 @@ def check_steps(text):
     expected = {
         'Verify live audit evidence': 'python -m unittest discover -s tests -p "test_issue45_live_audits.py" -v',
         'Verify packaged-mod evidence': 'python -m unittest discover -s tests -p "test_issue45_mod_jar_inspection.py" -v',
+        'Verify High Netty Lz4FrameDecoder evidence': 'python -m unittest discover -s tests -p "test_issue45_netty_lz4_high.py" -v',
+        'Validate retained Netty Lz4FrameDecoder review': 'python scripts/inspect_issue45_netty_lz4_high.py',
     }
     for name, command in expected.items():
         match = re.findall(r'(?m)^      - name: ' + re.escape(name) + r'\n        run: ([^\n]+)$', text)
