@@ -32,7 +32,7 @@ permissions so only the test operator can read it. Do not put credentials,
 server addresses, or player data in it. Example:
 
 ```properties
-output=./issue45-runtime.jsonl
+output=./issue45-runtime-UNIQUE-RUN-ID.jsonl
 minecraftVersion=1.19
 distribution=client
 launcher=official
@@ -42,6 +42,12 @@ productJar=/path/to/the/exact/product.jar
 # fabricLoaderVersion=0.20.1
 # modsDirectory=/path/to/the/exact/mods
 ```
+
+Replace UNIQUE-RUN-ID with a freshly generated identifier for **every** launch.
+The agent uses exclusive creation and refuses to overwrite an existing capture.
+Use a private directory; never reuse a report filename. On Windows NTFS, inherited
+read grants are explicitly removed before capture bytes are written; failure to
+establish a private ACL aborts recording.
 
 Add this JVM argument in the launcher's Java arguments, substituting absolute
 paths:
@@ -77,6 +83,15 @@ claimed to be part of Minecraft's 1.19 runtime classpath. Run:
 
 ```sh
 python3 diagnostics/issue45-runtime/run_controls.py --work-dir build/issue45-controls
+```
+
+The harness packages its compiled control classes into a dedicated hash-verified
+JAR so that the initializer callbacks also have a verified code source. After
+each regeneration, validate the archive:
+
+```sh
+python3 diagnostics/issue45-runtime/validate_runtime_evidence.py \
+  --evidence-dir docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23
 ```
 
 The command verifies pinned synthetic-test dependency hashes, verifies the
@@ -116,6 +131,14 @@ channel to have a matching channel-active snapshot and assessment.
 The classpath is recorded with home-directory components redacted. Netty JARs
 on the launch classpath receive SHA-1/SHA-256 hashes; JARs that provide loaded
 Netty classes and pipeline handlers are hashed from their actual code sources.
+An interrupted attempt may be retained as `not_passed` with its original,
+unaltered JSONL SHA-256. Only a malformed *unterminated final* record may be
+excluded from failed-run event validation; the summary explicitly records
+`truncated_failed_capture_ids`. Malformed interior lines and all truncated
+`captured` runs remain invalid. Legacy completed v1 captures without a loader
+availability field require a separately verified classpath or loaded-code-source
+JAR matching the pinned game dependency; this is not evidence of loader availability.
+
 The evidence validator binds the LZ4 module to the exact official client
 manifest or dedicated-server bundle pin. The JVM argument list is sanitized; access
 tokens, account IDs, passwords, session values, cookies, authentication
