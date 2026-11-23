@@ -321,6 +321,86 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
             self.assertTrue(any("process_end" in error for error in errors), errors)
 
+
+    def test_failed_run_rejects_unknown_git_commit_but_exempts_synthetic(self):
+        start = copy.deepcopy(next(event for event in self.profiles[
+            "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+        start.update(minecraft_version="1.19", distribution="client", launcher="official",
+                     source_sha="f" * 40)
+        environment = {"minecraft_version": "1.19", "distribution": "client",
+                       "launcher": "official", "fabric_loader_expected": None}
+        errors = VALIDATOR.validate_incomplete_run_events([start], environment, ROOT)
+        self.assertTrue(any("source SHA is not an available Git commit" in error
+                            for error in errors), errors)
+        start["distribution"] = "synthetic"
+        environment["distribution"] = "synthetic"
+        errors = VALIDATOR.validate_incomplete_run_events([start], environment, ROOT)
+        self.assertFalse(any("source SHA is not an available Git commit" in error
+                             for error in errors), errors)
+
+    def test_failed_run_torn_final_record_is_preserved_not_promoted(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-torn-capture-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            matrix_path = archive / "environment-matrix.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            env = matrix["environments"][0]
+            env["status"] = "not_passed"
+            env["not_passed_reason"] = "Operator observed early process termination"
+            env.pop("not_executed_reason", None)
+            env["operator_exit_code"] = 1
+            env["operator_startup_outcome"] = "failed"
+            start = copy.deepcopy(next(event for event in self.profiles[
+                "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+            start.update(minecraft_version=env["minecraft_version"],
+                         distribution=env["distribution"], launcher=env["launcher"])
+            capture = archive / "captures" / "torn.jsonl"
+            capture.parent.mkdir(parents=True)
+            complete = (json.dumps(start, sort_keys=True) + "\n").encode("utf-8")
+            torn = b'{"event":"process_end","incomplete":'
+            capture.write_bytes(complete + torn)
+            env["observations_file"] = "captures/torn.jsonl"
+            env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, summary = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertEqual([], errors)
+            self.assertEqual([env["environment_id"]], summary["truncated_failed_capture_ids"])
+            self.assertEqual(0, summary["captured_runtime_environment_count"])
+            env["status"] = "captured"
+            env["operator_exit_code"] = 0
+            env["operator_startup_outcome"] = "started"
+            matrix["captured_observations"] = [env["environment_id"]]
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("valid JSON Lines" in error for error in errors), errors)
+            env["status"] = "not_passed"
+            matrix["captured_observations"] = []
+            capture.write_bytes(complete + b'{"broken":\n' + torn)
+            env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("valid JSON Lines" in error for error in errors), errors)
+            capture.write_bytes(complete + torn)
+            # A valid prefix cannot survive an incorrect digest of the raw bytes.
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("SHA-256 mismatch" in error for error in errors), errors)
+
+    def test_legacy_v1_capture_without_loader_list_requires_verified_pin(self):
+        pin = {"path": "io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar",
+               "sha1": "a" * 40, "sha256": "b" * 64, "size_bytes": 123}
+        source = {"artifact": "netty-codec-4.1.77.Final.jar", "sha1": "a" * 40,
+                  "sha256": "b" * 64, "size_bytes": 123, "hash_verified": True}
+        self.assertEqual([], VALIDATOR.validate_loader_availability_contract(
+            {"effective_classpath_sanitized": [source]}, {}, pin))
+        self.assertTrue(VALIDATOR.validate_loader_availability_contract(
+            {"effective_classpath_sanitized": []}, {}, pin))
+        self.assertTrue(VALIDATOR.validate_loader_availability_contract(
+            {"effective_classpath_sanitized": [source]}, {}, None))
+        self.assertEqual([], VALIDATOR.validate_loader_availability_contract(
+            {"effective_classpath_sanitized": []}, {"loader_netty_artifacts": []}, pin))
+        self.assertTrue(VALIDATOR.validate_loader_availability_contract(
+            {"effective_classpath_sanitized": [source]}, {"loader_netty_artifacts": "bad"}, pin))
+
     def test_failed_launch_rejects_mixed_process_ids(self):
         start = copy.deepcopy(next(event for event in self.profiles[
             "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
