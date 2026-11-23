@@ -585,7 +585,7 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
     if (any(not isinstance(identity, str) or not identity.strip() for identity in ids)
             or len(ids) != len(set(identity for identity in ids if isinstance(identity, str)))
             or set(ids) != set(TRUSTED_ENVIRONMENTS)):
-        errors.append("environment matrix has missing, invalid, duplicated or unexpected identities")
+        errors.append("environment matrix has missing, invalid or duplicate identities, or unexpected identities")
         return errors, {"expected_environment_count": len(envs),
                         "captured_runtime_environment_count": 0,
                         "not_executed_environment_count": sum(row.get("status") == "not_executed" for row in envs),
