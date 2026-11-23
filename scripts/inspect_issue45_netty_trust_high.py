@@ -481,6 +481,43 @@ def make_register(v4, review, review_raw):
     return current
 
 
+def validate_cli_arguments(args):
+    """Reject optional inputs that the selected CLI mode would ignore."""
+    cache_inputs = {
+        '--runtime-cache': args.runtime_cache,
+        '--manifest-cache': args.manifest_cache,
+        '--fabric-jar': args.fabric_jar,
+    }
+    supplied_cache_inputs = [name for name, value in cache_inputs.items() if value is not None]
+
+    if args.write_inputs:
+        require(args.runtime_cache and args.fabric_jar,
+                '--write-inputs requires --runtime-cache and --fabric-jar')
+        require(not args.manifest_cache and not args.javap,
+                '--write-inputs does not use --manifest-cache or --javap; remove those options')
+        require(not (args.write_review or args.verify_known_download or
+                     args.verify_management_download or args.verify_fixed_download),
+                'input generation and verification must run separately')
+        return
+
+    cache_mode = bool(supplied_cache_inputs)
+    if cache_mode:
+        missing = [name for name, value in (
+            ('--runtime-cache', args.runtime_cache),
+            ('--manifest-cache', args.manifest_cache),
+            ('--fabric-jar', args.fabric_jar),
+            ('--javap', args.javap),
+        ) if value is None]
+        require(not missing,
+                'cached reinspection requires --runtime-cache, --manifest-cache, --fabric-jar, '
+                '--javap; missing ' + ', '.join(missing))
+
+    if args.javap and not cache_mode and not args.verify_management_download:
+        raise ValueError('--javap is only used by cached reinspection or --verify-management-download')
+    if args.verify_management_download and not args.javap:
+        raise ValueError('--verify-management-download requires --javap')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime-cache', type=Path)
@@ -494,13 +531,12 @@ def main():
     parser.add_argument('--write-review', action='store_true')
     args = parser.parse_args()
     try:
-        require(not (args.write_inputs and (args.write_review or args.verify_known_download or
-                    args.verify_management_download or args.verify_fixed_download)),
-                'input generation and verification must run separately')
+        # Run this before source-bound evidence reads, artifact access, or any
+        # explicitly requested network verification.
+        validate_cli_arguments(args)
         ledger, v4, target, previous, catalog, versions, prior, mod, clients, index_ref, index = context()
         management = prior_management(index_ref, index, prior, versions)
         if args.write_inputs:
-            require(args.runtime_cache and args.fabric_jar, 'runtime cache and Fabric JAR are required')
             selected = ipfilter.selected_artifacts(prior, versions)
             with ThreadPoolExecutor(max_workers=4) as pool:
                 rows = list(pool.map(lambda item: scan_runtime_artifact(args.runtime_cache, item, versions), selected))
@@ -535,8 +571,6 @@ def main():
             verify_fixed_download(fixed_runtime_example(prior, target))
             print('Verified the 26.2 manifest and its upstream fixed-boundary handler artifact')
         if args.runtime_cache:
-            require(args.fabric_jar and args.javap and args.manifest_cache,
-                    'Fabric JAR, manifest cache and javap are required for cached reinspection')
             with ThreadPoolExecutor(max_workers=4) as pool:
                 rows = list(pool.map(lambda item: scan_runtime_artifact(args.runtime_cache, item, versions),
                                      ipfilter.selected_artifacts(prior, versions)))
