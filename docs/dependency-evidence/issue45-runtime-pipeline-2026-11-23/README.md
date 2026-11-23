@@ -160,13 +160,23 @@ change Minecraft-managed dependencies.
 
 ## Remediation and next target
 
-The source-bound priority register contains 15 focused Netty advisory IDs.
-Their highest fixed boundaries are 4.1.137.Final and 4.2.17.Final. The
-4.1.137/4.2.17 candidates pass only the isolated Java 21 pipeline controls.
+The source-bound priority register contains **15 Netty advisory IDs with
+upstream fixed-version boundaries**, of which **7 have focused investigation
+evidence** and **8 remain unfocused**. These are separate classifications.
+The independently recomputed highest fixed boundaries for both the indexed
+set and the focused subset happen to be 4.1.137.Final and 4.2.17.Final.
+The 4.1.137/4.2.17 candidates pass only isolated synthetic Netty controls;
+no Minecraft/Fabric runtime compatibility is established.
+
 Minecraft 26.2 selects 4.2.15.Final, which meets this LZ4 advisory's
-4.2.13.Final boundary but not the retained 4.2.17. Final ABI and loader
-compatibility for every supported game line remains unverified. See
-[`remediation-compatibility.json`](remediation-compatibility.json).
+4.2.13.Final boundary but not the indexed 4.2.17.Final maximum. Use the
+source-bound corrected [`remediation-compatibility-v2.json`](remediation-compatibility-v2.json)
+for current classification, versions and environment status. The original
+[`remediation-compatibility.json`](remediation-compatibility.json) is retained
+byte-for-byte as historical v1 evidence with incorrect "focused" terminology.
+The v2 validator binds its claim to the exact archived v1 bytes and to all
+source-verified Netty artifact versions in the environment matrix. Rebuilding
+the v2 report does not rewrite v1 or change vulnerability dispositions.
 
 The next focused investigation is GHSA-6jqx-86gh-f27w (CVE-2026-55831), four
 unfocused High occurrences in `netty-codec-http`. The retained register puts

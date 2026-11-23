@@ -518,6 +518,7 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
     if len(ids) != len(set(ids)) or not ids:
         errors.append("environment matrix is empty or contains duplicate identities")
     run_ids: set[str] = set()
+    verified_netty_pins: dict[str, str] = {}
     captured = []
     truncated_failed_captures = []
     missing_lf_failed_captures = []
@@ -529,6 +530,12 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
         pin_errors, expected_artifact = validate_environment_artifact_pin(
             row, source_root, baseline.get("retained_files", {}))
         errors.extend(f"{row.get('environment_id')}: {item}" for item in pin_errors)
+        if not pin_errors and expected_artifact is not None:
+            coordinate = expected_artifact.get("coordinate", "")
+            if not isinstance(coordinate, str) or len(coordinate.split(":")) != 3:
+                errors.append("source-bound Netty artifact pin has a malformed coordinate")
+            else:
+                verified_netty_pins[row["environment_id"]] = coordinate.split(":")[-1]
         manifest_path = row.get("manifest_path")
         if manifest_path:
             manifest_file = source_root / manifest_path
@@ -779,7 +786,10 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
         compat = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(compat)
         errors.extend("corrected Netty compatibility: " + item
-                      for item in compat.validate_compatibility_erratum(corrected, priority))
+                      for item in compat.validate_compatibility_erratum(
+                          corrected, priority, matrix=matrix,
+                          pinned_versions=verified_netty_pins,
+                          archive_v1_path=compatibility_path))
     except (OSError, KeyError, ValueError, json.JSONDecodeError) as error:
         errors.append("corrected Netty compatibility record missing or invalid: " + str(error))
 
