@@ -320,6 +320,7 @@ class TrustEvidenceTests(unittest.TestCase):
                                                         '--fabric-jar', str(fabric)],
                 'full cache set without javap': ['--runtime-cache', str(runtime),
                     '--manifest-cache', str(manifest), '--fabric-jar', str(fabric)],
+                'javap alone': ['--javap', str(javap)],
                 'unused cache input with download verification': ['--fabric-jar', str(fabric),
                                                                   '--verify-known-download'],
             }
@@ -334,8 +335,12 @@ class TrustEvidenceTests(unittest.TestCase):
                      patch('socket.socket.connect_ex', side_effect=AssertionError('unexpected network')), \
                      redirect_stdout(StringIO()) as output, redirect_stderr(StringIO()) as error:
                     self.assertEqual(trust.main(), 1)
-                    self.assertIn('Trust Manager investigation incomplete: cached reinspection requires',
-                                  error.getvalue())
+                    if label == 'javap alone':
+                        self.assertIn('--javap is only used by cached reinspection or --verify-management-download',
+                                      error.getvalue())
+                    else:
+                        self.assertIn('Trust Manager investigation incomplete: cached reinspection requires',
+                                      error.getvalue())
                     self.assertNotIn('Verified cached Trust Manager static observations offline', output.getvalue())
                     load_evidence.assert_not_called()
 
