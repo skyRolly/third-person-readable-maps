@@ -97,7 +97,7 @@ public final class EventSink {
         SeekableByteChannel channel;
         if (Files.getFileStore(target.getParent()).supportsFileAttributeView("posix")) {
             channel = Files.newByteChannel(target, options,
-                    PosixFilePermissions.asFileAttribute("rw-------"));
+                    PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-------")));
         } else if (Files.getFileStore(target.getParent()).supportsFileAttributeView("acl")) {
             UserPrincipal owner = Files.getOwner(target.getParent());
             AclEntry privateEntry = AclEntry.newBuilder().setType(AclEntryType.ALLOW)
@@ -642,10 +642,6 @@ public final class EventSink {
             if (type.getName().equals(main)) return true;
         }
         return false;
-    }
-
-    private static boolean sensitiveKey(String arg) {
-        return arg.matches("(?i).*(access[-_]?token|token|password|passwd|session|cookie|authorization|client[-_]?secret|secret|credential|user(?:name)?|uuid|xuid|server|host)([=:].*)?");
     }
 
     private static Map<String, Object> safeNetworkingProperties() {
