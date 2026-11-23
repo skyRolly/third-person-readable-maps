@@ -16,6 +16,7 @@ REGISTER = BASE / "priority-register-v6.json"
 # Independent source-code trust anchor: never derive this from the mutable v1
 # file or a regenerated v2 report.
 HISTORICAL_V1_SHA256 = "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09"
+HISTORICAL_V1_PATH = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json"
 
 
 def digest(path: Path) -> str:
@@ -112,7 +113,7 @@ def validate_compatibility_erratum(
     if report.get("minimum_versions_for_lz4_advisory_only") != lz4_min:
         errors.append("LZ4 fixed boundaries do not match the source register")
 
-    historical = OUT / "remediation-compatibility.json"
+    historical = HISTORICAL_V1_PATH
     physical_v1 = archive_v1_path if archive_v1_path is not None else historical
     expected_v1_sha = HISTORICAL_V1_SHA256
     if not historical.is_file() or digest(historical) != expected_v1_sha:
