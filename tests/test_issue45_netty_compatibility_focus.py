@@ -44,46 +44,68 @@ class NettyFocusErratumTests(unittest.TestCase):
         erratum_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_netty_compatibility_focus.py" -v')
 
+        def named_step_commands(source: str) -> dict[str, list[str]]:
+            """Inspect actual step fields, ignoring harmless YAML comments/spacing.
+
+            The workflow deliberately uses simple single-line name/run
+            scalars for these checks. A block-valued run pipe is not
+            equivalent to a native command and is rejected by the invariant.
+            """
+            result: dict[str, list[str]] = {}
+            current = None
+            for line in source.splitlines():
+                if line.startswith("      - name: "):
+                    current = line.split("- name: ", 1)[1].strip()
+                    result.setdefault(current, [])
+                elif current is not None and line.startswith("        run: "):
+                    result[current].append(line.split("run: ", 1)[1].strip())
+            return result
+
         def all_native_checks_isolated(source: str) -> bool:
-            # The *actual* same invariant is run on normal and mutated YAML.
-            # Each step has one native command, so a failed Python process
-            # fails that step on both PowerShell and POSIX shells.
-            names_and_commands = (
+            steps = named_step_commands(source)
+            expected = (
                 ("Validate regenerated Java {major} runtime archive", archive_cmd),
                 ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
                 ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
             )
-            return (
-                all(
-                    (f"      - name: {label.format(major=major)}\n"
-                     f"        run: {command}\n") in source
-                    for major in (21, 25)
-                    for label, command in names_and_commands
-                )
-                and all(source.count(f"        run: {command}") == 2
-                        for command in (archive_cmd, runtime_cmd, erratum_cmd))
-            )
+            return all(steps.get(label.format(major=major)) == [command]
+                       for major in (21, 25) for label, command in expected)
 
         self.assertTrue(all_native_checks_isolated(workflow))
-        # Construct a real regression: replace two *separate* Java 21 steps
-        # with one PowerShell multiline step whose successful final command
-        # could overwrite the earlier failure's native exit status.
-        separate = (
-            f"      - name: Validate regenerated Java 21 runtime archive\n"
+        # Benign YAML comments/blank lines are not changes to the step's native
+        # process exit-code propagation and must not break the test.
+        plain = (
+            "      - name: Validate regenerated Java 21 runtime archive\n"
             f"        run: {archive_cmd}\n"
-            f"      - name: Test Java 21 runtime evidence and privacy regressions\n"
+        )
+        commented = (
+            "      - name: Validate regenerated Java 21 runtime archive\n"
+            "        # This comment does not change any native process.\n"
+            "\n"
+            f"        run: {archive_cmd}\n"
+        )
+        self.assertIn(plain, workflow)
+        benign = workflow.replace(plain, commented, 1)
+        self.assertNotEqual(benign, workflow)
+        self.assertTrue(all_native_checks_isolated(benign))
+
+        # A real masked-failure mutant combines two previously independent
+        # Python invocations in one PowerShell multiline run step.
+        separate = (
+            "      - name: Validate regenerated Java 21 runtime archive\n"
+            f"        run: {archive_cmd}\n"
+            "      - name: Test Java 21 runtime evidence and privacy regressions\n"
             f"        run: {runtime_cmd}\n"
         )
         combined = (
-            f"      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: |\n"
+            "      - name: Validate regenerated Java 21 runtime archive\n"
+            "        run: |\n"
             f"          {archive_cmd}\n"
             f"          {runtime_cmd}\n"
         )
         self.assertIn(separate, workflow)
         mutant = workflow.replace(separate, combined, 1)
         self.assertNotEqual(workflow, mutant)
-        self.assertIn(f"        run: |\n          {archive_cmd}\n          {runtime_cmd}\n", mutant)
         self.assertFalse(all_native_checks_isolated(mutant))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
