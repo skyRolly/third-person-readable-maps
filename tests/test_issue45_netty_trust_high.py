@@ -290,11 +290,103 @@ class TrustEvidenceTests(unittest.TestCase):
         for flag, name in (('--verify-known-download', 'verify_known_downloads'),
                            ('--verify-management-download', 'verify_management_download'),
                            ('--verify-fixed-download', 'verify_fixed_download')):
-            with self.subTest(flag=flag), patch.object(sys, 'argv', ['trust', flag]), \
+            argv = ['trust', flag]
+            if flag == '--verify-management-download':
+                argv.extend(['--javap', 'synthetic-javap'])
+            with self.subTest(flag=flag), patch.object(sys, 'argv', argv), \
                  patch.object(trust, name, side_effect=ValueError('synthetic verification failure')), \
                  redirect_stdout(StringIO()), redirect_stderr(StringIO()) as error:
                 self.assertEqual(trust.main(), 1)
                 self.assertIn('synthetic verification failure', error.getvalue())
+
+    def test_cli_rejects_incomplete_or_unused_cache_inputs_before_evidence_loading(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            runtime, manifest = root / 'runtime-cache', root / 'manifest-cache'
+            runtime.mkdir()
+            manifest.mkdir()
+            fabric, javap = root / 'fabric.jar', root / 'javap'
+            fabric.write_bytes(b'valid-looking Fabric path')
+            javap.write_bytes(b'valid-looking javap path')
+            cases = {
+                'manifest alone': ['--manifest-cache', str(manifest)],
+                'fabric alone': ['--fabric-jar', str(fabric)],
+                'manifest and Fabric without runtime': ['--manifest-cache', str(manifest),
+                                                       '--fabric-jar', str(fabric)],
+                'runtime alone': ['--runtime-cache', str(runtime)],
+                'runtime and manifest without Fabric': ['--runtime-cache', str(runtime),
+                                                        '--manifest-cache', str(manifest)],
+                'runtime and Fabric without manifest': ['--runtime-cache', str(runtime),
+                                                        '--fabric-jar', str(fabric)],
+                'full cache set without javap': ['--runtime-cache', str(runtime),
+                    '--manifest-cache', str(manifest), '--fabric-jar', str(fabric)],
+                'javap alone': ['--javap', str(javap)],
+                'unused cache input with download verification': ['--fabric-jar', str(fabric),
+                                                                  '--verify-known-download'],
+            }
+            for label, options in cases.items():
+                with self.subTest(case=label), \
+                     patch.object(sys, 'argv', ['trust', *options]), \
+                     patch.object(trust, 'context', wraps=trust.context) as load_evidence, \
+                     patch.object(trust, 'build_opener', side_effect=AssertionError('unexpected network')), \
+                     patch.object(trust.ipfilter, 'download_mojang_library',
+                                  side_effect=AssertionError('unexpected network')), \
+                     patch('socket.socket.connect', side_effect=AssertionError('unexpected network')), \
+                     patch('socket.socket.connect_ex', side_effect=AssertionError('unexpected network')), \
+                     redirect_stdout(StringIO()) as output, redirect_stderr(StringIO()) as error:
+                    self.assertEqual(trust.main(), 1)
+                    if label == 'javap alone':
+                        self.assertIn('--javap is only used by cached reinspection or --verify-management-download',
+                                      error.getvalue())
+                    else:
+                        self.assertIn('Trust Manager investigation incomplete: cached reinspection requires',
+                                      error.getvalue())
+                    self.assertNotIn('Verified cached Trust Manager static observations offline', output.getvalue())
+                    load_evidence.assert_not_called()
+
+    def test_cli_regression_distinguishes_the_former_silent_acceptance(self):
+        # This simulates deleting the new early guard: the old branch condition
+        # ignores --manifest-cache and falls through to successful retained JSON.
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = Path(directory)
+            with patch.object(sys, 'argv', ['trust', '--manifest-cache', str(manifest)]), \
+                 patch.object(trust, 'validate_cli_arguments'), \
+                 patch.object(trust, 'build_opener', side_effect=AssertionError('unexpected network')), \
+                 redirect_stdout(StringIO()) as output, redirect_stderr(StringIO()) as error:
+                self.assertEqual(trust.main(), 0, error.getvalue())
+                self.assertIn('Validated 12 blocking Trust Manager occurrences', output.getvalue())
+                self.assertNotIn('Verified cached Trust Manager static observations offline', output.getvalue())
+
+    def test_generation_modes_reject_only_inputs_they_cannot_consume(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            runtime, manifest = root / 'runtime', root / 'manifest'
+            fabric, javap = root / 'fabric.jar', root / 'javap'
+            good = SimpleNamespace(runtime_cache=runtime, manifest_cache=None, fabric_jar=fabric,
+                javap=None, write_inputs=True, write_review=False, verify_known_download=False,
+                verify_management_download=False, verify_fixed_download=False)
+            trust.validate_cli_arguments(good)
+            good.manifest_cache = manifest
+            with self.assertRaisesRegex(ValueError, '--write-inputs does not use --manifest-cache or --javap'):
+                trust.validate_cli_arguments(good)
+            good.manifest_cache = None
+            good.javap = javap
+            with self.assertRaisesRegex(ValueError, '--write-inputs does not use --manifest-cache or --javap'):
+                trust.validate_cli_arguments(good)
+
+    def test_management_download_accepts_javap_without_cache_inputs(self):
+        with patch.object(sys, 'argv', ['trust', '--verify-management-download', '--javap', 'synthetic-javap']), \
+             patch.object(trust, 'verify_management_download') as management, \
+             redirect_stdout(StringIO()), redirect_stderr(StringIO()) as error:
+            self.assertEqual(trust.main(), 0, error.getvalue())
+            management.assert_called_once_with(self.clients, self.management, Path('synthetic-javap'))
+
+        with patch.object(sys, 'argv', ['trust', '--verify-management-download']), \
+             patch.object(trust, 'context') as load_evidence, \
+             redirect_stdout(StringIO()), redirect_stderr(StringIO()) as error:
+            self.assertEqual(trust.main(), 1)
+            self.assertIn('--verify-management-download requires --javap', error.getvalue())
+            load_evidence.assert_not_called()
 
     def test_untrusted_management_download_url_fails_before_network(self):
         clients = copy.deepcopy(self.clients)
@@ -333,7 +425,9 @@ class TrustEvidenceTests(unittest.TestCase):
                 self.assertEqual(management.call_count, 1)
                 self.assertEqual(management.call_args.args[0], b'synthetic client')
                 self.assertEqual(management.call_args.args[-1], Path('synthetic-javap'))
+                manifest.assert_called_once()
                 self.assertEqual(manifest.call_args.args[0], b'synthetic manifest')
+                handler.assert_called_once()
                 self.assertEqual(handler.call_args.args[0], b'synthetic handler')
             with patch.object(sys, 'argv', argv), \
                  patch.object(trust, 'scan_runtime_artifact', side_effect=ValueError('cached verification failed')), \
