@@ -71,13 +71,32 @@ def windows_system_icacls() -> str:
     return str(tool)
 
 
+def prepare_control_classes(classes: Path) -> None:
+    """Discard obsolete compiled class files before generating new controls."""
+    if classes.is_symlink():
+        raise SystemExit("control classes output must not be a symlink")
+    if classes.exists():
+        if not classes.is_dir():
+            raise SystemExit("control classes output is not a directory")
+        shutil.rmtree(classes)
+    classes.mkdir(parents=True, exist_ok=False)
+
+
 def package_control_classes(classes: Path, destination: Path) -> None:
     """Atomically refresh a deterministic control JAR on every harness invocation."""
     temporary = destination.with_name(destination.name + "." + uuid.uuid4().hex + ".part")
     try:
         with zipfile.ZipFile(temporary, "x", compression=zipfile.ZIP_STORED) as archive:
             for class_file in sorted(classes.rglob("*.class")):
-                archive.write(class_file, class_file.relative_to(classes).as_posix())
+                # ZipFile.write includes source filesystem timestamps. Pin
+                # archive metadata so identical compiled bytes yield identical
+                # JAR hashes on Linux, Windows and repeated runs.
+                name = class_file.relative_to(classes).as_posix()
+                entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                entry.compress_type = zipfile.ZIP_STORED
+                entry.create_system = 3
+                entry.external_attr = 0o100644 << 16
+                archive.writestr(entry, class_file.read_bytes())
         os.replace(temporary, destination)
     finally:
         temporary.unlink(missing_ok=True)
@@ -152,7 +171,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     artifacts.append(lz4_helper)
 
     test_classes = profile_root / "test-classes"
-    test_classes.mkdir(parents=True, exist_ok=True)
+    prepare_control_classes(test_classes)
     source = HERE / "src/test/java/dev/skyrolly/issue45/ControlMain.java"
     compile_cp = os.pathsep.join(str(path) for path in artifacts)
     subprocess.run(["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
