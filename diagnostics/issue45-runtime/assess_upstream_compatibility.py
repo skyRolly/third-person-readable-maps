@@ -13,6 +13,10 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23"
 OUT = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
 REGISTER = BASE / "priority-register-v6.json"
+# Independent source-code trust anchor: never derive this from the mutable v1
+# file or a regenerated v2 report.
+HISTORICAL_V1_SHA256 = "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09"
+HISTORICAL_V1_PATH = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json"
 
 
 def digest(path: Path) -> str:
@@ -109,9 +113,11 @@ def validate_compatibility_erratum(
     if report.get("minimum_versions_for_lz4_advisory_only") != lz4_min:
         errors.append("LZ4 fixed boundaries do not match the source register")
 
-    historical = OUT / "remediation-compatibility.json"
+    historical = HISTORICAL_V1_PATH
     physical_v1 = archive_v1_path if archive_v1_path is not None else historical
-    expected_v1_sha = digest(historical)
+    expected_v1_sha = HISTORICAL_V1_SHA256
+    if not historical.is_file() or digest(historical) != expected_v1_sha:
+        errors.append("source-controlled historical Netty v1 digest mismatch")
     if report.get("historical_v1_report") != {
             "path": historical.relative_to(ROOT).as_posix(), "sha256": expected_v1_sha,
             "status": "preserved_with_classification_erratum"}:
@@ -133,8 +139,14 @@ def validate_compatibility_erratum(
         return errors
     matrix_ids = [row.get("environment_id") for row in matrix_rows]
     report_ids = [row.get("environment_id") for row in report_rows]
-    if (len(matrix_ids) != len(set(matrix_ids)) or len(report_ids) != len(set(report_ids))
-            or set(matrix_ids) != set(report_ids)):
+    if (any(not isinstance(identity, str) or not identity.strip()
+            for identity in matrix_ids + report_ids)
+            or len(matrix_ids) != len(set(identity for identity in matrix_ids
+                                          if isinstance(identity, str)))
+            or len(report_ids) != len(set(identity for identity in report_ids
+                                          if isinstance(identity, str)))
+            or set(identity for identity in matrix_ids if isinstance(identity, str))
+            != set(identity for identity in report_ids if isinstance(identity, str))):
         errors.append("corrected Netty environment identities are missing, duplicated or unexpected")
         return errors
 
@@ -191,6 +203,27 @@ def validate_compatibility_erratum(
                 or row.get("no_dependency_override_performed") is not True
                 or row.get("outcome") != "minecraft-managed dependency blocker"):
             errors.append("corrected Netty environment overstates runtime or remediation: " + identity)
+    # The separately rendered server summaries are assertions too: a "live
+    # selection verified" claim must not bypass the checked environment rows.
+    for identity, summary_key, artifact_key in (
+            ("minecraft-1.19-dedicated-server", "minecraft_1_19_server_bundle", "netty_codec_artifact"),
+            ("minecraft-26.1.2-dedicated-server", "minecraft_26_1_2_server_bundle", "lz4_module_artifact")):
+        source = matrix_by_id.get(identity, {})
+        summary = report.get(summary_key)
+        pinned = pinned_versions.get(identity)
+        if not isinstance(summary, dict):
+            errors.append("Netty source-bound server summary is absent: " + identity)
+            continue
+        official_artifact = source.get("server_bundle_source", {}).get("nested_netty_artifact", {})
+        if (summary.get("live_selection_verified") is not False
+                or summary.get("module_family_consistent") is not True
+                or summary.get("server_bundle_sha256") != source.get("server_bundle_sha256")
+                or summary.get("netty_module_versions") != [pinned]
+                or not isinstance(summary.get(artifact_key), dict)
+                or any(summary[artifact_key].get(field) != official_artifact.get(field)
+                       for field in ("path", "sha1", "sha256", "size_bytes"))):
+            errors.append("Netty server bundle summary contradicts verified source and runtime rows: " + identity)
+
     return errors
 
 
@@ -277,8 +310,8 @@ def main() -> int:
         rows.append(row)
 
     historical = OUT / "remediation-compatibility.json"
-    if not historical.is_file():
-        raise SystemExit("immutable historical compatibility report is missing")
+    if not historical.is_file() or digest(historical) != HISTORICAL_V1_SHA256:
+        raise SystemExit("immutable historical compatibility report SHA-256 mismatch; refusing regeneration")
     data = {
         "schema": "issue45-netty-remediation-compatibility/v2",
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
