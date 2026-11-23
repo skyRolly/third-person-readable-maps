@@ -8,7 +8,7 @@ in `environment-matrix.json` are explicitly `not_executed`; no runtime pass
 or negative reachability conclusion is claimed.
 
 The diagnostic agent and pinned synthetic controls are under
-[`diagnostics/issue45-runtime`](../../../../diagnostics/issue45-runtime/README.md).
+[`diagnostics/issue45-runtime`](../../../diagnostics/issue45-runtime/README.md).
 The agent observes `AbstractChannel` construction, snapshots the pipeline at
 `DefaultChannelPipeline$HeadContext.channelActive`, and records handler
 add/remove callbacks. Synthetic records confirm those hooks execute on the
@@ -176,4 +176,4 @@ at 490 occurrences. See [`next-security-target.json`](next-security-target.json)
 
 The independent historical `GH_TOKEN` question remains an owner-level
 blocker. The account-history handoff is in
-[`issue-45-gh-token-owner-handoff-2026-11-23.md`](../../../worklogs/issue-45-gh-token-owner-handoff-2026-11-23.md).
+[`issue-45-gh-token-owner-handoff-2026-11-23.md`](../../worklogs/issue-45-gh-token-owner-handoff-2026-11-23.md).
