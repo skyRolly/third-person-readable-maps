@@ -158,21 +158,108 @@ class KnownHitsCacheCliTests(unittest.TestCase):
             invalid = root / 'not-a-directory'
             invalid.write_bytes(b'not a directory')
             self.assert_invalid(fixture, 'Netty cache is not a directory', cache=invalid)
-            self.assert_invalid(fixture, 'network cache paths are not allowed', cache='//server/share')
 
-    def test_windows_extended_local_path_is_distinct_from_unc_paths(self):
-        self.assertFalse(sni.is_network_cache_path(r'C:\cache'))
-        self.assertFalse(sni.is_network_cache_path(r'\\?\C:\cache'))
-        self.assertTrue(sni.is_network_cache_path(r'\\server\share\cache'))
-        self.assertTrue(sni.is_network_cache_path(r'\\?\UNC\server\share\cache'))
-        if os.name == 'nt':
-            with tempfile.TemporaryDirectory() as directory:
+    def test_cache_artifact_symlink_cannot_escape_its_root(self):
+        with tempfile.TemporaryDirectory() as directory, tempfile.TemporaryDirectory() as other:
+            fixture = self.fixture(Path(directory))
+            self.assert_valid(fixture)
+            jar = fixture['root'] / fixture['catalog'][0]['sha1']
+            outside = Path(other) / jar.name
+            outside.write_bytes(jar.read_bytes())
+            jar.unlink()
+            try:
+                jar.symlink_to(outside)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest('file symlinks unavailable: ' + str(exc))
+            self.assert_invalid(fixture, 'Netty cache artifact path escapes root')
+
+    @unittest.skipUnless(sys.platform.startswith('linux'), 'requires Linux double-slash path semantics')
+    def test_linux_double_slash_cli_reads_and_verifies_the_same_six_jars(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = self.fixture(Path(directory))
+            double = '/' + str(fixture['root'])
+            self.assertTrue(os.path.samefile(fixture['root'], double))
+            read_sets = []
+            for cache in (fixture['root'], double):
+                with patch.object(sni, 'verify_known_cached_library', wraps=sni.verify_known_cached_library) as known, \
+                     patch.object(sni, 'inspect_library', wraps=sni.inspect_library) as inspect_jar, \
+                     patch.object(sni.hashlib, 'sha1', wraps=hashlib.sha1) as sha1, \
+                     patch.object(sni, 'sha', wraps=sni.sha) as sha256:
+                    result, error, reads = self.invoke(fixture, cache=cache)
+                    self.assertEqual(result, 0, error)
+                    self.assertEqual((known.call_count, inspect_jar.call_count, sha1.call_count), (6, 6, 6))
+                    self.assertGreaterEqual(sha256.call_count, 42)
+                    read_sets.append(reads)
+            expected = [fixture['root'].resolve() / row['sha1'] for row in fixture['catalog']]
+            self.assertEqual(read_sets, [expected, expected])
+            # The previous slash conversion rejected these same valid bytes
+            # before opening any JAR; keep that defective behavior explicit.
+            with patch.object(sni, 'is_network_cache_path',
+                              side_effect=lambda value: str(value).replace('/', '\\').startswith('\\\\')):
+                self.assert_invalid(fixture, 'network cache paths are not allowed', cache=double)
+
+    @unittest.skipUnless(sys.platform.startswith('linux'), 'requires Linux double-slash path semantics')
+    def test_linux_double_slash_cache_still_rejects_missing_or_altered_artifacts(self):
+        for kind in ('missing', 'corrupt', 'size', 'sha1', 'sha256', 'class_digest'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as directory:
                 fixture = self.fixture(Path(directory))
-                self.assert_valid(fixture)
-                extended = '\\\\?\\' + str(fixture['root'].resolve())
-                result, error, reads = self.invoke(fixture, cache=extended)
+                double = '/' + str(fixture['root'])
+                result, error, reads = self.invoke(fixture, cache=double)
                 self.assertEqual(result, 0, error)
                 self.assertEqual(len(reads), 6)
+                lib = fixture['catalog'][0]
+                known = fixture['known']['libraries'][0]
+                artifact = fixture['scan']['runtime_classpath_scan']['all_artifacts'][0]
+                jar = fixture['root'] / lib['sha1']
+                if kind == 'missing':
+                    jar.unlink()
+                    reason = lib['sha1']
+                elif kind == 'corrupt':
+                    jar.write_bytes(jar.read_bytes().replace(b'padding-\x00', b'padding-\x01', 1))
+                    reason = 'cached Netty library checksum mismatch'
+                elif kind == 'size':
+                    artifact['size_bytes'] += 1
+                    reason = 'cached Netty library size mismatch'
+                elif kind == 'sha1':
+                    replacement = '0' * 40
+                    (fixture['root'] / replacement).write_bytes(jar.read_bytes())
+                    lib['sha1'] = known['sha1'] = artifact['sha1'] = replacement
+                    reason = 'cached Netty library checksum mismatch'
+                elif kind == 'sha256':
+                    lib['sha256'] = known['sha256'] = artifact['sha256'] = '0' * 64
+                    reason = 'cached Netty library checksum mismatch'
+                else:
+                    next(row for row in known['literal_hits'] if row['path'] == INNER)['sha256'] = '0' * 64
+                    reason = 'known cached ClientHello literal or class digest differs'
+                self.assert_invalid(fixture, reason, cache=double)
+
+    def test_windows_path_grammar_and_posix_paths_are_distinct(self):
+        for local in (r'C:\cache', r'\\?\C:\cache', 'C:/cache', '//?/C:/cache'):
+            with self.subTest(local=local):
+                self.assertFalse(sni.is_network_cache_path(local, windows=True))
+        for remote in (r'\\server\share\cache', r'\\?\UNC\server\share\cache', '//server/share/cache'):
+            with self.subTest(remote=remote):
+                self.assertTrue(sni.is_network_cache_path(remote, windows=True))
+        self.assertFalse(sni.is_network_cache_path('//tmp/netty-cache', windows=False))
+
+    @unittest.skipUnless(os.name == 'nt', 'requires Windows path semantics')
+    def test_windows_cli_accepts_local_paths_and_rejects_unc_before_resolving(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = self.fixture(Path(directory))
+            self.assert_valid(fixture)
+            extended = '\\\\?\\' + str(fixture['root'].resolve())
+            result, error, reads = self.invoke(fixture, cache=extended)
+            self.assertEqual(result, 0, error)
+            self.assertEqual([path.name for path in reads], [row['sha1'] for row in fixture['catalog']])
+            for remote in (r'\\server\share\cache', r'\\?\UNC\server\share\cache', '//server/share/cache'):
+                with self.subTest(remote=remote), \
+                     patch.object(Path, 'resolve', side_effect=AssertionError('UNC path was resolved')):
+                    self.assert_invalid(fixture, 'network cache paths are not allowed', cache=remote)
+                    # Removing the guard attempts resolution and fails this test
+                    # without accessing any actual share.
+                    with patch.object(sni, 'is_network_cache_path', return_value=False), \
+                         self.assertRaisesRegex(AssertionError, 'UNC path was resolved'):
+                        self.assert_invalid(fixture, 'network cache paths are not allowed', cache=remote)
 
     def test_acquisition_verifies_bytes_and_cleans_partial_cache(self):
         with tempfile.TemporaryDirectory() as directory:

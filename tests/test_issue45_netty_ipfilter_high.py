@@ -207,15 +207,16 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
             for node in ast.walk(tree):
                 if (isinstance(node, ast.If) and isinstance(node.test, ast.Attribute) and
                         node.test.attr == 'verify_known_download'):
-                    calls = [statement for statement in node.body if isinstance(statement, ast.Expr) and
-                             isinstance(statement.value, ast.Call) and isinstance(statement.value.func, ast.Name)]
-                    selected = [statement for statement in calls if statement.value.func.id ==
-                                ('verify_known_downloads' if change == 'omit' else 'print')]
+                    selected = [statement for statement in node.body if isinstance(statement, ast.Expr) and
+                                isinstance(statement.value, ast.Call) and isinstance(statement.value.func, ast.Name) and
+                                statement.value.func.id == 'verify_known_downloads']
                     self.assertEqual(len(selected), 1)
                     if change == 'omit':
-                        node.body.remove(selected[0])
+                        node.body[node.body.index(selected[0])] = ast.Pass()
                     else:
-                        selected[0].value.args = [ast.Constant('Different success wording')]
+                        # Preserve only the verifier, irrespective of how optional
+                        # success output is currently implemented.
+                        node.body = selected
                     break
             else:
                 self.fail('download verification branch not found')
@@ -246,13 +247,22 @@ class HighIpFilterEvidenceTests(unittest.TestCase):
             self.assertIn('independent check failed', error)
             verify.assert_called_once_with(self.catalog, self.prior, self.known)
 
-        # A wording-only edit leaves both behavioral checks valid. Removing the
-        # invocation fails both the call-count and failure-propagation controls.
-        wording = mutant('wording')
+        # No output statement is required. Rewriting informational stdout also
+        # leaves both controls valid; stderr retains real failure reporting.
+        original_print = print
+        def changed_output(*args, **kwargs):
+            if kwargs.get('file') is sys.stderr:
+                return original_print(*args, **kwargs)
+            return original_print('Different informational wording', **kwargs)
+
+        no_output = mutant('no_output')
         missing = mutant('omit')
-        for main in (ipfilter.main, wording):
+        for main in (ipfilter.main, no_output):
             assert_success(main)
             assert_failure(main)
+            with patch('builtins.print', side_effect=changed_output):
+                assert_success(main)
+                assert_failure(main)
         with self.assertRaises(AssertionError):
             assert_success(missing)
         with self.assertRaises(AssertionError):

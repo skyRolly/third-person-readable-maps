@@ -4,6 +4,40 @@ The [2026-11-22 live audit follow-up](worklogs/issue-45-live-validation-2026-11-
 
 The [critical/high reachability follow-up](worklogs/issue-45-critical-reachability-2026-11-21.md) adds source-bound runtime observations without removing any finding. All 13 candidate and integrated source heads still match the finding index; their Gradle 9.9.2 Wrapper files passed hash checks against Gradle's published values. The ten open legacy PR heads also match their indexed source SHAs and their exact-head Linux, Windows, Wrapper, and packaged API checks passed. They remain blocked by unresolved findings. Candidate (385) and integrated (105) monitoring remain separate, and all 490 occurrences continue to fail.
 
+## Bzip2 evidence verification scope
+
+The [Bzip2 investigation](worklogs/issue-45-netty-bzip2-high-2026-11-22.md)
+has three distinct verification levels:
+
+1. The default `inspect_issue45_netty_bzip2_high.py` command checks the
+   retained source-bound JSON, hashes, occurrence coverage and derived register.
+2. `--verify-runtime-cache` also reinspects all 28 cached client and metadata
+   pairs, seven codec JARs, the Fabric artifact and the 26.2 disassembly.
+3. The hosted Linux/Windows workflow independently downloads the seven codecs
+   and **only the 26.2 client**, verifies their bytes and regenerates that
+   client's disassembly. It does not independently redownload the other 27
+   clients or rescan their bytes.
+
+The 28 client JARs total 783,312,335 bytes (about 747 MiB) before metadata,
+codecs and Fabric. Redownloading them on both runners for every coordination PR
+would add roughly 1.46 GiB per run, so the full cached reinspection is not part
+of the routine hosted job. Its exact URLs and hashes remain in the
+[client scan](dependency-evidence/issue45-netty-bzip2-high-2026-11-22/minecraft-client-scan.json),
+[codec inventory](dependency-evidence/issue45-netty-bzip2-high-2026-11-22/codec-artifacts.json)
+and [Fabric record](dependency-evidence/issue45-netty-bzip2-high-2026-11-22/fabric-loader-static-scan.json).
+With those pinned artifacts already present locally, run:
+
+```sh
+python scripts/inspect_issue45_netty_bzip2_high.py --verify-runtime-cache \
+  --runtime-cache /path/to/sha1-keyed-jars --manifest-cache /path/to/version-json \
+  --fabric-jar /path/to/fabric-loader-0.20.1.jar --javap /path/to/jdk-21/bin/javap
+```
+
+The runtime cache holds each client and codec JAR under its SHA-1 filename; the
+manifest cache holds each version metadata file as `<Minecraft-version>.json`.
+The command verifies pinned sizes, SHA-1 and SHA-256 before comparing the scan.
+Successful verification is not runtime reachability or release clearance.
+
 The [2026-11-22 Jackson runtime follow-up](worklogs/issue-45-jackson-runtime-followup-2026-11-22.md) adds 21 source-bound High observations to the focused reachability set. It narrows specific first-party paths and records the unresolved Minecraft-managed Jackson and Log4j surfaces; all 44 focused High and 22 focused Critical occurrences remain release-blocking.
 
 The [2026-11-22 Guava runtime follow-up](worklogs/issue-45-guava-runtime-followup-2026-11-22.md) adds 16 source-bound High observations across 13 groups and 48 Minecraft versions. The component probe reproduces affected deserialization allocation behavior and checks upstream-fixed Guava 33.7.2; official runtime scanning covers 48 clients and 655 libraries. The sampled vanilla packet paths do not use Java object deserialization, but supported modded runtime reachability remains unknown. All 60 focused High and 22 focused Critical occurrences remain release-blocking; the full 490 occurrence inventory is unchanged.

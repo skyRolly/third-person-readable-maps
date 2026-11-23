@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 import hashlib
 from io import BytesIO
 import json
+import os
 from pathlib import Path
 import re
 import sys
@@ -185,7 +186,12 @@ def verify_known_cached_library(raw, library, known):
                     'known cached ClientHello literal or class digest differs')
 
 
-def is_network_cache_path(path):
+def is_network_cache_path(path, *, windows=None):
+    # POSIX leading slashes have host filesystem semantics, not UNC semantics.
+    if windows is None:
+        windows = os.name == 'nt'
+    if not windows:
+        return False
     value = str(path).replace('/', '\\')
     if value.startswith('\\\\?\\'):
         # Windows extended local drive paths (\\?\C:\...) are not UNC shares.
