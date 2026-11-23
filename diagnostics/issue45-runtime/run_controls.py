@@ -9,6 +9,7 @@ import json
 import os
 import uuid
 import shutil
+import stat
 import subprocess
 import sys
 import urllib.request
@@ -145,7 +146,12 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     if completed.returncode != 0:
         raise SystemExit("synthetic process failed for " + profile["profileId"] + "; inspect private work-dir logs")
 
-    raw = report.read_text(encoding="utf-8")
+    raw_bytes = report.read_bytes()
+    if b"\\r\\n" in raw_bytes:
+        raise SystemExit("diagnostic JSONL must use LF on every platform")
+    if os.name == "posix" and stat.S_IMODE(report.stat().st_mode) & 0o077:
+        raise SystemExit("diagnostic JSONL is accessible to non-owner users")
+    raw = raw_bytes.decode("utf-8")
     private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
                       "play.example.invalid", "25565", "synthetic-player-identifier", "-DapiKey")
     if any(value in raw for value in private_values):
@@ -168,10 +174,21 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         raise SystemExit("channel creation/activation events are missing")
     added = [event for event in events if event.get("event") == "handler_added"]
     removed = [event for event in events if event.get("event") == "handler_removed"]
+    snapshots = {event.get("channel_fingerprint"): event for event in events
+                 if event.get("event") == "channel_active_pipeline_snapshot"}
     by_name = {event.get("handler_name"): event for event in added}
     for name, class_name in EXPECTED_CONTROLS.items():
         if name not in by_name or by_name[name].get("handler_class") != class_name:
             raise SystemExit("pipeline control mismatch for " + name + " in " + profile["profileId"])
+    # The positive and negative decoder controls must exist in activation
+    # snapshots, not just in post-activation handler callbacks.
+    for name, class_name in EXPECTED_CONTROLS.items():
+        channel = by_name[name].get("channel_identity")
+        snapshot = snapshots.get(channel)
+        if not snapshot or not any(handler.get("handler_name") == name
+                                   and handler.get("handler_class") == class_name
+                                   for handler in snapshot.get("pipeline_handlers", [])):
+            raise SystemExit("pre-activation pipeline snapshot control missing: " + name)
     removed_by_name = {event.get("handler_name"): event for event in removed}
     if any(name not in removed_by_name or removed_by_name[name].get("handler_class") != class_name
            for name, class_name in EXPECTED_CONTROLS.items()):
