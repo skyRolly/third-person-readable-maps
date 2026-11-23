@@ -1,9 +1,12 @@
 import copy
+import hashlib
+import io
 import importlib.util
 import json
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -13,6 +16,14 @@ VALIDATOR_PATH = ROOT / "diagnostics/issue45-runtime/validate_runtime_evidence.p
 SPEC = importlib.util.spec_from_file_location("issue45_runtime_validator", VALIDATOR_PATH)
 VALIDATOR = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VALIDATOR)
+BUILDER_SPEC = importlib.util.spec_from_file_location(
+    "issue45_agent_builder", ROOT / "diagnostics/issue45-runtime/build_agent.py")
+BUILDER = importlib.util.module_from_spec(BUILDER_SPEC)
+BUILDER_SPEC.loader.exec_module(BUILDER)
+CONTROLS_SPEC = importlib.util.spec_from_file_location(
+    "issue45_agent_controls", ROOT / "diagnostics/issue45-runtime/run_controls.py")
+CONTROLS = importlib.util.module_from_spec(CONTROLS_SPEC)
+CONTROLS_SPEC.loader.exec_module(CONTROLS)
 
 
 class RuntimePipelineEvidenceTests(unittest.TestCase):
@@ -24,6 +35,48 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             events = [json.loads(line) for line in
                       (EVIDENCE / profile["observation_file"]).read_text().splitlines() if line.strip()]
             cls.profiles[profile["profile_id"]] = (profile, events)
+
+    def test_partial_agent_dependency_cache_is_reacquired_and_verified(self):
+        data = b"synthetic pinned Byte Buddy bytes"
+        dep = {"url": "https://example.invalid/pinned.jar",
+               "sha256": hashlib.sha256(data).hexdigest()}
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "pinned.jar"
+            target.write_bytes(b"truncated")
+            with patch.object(BUILDER.urllib.request, "urlopen", return_value=io.BytesIO(data)) as fetch:
+                BUILDER.download_pinned(dep, target)
+                fetch.assert_called_once()
+            self.assertEqual(data, target.read_bytes())
+            with patch.object(BUILDER.urllib.request, "urlopen",
+                              side_effect=AssertionError("valid cache must be offline")):
+                BUILDER.download_pinned(dep, target)
+            target.write_bytes(b"corrupted")
+            with patch.object(BUILDER.urllib.request, "urlopen", return_value=io.BytesIO(b"wrong")):
+                with self.assertRaisesRegex(SystemExit, "downloaded dependency SHA-256"):
+                    BUILDER.download_pinned(dep, target)
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+    def test_partial_synthetic_control_cache_is_reacquired_and_verified(self):
+        data = b"synthetic pinned control JAR bytes"
+        digest = hashlib.sha256(data).hexdigest()
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "control.jar"
+            target.write_bytes(b"incomplete")
+            with patch.object(CONTROLS.urllib.request, "urlopen", return_value=io.BytesIO(data)) as fetch:
+                CONTROLS.fetch("https://example.invalid/control.jar", target,
+                               digest, expected_size=len(data))
+                fetch.assert_called_once()
+            self.assertEqual(data, target.read_bytes())
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=AssertionError("valid cache must be offline")):
+                CONTROLS.fetch("https://example.invalid/control.jar", target, digest,
+                               expected_size=len(data))
+            target.write_bytes(b"truncated")
+            with patch.object(CONTROLS.urllib.request, "urlopen", return_value=io.BytesIO(b"bad")):
+                with self.assertRaisesRegex(SystemExit, "hash or size differs"):
+                    CONTROLS.fetch("https://example.invalid/control.jar", target,
+                                   digest, expected_size=len(data))
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
 
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
         errors, result = VALIDATOR.validate_evidence(EVIDENCE, ROOT)
@@ -63,6 +116,23 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
         changed = dict(record, sha1="c" * 40)
         errors = VALIDATOR.validate_runtime_artifact_identity(
             {"effective_classpath_sanitized": [changed]}, {}, pin)
+        self.assertTrue(any("does not expose" in error for error in errors), errors)
+
+    def test_server_loader_path_can_bind_unloaded_netty_module_without_claiming_loading(self):
+        pin = {"path": "io/netty/netty-codec-compression/4.2.7.Final/netty-codec-compression-4.2.7.Final.jar",
+               "sha1": "a" * 40, "size_bytes": 123, "sha256": "b" * 64}
+        loader_only = {"artifact": "netty-codec-compression-4.2.7.Final.jar",
+                       "sha1": "a" * 40, "size_bytes": 123, "sha256": "b" * 64,
+                       "hash_verified": True, "availability_only": True,
+                       "discovered_via": "loaded_class_loader_url"}
+        self.assertEqual([], VALIDATOR.validate_runtime_artifact_identity(
+            {"effective_classpath_sanitized": []},
+            {"loaded_netty_artifacts": [], "loaded_code_source_groups": [],
+             "loader_netty_artifacts": [loader_only]}, pin))
+        tampered = dict(loader_only, sha256="c" * 64)
+        errors = VALIDATOR.validate_runtime_artifact_identity(
+            {"effective_classpath_sanitized": []},
+            {"loader_netty_artifacts": [tampered]}, pin)
         self.assertTrue(any("does not expose" in error for error in errors), errors)
 
     def test_current_and_fixed_netty_profiles_execute_hooks_and_controls(self):
@@ -216,6 +286,51 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                      "launcher": "local-control", "fabric_loader_expected": None,
                      "expected_netty_codec": "4.1.77.Final"}, ROOT, require_remote_pipeline=True)
         self.assertTrue(any("connected socket" in error for error in errors), errors)
+
+    def test_failed_launch_without_shutdown_is_preserved_but_not_accepted(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-failed-capture-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            matrix_path = archive / "environment-matrix.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            env = matrix["environments"][0]
+            env["status"] = "not_passed"
+            env["not_passed_reason"] = "Synthetic test: process exited before shutdown hook"
+            env.pop("not_executed_reason", None)
+            env["operator_exit_code"] = 1
+            env["operator_startup_outcome"] = "failed"
+            start = copy.deepcopy(next(event for event in self.profiles[
+                "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+            start.update(minecraft_version=env["minecraft_version"],
+                         distribution=env["distribution"], launcher=env["launcher"])
+            observation = json.dumps(start, sort_keys=True) + "\n"
+            capture = archive / "captures" / "failed.jsonl"
+            capture.parent.mkdir(parents=True, exist_ok=True)
+            capture.write_text(observation, encoding="utf-8", newline="\n")
+            env["observations_file"] = "captures/failed.jsonl"
+            env["observations_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, summary = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertEqual([], errors)
+            self.assertEqual(0, summary["captured_runtime_environment_count"])
+            env["status"] = "captured"
+            env["operator_exit_code"] = 0
+            env["operator_startup_outcome"] = "started"
+            matrix["captured_observations"] = [env["environment_id"]]
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("process_end" in error for error in errors), errors)
+
+    def test_failed_launch_rejects_mixed_process_ids(self):
+        start = copy.deepcopy(next(event for event in self.profiles[
+            "mc-1.19-netty-4.1.77"][1] if event["event"] == "process_start"))
+        environment = {"minecraft_version": start["minecraft_version"],
+                       "distribution": start["distribution"], "launcher": start["launcher"],
+                       "fabric_loader_expected": None}
+        changed = dict(start, event="pipeline_transform_error", run_id="other-run")
+        errors = VALIDATOR.validate_incomplete_run_events([start, changed], environment)
+        self.assertTrue(any("one nonempty run identity" in error or "another process" in error
+                            for error in errors), errors)
 
     def test_duplicate_environment_identity_is_rejected(self):
         with tempfile.TemporaryDirectory(prefix="issue45-duplicate-env-") as temp:

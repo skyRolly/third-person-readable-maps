@@ -2,7 +2,7 @@ package dev.skyrolly.issue45;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
@@ -12,7 +12,19 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
+import java.nio.channels.Channels;
+import java.nio.channels.SeekableByteChannel;
+import java.nio.file.OpenOption;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.AclEntry;
+import java.nio.file.attribute.AclEntryPermission;
+import java.nio.file.attribute.AclEntryType;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.nio.file.attribute.UserPrincipal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
@@ -22,8 +34,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,15 +71,14 @@ public final class EventSink {
         agentJar = new File(agentPath);
         File configFile = new File(args);
         config = new Properties();
-        try (java.io.InputStream stream = Files.newInputStream(configFile.toPath())) {
-            config.load(stream);
+        try (java.io.Reader reader = Files.newBufferedReader(configFile.toPath(), StandardCharsets.UTF_8)) {
+            config.load(reader);
         }
         String outputPath = required("output");
         Path target = new File(outputPath).toPath().toAbsolutePath().normalize();
         Path parent = target.getParent();
         if (parent != null) Files.createDirectories(parent);
-        output = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(target.toFile(), false), StandardCharsets.UTF_8));
+        output = openPrivateOutput(target);
         write(event("process_start", processStart()));
         write(event("diagnostic", map("run_id", RUN_ID,
                 "diagnostic_agent_sha256", sha256File(agentJar),
@@ -74,6 +87,32 @@ public final class EventSink {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override public void run() { finish(); }
         }, "issue45-runtime-finalizer"));
+    }
+
+    private static BufferedWriter openPrivateOutput(Path target) throws Exception {
+        // CREATE_NEW prevents replacement of existing evidence or a symlink target.
+        Set<OpenOption> options = new HashSet<OpenOption>();
+        options.add(StandardOpenOption.CREATE_NEW);
+        options.add(StandardOpenOption.WRITE);
+        SeekableByteChannel channel;
+        if (Files.getFileStore(target.getParent()).supportsFileAttributeView("posix")) {
+            channel = Files.newByteChannel(target, options,
+                    PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("rw-------")));
+        } else if (Files.getFileStore(target.getParent()).supportsFileAttributeView("acl")) {
+            UserPrincipal owner = Files.getOwner(target.getParent());
+            AclEntry privateEntry = AclEntry.newBuilder().setType(AclEntryType.ALLOW)
+                    .setPrincipal(owner).setPermissions(EnumSet.allOf(AclEntryPermission.class)).build();
+            final List<AclEntry> entries = Collections.singletonList(privateEntry);
+            FileAttribute<List<AclEntry>> privateAcl = new FileAttribute<List<AclEntry>>() {
+                @Override public String name() { return "acl:acl"; }
+                @Override public List<AclEntry> value() { return entries; }
+            };
+            channel = Files.newByteChannel(target, options, privateAcl);
+        } else {
+            throw new IOException("output filesystem cannot create owner-only diagnostic evidence");
+        }
+        return new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(channel),
+                StandardCharsets.UTF_8));
     }
 
     public static void pipelineClassTransformed(String name, ClassLoader loader) {
@@ -257,6 +296,7 @@ public final class EventSink {
                         "loaded_netty_artifacts", artifactGroups(allLoaded),
                         "loaded_fabric_loader_classes", loadedFabricClasses(),
                         "loaded_code_source_groups", loadedCodeSourceGroups(),
+                        "loader_netty_artifacts", loaderNettyArtifacts(),
                         "agent_errors", failed ? "one_or_more_observation_errors" : "none");
                 write(event("process_end", end));
                 if (output != null) output.close();
@@ -344,6 +384,42 @@ public final class EventSink {
             } catch (Throwable ignored) { }
         }
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(groups.values());
+        Collections.sort(result, new Comparator<Map<String, Object>>() {
+            @Override public int compare(Map<String, Object> a, Map<String, Object> b) {
+                return String.valueOf(a.get("artifact")).compareTo(String.valueOf(b.get("artifact")));
+            }
+        });
+        return result;
+    }
+
+    private static List<Map<String, Object>> loaderNettyArtifacts() {
+        // A server child loader may expose a Netty JAR without using its classes.
+        Set<ClassLoader> seen = Collections.newSetFromMap(new IdentityHashMap<ClassLoader, Boolean>());
+        Map<String, Map<String, Object>> found = new LinkedHashMap<String, Map<String, Object>>();
+        for (Class<?> type : instrumentation.getAllLoadedClasses()) {
+            ClassLoader loader = type.getClassLoader();
+            if (loader == null || !seen.add(loader) || !(loader instanceof URLClassLoader)) continue;
+            for (URL url : ((URLClassLoader) loader).getURLs()) {
+                try {
+                    if (!"file".equalsIgnoreCase(url.getProtocol())) continue;
+                    File file = new File(url.toURI()).getCanonicalFile();
+                    String name = file.getName().toLowerCase(java.util.Locale.ROOT);
+                    if (!name.startsWith("netty-") || !name.endsWith(".jar")
+                            || !file.isFile() || file.length() > 64L * 1024 * 1024) continue;
+                    String key = file.getCanonicalPath();
+                    if (!found.containsKey(key)) {
+                        found.put(key, map("artifact", file.getName(), "path_redacted",
+                                sanitizePath(file.getAbsolutePath()), "size_bytes", file.length(),
+                                "sha1", sha1File(file), "sha256", sha256File(file),
+                                "hash_verified", true, "availability_only", true,
+                                "discovered_via", "loaded_class_loader_url"));
+                    }
+                } catch (Throwable ignored) {
+                    // Inaccessible loader URLs are not evidence of module availability.
+                }
+            }
+        }
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(found.values());
         Collections.sort(result, new Comparator<Map<String, Object>>() {
             @Override public int compare(Map<String, Object> a, Map<String, Object> b) {
                 return String.valueOf(a.get("artifact")).compareTo(String.valueOf(b.get("artifact")));
@@ -523,20 +599,31 @@ public final class EventSink {
     }
 
     private static List<String> sanitizedJvmArgs() {
-        List<String> args = new ArrayList<String>();
-        List<String> raw = ManagementFactory.getRuntimeMXBean().getInputArguments();
-        boolean redactNext = false;
-        for (String arg : raw) {
-            if (redactNext) { args.add("<redacted>"); redactNext = false; continue; }
-            if (sensitiveKey(arg)) {
-                int equals = arg.indexOf('=');
-                int colon = arg.indexOf(':');
+        // Values of arbitrary -D properties and unknown JVM flags are never copied.
+        // An unfamiliar key such as apiKey must not become a cleartext evidence field.
+        List<String> result = new ArrayList<String>();
+        for (String arg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
+            if (arg.startsWith("-D")) {
+                int equals = arg.indexOf('=', 2);
+                int colon = arg.indexOf(':', 2);
                 int separator = equals < 0 ? colon : colon < 0 ? equals : Math.min(equals, colon);
-                args.add(separator >= 0 ? arg.substring(0, separator + 1) + "<redacted>" : arg);
-                redactNext = separator < 0;
-            } else args.add(sanitizePath(arg));
+                String key = separator < 0 ? arg.substring(2) : arg.substring(2, separator);
+                boolean knownMarker = key.matches("(?i)(accessToken|token|password|passwd|session|cookie|authorization|clientSecret|secret|credential|username|uuid|xuid|server|host)");
+                String prefix = knownMarker ? "-D" + key : "-D<redacted>";
+                result.add(separator < 0 ? prefix : prefix + arg.charAt(separator) + "<redacted>");
+            } else if (arg.matches("-Xm[sx][0-9]+[kKmMgG]?")
+                    || arg.matches("-XX:[+-](UseG1GC|UseZGC|UseSerialGC|UseParallelGC)")
+                    || arg.equals("-ea") || arg.equals("-da")) {
+                result.add(arg);
+            } else if (arg.startsWith("-javaagent:")) {
+                result.add("-javaagent:<redacted>");
+            } else if (arg.startsWith("-agentpath:")) {
+                result.add("-agentpath:<redacted>");
+            } else {
+                result.add("<redacted>");
+            }
         }
-        return args;
+        return result;
     }
 
     private static String mainClass() {
@@ -557,10 +644,6 @@ public final class EventSink {
         return false;
     }
 
-    private static boolean sensitiveKey(String arg) {
-        return arg.matches("(?i).*(access[-_]?token|token|password|passwd|session|cookie|authorization|client[-_]?secret|secret|credential|user(?:name)?|uuid|xuid|server|host)([=:].*)?");
-    }
-
     private static Map<String, Object> safeNetworkingProperties() {
         Properties all = System.getProperties();
         Map<String, Object> safe = new TreeMapStringObject();
@@ -571,7 +654,7 @@ public final class EventSink {
                     || key.startsWith("io.netty.handler.codec.compression.")
                     || key.equals("networkCompressionThreshold"))) continue;
             String value = all.getProperty(key, "");
-            safe.put(key, value.matches("[A-Za-z0-9_.-]{1,80}") ? value : "<redacted>");
+            safe.put(key, value.matches("(?i)(true|false|[0-9]{1,12})") ? value : "<redacted>");
         }
         return safe;
     }
@@ -752,7 +835,7 @@ public final class EventSink {
     private static void write(Map<String, Object> value) throws Exception {
         synchronized (LOCK) {
             output.write(json(value));
-            output.newLine();
+            output.write('\n');
             output.flush();
         }
     }

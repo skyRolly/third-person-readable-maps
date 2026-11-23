@@ -1,9 +1,9 @@
 {
   "schema": "issue45-runtime-diagnostic-dependencies/v1",
   "byteBuddy": {
-    "coordinate": "net.bytebuddy:byte-buddy:1.14.18",
-    "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar",
-    "sha256": "52117af1696a53aa77c131353074ada25ccbdf2df511f2af33fad6704fa95104"
+    "coordinate": "net.bytebuddy:byte-buddy:1.17.8",
+    "url": "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar",
+    "sha256": "2b5ddc8c1f4234bdb7cb45338a8e10a13e0e3ca473e91d5d821d681127ea8ba1"
   },
   "compiler": {
     "coordinate": "org.eclipse.jdt:ecj:3.39.0",
