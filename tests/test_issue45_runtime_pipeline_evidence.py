@@ -88,6 +88,32 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 self.assertEqual("io.netty.handler.codec.compression.JdkZlibDecoder", handlers["control-zlib"])
                 self.assertEqual("io.netty.channel.ChannelInboundHandlerAdapter", handlers["control-plain"])
 
+    def test_synthetic_observations_do_not_require_a_product_commit_in_shallow_checkout(self):
+        profile, original = next(iter(self.profiles.values()))
+        events = copy.deepcopy(original)
+        start = next(event for event in events if event.get("event") == "process_start")
+        start["source_sha"] = "f" * 40
+        environment = {
+            "minecraft_version": profile["synthetic_process_minecraft_version"],
+            "distribution": "synthetic", "launcher": "local-control",
+            "fabric_loader_expected": None,
+            "expected_netty_codec": profile["expected_and_loaded_netty_version"],
+        }
+        errors = VALIDATOR.validate_run_events(events, environment, ROOT, require_remote_pipeline=False)
+        self.assertFalse(any("source SHA is not an available Git commit" in error for error in errors), errors)
+
+    def test_minecraft_observations_still_require_the_product_source_commit(self):
+        events = copy.deepcopy(next(iter(self.profiles.values()))[1])
+        start = next(event for event in events if event.get("event") == "process_start")
+        start["source_sha"] = "f" * 40
+        environment = {
+            "minecraft_version": "synthetic-1.19", "distribution": "client",
+            "launcher": "local-control", "fabric_loader_expected": None,
+            "expected_netty_codec": "4.1.77.Final",
+        }
+        errors = VALIDATOR.validate_run_events(events, environment, ROOT, require_remote_pipeline=False)
+        self.assertTrue(any("source SHA is not an available Git commit" in error for error in errors), errors)
+
     def test_missing_transform_hook_is_rejected(self):
         events = next(iter(self.profiles.values()))[1]
         mutated = [event for event in events if event.get("event") != "pipeline_class_transformed"]

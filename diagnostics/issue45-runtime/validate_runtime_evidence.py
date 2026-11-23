@@ -198,8 +198,10 @@ def validate_run_events(events: list[dict], environment: dict, source_root: Path
     source_sha = start.get("source_sha", "")
     if not HEX40.fullmatch(source_sha):
         errors.append("exact product source SHA is missing or malformed")
-    elif subprocess.run(["git", "-C", str(source_root), "cat-file", "-e", source_sha + "^{commit}"],
-                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode != 0:
+    # Synthetic controls bind to the agent JAR and dependency locks, not a game product commit.
+    elif (environment.get("distribution") != "synthetic"
+          and subprocess.run(["git", "-C", str(source_root), "cat-file", "-e", source_sha + "^{commit}"],
+                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode != 0):
         errors.append("source SHA is not an available Git commit in the bound repository")
     for key in ("java_version", "java_vendor", "java_executable", "java_executable_sha256",
                 "os_name", "os_version", "architecture", "java_main_class"):
