@@ -161,7 +161,23 @@ def validate_channel_assessments(end: dict, assessments: list[dict]) -> list[str
     return errors
 
 
-def validate_incomplete_run_events(events: list[dict], environment: dict) -> list[str]:
+def validate_source_commit(source_sha: object, environment: dict, source_root: Path,
+                           failed_run: bool = False) -> list[str]:
+    label = "failed-run source SHA" if failed_run else "exact product source SHA"
+    if not isinstance(source_sha, str) or not HEX40.fullmatch(source_sha):
+        return [label + " is missing or malformed"]
+    # Synthetic controls are pinned to the diagnostic agent, not a game source.
+    if environment.get("distribution") != "synthetic":
+        result = subprocess.run(["git", "-C", str(source_root), "cat-file", "-e",
+                                 source_sha + "^{commit}"],
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if result.returncode != 0:
+            return ["source SHA is not an available Git commit in the bound repository"]
+    return []
+
+
+def validate_incomplete_run_events(events: list[dict], environment: dict,
+                                   source_root: Path = Path(__file__).resolve().parents[2]) -> list[str]:
     """Validate honest failed captures without claiming completed runtime coverage."""
     if not events or any(not isinstance(event, dict) for event in events):
         return ["failed-run observation must contain JSON object events"]
@@ -188,8 +204,8 @@ def validate_incomplete_run_events(events: list[dict], environment: dict) -> lis
                           ("fabric_loader_version", environment.get("fabric_loader_expected") or "")):
         if start.get(key) != expected:
             errors.append("failed-run " + key + " does not match the environment")
-    if not HEX40.fullmatch(start.get("source_sha", "")):
-        errors.append("failed-run source SHA is missing or malformed")
+    errors.extend(validate_source_commit(start.get("source_sha", ""), environment,
+                                         source_root, failed_run=True))
     if start.get("environment_variables_collected") is not False or start.get("process_command_collected") is not False:
         errors.append("failed-run observation must not collect environment variables or raw commands")
     if "jvm_arguments" in start or "process_command" in start:
@@ -242,14 +258,7 @@ def validate_run_events(events: list[dict], environment: dict, source_root: Path
         errors.append("launcher identity does not match the environment record")
     if start.get("fabric_loader_version", "") != (environment.get("fabric_loader_expected") or ""):
         errors.append("configured Fabric Loader version does not match the matrix")
-    source_sha = start.get("source_sha", "")
-    if not HEX40.fullmatch(source_sha):
-        errors.append("exact product source SHA is missing or malformed")
-    # Synthetic controls bind to the agent JAR and dependency locks, not a game product commit.
-    elif (environment.get("distribution") != "synthetic"
-          and subprocess.run(["git", "-C", str(source_root), "cat-file", "-e", source_sha + "^{commit}"],
-                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode != 0):
-        errors.append("source SHA is not an available Git commit in the bound repository")
+    errors.extend(validate_source_commit(start.get("source_sha", ""), environment, source_root))
     for key in ("java_version", "java_vendor", "java_executable", "java_executable_sha256",
                 "os_name", "os_version", "architecture", "java_main_class"):
         if not start.get(key):
@@ -440,6 +449,46 @@ def validate_run_events(events: list[dict], environment: dict, source_root: Path
     return errors
 
 
+def read_capture_jsonl(path: Path, allow_torn_final: bool) -> tuple[list[dict], bool]:
+    """Hash raw bytes separately; only failed runs may discard a torn EOF fragment."""
+    raw = path.read_bytes()
+    complete = raw.split(b"\n")
+    if raw.endswith(b"\n"):
+        complete.pop()
+        tail = b""
+    else:
+        tail = complete.pop()
+    events = []
+    for index, line in enumerate(complete):
+        if not line.strip():
+            raise ValueError("blank or malformed interior JSONL record " + str(index))
+        events.append(json.loads(line.decode("utf-8")))
+    truncated = False
+    if tail:
+        try:
+            json.loads(tail.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            if not allow_torn_final:
+                raise ValueError("unterminated invalid final JSONL record")
+            truncated = True
+        else:
+            raise ValueError("final JSONL record lacks required LF terminator")
+    return events, truncated
+
+
+def validate_loader_availability_contract(start: dict, end: dict,
+                                          expected_artifact: dict | None) -> list[str]:
+    """Older v1 captures may lack loader URLs only with an independently pinned JAR."""
+    if "loader_netty_artifacts" in end:
+        if not isinstance(end["loader_netty_artifacts"], list):
+            return ["captured run has a malformed loader Netty availability inventory"]
+        return []
+    if expected_artifact is not None and not validate_runtime_artifact_identity(
+            start, end, expected_artifact):
+        return []
+    return ["legacy captured run lacks a loader inventory and verified pinned Netty identity"]
+
+
 def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str], dict]:
     errors: list[str] = []
     baseline_path = evidence_dir / "baseline-lock.json"
@@ -461,6 +510,7 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
         errors.append("environment matrix is empty or contains duplicate identities")
     run_ids: set[str] = set()
     captured = []
+    truncated_failed_captures = []
     for row in envs:
         status = row.get("status")
         if status not in ("not_executed", "not_passed", "captured"):
@@ -504,10 +554,12 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
             errors.append("observation artifact missing or SHA-256 mismatch: " + str(obs_name))
             continue
         try:
-            events = [json.loads(line) for line in obs_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-        except (UnicodeDecodeError, json.JSONDecodeError) as error:
+            events, torn = read_capture_jsonl(obs_path, allow_torn_final=status == "not_passed")
+        except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
             errors.append("observation file is not valid JSON Lines: " + str(error))
             continue
+        if torn:
+            truncated_failed_captures.append(row.get("environment_id"))
         if any(not isinstance(item, dict) for item in events):
             errors.append("observation file contains a non-object JSON event: " + str(obs_name))
             continue
@@ -521,15 +573,16 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
                           validate_run_events(events, row, source_root))
         else:
             errors.extend(f"{row.get('environment_id')}: {item}" for item in
-                          validate_incomplete_run_events(events, row))
+                          validate_incomplete_run_events(events, row, source_root))
         ends = [item for item in events if item.get("event") == "process_end"]
         starts = [item for item in events if item.get("event") == "process_start"]
         if status == "captured" and expected_artifact is not None and ends and starts:
             errors.extend(f"{row.get('environment_id')}: {item}" for item in
                           validate_runtime_artifact_identity(starts[0], ends[0], expected_artifact))
         if status == "captured":
-            if not ends or not isinstance(ends[0].get("loader_netty_artifacts"), list):
-                errors.append("captured run lacks the loader Netty availability inventory")
+            if ends and starts:
+                errors.extend(f"{row.get('environment_id')}: {item}" for item in
+                              validate_loader_availability_contract(starts[0], ends[0], expected_artifact))
             if row.get("operator_exit_code") != 0 or row.get("operator_startup_outcome") != "started":
                 errors.append("captured row lacks successful operator-observed startup/exit outcome")
             if ends:
@@ -740,7 +793,9 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
     except (OSError, KeyError, StopIteration, json.JSONDecodeError) as error:
         errors.append("next security target missing or not linked to a register record: " + str(error))
 
-    result = {"expected_environment_count": len(envs), "captured_runtime_environment_count": len(captured),
+    result = {"truncated_failed_capture_ids": truncated_failed_captures,
+              "truncated_failed_capture_count": len(truncated_failed_captures),
+              "expected_environment_count": len(envs), "captured_runtime_environment_count": len(captured),
               "not_executed_environment_count": sum(row.get("status") == "not_executed" for row in envs),
               "captured_environments": captured,
               "runtime_acceptance": "not_established" if not captured else "partial_matrix_only",

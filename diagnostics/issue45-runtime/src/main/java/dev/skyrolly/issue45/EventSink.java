@@ -3,6 +3,7 @@ package dev.skyrolly.issue45;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
@@ -22,6 +23,7 @@ import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.AclEntry;
 import java.nio.file.attribute.AclEntryPermission;
 import java.nio.file.attribute.AclEntryType;
+import java.nio.file.attribute.AclFileAttributeView;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.nio.file.attribute.UserPrincipal;
@@ -44,6 +46,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public final class EventSink {
     private static final Object LOCK = new Object();
@@ -108,6 +111,35 @@ public final class EventSink {
                 @Override public List<AclEntry> value() { return entries; }
             };
             channel = Files.newByteChannel(target, options, privateAcl);
+            // The Windows provider may inherit a parent DACL even when an
+            // explicit acl:acl creation attribute is supplied. No capture bytes
+            // may be written until inheritance is disabled and the DACL checked.
+            try {
+                Process protect = new ProcessBuilder("icacls.exe", target.toString(), "/inheritance:r")
+                        .redirectErrorStream(true).start();
+                try (InputStream stream = protect.getInputStream()) {
+                    byte[] buffer = new byte[2048];
+                    while (stream.read(buffer) != -1) { /* discard tool output */ }
+                }
+                if (!protect.waitFor(15, TimeUnit.SECONDS) || protect.exitValue() != 0) {
+                    protect.destroyForcibly();
+                    throw new IOException("could not disable inherited Windows capture ACL entries");
+                }
+                AclFileAttributeView view = Files.getFileAttributeView(target, AclFileAttributeView.class);
+                if (view == null) throw new IOException("Windows capture ACL view is unavailable");
+                UserPrincipal fileOwner = Files.getOwner(target);
+                AclEntry ownerOnly = AclEntry.newBuilder().setType(AclEntryType.ALLOW)
+                        .setPrincipal(fileOwner).setPermissions(EnumSet.allOf(AclEntryPermission.class)).build();
+                view.setAcl(Collections.singletonList(ownerOnly));
+                List<AclEntry> actual = view.getAcl();
+                if (actual.size() != 1 || !actual.get(0).equals(ownerOnly)) {
+                    throw new IOException("Windows capture DACL is not exclusively owned by the file owner");
+                }
+            } catch (Exception error) {
+                channel.close();
+                Files.deleteIfExists(target);
+                throw error;
+            }
         } else {
             throw new IOException("output filesystem cannot create owner-only diagnostic evidence");
         }
