@@ -54,6 +54,67 @@ def fixed_boundaries(register: dict) -> list[dict]:
     return result
 
 
+def maximum_fixed_boundaries(rows: list[dict]) -> dict[str, str]:
+    result = {}
+    for family, field in (("4.1", "fixed_4_1"), ("4.2", "fixed_4_2")):
+        versions = [version for row in rows for version in row[field]]
+        if not versions:
+            raise ValueError("missing Netty " + family + " fixed boundaries")
+        result[family] = max(versions, key=version_key)
+    return result
+
+
+def validate_compatibility_erratum(report: dict, register: dict) -> list[str]:
+    """Compare all advisory IDs, focus classifications, and maxima to pinned inputs."""
+    errors: list[str] = []
+    try:
+        indexed = fixed_boundaries(register)
+    except ValueError as error:
+        return [str(error)]
+    focused = [row for row in indexed if row["focused_evidence"]]
+    unfocused = [row for row in indexed if not row["focused_evidence"]]
+    expected = {
+        "indexed_netty_advisories": indexed, "focused_netty_advisories": focused,
+        "unfocused_netty_advisories": unfocused,
+        "indexed_netty_advisory_count": len(indexed),
+        "focused_netty_advisory_count": len(focused),
+        "unfocused_netty_advisory_count": len(unfocused),
+        "minimum_versions_covering_all_indexed_netty_advisories": maximum_fixed_boundaries(indexed),
+        "minimum_versions_covering_focused_netty_advisories": maximum_fixed_boundaries(focused),
+    }
+    if report.get("schema") != "issue45-netty-remediation-compatibility/v2":
+        errors.append("corrected Netty compatibility schema mismatch")
+    for key, value in expected.items():
+        if report.get(key) != value:
+            errors.append("Netty compatibility focus or fixed-boundary mismatch: " + key)
+    if report.get("source_register") != {
+            "path": str(REGISTER.relative_to(ROOT)), "sha256": digest(REGISTER)}:
+        errors.append("corrected Netty report is not bound to the retained source register")
+    historic = OUT / "remediation-compatibility.json"
+    if report.get("historical_v1_report") != {
+            "path": str(historic.relative_to(ROOT)), "sha256": digest(historic),
+            "status": "preserved_with_classification_erratum"}:
+        errors.append("Netty v1 historical report is missing or has changed")
+    for row in report.get("environments", []):
+        version, family = row.get("manifest_or_bundle_netty_version", ""), row.get("expected_dependency_family")
+        if family not in ("4.1", "4.2"):
+            errors.append("invalid Netty environment family in corrected compatibility")
+            continue
+        if row.get("all_indexed_netty_boundaries_met") != (
+                version_key(version) >= version_key(expected[
+                    "minimum_versions_covering_all_indexed_netty_advisories"][family])):
+            errors.append("incorrect indexed-Netty boundary environment classification")
+        if row.get("focused_netty_boundaries_met") != (
+                version_key(version) >= version_key(expected[
+                    "minimum_versions_covering_focused_netty_advisories"][family])):
+            errors.append("incorrect focused-Netty boundary environment classification")
+        if (row.get("runtime_loader_selection_verified") is not False
+                or row.get("minecraft_fabric_abi_verified") is not False
+                or row.get("no_dependency_override_performed") is not True):
+            errors.append("corrected compatibility report overstates runtime or remediation")
+    return errors
+
+
 def versions_from_manifest(path: Path) -> dict:
     manifest = json.loads(path.read_text(encoding="utf-8"))
     modules = [item["name"] for item in manifest.get("libraries", [])
