@@ -300,7 +300,9 @@ class NettyFocusErratumTests(unittest.TestCase):
             with mock.patch.object(FOCUS, "OUT", archive):
                 errors = FOCUS.validate_compatibility_erratum(
                     derived, self.register, archive_v1_path=v1_path)
-                self.assertTrue(any("source-controlled historical Netty v1" in e
+                self.assertTrue(any("Netty v1 historical report source provenance mismatch" in e
+                                    for e in errors), errors)
+                self.assertTrue(any("archived Netty v1 historical report SHA-256" in e
                                     for e in errors), errors)
                 with self.assertRaisesRegex(SystemExit, "historical compatibility report SHA-256 mismatch"):
                     FOCUS.main()
