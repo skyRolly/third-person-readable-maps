@@ -5,8 +5,11 @@ import hashlib
 import importlib.util
 import json
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -187,6 +190,134 @@ class NettyFocusErratumTests(unittest.TestCase):
             errors, _ = VALIDATOR.validate_evidence(copied, ROOT)
             self.assertTrue(any("archived Netty v1 historical report SHA-256" in error
                                 for error in errors), errors)
+
+    def test_forged_client_manifest_from_another_minecraft_release_fails_full_archive(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-forged-manifest-") as tmp:
+            archive = Path(tmp) / "archive"
+            shutil.copytree(evidence, archive)
+            matrix_path = archive / "environment-matrix.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            one19 = next(r for r in matrix["environments"]
+                         if r["environment_id"] == "minecraft-1.19-client")
+            newest = next(r for r in matrix["environments"]
+                          if r["environment_id"] == "minecraft-26.2-client")
+            # Every mutable field agrees internally; only the source-controlled
+            # game identity mapping can detect the substitution.
+            for name in ("manifest_path", "manifest_sha256", "expected_netty_codec"):
+                one19[name] = newest[name]
+            matrix_path.write_text(json.dumps(matrix), encoding="utf-8")
+            v2_path = archive / "remediation-compatibility-v2.json"
+            report = json.loads(v2_path.read_text(encoding="utf-8"))
+            row = next(r for r in report["environments"]
+                       if r["environment_id"] == "minecraft-1.19-client")
+            row.update(manifest_or_bundle_netty_version="4.2.15.Final",
+                       expected_dependency_family="4.2",
+                       lz4_advisory_fixed_boundary_met_by_selected_artifact_version=True,
+                       module_family_consistent_at_source_manifest=True,
+                       all_indexed_netty_boundaries_met=False,
+                       focused_netty_boundaries_met=False)
+            v2_path.write_text(json.dumps(report), encoding="utf-8")
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("source-controlled environment pin mismatch" in error
+                                for error in errors), errors)
+            self.assertTrue(any("verified Netty artifact pins do not cover" in error
+                                for error in errors), errors)
+
+    def test_manifest_internal_id_and_digest_are_independently_checked(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        matrix = json.loads((evidence / "environment-matrix.json").read_text(encoding="utf-8"))
+        client = next(row for row in matrix["environments"]
+                      if row["environment_id"] == "minecraft-1.19-client")
+        with tempfile.TemporaryDirectory(prefix="issue45-manifest-id-") as tmp:
+            root = Path(tmp)
+            manifest = ROOT / client["manifest_path"]
+            copy = root / client["manifest_path"]
+            copy.parent.mkdir(parents=True)
+            value = json.loads(manifest.read_text(encoding="utf-8"))
+            value["id"] = "26.2"
+            copy.write_text(json.dumps(value), encoding="utf-8")
+            modified = copy.deepcopy(client)
+            modified["manifest_sha256"] = hashlib.sha256(copy.read_bytes()).hexdigest()
+            # A tampered manifest or archive row cannot override the independent pin.
+            errors, _ = VALIDATOR.validate_environment_artifact_pin(
+                modified, root, json.loads((evidence / "baseline-lock.json").read_text())["retained_files"])
+            self.assertTrue(any("source-controlled environment pin mismatch" in e
+                                for e in errors), errors)
+            # Force the trusted digest check to pass temporarily to isolate
+            # validation of the manifest's internal release id.
+            with mock.patch.dict(VALIDATOR.TRUSTED_ENVIRONMENTS,
+                                 {"minecraft-1.19-client": {**VALIDATOR.TRUSTED_ENVIRONMENTS["minecraft-1.19-client"],
+                                     "manifest_sha256": modified["manifest_sha256"]}}):
+                errors, _ = VALIDATOR.validate_environment_artifact_pin(
+                    modified, root, {})
+            self.assertTrue(any("manifest id differs" in e for e in errors), errors)
+
+    def test_missing_or_nonstring_environment_id_returns_structured_invalid_archive(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        for bad in (None, ["invalid"], "", 123):
+            with self.subTest(value=bad):
+                with tempfile.TemporaryDirectory(prefix="issue45-malformed-id-") as tmp:
+                    archive = Path(tmp) / "archive"
+                    shutil.copytree(evidence, archive)
+                    path = archive / "environment-matrix.json"
+                    matrix = json.loads(path.read_text(encoding="utf-8"))
+                    if bad is None:
+                        matrix["environments"][0].pop("environment_id")
+                    else:
+                        matrix["environments"][0]["environment_id"] = bad
+                    path.write_text(json.dumps(matrix), encoding="utf-8")
+                    command = [sys.executable, str(ROOT /
+                               "diagnostics/issue45-runtime/validate_runtime_evidence.py"),
+                               "--evidence-dir", str(archive)]
+                    process = subprocess.run(command, cwd=ROOT,
+                                             capture_output=True, text=True)
+                    self.assertEqual(1, process.returncode, process.stderr)
+                    result = json.loads(process.stdout)
+                    self.assertEqual("invalid_archive", result["result"])
+                    self.assertTrue(any("identities" in e for e in result["errors"]))
+
+    def test_v2_list_valued_id_is_normal_validation_error(self):
+        bad = copy.deepcopy(self.report)
+        bad["environments"][0]["environment_id"] = ["incorrect"]
+        errors = FOCUS.validate_compatibility_erratum(bad, self.register)
+        self.assertTrue(any("identities" in e for e in errors), errors)
+
+    def test_v1_reformat_and_self_consistent_new_v2_digest_cannot_reanchor_history(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-immutable-v1-") as tmp:
+            archive = Path(tmp) / "archive"
+            shutil.copytree(evidence, archive)
+            v1_path = archive / "remediation-compatibility.json"
+            v1_path.write_text(json.dumps(json.loads(v1_path.read_text(encoding="utf-8")),
+                                          indent=4, sort_keys=False) + "\n", encoding="utf-8")
+            new_hash = hashlib.sha256(v1_path.read_bytes()).hexdigest()
+            self.assertNotEqual(FOCUS.HISTORICAL_V1_SHA256, new_hash)
+            v2_path = archive / "remediation-compatibility-v2.json"
+            derived = json.loads(v2_path.read_text(encoding="utf-8"))
+            derived["historical_v1_report"]["sha256"] = new_hash
+            v2_path.write_text(json.dumps(derived), encoding="utf-8")
+            with mock.patch.object(FOCUS, "OUT", archive):
+                errors = FOCUS.validate_compatibility_erratum(
+                    derived, self.register, archive_v1_path=v1_path)
+                self.assertTrue(any("source-controlled historical Netty v1" in e
+                                    for e in errors), errors)
+                with self.assertRaisesRegex(SystemExit, "historical compatibility report SHA-256 mismatch"):
+                    FOCUS.main()
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("historical report" in e for e in errors), errors)
+
+    def test_server_summary_live_selection_or_artifact_forgery_is_rejected(self):
+        for name in ("minecraft_1_19_server_bundle", "minecraft_26_1_2_server_bundle"):
+            for field, value in (("live_selection_verified", True),
+                                 ("server_bundle_sha256", "0" * 64),
+                                 ("netty_module_versions", ["4.2.17.Final"])):
+                with self.subTest(summary=name, mutation=field):
+                    edited = copy.deepcopy(self.report)
+                    edited[name][field] = value
+                    errors = FOCUS.validate_compatibility_erratum(edited, self.register)
+                    self.assertTrue(any("server bundle summary contradicts" in e
+                                        for e in errors), errors)
 
     def test_incorrect_environment_boundary_claim_is_rejected(self):
         mutated = copy.deepcopy(self.report)
