@@ -95,6 +95,8 @@ def validate_runtime_artifact_identity(start: dict, end: dict, expected_artifact
     candidates = []
     candidates.extend(end.get("loaded_netty_artifacts", []))
     candidates.extend(end.get("loaded_code_source_groups", []))
+    # Loader-path availability is distinct from loaded-code-source evidence.
+    candidates.extend(end.get("loader_netty_artifacts", []))
     start_records = start.get("effective_classpath_sanitized", [])
     if isinstance(start_records, list):
         candidates.extend(start_records)
@@ -526,6 +528,8 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
             errors.extend(f"{row.get('environment_id')}: {item}" for item in
                           validate_runtime_artifact_identity(starts[0], ends[0], expected_artifact))
         if status == "captured":
+            if not ends or not isinstance(ends[0].get("loader_netty_artifacts"), list):
+                errors.append("captured run lacks the loader Netty availability inventory")
             if row.get("operator_exit_code") != 0 or row.get("operator_startup_outcome") != "started":
                 errors.append("captured row lacks successful operator-observed startup/exit outcome")
             if ends:
