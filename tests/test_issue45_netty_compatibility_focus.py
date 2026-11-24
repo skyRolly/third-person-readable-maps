@@ -134,7 +134,29 @@ class NettyFocusErratumTests(unittest.TestCase):
                 # only a scalar flow list's boundary, not filter semantics.
                 # Do not consume mapping keys or nested collections while
                 # looking for the closing bracket.
+                nonlocal nested_filter_quote
                 while field:
+                    if nested_filter_quote is not None:
+                        # A quote opened on a preceding physical line remains
+                        # open across YAML folding or a backslash continuation.
+                        # Inside it, brackets and hash characters are data.
+                        i = 0
+                        while i < len(field):
+                            char = field[i]
+                            if nested_filter_quote == '"' and char == "\\":
+                                i += 2
+                                continue
+                            if char == nested_filter_quote:
+                                if char == "'" and field[i:i + 2] == "''":
+                                    i += 2
+                                    continue
+                                nested_filter_quote = None
+                                field = field[i + 1:]
+                                break
+                            i += 1
+                        else:
+                            return False
+                        continue
                     field = field.lstrip(" \t")
                     if not field or field.startswith("#"):
                         return False
@@ -144,10 +166,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                             raise ValueError("extra content after nested filter list")
                         return True
                     if field[0] in "'\"":
-                        quoted = re.match(r"""(?:'(?:[^']|'')*'|"(?:[^"\\]|\\.)*")""", field)
-                        if quoted is None:
-                            raise ValueError("unsupported multiline quoted filter pattern")
-                        field = field[quoted.end():]
+                        nested_filter_quote = field[0]
+                        field = field[1:]
                         continue
                     if field[0] == ",":
                         field = field[1:]
@@ -176,6 +196,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             trigger_indent = None
             trigger_flow = []
             nested_filter_flow = False
+            nested_filter_quote = None
             nested_filter_value_indent = None
             nested_scalar_indent = None
             filter_keys = {"branches", "branches-ignore", "paths", "paths-ignore",
@@ -184,7 +205,10 @@ class NettyFocusErratumTests(unittest.TestCase):
             in_guard = False
             in_steps = False
             for line in source.splitlines():
-                if not line.strip() or line.lstrip().startswith("#"):
+                # A comment-looking line inside an open quoted scalar is
+                # text, not a YAML comment. Keep its closing quote visible.
+                if nested_filter_quote is None and (
+                        not line.strip() or line.lstrip().startswith("#")):
                     continue
                 indent = len(line) - len(line.lstrip(" "))
                 # Track the collection kind and indentation of an open on:
@@ -197,6 +221,13 @@ class NettyFocusErratumTests(unittest.TestCase):
                         trigger_layout = "complete"
                     continue
                 if in_trigger_block and nested_filter_flow:
+                    # Do not swallow a root mapping while waiting for a quote
+                    # to close. Root-looking content at column zero is outside
+                    # this conservative continuation grammar.
+                    if nested_filter_quote is not None and indent == 0:
+                        if re.match(rf"{nested_key}[ \t]*:", line) or line.startswith(
+                                ("? ", "<<:", "---", "...")):
+                            raise ValueError("root mapping inside unfinished quoted filter")
                     nested_filter_flow = not nested_filter_flow_complete(line.strip())
                     continue
                 if in_trigger_block and nested_scalar_indent is not None:
@@ -271,6 +302,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     trigger_layout = trigger_indent = None
                     trigger_flow = []
                     nested_filter_flow = False
+                    nested_filter_quote = None
                     nested_filter_value_indent = nested_scalar_indent = None
                     if key == "on" and value.startswith("["):
                         in_trigger_block = True
@@ -687,6 +719,39 @@ class NettyFocusErratumTests(unittest.TestCase):
                           " [main]\n      \t- release/**\n"):
                 triggers = "on:\n  push:\n    " + key + ":" + value
                 for source in (triggers + good, good + triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # Quoted filter patterns can span physical lines. A double-quoted
+        # backslash continuation preserves the exact pattern; ordinary quoted
+        # folding and escaped/doubled quotes also keep brackets/hash as data.
+        for key in ("branches", r'"\u0062ranches"', r'"\x62ranches"'):
+            for value in (
+                    ' ["release/\\\n      stable", main]\n',
+                    '\n      ["release/\\\n      \tstable", main]\n',
+                    ' ["release/\\\nstable"]\n',
+                    ' ["release/\\\n      #stable"]\n',
+                    ' ["release/\\\n      [0-9]/**"]\n',
+                    ' ["release/\\\n      stable\\"candidate"]\n',
+                    " ['release/\n      o''neil']\n",
+                    ' ["release/\n      stable"]\n',
+                    ' ["release/\\\n      stable",\n      \tmain]\n'):
+                triggers = "on:\n  push:\n    " + key + ":" + value
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(wrapped_quoted_filter=key, value=value):
+                        self.assertTrue(all_native_checks_isolated(source))
+                        for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                         r'"\u0064efaults": {}' + "\n"):
+                            self.assertFalse(all_native_checks_isolated(source + defaults))
+        for value in (
+                ' ["release/\\\n',
+                ' ["release/\\\n      stable\n',
+                ' ["release/\\\ndefaults: {run: {shell: pwsh}}\n      stable"]\n',
+                ' ["release/\\\n' + r'"\u0064efaults": {}' + '\n      stable"]\n',
+                ' ["release/\\\njobs: {}\n      stable"]\n',
+                ' ["release/\\\n      stable"] extra\n',
+                ' ["release/\\\n      stable"]\n      \t- main\n'):
+            triggers = "on:\n  push:\n    " + r'"\u0062ranches"' + ":" + value
+            for source in (triggers + good, good + triggers):
+                with self.subTest(invalid_wrapped_quote=value):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
