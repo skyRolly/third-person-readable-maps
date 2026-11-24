@@ -88,6 +88,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             steps = []
             current = None
             parent_key = None
+            seen_jobs = seen_guard = seen_steps = False
             in_jobs = False
             in_guard = False
             in_steps = False
@@ -99,21 +100,37 @@ class NettyFocusErratumTests(unittest.TestCase):
                     # Ignore unrelated top-level sections (including their
                     # trigger lists and concurrency settings). Do not carry
                     # guard/steps state across a section boundary.
-                    in_jobs = re.fullmatch(r"""(?:jobs|'jobs'|"jobs") *: *(?:#.*)?""", line.rstrip()) is not None
+                    in_jobs = re.match(r"""^(?:jobs|'jobs'|"jobs") *:""", line) is not None
+                    if in_jobs:
+                        if seen_jobs or mapping_field(line) != ("jobs", ""):
+                            raise ValueError("duplicate or unsupported jobs mapping")
+                        seen_jobs = True
                     in_guard = in_steps = False
                     current = None
                     continue
                 if not in_jobs:
                     continue
                 if indent == 2:
-                    in_guard = mapping_field(line.strip()) == ("guard", "")
+                    key, value = mapping_field(line.strip())
+                    in_guard = key == "guard"
+                    if in_guard:
+                        if seen_guard or value:
+                            raise ValueError("duplicate or unsupported guard mapping")
+                        seen_guard = True
                     in_steps = False
                     current = None
                     continue
                 if not in_guard:
                     continue
                 if indent == 4:
-                    in_steps = mapping_field(line.strip()) == ("steps", "")
+                    key, value = mapping_field(line.strip())
+                    if key in {"if", "continue-on-error"}:
+                        raise ValueError("conditional or failure-tolerant guard job")
+                    in_steps = key == "steps"
+                    if in_steps:
+                        if seen_steps or value:
+                            raise ValueError("duplicate or unsupported steps mapping")
+                        seen_steps = True
                     current = None
                     # The header is not itself a sequence item.
                     continue
@@ -217,6 +234,13 @@ class NettyFocusErratumTests(unittest.TestCase):
             good.replace("    steps:\n", "    steps:\n      unexpected: true\n", 1)))
         self.assertFalse(all_native_checks_isolated(
             good.replace("  guard:\n", "  unrelated:\n", 1)))
+        # Job-level gates and duplicate structural keys cannot be ignored.
+        for modifier in ("if : false", '"if" : ${{ false }}', "continue-on-error : true"):
+            mutated = good.replace("  guard:\n", f"  guard:\n    {modifier}\n", 1)
+            self.assertNotEqual(good, mutated)
+            self.assertFalse(all_native_checks_isolated(mutated))
+        for suffix in ('"jobs" : {}\n', '  "guard" : {}\n', '    "steps" : []\n'):
+            self.assertFalse(all_native_checks_isolated(good + suffix))
         # Formatting changes alone do not alter the workflow's semantics.
         spaced = good.replace("guard:", "guard :").replace("steps:", "steps :")
         for key in ("uses", "with", "java-version", "name", "run"):
