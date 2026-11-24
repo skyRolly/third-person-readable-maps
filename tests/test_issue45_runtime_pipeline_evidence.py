@@ -407,6 +407,11 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             jar = root / "control.jar"
             CONTROLS.package_control_classes(classes, jar)
             baseline_hash = hashlib.sha256(jar.read_bytes()).hexdigest()
+            # A common golden byte digest is checked by every Linux/Windows
+            # Java 21/25 matrix run, not just by two builds on one host.
+            self.assertEqual(
+                "a040924e75b1c60dde3415371b0f1c00ea52a50187b906eebb7015d3e917c1a1",
+                baseline_hash)
             expected_order = ["Top.class", "nested/Bee.class", "nested/Zeta.class",
                               "nested/alpha.class"]
             with zipfile.ZipFile(jar) as archive:
