@@ -104,6 +104,38 @@ class NettyFocusErratumTests(unittest.TestCase):
                     raise ValueError("malformed flow trigger list")
                 return True
 
+            def nested_filter_flow_complete(field):
+                # Filter patterns are not event identifiers: glob characters,
+                # slashes, and quoted brackets are legitimate here. Track
+                # only a scalar flow list's boundary, not filter semantics.
+                # Do not consume mapping keys or nested collections while
+                # looking for the closing bracket.
+                while field:
+                    field = field.lstrip(" \t")
+                    if not field or field.startswith("#"):
+                        return False
+                    if field[0] == "]":
+                        remainder = field[1:].strip(" \t")
+                        if remainder and not remainder.startswith("#"):
+                            raise ValueError("extra content after nested filter list")
+                        return True
+                    if field[0] in "'\"":
+                        quoted = re.match(r"""(?:'(?:[^']|'')*'|"(?:[^"\\]|\\.)*")""", field)
+                        if quoted is None:
+                            raise ValueError("unsupported multiline quoted filter pattern")
+                        field = field[quoted.end():]
+                        continue
+                    if field[0] == ",":
+                        field = field[1:]
+                        continue
+                    # A colon separating a mapping key must not be consumed
+                    # as a continuation token, even at zero indentation.
+                    plain = re.match(r"[^ \t,\[\]{}:'\"]+(?::(?![ \t,\[\]{}]|$)[^ \t,\[\]{}:'\"]+)*", field)
+                    if plain is None:
+                        raise ValueError("unsupported nested filter flow content")
+                    field = field[plain.end():]
+                return False
+
             steps = []
             current = None
             parent_key = None
@@ -112,6 +144,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             trigger_layout = None
             trigger_indent = None
             trigger_flow = []
+            nested_filter_flow = False
             in_jobs = False
             in_guard = False
             in_steps = False
@@ -127,6 +160,9 @@ class NettyFocusErratumTests(unittest.TestCase):
                 if in_trigger_block and trigger_layout == "flow":
                     if trigger_flow_complete(trigger_flow, line.strip().split(" #", 1)[0].strip()):
                         trigger_layout = "complete"
+                    continue
+                if in_trigger_block and nested_filter_flow:
+                    nested_filter_flow = not nested_filter_flow_complete(line.strip())
                     continue
                 if in_trigger_block and line[indent:].startswith("\t"):
                     raise ValueError("tab indentation outside an open flow trigger list")
@@ -155,8 +191,17 @@ class NettyFocusErratumTests(unittest.TestCase):
                         raise ValueError("mixed trigger mapping and sequence")
                     elif indent == trigger_indent:
                         mapping_field(field)
-                    # Event filter contents below a mapping entry are outside
-                    # the native shell contract; leave them opaque.
+                    else:
+                        # Only deeper event-filter values can open a nested
+                        # flow list. Its continuation may use tabs or less
+                        # indentation than the filter's block mapping.
+                        nested = re.match(
+                            rf"{event_name}[ \t]*:[ \t]*(\[.*)", line.strip())
+                        value = nested[1] if nested else line.strip()
+                        if value.startswith("["):
+                            nested_filter_flow = not nested_filter_flow_complete(value[1:])
+                    # Other event filter contents are outside the native shell
+                    # contract; actionlint validates the actual workflow.
                     continue
                 if indent == 0:
                     # Apply the same restricted mapping grammar at the root.
@@ -167,6 +212,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     in_trigger_block = key == "on" and not value
                     trigger_layout = trigger_indent = None
                     trigger_flow = []
+                    nested_filter_flow = False
                     if key == "on" and value.startswith("["):
                         in_trigger_block = True
                         trigger_layout = ("complete" if trigger_flow_complete(trigger_flow, value)
@@ -243,8 +289,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     if key in current:
                         current["duplicate"] = True
                     current[key] = value
-            if trigger_layout == "flow":
-                raise ValueError("unterminated flow trigger list")
+            if trigger_layout == "flow" or nested_filter_flow:
+                raise ValueError("unterminated flow trigger or filter list")
             return steps
 
         def all_native_checks_isolated(source: str) -> bool:
@@ -467,6 +513,35 @@ class NettyFocusErratumTests(unittest.TestCase):
                 "on: [push,\tpull_request]\n\t- workflow_dispatch\n"):
             for source in (triggers + good, good + triggers):
                 with self.subTest(invalid_tab_flow_triggers=triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # A nested event-filter flow list has its own continuation boundary.
+        # It can wrap at tabs, and its patterns are not simple event names.
+        for triggers in (
+                "on:\n  push:\n    branches: [main,\n      \trelease/**]\n",
+                "on:\n  push:\n    branches: [main,\n\trelease/**]\n",
+                "on:\n  push:\n    branches:\n      [main,\n      \t'release/[0-9]']\n",
+                "on:\n  push:\n    branches: [main,\n    \t'!release/**',\n    \t'feature/#tag']\n",
+                "on:\n  push:\n    branches: [main,\n      \trelease/**]\n  pull_request:\n",
+                'on:\n  pull_request:\n    paths: ["src/**",\t# comment\n'
+                '      \t"docs/[a-z]/**"] # done\n    types: [opened,\n      \tsynchronize]\n',
+                "on:\n  push:\n    tags: [v1,\n      \tv2]\n    branches-ignore: [dev,\n      \ttest]\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(nested_filter_triggers=triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    for defaults in ("defaults: {run: {shell: 'pwsh -File {0}'}}\n",
+                                     r'"\u0064efaults": {}' + "\n"):
+                        self.assertFalse(all_native_checks_isolated(source + defaults))
+        for triggers in (
+                "on:\n  push:\n    branches: [main,\n",
+                "on:\n  push:\n    branches: [main,\ndefaults: {run: {shell: pwsh}}\n]\n",
+                "on:\n  push:\n    branches: [main,\n" + r'"\u0064efaults": {}' + "\n]\n",
+                "on:\n  push:\n    branches: [main,\n\tjobs: {}\n]\n",
+                "on:\n  push:\n    branches: [main]\n    \t- release/**\n",
+                "on:\n  push:\n    branches: [main,\n      \trelease/**]\n- pull_request\n",
+                "on:\n  push:\n    branches: [main,\n      \trelease/**] extra\n",
+                'on:\n  push:\n    branches: [main,\n      \t"unterminated\n'):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(invalid_nested_filter_triggers=triggers):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
