@@ -97,6 +97,10 @@ class NettyFocusErratumTests(unittest.TestCase):
                     continue
                 indent = len(line) - len(line.lstrip(" "))
                 if indent == 0:
+                    # Require the platform's implicit shell wrapper. Workflow
+                    # defaults can replace it even without a step shell key.
+                    if re.match(r"""^(?:defaults|'defaults'|"defaults") *:""", line):
+                        raise ValueError("workflow defaults may override the native shell")
                     # Ignore unrelated top-level sections (including their
                     # trigger lists and concurrency settings). Do not carry
                     # guard/steps state across a section boundary.
@@ -124,8 +128,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     continue
                 if indent == 4:
                     key, value = mapping_field(line.strip())
-                    if key in {"if", "continue-on-error"}:
-                        raise ValueError("conditional or failure-tolerant guard job")
+                    if key in {"if", "continue-on-error", "defaults"}:
+                        raise ValueError("guard job may skip checks or override native execution")
                     in_steps = key == "steps"
                     if in_steps:
                         if seen_steps or value:
@@ -161,7 +165,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     raise ValueError("unsupported workflow step layout")
                 key, value = mapping_field(field)
                 parent_key = key
-                if key in {"name", "run", "uses", "with", "if", "continue-on-error"}:
+                if key in {"name", "run", "uses", "with", "if", "continue-on-error", "shell"}:
                     if key in current:
                         current["duplicate"] = True
                     current[key] = value
@@ -191,7 +195,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     for label, command in required_checks(major):
                         if step.get("name") == label:
                             if (java != str(major) or run != command or step.get("duplicate")
-                                    or "if" in step or "continue-on-error" in step):
+                                    or "if" in step or "continue-on-error" in step
+                                    or "shell" in step):
                                 return False
                             seen.append((major, label))
             return (seen == [(major, label) for major in (21, 25)
@@ -241,6 +246,33 @@ class NettyFocusErratumTests(unittest.TestCase):
             self.assertFalse(all_native_checks_isolated(mutated))
         for suffix in ('"jobs" : {}\n', '  "guard" : {}\n', '    "steps" : []\n'):
             self.assertFalse(all_native_checks_isolated(good + suffix))
+        # A custom PowerShell template does not get GitHub's default exit
+        # propagation wrapper. Preserve the implicit OS shell for each
+        # required native command, and reject inherited defaults as well.
+        for major in (21, 25):
+            for index in range(4):
+                original = check(major, index)
+                for override in ("shell: pwsh -File {0}", '"shell" : pwsh -File {0}',
+                                 "shell : bash {0}", "shell: pwsh"):
+                    mutated = good.replace(original, original + f"        {override}\n", 1)
+                    with self.subTest(java=major, check=index, shell=override):
+                        self.assertNotEqual(good, mutated)
+                        self.assertFalse(all_native_checks_isolated(mutated))
+        for defaults in ("defaults:\n  run:\n    shell: pwsh -File {0}\n",
+                         '"defaults" : {run: {shell: "pwsh -File {0}"}}\n'):
+            self.assertFalse(all_native_checks_isolated(defaults + good))
+            self.assertFalse(all_native_checks_isolated(good + defaults))
+        for defaults in ("    defaults:\n      run:\n        shell: pwsh -File {0}\n",
+                         '    "defaults" : {run: {shell: "pwsh -File {0}"}}\n'):
+            self.assertFalse(all_native_checks_isolated(
+                good.replace("    steps:\n", defaults + "    steps:\n", 1)))
+        # A separate unrelated step or job may set its own shell without
+        # changing any required guard command's execution.
+        self.assertTrue(all_native_checks_isolated(
+            good + "      - run: python -V\n        shell: bash\n"))
+        self.assertTrue(all_native_checks_isolated(
+            good + "  other:\n    defaults:\n      run:\n        shell: bash\n"
+                   "    steps:\n      - run: python -V\n"))
         # Formatting changes alone do not alter the workflow's semantics.
         spaced = good.replace("guard:", "guard :").replace("steps:", "steps :")
         for key in ("uses", "with", "java-version", "name", "run"):
