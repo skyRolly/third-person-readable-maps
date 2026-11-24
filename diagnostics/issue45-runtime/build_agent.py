@@ -61,7 +61,11 @@ def ordered_files(root: Path, pattern: str) -> list[Path]:
 
 
 def package_agent(classes: Path, byte_buddy: Path, destination: Path) -> dict:
-    """Write canonical uncompressed JAR entries, independent of host zlib and Path ordering."""
+    """Write canonical uncompressed JAR entries, preserving output symlinks."""
+    # The previous direct ZIP writer followed symlinks. Resolve the target
+    # before choosing the sibling temporary file so atomic replacement
+    # updates the actual JAR, not the caller's link.
+    destination = destination.resolve()
     temporary = destination.with_name(destination.name + "." + uuid.uuid4().hex + ".part")
     compiled = {}
     members = []
@@ -132,6 +136,8 @@ def main() -> int:
     if digest(ecj) != compiler_dep["sha256"]:
         raise SystemExit("ECJ SHA-256 does not match dependencies.lock.json")
 
+    # Resolve once before creating directories or reporting the artifact.
+    args.output = args.output.resolve()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="issue45-agent-build-") as temp:
         work = Path(temp)

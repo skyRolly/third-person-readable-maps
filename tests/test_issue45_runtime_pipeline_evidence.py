@@ -70,6 +70,18 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 self.assertEqual(b"a", archive.read("a.class"))
                 self.assertIn(b"Premain-Class: dev.skyrolly.issue45.Issue45Agent",
                               archive.read("META-INF/MANIFEST.MF"))
+                # Independently bind the reported inventory to actual archive
+                # bytes and order, not merely to a second builder result.
+                actual = [{"name": item.filename, "size": item.file_size,
+                           "sha256": hashlib.sha256(archive.read(item)).hexdigest()}
+                          for item in archive.infolist()]
+                expected_digest = hashlib.sha256(json.dumps(
+                    actual, sort_keys=True, ensure_ascii=True,
+                    separators=(",", ":")).encode("ascii")).hexdigest()
+                self.assertEqual(expected_digest, inventory["ordered_member_inventory_sha256"])
+                self.assertEqual({item["name"]: item["sha256"] for item in actual
+                                  if item["name"] in {"Nested$1.class", "Z.class", "a.class"}},
+                                 inventory["compiled_member_sha256"])
                 for item in archive.infolist():
                     self.assertEqual(zipfile.ZIP_STORED, item.compress_type)
                     self.assertEqual((2020, 1, 1, 0, 0, 0), item.date_time)
@@ -78,12 +90,71 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256(b"a").hexdigest(),
                              inventory["compiled_member_sha256"]["a.class"])
             self.assertEqual(6, inventory["archive_member_count"])
+            # A member-byte mutation must change the inventory even though
+            # member names, order and lengths remain unchanged.
+            (classes / "a.class").write_bytes(b"b")
+            changed = BUILDER.package_agent(classes, dependency, second)
+            self.assertNotEqual(inventory["ordered_member_inventory_sha256"],
+                                changed["ordered_member_inventory_sha256"])
+            with zipfile.ZipFile(second) as archive:
+                actual = [{"name": item.filename, "size": item.file_size,
+                           "sha256": hashlib.sha256(archive.read(item)).hexdigest()}
+                          for item in archive.infolist()]
+                self.assertEqual(hashlib.sha256(json.dumps(
+                    actual, sort_keys=True, ensure_ascii=True,
+                    separators=(",", ":")).encode("ascii")).hexdigest(),
+                    changed["ordered_member_inventory_sha256"])
             dependency.write_bytes(b"invalid ZIP")
             before = first.read_bytes()
             with self.assertRaises(zipfile.BadZipFile):
                 BUILDER.package_agent(classes, dependency, first)
             self.assertEqual(before, first.read_bytes())
             self.assertEqual([], list(root.glob("*.part")))
+
+    def test_agent_packaging_preserves_output_symlink_and_target(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            classes = root / "classes"
+            classes.mkdir()
+            (classes / "Example.class").write_bytes(b"new class")
+            dependency = root / "dependency.jar"
+            with zipfile.ZipFile(dependency, "w") as archive:
+                archive.writestr("dep.class", b"dependency")
+            target_dir = root / "target"
+            target_dir.mkdir()
+            target = target_dir / "agent.jar"
+            target.write_bytes(b"old jar")
+            link = root / "agent.jar"
+            try:
+                link.symlink_to(Path("target") / "agent.jar")
+            except (NotImplementedError, OSError) as error:
+                # Windows runners without symlink privileges cannot exercise
+                # this filesystem case. Other platforms must not silently skip.
+                if sys.platform == "win32" and (
+                        isinstance(error, NotImplementedError)
+                        or getattr(error, "winerror", None) == 1314):
+                    self.skipTest("Windows symlink privilege unavailable")
+                raise
+            original_link = link.readlink()
+            for existing in (True, False):
+                if not existing:
+                    target.unlink()
+                with self.subTest(existing_target=existing):
+                    result = BUILDER.package_agent(classes, dependency, link)
+                    self.assertTrue(link.is_symlink())
+                    self.assertEqual(original_link, link.readlink())
+                    self.assertEqual(target.read_bytes(), link.read_bytes())
+                    with zipfile.ZipFile(target) as archive:
+                        self.assertEqual(b"new class", archive.read("Example.class"))
+                    self.assertEqual(3, result["archive_member_count"])
+            before = target.read_bytes()
+            dependency.write_bytes(b"invalid ZIP")
+            with self.assertRaises(zipfile.BadZipFile):
+                BUILDER.package_agent(classes, dependency, link)
+            self.assertTrue(link.is_symlink())
+            self.assertEqual(original_link, link.readlink())
+            self.assertEqual(before, target.read_bytes())
+            self.assertEqual([], list(root.rglob("*.part")))
 
     def test_partial_agent_dependency_cache_is_reacquired_and_verified(self):
         data = b"synthetic pinned Byte Buddy bytes"
