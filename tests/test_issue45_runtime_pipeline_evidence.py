@@ -5,9 +5,12 @@ import importlib.util
 import json
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
+import urllib.error
 import zipfile
+from datetime import datetime, timezone
 from unittest.mock import patch
 from pathlib import Path
 
@@ -80,6 +83,91 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                                    digest, expected_size=len(data))
             self.assertEqual([], list(Path(tmp).glob("*.part")))
 
+    def test_control_download_retries_rate_limit_without_relaxing_integrity(self):
+        data = b"verified synthetic dependency bytes"
+        url = "https://example.invalid/pinned.jar"
+        digest = hashlib.sha256(data).hexdigest()
+
+        def http_error(code, retry_after=None):
+            headers = {} if retry_after is None else {"Retry-After": retry_after}
+            return urllib.error.HTTPError(url, code, "test HTTP error", headers, io.BytesIO())
+
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "control.jar"
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=[http_error(429, "5"), io.BytesIO(data)]) as fetch, \
+                    patch.object(CONTROLS.time, "sleep") as sleep:
+                CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                self.assertEqual(2, fetch.call_count)
+                sleep.assert_called_once_with(5)
+                self.assertEqual(data, target.read_bytes())
+
+            for code, header, attempts in ((429, None, 3), (429, "120", 1), (404, None, 1)):
+                with self.subTest(code=code, retry_after=header):
+                    target.write_bytes(b"corrupt")
+                    with patch.object(CONTROLS.urllib.request, "urlopen",
+                                      side_effect=[http_error(code, header) for _ in range(attempts)]) as fetch, \
+                            patch.object(CONTROLS.time, "sleep") as sleep:
+                        with self.assertRaises(urllib.error.HTTPError):
+                            CONTROLS.fetch(url, target, digest)
+                        self.assertEqual(attempts, fetch.call_count)
+                        self.assertEqual(attempts - 1, sleep.call_count)
+                    self.assertEqual(b"corrupt", target.read_bytes())
+                    self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=[http_error(429), io.BytesIO(b"wrong")]) as fetch, \
+                    patch.object(CONTROLS.time, "sleep"):
+                with self.assertRaisesRegex(SystemExit, "hash or size differs"):
+                    CONTROLS.fetch(url, target, digest)
+                self.assertEqual(2, fetch.call_count)
+            self.assertEqual(b"corrupt", target.read_bytes())
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+    def test_control_download_http_date_retry_after_with_fixed_clock(self):
+        data = b"verified synthetic HTTP-date dependency bytes"
+        url = "https://example.invalid/pinned.jar"
+        digest = hashlib.sha256(data).hexdigest()
+        now = datetime(2026, 11, 24, 12, 0, 0, tzinfo=timezone.utc)
+        # Literal IMF-fixdate values: do not use the production date parser
+        # to construct the fixtures or calculate the expected delays.
+        cases = (
+            ("Tue, 24 Nov 2026 12:00:17 GMT", 17),
+            ("Tue, 24 Nov 2026 12:01:00 GMT", 60),
+            ("Tue, 24 Nov 2026 12:01:01 GMT", None),
+            ("Tue, 24 Nov 2026 11:59:59 GMT", 2),
+            ("Tue, 24 Nov 2026 12:00:01 GMT", 2),
+            ("not an HTTP date", 2),
+        )
+        for header, delay in cases:
+            with self.subTest(retry_after=header), tempfile.TemporaryDirectory() as tmp:
+                target = Path(tmp) / "control.jar"
+                target.write_bytes(b"invalid cache")
+                error = urllib.error.HTTPError(
+                    url, 429, "test rate limit", {"Retry-After": header}, io.BytesIO())
+                with patch.object(CONTROLS, "datetime") as clock, \
+                        patch.object(CONTROLS.urllib.request, "urlopen",
+                                     side_effect=[error, io.BytesIO(data)]) as fetch, \
+                        patch.object(CONTROLS.time, "sleep") as sleep:
+                    clock.now.return_value = now
+                    if delay is None:
+                        with self.assertRaises(urllib.error.HTTPError) as raised:
+                            CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                        self.assertIs(error, raised.exception)
+                        fetch.assert_called_once()
+                        sleep.assert_not_called()
+                        self.assertEqual(b"invalid cache", target.read_bytes())
+                    else:
+                        CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                        self.assertEqual(2, fetch.call_count)
+                        sleep.assert_called_once_with(delay)
+                        self.assertEqual(data, target.read_bytes())
+                    if header != "not an HTTP date":
+                        clock.now.assert_called_once_with(timezone.utc)
+                    else:
+                        clock.now.assert_not_called()
+                self.assertEqual([], list(Path(tmp).glob("*.part")))
+
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
         errors, result = VALIDATOR.validate_evidence(EVIDENCE, ROOT)
         self.assertEqual([], errors)
@@ -87,6 +175,55 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
         self.assertEqual(0, result["captured_runtime_environment_count"])
         self.assertEqual("not_established", result["runtime_acceptance"])
         self.assertFalse(result["synthetic_controls_are_game_evidence"])
+
+    def test_expected_synthetic_java_major_rejects_wrong_jvm_in_full_archive(self):
+        # The immutable retained controls actually ran on Java 21. A Java 25
+        # CI invocation must not accept those same otherwise valid observations.
+        self.assertEqual([], VALIDATOR.validate_evidence(
+            EVIDENCE, ROOT, expected_synthetic_java_major=21)[0])
+        errors, _ = VALIDATOR.validate_evidence(
+            EVIDENCE, ROOT, expected_synthetic_java_major=25)
+        self.assertEqual({f"synthetic {profile_id}: observed JVM does not match required Java major 25"
+                          for profile_id in self.profiles}, set(errors))
+        for major, expected_code, expected_result in ((21, 0, "valid_archive"),
+                                                       (25, 1, "invalid_archive")):
+            with self.subTest(java=major):
+                completed = subprocess.run(
+                    [sys.executable, str(VALIDATOR_PATH), "--evidence-dir", str(EVIDENCE),
+                     "--expected-synthetic-java-major", str(major)],
+                    capture_output=True, text=True, timeout=60)
+                self.assertEqual(expected_code, completed.returncode, completed.stderr)
+                self.assertEqual(expected_result, json.loads(completed.stdout)["result"])
+
+    def test_expected_java_major_is_checked_per_process_not_summary_or_digest(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-java-major-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            summary_path = archive / "synthetic-control-verification.json"
+            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+            record = summary["profiles"][0]
+            capture = archive / record["observation_file"]
+            original = [json.loads(line) for line in capture.read_text(encoding="utf-8").splitlines()]
+            # Recompute the archive-controlled checksum after changing one
+            # process. A digest match and correct versions in the other three
+            # profiles cannot compensate for a wrong/malformed JVM identity.
+            for version in ("25.0.5", "210.0.1", "21.", 21, None):
+                with self.subTest(java_version=version):
+                    events = copy.deepcopy(original)
+                    start = next(event for event in events if event.get("event") == "process_start")
+                    if version is None:
+                        start.pop("java_version")
+                    else:
+                        start["java_version"] = version
+                    capture.write_bytes(("".join(json.dumps(event) + "\n" for event in events)).encode("utf-8"))
+                    record["observation_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+                    summary_path.write_text(json.dumps(summary), encoding="utf-8")
+                    errors, _ = VALIDATOR.validate_evidence(
+                        archive, ROOT, expected_synthetic_java_major=21)
+                    self.assertIn(
+                        f"synthetic {record['profile_id']}: observed JVM does not match required Java major 21",
+                        errors)
+                    self.assertFalse(any("observation missing or digest mismatch" in e for e in errors), errors)
 
     def test_exact_client_and_server_netty_artifact_pins_are_source_bound(self):
         matrix = json.loads((EVIDENCE / "environment-matrix.json").read_text())
@@ -391,6 +528,32 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             self.assertEqual(b"prior persistent build output",
                              (old_output / "Obsolete.class").read_bytes())
 
+    def test_fresh_synthetic_archive_cannot_reuse_retained_results(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-fresh-archive-") as temp:
+            root = Path(temp)
+            source = root / "source"
+            source.mkdir()
+            (source / "environment-matrix.json").write_bytes(b"retained matrix")
+            (source / "remediation-compatibility.json").write_bytes(b"historical bytes")
+            (source / "synthetic-control-verification.json").write_bytes(b"old summary")
+            (source / "synthetic-control-observation-old.jsonl").write_bytes(b"old capture")
+            destination = root / "fresh"
+            created = CONTROLS.prepare_fresh_evidence_dir(source, destination)
+            # Windows tempfile may expose an 8.3 alias (RUNNER~1) while
+            # resolve() returns the long path. Compare filesystem identity.
+            self.assertTrue(destination.samefile(created))
+            self.assertEqual(b"retained matrix", (destination / "environment-matrix.json").read_bytes())
+            self.assertEqual(b"historical bytes", (destination / "remediation-compatibility.json").read_bytes())
+            self.assertFalse((destination / "synthetic-control-verification.json").exists())
+            self.assertEqual([], list(destination.glob("synthetic-control-observation-*.jsonl")))
+            self.assertEqual(b"old summary", (source / "synthetic-control-verification.json").read_bytes())
+            self.assertEqual(b"old capture", (source / "synthetic-control-observation-old.jsonl").read_bytes())
+            with self.assertRaises(FileExistsError):
+                CONTROLS.prepare_fresh_evidence_dir(source, destination)
+            with self.assertRaisesRegex(ValueError, "outside the retained archive"):
+                CONTROLS.prepare_fresh_evidence_dir(source, source / "nested")
+            self.assertFalse((source / "nested").exists())
+
     def test_control_jar_uses_canonical_order_and_zip_metadata_across_rebuilds(self):
         with tempfile.TemporaryDirectory(prefix="issue45-canonical-zip-") as temp:
             root = Path(temp)
@@ -407,6 +570,11 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             jar = root / "control.jar"
             CONTROLS.package_control_classes(classes, jar)
             baseline_hash = hashlib.sha256(jar.read_bytes()).hexdigest()
+            # A common golden byte digest is checked by every Linux/Windows
+            # Java 21/25 matrix run, not just by two builds on one host.
+            self.assertEqual(
+                "a040924e75b1c60dde3415371b0f1c00ea52a50187b906eebb7015d3e917c1a1",
+                baseline_hash)
             expected_order = ["Top.class", "nested/Bee.class", "nested/Zeta.class",
                               "nested/alpha.class"]
             with zipfile.ZipFile(jar) as archive:

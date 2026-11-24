@@ -4,6 +4,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -37,76 +38,265 @@ class NettyFocusErratumTests(unittest.TestCase):
     def test_cross_platform_java_tests_have_independent_native_exit_codes(self):
         workflow = (ROOT / ".github/workflows/credential-guard-tests.yml").read_text(
             encoding="utf-8")
-        archive_cmd = ("python diagnostics/issue45-runtime/validate_runtime_evidence.py "
-                       "--evidence-dir docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23")
+        archive_cmd = "python diagnostics/issue45-runtime/validate_runtime_evidence.py"
+        controls_cmd = "python diagnostics/issue45-runtime/run_controls.py"
         runtime_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_runtime_pipeline_evidence.py" -v')
         erratum_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_netty_compatibility_focus.py" -v')
 
-        def named_step_commands(source: str) -> dict[str, list[str]]:
-            """Inspect actual step fields, ignoring harmless YAML comments/spacing.
+        def required_checks(major):
+            work = "issue45-agent-j21" if major == 21 else "issue45-agent-café-j25"
+            work_dir = '"${{ runner.temp }}/' + work + '"'
+            evidence_dir = '"${{ runner.temp }}/issue45-evidence-j' + str(major) + '"'
+            control_label = (
+                "Exercise Issue 45 diagnostic privacy and populated snapshots on Java 21"
+                if major == 21 else
+                "Exercise Issue 45 diagnostic class transformations on Java 25")
+            return (
+                (control_label, f"{controls_cmd} --work-dir {work_dir} --fresh-evidence-dir {evidence_dir}"),
+                (f"Validate regenerated Java {major} runtime archive",
+                 f"{archive_cmd} --evidence-dir {evidence_dir} --expected-synthetic-java-major {major}"),
+                (f"Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
+                (f"Test Java {major} Netty erratum mutation regressions", erratum_cmd),
+            )
 
-            The workflow deliberately uses simple single-line name/run
-            scalars for these checks. A block-valued run pipe is not
-            equivalent to a native command and is rejected by the invariant.
+        def step_fields(source: str) -> list[dict]:
+            """Read the guard workflow's simple block-style step mappings.
+
+            This deliberately checks the repository's supported layout, not
+            arbitrary YAML. Every sequence item starts a new step (including
+            unnamed steps); comments and blank lines do not end a step.
+            Block-valued run commands cannot satisfy the isolation contract.
             """
-            result: dict[str, list[str]] = {}
+            def mapping_field(field):
+                # A space before ':' is legal YAML, as are simple quoted keys.
+                # Normalize before matching or detecting duplicates. Complex
+                # keys, tags, aliases and merge keys are outside this layout;
+                # reject rather than silently overlook a security-relevant key.
+                match = re.fullmatch(
+                    r"""(?:([A-Za-z0-9_-]+)|'([A-Za-z0-9_-]+)'|"([A-Za-z0-9_-]+)")[ ]*:(.*)""",
+                    field)
+                if match is None:
+                    raise ValueError("unsupported workflow mapping field")
+                key = next(part for part in match.groups()[:3] if part is not None)
+                value = match[4].strip().split(" #", 1)[0].strip()
+                if value.startswith("#"):
+                    value = ""
+                return key, value
+
+            steps = []
             current = None
+            parent_key = None
+            seen_jobs = seen_guard = seen_steps = False
+            in_jobs = False
+            in_guard = False
+            in_steps = False
             for line in source.splitlines():
-                if line.startswith("      - name: "):
-                    current = line.split("- name: ", 1)[1].strip()
-                    result.setdefault(current, [])
-                elif current is not None and line.startswith("        run: "):
-                    result[current].append(line.split("run: ", 1)[1].strip())
-            return result
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                indent = len(line) - len(line.lstrip(" "))
+                if indent == 0:
+                    # Ignore unrelated top-level sections (including their
+                    # trigger lists and concurrency settings). Do not carry
+                    # guard/steps state across a section boundary.
+                    in_jobs = re.match(r"""^(?:jobs|'jobs'|"jobs") *:""", line) is not None
+                    if in_jobs:
+                        if seen_jobs or mapping_field(line) != ("jobs", ""):
+                            raise ValueError("duplicate or unsupported jobs mapping")
+                        seen_jobs = True
+                    in_guard = in_steps = False
+                    current = None
+                    continue
+                if not in_jobs:
+                    continue
+                if indent == 2:
+                    key, value = mapping_field(line.strip())
+                    in_guard = key == "guard"
+                    if in_guard:
+                        if seen_guard or value:
+                            raise ValueError("duplicate or unsupported guard mapping")
+                        seen_guard = True
+                    in_steps = False
+                    current = None
+                    continue
+                if not in_guard:
+                    continue
+                if indent == 4:
+                    key, value = mapping_field(line.strip())
+                    if key in {"if", "continue-on-error"}:
+                        raise ValueError("conditional or failure-tolerant guard job")
+                    in_steps = key == "steps"
+                    if in_steps:
+                        if seen_steps or value:
+                            raise ValueError("duplicate or unsupported steps mapping")
+                        seen_steps = True
+                    current = None
+                    # The header is not itself a sequence item.
+                    continue
+                if not in_steps:
+                    continue
+                if line == "      -" or line.startswith("      - "):
+                    current = {}
+                    parent_key = None
+                    steps.append(current)
+                    field = line[8:]
+                    if not field.strip() or field.lstrip().startswith("#"):
+                        continue
+                elif current is not None and line.startswith("        "):
+                    field = line[8:]
+                    if field.startswith(" "):
+                        if parent_key == "run" and current.get("run", "").startswith(("|", ">")):
+                            current["script"] = current.get("script", "") + "\n" + field.strip()
+                        elif parent_key == "with":
+                            if not field.startswith("  ") or field.startswith("   "):
+                                raise ValueError("unsupported workflow with indentation")
+                            key, value = mapping_field(field[2:])
+                            if key == "java-version":
+                                if key in current:
+                                    current["duplicate"] = True
+                                current[key] = value
+                        continue
+                else:
+                    raise ValueError("unsupported workflow step layout")
+                key, value = mapping_field(field)
+                parent_key = key
+                if key in {"name", "run", "uses", "with", "if", "continue-on-error"}:
+                    if key in current:
+                        current["duplicate"] = True
+                    current[key] = value
+            return steps
 
         def all_native_checks_isolated(source: str) -> bool:
-            steps = named_step_commands(source)
-            expected = (
-                ("Validate regenerated Java {major} runtime archive", archive_cmd),
-                ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
-                ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
-            )
-            return all(steps.get(label.format(major=major)) == [command]
-                       for major in (21, 25) for label, command in expected)
+            try:
+                steps = step_fields(source)
+            except ValueError:
+                return False
+            java = None
+            seen = []
+            invocations = {command: 0 for command in
+                           (controls_cmd, archive_cmd, runtime_cmd, erratum_cmd)}
+            for step in steps:
+                if step.get("uses", "").startswith("actions/setup-java@"):
+                    # A skipped or failure-tolerant setup cannot establish the
+                    # Java identity of the subsequent native checks.
+                    if step.get("duplicate") or "if" in step or "continue-on-error" in step:
+                        return False
+                    java = step.get("java-version", "").strip("'\"").split(".", 1)[0]
+                run = step.get("run", "")
+                script = run + "\n" + step.get("script", "")
+                for command in invocations:
+                    invocations[command] += script.count(command)
+                for major in (21, 25):
+                    for label, command in required_checks(major):
+                        if step.get("name") == label:
+                            if (java != str(major) or run != command or step.get("duplicate")
+                                    or "if" in step or "continue-on-error" in step):
+                                return False
+                            seen.append((major, label))
+            return (seen == [(major, label) for major in (21, 25)
+                             for label, _ in required_checks(major)]
+                    and all(count == 2 for count in invocations.values()))
 
         self.assertTrue(all_native_checks_isolated(workflow))
-        # Benign YAML comments/blank lines are not changes to the step's native
-        # process exit-code propagation and must not break the test.
-        plain = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: {archive_cmd}\n"
-        )
-        commented = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            "        # This comment does not change any native process.\n"
-            "\n"
-            f"        run: {archive_cmd}\n"
-        )
-        self.assertIn(plain, workflow)
-        benign = workflow.replace(plain, commented, 1)
-        self.assertNotEqual(benign, workflow)
-        self.assertTrue(all_native_checks_isolated(benign))
 
-        # A real masked-failure mutant combines two previously independent
-        # Python invocations in one PowerShell multiline run step.
-        separate = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: {archive_cmd}\n"
-            "      - name: Test Java 21 runtime evidence and privacy regressions\n"
-            f"        run: {runtime_cmd}\n"
-        )
-        combined = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            "        run: |\n"
-            f"          {archive_cmd}\n"
-            f"          {runtime_cmd}\n"
-        )
-        self.assertIn(separate, workflow)
-        mutant = workflow.replace(separate, combined, 1)
-        self.assertNotEqual(workflow, mutant)
-        self.assertFalse(all_native_checks_isolated(mutant))
+        # Build semantic fixtures independently of the formatting in the
+        # checked-in workflow. Exercise the same predicate as the real file.
+        def setup(major):
+            return (f"      - uses: actions/setup-java@pinned\n"
+                    f"        with:\n          java-version: '{major}.0.1'\n")
+
+        def check(major, index, comment=False):
+            label, command = required_checks(major)[index]
+            return (f"      - name: {label}\n"
+                    + ("        # Harmless comment\n\n" if comment else "")
+                    + f"        run: {command}\n")
+
+        prefix = "jobs:\n  guard:\n    steps:\n"
+        j21 = [check(21, i) for i in range(4)]
+        j25 = [check(25, i) for i in range(4)]
+        tail = setup(25) + "".join(j25)
+        good = prefix + setup(21) + "".join(j21) + tail
+        self.assertTrue(all_native_checks_isolated(good))
+        benign = (prefix + setup(21) + j21[0] + check(21, 1, comment=True)
+                  + "      # Between steps\n\n" + j21[2] + j21[3]
+                  + "      - id: unrelated\n        run: python -V\n" + tail)
+        self.assertTrue(all_native_checks_isolated(benign))
+        # Unrelated sections and sibling jobs must not enter the step parser.
+        for suffix in ("", "concurrency:\n  group: guard-ci\n  cancel-in-progress: true\n",
+                       "  other:\n    steps:\n      - run: python -V\n"):
+            with self.subTest(unrelated_suffix=suffix):
+                self.assertTrue(all_native_checks_isolated(
+                    "on:\n  - push\n  - pull_request\n" + good + suffix))
+        self.assertTrue(all_native_checks_isolated(
+            good.replace("    steps:\n", "    steps: # list header\n", 1)))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace("    steps:\n", "    steps:\n      unexpected: true\n", 1)))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace("  guard:\n", "  unrelated:\n", 1)))
+        # Job-level gates and duplicate structural keys cannot be ignored.
+        for modifier in ("if : false", '"if" : ${{ false }}', "continue-on-error : true"):
+            mutated = good.replace("  guard:\n", f"  guard:\n    {modifier}\n", 1)
+            self.assertNotEqual(good, mutated)
+            self.assertFalse(all_native_checks_isolated(mutated))
+        for suffix in ('"jobs" : {}\n', '  "guard" : {}\n', '    "steps" : []\n'):
+            self.assertFalse(all_native_checks_isolated(good + suffix))
+        # Formatting changes alone do not alter the workflow's semantics.
+        spaced = good.replace("guard:", "guard :").replace("steps:", "steps :")
+        for key in ("uses", "with", "java-version", "name", "run"):
+            spaced = spaced.replace(key + ":", key + "  :")
+        self.assertTrue(all_native_checks_isolated(spaced))
+        quoted = good
+        for key in ("guard", "steps", "uses", "with", "java-version", "name", "run"):
+            quoted = quoted.replace(key + ":", '"' + key + '" :')
+        self.assertTrue(all_native_checks_isolated(quoted))
+
+        archive_label, archive_run = required_checks(21)[1]
+        combined = (f"      - name: {archive_label}\n"
+                    f"        run: |\n          {archive_run}\n          {runtime_cmd}\n")
+        self.assertFalse(all_native_checks_isolated(
+            prefix + setup(21) + j21[0] + combined + j21[3] + tail))
+        self.assertFalse(all_native_checks_isolated(
+            prefix + setup(21) + setup(25) + "".join(j21) + "".join(j25)))
+        self.assertFalse(all_native_checks_isolated(
+            good + f"      - id: extra-archive\n        run: {archive_run}\n"))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace(archive_run, archive_cmd + " --evidence-dir retained-archive", 1)))
+        for major in (21, 25):
+            for key, value in (("if", "false"), ("if", "${{ false }}"),
+                               ("continue-on-error", "true")):
+                for spelling in (key, key + " ", key + "   ",
+                                 "'" + key + "' ", '"' + key + '" '):
+                    modifier = f"{spelling}: {value}"
+                    with self.subTest(java=major, setup_modifier=modifier):
+                        conditional = setup(major).replace(
+                            "        with:\n", f"        {modifier}\n        with:\n", 1)
+                        self.assertNotEqual(setup(major), conditional)
+                        self.assertFalse(all_native_checks_isolated(
+                            good.replace(setup(major), conditional, 1)))
+                        # The same normalized policy applies to all eight
+                        # required commands, not only the setup action.
+                        for index in range(4):
+                            original = check(major, index)
+                            guarded = original + f"        {modifier}\n"
+                            self.assertFalse(all_native_checks_isolated(
+                                good.replace(original, guarded, 1)))
+            # A duplicate critical field must not be hidden by spacing or
+            # quoting. Unsupported escaped keys and YAML merges fail closed.
+            for extra in ('          "java-version" : \'%s.0.1\'\n' % major,
+                          '        "i\\u0066" : false\n',
+                          '        <<: {if: false}\n'):
+                with self.subTest(java=major, unsupported_or_duplicate=extra):
+                    self.assertFalse(all_native_checks_isolated(
+                        good.replace(setup(major), setup(major) + extra, 1)))
+            _, validate_cmd = required_checks(major)[1]
+            for replacement in ("", f" --expected-synthetic-java-major {46 - major}"):
+                with self.subTest(java=major, validation_argument=replacement):
+                    wrong = validate_cmd.replace(
+                        f" --expected-synthetic-java-major {major}", replacement)
+                    self.assertNotEqual(validate_cmd, wrong)
+                    self.assertFalse(all_native_checks_isolated(
+                        good.replace(validate_cmd, wrong, 1)))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
@@ -382,6 +572,70 @@ class NettyFocusErratumTests(unittest.TestCase):
                     FOCUS.main()
             errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
             self.assertTrue(any("historical report" in e for e in errors), errors)
+
+    def test_changed_canonical_v1_is_rejected_even_with_original_archive(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-canonical-v1-") as tmp:
+            changed = Path(tmp) / "remediation-compatibility.json"
+            changed.write_bytes(OLD.read_bytes() + b"\n")
+            with mock.patch.object(FOCUS, "HISTORICAL_V1_PATH", changed):
+                errors = FOCUS.validate_compatibility_erratum(
+                    self.report, self.register, archive_v1_path=OLD)
+                self.assertIn("source-controlled historical Netty v1 digest mismatch", errors)
+                self.assertFalse(any("archived Netty v1 historical report SHA-256" in e
+                                     for e in errors), errors)
+                with self.assertRaisesRegex(SystemExit, "historical compatibility report SHA-256 mismatch"):
+                    FOCUS.main()
+
+    def test_archive_cannot_choose_an_alternate_client_module_or_server_version(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        matrix = json.loads((evidence / "environment-matrix.json").read_text(encoding="utf-8"))
+        retained = json.loads((evidence / "baseline-lock.json").read_text(encoding="utf-8"))["retained_files"]
+        for identity, field, value in (
+                ("minecraft-1.19-client", "expected_bundled_netty_module", "netty-handler"),
+                ("minecraft-1.19-dedicated-server", "expected_netty_codec", "4.2.17.Final")):
+            with self.subTest(identity=identity):
+                row = copy.deepcopy(next(r for r in matrix["environments"] if r["environment_id"] == identity))
+                row[field] = value
+                errors, pin = VALIDATOR.validate_environment_artifact_pin(row, ROOT, retained)
+                self.assertIsNone(pin)
+                self.assertTrue(any("unexpected Netty artifact selector" in e for e in errors), errors)
+
+    def test_archive_controlled_server_scan_and_matching_summary_are_rejected(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-forged-server-scan-") as tmp:
+            archive = Path(tmp) / "archive"
+            shutil.copytree(evidence, archive)
+            matrix_path = archive / "environment-matrix.json"
+            baseline_path = archive / "baseline-lock.json"
+            report_path = archive / "remediation-compatibility-v2.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            row = next(r for r in matrix["environments"]
+                       if r["environment_id"] == "minecraft-1.19-dedicated-server")
+            record = row["server_bundle_source"]
+            scan = json.loads((ROOT / record["source_scan_path"]).read_text(encoding="utf-8"))
+            server = next(r for r in scan["servers"] if r["minecraft_version"] == "1.19")
+            nested = next(r for r in server["nested_jars"]
+                          if r["path"] == record["nested_netty_artifact"]["path"])
+            nested.update(sha1="a" * 40, sha256="b" * 64, size_bytes=123)
+            record["nested_netty_artifact"].update(
+                sha1=nested["sha1"], sha256=nested["sha256"], size_bytes=nested["size_bytes"])
+            forged = Path(tmp) / "fake-scan.json"
+            forged.write_text(json.dumps(scan), encoding="utf-8")
+            new_hash = hashlib.sha256(forged.read_bytes()).hexdigest()
+            record.update(source_scan_path=str(forged), source_scan_sha256=new_hash)
+            baseline["retained_files"][str(forged)] = new_hash
+            report["minecraft_1_19_server_bundle"]["netty_codec_artifact"].update(
+                sha1=nested["sha1"], sha256=nested["sha256"], size_bytes=nested["size_bytes"])
+            for path, data in ((matrix_path, matrix), (baseline_path, baseline), (report_path, report)):
+                path.write_text(json.dumps(data), encoding="utf-8")
+            errors, pin = VALIDATOR.validate_environment_artifact_pin(
+                row, ROOT, baseline["retained_files"])
+            self.assertIsNone(pin)
+            self.assertTrue(any("source-controlled official scan" in e for e in errors), errors)
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("source-controlled official scan" in e for e in errors), errors)
 
     def test_server_summary_live_selection_or_artifact_forgery_is_rejected(self):
         for name in ("minecraft_1_19_server_bundle", "minecraft_26_1_2_server_bundle"):

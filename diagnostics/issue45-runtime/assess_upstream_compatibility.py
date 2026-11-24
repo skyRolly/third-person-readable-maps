@@ -16,7 +16,8 @@ REGISTER = BASE / "priority-register-v6.json"
 # Independent source-code trust anchor: never derive this from the mutable v1
 # file or a regenerated v2 report.
 HISTORICAL_V1_SHA256 = "8312b41b86992cb3dc6aff10f8d01184248abe9cadaf58b754967f157962ee09"
-HISTORICAL_V1_PATH = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json"
+HISTORICAL_V1_RELATIVE = "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23/remediation-compatibility.json"
+HISTORICAL_V1_PATH = ROOT / HISTORICAL_V1_RELATIVE
 
 
 def digest(path: Path) -> str:
@@ -119,7 +120,7 @@ def validate_compatibility_erratum(
     if not historical.is_file() or digest(historical) != expected_v1_sha:
         errors.append("source-controlled historical Netty v1 digest mismatch")
     if report.get("historical_v1_report") != {
-            "path": historical.relative_to(ROOT).as_posix(), "sha256": expected_v1_sha,
+            "path": HISTORICAL_V1_RELATIVE, "sha256": expected_v1_sha,
             "status": "preserved_with_classification_erratum"}:
         errors.append("Netty v1 historical report source provenance mismatch")
     if not physical_v1.is_file() or digest(physical_v1) != expected_v1_sha:
@@ -310,13 +311,15 @@ def main() -> int:
         rows.append(row)
 
     historical = OUT / "remediation-compatibility.json"
-    if not historical.is_file() or digest(historical) != HISTORICAL_V1_SHA256:
+    if (not HISTORICAL_V1_PATH.is_file()
+            or digest(HISTORICAL_V1_PATH) != HISTORICAL_V1_SHA256
+            or not historical.is_file() or digest(historical) != HISTORICAL_V1_SHA256):
         raise SystemExit("immutable historical compatibility report SHA-256 mismatch; refusing regeneration")
     data = {
         "schema": "issue45-netty-remediation-compatibility/v2",
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
         "historical_v1_report": {
-            "path": historical.relative_to(ROOT).as_posix(), "sha256": digest(historical),
+            "path": HISTORICAL_V1_RELATIVE, "sha256": HISTORICAL_V1_SHA256,
             "status": "preserved_with_classification_erratum"},
         "source_register": {"path": REGISTER.relative_to(ROOT).as_posix(), "sha256": digest(REGISTER)},
         "scope": "source-bound classification erratum; fixed boundaries do not prove focused investigation or runtime compatibility",
