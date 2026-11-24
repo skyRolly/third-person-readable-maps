@@ -401,7 +401,10 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             (source / "synthetic-control-verification.json").write_bytes(b"old summary")
             (source / "synthetic-control-observation-old.jsonl").write_bytes(b"old capture")
             destination = root / "fresh"
-            self.assertEqual(destination, CONTROLS.prepare_fresh_evidence_dir(source, destination))
+            created = CONTROLS.prepare_fresh_evidence_dir(source, destination)
+            # Windows tempfile may expose an 8.3 alias (RUNNER~1) while
+            # resolve() returns the long path. Compare filesystem identity.
+            self.assertTrue(destination.samefile(created))
             self.assertEqual(b"retained matrix", (destination / "environment-matrix.json").read_bytes())
             self.assertEqual(b"historical bytes", (destination / "remediation-compatibility.json").read_bytes())
             self.assertFalse((destination / "synthetic-control-verification.json").exists())
