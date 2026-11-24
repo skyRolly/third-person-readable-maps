@@ -13,8 +13,12 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
+import urllib.error
 import urllib.request
 import zipfile
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -51,11 +55,38 @@ def fetch(url: str, path: Path, expected_hash: str, algorithm: str = "sha256",
     temporary = path.with_name(path.name + "." + uuid.uuid4().hex + ".part")
     try:
         request = urllib.request.Request(url, headers={"User-Agent": "issue45-runtime-diagnostic/1"})
-        with urllib.request.urlopen(request, timeout=90) as response, temporary.open("xb") as target:
-            shutil.copyfileobj(response, target)
-        if not valid(temporary):
-            raise SystemExit("downloaded control dependency hash or size differs: " + path.name)
-        os.replace(temporary, path)
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(request, timeout=90) as response, temporary.open("xb") as target:
+                    shutil.copyfileobj(response, target)
+            except urllib.error.HTTPError as error:
+                temporary.unlink(missing_ok=True)
+                # Respect upstream rate limits without masking permanent
+                # failures or retrying any integrity mismatch.
+                if error.code != 429 or attempt == 2:
+                    raise
+                retry_after = error.headers.get("Retry-After") if error.headers else None
+                delay = 2 ** (attempt + 1)
+                if retry_after:
+                    try:
+                        delay = max(delay, int(retry_after))
+                    except ValueError:
+                        try:
+                            when = parsedate_to_datetime(retry_after)
+                            if when.tzinfo is None:
+                                when = when.replace(tzinfo=timezone.utc)
+                            delay = max(delay, (when - datetime.now(timezone.utc)).total_seconds())
+                        except (ValueError, TypeError, OverflowError):
+                            pass
+                if delay > 60:
+                    raise  # Do not retry earlier than the server permits.
+                error.close()
+                time.sleep(delay)
+                continue
+            if not valid(temporary):
+                raise SystemExit("downloaded control dependency hash or size differs: " + path.name)
+            os.replace(temporary, path)
+            return
     finally:
         temporary.unlink(missing_ok=True)
 
@@ -109,7 +140,7 @@ def package_control_classes(classes: Path, destination: Path) -> None:
 
 
 def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
-                lz4_helper: Path, source_sha: str) -> dict:
+                lz4_helper: Path, source_sha: str, evidence_dir: Path = OUT) -> dict:
     wanted = set(profile["modules"])
     profile_root = work / profile["profileId"]
     profile_root.mkdir(parents=True, exist_ok=True)
@@ -279,7 +310,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
 
     diagnostic = next(event for event in events if event.get("event") == "diagnostic")
     raw_name = "synthetic-control-observation-" + profile["profileId"] + ".jsonl"
-    raw_destination = OUT / raw_name
+    raw_destination = evidence_dir / raw_name
     raw_destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(report, raw_destination)
     return {
@@ -303,10 +334,27 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     }
 
 
+def prepare_fresh_evidence_dir(source: Path, destination: Path) -> Path:
+    """Copy retained non-synthetic evidence, never reuse a prior capture."""
+    source = source.resolve()
+    destination = destination.resolve()
+    if destination.is_relative_to(source):
+        raise ValueError("fresh evidence directory must be outside the retained archive")
+    # copytree refuses an existing destination. Do not overwrite a historical
+    # archive or allow old synthetic observations to satisfy a fresh run.
+    shutil.copytree(source, destination, ignore=shutil.ignore_patterns(
+        "synthetic-control-verification.json", "synthetic-control-observation-*.jsonl"))
+    return destination
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--work-dir", required=True, type=Path)
+    parser.add_argument("--fresh-evidence-dir", type=Path,
+                        help="Create a new archive copy without old synthetic results and write fresh controls there")
     args = parser.parse_args()
+    evidence_dir = (prepare_fresh_evidence_dir(OUT, args.fresh_evidence_dir.resolve())
+                    if args.fresh_evidence_dir is not None else OUT)
     work = args.work_dir.resolve()
     work.mkdir(parents=True, exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -321,7 +369,7 @@ def main() -> int:
     agent = work / "issue45-runtime-agent.jar"
     subprocess.run([sys.executable, str(HERE / "build_agent.py"), "--output", str(agent)], check=True)
     source_sha = subprocess.check_output(["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True).strip()
-    profiles = [run_profile(profile, work, agent, CACHE / "ecj-3.39.0.jar", helper_path, source_sha)
+    profiles = [run_profile(profile, work, agent, CACHE / "ecj-3.39.0.jar", helper_path, source_sha, evidence_dir)
                 for profile in LOCK["syntheticProfiles"]]
     result = {
         "schema": "issue45-runtime-synthetic-controls/v1", "result": "pass", "scope": "synthetic_only",
@@ -332,7 +380,7 @@ def main() -> int:
         "malformed_or_large_frames_sent": False,
         "synthetic_observations_are_minecraft_runtime_evidence": False,
     }
-    summary = OUT / "synthetic-control-verification.json"
+    summary = evidence_dir / "synthetic-control-verification.json"
     summary.parent.mkdir(parents=True, exist_ok=True)
     summary.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(result, sort_keys=True))
