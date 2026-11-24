@@ -130,7 +130,14 @@ class NettyFocusErratumTests(unittest.TestCase):
                         continue
                     # A colon separating a mapping key must not be consumed
                     # as a continuation token, even at zero indentation.
-                    plain = re.match(r"[^ \t,\[\]{}:'\"]+(?::(?![ \t,\[\]{}]|$)[^ \t,\[\]{}:'\"]+)*", field)
+                    # Once a plain scalar starts, apostrophes and double
+                    # quotes inside it are literal characters, not openers.
+                    # A separated # begins a comment; a colon followed by
+                    # separation or a flow delimiter remains a mapping key.
+                    plain = re.match(
+                        r"""(?:[^ \t,\[\]{}:'"]|:(?![ \t,\[\]{}]|$))"""
+                        r"""(?:(?![ \t]#)[^,\[\]{}:]|:(?![ \t,\[\]{}]|$))*""",
+                        field)
                     if plain is None:
                         raise ValueError("unsupported nested filter flow content")
                     field = field[plain.end():]
@@ -145,6 +152,10 @@ class NettyFocusErratumTests(unittest.TestCase):
             trigger_indent = None
             trigger_flow = []
             nested_filter_flow = False
+            nested_filter_value_indent = None
+            nested_scalar_indent = None
+            filter_keys = {"branches", "branches-ignore", "paths", "paths-ignore",
+                           "tags", "tags-ignore", "types", "workflows", "options"}
             in_jobs = False
             in_guard = False
             in_steps = False
@@ -164,6 +175,15 @@ class NettyFocusErratumTests(unittest.TestCase):
                 if in_trigger_block and nested_filter_flow:
                     nested_filter_flow = not nested_filter_flow_complete(line.strip())
                     continue
+                if in_trigger_block and nested_scalar_indent is not None:
+                    # Indented block-scalar text is not YAML structure, even
+                    # when it looks like a filter or contains Markdown links.
+                    if indent > nested_scalar_indent:
+                        continue
+                    nested_scalar_indent = None
+                if (nested_filter_value_indent is not None
+                        and indent <= nested_filter_value_indent):
+                    nested_filter_value_indent = None
                 if in_trigger_block and line[indent:].startswith("\t"):
                     raise ValueError("tab indentation outside an open flow trigger list")
                 if in_trigger_block and (indent > 0 or root_item):
@@ -192,14 +212,29 @@ class NettyFocusErratumTests(unittest.TestCase):
                     elif indent == trigger_indent:
                         mapping_field(field)
                     else:
-                        # Only deeper event-filter values can open a nested
-                        # flow list. Its continuation may use tabs or less
-                        # indentation than the filter's block mapping.
-                        nested = re.match(
-                            rf"{event_name}[ \t]*:[ \t]*(\[.*)", line.strip())
-                        value = nested[1] if nested else line.strip()
-                        if value.startswith("["):
+                        # A bracket at the start of arbitrary nested text is
+                        # not a filter list. Only known list-valued fields (or
+                        # their immediately following indented value) qualify.
+                        value = line.strip()
+                        pending = nested_filter_value_indent is not None
+                        nested_filter_value_indent = None
+                        if pending and value.startswith("["):
                             nested_filter_flow = not nested_filter_flow_complete(value[1:])
+                        else:
+                            nested = re.fullmatch(rf"({event_name})[ \t]*:[ \t]*(.*)", value)
+                            if nested:
+                                key = nested[1].strip("'\"")
+                                value = nested[2]
+                                header = re.split(r"[ \t]+#", value, maxsplit=1)[0].strip()
+                                if header.startswith("#"):
+                                    header = ""
+                                if re.fullmatch(r"[|>](?:[1-9][+-]?|[+-][1-9]?)?", header):
+                                    nested_scalar_indent = indent
+                                elif key in filter_keys:
+                                    if value.startswith("["):
+                                        nested_filter_flow = not nested_filter_flow_complete(value[1:])
+                                    elif not header:
+                                        nested_filter_value_indent = indent
                     # Other event filter contents are outside the native shell
                     # contract; actionlint validates the actual workflow.
                     continue
@@ -213,6 +248,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     trigger_layout = trigger_indent = None
                     trigger_flow = []
                     nested_filter_flow = False
+                    nested_filter_value_indent = nested_scalar_indent = None
                     if key == "on" and value.startswith("["):
                         in_trigger_block = True
                         trigger_layout = ("complete" if trigger_flow_complete(trigger_flow, value)
@@ -542,6 +578,56 @@ class NettyFocusErratumTests(unittest.TestCase):
                 'on:\n  push:\n    branches: [main,\n      \t"unterminated\n'):
             for source in (triggers + good, good + triggers):
                 with self.subTest(invalid_nested_filter_triggers=triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # Plain scalar quotes belong to the pattern; Markdown and apparent
+        # mapping/list syntax inside description scalars are not structure.
+        for triggers in (
+                "on:\n  push:\n    branches: [main, release/o'neil]\n",
+                "on:\n  push:\n    branches: [main,\n      \trelease/o'neil]\n",
+                'on:\n  push:\n    branches: [main, release/o"neil]\n',
+                "on:\n  push:\n    branches: [main, 'release/o''neil', release/o'neil]\n",
+                "on:\n  push:\n    branches: [main, release/o'neil, # comment: [\n"
+                "      \t'feature/#tag']\n",
+                "on:\n  push:\n    branches: [main, release/o'neil, release/x:y]\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: |\n"
+                "          [Read docs](https://example.invalid/docs)\n"
+                "          branches: [not an actual list\n"
+                "          defaults: {run: {shell: pwsh}}\n        required: true\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: >- # folded prose\n          Read the guide:\n"
+                "          [Documentation](https://example.invalid/docs)\n        type: string\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: |2-\n"
+                "          [Documentation](https://example.invalid/docs)\n        type: string\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: >-2\n"
+                "          [Documentation](https://example.invalid/docs)\n        type: string\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: See the\n"
+                "          [Documentation](https://example.invalid/docs)\n        type: string\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: |\n          branches: [\n"
+                "          [Documentation](https://example.invalid/docs)\n"
+                "        type: choice\n        options:\n          [one,\n           \ttwo]\n",
+                "on:\n  push:\n    'branches': # list\n      [main,\n       \trelease/o'neil]\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(scalar_triggers=triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    for defaults in ("defaults: {run: {shell: 'pwsh -File {0}'}}\n",
+                                     r'"\u0064efaults": {}' + "\n"):
+                        self.assertFalse(all_native_checks_isolated(source + defaults))
+        for triggers in (
+                "on:\n  push:\n    branches: [main, release/o'neil] extra\n",
+                "on:\n  push:\n    branches: [main,\n      \t'not closed\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: |\n          [Documentation](https://example.invalid/docs)\n"
+                "defaults: {run: {shell: pwsh}}\n",
+                "on:\n  workflow_dispatch:\n    inputs:\n      target:\n"
+                "        description: |\n          [Documentation](https://example.invalid/docs)\n"
+                + r'"\u0064efaults": {}' + "\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(invalid_scalar_triggers=triggers):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
