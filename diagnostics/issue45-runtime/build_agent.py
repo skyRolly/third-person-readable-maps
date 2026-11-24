@@ -47,6 +47,72 @@ def download_pinned(dependency: dict, target: Path) -> None:
         temporary.unlink(missing_ok=True)
 
 
+AGENT_MANIFEST = (
+    "Manifest-Version: 1.0\n"
+    "Premain-Class: dev.skyrolly.issue45.Issue45Agent\n"
+    "Can-Redefine-Classes: true\n"
+    "Can-Retransform-Classes: true\n\n"
+).encode("utf-8")
+
+
+def ordered_files(root: Path, pattern: str) -> list[Path]:
+    return sorted((path for path in root.rglob(pattern) if path.is_file()),
+                  key=lambda path: path.relative_to(root).as_posix().encode("utf-8"))
+
+
+def package_agent(classes: Path, byte_buddy: Path, destination: Path) -> dict:
+    """Write canonical uncompressed JAR entries, independent of host zlib and Path ordering."""
+    temporary = destination.with_name(destination.name + "." + uuid.uuid4().hex + ".part")
+    compiled = {}
+    members = []
+    names = set()
+
+    def stable_write(target, name, data):
+        info = zipfile.ZipInfo(name, date_time=(2020, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_STORED
+        info.create_system = 3
+        info.external_attr = 0o100644 << 16
+        target.writestr(info, data)
+        names.add(name)
+        members.append({"name": name, "size": len(data),
+                        "sha256": hashlib.sha256(data).hexdigest()})
+
+    try:
+        with zipfile.ZipFile(temporary, "x", compression=zipfile.ZIP_STORED) as target:
+            stable_write(target, "META-INF/MANIFEST.MF", AGENT_MANIFEST)
+            for entry in ordered_files(classes, "*"):
+                name = entry.relative_to(classes).as_posix()
+                if name in names:
+                    raise ValueError("compiled agent member collides with manifest")
+                data = entry.read_bytes()
+                stable_write(target, name, data)
+                compiled[name] = hashlib.sha256(data).hexdigest()
+            with zipfile.ZipFile(byte_buddy) as source:
+                # The pinned dependency's member order is already byte-bound;
+                # explicitly canonicalize it too. Preserve compiled-class
+                # precedence and the original signature exclusion policy.
+                for item in sorted(source.infolist(), key=lambda i: i.filename.encode("utf-8")):
+                    name = item.filename
+                    if item.is_dir() or name == "META-INF/MANIFEST.MF":
+                        continue
+                    if name.upper().endswith((".SF", ".RSA", ".DSA")):
+                        continue
+                    if name in names:
+                        continue
+                    stable_write(target, name, source.read(item))
+        os.replace(temporary, destination)
+    finally:
+        temporary.unlink(missing_ok=True)
+    return {
+        "compiled_member_sha256": compiled,
+        "archive_member_count": len(members),
+        "ordered_member_inventory_sha256": hashlib.sha256(
+            json.dumps(members, ensure_ascii=True, sort_keys=True,
+                       separators=(",", ":")).encode("ascii")).hexdigest(),
+        "compression": "stored",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True, type=Path)
@@ -71,37 +137,19 @@ def main() -> int:
         work = Path(temp)
         classes = work / "classes"
         classes.mkdir()
-        sources = sorted((HERE / "src/main/java").rglob("*.java"))
+        source_root = HERE / "src/main/java"
+        sources = ordered_files(source_root, "*.java")
         cmd = ["java", "-jar", str(ecj), "-encoding", "UTF-8", "-17",
                "-classpath", str(byte_buddy), "-d", str(classes)] + [str(x) for x in sources]
+        source_digests = {x.relative_to(source_root).as_posix(): digest(x) for x in sources}
         subprocess.run(cmd, check=True)
-        manifest = "Manifest-Version: 1.0\nPremain-Class: dev.skyrolly.issue45.Issue45Agent\nCan-Redefine-Classes: true\nCan-Retransform-Classes: true\n\n"
-        def stable_write(target: zipfile.ZipFile, name: str, data: bytes) -> None:
-            info = zipfile.ZipInfo(name, date_time=(2020, 1, 1, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
-            info.create_system = 3
-            info.external_attr = 0o100644 << 16
-            target.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
-
-        with zipfile.ZipFile(args.output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as target:
-            stable_write(target, "META-INF/MANIFEST.MF", manifest.encode("utf-8"))
-            names = set(["META-INF/MANIFEST.MF"])
-            for entry in sorted(classes.rglob("*")):
-                if entry.is_file():
-                    name = entry.relative_to(classes).as_posix()
-                    stable_write(target, name, entry.read_bytes())
-                    names.add(name)
-            with zipfile.ZipFile(byte_buddy) as source:
-                for item in source.infolist():
-                    name = item.filename
-                    if item.is_dir() or name == "META-INF/MANIFEST.MF": continue
-                    if name.upper().endswith((".SF", ".RSA", ".DSA")): continue
-                    if name in names: continue
-                    stable_write(target, name, source.read(name))
-                    names.add(name)
+        inventory = package_agent(classes, byte_buddy, args.output)
     print(json.dumps({"agent": str(args.output.resolve()), "sha256": digest(args.output),
                       "byte_buddy_sha256": digest(byte_buddy), "compiler_sha256": digest(ecj),
-                      "compiled_sources": len(sources)}, sort_keys=True))
+                      "compiled_sources": len(sources), "source_sha256": source_digests,
+                      "python_version": sys.version.split()[0],
+                      "compiler_flags": ["-encoding", "UTF-8", "-17"],
+                      "build_inventory": inventory}, sort_keys=True))
     return 0
 
 

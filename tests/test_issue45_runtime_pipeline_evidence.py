@@ -41,6 +41,50 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                       (EVIDENCE / profile["observation_file"]).read_text().splitlines() if line.strip()]
             cls.profiles[profile["profile_id"]] = (profile, events)
 
+    def test_agent_packaging_canonical_and_atomic(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            classes = root / "classes"
+            classes.mkdir()
+            for name, data in (("Z.class", b"z"), ("a.class", b"a"), ("Nested$1.class", b"nested")):
+                (classes / name).write_bytes(data)
+            first = root / "first.jar"
+            second = root / "second.jar"
+            dependency = root / "dependency.jar"
+            entries = [("dep/z.class", b"z-dep"), ("dep/A.class", b"a-dep"),
+                       ("META-INF/MANIFEST.MF", b"old"), ("META-INF/TEST.SF", b"signature"),
+                       ("a.class", b"shadowed")]
+            with zipfile.ZipFile(dependency, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+                for name, data in entries:
+                    archive.writestr(name, data)
+            inventory = BUILDER.package_agent(classes, dependency, first)
+            # Same uncompressed inputs in reverse order and different ZIP metadata.
+            with zipfile.ZipFile(dependency, "w", compression=zipfile.ZIP_STORED) as archive:
+                for name, data in reversed(entries):
+                    archive.writestr(zipfile.ZipInfo(name, date_time=(1999, 1, 1, 0, 0, 0)), data)
+            self.assertEqual(inventory, BUILDER.package_agent(classes, dependency, second))
+            self.assertEqual(first.read_bytes(), second.read_bytes())
+            with zipfile.ZipFile(first) as archive:
+                self.assertEqual(["META-INF/MANIFEST.MF", "Nested$1.class", "Z.class", "a.class",
+                                  "dep/A.class", "dep/z.class"], archive.namelist())
+                self.assertEqual(b"a", archive.read("a.class"))
+                self.assertIn(b"Premain-Class: dev.skyrolly.issue45.Issue45Agent",
+                              archive.read("META-INF/MANIFEST.MF"))
+                for item in archive.infolist():
+                    self.assertEqual(zipfile.ZIP_STORED, item.compress_type)
+                    self.assertEqual((2020, 1, 1, 0, 0, 0), item.date_time)
+                    self.assertEqual(3, item.create_system)
+                    self.assertEqual(0o100644 << 16, item.external_attr)
+            self.assertEqual(hashlib.sha256(b"a").hexdigest(),
+                             inventory["compiled_member_sha256"]["a.class"])
+            self.assertEqual(6, inventory["archive_member_count"])
+            dependency.write_bytes(b"invalid ZIP")
+            before = first.read_bytes()
+            with self.assertRaises(zipfile.BadZipFile):
+                BUILDER.package_agent(classes, dependency, first)
+            self.assertEqual(before, first.read_bytes())
+            self.assertEqual([], list(root.glob("*.part")))
+
     def test_partial_agent_dependency_cache_is_reacquired_and_verified(self):
         data = b"synthetic pinned Byte Buddy bytes"
         dep = {"url": "https://example.invalid/pinned.jar",
