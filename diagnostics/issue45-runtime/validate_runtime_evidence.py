@@ -15,6 +15,11 @@ HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SCHEMA = "issue45-runtime-observation/v1"
 
+# The retained official scan is a reviewed source artifact, not an archive-
+# supplied trust anchor. Changing it requires a reviewed source update.
+SERVER_SCAN_PATH = "docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/dedicated-server-scan.json"
+SERVER_SCAN_SHA256 = "54ec69848fb933583bf72774be7c1c5af63a0072be1a34d8c7f4336dbed3fae6"
+
 # This source-controlled matrix is intentionally independent of any mutable
 # operator archive. Changes require a reviewed source update, not just a
 # rewritten archive matrix and matching derived v2 flags.
@@ -88,47 +93,59 @@ def validate_environment_artifact_pin(environment: dict, source_root: Path,
             errors.append("source-controlled environment pin mismatch: " + identity + ":" + field)
     if errors:
         return errors, None
-    version = environment.get("expected_netty_codec") or environment.get("expected_bundled_netty_codec")
-    module = environment.get("expected_bundled_netty_module")
-    if not module:
-        module = "netty-codec" if str(version).startswith("4.1.") else "netty-codec-compression"
-    if environment.get("distribution") == "server":
-        record = environment.get("server_bundle_source", {})
-        scan_path = record.get("source_scan_path", "")
-        expected_scan_sha = retained_files.get(scan_path)
-        if (not scan_path or not expected_scan_sha or record.get("source_scan_sha256") != expected_scan_sha):
-            return ["dedicated-server artifact pin is not bound to the retained source scan"], None
-        path = source_root / scan_path
-        if not path.is_file() or sha256(path) != expected_scan_sha:
+    # Never let optional fields belonging to another distribution select an
+    # artifact. Even a real artifact from the pinned manifest is not necessarily
+    # the codec whose boundary is being assessed.
+    is_server = trusted["distribution"] == "server"
+    foreign_selectors = (("expected_netty_codec",) if is_server else
+                         ("expected_bundled_netty_codec", "expected_bundled_netty_module",
+                          "server_bundle_source", "server_bundle_sha256"))
+    if any(environment.get(field) is not None for field in foreign_selectors):
+        return ["unexpected Netty artifact selector for source-controlled distribution: " + identity], None
+    version = trusted["expected_bundled_netty_codec" if is_server else "expected_netty_codec"]
+    module = (trusted["expected_bundled_netty_module"] if is_server else
+              "netty-codec" if version.startswith("4.1.") else "netty-codec-compression")
+    coordinate = "io.netty:" + module + ":" + version
+    if is_server:
+        record = environment.get("server_bundle_source")
+        if (not isinstance(record, dict)
+                or record.get("source_scan_path") != SERVER_SCAN_PATH
+                or record.get("source_scan_sha256") != SERVER_SCAN_SHA256
+                or retained_files.get(SERVER_SCAN_PATH) != SERVER_SCAN_SHA256):
+            return ["dedicated-server artifact pin is not bound to the source-controlled official scan"], None
+        path = source_root / SERVER_SCAN_PATH
+        if not path.is_file() or sha256(path) != SERVER_SCAN_SHA256:
             return ["retained dedicated-server source scan is missing or changed"], None
         try:
             scan = load_json(path)
             server = next(item for item in scan["servers"]
-                          if item.get("minecraft_version") == environment.get("minecraft_version"))
-            artifact = record["nested_netty_artifact"]
-            actual = next(item for item in server["nested_jars"] if item.get("path") == artifact.get("path"))
+                          if item.get("minecraft_version") == trusted["minecraft_version"])
+            nested_path = f"META-INF/libraries/io/netty/{module}/{version}/{module}-{version}.jar"
+            actual = next(item for item in server["nested_jars"] if item.get("path") == nested_path)
+            artifact = record.get("nested_netty_artifact")
+            if not isinstance(artifact, dict):
+                return ["dedicated-server Netty artifact record is malformed"], None
             if (record.get("manifest_sha1") != server.get("manifest_sha1")
                     or record.get("server_bundle_sha1") != server.get("server_sha1")
                     or record.get("server_bundle_sha256") != server.get("server_sha256")
                     or record.get("server_bundle_size_bytes") != server.get("server_size_bytes")
-                    or environment.get("server_bundle_sha256") != server.get("server_sha256")):
+                    or trusted["server_bundle_sha256"] != server.get("server_sha256")):
                 errors.append("dedicated-server bundle identity differs from the retained official scan")
             for key in ("sha1", "sha256", "size_bytes", "path"):
                 if artifact.get(key) != actual.get(key):
                     errors.append("dedicated-server Netty artifact " + key + " differs from the retained scan")
-            coordinate = "io.netty:" + module + ":" + str(version)
-            if (artifact.get("coordinate") != coordinate
-                    or not artifact.get("path", "").endswith("/" + module + "-" + str(version) + ".jar")):
+            if artifact.get("coordinate") != coordinate:
                 errors.append("dedicated-server Netty module coordinate does not match its pinned version")
-            return errors, {**artifact, "coordinate": coordinate, "module": module}
+            return errors, ({key: actual[key] for key in ("sha1", "sha256", "size_bytes", "path")}
+                            | {"coordinate": coordinate, "module": module}) if not errors else None
         except (OSError, KeyError, StopIteration, json.JSONDecodeError) as error:
             return errors + ["dedicated-server artifact pin cannot be checked: " + str(error)], None
 
-    manifest_name = environment.get("manifest_path")
+    manifest_name = trusted["manifest_path"]
     if not manifest_name:
         return ["client environment lacks its official Minecraft version manifest"], None
     manifest_path = source_root / manifest_name
-    if not manifest_path.is_file() or sha256(manifest_path) != environment.get("manifest_sha256"):
+    if not manifest_path.is_file() or sha256(manifest_path) != trusted["manifest_sha256"]:
         return ["client Netty source manifest is missing or has a digest mismatch"], None
     try:
         manifest = load_json(manifest_path)
@@ -136,7 +153,6 @@ def validate_environment_artifact_pin(environment: dict, source_root: Path,
             errors.append("official Minecraft manifest id differs from source-controlled environment: " + identity)
         if sha256(manifest_path) != trusted["manifest_sha256"]:
             errors.append("official Minecraft manifest digest differs from source-controlled environment: " + identity)
-        coordinate = "io.netty:" + module + ":" + str(version)
         library = next(item for item in manifest.get("libraries", []) if item.get("name") == coordinate)
         artifact = library["downloads"]["artifact"]
         if not HEX40.fullmatch(artifact.get("sha1", "")) or not artifact.get("size"):
