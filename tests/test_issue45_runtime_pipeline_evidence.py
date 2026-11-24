@@ -186,6 +186,8 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 ("endpoint", "127.0.0.1:25565"),
                 ("remote_port", 25565),
                 ("port_string", "25565"),
+                ("message", "remote port 25565 was observed"),
+                ("nested", {"remotePort": 25565}),
                 ("argument", "-Dserver=25565"),
                 ("argument", "-DapiKey=<redacted>"),
                 ("nested", {"value": "synthetic-unrecognized-api-key-must-not-appear"}),

@@ -109,11 +109,10 @@ def validate_control_privacy(raw: str) -> list[dict]:
             return any(contains_canary(item, field) for item in value)
         if isinstance(value, str):
             # Full unique canaries remain forbidden anywhere, even when JSON
-            # escapes their characters. The short decimal port is meaningful
-            # only as a value or endpoint/property suffix, not inside a hash.
+            # escapes their characters. Match the short decimal port as a
+            # standalone token in text, never as a substring of a digest.
             return (any(marker in value for marker in private_values)
-                    or value == "25565"
-                    or re.search(r"[:=]25565(?![0-9])", value) is not None)
+                    or re.search(r"(?<![A-Za-z0-9])25565(?![A-Za-z0-9])", value) is not None)
         return (type(value) is int and value == 25565
                 and field.lower().replace("_", "").replace("-", "") in
                 {"port", "serverport", "remoteport", "localport", "peerport", "destinationport", "sourceport"})
