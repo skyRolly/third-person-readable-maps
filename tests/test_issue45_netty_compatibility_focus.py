@@ -89,6 +89,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             current = None
             parent_key = None
             seen_jobs = seen_guard = seen_steps = False
+            in_trigger_block = False
             in_jobs = False
             in_guard = False
             in_steps = False
@@ -97,11 +98,20 @@ class NettyFocusErratumTests(unittest.TestCase):
                     continue
                 indent = len(line) - len(line.lstrip(" "))
                 if indent == 0:
+                    # YAML permits an indentless sequence as a mapping value.
+                    # Only simple event-name items belonging to an open on:
+                    # block are irrelevant to this native execution contract.
+                    # Do not skip arbitrary root lines or items under jobs.
+                    if in_trigger_block and re.fullmatch(
+                            r"""- +(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"[A-Za-z0-9_-]+") *(?:#.*)?""",
+                            line.rstrip()):
+                        continue
                     # Apply the same restricted mapping grammar at the root.
                     # Never interpret an unrecognized key as an unrelated
                     # section: escaped or explicit keys could denote defaults
                     # or jobs and change every required native command.
                     key, value = mapping_field(line)
+                    in_trigger_block = key == "on" and not value
                     if key == "defaults":
                         raise ValueError("workflow defaults may override the native shell")
                     # Ignore unrelated section bodies, not unknown key syntax.
@@ -288,6 +298,27 @@ class NettyFocusErratumTests(unittest.TestCase):
         self.assertTrue(all_native_checks_isolated(
             '"on" :\n  - push\n  - pull_request\n'
             + good + "'concurrency' :\n  group: guard-ci\n"))
+        # A block sequence may align with its on key in valid YAML.
+        # Exercise both positions so exiting jobs and re-entering root
+        # classification cannot accidentally hide a defaults override.
+        for header in ("on:", '"on" : # events', "'on':"):
+            triggers = header + "\n- push\n# events\n\n- 'pull_request' # PRs\n- \"workflow_dispatch\"\n"
+            for source in (triggers + good, good + triggers):
+                with self.subTest(trigger_header=header, position=source.startswith(header)):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    self.assertFalse(all_native_checks_isolated(
+                        source + "defaults:\n  run:\n    shell: pwsh -File {0}\n"))
+                    self.assertFalse(all_native_checks_isolated(
+                        source + r'"\u0064efaults": {run: {shell: "pwsh -File {0}"}}' + "\n"))
+        # An arbitrary root sequence, a nonempty on value, or a sequence
+        # under jobs must not obtain the trigger-list exception.
+        for malformed in ("- push\n" + good,
+                          good + "- push\n",
+                          "on: push\n- pull_request\n" + good,
+                          "on:\n- push\npermissions:\n- pull_request\n" + good,
+                          "on:\n- {defaults: {run: {shell: pwsh}}}\n" + good,
+                          "on:\n- push\njobs:\n- pull_request\n" + good):
+            self.assertFalse(all_native_checks_isolated(malformed))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
         self.assertTrue(all_native_checks_isolated(
