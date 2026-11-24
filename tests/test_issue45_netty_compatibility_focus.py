@@ -233,9 +233,14 @@ class NettyFocusErratumTests(unittest.TestCase):
                     raise ValueError("content after YAML document end")
                 # Allow one optional standalone start/end indicator only at
                 # the document boundaries, not while a trigger value is open.
+                open_trigger_value = (trigger_layout == "flow" or nested_filter_flow
+                                      or nested_description_quote is not None)
+                # A document indicator at column zero is never scalar data in
+                # an unfinished flow collection (quoted or unquoted).
+                if open_trigger_value and re.match(r"(?:---|\.\.\.)(?:[ \t]|$)", line):
+                    raise ValueError("document marker inside unfinished trigger value")
                 marker = re.fullmatch(r"(---|\.\.\.)(?:[ \t]+(?:#.*)?)?", line)
-                if (marker and trigger_layout != "flow" and not nested_filter_flow
-                        and nested_description_quote is None):
+                if marker:
                     if marker[1] == "---":
                         if seen_document_start or seen_document_content:
                             raise ValueError("multiple YAML documents")
@@ -316,13 +321,17 @@ class NettyFocusErratumTests(unittest.TestCase):
                         pending = nested_filter_value_indent is not None
                         pending_description = nested_description_value_indent is not None
                         nested_filter_value_indent = nested_description_value_indent = None
-                        if pending_description and value.startswith(("'", '"')):
+                        # An input can itself be named description. A quoted
+                        # metadata mapping key on the next line is not the
+                        # scalar value of that input name.
+                        nested = nested_mapping_field(value)
+                        if (pending_description and nested is None
+                                and value.startswith(("'", '"'))):
                             nested_description_quote = value[0]
                             consume_description_quote(value[1:])
                         elif pending and value.startswith("["):
                             nested_filter_flow = not nested_filter_flow_complete(value[1:])
                         else:
-                            nested = nested_mapping_field(value)
                             if nested is not None:
                                 key, value = nested
                                 header = re.split(r"[ \t]+#", value, maxsplit=1)[0].strip()
@@ -871,6 +880,53 @@ class NettyFocusErratumTests(unittest.TestCase):
                        good + "...\n" + r'"\u0064efaults": {}' + "\n",
                        "...\n" + good, "---\n...\n" + good,
                        "on: [push,\n---\n" + good, "on: [push,\n...\n" + good):
+            self.assertFalse(all_native_checks_isolated(source))
+        # A real document indicator cannot be consumed as an unquoted flow
+        # token. Prefix-like paths and indented marker text remain data.
+        for key in ("branches", r'"\u0062ranches"', "paths"):
+            for marker in ("---", "...", "--- # start", "... # end",
+                           "---\t# start", "...\t# end", "--- stable", "... hidden"):
+                triggers = ("on:\n  push:\n    " + key + ": [main,\n"
+                            + marker + "\n      , release/**]\n")
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(open_filter_marker=marker, key=key):
+                        self.assertFalse(all_native_checks_isolated(source))
+            for token in ("---stable", "...hidden", "      ---", "      ..."):
+                triggers = ("on:\n  push:\n    " + key + ": [main,\n"
+                            + token + "\n      , release/**]\n")
+                for source in (triggers + good, good + triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+        for marker in ("---", "...", "--- # start", "... # end"):
+            triggers = "on: [push,\n" + marker + "\n, pull_request]\n"
+            for source in (triggers + good, good + triggers):
+                self.assertFalse(all_native_checks_isolated(source))
+
+        # The name of a dispatch input is not a metadata field. In
+        # particular an input named description may have quoted child keys.
+        for input_key in ("description", "'description'", r'"\u0064escription"'):
+            for metadata_key in ('"description"', "'description'", r'"\u0064escription"'):
+                triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      "
+                            + input_key + ":\n        " + metadata_key
+                            + ': "Choose a color\n          options: [blue, green]"\n'
+                            + '        "type": choice\n        "options": [blue,\n'
+                            + "          \tgreen]\n")
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(input_name=input_key, metadata=metadata_key):
+                        self.assertTrue(all_native_checks_isolated(source))
+                        for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                         r'"\u0064efaults": {}' + "\n"):
+                            self.assertFalse(all_native_checks_isolated(source + defaults))
+            for metadata in ('"type": string', "'required': true",
+                             r'"\u0074ype": string'):
+                triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      "
+                            + input_key + ":\n        " + metadata + "\n")
+                for source in (triggers + good, good + triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+        # A separately indented quoted description must still reject
+        # arbitrary trailing text, not silently become a mapping.
+        triggers = ('on:\n  workflow_dispatch:\n    inputs:\n      color:\n'
+                    '        description:\n          "Choose a color" trailing\n')
+        for source in (triggers + good, good + triggers):
             self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
