@@ -10,6 +10,7 @@ import tempfile
 import unittest
 import urllib.error
 import zipfile
+from datetime import datetime, timezone
 from unittest.mock import patch
 from pathlib import Path
 
@@ -122,6 +123,50 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 self.assertEqual(2, fetch.call_count)
             self.assertEqual(b"corrupt", target.read_bytes())
             self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+    def test_control_download_http_date_retry_after_with_fixed_clock(self):
+        data = b"verified synthetic HTTP-date dependency bytes"
+        url = "https://example.invalid/pinned.jar"
+        digest = hashlib.sha256(data).hexdigest()
+        now = datetime(2026, 11, 24, 12, 0, 0, tzinfo=timezone.utc)
+        # Literal IMF-fixdate values: do not use the production date parser
+        # to construct the fixtures or calculate the expected delays.
+        cases = (
+            ("Tue, 24 Nov 2026 12:00:17 GMT", 17),
+            ("Tue, 24 Nov 2026 12:01:00 GMT", 60),
+            ("Tue, 24 Nov 2026 12:01:01 GMT", None),
+            ("Tue, 24 Nov 2026 11:59:59 GMT", 2),
+            ("Tue, 24 Nov 2026 12:00:01 GMT", 2),
+            ("not an HTTP date", 2),
+        )
+        for header, delay in cases:
+            with self.subTest(retry_after=header), tempfile.TemporaryDirectory() as tmp:
+                target = Path(tmp) / "control.jar"
+                target.write_bytes(b"invalid cache")
+                error = urllib.error.HTTPError(
+                    url, 429, "test rate limit", {"Retry-After": header}, io.BytesIO())
+                with patch.object(CONTROLS, "datetime") as clock, \
+                        patch.object(CONTROLS.urllib.request, "urlopen",
+                                     side_effect=[error, io.BytesIO(data)]) as fetch, \
+                        patch.object(CONTROLS.time, "sleep") as sleep:
+                    clock.now.return_value = now
+                    if delay is None:
+                        with self.assertRaises(urllib.error.HTTPError) as raised:
+                            CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                        self.assertIs(error, raised.exception)
+                        fetch.assert_called_once()
+                        sleep.assert_not_called()
+                        self.assertEqual(b"invalid cache", target.read_bytes())
+                    else:
+                        CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                        self.assertEqual(2, fetch.call_count)
+                        sleep.assert_called_once_with(delay)
+                        self.assertEqual(data, target.read_bytes())
+                    if header != "not an HTTP date":
+                        clock.now.assert_called_once_with(timezone.utc)
+                    else:
+                        clock.now.assert_not_called()
+                self.assertEqual([], list(Path(tmp).glob("*.part")))
 
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
         errors, result = VALIDATOR.validate_evidence(EVIDENCE, ROOT)
