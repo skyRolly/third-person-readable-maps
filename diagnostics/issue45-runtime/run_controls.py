@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import uuid
 import shutil
 import stat
@@ -89,6 +90,42 @@ def fetch(url: str, path: Path, expected_hash: str, algorithm: str = "sha256",
             return
     finally:
         temporary.unlink(missing_ok=True)
+
+
+def validate_control_privacy(raw: str) -> list[dict]:
+    """Check synthetic canaries without mistaking digest digits for an address."""
+    private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
+                      "play.example.invalid", "synthetic-player-identifier", "-DapiKey")
+    message = "privacy sanitizer leaked a synthetic token, address, or account identifier"
+    if any(value in raw for value in private_values):
+        raise SystemExit(message)
+    events = [json.loads(line) for line in raw.splitlines() if line.strip()]
+
+    def contains_canary(value, field=""):
+        if isinstance(value, dict):
+            return any(contains_canary(key) or contains_canary(item, key)
+                       for key, item in value.items())
+        if isinstance(value, list):
+            return any(contains_canary(item, field) for item in value)
+        if isinstance(value, str):
+            # Full unique canaries remain forbidden anywhere, even when JSON
+            # escapes their characters. Match the short decimal port as a
+            # standalone token in text, never as a substring of a digest.
+            return (any(marker in value for marker in private_values)
+                    or re.search(r"(?<![A-Za-z0-9])25565(?![A-Za-z0-9])", value) is not None)
+        return (type(value) is int and value == 25565
+                and field.lower().replace("_", "").replace("-", "") in
+                {"port", "serverport", "remoteport", "localport", "peerport", "destinationport", "sourceport"})
+
+    if contains_canary(events):
+        raise SystemExit(message)
+    starts = [event for event in events if event.get("event") == "process_start"]
+    args = starts[0].get("jvm_arguments_sanitized") if len(starts) == 1 else None
+    required = ("-DaccessToken=<redacted>", "-Dsession:<redacted>",
+                "-Dserver=<redacted>", "-Dusername=<redacted>")
+    if not isinstance(args, list) or any(marker not in args for marker in required):
+        raise SystemExit("privacy sanitizer control did not preserve the redacted argument marker")
+    return events
 
 
 def windows_system_icacls() -> str:
@@ -255,16 +292,7 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
         if (b"(I)" in acl.stdout or b"BUILTIN\\Users" in acl.stdout
                 or b"S-1-5-32-545" in acl.stdout):
             raise SystemExit("diagnostic JSONL inherited a non-owner Windows read grant")
-    raw = raw_bytes.decode("utf-8")
-    private_values = ("synthetic-secret-must-not-appear", "synthetic-unrecognized-api-key-must-not-appear",
-                      "play.example.invalid", "25565", "synthetic-player-identifier", "-DapiKey")
-    if any(value in raw for value in private_values):
-        raise SystemExit("privacy sanitizer leaked a synthetic token, address, or account identifier")
-    for sanitized in ("-DaccessToken=<redacted>", "-Dsession:<redacted>",
-                      "-Dserver=<redacted>", "-Dusername=<redacted>"):
-        if sanitized not in raw:
-            raise SystemExit("privacy sanitizer control did not preserve the redacted argument marker")
-    events = [json.loads(line) for line in raw.splitlines() if line.strip()]
+    events = validate_control_privacy(raw_bytes.decode("utf-8"))
     end = next((event for event in events if event.get("event") == "process_end"), None)
     if end is None or end.get("run_outcome") != "shutdown_hook_executed":
         raise SystemExit("JVM shutdown hook record missing for " + profile["profileId"])
