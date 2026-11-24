@@ -87,12 +87,15 @@ class NettyFocusErratumTests(unittest.TestCase):
 
             event_name = r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"[A-Za-z0-9_-]+")"""
             event_flow_list = re.compile(
-                rf"\[ *{event_name}(?: *, *{event_name})* *,? *\]")
+                rf"\[[ \t]*{event_name}(?:[ \t]*,[ \t]*{event_name})*[ \t]*,?[ \t]*\]")
 
             def trigger_flow_complete(parts, field):
                 # Only simple event tokens may be consumed while a flow list
                 # is open. A root mapping key must never become list content.
-                if not re.fullmatch(r"""[A-Za-z0-9_'" ,\[\]-]+""", field):
+                # YAML permits tabs as flow-token separation, not as block
+                # indentation or characters inside these simple event names.
+                field = re.split(r"[ \t]+#", field, maxsplit=1)[0].rstrip(" \t")
+                if not re.fullmatch(r"""[A-Za-z0-9_'" \t,\[\]-]+""", field):
                     raise ValueError("unsupported flow trigger list content")
                 parts.append(field)
                 if "]" not in field:
@@ -125,6 +128,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     if trigger_flow_complete(trigger_flow, line.strip().split(" #", 1)[0].strip()):
                         trigger_layout = "complete"
                     continue
+                if in_trigger_block and line[indent:].startswith("\t"):
+                    raise ValueError("tab indentation outside an open flow trigger list")
                 if in_trigger_block and (indent > 0 or root_item):
                     field = line.strip().split(" #", 1)[0].strip()
                     if trigger_layout == "complete":
@@ -434,6 +439,34 @@ class NettyFocusErratumTests(unittest.TestCase):
                 "on:\n  [push,\n" + r'"\u0064efaults": {}' + "\n]\n"):
             for source in (triggers + good, good + triggers):
                 with self.subTest(invalid_flow_triggers=triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # Horizontal tabs are valid flow-token separators. They are not
+        # block indentation or part of an event identifier in this grammar.
+        for triggers in (
+                "on: [push,\tpull_request]\n",
+                "on:\n  [push,\tpull_request]\n",
+                'on: [\tpush\t, \t"pull_request"\t,\t]\n',
+                "on: [push,\t# comment\n  pull_request]\t# end\n",
+                "on:\n  [push,\n  \tpull_request,\t]\n",
+                "on: [push,\n\tpull_request]\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(tab_flow_triggers=triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    for defaults in ("defaults: {run: {shell: 'pwsh -File {0}'}}\n",
+                                     r'"\u0064efaults": {run: {shell: "pwsh -File {0}"}}' + "\n"):
+                        self.assertFalse(all_native_checks_isolated(source + defaults))
+        for triggers in (
+                "on: [pu\tsh, pull_request]\n",
+                'on: ["pu\tsh", pull_request]\n',
+                "on: [push,\t, pull_request]\n",
+                "on:\n \t[push, pull_request]\n",
+                "on:\n\t[push, pull_request]\n",
+                "on: [push,\t\n",
+                "on: [push,\t\ndefaults: {run: {shell: pwsh}}\n]\n",
+                "on: [push,\t\n" + r'"\u0064efaults": {}' + "\n]\n",
+                "on: [push,\tpull_request]\n\t- workflow_dispatch\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(invalid_tab_flow_triggers=triggers):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
