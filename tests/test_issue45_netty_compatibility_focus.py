@@ -97,16 +97,18 @@ class NettyFocusErratumTests(unittest.TestCase):
                     continue
                 indent = len(line) - len(line.lstrip(" "))
                 if indent == 0:
-                    # Require the platform's implicit shell wrapper. Workflow
-                    # defaults can replace it even without a step shell key.
-                    if re.match(r"""^(?:defaults|'defaults'|"defaults") *:""", line):
+                    # Apply the same restricted mapping grammar at the root.
+                    # Never interpret an unrecognized key as an unrelated
+                    # section: escaped or explicit keys could denote defaults
+                    # or jobs and change every required native command.
+                    key, value = mapping_field(line)
+                    if key == "defaults":
                         raise ValueError("workflow defaults may override the native shell")
-                    # Ignore unrelated top-level sections (including their
-                    # trigger lists and concurrency settings). Do not carry
-                    # guard/steps state across a section boundary.
-                    in_jobs = re.match(r"""^(?:jobs|'jobs'|"jobs") *:""", line) is not None
+                    # Ignore unrelated section bodies, not unknown key syntax.
+                    # Do not carry guard/steps state across a boundary.
+                    in_jobs = key == "jobs"
                     if in_jobs:
-                        if seen_jobs or mapping_field(line) != ("jobs", ""):
+                        if seen_jobs or value:
                             raise ValueError("duplicate or unsupported jobs mapping")
                         seen_jobs = True
                     in_guard = in_steps = False
@@ -266,6 +268,26 @@ class NettyFocusErratumTests(unittest.TestCase):
                          '    "defaults" : {run: {shell: "pwsh -File {0}"}}\n'):
             self.assertFalse(all_native_checks_isolated(
                 good.replace("    steps:\n", defaults + "    steps:\n", 1)))
+        # Escaped or explicit top-level keys must never be silently ignored.
+        # This parser deliberately rejects unsupported representations,
+        # rather than trying to implement YAML escape/complex-key semantics.
+        for key in (r'"\u0064efaults"', r'"\x64efaults"',
+                    r'"\U00000064efaults"', r'"def\u0061ults"'):
+            for value in (":\n  run:\n    shell: pwsh -File {0}\n",
+                          ': {run: {shell: "pwsh -File {0}"}}\n'):
+                defaults = key + value
+                for mutated in (defaults + good, good + defaults):
+                    with self.subTest(root_key=key, value=value):
+                        self.assertNotEqual(good, mutated)
+                        self.assertFalse(all_native_checks_isolated(mutated))
+        for extra in ("? defaults\n: {run: {shell: 'pwsh -File {0}'}}\n",
+                      '<<: {defaults: {run: {shell: "pwsh -File {0}"}}}\n',
+                      r'"\u006aobs" : {}' + "\n"):
+            self.assertFalse(all_native_checks_isolated(extra + good))
+            self.assertFalse(all_native_checks_isolated(good + extra))
+        self.assertTrue(all_native_checks_isolated(
+            '"on" :\n  - push\n  - pull_request\n'
+            + good + "'concurrency' :\n  group: guard-ci\n"))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
         self.assertTrue(all_native_checks_isolated(
