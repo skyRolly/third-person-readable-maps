@@ -43,70 +43,114 @@ class NettyFocusErratumTests(unittest.TestCase):
                        '-p "test_issue45_runtime_pipeline_evidence.py" -v')
         erratum_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_netty_compatibility_focus.py" -v')
+        expected = (
+            ("Validate regenerated Java {major} runtime archive", archive_cmd),
+            ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
+            ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
+        )
 
-        def named_step_commands(source: str) -> dict[str, list[str]]:
-            """Inspect actual step fields, ignoring harmless YAML comments/spacing.
+        def step_fields(source: str) -> list[dict]:
+            """Read the guard workflow's simple block-style step mappings.
 
-            The workflow deliberately uses simple single-line name/run
-            scalars for these checks. A block-valued run pipe is not
-            equivalent to a native command and is rejected by the invariant.
+            This deliberately checks the repository's supported layout, not
+            arbitrary YAML. Every sequence item starts a new step (including
+            unnamed steps); comments and blank lines do not end a step.
+            Block-valued run commands cannot satisfy the isolation contract.
             """
-            result: dict[str, list[str]] = {}
+            steps = []
             current = None
+            in_guard = False
+            in_steps = False
             for line in source.splitlines():
-                if line.startswith("      - name: "):
-                    current = line.split("- name: ", 1)[1].strip()
-                    result.setdefault(current, [])
-                elif current is not None and line.startswith("        run: "):
-                    result[current].append(line.split("run: ", 1)[1].strip())
-            return result
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                if line.startswith("  ") and not line.startswith("   "):
+                    in_guard = line.strip() == "guard:"
+                    in_steps = False
+                    current = None
+                if in_guard and line.startswith("    ") and not line.startswith("     "):
+                    in_steps = line.strip() == "steps:"
+                    current = None
+                if not in_steps:
+                    continue
+                if line.startswith("      - "):
+                    current = {}
+                    steps.append(current)
+                    field = line[8:]
+                elif current is not None and line.startswith("        "):
+                    field = line[8:]
+                    if field.startswith("  java-version:"):
+                        field = field.strip()
+                    elif field.startswith(" "):
+                        if current.get("run", "").startswith(("|", ">")):
+                            current["script"] = current.get("script", "") + "\n" + field.strip()
+                        continue
+                else:
+                    continue
+                key, sep, value = field.partition(":")
+                if sep and key in {"name", "run", "uses", "java-version", "if", "continue-on-error"}:
+                    # These commands contain no quoted inline hash characters.
+                    value = value.strip().split(" #", 1)[0].strip()
+                    if key in current:
+                        current["duplicate"] = True
+                    current[key] = value
+            return steps
 
         def all_native_checks_isolated(source: str) -> bool:
-            steps = named_step_commands(source)
-            expected = (
-                ("Validate regenerated Java {major} runtime archive", archive_cmd),
-                ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
-                ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
-            )
-            return all(steps.get(label.format(major=major)) == [command]
-                       for major in (21, 25) for label, command in expected)
+            steps = step_fields(source)
+            java = None
+            seen = []
+            invocations = {command: 0 for _, command in expected}
+            for step in steps:
+                if step.get("uses", "").startswith("actions/setup-java@"):
+                    java = step.get("java-version", "").strip("'\"").split(".", 1)[0]
+                run = step.get("run", "")
+                script = run + "\n" + step.get("script", "")
+                for command in invocations:
+                    invocations[command] += script.count(command)
+                for major in (21, 25):
+                    for label, command in expected:
+                        if step.get("name") == label.format(major=major):
+                            if (java != str(major) or run != command or step.get("duplicate")
+                                    or "if" in step or "continue-on-error" in step):
+                                return False
+                            seen.append((major, command))
+            return (seen == [(major, command) for major in (21, 25) for _, command in expected]
+                    and all(count == 2 for count in invocations.values()))
 
         self.assertTrue(all_native_checks_isolated(workflow))
-        # Benign YAML comments/blank lines are not changes to the step's native
-        # process exit-code propagation and must not break the test.
-        plain = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: {archive_cmd}\n"
-        )
-        commented = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            "        # This comment does not change any native process.\n"
-            "\n"
-            f"        run: {archive_cmd}\n"
-        )
-        self.assertIn(plain, workflow)
-        benign = workflow.replace(plain, commented, 1)
-        self.assertNotEqual(benign, workflow)
+
+        # Build semantic fixtures independently of the formatting in the
+        # checked-in workflow. Exercise the same predicate as the real file.
+        def setup(major):
+            return (f"      - uses: actions/setup-java@pinned\n"
+                    f"        with:\n          java-version: '{major}.0.1'\n")
+
+        def check(major, index, comment=False):
+            label, command = expected[index]
+            return (f"      - name: {label.format(major=major)}\n"
+                    + ("        # Harmless comment\n\n" if comment else "")
+                    + f"        run: {command}\n")
+
+        prefix = "jobs:\n  guard:\n    steps:\n"
+        j21 = [check(21, i) for i in range(3)]
+        j25 = [check(25, i) for i in range(3)]
+        tail = setup(25) + "".join(j25)
+        good = prefix + setup(21) + "".join(j21) + tail
+        self.assertTrue(all_native_checks_isolated(good))
+        benign = (prefix + setup(21) + check(21, 0, comment=True)
+                  + "      # Between steps\n\n" + j21[1] + j21[2]
+                  + "      - id: unrelated\n        run: python -V\n" + tail)
         self.assertTrue(all_native_checks_isolated(benign))
 
-        # A real masked-failure mutant combines two previously independent
-        # Python invocations in one PowerShell multiline run step.
-        separate = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            f"        run: {archive_cmd}\n"
-            "      - name: Test Java 21 runtime evidence and privacy regressions\n"
-            f"        run: {runtime_cmd}\n"
-        )
-        combined = (
-            "      - name: Validate regenerated Java 21 runtime archive\n"
-            "        run: |\n"
-            f"          {archive_cmd}\n"
-            f"          {runtime_cmd}\n"
-        )
-        self.assertIn(separate, workflow)
-        mutant = workflow.replace(separate, combined, 1)
-        self.assertNotEqual(workflow, mutant)
-        self.assertFalse(all_native_checks_isolated(mutant))
+        combined = (f"      - name: {expected[0][0].format(major=21)}\n"
+                    f"        run: |\n          {archive_cmd}\n          {runtime_cmd}\n")
+        self.assertFalse(all_native_checks_isolated(
+            prefix + setup(21) + combined + j21[2] + tail))
+        self.assertFalse(all_native_checks_isolated(
+            prefix + setup(21) + setup(25) + "".join(j21) + "".join(j25)))
+        self.assertFalse(all_native_checks_isolated(
+            good + f"      - id: extra-archive\n        run: {archive_cmd}\n"))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
@@ -382,6 +426,70 @@ class NettyFocusErratumTests(unittest.TestCase):
                     FOCUS.main()
             errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
             self.assertTrue(any("historical report" in e for e in errors), errors)
+
+    def test_changed_canonical_v1_is_rejected_even_with_original_archive(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-canonical-v1-") as tmp:
+            changed = Path(tmp) / "remediation-compatibility.json"
+            changed.write_bytes(OLD.read_bytes() + b"\n")
+            with mock.patch.object(FOCUS, "HISTORICAL_V1_PATH", changed):
+                errors = FOCUS.validate_compatibility_erratum(
+                    self.report, self.register, archive_v1_path=OLD)
+                self.assertIn("source-controlled historical Netty v1 digest mismatch", errors)
+                self.assertFalse(any("archived Netty v1 historical report SHA-256" in e
+                                     for e in errors), errors)
+                with self.assertRaisesRegex(SystemExit, "historical compatibility report SHA-256 mismatch"):
+                    FOCUS.main()
+
+    def test_archive_cannot_choose_an_alternate_client_module_or_server_version(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        matrix = json.loads((evidence / "environment-matrix.json").read_text(encoding="utf-8"))
+        retained = json.loads((evidence / "baseline-lock.json").read_text(encoding="utf-8"))["retained_files"]
+        for identity, field, value in (
+                ("minecraft-1.19-client", "expected_bundled_netty_module", "netty-handler"),
+                ("minecraft-1.19-dedicated-server", "expected_netty_codec", "4.2.17.Final")):
+            with self.subTest(identity=identity):
+                row = copy.deepcopy(next(r for r in matrix["environments"] if r["environment_id"] == identity))
+                row[field] = value
+                errors, pin = VALIDATOR.validate_environment_artifact_pin(row, ROOT, retained)
+                self.assertIsNone(pin)
+                self.assertTrue(any("unexpected Netty artifact selector" in e for e in errors), errors)
+
+    def test_archive_controlled_server_scan_and_matching_summary_are_rejected(self):
+        evidence = ROOT / "docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23"
+        with tempfile.TemporaryDirectory(prefix="issue45-forged-server-scan-") as tmp:
+            archive = Path(tmp) / "archive"
+            shutil.copytree(evidence, archive)
+            matrix_path = archive / "environment-matrix.json"
+            baseline_path = archive / "baseline-lock.json"
+            report_path = archive / "remediation-compatibility-v2.json"
+            matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+            baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            row = next(r for r in matrix["environments"]
+                       if r["environment_id"] == "minecraft-1.19-dedicated-server")
+            record = row["server_bundle_source"]
+            scan = json.loads((ROOT / record["source_scan_path"]).read_text(encoding="utf-8"))
+            server = next(r for r in scan["servers"] if r["minecraft_version"] == "1.19")
+            nested = next(r for r in server["nested_jars"]
+                          if r["path"] == record["nested_netty_artifact"]["path"])
+            nested.update(sha1="a" * 40, sha256="b" * 64, size_bytes=123)
+            record["nested_netty_artifact"].update(
+                sha1=nested["sha1"], sha256=nested["sha256"], size_bytes=nested["size_bytes"])
+            forged = Path(tmp) / "fake-scan.json"
+            forged.write_text(json.dumps(scan), encoding="utf-8")
+            new_hash = hashlib.sha256(forged.read_bytes()).hexdigest()
+            record.update(source_scan_path=str(forged), source_scan_sha256=new_hash)
+            baseline["retained_files"][str(forged)] = new_hash
+            report["minecraft_1_19_server_bundle"]["netty_codec_artifact"].update(
+                sha1=nested["sha1"], sha256=nested["sha256"], size_bytes=nested["size_bytes"])
+            for path, data in ((matrix_path, matrix), (baseline_path, baseline), (report_path, report)):
+                path.write_text(json.dumps(data), encoding="utf-8")
+            errors, pin = VALIDATOR.validate_environment_artifact_pin(
+                row, ROOT, baseline["retained_files"])
+            self.assertIsNone(pin)
+            self.assertTrue(any("source-controlled official scan" in e for e in errors), errors)
+            errors, _ = VALIDATOR.validate_evidence(archive, ROOT)
+            self.assertTrue(any("source-controlled official scan" in e for e in errors), errors)
 
     def test_server_summary_live_selection_or_artifact_forgery_is_rejected(self):
         for name in ("minecraft_1_19_server_bundle", "minecraft_26_1_2_server_bundle"):
