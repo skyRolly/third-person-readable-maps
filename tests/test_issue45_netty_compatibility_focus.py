@@ -4,6 +4,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -68,47 +69,75 @@ class NettyFocusErratumTests(unittest.TestCase):
             unnamed steps); comments and blank lines do not end a step.
             Block-valued run commands cannot satisfy the isolation contract.
             """
+            def mapping_field(field):
+                # A space before ':' is legal YAML, as are simple quoted keys.
+                # Normalize before matching or detecting duplicates. Complex
+                # keys, tags, aliases and merge keys are outside this layout;
+                # reject rather than silently overlook a security-relevant key.
+                match = re.fullmatch(
+                    r"""(?:([A-Za-z0-9_-]+)|'([A-Za-z0-9_-]+)'|"([A-Za-z0-9_-]+)")[ ]*:(.*)""",
+                    field)
+                if match is None:
+                    raise ValueError("unsupported workflow mapping field")
+                key = next(part for part in match.groups()[:3] if part is not None)
+                value = match[4].strip().split(" #", 1)[0].strip()
+                if value.startswith("#"):
+                    value = ""
+                return key, value
+
             steps = []
             current = None
+            parent_key = None
             in_guard = False
             in_steps = False
             for line in source.splitlines():
                 if not line.strip() or line.lstrip().startswith("#"):
                     continue
                 if line.startswith("  ") and not line.startswith("   "):
-                    in_guard = line.strip() == "guard:"
+                    in_guard = mapping_field(line.strip()) == ("guard", "")
                     in_steps = False
                     current = None
                 if in_guard and line.startswith("    ") and not line.startswith("     "):
-                    in_steps = line.strip() == "steps:"
+                    in_steps = mapping_field(line.strip()) == ("steps", "")
                     current = None
                 if not in_steps:
                     continue
-                if line.startswith("      - "):
+                if line == "      -" or line.startswith("      - "):
                     current = {}
+                    parent_key = None
                     steps.append(current)
                     field = line[8:]
+                    if not field.strip() or field.lstrip().startswith("#"):
+                        continue
                 elif current is not None and line.startswith("        "):
                     field = line[8:]
-                    if field.startswith("  java-version:"):
-                        field = field.strip()
-                    elif field.startswith(" "):
-                        if current.get("run", "").startswith(("|", ">")):
+                    if field.startswith(" "):
+                        if parent_key == "run" and current.get("run", "").startswith(("|", ">")):
                             current["script"] = current.get("script", "") + "\n" + field.strip()
+                        elif parent_key == "with":
+                            if not field.startswith("  ") or field.startswith("   "):
+                                raise ValueError("unsupported workflow with indentation")
+                            key, value = mapping_field(field[2:])
+                            if key == "java-version":
+                                if key in current:
+                                    current["duplicate"] = True
+                                current[key] = value
                         continue
                 else:
-                    continue
-                key, sep, value = field.partition(":")
-                if sep and key in {"name", "run", "uses", "java-version", "if", "continue-on-error"}:
-                    # These commands contain no quoted inline hash characters.
-                    value = value.strip().split(" #", 1)[0].strip()
+                    raise ValueError("unsupported workflow step layout")
+                key, value = mapping_field(field)
+                parent_key = key
+                if key in {"name", "run", "uses", "with", "if", "continue-on-error"}:
                     if key in current:
                         current["duplicate"] = True
                     current[key] = value
             return steps
 
         def all_native_checks_isolated(source: str) -> bool:
-            steps = step_fields(source)
+            try:
+                steps = step_fields(source)
+            except ValueError:
+                return False
             java = None
             seen = []
             invocations = {command: 0 for command in
@@ -159,6 +188,15 @@ class NettyFocusErratumTests(unittest.TestCase):
                   + "      # Between steps\n\n" + j21[2] + j21[3]
                   + "      - id: unrelated\n        run: python -V\n" + tail)
         self.assertTrue(all_native_checks_isolated(benign))
+        # Formatting changes alone do not alter the workflow's semantics.
+        spaced = good.replace("guard:", "guard :").replace("steps:", "steps :")
+        for key in ("uses", "with", "java-version", "name", "run"):
+            spaced = spaced.replace(key + ":", key + "  :")
+        self.assertTrue(all_native_checks_isolated(spaced))
+        quoted = good
+        for key in ("guard", "steps", "uses", "with", "java-version", "name", "run"):
+            quoted = quoted.replace(key + ":", '"' + key + '" :')
+        self.assertTrue(all_native_checks_isolated(quoted))
 
         archive_label, archive_run = required_checks(21)[1]
         combined = (f"      - name: {archive_label}\n"
@@ -172,13 +210,32 @@ class NettyFocusErratumTests(unittest.TestCase):
         self.assertFalse(all_native_checks_isolated(
             good.replace(archive_run, archive_cmd + " --evidence-dir retained-archive", 1)))
         for major in (21, 25):
-            for modifier in ("if: false", "if: ${{ false }}", "continue-on-error: true"):
-                with self.subTest(java=major, setup_modifier=modifier):
-                    conditional = setup(major).replace(
-                        "        with:\n", f"        {modifier}\n        with:\n", 1)
-                    self.assertNotEqual(setup(major), conditional)
+            for key, value in (("if", "false"), ("if", "${{ false }}"),
+                               ("continue-on-error", "true")):
+                for spelling in (key, key + " ", key + "   ",
+                                 "'" + key + "' ", '"' + key + '" '):
+                    modifier = f"{spelling}: {value}"
+                    with self.subTest(java=major, setup_modifier=modifier):
+                        conditional = setup(major).replace(
+                            "        with:\n", f"        {modifier}\n        with:\n", 1)
+                        self.assertNotEqual(setup(major), conditional)
+                        self.assertFalse(all_native_checks_isolated(
+                            good.replace(setup(major), conditional, 1)))
+                        # The same normalized policy applies to all eight
+                        # required commands, not only the setup action.
+                        for index in range(4):
+                            original = check(major, index)
+                            guarded = original + f"        {modifier}\n"
+                            self.assertFalse(all_native_checks_isolated(
+                                good.replace(original, guarded, 1)))
+            # A duplicate critical field must not be hidden by spacing or
+            # quoting. Unsupported escaped keys and YAML merges fail closed.
+            for extra in ('          "java-version" : \'%s.0.1\'\n' % major,
+                          '        "i\\u0066" : false\n',
+                          '        <<: {if: false}\n'):
+                with self.subTest(java=major, unsupported_or_duplicate=extra):
                     self.assertFalse(all_native_checks_isolated(
-                        good.replace(setup(major), conditional, 1)))
+                        good.replace(setup(major), setup(major) + extra, 1)))
             _, validate_cmd = required_checks(major)[1]
             for replacement in ("", f" --expected-synthetic-java-major {46 - major}"):
                 with self.subTest(java=major, validation_argument=replacement):
