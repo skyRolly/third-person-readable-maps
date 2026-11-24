@@ -85,6 +85,22 @@ class NettyFocusErratumTests(unittest.TestCase):
                     value = ""
                 return key, value
 
+            event_name = r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"[A-Za-z0-9_-]+")"""
+            event_flow_list = re.compile(
+                rf"\[ *{event_name}(?: *, *{event_name})* *,? *\]")
+
+            def trigger_flow_complete(parts, field):
+                # Only simple event tokens may be consumed while a flow list
+                # is open. A root mapping key must never become list content.
+                if not re.fullmatch(r"""[A-Za-z0-9_'" ,\[\]-]+""", field):
+                    raise ValueError("unsupported flow trigger list content")
+                parts.append(field)
+                if "]" not in field:
+                    return False
+                if not event_flow_list.fullmatch(" ".join(parts)):
+                    raise ValueError("malformed flow trigger list")
+                return True
+
             steps = []
             current = None
             parent_key = None
@@ -92,6 +108,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             in_trigger_block = False
             trigger_layout = None
             trigger_indent = None
+            trigger_flow = []
             in_jobs = False
             in_guard = False
             in_steps = False
@@ -104,11 +121,23 @@ class NettyFocusErratumTests(unittest.TestCase):
                 # but sibling event mappings and scalar sequence items cannot
                 # be mixed, and an indentless list cannot start after a map.
                 root_item = indent == 0 and (line == "-" or line.startswith("- "))
+                if in_trigger_block and trigger_layout == "flow":
+                    if trigger_flow_complete(trigger_flow, line.strip().split(" #", 1)[0].strip()):
+                        trigger_layout = "complete"
+                    continue
                 if in_trigger_block and (indent > 0 or root_item):
-                    field = line.strip()
-                    scalar_item = re.fullmatch(
-                        r"""- +(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"[A-Za-z0-9_-]+") *(?:#.*)?""",
-                        field)
+                    field = line.strip().split(" #", 1)[0].strip()
+                    if trigger_layout == "complete":
+                        raise ValueError("extra content after complete trigger value")
+                    if trigger_layout is None and indent > 0:
+                        if field.startswith("["):
+                            trigger_layout = ("complete" if trigger_flow_complete(trigger_flow, field)
+                                              else "flow")
+                            continue
+                        if re.fullmatch(event_name, field):
+                            trigger_layout = "complete"
+                            continue
+                    scalar_item = re.fullmatch(rf"- +{event_name}", field)
                     if trigger_layout is None:
                         trigger_layout = "sequence" if scalar_item else "mapping"
                         trigger_indent = indent
@@ -132,6 +161,14 @@ class NettyFocusErratumTests(unittest.TestCase):
                     key, value = mapping_field(line)
                     in_trigger_block = key == "on" and not value
                     trigger_layout = trigger_indent = None
+                    trigger_flow = []
+                    if key == "on" and value.startswith("["):
+                        in_trigger_block = True
+                        trigger_layout = ("complete" if trigger_flow_complete(trigger_flow, value)
+                                          else "flow")
+                    elif key == "on" and re.fullmatch(event_name, value):
+                        in_trigger_block = True
+                        trigger_layout = "complete"
                     if key == "defaults":
                         raise ValueError("workflow defaults may override the native shell")
                     # Ignore unrelated section bodies, not unknown key syntax.
@@ -201,6 +238,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     if key in current:
                         current["duplicate"] = True
                     current[key] = value
+            if trigger_layout == "flow":
+                raise ValueError("unterminated flow trigger list")
             return steps
 
         def all_native_checks_isolated(source: str) -> bool:
@@ -364,6 +403,37 @@ class NettyFocusErratumTests(unittest.TestCase):
                 "on:\n  - push\n    - pull_request\n"):
             for source in (triggers + good, good + triggers):
                 with self.subTest(mixed_triggers=triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # A flow-style event list has the same value whether it follows
+        # the on key or occupies an indented line. Multi-line lists must
+        # consume only event tokens, not a following root mapping.
+        for triggers in (
+                "on: [push, pull_request]\n",
+                "on:\n  [push, pull_request]\n",
+                '"on" : # events\n  ["push", \'pull_request\',] # list\n',
+                "on: [push,\n  pull_request]\n",
+                "on:\n  [\n    push, # comment\n    pull_request,\n  ]\n",
+                "on: [\npush,\npull_request\n]\n",
+                "on:\n  push\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(flow_triggers=triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    for defaults in ("defaults: {run: {shell: 'pwsh -File {0}'}}\n",
+                                     r'"\u0064efaults": {run: {shell: "pwsh -File {0}"}}' + "\n"):
+                        self.assertFalse(all_native_checks_isolated(source + defaults))
+        for triggers in (
+                "on:\n  [push, pull_request]\n  - workflow_dispatch\n",
+                "on: [push, pull_request]\n  push:\n",
+                "on:\n  [push, pull_request]\n- workflow_dispatch\n",
+                "on:\n  [push,\n",
+                "on: [push,\n",
+                "on:\n  [push,, pull_request]\n",
+                "on: [push,, pull_request]\n",
+                "on:\n  [push, {pull_request: {}}]\n",
+                "on:\n  [push,\ndefaults: {run: {shell: pwsh}}\n]\n",
+                "on:\n  [push,\n" + r'"\u0064efaults": {}' + "\n]\n"):
+            for source in (triggers + good, good + triggers):
+                with self.subTest(invalid_flow_triggers=triggers):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
