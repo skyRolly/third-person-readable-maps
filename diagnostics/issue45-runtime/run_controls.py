@@ -305,6 +305,10 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
 
 def prepare_fresh_evidence_dir(source: Path, destination: Path) -> Path:
     """Copy retained non-synthetic evidence, never reuse a prior capture."""
+    source = source.resolve()
+    destination = destination.resolve()
+    if destination.is_relative_to(source):
+        raise ValueError("fresh evidence directory must be outside the retained archive")
     # copytree refuses an existing destination. Do not overwrite a historical
     # archive or allow old synthetic observations to satisfy a fresh run.
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns(

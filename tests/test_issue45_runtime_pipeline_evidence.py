@@ -410,6 +410,9 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             self.assertEqual(b"old capture", (source / "synthetic-control-observation-old.jsonl").read_bytes())
             with self.assertRaises(FileExistsError):
                 CONTROLS.prepare_fresh_evidence_dir(source, destination)
+            with self.assertRaisesRegex(ValueError, "outside the retained archive"):
+                CONTROLS.prepare_fresh_evidence_dir(source, source / "nested")
+            self.assertFalse((source / "nested").exists())
 
     def test_control_jar_uses_canonical_order_and_zip_metadata_across_rebuilds(self):
         with tempfile.TemporaryDirectory(prefix="issue45-canonical-zip-") as temp:
