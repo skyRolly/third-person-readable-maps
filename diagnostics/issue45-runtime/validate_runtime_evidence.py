@@ -300,7 +300,8 @@ def validate_incomplete_run_events(events: list[dict], environment: dict,
 
 
 def validate_run_events(events: list[dict], environment: dict, source_root: Path,
-                        require_remote_pipeline: bool = True) -> list[str]:
+                        require_remote_pipeline: bool = True, *,
+                        expected_java_major: int | None = None) -> list[str]:
     errors: list[str] = []
     if not events:
         return ["observation file is empty"]
@@ -340,6 +341,13 @@ def validate_run_events(events: list[dict], environment: dict, source_root: Path
                 "os_name", "os_version", "architecture", "java_main_class"):
         if not start.get(key):
             errors.append("missing process identity field: " + key)
+    # The caller's expected JVM is independent of the archive. Check the
+    # actual process_start, not a summary label, filename or setup-java input.
+    if expected_java_major is not None:
+        java_version = start.get("java_version")
+        if not isinstance(java_version, str) or not re.fullmatch(
+                rf"{expected_java_major}(?:\.[0-9]+)*(?:[-+][A-Za-z0-9.+-]+)?", java_version):
+            errors.append(f"observed JVM does not match required Java major {expected_java_major}")
     if not HEX64.fullmatch(start.get("java_executable_sha256", "")):
         errors.append("Java executable file SHA-256 is missing or malformed")
     if start.get("environment_variables_collected") is not False:
@@ -575,7 +583,8 @@ def validate_loader_availability_contract(start: dict, end: dict,
     return ["legacy captured run lacks a loader inventory and verified pinned Netty identity"]
 
 
-def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str], dict]:
+def validate_evidence(evidence_dir: Path, source_root: Path, *,
+                      expected_synthetic_java_major: int | None = None) -> tuple[list[str], dict]:
     errors: list[str] = []
     baseline_path = evidence_dir / "baseline-lock.json"
     matrix_path = evidence_dir / "environment-matrix.json"
@@ -781,7 +790,8 @@ def validate_evidence(evidence_dir: Path, source_root: Path) -> tuple[list[str],
                              "launcher": "local-control", "fabric_loader_expected": None,
                              "expected_netty_codec": pinned["expectedNettyVersion"]}
             errors.extend(f"synthetic {profile_id}: {item}" for item in validate_run_events(
-                synthetic_events, synthetic_env, source_root, require_remote_pipeline=False))
+                synthetic_events, synthetic_env, source_root, require_remote_pipeline=False,
+                expected_java_major=expected_synthetic_java_major))
             if not synthetic_events or synthetic_events[0].get("run_id") != record.get("run_id"):
                 errors.append("synthetic summary/process run IDs differ: " + str(profile_id))
             if record.get("operator_process_exit_code") != 0:
@@ -944,8 +954,13 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--evidence-dir", required=True, type=Path)
     parser.add_argument("--source-root", type=Path, default=Path(__file__).resolve().parents[2])
+    parser.add_argument("--expected-synthetic-java-major", type=int, choices=(21, 25),
+                        help="Require this Java major in every synthetic process_start; "
+                             "omit for historical archive validation")
     args = parser.parse_args()
-    errors, result = validate_evidence(args.evidence_dir.resolve(), args.source_root.resolve())
+    errors, result = validate_evidence(
+        args.evidence_dir.resolve(), args.source_root.resolve(),
+        expected_synthetic_java_major=args.expected_synthetic_java_major)
     output = {"result": "valid_archive" if not errors else "invalid_archive", **result,
               "errors": errors}
     print(json.dumps(output, sort_keys=True))

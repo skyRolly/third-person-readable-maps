@@ -118,9 +118,15 @@ python3 diagnostics/issue45-runtime/validate_runtime_evidence.py \
 ```
 
 CI uses different fresh evidence directories for Java 21 and Java 25 and
-runs each validator in its own step. The separate mutation suites also
-validate the unchanged retained evidence. Neither synthetic run is a
-Minecraft launch or an acceptance decision.
+runs each validator in its own step with `--expected-synthetic-java-major 21`
+or `--expected-synthetic-java-major 25`, respectively. The requested major
+comes from the invocation, not the archive. Every synthetic process_start
+must report that actual JVM major; a skipped or ineffective JDK setup cannot
+be counted as successful coverage of the requested Java version. The
+workflow regression also rejects conditional or failure-tolerant JDK setup
+steps. The option may be omitted when validating unchanged historical
+evidence, and does not apply to real Minecraft captures. Neither synthetic
+run is a Minecraft launch or an acceptance decision.
 
 The validator checks each run's unique identity, process start/end association,
 source commit, diagnostic JAR hash, loaded Netty module and handler code-source

@@ -5,6 +5,7 @@ import importlib.util
 import json
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
@@ -87,6 +88,55 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
         self.assertEqual(0, result["captured_runtime_environment_count"])
         self.assertEqual("not_established", result["runtime_acceptance"])
         self.assertFalse(result["synthetic_controls_are_game_evidence"])
+
+    def test_expected_synthetic_java_major_rejects_wrong_jvm_in_full_archive(self):
+        # The immutable retained controls actually ran on Java 21. A Java 25
+        # CI invocation must not accept those same otherwise valid observations.
+        self.assertEqual([], VALIDATOR.validate_evidence(
+            EVIDENCE, ROOT, expected_synthetic_java_major=21)[0])
+        errors, _ = VALIDATOR.validate_evidence(
+            EVIDENCE, ROOT, expected_synthetic_java_major=25)
+        self.assertEqual({f"synthetic {profile_id}: observed JVM does not match required Java major 25"
+                          for profile_id in self.profiles}, set(errors))
+        for major, expected_code, expected_result in ((21, 0, "valid_archive"),
+                                                       (25, 1, "invalid_archive")):
+            with self.subTest(java=major):
+                completed = subprocess.run(
+                    [sys.executable, str(VALIDATOR_PATH), "--evidence-dir", str(EVIDENCE),
+                     "--expected-synthetic-java-major", str(major)],
+                    capture_output=True, text=True, timeout=60)
+                self.assertEqual(expected_code, completed.returncode, completed.stderr)
+                self.assertEqual(expected_result, json.loads(completed.stdout)["result"])
+
+    def test_expected_java_major_is_checked_per_process_not_summary_or_digest(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-java-major-") as tmp:
+            archive = Path(tmp) / "evidence"
+            shutil.copytree(EVIDENCE, archive)
+            summary_path = archive / "synthetic-control-verification.json"
+            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+            record = summary["profiles"][0]
+            capture = archive / record["observation_file"]
+            original = [json.loads(line) for line in capture.read_text(encoding="utf-8").splitlines()]
+            # Recompute the archive-controlled checksum after changing one
+            # process. A digest match and correct versions in the other three
+            # profiles cannot compensate for a wrong/malformed JVM identity.
+            for version in ("25.0.5", "210.0.1", "21.", 21, None):
+                with self.subTest(java_version=version):
+                    events = copy.deepcopy(original)
+                    start = next(event for event in events if event.get("event") == "process_start")
+                    if version is None:
+                        start.pop("java_version")
+                    else:
+                        start["java_version"] = version
+                    capture.write_bytes(("".join(json.dumps(event) + "\n" for event in events)).encode("utf-8"))
+                    record["observation_sha256"] = hashlib.sha256(capture.read_bytes()).hexdigest()
+                    summary_path.write_text(json.dumps(summary), encoding="utf-8")
+                    errors, _ = VALIDATOR.validate_evidence(
+                        archive, ROOT, expected_synthetic_java_major=21)
+                    self.assertIn(
+                        f"synthetic {record['profile_id']}: observed JVM does not match required Java major 21",
+                        errors)
+                    self.assertFalse(any("observation missing or digest mismatch" in e for e in errors), errors)
 
     def test_exact_client_and_server_netty_artifact_pins_are_source_bound(self):
         matrix = json.loads((EVIDENCE / "environment-matrix.json").read_text())

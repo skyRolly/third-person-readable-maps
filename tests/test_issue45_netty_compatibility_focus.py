@@ -55,7 +55,7 @@ class NettyFocusErratumTests(unittest.TestCase):
             return (
                 (control_label, f"{controls_cmd} --work-dir {work_dir} --fresh-evidence-dir {evidence_dir}"),
                 (f"Validate regenerated Java {major} runtime archive",
-                 f"{archive_cmd} --evidence-dir {evidence_dir}"),
+                 f"{archive_cmd} --evidence-dir {evidence_dir} --expected-synthetic-java-major {major}"),
                 (f"Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
                 (f"Test Java {major} Netty erratum mutation regressions", erratum_cmd),
             )
@@ -115,6 +115,10 @@ class NettyFocusErratumTests(unittest.TestCase):
                            (controls_cmd, archive_cmd, runtime_cmd, erratum_cmd)}
             for step in steps:
                 if step.get("uses", "").startswith("actions/setup-java@"):
+                    # A skipped or failure-tolerant setup cannot establish the
+                    # Java identity of the subsequent native checks.
+                    if step.get("duplicate") or "if" in step or "continue-on-error" in step:
+                        return False
                     java = step.get("java-version", "").strip("'\"").split(".", 1)[0]
                 run = step.get("run", "")
                 script = run + "\n" + step.get("script", "")
@@ -167,6 +171,22 @@ class NettyFocusErratumTests(unittest.TestCase):
             good + f"      - id: extra-archive\n        run: {archive_run}\n"))
         self.assertFalse(all_native_checks_isolated(
             good.replace(archive_run, archive_cmd + " --evidence-dir retained-archive", 1)))
+        for major in (21, 25):
+            for modifier in ("if: false", "if: ${{ false }}", "continue-on-error: true"):
+                with self.subTest(java=major, setup_modifier=modifier):
+                    conditional = setup(major).replace(
+                        "        with:\n", f"        {modifier}\n        with:\n", 1)
+                    self.assertNotEqual(setup(major), conditional)
+                    self.assertFalse(all_native_checks_isolated(
+                        good.replace(setup(major), conditional, 1)))
+            _, validate_cmd = required_checks(major)[1]
+            for replacement in ("", f" --expected-synthetic-java-major {46 - major}"):
+                with self.subTest(java=major, validation_argument=replacement):
+                    wrong = validate_cmd.replace(
+                        f" --expected-synthetic-java-major {major}", replacement)
+                    self.assertNotEqual(validate_cmd, wrong)
+                    self.assertFalse(all_native_checks_isolated(
+                        good.replace(validate_cmd, wrong, 1)))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
