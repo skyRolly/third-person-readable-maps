@@ -391,6 +391,26 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
             self.assertEqual(b"prior persistent build output",
                              (old_output / "Obsolete.class").read_bytes())
 
+    def test_fresh_synthetic_archive_cannot_reuse_retained_results(self):
+        with tempfile.TemporaryDirectory(prefix="issue45-fresh-archive-") as temp:
+            root = Path(temp)
+            source = root / "source"
+            source.mkdir()
+            (source / "environment-matrix.json").write_bytes(b"retained matrix")
+            (source / "remediation-compatibility.json").write_bytes(b"historical bytes")
+            (source / "synthetic-control-verification.json").write_bytes(b"old summary")
+            (source / "synthetic-control-observation-old.jsonl").write_bytes(b"old capture")
+            destination = root / "fresh"
+            self.assertEqual(destination, CONTROLS.prepare_fresh_evidence_dir(source, destination))
+            self.assertEqual(b"retained matrix", (destination / "environment-matrix.json").read_bytes())
+            self.assertEqual(b"historical bytes", (destination / "remediation-compatibility.json").read_bytes())
+            self.assertFalse((destination / "synthetic-control-verification.json").exists())
+            self.assertEqual([], list(destination.glob("synthetic-control-observation-*.jsonl")))
+            self.assertEqual(b"old summary", (source / "synthetic-control-verification.json").read_bytes())
+            self.assertEqual(b"old capture", (source / "synthetic-control-observation-old.jsonl").read_bytes())
+            with self.assertRaises(FileExistsError):
+                CONTROLS.prepare_fresh_evidence_dir(source, destination)
+
     def test_control_jar_uses_canonical_order_and_zip_metadata_across_rebuilds(self):
         with tempfile.TemporaryDirectory(prefix="issue45-canonical-zip-") as temp:
             root = Path(temp)
