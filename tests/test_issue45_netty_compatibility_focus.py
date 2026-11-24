@@ -88,18 +88,35 @@ class NettyFocusErratumTests(unittest.TestCase):
             steps = []
             current = None
             parent_key = None
+            in_jobs = False
             in_guard = False
             in_steps = False
             for line in source.splitlines():
                 if not line.strip() or line.lstrip().startswith("#"):
                     continue
-                if line.startswith("  ") and not line.startswith("   "):
+                indent = len(line) - len(line.lstrip(" "))
+                if indent == 0:
+                    # Ignore unrelated top-level sections (including their
+                    # trigger lists and concurrency settings). Do not carry
+                    # guard/steps state across a section boundary.
+                    in_jobs = re.fullmatch(r"""(?:jobs|'jobs'|"jobs") *: *(?:#.*)?""", line.rstrip()) is not None
+                    in_guard = in_steps = False
+                    current = None
+                    continue
+                if not in_jobs:
+                    continue
+                if indent == 2:
                     in_guard = mapping_field(line.strip()) == ("guard", "")
                     in_steps = False
                     current = None
-                if in_guard and line.startswith("    ") and not line.startswith("     "):
+                    continue
+                if not in_guard:
+                    continue
+                if indent == 4:
                     in_steps = mapping_field(line.strip()) == ("steps", "")
                     current = None
+                    # The header is not itself a sequence item.
+                    continue
                 if not in_steps:
                     continue
                 if line == "      -" or line.startswith("      - "):
@@ -188,6 +205,18 @@ class NettyFocusErratumTests(unittest.TestCase):
                   + "      # Between steps\n\n" + j21[2] + j21[3]
                   + "      - id: unrelated\n        run: python -V\n" + tail)
         self.assertTrue(all_native_checks_isolated(benign))
+        # Unrelated sections and sibling jobs must not enter the step parser.
+        for suffix in ("", "concurrency:\n  group: guard-ci\n  cancel-in-progress: true\n",
+                       "  other:\n    steps:\n      - run: python -V\n"):
+            with self.subTest(unrelated_suffix=suffix):
+                self.assertTrue(all_native_checks_isolated(
+                    "on:\n  - push\n  - pull_request\n" + good + suffix))
+        self.assertTrue(all_native_checks_isolated(
+            good.replace("    steps:\n", "    steps: # list header\n", 1)))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace("    steps:\n", "    steps:\n      unexpected: true\n", 1)))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace("  guard:\n", "  unrelated:\n", 1)))
         # Formatting changes alone do not alter the workflow's semantics.
         spaced = good.replace("guard:", "guard :").replace("steps:", "steps :")
         for key in ("uses", "with", "java-version", "name", "run"):

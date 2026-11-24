@@ -13,8 +13,12 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
+import urllib.error
 import urllib.request
 import zipfile
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -51,11 +55,38 @@ def fetch(url: str, path: Path, expected_hash: str, algorithm: str = "sha256",
     temporary = path.with_name(path.name + "." + uuid.uuid4().hex + ".part")
     try:
         request = urllib.request.Request(url, headers={"User-Agent": "issue45-runtime-diagnostic/1"})
-        with urllib.request.urlopen(request, timeout=90) as response, temporary.open("xb") as target:
-            shutil.copyfileobj(response, target)
-        if not valid(temporary):
-            raise SystemExit("downloaded control dependency hash or size differs: " + path.name)
-        os.replace(temporary, path)
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(request, timeout=90) as response, temporary.open("xb") as target:
+                    shutil.copyfileobj(response, target)
+            except urllib.error.HTTPError as error:
+                temporary.unlink(missing_ok=True)
+                # Respect upstream rate limits without masking permanent
+                # failures or retrying any integrity mismatch.
+                if error.code != 429 or attempt == 2:
+                    raise
+                retry_after = error.headers.get("Retry-After") if error.headers else None
+                delay = 2 ** (attempt + 1)
+                if retry_after:
+                    try:
+                        delay = max(delay, int(retry_after))
+                    except ValueError:
+                        try:
+                            when = parsedate_to_datetime(retry_after)
+                            if when.tzinfo is None:
+                                when = when.replace(tzinfo=timezone.utc)
+                            delay = max(delay, (when - datetime.now(timezone.utc)).total_seconds())
+                        except (ValueError, TypeError, OverflowError):
+                            pass
+                if delay > 60:
+                    raise  # Do not retry earlier than the server permits.
+                error.close()
+                time.sleep(delay)
+                continue
+            if not valid(temporary):
+                raise SystemExit("downloaded control dependency hash or size differs: " + path.name)
+            os.replace(temporary, path)
+            return
     finally:
         temporary.unlink(missing_ok=True)
 

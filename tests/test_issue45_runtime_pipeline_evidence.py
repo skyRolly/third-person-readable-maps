@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import urllib.error
 import zipfile
 from unittest.mock import patch
 from pathlib import Path
@@ -79,6 +80,47 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                 with self.assertRaisesRegex(SystemExit, "hash or size differs"):
                     CONTROLS.fetch("https://example.invalid/control.jar", target,
                                    digest, expected_size=len(data))
+            self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+    def test_control_download_retries_rate_limit_without_relaxing_integrity(self):
+        data = b"verified synthetic dependency bytes"
+        url = "https://example.invalid/pinned.jar"
+        digest = hashlib.sha256(data).hexdigest()
+
+        def http_error(code, retry_after=None):
+            headers = {} if retry_after is None else {"Retry-After": retry_after}
+            return urllib.error.HTTPError(url, code, "test HTTP error", headers, io.BytesIO())
+
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "control.jar"
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=[http_error(429, "5"), io.BytesIO(data)]) as fetch, \
+                    patch.object(CONTROLS.time, "sleep") as sleep:
+                CONTROLS.fetch(url, target, digest, expected_size=len(data))
+                self.assertEqual(2, fetch.call_count)
+                sleep.assert_called_once_with(5)
+                self.assertEqual(data, target.read_bytes())
+
+            for code, header, attempts in ((429, None, 3), (429, "120", 1), (404, None, 1)):
+                with self.subTest(code=code, retry_after=header):
+                    target.write_bytes(b"corrupt")
+                    with patch.object(CONTROLS.urllib.request, "urlopen",
+                                      side_effect=[http_error(code, header) for _ in range(attempts)]) as fetch, \
+                            patch.object(CONTROLS.time, "sleep") as sleep:
+                        with self.assertRaises(urllib.error.HTTPError):
+                            CONTROLS.fetch(url, target, digest)
+                        self.assertEqual(attempts, fetch.call_count)
+                        self.assertEqual(attempts - 1, sleep.call_count)
+                    self.assertEqual(b"corrupt", target.read_bytes())
+                    self.assertEqual([], list(Path(tmp).glob("*.part")))
+
+            with patch.object(CONTROLS.urllib.request, "urlopen",
+                              side_effect=[http_error(429), io.BytesIO(b"wrong")]) as fetch, \
+                    patch.object(CONTROLS.time, "sleep"):
+                with self.assertRaisesRegex(SystemExit, "hash or size differs"):
+                    CONTROLS.fetch(url, target, digest)
+                self.assertEqual(2, fetch.call_count)
+            self.assertEqual(b"corrupt", target.read_bytes())
             self.assertEqual([], list(Path(tmp).glob("*.part")))
 
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
