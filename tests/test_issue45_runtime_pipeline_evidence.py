@@ -168,6 +168,42 @@ class RuntimePipelineEvidenceTests(unittest.TestCase):
                         clock.now.assert_not_called()
                 self.assertEqual([], list(Path(tmp).glob("*.part")))
 
+    def test_control_privacy_distinguishes_port_canary_from_digest_digits(self):
+        events = [
+            {"event": "process_start", "source_sha": "a" * 17 + "25565" + "b" * 18,
+             "jvm_arguments_sanitized": ["-DaccessToken=<redacted>", "-Dsession:<redacted>",
+                                         "-Dserver=<redacted>", "-Dusername=<redacted>"]},
+            {"event": "channel_created", "channel_fingerprint": "a" * 29 + "25565" + "b" * 30,
+             "channel_identity": 25565, "channel_code_source": {"sha256": "25565" + "c" * 59}},
+        ]
+
+        def jsonl(items):
+            return "".join(json.dumps(item) + "\n" for item in items)
+
+        self.assertEqual(events, CONTROLS.validate_control_privacy(jsonl(events)))
+        for key, value in (
+                ("endpoint", "play.example.invalid:25565"),
+                ("endpoint", "127.0.0.1:25565"),
+                ("remote_port", 25565),
+                ("port_string", "25565"),
+                ("argument", "-Dserver=25565"),
+                ("argument", "-DapiKey=<redacted>"),
+                ("nested", {"value": "synthetic-unrecognized-api-key-must-not-appear"}),
+                ("nested", ["synthetic-secret-must-not-appear"]),
+                ("name", "synthetic-player-identifier")):
+            with self.subTest(field=key, value=value):
+                changed = copy.deepcopy(events)
+                changed[1][key] = value
+                with self.assertRaisesRegex(SystemExit, "privacy sanitizer leaked"):
+                    CONTROLS.validate_control_privacy(jsonl(changed))
+        # A marker elsewhere in the observation does not establish that the
+        # actual JVM argument was redacted.
+        changed = copy.deepcopy(events)
+        changed[0]["jvm_arguments_sanitized"].remove("-Dserver=<redacted>")
+        changed[1]["unrelated"] = "-Dserver=<redacted>"
+        with self.assertRaisesRegex(SystemExit, "did not preserve"):
+            CONTROLS.validate_control_privacy(jsonl(changed))
+
     def test_source_bound_archive_is_valid_but_has_no_game_runtime_passes(self):
         errors, result = VALIDATOR.validate_evidence(EVIDENCE, ROOT)
         self.assertEqual([], errors)
