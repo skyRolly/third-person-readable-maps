@@ -86,6 +86,30 @@ class NettyFocusErratumTests(unittest.TestCase):
                 return key, value
 
             event_name = r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"[A-Za-z0-9_-]+")"""
+            # Decode only quoted hexadecimal escapes in nested trigger keys.
+            # They can spell the same ASCII filter/description names without
+            # changing YAML semantics. Never use this grammar for root/jobs/
+            # guard/step keys: their strict mapping_field policy is unchanged.
+            nested_key = (
+                r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"(?:[A-Za-z0-9_-]|\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}))+")""")
+
+            def nested_mapping_field(field):
+                match = re.fullmatch(rf"({nested_key})[ \t]*:[ \t]*(.*)", field)
+                if match is None:
+                    return None
+                key = match[1]
+                if key.startswith('"'):
+                    def decode_hex(escape):
+                        codepoint = int(escape[0][2:], 16)
+                        if codepoint > 0x10ffff or 0xd800 <= codepoint <= 0xdfff:
+                            raise ValueError("invalid Unicode escape in nested trigger key")
+                        return chr(codepoint)
+                    key = re.sub(r"\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})",
+                                 decode_hex, key[1:-1])
+                elif key.startswith("'"):
+                    key = key[1:-1]
+                return key, match[2]
+
             event_flow_list = re.compile(
                 rf"\[[ \t]*{event_name}(?:[ \t]*,[ \t]*{event_name})*[ \t]*,?[ \t]*\]")
 
@@ -221,10 +245,9 @@ class NettyFocusErratumTests(unittest.TestCase):
                         if pending and value.startswith("["):
                             nested_filter_flow = not nested_filter_flow_complete(value[1:])
                         else:
-                            nested = re.fullmatch(rf"({event_name})[ \t]*:[ \t]*(.*)", value)
-                            if nested:
-                                key = nested[1].strip("'\"")
-                                value = nested[2]
+                            nested = nested_mapping_field(value)
+                            if nested is not None:
+                                key, value = nested
                                 header = re.split(r"[ \t]+#", value, maxsplit=1)[0].strip()
                                 if header.startswith("#"):
                                     header = ""
@@ -628,6 +651,42 @@ class NettyFocusErratumTests(unittest.TestCase):
                 + r'"\u0064efaults": {}' + "\n"):
             for source in (triggers + good, good + triggers):
                 with self.subTest(invalid_scalar_triggers=triggers):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # YAML double-quoted hexadecimal escapes can spell the same nested
+        # filter key. Decode only in trigger context, never security-critical
+        # root/job/step keys. Verify both inline and separately wrapped lists.
+        for key in (r'"\u0062ranches"', r'"\x62ranches"',
+                    r'"\U00000062ranches"', r'"br\u0061nches"',
+                    r'"\u0062r\u0061nches"'):
+            for value in (" [main,\n      \trelease/**]\n",
+                          "\n      [main,\n      \trelease/**]\n",
+                          " # comment\n      [main,\n      \trelease/**]\n"):
+                triggers = "on:\n  push:\n    " + key + ":" + value
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(escaped_filter=key, value=value):
+                        self.assertTrue(all_native_checks_isolated(source))
+                        for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                         r'"\u0064efaults": {}' + "\n"):
+                            self.assertFalse(all_native_checks_isolated(source + defaults))
+        for triggers in (
+                'on:\n  pull_request:\n    ' + r'"\u0070aths"' +
+                ': [src/**,\n      \t"docs/[a-z]/**"]\n',
+                'on:\n  workflow_dispatch:\n    inputs:\n      target:\n        ' +
+                r'"\u0064escription"' + ': |\n          branches: [not a list\n'
+                '          [Docs](https://example.invalid/docs)\n'
+                '        type: choice\n        ' + r'"\u006fptions"' +
+                ':\n          [one,\n           \ttwo]\n'):
+            for source in (triggers + good, good + triggers):
+                self.assertTrue(all_native_checks_isolated(source))
+                self.assertFalse(all_native_checks_isolated(
+                    source + r'"\u0064efaults": {}' + "\n"))
+        for key in (r'"\u0062ranches"', r'"\x62ranches"'):
+            for value in (" [main,\n",
+                          "\n      [main,\ndefaults: {run: {shell: pwsh}}\n]\n",
+                          "\n      [main,\n" + r'"\u0064efaults": {}' + "\n]\n",
+                          " [main]\n      \t- release/**\n"):
+                triggers = "on:\n  push:\n    " + key + ":" + value
+                for source in (triggers + good, good + triggers):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
