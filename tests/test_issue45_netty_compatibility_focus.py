@@ -225,8 +225,11 @@ class NettyFocusErratumTests(unittest.TestCase):
                     # to close. Root-looking content at column zero is outside
                     # this conservative continuation grammar.
                     if nested_filter_quote is not None and indent == 0:
-                        if re.match(rf"{nested_key}[ \t]*:", line) or line.startswith(
-                                ("? ", "<<:", "---", "...")):
+                        # Document indicators require a token boundary, not
+                        # merely three matching characters in a path.
+                        document_marker = re.match(r"(?:---|\.\.\.)(?:[ \t]|$)", line)
+                        if (re.match(rf"{nested_key}[ \t]*:", line)
+                                or line.startswith(("? ", "<<:")) or document_marker):
                             raise ValueError("root mapping inside unfinished quoted filter")
                     nested_filter_flow = not nested_filter_flow_complete(line.strip())
                     continue
@@ -752,6 +755,26 @@ class NettyFocusErratumTests(unittest.TestCase):
             triggers = "on:\n  push:\n    " + r'"\u0062ranches"' + ":" + value
             for source in (triggers + good, good + triggers):
                 with self.subTest(invalid_wrapped_quote=value):
+                    self.assertFalse(all_native_checks_isolated(source))
+        # Document marker prefixes in quoted path text are not indicators.
+        # A real marker at column zero still cannot continue an open quote.
+        for key in ("paths", r'"\u0070aths"', "branches"):
+            for suffix in ("---stable", "...hidden", "----", ".../docs", "---", "..."):
+                for value in (' ["release/\\\n' + suffix + '"]\n',
+                              '\n      ["release/\\\n' + suffix + '", main]\n'):
+                    triggers = "on:\n  push:\n    " + key + ":" + value
+                    for source in (triggers + good, good + triggers):
+                        with self.subTest(marker_prefix=key, suffix=suffix):
+                            self.assertTrue(all_native_checks_isolated(source))
+                            for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                             r'"\u0064efaults": {}' + "\n"):
+                                self.assertFalse(all_native_checks_isolated(source + defaults))
+        for marker in ("---", "...", "--- # document", "... # document",
+                       "---\t# document", "...\t# document", "--- stable", "... hidden"):
+            triggers = ('on:\n  push:\n    ' + r'"\u0070aths"' +
+                        ': ["release/\\\n' + marker + '\n      stable"]\n')
+            for source in (triggers + good, good + triggers):
+                with self.subTest(document_marker=marker):
                     self.assertFalse(all_native_checks_isolated(source))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
