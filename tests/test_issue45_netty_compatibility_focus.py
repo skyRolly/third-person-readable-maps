@@ -37,17 +37,28 @@ class NettyFocusErratumTests(unittest.TestCase):
     def test_cross_platform_java_tests_have_independent_native_exit_codes(self):
         workflow = (ROOT / ".github/workflows/credential-guard-tests.yml").read_text(
             encoding="utf-8")
-        archive_cmd = ("python diagnostics/issue45-runtime/validate_runtime_evidence.py "
-                       "--evidence-dir docs/dependency-evidence/issue45-runtime-pipeline-2026-11-23")
+        archive_cmd = "python diagnostics/issue45-runtime/validate_runtime_evidence.py"
+        controls_cmd = "python diagnostics/issue45-runtime/run_controls.py"
         runtime_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_runtime_pipeline_evidence.py" -v')
         erratum_cmd = ('python -m unittest discover -s tests '
                        '-p "test_issue45_netty_compatibility_focus.py" -v')
-        expected = (
-            ("Validate regenerated Java {major} runtime archive", archive_cmd),
-            ("Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
-            ("Test Java {major} Netty erratum mutation regressions", erratum_cmd),
-        )
+
+        def required_checks(major):
+            work = "issue45-agent-j21" if major == 21 else "issue45-agent-café-j25"
+            work_dir = '"${{ runner.temp }}/' + work + '"'
+            evidence_dir = '"${{ runner.temp }}/issue45-evidence-j' + str(major) + '"'
+            control_label = (
+                "Exercise Issue 45 diagnostic privacy and populated snapshots on Java 21"
+                if major == 21 else
+                "Exercise Issue 45 diagnostic class transformations on Java 25")
+            return (
+                (control_label, f"{controls_cmd} --work-dir {work_dir} --fresh-evidence-dir {evidence_dir}"),
+                (f"Validate regenerated Java {major} runtime archive",
+                 f"{archive_cmd} --evidence-dir {evidence_dir}"),
+                (f"Test Java {major} runtime evidence and privacy regressions", runtime_cmd),
+                (f"Test Java {major} Netty erratum mutation regressions", erratum_cmd),
+            )
 
         def step_fields(source: str) -> list[dict]:
             """Read the guard workflow's simple block-style step mappings.
@@ -100,7 +111,8 @@ class NettyFocusErratumTests(unittest.TestCase):
             steps = step_fields(source)
             java = None
             seen = []
-            invocations = {command: 0 for _, command in expected}
+            invocations = {command: 0 for command in
+                           (controls_cmd, archive_cmd, runtime_cmd, erratum_cmd)}
             for step in steps:
                 if step.get("uses", "").startswith("actions/setup-java@"):
                     java = step.get("java-version", "").strip("'\"").split(".", 1)[0]
@@ -109,13 +121,14 @@ class NettyFocusErratumTests(unittest.TestCase):
                 for command in invocations:
                     invocations[command] += script.count(command)
                 for major in (21, 25):
-                    for label, command in expected:
-                        if step.get("name") == label.format(major=major):
+                    for label, command in required_checks(major):
+                        if step.get("name") == label:
                             if (java != str(major) or run != command or step.get("duplicate")
                                     or "if" in step or "continue-on-error" in step):
                                 return False
-                            seen.append((major, command))
-            return (seen == [(major, command) for major in (21, 25) for _, command in expected]
+                            seen.append((major, label))
+            return (seen == [(major, label) for major in (21, 25)
+                             for label, _ in required_checks(major)]
                     and all(count == 2 for count in invocations.values()))
 
         self.assertTrue(all_native_checks_isolated(workflow))
@@ -127,30 +140,33 @@ class NettyFocusErratumTests(unittest.TestCase):
                     f"        with:\n          java-version: '{major}.0.1'\n")
 
         def check(major, index, comment=False):
-            label, command = expected[index]
-            return (f"      - name: {label.format(major=major)}\n"
+            label, command = required_checks(major)[index]
+            return (f"      - name: {label}\n"
                     + ("        # Harmless comment\n\n" if comment else "")
                     + f"        run: {command}\n")
 
         prefix = "jobs:\n  guard:\n    steps:\n"
-        j21 = [check(21, i) for i in range(3)]
-        j25 = [check(25, i) for i in range(3)]
+        j21 = [check(21, i) for i in range(4)]
+        j25 = [check(25, i) for i in range(4)]
         tail = setup(25) + "".join(j25)
         good = prefix + setup(21) + "".join(j21) + tail
         self.assertTrue(all_native_checks_isolated(good))
-        benign = (prefix + setup(21) + check(21, 0, comment=True)
-                  + "      # Between steps\n\n" + j21[1] + j21[2]
+        benign = (prefix + setup(21) + j21[0] + check(21, 1, comment=True)
+                  + "      # Between steps\n\n" + j21[2] + j21[3]
                   + "      - id: unrelated\n        run: python -V\n" + tail)
         self.assertTrue(all_native_checks_isolated(benign))
 
-        combined = (f"      - name: {expected[0][0].format(major=21)}\n"
-                    f"        run: |\n          {archive_cmd}\n          {runtime_cmd}\n")
+        archive_label, archive_run = required_checks(21)[1]
+        combined = (f"      - name: {archive_label}\n"
+                    f"        run: |\n          {archive_run}\n          {runtime_cmd}\n")
         self.assertFalse(all_native_checks_isolated(
-            prefix + setup(21) + combined + j21[2] + tail))
+            prefix + setup(21) + j21[0] + combined + j21[3] + tail))
         self.assertFalse(all_native_checks_isolated(
             prefix + setup(21) + setup(25) + "".join(j21) + "".join(j25)))
         self.assertFalse(all_native_checks_isolated(
-            good + f"      - id: extra-archive\n        run: {archive_cmd}\n"))
+            good + f"      - id: extra-archive\n        run: {archive_run}\n"))
+        self.assertFalse(all_native_checks_isolated(
+            good.replace(archive_run, archive_cmd + " --evidence-dir retained-archive", 1)))
 
     def test_historical_v1_report_is_immutable_and_source_bound(self):
         self.assertEqual(
