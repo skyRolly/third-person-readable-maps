@@ -1,0 +1,363 @@
+{
+  "schema": "issue45-pr22-review-preparation/v1",
+  "scope": "unreviewed_comparison_only",
+  "coordinator_checkout": "b7dd973ac76649c8aba25975933ea1aa1c50e980",
+  "pr": 22,
+  "source_sha": "a9cd58a4efdb5e9505006bb62914a89e19df0d71",
+  "base_sha": "177f5708727ae4c152091d185536aaa734063280",
+  "runtime": "1.19.3",
+  "inputs_sha256": {
+    "pr22-local-osv.json": "71d52d77e9102bc4a6142fff9c9a53d39dc7a4f6a99f0ef095ddc251bddb5d6d",
+    "pr22-github-graph.json": "0179848d0e9a80eddfa5d8b9e41d08c76a8ccb2aba1dba62fa57038eb7ea5660",
+    "pr22-review.md": "e7703d65b3b2afba318edbd1e4391be21209faef6fd6498a5aa3393878fe28da",
+    "repository-sbom.json": "86b2fba803d6c6974d05229c90a0bdf960a789fc0e9b496197a4422db140cc07",
+    "spdy-observation-plan.md": "e82f1e5c407ed970414ea572b679fa50fd4c144f5b603474b9acefb2ac2b535d"
+  },
+  "local_scan": {
+    "date": "2026-11-25",
+    "retained_snapshot_date": "2026-11-21",
+    "retained_snapshot_sha256": "d2ddae35341d3b7a9a0dbaada3a50c2eedd1a1004d97e370a149901ae6e5f965",
+    "new_gradle_resolution": false
+  },
+  "hosted_scan": {
+    "date": "2026-11-24",
+    "run_id": 45436980000,
+    "job_id": 138597456039,
+    "artifact_id": 14940902537,
+    "zip_sha256": "5befb6681dbb59e9cbb64c01564162ce3e2ab17b0b43518f49c9fa482e080841",
+    "report_sha256": "23d9934e4402606697545857c2af7ac3eb09154bd470d8423b4c33c9bfdb6a01",
+    "snapshot_artifact_id": 14941537266,
+    "snapshot_zip_sha256": "b241dff47529939ba67653e003f0e08fe1f2821ffe8db388b198e96a5e1e281c",
+    "snapshot_json_sha256": "06bc3dfd8ad68e40fa2b397e104002ceafed6e96aaba3ee9e94c29889537f291"
+  },
+  "comparison": {
+    "normalized_tuples_equal": true,
+    "hosted_local_inventories_equal": true,
+    "hosted_local_advisory_fingerprints_equal": true,
+    "disappeared_matches": 0
+  },
+  "sbom": {
+    "created_utc": "2026-11-25T19:02:18Z",
+    "packages": 93,
+    "maven_packages": 85,
+    "minecraft_entry": "1.21.11",
+    "all_branch_coverage_established": false,
+    "alerts_verified": false
+  },
+  "risk_accepted": false,
+  "release_blocking": true,
+  "findings": [
+    {
+      "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
+      "advisory": "GHSA-5mg8-w23w-74h3",
+      "severity": "LOW",
+      "fingerprint": "14be6854afabf4b08b5cc2753e25f00d2a4c82b0ff7cb0a66b6e1ac4553d9fa8",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Local temporary directory permissions",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
+      "advisory": "GHSA-7g45-4rm6-3mm3",
+      "severity": "MODERATE",
+      "fingerprint": "75d99e14eec8799403adeadcaf11db419df8abdda2c938258b4c0c53120d58cd",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Temporary-file backing and local access",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/com.google.guava/guava@31.1-jre",
+      "advisory": "GHSA-xxph-c9ww-hj94",
+      "severity": "HIGH",
+      "fingerprint": "32f1ee8c39054ece96cf831d304813c5378a1a2cefba76653df85cef81764191",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Object deserialization ownership and input provenance",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/commons-io/commons-io@2.11.0",
+      "advisory": "GHSA-78wr-2p64-hpwj",
+      "severity": "HIGH",
+      "fingerprint": "ee640a56ca0a2148fd75086823c140e6e16f3c1eea598075f35d1bf71793b203",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "XML reader input provenance",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "advisory": "GHSA-3p8m-j85q-pgmj",
+      "severity": "MODERATE",
+      "fingerprint": "4f92a2a65a8cc783d2868870f3a45f3aee9795e7f6619ded13ab12bb5320717d",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Installed decompressor and limits",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "advisory": "GHSA-558v-64gr-wgg4",
+      "severity": "HIGH",
+      "fingerprint": "7a86bd270e8267fe29c9d2a83803f8d7b6e1df56d0e4452f363d5233f84cc0ff",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Bzip2 registration and input provenance",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-codec@4.1.82.Final",
+      "advisory": "GHSA-mj4r-2hfc-f8p6",
+      "severity": "HIGH",
+      "fingerprint": "56784e5f6966523d2820fdaeb0d0d5c94f6bd94ec10d091ce94db3aed1c9e17d",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "LZ4 registration and input provenance",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-common@4.1.82.Final",
+      "advisory": "GHSA-389x-839f-4rhx",
+      "severity": "MODERATE",
+      "fingerprint": "d9dfc58588f049a1e25c234bb006078fb3ce39bf1c03629fbfa8521d0b94864d",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Windows environment-file permissions",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-common@4.1.82.Final",
+      "advisory": "GHSA-xq3w-v528-46rv",
+      "severity": "MODERATE",
+      "fingerprint": "647133cda119c39e76046b1cbd16dcf48f188c283a981571002afc8d6cf0be82",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Windows resolver search locations",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-3qp7-7mw8-wx86",
+      "severity": "HIGH",
+      "fingerprint": "06515f8744108b7ad7c946b4505ec55e3bdd8957f0f2038ebff2247eadc4fdeb",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "IPv6 admission policy ownership",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-6mjq-h674-j845",
+      "severity": "MODERATE",
+      "fingerprint": "1eef368131f86a36d4f6377fdc471a9895969d383779bff33907425f41c9a76f",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "SNI allocation bounds and handler presence",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-c4c3-7fpv-j4q5",
+      "severity": "CRITICAL",
+      "fingerprint": "b15ba06a8eb0cd74c94f75dae6e367f9b04c0f5802749e4381fe88e9d68f0ada",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Exact TLS deployment review; retain block",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-c653-97m9-rcg9",
+      "severity": "HIGH",
+      "fingerprint": "60ae716a39bf7f6cdb2679a9986d4c719bac62b6dcfea17c7d01bd098cbfb23d",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Trust manager and endpoint identity configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-fccg-mwvh-qqg4",
+      "severity": "MODERATE",
+      "fingerprint": "c2ccaae65384b9b23d16e1e20f59a302f777b202bce5207b7091424cb3f9a413",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "SNI parser ownership and limits",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-handler@4.1.82.Final",
+      "advisory": "GHSA-x4gw-5cx5-pgmh",
+      "severity": "HIGH",
+      "fingerprint": "45bd07ec3a1d551683a45a71343a91107908ce8ebc256ec15e13bde1f6e67696",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "SNI handler allocation policy",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/io.netty/netty-transport-native-epoll@4.1.82.Final",
+      "advisory": "GHSA-w573-9ffj-6ff9",
+      "severity": "MODERATE",
+      "fingerprint": "5327e109b3f08109be79b1d714832599ec39b6ba34eac48ae10e8b5375c5a5ed",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Native Unix channel use",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.commons/commons-compress@1.21",
+      "advisory": "GHSA-4265-ccf5-phj5",
+      "severity": "MODERATE",
+      "fingerprint": "82b6a13a67ea0790f22cb513eb9d9ebd1d7f6294b276aca36c4cd1eba7a289eb",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Pack200 importer ownership",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.commons/commons-compress@1.21",
+      "advisory": "GHSA-4g9r-vxhx-9pgx",
+      "severity": "MODERATE",
+      "fingerprint": "834a646efa886cbeef708e463f6d35344244a0cac5ad166fee0942ab23062a0d",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "DUMP importer ownership",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.commons/commons-lang3@3.12.0",
+      "advisory": "GHSA-j288-q9x7-2f5v",
+      "severity": "MODERATE",
+      "fingerprint": "8ad2d3f9edac8000bdd148a0b50e631847c5145391144f6b599cd83ebbe8b6a8",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Class-name processing ownership",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-api@2.19.0",
+      "advisory": "GHSA-qv9r-c865-cp47",
+      "severity": "MODERATE",
+      "fingerprint": "247da6247605ebb205791b670243278eb9ba25eb471bdc79825bd6f74a0f84ee",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "MapMessage serialization configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
+      "advisory": "GHSA-3pxv-7cmr-fjr4",
+      "severity": "MODERATE",
+      "fingerprint": "7f4507acb81517db604ae7ca4743d8a5fb78d0d049f26b8dab19fd10f8767e90",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "XmlLayout configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
+      "advisory": "GHSA-6hg6-v5c8-fphq",
+      "severity": "MODERATE",
+      "fingerprint": "12c7849542fb67117d80dbf0f773db095b0948630c75c558565b4701c27870cd",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "TLS logging configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
+      "advisory": "GHSA-h383-gmxw-35v2",
+      "severity": "MODERATE",
+      "fingerprint": "3c0dbc60c97945dd03cdfcbb53c4196ce8ee358376f18ab079bacb29566689aa",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "Log4j bridge and layout configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    },
+    {
+      "purl": "pkg:maven/org.apache.logging.log4j/log4j-core@2.19.0",
+      "advisory": "GHSA-vc5p-v9hr-52mj",
+      "severity": "MODERATE",
+      "fingerprint": "d16312e0ac172ab3bccda84b60a98348620c0ba228d800596feaabd818755840",
+      "scopes": [
+        "gradle",
+        "runtime/1.19.3"
+      ],
+      "proposed_review_step": "SocketAppender TLS peer identity configuration",
+      "review_status": "awaiting investigation",
+      "failing": true
+    }
+  ]
+}
