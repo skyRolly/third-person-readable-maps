@@ -1,3 +1,4 @@
+from contextlib import redirect_stderr
 import hashlib
 import io
 import json
@@ -5,8 +6,10 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 
 import probe
@@ -95,6 +98,55 @@ class ProbeTests(unittest.TestCase):
         with self.assertRaises(subprocess.CalledProcessError) as shadow:
             probe.observe(self.java, paths, hashes[probe.HTTP], probe.sha256(self.raw_class), self.directory)
         self.assertIn("negative control unexpectedly loaded target", shadow.exception.stderr)
+
+    def test_main_reports_jvm_failure_without_report(self):
+        manifest, blobs = self.fixture()
+        raw = json.dumps(manifest).encode()
+        (self.directory / "fixture.json").write_bytes(raw)
+        profile = ("fixture", self.version, probe.sha256(raw), probe.sha256(self.jar), "0" * 64)
+        output = self.directory / "report.json"
+        # Exercise the real Java failure through the CLI; only acquisition
+        # and checkout provenance are substituted with local fixture inputs.
+        acquire = probe.acquire
+
+        def fixture_acquire(items, directory, expected_http):
+            return acquire(items, directory, expected_http, lambda item: blobs[item["url"]])
+
+        with (mock.patch.object(probe, "PROFILES", (profile,)),
+              mock.patch.object(probe, "MANIFESTS", self.directory),
+              mock.patch.object(probe, "source_identity", return_value=("fixture", {})),
+              mock.patch.object(probe, "acquire", side_effect=fixture_acquire) as acquisition,
+              mock.patch.object(sys, "argv", ["probe.py", "--java", str(self.java), "--output", str(output)])):
+            log = io.StringIO()
+            with redirect_stderr(log), self.assertRaises(SystemExit) as failure:
+                probe.main()
+            self.assertEqual(failure.exception.code, 1)
+            self.assertIn("JVM observation failed for fixture / " + self.version, log.getvalue())
+            self.assertIn("exit 1", log.getvalue())
+            self.assertIn("class resource digest mismatch", log.getvalue())
+            self.assertFalse(output.exists())
+
+            acquisition.side_effect = OSError("fixture acquisition failed")
+            log = io.StringIO()
+            with redirect_stderr(log), self.assertRaises(SystemExit) as failure:
+                probe.main()
+            self.assertEqual(failure.exception.code, 1)
+            self.assertIn("input, acquisition or JVM unavailable", log.getvalue())
+            self.assertNotIn("JVM observation failed", log.getvalue())
+            self.assertFalse(output.exists())
+
+    def test_jvm_diagnostics_bounds_and_escapes_output(self):
+        error = subprocess.TimeoutExpired(["private-command"], 60,
+                                          output=b"partial\n::error::fake",
+                                          stderr=b"x" * 4097 + b"not-visible")
+        message = probe.jvm_diagnostics(error)
+        self.assertIn("partial\\n::error::fake", message)
+        self.assertIn("(truncated)", message)
+        self.assertNotIn("\n", message)
+        self.assertNotIn("not-visible", message)
+        self.assertNotIn("private-command", message)
+        self.assertEqual(probe.jvm_diagnostics(subprocess.CalledProcessError(1, [])),
+                         "no captured JVM output")
 
     def test_manifest_classpath_rejected(self):
         self.empty = fixture_jar({"META-INF/MANIFEST.MF": "Manifest-Version: 1.0\nClass-Path: extra.jar\n"})

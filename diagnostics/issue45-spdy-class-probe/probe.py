@@ -123,6 +123,20 @@ def observe(java, paths, jar_hash, class_hash, directory):
     return expected
 
 
+def jvm_diagnostics(error):
+    # Keep captured output bounded and escaped on one line; never log the
+    # command arguments or environment, and do not emit runner commands.
+    details = []
+    for name in ("stderr", "stdout"):
+        value = getattr(error, name, None)
+        if value:
+            if isinstance(value, bytes):
+                value = value.decode("utf-8", errors="replace")
+            details.append(f"{name}={ascii(value[:4096])}" +
+                           (" (truncated)" if len(value) > 4096 else ""))
+    return "; ".join(details) if details else "no captured JVM output"
+
+
 def source_identity():
     root = HERE.parents[1]
     checkout = subprocess.check_output(["git", "rev-parse", "--verify", "HEAD"], cwd=root,
@@ -163,7 +177,18 @@ def main():
                 directory.mkdir()
                 paths, hashes = acquire(items, directory, jar_hash)
                 require(source_identity() == identity, "probe sources changed during acquisition")
-                result = observe(args.java, paths, jar_hash, class_hash, directory)
+                try:
+                    result = observe(args.java, paths, jar_hash, class_hash, directory)
+                except subprocess.CalledProcessError as error:
+                    raise ProbeError(f"JVM observation failed for {game} / {netty} "
+                                     f"(exit {error.returncode}): {jvm_diagnostics(error)}") from error
+                except subprocess.TimeoutExpired as error:
+                    raise ProbeError(f"JVM observation timed out for {game} / {netty}: "
+                                     f"{jvm_diagnostics(error)}") from error
+                except OSError as error:
+                    raise ProbeError(f"JVM observation could not start for {game} / {netty}") from error
+                except ProbeError as error:
+                    raise ProbeError(f"JVM observation failed for {game} / {netty}: {error}") from error
                 observations.append({"representative_manifest": game, "manifest_sha256": pin, "netty": netty,
                                      "library_sha256": hashes, **result})
         require(source_identity() == identity, "probe sources changed during observation")
