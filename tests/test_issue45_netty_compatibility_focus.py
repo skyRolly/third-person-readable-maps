@@ -38,12 +38,13 @@ class NettyFocusErratumTests(unittest.TestCase):
     def test_cross_platform_java_tests_have_independent_native_exit_codes(self):
         workflow = (ROOT / ".github/workflows/credential-guard-tests.yml").read_text(
             encoding="utf-8")
-        archive_cmd = "python diagnostics/issue45-runtime/validate_runtime_evidence.py"
-        controls_cmd = "python diagnostics/issue45-runtime/run_controls.py"
-        runtime_cmd = ('python -m unittest discover -s tests '
-                       '-p "test_issue45_runtime_pipeline_evidence.py" -v')
-        erratum_cmd = ('python -m unittest discover -s tests '
-                       '-p "test_issue45_netty_compatibility_focus.py" -v')
+        pinned = 'python scripts/run_pinned_python.py "${{ steps.canonical_python.outputs.python-path }}" 3.15.2 '
+        archive_cmd = pinned + "diagnostics/issue45-runtime/validate_runtime_evidence.py"
+        controls_cmd = pinned + "diagnostics/issue45-runtime/run_controls.py"
+        runtime_cmd = pinned + ('-m unittest discover -s tests '
+                                '-p "test_issue45_runtime_pipeline_evidence.py" -v')
+        erratum_cmd = pinned + ('-m unittest discover -s tests '
+                                '-p "test_issue45_netty_compatibility_focus.py" -v')
 
         def required_checks(major):
             work = "issue45-agent-j21" if major == 21 else "issue45-agent-café-j25"

@@ -2,6 +2,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -149,6 +150,7 @@ class BuildIdentityTests(unittest.TestCase):
             "Collect Java 25 compiled build identity",
             "Upload compiled build identities only",
             "Set up minimum Python for real collection smoke test",
+            "Test cross-version pinned Python handoff",
             "Collect real Java 25 compiled build identity on Python 3.10",
             "Verify minimum Python collection matches canonical identity",
             "Test compiled build identity on Python 3.10",
@@ -187,13 +189,18 @@ class BuildIdentityTests(unittest.TestCase):
 
         def output(name):
             args = shlex.split(field(name, "run", 8))
-            self.assertEqual(args[:3], ["python", "diagnostics/issue45-runtime/build_identity.py", "collect"])
+            minimum = name == "Collect real Java 25 compiled build identity on Python 3.10"
+            pin = ["python", "scripts/run_pinned_python.py",
+                   "${{ steps.minimum_python.outputs.python-path }}" if minimum else
+                   "${{ steps.canonical_python.outputs.python-path }}",
+                   "3.10.22" if minimum else "3.15.2"]
+            self.assertEqual(args[:6], pin + ["diagnostics/issue45-runtime/build_identity.py", "collect"])
             # argparse accepts both --option value and --option=value, and
             # normally allows abbreviations and repeated options (last wins).
             # For this workflow require exactly one of each full option name.
             allowed = {"--work-dir", "--java-major", "--os", "--output"}
             values = {}
-            index = 3
+            index = 6
             while index < len(args):
                 option, equals, value = args[index].partition("=")
                 self.assertIn(option, allowed, "unexpected collector option")
@@ -228,9 +235,140 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertEqual(smoke, f"{smoke_dir}/identity-j25.json",
                          "smoke report must use its separate attempt directory")
         parity = shlex.split(field("Verify minimum Python collection matches canonical identity", "run", 8))
-        self.assertEqual(parity[:2], ["python", "-c"])
-        self.assertEqual(parity[3:], [reports[25], smoke],
+        self.assertEqual(parity[:5], ["python", "scripts/run_pinned_python.py",
+                                     "${{ steps.minimum_python.outputs.python-path }}", "3.10.22", "-c"])
+        self.assertEqual(parity[6:], [reports[25], smoke],
                          "parity must compare the actual canonical and smoke outputs")
+
+    def assert_handoff_matrix(self, workflow):
+        # Match the expected simple YAML lines, with optional trailing comments.
+        # Preserve indentation, entry boundaries and quoted scalar contents.
+        def matches(line, expected):
+            return re.fullmatch(re.escape(expected) + r"(?:[ \t]+#.*)?[ \t]*", line) is not None
+
+        message = "handoff Python versions must be bound to the exact OS matrix entries"
+        lines = workflow.splitlines()
+        starts = [i for i, line in enumerate(lines) if matches(line, "    strategy:")]
+        self.assertEqual(len(starts), 1, message)
+        start = starts[0]
+        ends = [i for i in range(start + 1, len(lines)) if matches(lines[i], "    steps:")]
+        self.assertTrue(ends, message)
+        matrix = [line for line in lines[start + 1:ends[0]]
+                  if line.strip() and not line.lstrip().startswith("#")]
+        expected = [
+            "      fail-fast: false",
+            "      matrix:",
+            "        os: [ubuntu-latest, windows-latest]",
+            "        include:",
+            "          - os: ubuntu-latest",
+            "            handoff_python: '3.10.22'",
+            "          - os: windows-latest",
+            "            handoff_python: '3.10.11'",
+        ]
+        self.assertEqual(len(matrix), len(expected), message)
+        for line, wanted in zip(matrix, expected):
+            self.assertTrue(matches(line, wanted), message)
+
+    def test_workflow_accepts_handoff_matrix_comments(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        pin = "            handoff_python: '3.10.11'"
+        for suffix in (" # Windows compatibility", "  # quoted '3.10.22' # note", "\t# note", "  "):
+            with self.subTest(suffix=suffix):
+                mutated = workflow.replace(pin + "\n", pin + suffix + "\n")
+                self.assertNotEqual(mutated, workflow)
+                self.assert_handoff_matrix(mutated)
+        # Comments can appear on the section boundaries and each matrix line.
+        lines = workflow.splitlines()
+        start = lines.index("    strategy:")
+        end = lines.index("    steps:", start)
+        for index in range(start, end + 1):
+            if lines[index].strip() and not lines[index].lstrip().startswith("#"):
+                lines[index] += " # harmless note"
+        self.assert_handoff_matrix("\n".join(lines) + "\n")
+
+    def test_workflow_rejects_handoff_matrix_mutations(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        self.assert_handoff_matrix(workflow)
+        pin = "            handoff_python: '3.10.11'\n"
+        mutations = {
+            "pin moved to another entry": workflow.replace(pin, "          - os: macos-latest\n" + pin),
+            "missing Windows pin": workflow.replace(pin, ""),
+            "wrong Windows version": workflow.replace(pin, "            handoff_python: '3.10.22'\n"),
+            "duplicate Windows entry": workflow.replace(pin, pin + "          - os: windows-latest\n" + pin),
+            "wrong Windows indentation": workflow.replace(pin, "          handoff_python: '3.10.11'\n"),
+            "hash in quoted version": workflow.replace(pin, "            handoff_python: '3.10.11 # note'\n"),
+            "no separator before hash": workflow.replace(pin, "            handoff_python: '3.10.11'# note\n"),
+            "pin hidden in comment": workflow.replace(pin, "            # handoff_python: '3.10.11'\n"),
+            "wrong pin with correct comment": workflow.replace(pin, "            handoff_python: '3.10.22' # 3.10.11\n"),
+        }
+        for name, mutated in mutations.items():
+            with self.subTest(name=name):
+                self.assertNotEqual(mutated, workflow)
+                with self.assertRaisesRegex(AssertionError, "handoff Python versions must be bound"):
+                    self.assert_handoff_matrix(mutated)
+
+    def test_workflow_uses_explicit_setup_python_executables(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        guard, comparison = workflow.split("  compare-builds:\n", 1)
+        canonical, minimum = guard.split("      - name: Set up minimum Python for real collection smoke test\n", 1)
+        self.assert_handoff_matrix(workflow)
+        for block, step, version in ((canonical, "canonical_python", "3.15.2"),
+                                     (minimum, "minimum_python", "${{ matrix.handoff_python }}"),
+                                     (comparison, "canonical_python", "3.15.2")):
+            self.assertEqual(block.count("        id: " + step + "\n"), 1)
+            self.assertIn("          python-version: '" + version + "'", block)
+            commands = [shlex.split(line.strip()[5:]) for line in block.splitlines()
+                        if line.strip().startswith("run: ")]
+            self.assertTrue(commands)
+            for args in commands:
+                expected = version
+                if step == "minimum_python" and "test_pinned_python.py" not in args:
+                    expected = "3.10.22"
+                self.assertEqual(args[:4], ["python", "scripts/run_pinned_python.py",
+                                           "${{ steps." + step + ".outputs.python-path }}", expected])
+        self.assertNotIn("shell:", workflow)
+        setup, handoff = minimum.split("      - name: Test cross-version pinned Python handoff\n", 1)
+        handoff = handoff.split("\n      - ", 1)[0]
+        for step in (setup, handoff):
+            self.assertNotIn("        if:", step, "handoff must run on both OS runners")
+            self.assertNotIn("continue-on-error:", step)
+        self.assertIn(' -m unittest discover -s tests -p "test_pinned_python.py" -v', handoff)
+        self.assertIn("          ISSUE45_PINNED_TEST_TARGET: ${{ steps.canonical_python.outputs.python-path }}", handoff)
+        self.assertIn("          ISSUE45_PINNED_TEST_REQUIRED: '1'", handoff)
+
+    def test_workflow_requires_guard_success_after_comparison(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        comparison = workflow.split("  compare-builds:\n", 1)[1]
+        label = "      - name: Require successful guard and interpreter handoff\n"
+        self.assertEqual(comparison.count(label), 1)
+        before, final = comparison.split(label, 1)
+        self.assertIn("      - name: Require complete equal compiled artifact matrix\n", before)
+        # This is a separate native step after the actual comparison, not a
+        # replacement for it. No status override can suppress its exit code.
+        lines = final.splitlines()
+        self.assertEqual(len(lines), 3)
+        self.assertTrue(lines[0].startswith("        run: "))
+        self.assertEqual(lines[1:], ["        env:",
+                                   "          ISSUE45_GUARD_RESULT: ${{ needs.guard.result }}"])
+        args = shlex.split(lines[0].strip()[5:])
+        self.assertEqual(args[:5], ["python", "scripts/run_pinned_python.py",
+                                   "${{ steps.canonical_python.outputs.python-path }}", "3.15.2", "-c"])
+        self.assertEqual(len(args), 6)
+        for result in ("success", "failure", "skipped", "cancelled", None):
+            with self.subTest(guard_result=result):
+                env = dict(os.environ)
+                env.pop("ISSUE45_GUARD_RESULT", None)
+                if result is not None:
+                    env["ISSUE45_GUARD_RESULT"] = result
+                process = subprocess.run([sys.executable, *args[4:]], env=env,
+                                         capture_output=True, text=True, check=False)
+                self.assertEqual(process.returncode, 0 if result == "success" else 1)
+                if result != "success":
+                    self.assertIn("diagnostic guard or interpreter handoff did not pass", process.stderr)
 
     def test_workflow_rejects_artifact_path_mutations(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
