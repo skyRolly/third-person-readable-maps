@@ -53,24 +53,63 @@ def prepare(manifests, libraries, fetch=download):
             stream.write(raw)
 
 
+def source_identity():
+    """Bind the two executed scripts to exact committed bytes, not index status."""
+    root = Path(__file__).resolve().parents[2]
+    directory = "diagnostics/issue45-runtime/"
+    paths = (directory + "verify_official_http_artifacts.py",
+             directory + "verify_http_artifacts.py")
+    if (Path(__file__).resolve() != root / paths[0]
+            or Path(http.__file__).resolve() != root / paths[1] or http.ROOT != root):
+        raise http.VerificationError("unexpected verifier source location")
+    checkout = subprocess.check_output(["git", "rev-parse", "--verify", "HEAD"],
+                                       cwd=root, stderr=subprocess.DEVNULL, text=True).strip()
+    hashes = {}
+    for path in paths:
+        committed = subprocess.check_output(["git", "cat-file", "blob", checkout + ":" + path],
+                                            cwd=root, stderr=subprocess.DEVNULL)
+        actual = (root / path).read_bytes()
+        if actual != committed:
+            raise http.VerificationError("verifier source differs from HEAD: " + path)
+        hashes[path] = hashlib.sha256(actual).hexdigest()
+    return checkout, hashes
+
+
+def require_same_source(identity):
+    if source_identity() != identity:
+        raise http.VerificationError("verifier checkout changed during verification")
+
+
+def run_verifier(libraries, output):
+    subprocess.run([sys.executable, str(Path(http.__file__).resolve()), "--libraries-root", str(libraries),
+                    "--output", str(output)], check=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     try:
         http.require(not args.output.exists(), "refusing to replace an existing report")
-        checkout = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=http.ROOT, text=True).strip()
+        identity = source_identity()
+        checkout, source_sha256 = identity
         with tempfile.TemporaryDirectory(prefix="issue45-http-") as temporary:
-            libraries = Path(temporary)
+            libraries = Path(temporary) / "libraries"
+            report_path = Path(temporary) / "observation.json"
             prepare(http.MANIFESTS, libraries)
-            subprocess.run([sys.executable, str(Path(http.__file__).resolve()), "--libraries-root", str(libraries),
-                            "--output", str(args.output)], check=True)
-        raw = args.output.read_bytes()
+            require_same_source(identity)
+            run_verifier(libraries, report_path)
+            raw = report_path.read_bytes()
         report = json.loads(raw)
         http.require(len(report["occurrences"]) == 4 and len(report["artifacts"]) == 3 and
                      report["runtime_reachability"] == "not_established" and report["release_blocking"] is True and
                      report["risk_accepted"] is False, "unexpected HTTP verification report scope")
-        print(json.dumps({"checkout": checkout, "report_sha256": http.sha256(raw), "occurrences": 4,
+        require_same_source(identity)
+        # Publish only after verification and provenance checks succeed.
+        with args.output.open("xb") as stream:
+            stream.write(raw)
+        print(json.dumps({"checkout": checkout, "source_sha256": source_sha256,
+                          "report_sha256": http.sha256(raw), "occurrences": 4,
                           "artifacts": {name: {"sha256": item["observed_sha256"],
                                                 "spdy_class_count": len(item["spdy_class_sha256"])}
                                         for name, item in report["artifacts"].items()},

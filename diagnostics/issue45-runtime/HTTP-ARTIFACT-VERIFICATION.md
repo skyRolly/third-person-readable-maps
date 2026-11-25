@@ -53,3 +53,17 @@ locally with a new output file:
 ```sh
 python diagnostics/issue45-runtime/verify_official_http_artifacts.py --output /path/to/new-http-observation.json
 ```
+
+Both verifier scripts must have exact working-tree bytes matching their
+committed Git blobs at HEAD. The hosted/local wrapper checks these bytes
+before acquisition, before the offline CLI, and before publishing the report,
+and logs their SHA-256 digests under repository-relative source names beside
+the checkout and report digest. Staged or unstaged source edits are rejected,
+even when hidden by an index optimization. Unrelated local changes are
+allowed. Use a stable checkout without concurrent edits and without checkout
+filters that alter these script bytes (including line-ending conversion).
+Commit intended script changes before running the wrapper. The report is
+first generated in a temporary directory and only published to the exclusive
+output path after successful verification and final source checks.
+These checks guard ordinary source drift; they are not attestation against
+an adversarial local interpreter, process or modified verifier.
