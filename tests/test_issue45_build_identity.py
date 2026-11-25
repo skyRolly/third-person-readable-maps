@@ -2,6 +2,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -240,12 +241,21 @@ class BuildIdentityTests(unittest.TestCase):
                          "parity must compare the actual canonical and smoke outputs")
 
     def assert_handoff_matrix(self, workflow):
-        # This contract intentionally accepts only the two explicit OS entries.
-        # Strip comments, but keep indentation and entry boundaries intact.
-        strategy = workflow.split("    strategy:\n", 1)[1].split("    steps:\n", 1)[0]
-        matrix = [line for line in strategy.splitlines()
+        # Match the expected simple YAML lines, with optional trailing comments.
+        # Preserve indentation, entry boundaries and quoted scalar contents.
+        def matches(line, expected):
+            return re.fullmatch(re.escape(expected) + r"(?:[ \t]+#.*)?[ \t]*", line) is not None
+
+        message = "handoff Python versions must be bound to the exact OS matrix entries"
+        lines = workflow.splitlines()
+        starts = [i for i, line in enumerate(lines) if matches(line, "    strategy:")]
+        self.assertEqual(len(starts), 1, message)
+        start = starts[0]
+        ends = [i for i in range(start + 1, len(lines)) if matches(lines[i], "    steps:")]
+        self.assertTrue(ends, message)
+        matrix = [line for line in lines[start + 1:ends[0]]
                   if line.strip() and not line.lstrip().startswith("#")]
-        self.assertEqual(matrix, [
+        expected = [
             "      fail-fast: false",
             "      matrix:",
             "        os: [ubuntu-latest, windows-latest]",
@@ -254,7 +264,28 @@ class BuildIdentityTests(unittest.TestCase):
             "            handoff_python: '3.10.22'",
             "          - os: windows-latest",
             "            handoff_python: '3.10.11'",
-        ], "handoff Python versions must be bound to the exact OS matrix entries")
+        ]
+        self.assertEqual(len(matrix), len(expected), message)
+        for line, wanted in zip(matrix, expected):
+            self.assertTrue(matches(line, wanted), message)
+
+    def test_workflow_accepts_handoff_matrix_comments(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        pin = "            handoff_python: '3.10.11'"
+        for suffix in (" # Windows compatibility", "  # quoted '3.10.22' # note", "\t# note", "  "):
+            with self.subTest(suffix=suffix):
+                mutated = workflow.replace(pin + "\n", pin + suffix + "\n")
+                self.assertNotEqual(mutated, workflow)
+                self.assert_handoff_matrix(mutated)
+        # Comments can appear on the section boundaries and each matrix line.
+        lines = workflow.splitlines()
+        start = lines.index("    strategy:")
+        end = lines.index("    steps:", start)
+        for index in range(start, end + 1):
+            if lines[index].strip() and not lines[index].lstrip().startswith("#"):
+                lines[index] += " # harmless note"
+        self.assert_handoff_matrix("\n".join(lines) + "\n")
 
     def test_workflow_rejects_handoff_matrix_mutations(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
@@ -267,6 +298,10 @@ class BuildIdentityTests(unittest.TestCase):
             "wrong Windows version": workflow.replace(pin, "            handoff_python: '3.10.22'\n"),
             "duplicate Windows entry": workflow.replace(pin, pin + "          - os: windows-latest\n" + pin),
             "wrong Windows indentation": workflow.replace(pin, "          handoff_python: '3.10.11'\n"),
+            "hash in quoted version": workflow.replace(pin, "            handoff_python: '3.10.11 # note'\n"),
+            "no separator before hash": workflow.replace(pin, "            handoff_python: '3.10.11'# note\n"),
+            "pin hidden in comment": workflow.replace(pin, "            # handoff_python: '3.10.11'\n"),
+            "wrong pin with correct comment": workflow.replace(pin, "            handoff_python: '3.10.22' # 3.10.11\n"),
         }
         for name, mutated in mutations.items():
             with self.subTest(name=name):
