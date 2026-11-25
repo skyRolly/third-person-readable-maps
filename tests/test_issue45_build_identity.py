@@ -149,6 +149,7 @@ class BuildIdentityTests(unittest.TestCase):
             "Collect Java 25 compiled build identity",
             "Upload compiled build identities only",
             "Set up minimum Python for real collection smoke test",
+            "Test cross-version pinned Python handoff",
             "Collect real Java 25 compiled build identity on Python 3.10",
             "Verify minimum Python collection matches canonical identity",
             "Test compiled build identity on Python 3.10",
@@ -255,6 +256,13 @@ class BuildIdentityTests(unittest.TestCase):
                 self.assertEqual(args[:4], ["python", "scripts/run_pinned_python.py",
                                            "${{ steps." + step + ".outputs.python-path }}", version])
         self.assertNotIn("shell:", workflow)
+        setup, handoff = minimum.split("      - name: Test cross-version pinned Python handoff\n", 1)
+        handoff = handoff.split("\n      - ", 1)[0]
+        for step in (setup, handoff):
+            self.assertNotIn("        if:", step, "handoff must run on both OS runners")
+            self.assertNotIn("continue-on-error:", step)
+        self.assertIn(' -m unittest discover -s tests -p "test_pinned_python.py" -v', handoff)
+        self.assertIn("          ISSUE45_PINNED_TEST_TARGET: ${{ steps.canonical_python.outputs.python-path }}", handoff)
 
     def test_workflow_rejects_artifact_path_mutations(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(

@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 import tempfile
@@ -19,6 +20,19 @@ class PinnedPythonTests(unittest.TestCase):
                                    "import sys; print(ascii(sys.argv[1])); sys.exit(17)", "space café")
         self.assertEqual(result.returncode, 17)
         self.assertEqual(result.stdout.strip(), ascii("space café"))
+        self.assertEqual(result.stderr, "")
+
+    def test_distinct_interpreter_handoff(self):
+        if "ISSUE45_PINNED_TEST_TARGET" not in os.environ:
+            self.skipTest("hosted two-interpreter test target not configured")
+        target = os.environ["ISSUE45_PINNED_TEST_TARGET"]
+        self.assertEqual(sys.version.split()[0], "3.10.22")
+        self.assertNotEqual(Path(sys.executable).resolve(), Path(target).resolve())
+        result = self.run_launcher(target, "3.15.2", "-c",
+                                   "import sys; print(sys.version.split()[0]); print(ascii(sys.argv[1])); sys.exit(23)",
+                                   "space café")
+        self.assertEqual(result.returncode, 23)
+        self.assertEqual(result.stdout.splitlines(), ["3.15.2", ascii("space café")])
         self.assertEqual(result.stderr, "")
 
     def test_wrong_version_does_not_execute_payload(self):
