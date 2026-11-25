@@ -21,8 +21,31 @@ class HttpArtifactTests(unittest.TestCase):
         with warnings.catch_warnings(), zipfile.ZipFile(buffer, "w") as jar:
             warnings.simplefilter("ignore", UserWarning)
             for name, data in entries:
-                jar.writestr(name, data)
+                # Explicit ZIP metadata keeps fixture bytes independent of the clock and OS.
+                info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                info.create_system = 3
+                info.external_attr = 0o100644 << 16
+                info.compress_type = zipfile.ZIP_STORED
+                jar.writestr(info, data)
         return buffer.getvalue()
+
+    def test_jar_fixture_is_clock_independent(self):
+        entries = [("first.class", b"first"), ("second.class", b"second")]
+        with patch("zipfile.time.localtime", return_value=(2020, 1, 1, 0, 0, 0, 2, 1, 0)) as clock:
+            first = self.jar(entries)
+            clock.assert_not_called()
+        with patch("zipfile.time.localtime", return_value=(2026, 11, 25, 12, 34, 56, 2, 329, 0)) as clock:
+            second = self.jar(entries)
+            clock.assert_not_called()
+        self.assertEqual(first, second)
+        with zipfile.ZipFile(io.BytesIO(first)) as jar:
+            self.assertEqual(jar.namelist(), [name for name, _ in entries])
+            for info, (name, data) in zip(jar.infolist(), entries):
+                self.assertEqual(info.date_time, (1980, 1, 1, 0, 0, 0))
+                self.assertEqual(info.create_system, 3)
+                self.assertEqual(info.external_attr, 0o100644 << 16)
+                self.assertEqual(info.compress_type, zipfile.ZIP_STORED)
+                self.assertEqual(jar.read(name), data)
 
     def fixture(self, raw):
         netty = "4.2.15.Final"
@@ -104,12 +127,17 @@ class HttpArtifactTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             pins = {}
+            raw_by_netty = {}
             for group, source, netty, games in http.GROUPS:
-                raw = self.jar([(http.PREFIX + "SpdyFrameCodec.class", b"\xca\xfe\xba\xbe" + netty.encode())])
                 relative = f"io/netty/netty-codec-http/{netty}/netty-codec-http-{netty}.jar"
-                path = root / relative
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes(raw)
+                if netty not in raw_by_netty:
+                    raw_by_netty[netty] = self.jar([
+                        (http.PREFIX + "SpdyFrameCodec.class", b"\xca\xfe\xba\xbe" + netty.encode())])
+                    path = root / relative
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    with path.open("xb") as stream:
+                        stream.write(raw_by_netty[netty])
+                raw = raw_by_netty[netty]
                 for game in games:
                     manifest = self.fixture(raw)
                     manifest["id"] = game
