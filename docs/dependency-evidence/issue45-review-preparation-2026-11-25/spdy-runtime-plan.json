@@ -1,0 +1,141 @@
+{
+  "schema": "issue45-spdy-runtime-plan/v1",
+  "coordinator_checkout": "b7dd973ac76649c8aba25975933ea1aa1c50e980",
+  "proposal_date": "2026-11-25",
+  "proposal_source_sha256": "e82f1e5c407ed970414ea572b679fa50fd4c144f5b603474b9acefb2ac2b535d",
+  "review_status": "independent_review_pending",
+  "advisory": "GHSA-6jqx-86gh-f27w",
+  "occurrences": 4,
+  "scope": "planning_only",
+  "runtime_reachability": "not_established",
+  "risk_accepted": false,
+  "release_blocking": true,
+  "rows": [
+    {
+      "game": "1.21.9",
+      "group": "1.21.9-1.21.10",
+      "source_commit": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.1.118.Final",
+      "client_manifest_sha256": "f0ae1c9a783936a4ef74b9ed67331a02968ece56474d19ef688e70d0b79d1b9b",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "1.21.10",
+      "group": "1.21.9-1.21.10",
+      "source_commit": "5dd5d433fd785bf51f13827babf51a76d09f7cdb",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.1.118.Final",
+      "client_manifest_sha256": "3eba1197d417ce4ec5c7a0e3cb326b47ea291f2351161333878ec512ce1ca651",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "1.21.11",
+      "group": "1.21.11",
+      "source_commit": "ec61f4cf3c6d72558c35e919bf865fa9b51bf0d1",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.2.7.Final",
+      "client_manifest_sha256": "81beb15f8d4d8e0f2ccad98d26c5aeedb833900272c65e7af10865dc96c508ad",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "26.1",
+      "group": "26.1-26.2",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.2.7.Final",
+      "client_manifest_sha256": "9ee99d30a7efca85e33866231625474be36456dfbafc0bbc010db9ec08a4ca96",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "26.1.1",
+      "group": "26.1-26.2",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.2.7.Final",
+      "client_manifest_sha256": "95527a36610fc96ddc0bfb542f9e2a0daf60d8e42373873627fadc7e9dea0938",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "26.1.2",
+      "group": "26.1-26.2",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.2.7.Final",
+      "client_manifest_sha256": "dc1ed85ddf2d778d745d960f7176f692c2ba8deb13a1b333d170ffa06aaabae7",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    },
+    {
+      "game": "26.2",
+      "group": "26.1-26.2",
+      "source_commit": "b7620ef8174180698cc36d273981aeadd3447941",
+      "client_http_coordinate": "io.netty:netty-codec-http:4.2.15.Final",
+      "client_manifest_sha256": "d70731076a9cf064b7b9f154acc1a4b584a85c46f2e5acdd3eb475f75b90537a",
+      "processes": [
+        {
+          "role": "client",
+          "status": "not_executed"
+        },
+        {
+          "role": "dedicated_server",
+          "status": "not_executed",
+          "server_bundle_identity": "pending_distribution_specific_verification"
+        }
+      ]
+    }
+  ]
+}
