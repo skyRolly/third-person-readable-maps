@@ -213,6 +213,7 @@ def main():
     args = parser.parse_args()
     if args.command == "collect":
         report = collect(args.work_dir, args.java_major, args.os)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
         with args.output.open("x", encoding="utf-8") as stream:
             json.dump(report, stream, sort_keys=True)
             stream.write("\n")
