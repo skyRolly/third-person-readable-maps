@@ -118,18 +118,19 @@ def observe(java, paths, jar_hash, class_hash, directory):
                             text=True, check=True, timeout=60)
     expected = {"negative": "class_not_found", "positive": "defined_by_isolated_url_loader",
                 "code_source_sha256": jar_hash, "class_resource_sha256": class_hash}
-    require(result.stdout.splitlines() == [f"{k}={v}" for k, v in expected.items()],
-            "unexpected JVM observation output")
+    if result.stdout.splitlines() != [f"{k}={v}" for k, v in expected.items()]:
+        raise ProbeError(f"unexpected JVM observation output (exit {result.returncode}): "
+                         f"{jvm_diagnostics(result)}")
     return expected
 
 
-def jvm_diagnostics(error):
+def jvm_diagnostics(process):
     # Keep captured output bounded and escaped on one line; never log the
     # command arguments or environment, and do not emit runner commands.
     details = []
     for name in ("stderr", "stdout"):
-        value = getattr(error, name, None)
-        if value:
+        value = getattr(process, name, None)
+        if value is not None:
             if isinstance(value, bytes):
                 value = value.decode("utf-8", errors="replace")
             details.append(f"{name}={ascii(value[:4096])}" +

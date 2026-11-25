@@ -135,6 +135,70 @@ class ProbeTests(unittest.TestCase):
             self.assertNotIn("JVM observation failed", log.getvalue())
             self.assertFalse(output.exists())
 
+    def test_main_reports_unexpected_zero_exit_output(self):
+        manifest, blobs = self.fixture()
+        raw = json.dumps(manifest).encode()
+        (self.directory / "fixture.json").write_bytes(raw)
+        profile = ("fixture", self.version, probe.sha256(raw), probe.sha256(self.jar),
+                   probe.sha256(self.raw_class))
+        output = self.directory / "report.json"
+        # A real source-file JVM launch exits zero but violates the stdout
+        # protocol. Only acquisition and checkout provenance are substituted.
+        (self.directory / "SpdyClassProbe.java").write_text(
+            'public class SpdyClassProbe { public static void main(String[] args) {'
+            ' System.out.println("unexpected fixture line");'
+            ' System.out.println("::error::fixture");'
+            ' System.err.println("fixture diagnostic"); } }', encoding="utf-8")
+        acquire = probe.acquire
+
+        def fixture_acquire(items, directory, expected_http):
+            return acquire(items, directory, expected_http, lambda item: blobs[item["url"]])
+
+        with (mock.patch.object(probe, "HERE", self.directory),
+              mock.patch.object(probe, "PROFILES", (profile,)),
+              mock.patch.object(probe, "MANIFESTS", self.directory),
+              mock.patch.object(probe, "source_identity", return_value=("fixture", {})),
+              mock.patch.object(probe, "acquire", side_effect=fixture_acquire),
+              mock.patch.object(sys, "argv", ["probe.py", "--java", str(self.java), "--output", str(output)])):
+            log = io.StringIO()
+            with redirect_stderr(log), self.assertRaises(SystemExit) as failure:
+                probe.main()
+            self.assertEqual(failure.exception.code, 1)
+            message = log.getvalue()
+            self.assertIn("JVM observation failed for fixture / " + self.version, message)
+            self.assertIn("unexpected JVM observation output (exit 0)", message)
+            self.assertIn("stdout='unexpected fixture line\\n::error::fixture\\n'", message)
+            self.assertIn("stderr='fixture diagnostic\\n'", message)
+            self.assertEqual(len(message.splitlines()), 1)
+            self.assertFalse(output.exists())
+
+    def test_unexpected_output_protocol_remains_strict(self):
+        jar_hash, class_hash = probe.sha256(self.jar), probe.sha256(self.raw_class)
+        paths = {probe.HTTP: self.directory / "fixture.jar"}
+        expected = {"negative": "class_not_found", "positive": "defined_by_isolated_url_loader",
+                    "code_source_sha256": jar_hash, "class_resource_sha256": class_hash}
+        lines = [f"{key}={value}" for key, value in expected.items()]
+        for name, stdout in (("empty", ""), ("missing", "\n".join(lines[:-1])),
+                             ("reordered", "\n".join(reversed(lines))),
+                             ("extra", "\n".join(lines + ["unexpected"])),
+                             ("wrong_digest", "\n".join(lines[:-1] + ["class_resource_sha256=bad"])),
+                             ("oversized", "x" * 4097 + "not-visible")):
+            with self.subTest(name=name):
+                completed = subprocess.CompletedProcess(["private-command"], 0, stdout, "fixture stderr")
+                with mock.patch.object(probe.subprocess, "run", return_value=completed):
+                    with self.assertRaisesRegex(probe.ProbeError, "unexpected JVM observation output") as failure:
+                        probe.observe(self.java, paths, jar_hash, class_hash, self.directory)
+                message = str(failure.exception)
+                self.assertIn("stderr='fixture stderr'", message)
+                self.assertIn("stdout=" + ascii(stdout[:4096]), message)
+                self.assertNotIn("private-command", message)
+                if name == "oversized":
+                    self.assertIn("(truncated)", message)
+                    self.assertNotIn("not-visible", message)
+        completed = subprocess.CompletedProcess([], 0, "\n".join(lines) + "\n", "")
+        with mock.patch.object(probe.subprocess, "run", return_value=completed):
+            self.assertEqual(probe.observe(self.java, paths, jar_hash, class_hash, self.directory), expected)
+
     def test_jvm_diagnostics_bounds_and_escapes_output(self):
         error = subprocess.TimeoutExpired(["private-command"], 60,
                                           output=b"partial\n::error::fake",
