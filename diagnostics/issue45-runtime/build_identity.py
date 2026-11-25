@@ -143,12 +143,19 @@ def observed_control_classpath(root, profile_id, expected, *, checkout, run, att
     return observed
 
 
+def java_runtime_major(version):
+    # Match the same version grammar as run_controls.current_java_runtime.
+    # GA releases can omit all dotted components (for example 21+35-LTS).
+    match = re.fullmatch(r"([0-9]+)(?:\.[0-9]+)*(?:[-+][A-Za-z0-9.+-]+)?", version) if isinstance(version, str) else None
+    return match[1] if match else None
+
+
 def collect(work, major, system):
     import run_controls as controls
     checkout, run, attempt = context()
     require(os.environ.get("RUNNER_OS") == SYSTEMS[system], "runner OS mismatch")
     java_runtime = controls.current_java_runtime()
-    require(java_runtime.split(".", 1)[0] == str(major), "runtime Java major mismatch")
+    require(java_runtime_major(java_runtime) == str(major), "runtime Java major mismatch")
     lock, cache, here = controls.LOCK, controls.CACHE, controls.HERE
     inputs = {}
     for key in ("compiler", "byteBuddy"):
@@ -222,8 +229,7 @@ def compare(root, checkout, run, attempt):
             require((value["schema"], value["checkout"], value["run"], value["attempt"],
                      value["os"], value["java_major"]) == (SCHEMA, checkout, run, attempt, system, major)
                     and type(value["java_major"]) is int, "report context mismatch")
-            require(isinstance(value["java_runtime"], str) and
-                    re.fullmatch(rf"{major}\.[A-Za-z0-9.+-]+", value["java_runtime"]), "invalid Java runtime identity")
+            require(java_runtime_major(value["java_runtime"]) == str(major), "invalid Java runtime identity")
             require(isinstance(value["python_version"], str) and
                     re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", value["python_version"]), "invalid Python identity")
             inputs = value["inputs"]

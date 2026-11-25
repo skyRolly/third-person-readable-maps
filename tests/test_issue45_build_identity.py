@@ -449,6 +449,76 @@ class BuildIdentityTests(unittest.TestCase):
                     with self.assertRaisesRegex(SystemExit, "^control compiler Java runtime identity unavailable$"):
                         controls.current_java_runtime()
 
+    def test_java_runtime_ga_and_update_versions_reach_collector(self):
+        controls = self.load_controls()
+        cases = (
+            (21, "21+35-LTS"), (25, "25+36"), (21, "21"),
+            (25, "25-ea+17"), (21, "21.0.13+9"),
+            (25, "25.0.5+8"), (21, "21.0.12.1+1-1-deb13u1-Debian"),
+        )
+        for major, version in cases:
+            for ending in (b"\n", b"\r\n"):
+                with self.subTest(version=version, ending=ending):
+                    stderr = ending.join((b"    user.name = Jos\xe9",
+                                          b"    java.runtime.version = " + version.encode("ascii"),
+                                          b"    user.home = Jos\xe9")) + ending
+                    result = subprocess.CompletedProcess([], 0, b"", stderr)
+                    with patch.object(controls.subprocess, "run", return_value=result):
+                        self.assertEqual(controls.current_java_runtime(), version)
+                        with patch.dict(sys.modules, {"run_controls": controls}), \
+                                patch.dict(os.environ, {"RUNNER_OS": "Linux"}), \
+                                patch.object(gate, "context", return_value=(self.checkout, self.run, self.attempt)), \
+                                patch.object(gate, "digest", side_effect=RuntimeError("past runtime check")) as digest:
+                            # Correct majors must pass the collector's runtime gate.
+                            # Stop at the first pinned dependency read; no network or real build.
+                            with self.assertRaisesRegex(RuntimeError, "^past runtime check$"):
+                                gate.collect(self.root, major, "ubuntu-latest")
+                            digest.assert_called_once()
+                            digest.reset_mock()
+                            other = 25 if major == 21 else 21
+                            with self.assertRaisesRegex(gate.IdentityValidationError, "runtime Java major mismatch"):
+                                gate.collect(self.root, other, "ubuntu-latest")
+                            digest.assert_not_called()
+
+        for version in ("21.", "21+", "21foo", "21.0.x", "21.0..1", "21+35 LTS", "21+35-é"):
+            with self.subTest(invalid=version):
+                stderr = b"    java.runtime.version = " + version.encode("utf-8") + b"\n"
+                with patch.object(controls.subprocess, "run",
+                                  return_value=subprocess.CompletedProcess([], 0, b"", stderr)):
+                    with self.assertRaisesRegex(SystemExit, "^control compiler Java runtime identity unavailable$"):
+                        controls.current_java_runtime()
+                self.assertIsNone(gate.java_runtime_major(version))
+
+    def test_compare_accepts_ga_versions_but_rejects_runtime_drift(self):
+        def set_runtime(system, major, version):
+            path = self.root / f"issue45-build-{self.run}-{self.attempt}-{system}/identity-j{major}.json"
+            report = json.loads(path.read_text(encoding="utf-8"))
+            report["java_runtime"] = version
+            path.write_text(json.dumps(report), encoding="utf-8")
+
+        for j21, j25 in (("21+35-LTS", "25+36"), ("21", "25"), ("21.0.13+9", "25-ea+17")):
+            with self.subTest(java21=j21, java25=j25):
+                for system in gate.SYSTEMS:
+                    set_runtime(system, 21, j21)
+                    set_runtime(system, 25, j25)
+                self.assertEqual(self.check()[0], self.archive["jar_sha256"])
+
+        for system in gate.SYSTEMS:
+            set_runtime(system, 21, "21+35-LTS")
+            set_runtime(system, 25, "25+36")
+        for version in ("21+36-LTS", "21.0.1+1", "21-ea+17"):
+            with self.subTest(drift=version):
+                set_runtime("windows-latest", 21, version)
+                with self.assertRaisesRegex(gate.IdentityValidationError,
+                                            "compiled build mismatch: windows-latest Java 21 java_runtime"):
+                    self.check()
+        for version in ("210+35-LTS", "25+36", "21.", "21+", "21foo", "21.0.x",
+                        "21.0..1", "21+35 LTS", "21+35-é", 21, None):
+            with self.subTest(invalid_or_wrong_major=version):
+                set_runtime("windows-latest", 21, version)
+                with self.assertRaisesRegex(gate.IdentityValidationError, "invalid Java runtime identity"):
+                    self.check()
+
     def test_compiler_command_drift_fails_before_execution(self):
         controls = self.load_controls()
         root = self.root / "compiler-drift"

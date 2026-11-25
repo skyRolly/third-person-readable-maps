@@ -205,8 +205,9 @@ def current_java_runtime() -> str:
     # Inspect only the ASCII runtime version line, without decoding stderr.
     process = subprocess.run(["java", "-XshowSettings:properties", "-version"],
                              capture_output=True, check=True)
-    matches = re.findall(rb"^[ \t]*java\.runtime\.version = ([0-9]+\.[A-Za-z0-9.+-]+)\r?$",
-                         process.stderr, re.M)
+    matches = re.findall(
+        rb"^[ \t]*java\.runtime\.version = ([0-9]+(?:\.[0-9]+)*(?:[-+][A-Za-z0-9.+-]+)?)\r?$",
+        process.stderr, re.M)
     if len(matches) != 1:
         raise SystemExit("control compiler Java runtime identity unavailable")
     return matches[0].decode("ascii")
