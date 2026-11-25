@@ -150,13 +150,26 @@ class ReviewPreparationTests(unittest.TestCase):
                     validate_pilot(pilot)
 
     def test_pilot_swapped_severity_or_fingerprint_rejected(self):
-        for field in ("severity", "fingerprint"):
-            with self.subTest(field=field):
-                pilot = copy.deepcopy(self.pilot)
-                a, b = pilot["findings"][:2]
-                a[field], b[field] = b[field], a[field]
-                with self.assertRaisesRegex(ValueError, "advisory identities differ"):
-                    validate_pilot(pilot)
+        for order in ("original", "reversed", "high_first"):
+            for field in ("severity", "fingerprint"):
+                with self.subTest(order=order, field=field):
+                    pilot = copy.deepcopy(self.pilot)
+                    rows = pilot["findings"]
+                    if order == "reversed":
+                        rows.reverse()
+                    elif order == "high_first":
+                        rows.sort(key=lambda row: row["severity"] != "HIGH")
+                        # Reproduce the old test's no-op severity swap.
+                        self.assertEqual([row["severity"] for row in rows[:2]], ["HIGH", "HIGH"])
+                    self.assertEqual(validate_pilot(pilot), 24)
+                    a = rows[0]
+                    b = next((row for row in rows[1:] if row[field] != a[field]), None)
+                    self.assertIsNotNone(b, "mutation requires two distinct field values")
+                    before = Counter(row[field] for row in rows)
+                    a[field], b[field] = b[field], a[field]
+                    self.assertEqual(Counter(row[field] for row in rows), before)
+                    with self.assertRaisesRegex(ValueError, "advisory identities differ"):
+                        validate_pilot(pilot)
 
     def test_pilot_reordered_findings_pass(self):
         pilot = copy.deepcopy(self.pilot)
