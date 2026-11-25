@@ -137,6 +137,35 @@ class BuildIdentityTests(unittest.TestCase):
         self.target.write_text(json.dumps(value), encoding="utf-8")
         self.assertEqual("compiled build identity: invalid report fields", self.cli_failure())
 
+
+    def test_workflow_preserves_matrix_evidence_on_compatibility_failure(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        guard, compare = workflow.split("  compare-builds:\n")
+        ordered_steps = (
+            "Collect Java 21 compiled build identity",
+            "Collect Java 25 compiled build identity",
+            "Upload compiled build identities only",
+            "Set up minimum Python for real collection smoke test",
+            "Collect real Java 25 compiled build identity on Python 3.10",
+            "Verify minimum Python collection matches canonical identity",
+            "Test compiled build identity on Python 3.10",
+        )
+        positions = []
+        for name in ordered_steps:
+            label = "      - name: " + name + "\n"
+            self.assertEqual(guard.count(label), 1)
+            positions.append(guard.index(label))
+        self.assertEqual(positions, sorted(positions))
+        self.assertIn("    needs: guard\n", compare)
+        self.assertIn(
+            "    if: ${{ !cancelled() && (needs.guard.result == 'success' || needs.guard.result == 'failure') }}\n",
+            compare)
+        self.assertIn("      - name: Download this attempt's compiled identity reports\n", compare)
+        self.assertIn("      - name: Require complete equal compiled artifact matrix\n", compare)
+        self.assertNotIn("3.10.22", compare)
+        self.assertNotIn("continue-on-error:", workflow)
+
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"
         with zipfile.ZipFile(path, "w") as archive:
