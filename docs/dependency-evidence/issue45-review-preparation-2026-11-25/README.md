@@ -23,7 +23,15 @@ The historical index's Git blob is pinned and calculated offline from
 the working-tree bytes; no Git history is needed. This verifies consistency
 with retained repository evidence, not the authenticity or availability
 of those external inputs or a fresh audit. Repository-reviewed pins are
-not an independent trust root. Retain the original inputs separately for a subsequent reviewed archive.
+not an independent trust root. The proposal metadata is also pinned offline:
+the exact historical base and coordinator, five input digests, dated local
+and hosted audit identities (including ZIP/JSON digests), comparison claims
+(including zero disappeared matches), SBOM metadata, and plan source digest.
+The checks reject malformed or substituted values, including coordinated
+changes to both copies of the plan digest, and distinguish booleans from
+integer counts. These are consistency checks against recorded provenance;
+they do not authenticate unavailable external bytes or rerun the audit.
+Retain the original inputs separately for a subsequent reviewed archive.
 
 The local scan used a retained same-candidate snapshot from November 21;
 the hosted snapshot is a different dated observation. Neither is a fresh
