@@ -1,12 +1,13 @@
 import hashlib
 import importlib.util
 import json
+import shlex
 import subprocess
 import sys
 import tempfile
 import unittest
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from unittest.mock import patch
 
 GATE_PATH = Path(__file__).resolve().parents[1] / "diagnostics/issue45-runtime/build_identity.py"
@@ -165,6 +166,85 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertIn("      - name: Require complete equal compiled artifact matrix\n", compare)
         self.assertNotIn("3.10.22", compare)
         self.assertNotIn("continue-on-error:", workflow)
+        self.assert_workflow_artifact_paths(workflow)
+
+def assert_workflow_artifact_paths(self, workflow):
+        guard = workflow.split("  compare-builds:\n", 1)[0]
+        attempt = "${{ github.run_id }}-${{ github.run_attempt }}"
+        canonical_dir = "${{ runner.temp }}/issue45-compiled-identity-" + attempt
+        smoke_dir = "${{ runner.temp }}/issue45-compiled-identity-smoke-" + attempt
+
+        def field(name, key, indent):
+            label = f"      - name: {name}\n"
+            self.assertEqual(guard.count(label), 1, name)
+            block = guard.split(label, 1)[1].split("\n      - ", 1)[0]
+            prefix = " " * indent + key + ": "
+            values = [line[len(prefix):] for line in block.splitlines()
+                      if line.startswith(prefix)]
+            self.assertEqual(len(values), 1, f"{name}: {key}")
+            return values[0]
+
+        def output(name):
+            args = shlex.split(field(name, "run", 8))
+            self.assertEqual(args[:3], ["python", "diagnostics/issue45-runtime/build_identity.py", "collect"])
+            self.assertEqual(args.count("--output"), 1, name)
+            index = args.index("--output")
+            self.assertLess(index + 1, len(args), name)
+            return args[index + 1]
+
+        upload = field("Upload compiled build identities only", "path", 10)
+        self.assertEqual(upload, canonical_dir, "canonical upload must use only its attempt directory")
+        reports = {}
+        for major in (21, 25):
+            reports[major] = output(f"Collect Java {major} compiled build identity")
+            self.assertEqual(reports[major], f"{upload}/identity-j{major}.json",
+                             "canonical collection output must match upload directory")
+
+        smoke = output("Collect real Java 25 compiled build identity on Python 3.10")
+        self.assertFalse(PurePosixPath(smoke).is_relative_to(PurePosixPath(upload)),
+                         "smoke report must be outside canonical upload directory")
+        self.assertEqual(smoke, f"{smoke_dir}/identity-j25.json",
+                         "smoke report must use its separate attempt directory")
+        parity = shlex.split(field("Verify minimum Python collection matches canonical identity", "run", 8))
+        self.assertEqual(parity[:2], ["python", "-c"])
+        self.assertEqual(parity[3:], [reports[25], smoke],
+                         "parity must compare the actual canonical and smoke outputs")
+
+    def test_workflow_rejects_artifact_path_mutations(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        attempt = "${{ github.run_id }}-${{ github.run_attempt }}"
+        canonical = "${{ runner.temp }}/issue45-compiled-identity-" + attempt
+        smoke = "${{ runner.temp }}/issue45-compiled-identity-smoke-" + attempt
+        mutations = (
+            ("smoke in canonical", smoke, canonical, 2, "smoke report must be outside"),
+            ("nested smoke", smoke, canonical + "/smoke", 2, "smoke report must be outside"),
+            ("parent traversal", smoke, smoke + "/../" + canonical.rsplit("/", 1)[1], 2,
+             "smoke report must use its separate attempt directory"),
+            ("broader upload", "path: " + canonical, "path: ${{ runner.temp }}", 1,
+             "canonical upload must use only"),
+            ("wildcard upload", "path: " + canonical, "path: " + canonical + "*", 1,
+             "canonical upload must use only"),
+            ("wrong Java 21 output", canonical + "/identity-j21.json",
+             smoke + "/identity-j21.json", 1, "canonical collection output must match"),
+            ("wrong parity input", '"' + smoke + '/identity-j25.json"',
+             '"' + canonical + '/identity-j25.json"', 1, "parity must compare"),
+        )
+        self.assert_workflow_artifact_paths(workflow)
+        for name, before, after, count, message in mutations:
+            with self.subTest(mutation=name):
+                self.assertIn(before, workflow)
+                # Change only the last occurrence for the parity-input case;
+                # leave the collector output intact.
+                if name == "wrong parity input":
+                    head, sep, tail = workflow.rpartition(before)
+                    self.assertTrue(sep)
+                    changed = head + after + tail
+                else:
+                    self.assertEqual(workflow.count(before), count)
+                    changed = workflow.replace(before, after)
+                with self.assertRaisesRegex(AssertionError, message):
+                    self.assert_workflow_artifact_paths(changed)
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"
