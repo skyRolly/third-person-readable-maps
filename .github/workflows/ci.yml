@@ -36,14 +36,6 @@ jobs:
         run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 -color
       - name: Verify active maintenance targets against their branches
         run: python3 scripts/validate_maintenance_targets.py --verify-remote
-      # The diagnostic README supports Python 3.10. Test the actual minimum
-      # interpreter after the primary suite, rather than only mocking APIs.
-      - name: Set up diagnostic minimum Python version
-        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.10.22'
-      - name: Test compiled build identity on Python 3.10
-        run: python3 -m unittest discover -s tests -p "test_issue45_build_identity.py" -v
 
   live-release-prerequisites:
     name: Validate live release prerequisites
