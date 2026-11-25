@@ -248,6 +248,23 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     compile_cp = os.pathsep.join(str(path) for path in artifacts)
     control_jar = profile_root / "issue45-synthetic-control.jar"
     compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
+    # This is a separate build-identity log, not a new field in historical
+    # v1 runtime evidence. Include only source-relative names and hashes.
+    with zipfile.ZipFile(control_jar) as archive:
+        compiled = {item.filename: hashlib.sha256(archive.read(item)).hexdigest()
+                    for item in archive.infolist()}
+    print(json.dumps({
+        "schema": "issue45-control-build-identity/v1",
+        "profile_id": profile["profileId"],
+        "source_sha": source_sha,
+        "control_source_sha256": hash_file(source, "sha256"),
+        "control_jar_sha256": hash_file(control_jar, "sha256"),
+        "compiled_member_sha256": compiled,
+        "compiler_sha256": hash_file(compiler, "sha256"),
+        "classpath_sha256": [hash_file(path, "sha256") for path in artifacts],
+        "compiler_flags": ["-encoding", "UTF-8", "-17"],
+        "python_version": sys.version.split()[0],
+    }, sort_keys=True))
 
     config = profile_root / "control.properties"
     report = profile_root / ("control-" + uuid.uuid4().hex + ".jsonl")
