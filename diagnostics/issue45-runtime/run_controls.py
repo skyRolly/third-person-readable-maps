@@ -140,16 +140,38 @@ def windows_system_icacls() -> str:
     return str(tool)
 
 
+def control_compile_command(compiler: Path, source: Path, classes: Path,
+                            compile_cp: str) -> list[str]:
+    return ["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
+            "-classpath", compile_cp, "-d", str(classes), str(source)]
+
+
+def observed_compiler_arguments(command: list[str], compiler: Path, source: Path,
+                                classes: Path) -> tuple[str, list[str]]:
+    """Extract actual options and fail closed on unexpected invocation changes."""
+    if command[:3] != ["java", "-jar", str(compiler)] or command.count("-classpath") != 1:
+        raise SystemExit("unexpected control compiler command")
+    index = command.index("-classpath")
+    if command[index + 2:] != ["-d", str(classes), str(source)]:
+        raise SystemExit("unexpected control compiler command")
+    flags = command[3:index]
+    # Never publish arbitrary command arguments or host paths. Validate the
+    # approved flags, then return the actual slice rather than a fixed list.
+    if flags != ["-encoding", "UTF-8", "-17"]:
+        raise SystemExit("unexpected control compiler flags")
+    return command[index + 1], flags
+
+
 def compile_control_jar(profile_root: Path, compiler: Path, source: Path,
-                        compile_cp: str, destination: Path) -> str:
-    """Compile fresh classes and return the classpath actually passed to ECJ."""
+                        compile_cp: str, destination: Path) -> tuple[str, list[str]]:
+    """Compile fresh classes and return the verified actual ECJ arguments."""
     with tempfile.TemporaryDirectory(prefix="test-classes-", dir=profile_root) as temporary:
         classes = Path(temporary)
-        command = ["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
-                   "-classpath", compile_cp, "-d", str(classes), str(source)]
+        command = control_compile_command(compiler, source, classes, compile_cp)
+        actual_cp, flags = observed_compiler_arguments(command, compiler, source, classes)
         subprocess.run(command, check=True)
         package_control_classes(classes, destination)
-    return command[command.index("-classpath") + 1]
+    return actual_cp, flags
 
 
 def package_control_classes(classes: Path, destination: Path) -> None:
@@ -179,17 +201,20 @@ def package_control_classes(classes: Path, destination: Path) -> None:
 
 
 def current_java_runtime() -> str:
+    # Java can emit unrelated properties in a different encoding than Python.
+    # Inspect only the ASCII runtime version line, without decoding stderr.
     process = subprocess.run(["java", "-XshowSettings:properties", "-version"],
-                             capture_output=True, text=True, check=True)
-    match = re.search(r"^\s*java\.runtime\.version = ([^\s]+)$", process.stderr, re.M)
-    if not match:
+                             capture_output=True, check=True)
+    matches = re.findall(rb"^[ \t]*java\.runtime\.version = ([0-9]+\.[A-Za-z0-9.+-]+)\r?$",
+                         process.stderr, re.M)
+    if len(matches) != 1:
         raise SystemExit("control compiler Java runtime identity unavailable")
-    return match[1]
+    return matches[0].decode("ascii")
 
 
 def record_control_build_identity(profile_root: Path, profile_id: str, source_sha: str,
                                   source: Path, compiler: Path, control_jar: Path,
-                                  compile_cp: str, java_runtime: str) -> None:
+                                  compile_cp: str, compiler_flags: list[str], java_runtime: str) -> None:
     """Persist the existing build log locally, with workflow context and no host paths."""
     with zipfile.ZipFile(control_jar) as archive:
         compiled = {item.filename: hashlib.sha256(archive.read(item)).hexdigest()
@@ -205,7 +230,7 @@ def record_control_build_identity(profile_root: Path, profile_id: str, source_sh
         # Use the actual compiler argument, not the metadata or artifacts list.
         "classpath_sha256": [hash_file(Path(path), "sha256")
                              for path in compile_cp.split(os.pathsep)],
-        "compiler_flags": ["-encoding", "UTF-8", "-17"],
+        "compiler_flags": compiler_flags,
         "python_version": sys.version.split()[0],
     }
     record = dict(identity, run_id=os.environ.get("GITHUB_RUN_ID"),
@@ -293,9 +318,9 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     # Do not let a previous successful compile supply evidence for this one.
     (profile_root / "control-build-identity.json").unlink(missing_ok=True)
     runtime = java_runtime if java_runtime is not None else current_java_runtime()
-    actual_cp = compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
+    actual_cp, compiler_flags = compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
     record_control_build_identity(profile_root, profile["profileId"], source_sha,
-                                  source, compiler, control_jar, actual_cp, runtime)
+                                  source, compiler, control_jar, actual_cp, compiler_flags, runtime)
 
     config = profile_root / "control.properties"
     report = profile_root / ("control-" + uuid.uuid4().hex + ".jsonl")

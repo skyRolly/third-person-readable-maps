@@ -332,11 +332,15 @@ class BuildIdentityTests(unittest.TestCase):
                         with self.assertRaisesRegex(AssertionError, message):
                             self.assert_workflow_artifact_paths(changed)
 
-    def test_control_build_record_uses_observed_classpath_order(self):
+    def load_controls(self):
         spec = importlib.util.spec_from_file_location("identity_control_harness",
                                                       GATE_PATH.with_name("run_controls.py"))
         controls = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(controls)
+        return controls
+
+    def test_control_build_record_uses_observed_classpath_order(self):
+        controls = self.load_controls()
         root = self.root / "control-build"
         root.mkdir()
         source, compiler = root / "ControlMain.java", root / "compiler.jar"
@@ -349,19 +353,23 @@ class BuildIdentityTests(unittest.TestCase):
         expected = [gate.digest(first), gate.digest(second)]
         actual_cp = os.pathsep.join(map(str, (second, first)))
 
+        invoked = []
+
         def compile_fake(command, check):
             self.assertTrue(check)
+            invoked.append(list(command))
             self.assertEqual(command[command.index("-classpath") + 1], actual_cp)
             (Path(command[command.index("-d") + 1]) / "Control.class").write_bytes(b"class")
             return subprocess.CompletedProcess(command, 0)
 
         with patch.object(controls.subprocess, "run", side_effect=compile_fake):
-            observed_cp = controls.compile_control_jar(root, compiler, source, actual_cp, jar)
+            observed_cp, observed_flags = controls.compile_control_jar(root, compiler, source, actual_cp, jar)
         profile_id = gate.PROFILE_IDS[0]
         with patch.dict(os.environ, {"GITHUB_RUN_ID": self.run, "GITHUB_RUN_ATTEMPT": self.attempt,
                                      "RUNNER_OS": "Linux"}), patch("builtins.print"):
             controls.record_control_build_identity(root, profile_id, self.checkout,
-                                                   source, compiler, jar, observed_cp, "25.0.1+1")
+                                                   source, compiler, jar, observed_cp, observed_flags,
+                                                   "25.0.1+1")
         archive = gate.archive_identity(jar)
         inputs = {"compiler": gate.digest(compiler), "control_source": gate.digest(source)}
 
@@ -374,6 +382,9 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertEqual(verify(), list(reversed(expected)))
         path = root / "control-build-identity.json"
         original = path.read_text(encoding="utf-8")
+        self.assertEqual(len(invoked), 1)
+        self.assertEqual(json.loads(original)["compiler_flags"],
+                         invoked[0][3:invoked[0].index("-classpath")])
         mutations = (
             ("wrong checkout", "source_sha", "b" * 40),
             ("wrong run", "run_id", "456"),
@@ -405,6 +416,67 @@ class BuildIdentityTests(unittest.TestCase):
         path.unlink()
         with self.assertRaisesRegex(gate.IdentityValidationError, "missing control build identity record"):
             verify()
+
+    def test_java_runtime_probe_ignores_unrelated_non_utf8_properties(self):
+        controls = self.load_controls()
+        for ending in (b"\n", b"\r\n"):
+            for before in (False, True):
+                with self.subTest(ending=ending, before=before):
+                    property_line = b"    user.name = Jos\xe9"
+                    version = b"    java.runtime.version = 25.0.5+8"
+                    lines = (property_line, version) if before else (version, property_line)
+                    stderr = ending.join(lines) + ending
+                    result = subprocess.CompletedProcess([], 0, stdout=b"", stderr=stderr)
+                    with patch.object(controls.subprocess, "run", return_value=result) as run:
+                        self.assertEqual(controls.current_java_runtime(), "25.0.5+8")
+                    run.assert_called_once_with(["java", "-XshowSettings:properties", "-version"],
+                                                capture_output=True, check=True)
+                    # Exercise the collector's real entry point as well; a wrong
+                    # major must reach its identity check, not a Unicode error.
+                    with patch.dict(sys.modules, {"run_controls": controls}), \
+                            patch.dict(os.environ, {"RUNNER_OS": "Linux"}), \
+                            patch.object(gate, "context", return_value=(self.checkout, self.run, self.attempt)), \
+                            patch.object(controls.subprocess, "run", return_value=result):
+                        with self.assertRaisesRegex(gate.IdentityValidationError, "runtime Java major mismatch"):
+                            gate.collect(self.root, 21, "ubuntu-latest")
+
+        for stderr in (b"    user.name = Jos\xe9\n",
+                       b"    java.runtime.version = 25.0.5+\xe9\n",
+                       b"    java.runtime.version = 25.0.5+8\n    java.runtime.version = 21.0.1+1\n"):
+            with self.subTest(invalid_version=stderr):
+                with patch.object(controls.subprocess, "run",
+                                  return_value=subprocess.CompletedProcess([], 0, b"", stderr)):
+                    with self.assertRaisesRegex(SystemExit, "^control compiler Java runtime identity unavailable$"):
+                        controls.current_java_runtime()
+
+    def test_compiler_command_drift_fails_before_execution(self):
+        controls = self.load_controls()
+        root = self.root / "compiler-drift"
+        root.mkdir()
+        compiler, source, jar = root / "compiler.jar", root / "Control.java", root / "control.jar"
+        original = controls.control_compile_command
+        mutations = (
+            ("changed release", lambda cmd: cmd.__setitem__(5, "-21")),
+            ("changed encoding", lambda cmd: cmd.__setitem__(4, "US-ASCII")),
+            ("missing release", lambda cmd: cmd.pop(5)),
+            ("extra option", lambda cmd: cmd.insert(6, "-g")),
+            ("trailing option", lambda cmd: cmd.append("-g")),
+            ("duplicate classpath", lambda cmd: cmd.extend(["-classpath", "other"])),
+            ("unexpected path-bearing option", lambda cmd: cmd.insert(6, "-processorpath=/private/value")),
+        )
+        for name, mutate in mutations:
+            with self.subTest(mutation=name):
+                def changed(compiler, source, classes, compile_cp):
+                    command = original(compiler, source, classes, compile_cp)
+                    mutate(command)
+                    return command
+
+                with patch.object(controls, "control_compile_command", side_effect=changed), \
+                        patch.object(controls.subprocess, "run") as run:
+                    with self.assertRaisesRegex(SystemExit, "^unexpected control compiler (flags|command)$"):
+                        controls.compile_control_jar(root, compiler, source, "classpath", jar)
+                    run.assert_not_called()
+                self.assertFalse(jar.exists())
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"

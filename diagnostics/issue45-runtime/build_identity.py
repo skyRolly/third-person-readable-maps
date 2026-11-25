@@ -147,10 +147,8 @@ def collect(work, major, system):
     import run_controls as controls
     checkout, run, attempt = context()
     require(os.environ.get("RUNNER_OS") == SYSTEMS[system], "runner OS mismatch")
-    process = subprocess.run(["java", "-XshowSettings:properties", "-version"],
-                             capture_output=True, text=True, check=True)
-    match = re.search(r"^\s*java\.runtime\.version = ([^\s]+)$", process.stderr, re.M)
-    require(match and match[1].split(".", 1)[0] == str(major), "runtime Java major mismatch")
+    java_runtime = controls.current_java_runtime()
+    require(java_runtime.split(".", 1)[0] == str(major), "runtime Java major mismatch")
     lock, cache, here = controls.LOCK, controls.CACHE, controls.HERE
     inputs = {}
     for key in ("compiler", "byteBuddy"):
@@ -174,10 +172,10 @@ def collect(work, major, system):
         expected = classpath_identity(profile, root / "dependencies", controls)
         observed = observed_control_classpath(
             root, name, expected, checkout=checkout, run=run, attempt=attempt,
-            system=system, java_runtime=match[1], inputs=inputs, archive=archive)
+            system=system, java_runtime=java_runtime, inputs=inputs, archive=archive)
         profiles[name] = {"archive": archive, "classpath": observed}
     return {"schema": SCHEMA, "checkout": checkout, "run": run, "attempt": attempt,
-            "os": system, "java_major": major, "java_runtime": match[1],
+            "os": system, "java_major": major, "java_runtime": java_runtime,
             "python_version": sys.version.split()[0], "inputs": inputs,
             "agent": archive_identity(work / "issue45-runtime-agent.jar", agent=True),
             "profiles": profiles}
