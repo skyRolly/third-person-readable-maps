@@ -29,7 +29,10 @@ and hosted audit identities (including ZIP/JSON digests), comparison claims
 (including zero disappeared matches), SBOM metadata, and plan source digest.
 The checks reject malformed or substituted values, including coordinated
 changes to both copies of the plan digest, and distinguish booleans from
-integer counts. These are consistency checks against recorded provenance;
+integer counts. The evidence JSON loader rejects duplicate decoded object
+keys at every nesting level before conversion to dictionaries, including
+identical values and escaped spellings. Raw-byte mutation tests exercise the
+same loader used for both proposal fixtures. These are consistency checks against recorded provenance;
 they do not authenticate unavailable external bytes or rerun the audit.
 Retain the original inputs separately for a subsequent reviewed archive.
 

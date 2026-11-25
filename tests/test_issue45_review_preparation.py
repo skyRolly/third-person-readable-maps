@@ -74,6 +74,20 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def reject_duplicate_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, "duplicate JSON key: " + key)
+        result[key] = value
+    return result
+
+
+def load_evidence_json(raw):
+    # Inspect decoded key/value pairs before a dict can discard duplicates.
+    # object_pairs_hook runs for every object, including nested array members.
+    return json.loads(raw, object_pairs_hook=reject_duplicate_keys)
+
+
 def validate_provenance(record, expected, label):
     # JSON comparison also distinguishes booleans from integers (True != 1 here).
     for field, value in expected.items():
@@ -119,7 +133,7 @@ def retained_pilot_identities(raw):
     # Verify historical bytes offline without fetching Git history or invoking Git.
     blob = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
     require(blob == FINDING_INDEX_BLOB, "retained finding index blob mismatch")
-    index = json.loads(raw)
+    index = load_evidence_json(raw)
     report = index["reports"]["candidate|1.19.3"]
     require(index["schema"] == 1 and index["risk_acceptance"] is False
             and report["source_sha"] == PILOT_SOURCE and report["failing"] is True
@@ -159,8 +173,8 @@ def validate_pilot(pilot):
 
 class ReviewPreparationTests(unittest.TestCase):
     def setUp(self):
-        self.plan = json.loads((EVIDENCE / "spdy-runtime-plan.json").read_bytes())
-        self.pilot = json.loads((EVIDENCE / "pr22-review-index.json").read_bytes())
+        self.plan = load_evidence_json((EVIDENCE / "spdy-runtime-plan.json").read_bytes())
+        self.pilot = load_evidence_json((EVIDENCE / "pr22-review-index.json").read_bytes())
 
     def test_original_plan_and_pilot(self):
         self.assertEqual(validate_plan(self.plan), 14)
@@ -302,6 +316,46 @@ class ReviewPreparationTests(unittest.TestCase):
                 pilot[field]["unexpected"] = True
                 with self.assertRaisesRegex(ValueError, "pilot provenance differs"):
                     validate_pilot(pilot)
+
+    def test_pilot_duplicate_json_provenance_keys_rejected(self):
+        raw = (EVIDENCE / "pr22-review-index.json").read_bytes()
+        for key, value in (("base_sha", self.pilot["base_sha"]),
+                           ("zip_sha256", self.pilot["hosted_scan"]["zip_sha256"]),
+                           ("spdy-observation-plan.md",
+                            self.pilot["inputs_sha256"]["spdy-observation-plan.md"])):
+            member = (json.dumps(key) + ": " + json.dumps(value)).encode("utf-8")
+            self.assertEqual(raw.count(member), 1)
+            for first in ("bad", value):
+                with self.subTest(key=key, first=first):
+                    duplicate = (json.dumps(key) + ": " + json.dumps(first)).encode("utf-8")
+                    mutated = raw.replace(member, duplicate + b", " + member, 1)
+                    # The old decoder loses the earlier value, even if it differs.
+                    self.assertEqual(json.loads(mutated), self.pilot)
+                    with self.assertRaisesRegex(ValueError, "duplicate JSON key: " + re.escape(key)):
+                        load_evidence_json(mutated)
+
+    def test_plan_duplicate_json_keys_rejected(self):
+        raw = (EVIDENCE / "spdy-runtime-plan.json").read_bytes()
+        key = "proposal_source_sha256"
+        member = (json.dumps(key) + ": " + json.dumps(self.plan[key])).encode("utf-8")
+        self.assertEqual(raw.count(member), 1)
+        # Escaped spelling decodes to exactly the same key.
+        duplicate = b'"proposal_source_sha\\u0032\\u0035\\u0036": "bad", '
+        mutated = raw.replace(member, duplicate + member, 1)
+        self.assertEqual(json.loads(mutated), self.plan)
+        with self.assertRaisesRegex(ValueError, "duplicate JSON key: " + key):
+            load_evidence_json(mutated)
+        # The same hook also rejects duplicates inside array objects.
+        status = b'"status": "not_executed"'
+        self.assertIn(status, raw)
+        mutated = raw.replace(status, b'"status": "captured", ' + status, 1)
+        self.assertEqual(json.loads(mutated), self.plan)
+        with self.assertRaisesRegex(ValueError, "duplicate JSON key: status"):
+            load_evidence_json(mutated)
+
+    def test_strict_json_allows_same_key_in_distinct_objects(self):
+        self.assertEqual(load_evidence_json(b'[{"key": 1}, {"key": 2}]'),
+                         [{"key": 1}, {"key": 2}])
 
     def test_scope_cannot_claim_acceptance_or_alert_verification(self):
         for data, check in ((self.plan, validate_plan), (self.pilot, validate_pilot)):
