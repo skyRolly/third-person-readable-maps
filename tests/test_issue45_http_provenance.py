@@ -10,7 +10,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 DIAGNOSTICS = ROOT / "diagnostics/issue45-runtime"
@@ -154,6 +154,65 @@ class HttpProvenanceTests(unittest.TestCase):
             for name in ("one", "two", "three")}, "runtime_reachability": "not_established",
             "release_blocking": True, "risk_accepted": False, "scope": "static_artifact_identity_and_class_inventory_only"}
         output.write_text(json.dumps(report), encoding="utf-8")
+
+    def test_acquisition_failure_details_from_checked_module(self):
+        original_prepare = official.prepare
+        for mode, message in (
+            ("manifest", "retained manifest digest mismatch"),
+            ("conflict", "conflicting artifact identities across manifests"),
+            ("download", "downloaded HTTP artifact size or SHA-1 mismatch"),
+        ):
+            with self.subTest(mode=mode):
+                fetch = Mock(side_effect=lambda item: b"x" * item["size_bytes"])
+
+                def prepare(module, manifests, libraries):
+                    # Exercise the real validator in the dynamically compiled module,
+                    # not an exception class imported by the test harness.
+                    self.assertIsNot(module.VerificationError, official.VerificationError)
+                    manifests.mkdir(parents=True, exist_ok=True)
+                    pins = {}
+                    for _, _, version, games in module.GROUPS:
+                        raw = version.encode()
+                        relative = f"io/netty/netty-codec-http/{version}/netty-codec-http-{version}.jar"
+                        for game in games:
+                            manifest = {"id": game, "libraries": [{
+                                "name": "io.netty:netty-codec-http:" + version, "downloads": {"artifact": {
+                                    "path": relative, "url": "https://libraries.minecraft.net/" + relative,
+                                    "size": len(raw), "sha1": hashlib.sha1(raw).hexdigest()}}}]}
+                            if mode == "conflict" and game == "26.1.2":
+                                manifest["libraries"][0]["downloads"]["artifact"]["sha1"] = "0" * 40
+                            data = json.dumps(manifest).encode()
+                            (manifests / (game + ".json")).write_bytes(data)
+                            pins[game] = module.sha256(data)
+                    if mode == "manifest":
+                        pins["1.21.9"] = "0" * 64
+                    with patch.dict(module.MANIFEST_SHA256, pins, clear=True):
+                        original_prepare(module, manifests, libraries, fetch)
+
+                with patch.object(official, "prepare", side_effect=prepare), \
+                        patch.object(official, "run_verifier") as verifier:
+                    _, error = self.run_main(success=False)
+                self.assertEqual(error, "Official HTTP verification failed: " + message + "\n")
+                verifier.assert_not_called()
+                self.assertEqual(fetch.call_count, 1 if mode == "download" else 0)
+
+    def test_unexpected_acquisition_error_remains_redacted(self):
+        with patch.object(official, "prepare", side_effect=OSError(str(self.root / "private"))), \
+                patch.object(official, "run_verifier") as verifier:
+            _, error = self.run_main(success=False)
+        self.assertEqual(error, "Official HTTP verification failed: acquisition, CLI or report unavailable\n")
+        self.assertNotIn(str(self.root), error)
+        verifier.assert_not_called()
+
+    def test_report_scope_failure_has_specific_message(self):
+        def verifier(libraries, output):
+            self.fake_verifier(libraries, output)
+            report = json.loads(output.read_bytes())
+            report["risk_accepted"] = True
+            output.write_text(json.dumps(report), encoding="utf-8")
+        with patch.object(official, "prepare"), patch.object(official, "run_verifier", side_effect=verifier):
+            _, error = self.run_main(success=False)
+        self.assertEqual(error, "Official HTTP verification failed: unexpected HTTP verification report scope\n")
 
     def test_head_drift_after_cli_rejects_report(self):
         def verifier(libraries, output):

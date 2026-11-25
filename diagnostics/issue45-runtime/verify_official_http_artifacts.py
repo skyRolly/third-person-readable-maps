@@ -117,14 +117,19 @@ def main():
         with tempfile.TemporaryDirectory(prefix="issue45-http-") as temporary:
             libraries = Path(temporary) / "libraries"
             report_path = Path(temporary) / "observation.json"
-            prepare(http, http.MANIFESTS, libraries)
+            try:
+                prepare(http, http.MANIFESTS, libraries)
+            except http.VerificationError as error:
+                # The checked module has its own exception type. Preserve only
+                # its intentional validation messages, not arbitrary failures.
+                raise VerificationError(str(error)) from None
             require_same_source(identity)
             run_verifier(libraries, report_path)
             raw = report_path.read_bytes()
         report = json.loads(raw)
-        http.require(len(report["occurrences"]) == 4 and len(report["artifacts"]) == 3 and
-                     report["runtime_reachability"] == "not_established" and report["release_blocking"] is True and
-                     report["risk_accepted"] is False, "unexpected HTTP verification report scope")
+        require(len(report["occurrences"]) == 4 and len(report["artifacts"]) == 3 and
+                report["runtime_reachability"] == "not_established" and report["release_blocking"] is True and
+                report["risk_accepted"] is False, "unexpected HTTP verification report scope")
         require_same_source(identity)
         # Publish only after verification and provenance checks succeed.
         with args.output.open("xb") as stream:
