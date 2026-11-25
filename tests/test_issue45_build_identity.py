@@ -1,6 +1,7 @@
 import hashlib
 import importlib.util
 import json
+import os
 import shlex
 import subprocess
 import sys
@@ -35,7 +36,7 @@ class BuildIdentityTests(unittest.TestCase):
                          "inputs": {k: "4" * 64 for k in ("compiler", "byteBuddy", "agent_sources",
                                     "control_source", "lock")}, "agent": self.archive,
                          "profiles": {name: {"archive": self.archive,
-                                      "classpath": ["5" * 64] * (8 if i % 2 else 7)}
+                                      "classpath": [f"{j + 1:064x}" for j in range(8 if i % 2 else 7)]}
                                       for i, name in enumerate(gate.PROFILE_IDS)}}
                 (folder / f"identity-j{major}.json").write_text(json.dumps(value), encoding="utf-8")
         self.target = self.root / "issue45-build-123-1-windows-latest/identity-j25.json"
@@ -59,6 +60,7 @@ class BuildIdentityTests(unittest.TestCase):
                      lambda v: v["agent"].update(ordered_inventory_sha256="9" * 64),
                      lambda v: v["profiles"].pop(gate.PROFILE_IDS[0]),
                      lambda v: v["profiles"][gate.PROFILE_IDS[0]]["classpath"].pop(),
+                     lambda v: v["profiles"][gate.PROFILE_IDS[0]]["classpath"].reverse(),
                      lambda v: v["profiles"][gate.PROFILE_IDS[0]]["archive"].update(jar_sha256="a" * 64),
                      lambda v: v.update(extra="untrusted"), lambda v: v["agent"].update(member_count=True)]
         for mutate in mutations:
@@ -329,6 +331,80 @@ class BuildIdentityTests(unittest.TestCase):
                         changed = with_output(baseline, name, expected, replacement)
                         with self.assertRaisesRegex(AssertionError, message):
                             self.assert_workflow_artifact_paths(changed)
+
+    def test_control_build_record_uses_observed_classpath_order(self):
+        spec = importlib.util.spec_from_file_location("identity_control_harness",
+                                                      GATE_PATH.with_name("run_controls.py"))
+        controls = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(controls)
+        root = self.root / "control-build"
+        root.mkdir()
+        source, compiler = root / "ControlMain.java", root / "compiler.jar"
+        source.write_bytes(b"synthetic source")
+        compiler.write_bytes(b"synthetic compiler")
+        first, second = root / "first.jar", root / "second.jar"
+        first.write_bytes(b"first input")
+        second.write_bytes(b"second input")
+        jar = root / "issue45-synthetic-control.jar"
+        expected = [gate.digest(first), gate.digest(second)]
+        actual_cp = os.pathsep.join(map(str, (second, first)))
+
+        def compile_fake(command, check):
+            self.assertTrue(check)
+            self.assertEqual(command[command.index("-classpath") + 1], actual_cp)
+            (Path(command[command.index("-d") + 1]) / "Control.class").write_bytes(b"class")
+            return subprocess.CompletedProcess(command, 0)
+
+        with patch.object(controls.subprocess, "run", side_effect=compile_fake):
+            observed_cp = controls.compile_control_jar(root, compiler, source, actual_cp, jar)
+        profile_id = gate.PROFILE_IDS[0]
+        with patch.dict(os.environ, {"GITHUB_RUN_ID": self.run, "GITHUB_RUN_ATTEMPT": self.attempt,
+                                     "RUNNER_OS": "Linux"}), patch("builtins.print"):
+            controls.record_control_build_identity(root, profile_id, self.checkout,
+                                                   source, compiler, jar, observed_cp, "25.0.1+1")
+        archive = gate.archive_identity(jar)
+        inputs = {"compiler": gate.digest(compiler), "control_source": gate.digest(source)}
+
+        def verify():
+            return gate.observed_control_classpath(
+                root, profile_id, expected, checkout=self.checkout, run=self.run,
+                attempt=self.attempt, system="ubuntu-latest", java_runtime="25.0.1+1",
+                inputs=inputs, archive=archive)
+
+        self.assertEqual(verify(), list(reversed(expected)))
+        path = root / "control-build-identity.json"
+        original = path.read_text(encoding="utf-8")
+        mutations = (
+            ("wrong checkout", "source_sha", "b" * 40),
+            ("wrong run", "run_id", "456"),
+            ("wrong attempt", "run_attempt", "2"),
+            ("wrong OS", "runner_os", "Windows"),
+            ("wrong Java", "java_runtime", "21.0.1+1"),
+            ("wrong profile", "profile_id", gate.PROFILE_IDS[1]),
+            ("wrong compiler", "compiler_sha256", "0" * 64),
+            ("wrong source", "control_source_sha256", "0" * 64),
+            ("wrong JAR", "control_jar_sha256", "0" * 64),
+            ("wrong member", "compiled_member_sha256", {"Control.class": "0" * 64}),
+            ("wrong flags", "compiler_flags", ["-17"]),
+            ("wrong Python", "python_version", "untrusted"),
+            ("missing member", "classpath_sha256", expected[:1]),
+            ("duplicate member", "classpath_sha256", [expected[0], expected[0]]),
+            ("unknown member", "classpath_sha256", [expected[0], "0" * 64]),
+            ("invalid hash", "classpath_sha256", [expected[0], 42]),
+        )
+        for name, key, value in mutations:
+            with self.subTest(mutation=name):
+                record = json.loads(original)
+                record[key] = value
+                path.write_text(json.dumps(record), encoding="utf-8")
+                with self.assertRaises(gate.IdentityValidationError):
+                    verify()
+        path.write_text(original[:-1] + ', "profile_id": "duplicate"}', encoding="utf-8")
+        with self.assertRaisesRegex(gate.IdentityValidationError, "duplicate JSON key"):
+            verify()
+        path.unlink()
+        with self.assertRaisesRegex(gate.IdentityValidationError, "missing control build identity record"):
+            verify()
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"

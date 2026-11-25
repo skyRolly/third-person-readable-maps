@@ -70,6 +70,7 @@ def context():
 
 
 def classpath_identity(profile, root, controls):
+    """Reverify pinned classpath bytes; these are expected members, not observed order."""
     lock, repo, cache = controls.LOCK, controls.REPO, controls.CACHE
     wanted = set(profile["modules"])
     selected, hashes = set(), []
@@ -105,6 +106,43 @@ def classpath_identity(profile, root, controls):
     return hashes + [digest(helper)]
 
 
+def observed_control_classpath(root, profile_id, expected, *, checkout, run, attempt,
+                               system, java_runtime, inputs, archive):
+    """Bind the ordered compiler record to the current build and pinned inputs."""
+    path = root / "control-build-identity.json"
+    require(path.is_file(), "missing control build identity record")
+    record = strict_json(path)
+    require(isinstance(record, dict) and set(record) == {
+        "schema", "profile_id", "source_sha", "control_source_sha256",
+        "control_jar_sha256", "compiled_member_sha256", "compiler_sha256",
+        "classpath_sha256", "compiler_flags", "python_version", "run_id",
+        "run_attempt", "runner_os", "java_runtime"}, "invalid control build record fields")
+    require((record["schema"], record["profile_id"], record["source_sha"],
+             record["run_id"], record["run_attempt"], record["runner_os"],
+             record["java_runtime"]) ==
+            ("issue45-control-build-identity/v1", profile_id, checkout, run, attempt,
+             SYSTEMS[system], java_runtime), "control build record context mismatch")
+    require(record["compiler_sha256"] == inputs["compiler"] and
+            record["control_source_sha256"] == inputs["control_source"] and
+            record["control_jar_sha256"] == archive["jar_sha256"] and
+            record["compiler_flags"] == ["-encoding", "UTF-8", "-17"],
+            "control build record input or archive mismatch")
+    require(isinstance(record["python_version"], str) and
+            re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", record["python_version"]),
+            "invalid control build Python identity")
+    with zipfile.ZipFile(root / "issue45-synthetic-control.jar") as jar:
+        compiled = {item.filename: hashlib.sha256(jar.read(item)).hexdigest()
+                    for item in jar.infolist()}
+    require(record["compiled_member_sha256"] == compiled, "control build record member mismatch")
+    observed = record["classpath_sha256"]
+    # Verify the multiset (including multiplicity), then preserve the observed
+    # sequence. The cross-OS/Java comparator, not the metadata order, decides
+    # whether different actual compiler classpath sequences are reproducible.
+    require(isinstance(observed, list) and all(valid_hash(item) for item in observed) and
+            sorted(observed) == sorted(expected), "control build record classpath mismatch")
+    return observed
+
+
 def collect(work, major, system):
     import run_controls as controls
     checkout, run, attempt = context()
@@ -132,8 +170,12 @@ def collect(work, major, system):
     for profile in lock["syntheticProfiles"]:
         name = profile["profileId"]
         root = work / name
-        profiles[name] = {"archive": archive_identity(root / "issue45-synthetic-control.jar"),
-                          "classpath": classpath_identity(profile, root / "dependencies", controls)}
+        archive = archive_identity(root / "issue45-synthetic-control.jar")
+        expected = classpath_identity(profile, root / "dependencies", controls)
+        observed = observed_control_classpath(
+            root, name, expected, checkout=checkout, run=run, attempt=attempt,
+            system=system, java_runtime=match[1], inputs=inputs, archive=archive)
+        profiles[name] = {"archive": archive, "classpath": observed}
     return {"schema": SCHEMA, "checkout": checkout, "run": run, "attempt": attempt,
             "os": system, "java_major": major, "java_runtime": match[1],
             "python_version": sys.version.split()[0], "inputs": inputs,

@@ -141,13 +141,15 @@ def windows_system_icacls() -> str:
 
 
 def compile_control_jar(profile_root: Path, compiler: Path, source: Path,
-                        compile_cp: str, destination: Path) -> None:
-    """Compile in an isolated fresh directory, never a reused class-output tree."""
+                        compile_cp: str, destination: Path) -> str:
+    """Compile fresh classes and return the classpath actually passed to ECJ."""
     with tempfile.TemporaryDirectory(prefix="test-classes-", dir=profile_root) as temporary:
         classes = Path(temporary)
-        subprocess.run(["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
-                        "-classpath", compile_cp, "-d", str(classes), str(source)], check=True)
+        command = ["java", "-jar", str(compiler), "-encoding", "UTF-8", "-17",
+                   "-classpath", compile_cp, "-d", str(classes), str(source)]
+        subprocess.run(command, check=True)
         package_control_classes(classes, destination)
+    return command[command.index("-classpath") + 1]
 
 
 def package_control_classes(classes: Path, destination: Path) -> None:
@@ -176,8 +178,49 @@ def package_control_classes(classes: Path, destination: Path) -> None:
         temporary.unlink(missing_ok=True)
 
 
+def current_java_runtime() -> str:
+    process = subprocess.run(["java", "-XshowSettings:properties", "-version"],
+                             capture_output=True, text=True, check=True)
+    match = re.search(r"^\s*java\.runtime\.version = ([^\s]+)$", process.stderr, re.M)
+    if not match:
+        raise SystemExit("control compiler Java runtime identity unavailable")
+    return match[1]
+
+
+def record_control_build_identity(profile_root: Path, profile_id: str, source_sha: str,
+                                  source: Path, compiler: Path, control_jar: Path,
+                                  compile_cp: str, java_runtime: str) -> None:
+    """Persist the existing build log locally, with workflow context and no host paths."""
+    with zipfile.ZipFile(control_jar) as archive:
+        compiled = {item.filename: hashlib.sha256(archive.read(item)).hexdigest()
+                    for item in archive.infolist()}
+    identity = {
+        "schema": "issue45-control-build-identity/v1",
+        "profile_id": profile_id,
+        "source_sha": source_sha,
+        "control_source_sha256": hash_file(source, "sha256"),
+        "control_jar_sha256": hash_file(control_jar, "sha256"),
+        "compiled_member_sha256": compiled,
+        "compiler_sha256": hash_file(compiler, "sha256"),
+        # Use the actual compiler argument, not the metadata or artifacts list.
+        "classpath_sha256": [hash_file(Path(path), "sha256")
+                             for path in compile_cp.split(os.pathsep)],
+        "compiler_flags": ["-encoding", "UTF-8", "-17"],
+        "python_version": sys.version.split()[0],
+    }
+    record = dict(identity, run_id=os.environ.get("GITHUB_RUN_ID"),
+                  run_attempt=os.environ.get("GITHUB_RUN_ATTEMPT"),
+                  runner_os=os.environ.get("RUNNER_OS"), java_runtime=java_runtime)
+    # This sidecar is not part of the retained runtime evidence or uploaded reports.
+    with (profile_root / "control-build-identity.json").open("x", encoding="utf-8") as stream:
+        json.dump(record, stream, sort_keys=True)
+        stream.write("\n")
+    print(json.dumps(identity, sort_keys=True))
+
+
 def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
-                lz4_helper: Path, source_sha: str, evidence_dir: Path = OUT) -> dict:
+                lz4_helper: Path, source_sha: str, evidence_dir: Path = OUT,
+                *, java_runtime: str | None = None) -> dict:
     wanted = set(profile["modules"])
     profile_root = work / profile["profileId"]
     profile_root.mkdir(parents=True, exist_ok=True)
@@ -247,24 +290,12 @@ def run_profile(profile: dict, work: Path, agent: Path, compiler: Path,
     source = HERE / "src/test/java/dev/skyrolly/issue45/ControlMain.java"
     compile_cp = os.pathsep.join(str(path) for path in artifacts)
     control_jar = profile_root / "issue45-synthetic-control.jar"
-    compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
-    # This is a separate build-identity log, not a new field in historical
-    # v1 runtime evidence. Include only source-relative names and hashes.
-    with zipfile.ZipFile(control_jar) as archive:
-        compiled = {item.filename: hashlib.sha256(archive.read(item)).hexdigest()
-                    for item in archive.infolist()}
-    print(json.dumps({
-        "schema": "issue45-control-build-identity/v1",
-        "profile_id": profile["profileId"],
-        "source_sha": source_sha,
-        "control_source_sha256": hash_file(source, "sha256"),
-        "control_jar_sha256": hash_file(control_jar, "sha256"),
-        "compiled_member_sha256": compiled,
-        "compiler_sha256": hash_file(compiler, "sha256"),
-        "classpath_sha256": [hash_file(path, "sha256") for path in artifacts],
-        "compiler_flags": ["-encoding", "UTF-8", "-17"],
-        "python_version": sys.version.split()[0],
-    }, sort_keys=True))
+    # Do not let a previous successful compile supply evidence for this one.
+    (profile_root / "control-build-identity.json").unlink(missing_ok=True)
+    runtime = java_runtime if java_runtime is not None else current_java_runtime()
+    actual_cp = compile_control_jar(profile_root, compiler, source, compile_cp, control_jar)
+    record_control_build_identity(profile_root, profile["profileId"], source_sha,
+                                  source, compiler, control_jar, actual_cp, runtime)
 
     config = profile_root / "control.properties"
     report = profile_root / ("control-" + uuid.uuid4().hex + ".jsonl")
@@ -414,7 +445,9 @@ def main() -> int:
     agent = work / "issue45-runtime-agent.jar"
     subprocess.run([sys.executable, str(HERE / "build_agent.py"), "--output", str(agent)], check=True)
     source_sha = subprocess.check_output(["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True).strip()
-    profiles = [run_profile(profile, work, agent, CACHE / "ecj-3.39.0.jar", helper_path, source_sha, evidence_dir)
+    java_runtime = current_java_runtime()
+    profiles = [run_profile(profile, work, agent, CACHE / "ecj-3.39.0.jar", helper_path, source_sha,
+                            evidence_dir, java_runtime=java_runtime)
                 for profile in LOCK["syntheticProfiles"]]
     result = {
         "schema": "issue45-runtime-synthetic-controls/v1", "result": "pass", "scope": "synthetic_only",
