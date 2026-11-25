@@ -57,7 +57,12 @@ python diagnostics/issue45-runtime/verify_official_http_artifacts.py --output /p
 Both verifier scripts must have exact working-tree bytes matching their
 committed Git blobs at HEAD. The hosted/local wrapper checks these bytes
 before acquisition, before the offline CLI, and before publishing the report,
-and logs their SHA-256 digests under repository-relative source names beside
+and compiles the exact checked offline-verifier bytes into a fresh module
+with its normal source filename before using acquisition logic. No verifier
+module import or existing bytecode cache is used for acquisition. Merely
+disabling bytecode writes would not exclude reads of stale caches. The
+separate offline CLI is still executed directly from source. The wrapper
+logs script SHA-256 digests under repository-relative source names beside
 the checkout and report digest. Staged or unstaged source edits are rejected,
 even when hidden by an index optimization. Unrelated local changes are
 allowed. Use a stable checkout without concurrent edits and without checkout

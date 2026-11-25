@@ -3,6 +3,8 @@ import hashlib
 import importlib.util
 import io
 import json
+import os
+import py_compile
 import subprocess
 import sys
 import tempfile
@@ -22,8 +24,7 @@ def load(name):
 
 
 http = load("verify_http_artifacts")
-with patch.dict(sys.modules, {"verify_http_artifacts": http}):
-    official = load("verify_official_http_artifacts")
+official = load("verify_official_http_artifacts")
 
 
 class HttpProvenanceTests(unittest.TestCase):
@@ -45,8 +46,9 @@ class HttpProvenanceTests(unittest.TestCase):
         self.git("-c", "core.hooksPath=" + str(self.root / "no-hooks"), "commit", "-qm", "fixture")
         self.checkout = self.git("rev-parse", "HEAD").strip()
         for module, path in zip((official, http), self.paths):
-            self.enterContext(patch.object(module, "__file__", str(path)))
-        self.enterContext(patch.object(http, "ROOT", self.root))
+            patcher = patch.object(module, "__file__", str(path))
+            patcher.start()
+            self.addCleanup(patcher.stop)
         self.output = self.root / "report.json"
 
     def git(self, *args):
@@ -56,7 +58,7 @@ class HttpProvenanceTests(unittest.TestCase):
         expected = {p.relative_to(self.root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                     for p in self.paths}
         (self.root / "unrelated.txt").write_text("local notes", encoding="utf-8")
-        self.assertEqual(official.source_identity(), (self.checkout, expected))
+        self.assertEqual(official.source_identity(), (self.checkout, expected, self.paths[1].read_bytes()))
         for path in self.paths:
             original = path.read_bytes()
             for state in ("unstaged", "staged", "assume-unchanged"):
@@ -68,14 +70,14 @@ class HttpProvenanceTests(unittest.TestCase):
                     if state == "assume-unchanged":
                         self.git("update-index", "--assume-unchanged", relative)
                     try:
-                        with self.assertRaisesRegex(http.VerificationError, "verifier source differs from HEAD"):
+                        with self.assertRaisesRegex(official.VerificationError, "verifier source differs from HEAD"):
                             official.source_identity()
                     finally:
                         if state == "assume-unchanged":
                             self.git("update-index", "--no-assume-unchanged", relative)
                         path.write_bytes(original)
                         self.git("add", relative)
-        self.assertEqual(official.source_identity(), (self.checkout, expected))
+        self.assertEqual(official.source_identity(), (self.checkout, expected, self.paths[1].read_bytes()))
 
     def run_main(self, *, success):
         stdout, stderr = io.StringIO(), io.StringIO()
@@ -93,11 +95,50 @@ class HttpProvenanceTests(unittest.TestCase):
 
     def test_dirty_input_fails_before_acquisition(self):
         self.paths[1].write_bytes(self.paths[1].read_bytes() + b"\n# edit\n")
-        with patch.object(official, "prepare") as prepare, patch.object(official, "run_verifier") as verifier:
+        with patch.object(official, "prepare") as prepare, patch.object(official, "run_verifier") as verifier, \
+                patch.object(official, "load_verified_source") as loader:
             _, error = self.run_main(success=False)
         self.assertIn("verifier source differs from HEAD", error)
+        loader.assert_not_called()
         prepare.assert_not_called()
         verifier.assert_not_called()
+
+    def test_stale_timestamp_cache_is_not_executed(self):
+        path = self.paths[1]
+        original = path.read_bytes()
+        edited = original.replace(b"minecraft-version-manifests", b"minecraft-version-manifestz")
+        self.assertNotEqual(edited, original)
+        self.assertEqual(len(edited), len(original))
+        stamp = 1700000000
+        path.write_bytes(edited)
+        os.utime(path, (stamp, stamp))
+        cache = Path(py_compile.compile(str(path), doraise=True,
+                                        invalidation_mode=py_compile.PycInvalidationMode.TIMESTAMP))
+        cached = cache.read_bytes()
+        path.write_bytes(original)
+        os.utime(path, (stamp, stamp))
+        # Prove this is a live stale-cache fixture even with bytecode writes disabled.
+        stale = subprocess.check_output([sys.executable, "-B", "-c",
+                                         "import verify_http_artifacts as h; print(h.MANIFESTS.name)"],
+                                        cwd=self.directory, text=True).strip()
+        self.assertEqual(stale, "minecraft-version-manifestz")
+        self.assertEqual(official.source_identity()[2], original)
+
+        def prepare(module, manifests, libraries):
+            self.assertEqual(module.__file__, str(path))
+            self.assertEqual(module.ROOT, self.root)
+            self.assertEqual(manifests.name, "minecraft-version-manifests")
+            self.assertEqual(module.MANIFESTS, manifests)
+
+        # Also refuse to reuse a preloaded module; the wrapper must compile checked bytes.
+        with patch.dict(sys.modules, {"verify_http_artifacts": object()}), \
+                patch.object(official, "prepare", side_effect=prepare) as acquire, \
+                patch.object(official, "run_verifier", side_effect=self.fake_verifier):
+            stdout, _ = self.run_main(success=True)
+        acquire.assert_called_once()
+        self.assertEqual(cache.read_bytes(), cached)
+        self.assertEqual(json.loads(stdout)["source_sha256"][path.relative_to(self.root).as_posix()],
+                         hashlib.sha256(original).hexdigest())
 
     def test_source_drift_during_acquisition_fails_before_cli(self):
         def prepare(*args):

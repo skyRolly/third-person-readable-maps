@@ -9,9 +9,17 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from types import ModuleType
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-import verify_http_artifacts as http
+
+class VerificationError(ValueError):
+    pass
+
+
+def require(condition, message):
+    if not condition:
+        raise VerificationError(message)
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -19,7 +27,7 @@ class NoRedirect(HTTPRedirectHandler):
         return None
 
 
-def catalog(manifests):
+def catalog(http, manifests):
     artifacts = {}
     for _, _, netty, games in http.GROUPS:
         for game in games:
@@ -36,14 +44,14 @@ def download(item):
     # URLs and bounds have already been independently checked by manifest_artifact.
     request = Request(item["url"], headers={"User-Agent": "issue45-http-artifact-verifier/1"})
     with build_opener(NoRedirect()).open(request, timeout=45) as response:
-        http.require(response.geturl() == item["url"], "unexpected official HTTP artifact origin")
+        require(response.geturl() == item["url"], "unexpected official HTTP artifact origin")
         raw = response.read(item["size_bytes"] + 1)
     return raw
 
 
-def prepare(manifests, libraries, fetch=download):
+def prepare(http, manifests, libraries, fetch=download):
     # Validate every manifest and reconcile shared identities before any download.
-    for item in catalog(manifests):
+    for item in catalog(http, manifests):
         raw = fetch(item)
         http.require(len(raw) == item["size_bytes"] and hashlib.sha1(raw).hexdigest() == item["sha1"],
                      "downloaded HTTP artifact size or SHA-1 mismatch")
@@ -60,28 +68,40 @@ def source_identity():
     paths = (directory + "verify_official_http_artifacts.py",
              directory + "verify_http_artifacts.py")
     if (Path(__file__).resolve() != root / paths[0]
-            or Path(http.__file__).resolve() != root / paths[1] or http.ROOT != root):
-        raise http.VerificationError("unexpected verifier source location")
+            or (root / paths[1]).resolve() != root / paths[1]):
+        raise VerificationError("unexpected verifier source location")
     checkout = subprocess.check_output(["git", "rev-parse", "--verify", "HEAD"],
                                        cwd=root, stderr=subprocess.DEVNULL, text=True).strip()
     hashes = {}
+    sources = {}
     for path in paths:
         committed = subprocess.check_output(["git", "cat-file", "blob", checkout + ":" + path],
                                             cwd=root, stderr=subprocess.DEVNULL)
         actual = (root / path).read_bytes()
         if actual != committed:
-            raise http.VerificationError("verifier source differs from HEAD: " + path)
+            raise VerificationError("verifier source differs from HEAD: " + path)
         hashes[path] = hashlib.sha256(actual).hexdigest()
-    return checkout, hashes
+        sources[path] = actual
+    return checkout, hashes, sources[paths[1]]
+
+
+def load_verified_source(source):
+    """Execute checked source without consulting import caches or sys.modules."""
+    path = Path(__file__).resolve().with_name("verify_http_artifacts.py")
+    module = ModuleType("verify_http_artifacts")
+    module.__file__ = str(path)
+    exec(compile(source, str(path), "exec", dont_inherit=True), module.__dict__)
+    return module
 
 
 def require_same_source(identity):
     if source_identity() != identity:
-        raise http.VerificationError("verifier checkout changed during verification")
+        raise VerificationError("verifier checkout changed during verification")
 
 
 def run_verifier(libraries, output):
-    subprocess.run([sys.executable, str(Path(http.__file__).resolve()), "--libraries-root", str(libraries),
+    path = Path(__file__).resolve().with_name("verify_http_artifacts.py")
+    subprocess.run([sys.executable, str(path), "--libraries-root", str(libraries),
                     "--output", str(output)], check=True)
 
 
@@ -90,13 +110,14 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     try:
-        http.require(not args.output.exists(), "refusing to replace an existing report")
+        require(not args.output.exists(), "refusing to replace an existing report")
         identity = source_identity()
-        checkout, source_sha256 = identity
+        checkout, source_sha256, verifier_source = identity
+        http = load_verified_source(verifier_source)
         with tempfile.TemporaryDirectory(prefix="issue45-http-") as temporary:
             libraries = Path(temporary) / "libraries"
             report_path = Path(temporary) / "observation.json"
-            prepare(http.MANIFESTS, libraries)
+            prepare(http, http.MANIFESTS, libraries)
             require_same_source(identity)
             run_verifier(libraries, report_path)
             raw = report_path.read_bytes()
@@ -114,9 +135,9 @@ def main():
                                                 "spdy_class_count": len(item["spdy_class_sha256"])}
                                         for name, item in report["artifacts"].items()},
                           "scope": report["scope"], "result": "pass"}, sort_keys=True))
-    except http.VerificationError as error:
+    except VerificationError as error:
         parser.exit(1, "Official HTTP verification failed: " + str(error) + "\n")
-    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError):
+    except (OSError, ValueError, KeyError, TypeError, SyntaxError, subprocess.SubprocessError):
         parser.exit(1, "Official HTTP verification failed: acquisition, CLI or report unavailable\n")
     return 0
 

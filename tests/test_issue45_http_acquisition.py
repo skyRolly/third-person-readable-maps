@@ -5,7 +5,6 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
-import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 DIAGNOSTICS = ROOT / "diagnostics/issue45-runtime"
@@ -17,8 +16,7 @@ def load(name, path):
     return module
 
 http = load("verify_http_artifacts", DIAGNOSTICS / "verify_http_artifacts.py")
-with patch.dict(sys.modules, {"verify_http_artifacts": http}):
-    official = load("verify_official_http_artifacts", DIAGNOSTICS / "verify_official_http_artifacts.py")
+official = load("verify_official_http_artifacts", DIAGNOSTICS / "verify_official_http_artifacts.py")
 
 
 class HttpAcquisitionTests(unittest.TestCase):
@@ -44,13 +42,13 @@ class HttpAcquisitionTests(unittest.TestCase):
                     pins[game] = http.sha256(data)
             fetch = Mock(side_effect=lambda item: raws[item["coordinate"].split(":")[-1]])
             with patch.dict(http.MANIFEST_SHA256, pins, clear=True):
-                official.prepare(manifests, libraries, fetch)
+                official.prepare(http, manifests, libraries, fetch)
                 self.assertEqual(fetch.call_count, 3)
                 self.assertEqual(len(list(libraries.rglob("*.jar"))), 3)
                 with self.assertRaises(FileExistsError):
-                    official.prepare(manifests, libraries, fetch)
+                    official.prepare(http, manifests, libraries, fetch)
                 with self.assertRaisesRegex(http.VerificationError, "size or SHA-1 mismatch"):
-                    official.prepare(manifests, root / "bad", lambda item: b"bad")
+                    official.prepare(http, manifests, root / "bad", lambda item: b"bad")
                 path = manifests / "26.1.2.json"
                 manifest = json.loads(path.read_bytes())
                 manifest["libraries"][0]["downloads"]["artifact"]["sha1"] = "0" * 40
@@ -59,7 +57,7 @@ class HttpAcquisitionTests(unittest.TestCase):
                 http.MANIFEST_SHA256["26.1.2"] = http.sha256(data)
                 fetch.reset_mock()
                 with self.assertRaisesRegex(http.VerificationError, "conflicting artifact identities"):
-                    official.prepare(manifests, root / "conflict", fetch)
+                    official.prepare(http, manifests, root / "conflict", fetch)
                 fetch.assert_not_called()
 
 
