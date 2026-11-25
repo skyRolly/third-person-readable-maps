@@ -94,7 +94,10 @@ class NettyFocusErratumTests(unittest.TestCase):
                 r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"(?:[A-Za-z0-9_-]|\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}))+")""")
 
             def nested_mapping_field(field):
-                match = re.fullmatch(rf"({nested_key})[ \t]*:[ \t]*(.*)", field)
+                # In a block mapping the colon needs separation or EOL.
+                # Without that boundary, a quoted scalar with an invalid
+                # suffix (e.g. "Choose":trailing) is not a metadata key.
+                match = re.fullmatch(rf"({nested_key})[ \t]*:(?=[ \t]|$)[ \t]*(.*)", field)
                 if match is None:
                     return None
                 key = match[1]
@@ -128,6 +131,32 @@ class NettyFocusErratumTests(unittest.TestCase):
                     raise ValueError("malformed flow trigger list")
                 return True
 
+            def quoted_scalar_end(field, quote):
+                """Find a closing quote, without interpreting scalar contents."""
+                i = 0
+                while i < len(field):
+                    char = field[i]
+                    if quote == '"' and char == "\\":
+                        i += 2
+                        continue
+                    if char == quote:
+                        if char == "'" and field[i:i + 2] == "''":
+                            i += 2
+                            continue
+                        return i + 1
+                    i += 1
+                return None
+
+            def consume_description_quote(field):
+                nonlocal nested_description_quote
+                end = quoted_scalar_end(field, nested_description_quote)
+                if end is None:
+                    return
+                remainder = field[end:]
+                if remainder.strip() and not re.fullmatch(r"[ \t]+#.*", remainder):
+                    raise ValueError("extra content after quoted description")
+                nested_description_quote = None
+
             def nested_filter_flow_complete(field):
                 # Filter patterns are not event identifiers: glob characters,
                 # slashes, and quoted brackets are legitimate here. Track
@@ -140,22 +169,11 @@ class NettyFocusErratumTests(unittest.TestCase):
                         # A quote opened on a preceding physical line remains
                         # open across YAML folding or a backslash continuation.
                         # Inside it, brackets and hash characters are data.
-                        i = 0
-                        while i < len(field):
-                            char = field[i]
-                            if nested_filter_quote == '"' and char == "\\":
-                                i += 2
-                                continue
-                            if char == nested_filter_quote:
-                                if char == "'" and field[i:i + 2] == "''":
-                                    i += 2
-                                    continue
-                                nested_filter_quote = None
-                                field = field[i + 1:]
-                                break
-                            i += 1
-                        else:
+                        end = quoted_scalar_end(field, nested_filter_quote)
+                        if end is None:
                             return False
+                        nested_filter_quote = None
+                        field = field[end:]
                         continue
                     field = field.lstrip(" \t")
                     if not field or field.startswith("#"):
@@ -198,7 +216,10 @@ class NettyFocusErratumTests(unittest.TestCase):
             nested_filter_flow = False
             nested_filter_quote = None
             nested_filter_value_indent = None
+            nested_description_value_indent = None
+            nested_description_quote = None
             nested_scalar_indent = None
+            seen_document_start = seen_document_content = document_ended = False
             filter_keys = {"branches", "branches-ignore", "paths", "paths-ignore",
                            "tags", "tags-ignore", "types", "workflows", "options"}
             in_jobs = False
@@ -207,10 +228,32 @@ class NettyFocusErratumTests(unittest.TestCase):
             for line in source.splitlines():
                 # A comment-looking line inside an open quoted scalar is
                 # text, not a YAML comment. Keep its closing quote visible.
-                if nested_filter_quote is None and (
+                if nested_filter_quote is None and nested_description_quote is None and (
                         not line.strip() or line.lstrip().startswith("#")):
                     continue
                 indent = len(line) - len(line.lstrip(" "))
+                if document_ended:
+                    raise ValueError("content after YAML document end")
+                # Allow one optional standalone start/end indicator only at
+                # the document boundaries, not while a trigger value is open.
+                open_trigger_value = (trigger_layout == "flow" or nested_filter_flow
+                                      or nested_description_quote is not None)
+                # A document indicator at column zero is never scalar data in
+                # an unfinished flow collection (quoted or unquoted).
+                if open_trigger_value and re.match(r"(?:---|\.\.\.)(?:[ \t]|$)", line):
+                    raise ValueError("document marker inside unfinished trigger value")
+                marker = re.fullmatch(r"(---|\.\.\.)(?:[ \t]+(?:#.*)?)?", line)
+                if marker:
+                    if marker[1] == "---":
+                        if seen_document_start or seen_document_content:
+                            raise ValueError("multiple YAML documents")
+                        seen_document_start = True
+                    else:
+                        if not seen_document_content:
+                            raise ValueError("empty YAML document")
+                        document_ended = True
+                    continue
+                seen_document_content = True
                 # Track the collection kind and indentation of an open on:
                 # value. Nested event filters may contain their own lists,
                 # but sibling event mappings and scalar sequence items cannot
@@ -220,18 +263,19 @@ class NettyFocusErratumTests(unittest.TestCase):
                     if trigger_flow_complete(trigger_flow, line.strip().split(" #", 1)[0].strip()):
                         trigger_layout = "complete"
                     continue
+                if in_trigger_block and (nested_filter_quote is not None
+                                         or nested_description_quote is not None) and indent == 0:
+                    # Keep the existing conservative root boundary policy for
+                    # both kinds of open quoted scalar.
+                    document_marker = re.match(r"(?:---|\.\.\.)(?:[ \t]|$)", line)
+                    if (re.match(rf"{nested_key}[ \t]*:", line)
+                            or line.startswith(("? ", "<<:")) or document_marker):
+                        raise ValueError("root mapping inside unfinished quoted scalar")
                 if in_trigger_block and nested_filter_flow:
-                    # Do not swallow a root mapping while waiting for a quote
-                    # to close. Root-looking content at column zero is outside
-                    # this conservative continuation grammar.
-                    if nested_filter_quote is not None and indent == 0:
-                        # Document indicators require a token boundary, not
-                        # merely three matching characters in a path.
-                        document_marker = re.match(r"(?:---|\.\.\.)(?:[ \t]|$)", line)
-                        if (re.match(rf"{nested_key}[ \t]*:", line)
-                                or line.startswith(("? ", "<<:")) or document_marker):
-                            raise ValueError("root mapping inside unfinished quoted filter")
                     nested_filter_flow = not nested_filter_flow_complete(line.strip())
+                    continue
+                if in_trigger_block and nested_description_quote is not None:
+                    consume_description_quote(line.strip())
                     continue
                 if in_trigger_block and nested_scalar_indent is not None:
                     # Indented block-scalar text is not YAML structure, even
@@ -242,6 +286,9 @@ class NettyFocusErratumTests(unittest.TestCase):
                 if (nested_filter_value_indent is not None
                         and indent <= nested_filter_value_indent):
                     nested_filter_value_indent = None
+                if (nested_description_value_indent is not None
+                        and indent <= nested_description_value_indent):
+                    nested_description_value_indent = None
                 if in_trigger_block and line[indent:].startswith("\t"):
                     raise ValueError("tab indentation outside an open flow trigger list")
                 if in_trigger_block and (indent > 0 or root_item):
@@ -275,11 +322,19 @@ class NettyFocusErratumTests(unittest.TestCase):
                         # their immediately following indented value) qualify.
                         value = line.strip()
                         pending = nested_filter_value_indent is not None
-                        nested_filter_value_indent = None
-                        if pending and value.startswith("["):
+                        pending_description = nested_description_value_indent is not None
+                        nested_filter_value_indent = nested_description_value_indent = None
+                        # An input can itself be named description. A quoted
+                        # metadata mapping key on the next line is not the
+                        # scalar value of that input name.
+                        nested = nested_mapping_field(value)
+                        if (pending_description and nested is None
+                                and value.startswith(("'", '"'))):
+                            nested_description_quote = value[0]
+                            consume_description_quote(value[1:])
+                        elif pending and value.startswith("["):
                             nested_filter_flow = not nested_filter_flow_complete(value[1:])
                         else:
-                            nested = nested_mapping_field(value)
                             if nested is not None:
                                 key, value = nested
                                 header = re.split(r"[ \t]+#", value, maxsplit=1)[0].strip()
@@ -287,6 +342,12 @@ class NettyFocusErratumTests(unittest.TestCase):
                                     header = ""
                                 if re.fullmatch(r"[|>](?:[1-9][+-]?|[+-][1-9]?)?", header):
                                     nested_scalar_indent = indent
+                                elif key == "description":
+                                    if value.startswith(("'", '"')):
+                                        nested_description_quote = value[0]
+                                        consume_description_quote(value[1:])
+                                    elif not header:
+                                        nested_description_value_indent = indent
                                 elif key in filter_keys:
                                     if value.startswith("["):
                                         nested_filter_flow = not nested_filter_flow_complete(value[1:])
@@ -307,6 +368,7 @@ class NettyFocusErratumTests(unittest.TestCase):
                     nested_filter_flow = False
                     nested_filter_quote = None
                     nested_filter_value_indent = nested_scalar_indent = None
+                    nested_description_value_indent = nested_description_quote = None
                     if key == "on" and value.startswith("["):
                         in_trigger_block = True
                         trigger_layout = ("complete" if trigger_flow_complete(trigger_flow, value)
@@ -383,8 +445,8 @@ class NettyFocusErratumTests(unittest.TestCase):
                     if key in current:
                         current["duplicate"] = True
                     current[key] = value
-            if trigger_layout == "flow" or nested_filter_flow:
-                raise ValueError("unterminated flow trigger or filter list")
+            if trigger_layout == "flow" or nested_filter_flow or nested_description_quote is not None:
+                raise ValueError("unterminated trigger list or quoted description")
             return steps
 
         def all_native_checks_isolated(source: str) -> bool:
@@ -776,6 +838,118 @@ class NettyFocusErratumTests(unittest.TestCase):
             for source in (triggers + good, good + triggers):
                 with self.subTest(document_marker=marker):
                     self.assertFalse(all_native_checks_isolated(source))
+        # Quoted dispatch descriptions are text, even when a continuation
+        # resembles a filter key. A genuine options list after the closing
+        # quote still has its own flow continuation boundary.
+        for key in ("description", r'"\u0064escription"'):
+            for description in (
+                    ' "Choose a color\n          options: [blue, green]"\n',
+                    " 'Choose a color\n          options: [blue, green] and it''s fine'\n",
+                    '\n          "Choose a color\n          options: [blue, green]"\n',
+                    ' "Choose a color\\\n          # options: [blue, green]"\n',
+                    ' "Choose a color\n          options: [blue, green]\\" now" # comment\n'):
+                triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      color:\n        "
+                            + key + ":" + description
+                            + "        type: choice\n        options: [blue,\n          \tgreen]\n")
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(quoted_description=description, key=key):
+                        self.assertTrue(all_native_checks_isolated(source))
+                        for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                         r'"\u0064efaults": {}' + "\n"):
+                            self.assertFalse(all_native_checks_isolated(source + defaults))
+        for description in (
+                ' "Choose a color\n          options: [blue, green]\n',
+                ' "Choose a color\n          options: [blue, green]" trailing\n',
+                ' "Choose a color\ndefaults: {}\n          stable"\n',
+                ' "Choose a color\n---\n          stable"\n'):
+            triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      color:\n"
+                        "        description:" + description)
+            for source in (triggers + good, good + triggers):
+                self.assertFalse(all_native_checks_isolated(source))
+
+        # One optional standalone start/end marker does not affect a single
+        # workflow mapping. Never accept a second document or trailing data.
+        for start in ("", "---\n", "# leading comment\n--- # start\n"):
+            for end in ("", "...\n", "... \t# end\n# trailing comment\n"):
+                source = start + good + end
+                with self.subTest(document_start=start, document_end=end):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    self.assertFalse(all_native_checks_isolated(
+                        start + "defaults: {run: {shell: pwsh}}\n" + good + end))
+                    self.assertFalse(all_native_checks_isolated(
+                        start + good + r'"\u0064efaults": {}' + "\n" + end))
+        for source in ("---\n---\n" + good, good + "---\n", good + "...\n...\n",
+                       good + "...\n---\n" + good, good + "...\ndefaults: {}\n",
+                       good + "...\n" + r'"\u0064efaults": {}' + "\n",
+                       "...\n" + good, "---\n...\n" + good,
+                       "on: [push,\n---\n" + good, "on: [push,\n...\n" + good):
+            self.assertFalse(all_native_checks_isolated(source))
+        # A real document indicator cannot be consumed as an unquoted flow
+        # token. Prefix-like paths and indented marker text remain data.
+        for key in ("branches", r'"\u0062ranches"', "paths"):
+            for marker in ("---", "...", "--- # start", "... # end",
+                           "---\t# start", "...\t# end", "--- stable", "... hidden"):
+                triggers = ("on:\n  push:\n    " + key + ": [main,\n"
+                            + marker + "\n      , release/**]\n")
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(open_filter_marker=marker, key=key):
+                        self.assertFalse(all_native_checks_isolated(source))
+            for token in ("---stable", "...hidden", "      ---", "      ..."):
+                triggers = ("on:\n  push:\n    " + key + ": [main,\n"
+                            + token + "\n      , release/**]\n")
+                for source in (triggers + good, good + triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+        for marker in ("---", "...", "--- # start", "... # end"):
+            triggers = "on: [push,\n" + marker + "\n, pull_request]\n"
+            for source in (triggers + good, good + triggers):
+                self.assertFalse(all_native_checks_isolated(source))
+
+        # The name of a dispatch input is not a metadata field. In
+        # particular an input named description may have quoted child keys.
+        for input_key in ("description", "'description'", r'"\u0064escription"'):
+            for metadata_key in ('"description"', "'description'", r'"\u0064escription"'):
+                triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      "
+                            + input_key + ":\n        " + metadata_key
+                            + ': "Choose a color\n          options: [blue, green]"\n'
+                            + '        "type": choice\n        "options": [blue,\n'
+                            + "          \tgreen]\n")
+                for source in (triggers + good, good + triggers):
+                    with self.subTest(input_name=input_key, metadata=metadata_key):
+                        self.assertTrue(all_native_checks_isolated(source))
+                        for defaults in ("defaults: {run: {shell: pwsh}}\n",
+                                         r'"\u0064efaults": {}' + "\n"):
+                            self.assertFalse(all_native_checks_isolated(source + defaults))
+            for metadata in ('"type": string', "'required': true",
+                             r'"\u0074ype": string'):
+                triggers = ("on:\n  workflow_dispatch:\n    inputs:\n      "
+                            + input_key + ":\n        " + metadata + "\n")
+                for source in (triggers + good, good + triggers):
+                    self.assertTrue(all_native_checks_isolated(source))
+        # A separately indented quoted description must still reject
+        # arbitrary trailing text, not silently become a mapping.
+        triggers = ('on:\n  workflow_dispatch:\n    inputs:\n      color:\n'
+                    '        description:\n          "Choose a color" trailing\n')
+        for source in (triggers + good, good + triggers):
+            self.assertFalse(all_native_checks_isolated(source))
+        # A separately wrapped quoted description is not a block mapping
+        # when the colon is immediately followed by non-separation content.
+        for key in ("description", "'description'", r'"\u0064escription"'):
+            prefix = ("on:\n  workflow_dispatch:\n    inputs:\n      color:\n        "
+                      + key + ":\n          ")
+            for scalar in ('"Choose":trailing', "'Choose':trailing",
+                           r'"\u0043hoose":trailing', '"Choose":[blue, green]',
+                           '"Choose":#comment', '"Choose":"trailing"'):
+                for source in (prefix + scalar + "\n" + good,
+                               good + prefix + scalar + "\n"):
+                    with self.subTest(malformed_description=scalar, key=key):
+                        self.assertFalse(all_native_checks_isolated(source))
+            for scalar in ('"Choose:trailing"', "'Choose:trailing'",
+                           '"Choose: trailing" # comment', '"Choose:#comment"'):
+                for source in (prefix + scalar + "\n" + good,
+                               good + prefix + scalar + "\n"):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    self.assertFalse(all_native_checks_isolated(
+                        source + r'"\u0064efaults": {}' + "\n"))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
         self.assertTrue(all_native_checks_isolated(
