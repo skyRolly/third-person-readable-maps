@@ -1,0 +1,37 @@
+{
+  "schema": "issue45-spdy-pipeline-control-archive/v1",
+  "checkout": "f21a88af720cf4d43890158a0f098ac3ffb1f691",
+  "source_sha256": {
+    "diagnostics/issue45-spdy-class-probe/SpdyClassProbe.java": "1f0c602a0a2e7bd6840b816e5838410cba1fd8ebb1cea17a718faf02b0fd3d52",
+    "diagnostics/issue45-spdy-class-probe/probe.py": "feedf94a4c013910e642d1112caff56ab9729c8a2b7589000d7374a84a29c601",
+    "diagnostics/issue45-spdy-pipeline-probe/SpdyPipelineProbe.java": "857473850a5080111bac5f25deb4d0377afd298ccaf9f3572648e0f8581f61df",
+    "diagnostics/issue45-spdy-pipeline-probe/pipeline_probe.py": "94cbcc2371a03d8ea26f881010a4f7917607699e8ec010acc6ad7ee3ffadeb56"
+  },
+  "workflow": {
+    "run_id": 45674664714,
+    "run_attempt": 1,
+    "job_id": 139418879421,
+    "artifact_id": 15051112080,
+    "event": "pull_request",
+    "pr": 89,
+    "conclusion": "success"
+  },
+  "archive": {
+    "path": "issue45-spdy-pipeline-control-45674664714-1.zip",
+    "size_bytes": 2330,
+    "git_blob": "cc36d0f5ac75db96df766b0da13f57f55b295d62",
+    "sha256": "f8953a814f1ec8f57c252387ef7dbfa9a4ab599fabb28ec72138bd55ffafb344",
+    "json_member": "issue45-spdy-pipeline-control-45674664714-1.json",
+    "json_size_bytes": 5949,
+    "json_sha256": "9d1a32cd6dd10af579afe7830bf0df2fc43516d0a65e2d390a82d54010d4b5e4"
+  },
+  "observations": 3,
+  "library_count": 23,
+  "scope": "synthetic_embedded_channel_handler_identity_only",
+  "synthetic_pipeline_observed": true,
+  "minecraft_pipeline_observed": false,
+  "frames_sent": false,
+  "runtime_reachability": "not_established",
+  "risk_accepted": false,
+  "release_blocking": true
+}

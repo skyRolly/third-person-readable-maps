@@ -6,6 +6,7 @@ on:
     paths:
       - 'diagnostics/issue45-spdy-class-probe/**'
       - 'diagnostics/issue45-spdy-pipeline-probe/**'
+      - 'docs/dependency-evidence/issue45-spdy-pipeline-control-2026-11-25/**'
       - 'docs/dependency-evidence/issue45-spdy-class-control-2026-11-25/**'
       - 'docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/**'
       - '.github/workflows/issue45-spdy-pipeline-probe.yml'
@@ -15,6 +16,7 @@ on:
     paths:
       - 'diagnostics/issue45-spdy-class-probe/**'
       - 'diagnostics/issue45-spdy-pipeline-probe/**'
+      - 'docs/dependency-evidence/issue45-spdy-pipeline-control-2026-11-25/**'
       - 'docs/dependency-evidence/issue45-spdy-class-control-2026-11-25/**'
       - 'docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/**'
       - '.github/workflows/issue45-spdy-pipeline-probe.yml'
@@ -42,6 +44,10 @@ jobs:
         run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E diagnostics/issue45-spdy-class-probe/verify_archive.py
       - name: Exercise offline archive integrity regressions
         run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E -m unittest discover -s diagnostics/issue45-spdy-class-probe -p test_verify_archive.py -v
+      - name: Verify immutable historical SPDY pipeline archive
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E diagnostics/issue45-spdy-pipeline-probe/verify_pipeline_archive.py
+      - name: Exercise offline pipeline archive regressions
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E -m unittest discover -s diagnostics/issue45-spdy-pipeline-probe -p test_verify_pipeline_archive.py -v
       - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
