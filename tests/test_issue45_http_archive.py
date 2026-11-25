@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -7,6 +8,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE_DIR = ROOT / "docs/dependency-evidence/issue45-official-http-observation-2026-11-25"
@@ -27,8 +29,19 @@ class HttpArchiveTests(unittest.TestCase):
 
     def verify(self, optimized):
         flags = ["-O"] if optimized else []
-        return subprocess.run([sys.executable, *flags, "-c", self.code], cwd=self.directory,
+        return subprocess.run([sys.executable, "-E", *flags, "-c", self.code], cwd=self.directory,
                               capture_output=True, text=True, check=False)
+
+    def test_modes_ignore_inherited_python_optimize(self):
+        # Probe the actual interpreter mode using the same subprocess helper.
+        with patch.object(self, "code", "import sys; print(sys.flags.optimize)"):
+            for inherited in ("1", "2"):
+                with patch.dict(os.environ, {"PYTHONOPTIMIZE": inherited}):
+                    for optimized in (False, True):
+                        with self.subTest(inherited=inherited, optimized=optimized):
+                            result = self.verify(optimized)
+                            self.assertEqual(result.returncode, 0, result.stderr)
+                            self.assertEqual(result.stdout.strip(), str(int(optimized)))
 
     def test_original_archive_passes_with_or_without_optimization(self):
         for optimized in (False, True):
