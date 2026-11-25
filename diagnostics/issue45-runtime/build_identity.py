@@ -20,14 +20,22 @@ PROFILE_IDS = ("mc-1.19-netty-4.1.77", "mc-26.2-netty-4.2.15",
 HEX = re.compile(r"[0-9a-f]{64}\Z")
 
 
+class IdentityValidationError(ValueError):
+    """A validation failure whose message is composed only of trusted labels."""
+
+
 def require(condition, message):
     if not condition:
-        raise ValueError(message)
+        raise IdentityValidationError(message)
 
 
 def digest(path):
+    # Keep compatibility with the documented Python 3.10 minimum.
+    sha = hashlib.sha256()
     with path.open("rb") as stream:
-        return hashlib.file_digest(stream, "sha256").hexdigest()
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            sha.update(block)
+    return sha.hexdigest()
 
 
 def canonical_digest(value):
@@ -158,12 +166,14 @@ def validate_archive(value):
 
 def compare(root, checkout, run, attempt):
     expected_dirs = {f"issue45-build-{run}-{attempt}-{system}" for system in SYSTEMS}
-    require({p.name for p in root.iterdir()} == expected_dirs, "missing or unexpected OS reports")
+    require(root.is_dir() and {p.name for p in root.iterdir()} == expected_dirs,
+            "missing or unexpected OS reports")
     reports = {}
     for system in SYSTEMS:
         folder = root / f"issue45-build-{run}-{attempt}-{system}"
-        require({p.name for p in folder.iterdir()} == {f"identity-j{m}.json" for m in MAJORS},
-                "missing or unexpected Java reports")
+        require(folder.is_dir() and
+                {p.name for p in folder.iterdir()} == {f"identity-j{m}.json" for m in MAJORS},
+                f"missing or unexpected Java reports: {system}")
         for major in MAJORS:
             value = strict_json(folder / f"identity-j{major}.json")
             require(isinstance(value, dict) and set(value) == {"schema", "checkout", "run", "attempt",
@@ -193,7 +203,8 @@ def compare(root, checkout, run, attempt):
             reports[system, major] = value
     baseline = reports["ubuntu-latest", 21]
     for (system, major), value in reports.items():
-        require(value["java_runtime"] == reports["ubuntu-latest", major]["java_runtime"], "Java runtime mismatch")
+        require(value["java_runtime"] == reports["ubuntu-latest", major]["java_runtime"],
+                f"compiled build mismatch: {system} Java {major} java_runtime")
         for field in ("python_version", "inputs", "agent", "profiles"):
             require(value[field] == baseline[field], f"compiled build mismatch: {system} Java {major} {field}")
     return baseline["agent"]["jar_sha256"], {name: value["archive"]["jar_sha256"]
@@ -224,9 +235,16 @@ def main():
     return 0
 
 
-if __name__ == "__main__":
+def cli():
     try:
-        raise SystemExit(main())
+        return main()
+    except IdentityValidationError as error:
+        # Only require() messages use fixed, repository-controlled labels.
+        # Never render exception details from parsers, subprocesses or I/O.
+        raise SystemExit(f"compiled build identity: {error}") from None
     except (ValueError, OSError, KeyError, TypeError, zipfile.BadZipFile, subprocess.CalledProcessError):
-        # Do not echo untrusted report strings, local paths or JVM output.
-        raise SystemExit("compiled build identity collection or comparison failed")
+        raise SystemExit("compiled build identity collection or comparison failed") from None
+
+
+if __name__ == "__main__":
+    raise SystemExit(cli())

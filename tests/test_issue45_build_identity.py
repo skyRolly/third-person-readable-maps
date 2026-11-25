@@ -1,9 +1,13 @@
+import hashlib
 import importlib.util
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 GATE_PATH = Path(__file__).resolve().parents[1] / "diagnostics/issue45-runtime/build_identity.py"
 spec = importlib.util.spec_from_file_location("issue45_build_identity", GATE_PATH)
@@ -73,6 +77,65 @@ class BuildIdentityTests(unittest.TestCase):
         (self.root / "unexpected").mkdir()
         with self.assertRaises(ValueError):
             self.check()
+
+    def test_digest_without_python311_api(self):
+        path = self.root / "large.bin"
+        data = b"abc" * (1024 * 1024) + b"last block"
+        path.write_bytes(data)
+        # Simulate the unavailable API even on newer CI interpreters.
+        with patch.object(hashlib, "file_digest", create=True,
+                          side_effect=AssertionError("Python 3.11 API used")):
+            self.assertEqual(hashlib.sha256(data).hexdigest(), gate.digest(path))
+            path.write_bytes(b"")
+            self.assertEqual(hashlib.sha256(b"").hexdigest(), gate.digest(path))
+
+    def cli_failure(self, root=None):
+        with patch.object(sys, "argv", ["build_identity.py", "compare", "--reports",
+                                      str(root if root is not None else self.root)]), \
+                patch.object(gate, "context", return_value=(self.checkout, self.run, self.attempt)):
+            with self.assertRaises(SystemExit) as raised:
+                gate.cli()
+        self.assertIsInstance(raised.exception.code, str)
+        return raised.exception.code
+
+    def test_cli_distinguishes_safe_validation_failures(self):
+        original = json.loads(self.target.read_text(encoding="utf-8"))
+        for field in ("python_version", "inputs", "agent", "profiles", "java_runtime"):
+            value = json.loads(json.dumps(original))
+            if field == "python_version":
+                value[field] = "3.15.3"
+            elif field == "java_runtime":
+                value[field] = "25.0.2+1"
+            elif field == "inputs":
+                value[field]["compiler"] = "6" * 64
+            elif field == "agent":
+                value[field]["jar_sha256"] = "7" * 64
+            else:
+                value[field][gate.PROFILE_IDS[0]]["archive"]["jar_sha256"] = "8" * 64
+            self.target.write_text(json.dumps(value), encoding="utf-8")
+            with self.subTest(field=field):
+                self.assertEqual(f"compiled build identity: compiled build mismatch: windows-latest Java 25 {field}",
+                                 self.cli_failure())
+        self.target.unlink()
+        self.assertEqual("compiled build identity: missing or unexpected Java reports: windows-latest",
+                         self.cli_failure())
+        self.assertEqual("compiled build identity: missing or unexpected OS reports",
+                         self.cli_failure(self.root / "absent"))
+
+    def test_cli_never_echoes_untrusted_error_details(self):
+        secret = "synthetic-secret-do-not-echo"
+        expected = "compiled build identity collection or comparison failed"
+        # The JSON decoder itself can include untrusted property text.
+        self.target.write_text('{"' + secret + '":', encoding="utf-8")
+        self.assertEqual(expected, self.cli_failure())
+        for error in (ValueError(secret), OSError(secret), KeyError(secret),
+                      zipfile.BadZipFile(secret), subprocess.CalledProcessError(1, [secret])):
+            with self.subTest(error=type(error).__name__):
+                with patch.object(gate, "compare", side_effect=error):
+                    self.assertEqual(expected, self.cli_failure())
+        value = {"untrusted": secret}
+        self.target.write_text(json.dumps(value), encoding="utf-8")
+        self.assertEqual("compiled build identity: invalid report fields", self.cli_failure())
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"
