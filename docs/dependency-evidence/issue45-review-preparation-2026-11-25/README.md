@@ -16,8 +16,14 @@ matched. All are failing in both Gradle and Minecraft 1.19.3 scopes. The
 normalized review worklist preserves these observations and proposed review
 topics; the five uploaded original files and two hosted ZIPs are **not**
 embedded here, only their digests and provenance. CI checks the proposal's
-structure and scope, not the authenticity or availability of those external
-inputs. Retain the original inputs separately for a subsequent reviewed archive.
+structure and scope and compares all 24 exact package/version, advisory,
+severity, fingerprint, scope and blocking-status identities against the
+retained November 21 v2 finding index (candidate 1.19.3, exact source).
+The historical index's Git blob is pinned and calculated offline from
+the working-tree bytes; no Git history is needed. This verifies consistency
+with retained repository evidence, not the authenticity or availability
+of those external inputs or a fresh audit. Repository-reviewed pins are
+not an independent trust root. Retain the original inputs separately for a subsequent reviewed archive.
 
 The local scan used a retained same-candidate snapshot from November 21;
 the hosted snapshot is a different dated observation. Neither is a fresh
