@@ -138,7 +138,6 @@ class BuildIdentityTests(unittest.TestCase):
         self.target.write_text(json.dumps(value), encoding="utf-8")
         self.assertEqual("compiled build identity: invalid report fields", self.cli_failure())
 
-
     def test_workflow_preserves_matrix_evidence_on_compatibility_failure(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
             encoding="utf-8")
@@ -168,7 +167,7 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertNotIn("continue-on-error:", workflow)
         self.assert_workflow_artifact_paths(workflow)
 
-def assert_workflow_artifact_paths(self, workflow):
+    def assert_workflow_artifact_paths(self, workflow):
         guard = workflow.split("  compare-builds:\n", 1)[0]
         attempt = "${{ github.run_id }}-${{ github.run_attempt }}"
         canonical_dir = "${{ runner.temp }}/issue45-compiled-identity-" + attempt
@@ -227,22 +226,15 @@ def assert_workflow_artifact_paths(self, workflow):
              "canonical upload must use only"),
             ("wrong Java 21 output", canonical + "/identity-j21.json",
              smoke + "/identity-j21.json", 1, "canonical collection output must match"),
-            ("wrong parity input", '"' + smoke + '/identity-j25.json"',
-             '"' + canonical + '/identity-j25.json"', 1, "parity must compare"),
+            ("wrong parity input", f'"{canonical}/identity-j25.json" "{smoke}/identity-j25.json"',
+             f'"{canonical}/identity-j25.json" "{canonical}/identity-j25.json"', 1,
+             "parity must compare"),
         )
         self.assert_workflow_artifact_paths(workflow)
         for name, before, after, count, message in mutations:
             with self.subTest(mutation=name):
-                self.assertIn(before, workflow)
-                # Change only the last occurrence for the parity-input case;
-                # leave the collector output intact.
-                if name == "wrong parity input":
-                    head, sep, tail = workflow.rpartition(before)
-                    self.assertTrue(sep)
-                    changed = head + after + tail
-                else:
-                    self.assertEqual(workflow.count(before), count)
-                    changed = workflow.replace(before, after)
+                self.assertEqual(workflow.count(before), count)
+                changed = workflow.replace(before, after)
                 with self.assertRaisesRegex(AssertionError, message):
                     self.assert_workflow_artifact_paths(changed)
 
