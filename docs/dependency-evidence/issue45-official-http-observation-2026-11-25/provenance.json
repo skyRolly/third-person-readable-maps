@@ -1,0 +1,40 @@
+{
+  "schema": "issue45-official-http-observation-archive/v1",
+  "advisory": "GHSA-6jqx-86gh-f27w",
+  "checkout": "d0b9cd96606085406124057ad1116459f61803a1",
+  "source_pr": 85,
+  "source_pr_head": "e538cbb6fac0d45299b9b1161bad5a9435f70841",
+  "source_sha256": {
+    "diagnostics/issue45-runtime/verify_http_artifacts.py": "4fb826af8fead27f8d1de748eb991e8e0cede1bbddf60584d6874227c07b030b",
+    "diagnostics/issue45-runtime/verify_official_http_artifacts.py": "b182a9e854776fdce8e37138011adfc7bf3796a67fc4b1da62b8db588edbb6bb"
+  },
+  "workflow": {
+    "run_id": 45637879501,
+    "run_attempt": 1,
+    "job_id": 139288123384,
+    "artifact_id": 15034126747,
+    "event": "push",
+    "branch": "main",
+    "observed_at_utc": "2026-11-25T14:47:30.1058241Z",
+    "conclusion": "success",
+    "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/45637879501/job/139288123384",
+    "artifact_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/45637879501/artifacts/15034126747"
+  },
+  "archive": {
+    "path": "issue45-http-observation-45637879501-1.zip",
+    "size_bytes": 7652,
+    "git_blob": "aa9c4732440a6e6ac6f456a5842064eb663bcb7c",
+    "sha256": "79770725d41199e83844d670cdf19cba28179e36a823b001d78d1f2808509c65",
+    "json_member": "issue45-http-observation-45637879501-1.json",
+    "json_size_bytes": 30978,
+    "json_sha256": "5c07024142dfe70c39fbc4dfcd24d8200ef7c15c76fc29ed1ac43726f95b2778",
+    "verification": "downloaded original archive; SHA-256 matches GitHub API; one JSON member; ZIP CRC and JSON SHA-256 checked against actual CI log"
+  },
+  "artifact_count": 3,
+  "occurrence_count": 4,
+  "manifest_scope_count": 7,
+  "scope": "static_artifact_identity_and_class_inventory_only",
+  "runtime_reachability": "not_established",
+  "risk_accepted": false,
+  "release_blocking": true
+}
