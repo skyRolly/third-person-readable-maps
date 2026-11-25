@@ -1,0 +1,35 @@
+# Issue #45 HTTP codec artifact verification
+
+This opt-in, offline verifier covers the four retained GHSA-6jqx-86gh-f27w
+occurrences (seven game manifests, three distinct Netty HTTP codec JARs).
+It is separate from the existing synthetic compression matrix, which does
+not include the HTTP codec. No classes are loaded or executed. No network
+connections or game processes are initiated by the verifier.
+
+Use an authorized existing Minecraft library cache (or fetch the three
+official JARs separately using their manifest URLs and preserve the relative
+Maven paths). The verifier checks the retained manifest SHA-256, game ID,
+exact dependency coordinate, official URL/path, size and SHA-1, then records
+the observed artifact SHA-256 and bounded SPDY class-member digests. It
+rejects missing or conflicting identities, duplicate ZIP members and missing
+or invalid class headers. Class inventory is not bytecode verification.
+
+Run from the repository checkout, with an output path that does not exist
+and is outside the retained historical evidence directory:
+
+```sh
+python diagnostics/issue45-runtime/verify_http_artifacts.py --libraries-root /path/to/libraries --output /path/to/new-http-observation.json
+python -m unittest discover -s tests -p test_issue45_http_artifacts.py -v
+```
+
+The operator must retain the exact verifier checkout identity and report
+SHA-256 when archiving a new observation. The output is only static artifact
+identity and class-inventory evidence; neither presence nor absence of a
+class establishes actual game runtime reachability. All four occurrences
+remain blocking. No risk acceptance, release or managed-library override is
+authorized. Actual class-loader/code-source and pipeline observations still
+require separately reviewed diagnostics and authorized real game runs.
+
+Do not overwrite historical evidence or upload the raw dependency JARs,
+absolute host paths or account information. No malformed frames or traffic
+are needed for this static verification.
