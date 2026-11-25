@@ -273,41 +273,62 @@ class BuildIdentityTests(unittest.TestCase):
             ("Collect real Java 25 compiled build identity on Python 3.10", f"{smoke}/identity-j25.json",
              f"{canonical}/identity-j25.json"),
         )
-        self.assert_workflow_artifact_paths(workflow)
-        for name, expected, wrong in cases:
+
+        def with_output(source, name, expected, replacement):
             label = f"      - name: {name}\n"
-            self.assertEqual(workflow.count(label), 1)
-            before, block = workflow.split(label, 1)
+            self.assertEqual(source.count(label), 1)
+            before, block = source.split(label, 1)
             step, separator, after = block.partition("\n      - ")
             self.assertTrue(separator)
-            original = f'--output "{expected}"'
-            self.assertEqual(step.count(original), 1)
+            lines = step.split("\n")
+            run_prefix = "        run: "
+            indices = [i for i, line in enumerate(lines) if line.startswith(run_prefix)]
+            self.assertEqual(len(indices), 1, name)
+            line = indices[0]
+            args = shlex.split(lines[line][len(run_prefix):])
+            outputs = [i for i, arg in enumerate(args)
+                       if arg == "--output" or arg.startswith("--output=")]
+            self.assertEqual(len(outputs), 1, name)
+            index = outputs[0]
+            if args[index] == "--output":
+                self.assertLess(index + 1, len(args), name)
+                self.assertEqual(args[index + 1], expected, name)
+                end = index + 2
+            else:
+                self.assertEqual(args[index], f"--output={expected}", name)
+                end = index + 1
+            # Serialize only the in-memory fixture; never execute this shell text.
+            lines[line] = run_prefix + shlex.join(args[:index] + replacement + args[end:])
+            return before + label + "\n".join(lines) + separator + after
 
-            def changed(replacement):
-                return before + label + step.replace(original, replacement) + separator + after
+        self.assert_workflow_artifact_paths(workflow)
+        for name, expected, wrong in cases:
+            split = ["--output", expected]
+            equals = [f"--output={expected}"]
+            for spelling, original in (("split", split), ("equals", equals)):
+                baseline = with_output(workflow, name, expected, original)
+                with self.subTest(step=name, spelling=spelling, form="valid baseline"):
+                    self.assert_workflow_artifact_paths(baseline)
 
-            # A single full equals-form option is equivalent to the split form.
-            with self.subTest(step=name, form="single equals"):
-                self.assert_workflow_artifact_paths(changed(f'--output="{expected}"'))
-
-            mutations = (
-                ("trailing equals", f'{original} --output="{wrong}"', "duplicate collector option"),
-                ("leading equals", f'--output="{wrong}" {original}', "duplicate collector option"),
-                ("two equals", f'--output="{expected}" --output="{wrong}"', "duplicate collector option"),
-                ("two split", f'{original} --output "{wrong}"', "duplicate collector option"),
-                ("same path twice", f'{original} --output="{expected}"', "duplicate collector option"),
-                ("abbreviated equals", f'{original} --out="{wrong}"', "unexpected collector option"),
-                ("abbreviated split", f'{original} --out "{wrong}"', "unexpected collector option"),
-                ("abbreviated alone", f'--out="{expected}"', "unexpected collector option"),
-                ("missing value", "--output", "missing collector value"),
-                ("empty equals", "--output=", "missing collector value"),
-                ("missing option", "", "missing collector option"),
-                ("extra token", f'{original} unexpected', "unexpected collector option"),
-            )
-            for form, replacement, message in mutations:
-                with self.subTest(step=name, form=form):
-                    with self.assertRaisesRegex(AssertionError, message):
-                        self.assert_workflow_artifact_paths(changed(replacement))
+                mutations = (
+                    ("trailing equals", original + [f"--output={wrong}"], "duplicate collector option"),
+                    ("leading equals", [f"--output={wrong}"] + original, "duplicate collector option"),
+                    ("two equals", equals + [f"--output={wrong}"], "duplicate collector option"),
+                    ("two split", split + ["--output", wrong], "duplicate collector option"),
+                    ("same path twice", original + equals, "duplicate collector option"),
+                    ("abbreviated equals", original + [f"--out={wrong}"], "unexpected collector option"),
+                    ("abbreviated split", original + ["--out", wrong], "unexpected collector option"),
+                    ("abbreviated alone", [f"--out={expected}"], "unexpected collector option"),
+                    ("missing value", ["--output"], "missing collector value"),
+                    ("empty equals", ["--output="], "missing collector value"),
+                    ("missing option", [], "missing collector option"),
+                    ("extra token", original + ["unexpected"], "unexpected collector option"),
+                )
+                for form, replacement, message in mutations:
+                    with self.subTest(step=name, spelling=spelling, form=form):
+                        changed = with_output(baseline, name, expected, replacement)
+                        with self.assertRaisesRegex(AssertionError, message):
+                            self.assert_workflow_artifact_paths(changed)
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"
