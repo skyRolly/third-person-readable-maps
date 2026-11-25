@@ -186,10 +186,31 @@ class BuildIdentityTests(unittest.TestCase):
         def output(name):
             args = shlex.split(field(name, "run", 8))
             self.assertEqual(args[:3], ["python", "diagnostics/issue45-runtime/build_identity.py", "collect"])
-            self.assertEqual(args.count("--output"), 1, name)
-            index = args.index("--output")
-            self.assertLess(index + 1, len(args), name)
-            return args[index + 1]
+            # argparse accepts both --option value and --option=value, and
+            # normally allows abbreviations and repeated options (last wins).
+            # For this workflow require exactly one of each full option name.
+            allowed = {"--work-dir", "--java-major", "--os", "--output"}
+            values = {}
+            index = 3
+            while index < len(args):
+                option, equals, value = args[index].partition("=")
+                self.assertIn(option, allowed, "unexpected collector option")
+                self.assertNotIn(option, values, f"duplicate collector option: {option}")
+                index += 1
+                if not equals:
+                    self.assertLess(index, len(args), f"missing collector value: {option}")
+                    value = args[index]
+                    index += 1
+                self.assertTrue(value and not value.startswith("-"),
+                                f"missing collector value: {option}")
+                values[option] = value
+            self.assertEqual(set(values), allowed, "missing collector option")
+            major = 21 if name == "Collect Java 21 compiled build identity" else 25
+            work = "issue45-agent-j21" if major == 21 else "issue45-agent-café-j25"
+            self.assertEqual(values["--work-dir"], "${{ runner.temp }}/" + work)
+            self.assertEqual(values["--java-major"], str(major))
+            self.assertEqual(values["--os"], "${{ matrix.os }}")
+            return values["--output"]
 
         upload = field("Upload compiled build identities only", "path", 10)
         self.assertEqual(upload, canonical_dir, "canonical upload must use only its attempt directory")
@@ -237,6 +258,56 @@ class BuildIdentityTests(unittest.TestCase):
                 changed = workflow.replace(before, after)
                 with self.assertRaisesRegex(AssertionError, message):
                     self.assert_workflow_artifact_paths(changed)
+
+    def test_workflow_rejects_collector_output_overrides(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        attempt = "${{ github.run_id }}-${{ github.run_attempt }}"
+        canonical = "${{ runner.temp }}/issue45-compiled-identity-" + attempt
+        smoke = "${{ runner.temp }}/issue45-compiled-identity-smoke-" + attempt
+        cases = (
+            ("Collect Java 21 compiled build identity", f"{canonical}/identity-j21.json",
+             f"{smoke}/identity-j21.json"),
+            ("Collect Java 25 compiled build identity", f"{canonical}/identity-j25.json",
+             f"{smoke}/identity-j25.json"),
+            ("Collect real Java 25 compiled build identity on Python 3.10", f"{smoke}/identity-j25.json",
+             f"{canonical}/identity-j25.json"),
+        )
+        self.assert_workflow_artifact_paths(workflow)
+        for name, expected, wrong in cases:
+            label = f"      - name: {name}\n"
+            self.assertEqual(workflow.count(label), 1)
+            before, block = workflow.split(label, 1)
+            step, separator, after = block.partition("\n      - ")
+            self.assertTrue(separator)
+            original = f'--output "{expected}"'
+            self.assertEqual(step.count(original), 1)
+
+            def changed(replacement):
+                return before + label + step.replace(original, replacement) + separator + after
+
+            # A single full equals-form option is equivalent to the split form.
+            with self.subTest(step=name, form="single equals"):
+                self.assert_workflow_artifact_paths(changed(f'--output="{expected}"'))
+
+            mutations = (
+                ("trailing equals", f'{original} --output="{wrong}"', "duplicate collector option"),
+                ("leading equals", f'--output="{wrong}" {original}', "duplicate collector option"),
+                ("two equals", f'--output="{expected}" --output="{wrong}"', "duplicate collector option"),
+                ("two split", f'{original} --output "{wrong}"', "duplicate collector option"),
+                ("same path twice", f'{original} --output="{expected}"', "duplicate collector option"),
+                ("abbreviated equals", f'{original} --out="{wrong}"', "unexpected collector option"),
+                ("abbreviated split", f'{original} --out "{wrong}"', "unexpected collector option"),
+                ("abbreviated alone", f'--out="{expected}"', "unexpected collector option"),
+                ("missing value", "--output", "missing collector value"),
+                ("empty equals", "--output=", "missing collector value"),
+                ("missing option", "", "missing collector option"),
+                ("extra token", f'{original} unexpected', "unexpected collector option"),
+            )
+            for form, replacement, message in mutations:
+                with self.subTest(step=name, form=form):
+                    with self.assertRaisesRegex(AssertionError, message):
+                        self.assert_workflow_artifact_paths(changed(replacement))
 
     def test_actual_archive_bytes_and_order(self):
         path = self.root / "control.jar"
