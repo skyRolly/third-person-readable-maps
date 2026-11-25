@@ -1,0 +1,57 @@
+name: Issue 45 isolated SPDY class observation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'diagnostics/issue45-spdy-class-probe/**'
+      - 'docs/dependency-evidence/issue45-spdy-class-control-2026-11-25/**'
+      - 'docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/**'
+      - '.github/workflows/issue45-spdy-class-probe.yml'
+      - 'scripts/run_pinned_python.py'
+  push:
+    branches: [main]
+    paths:
+      - 'diagnostics/issue45-spdy-class-probe/**'
+      - 'docs/dependency-evidence/issue45-spdy-class-control-2026-11-25/**'
+      - 'docs/dependency-evidence/issue45-netty-lz4-high-2026-11-23/minecraft-version-manifests/**'
+      - '.github/workflows/issue45-spdy-class-probe.yml'
+      - 'scripts/run_pinned_python.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  spdy-class-control:
+    name: Isolated SPDY class controls (no frame traffic)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        id: python
+        with:
+          python-version: '3.15.2'
+      - name: Verify immutable historical SPDY archive
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E diagnostics/issue45-spdy-class-probe/verify_archive.py
+      - name: Exercise offline archive integrity regressions
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E -m unittest discover -s diagnostics/issue45-spdy-class-probe -p test_verify_archive.py -v
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: '25.0.5+8'
+      - name: Exercise offline fixture controls
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E -m unittest discover -s diagnostics/issue45-spdy-class-probe -p test_probe.py -v
+      - name: Observe three official HTTP codec families in isolated JVM loaders
+        run: python scripts/run_pinned_python.py "${{ steps.python.outputs.python-path }}" 3.15.2 -E diagnostics/issue45-spdy-class-probe/probe.py --java "$JAVA_HOME/bin/java" --output "${{ runner.temp }}/issue45-spdy-class-control-${{ github.run_id }}-${{ github.run_attempt }}.json"
+      - name: Retain only synthetic class observation report
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: issue45-spdy-class-control-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/issue45-spdy-class-control-${{ github.run_id }}-${{ github.run_attempt }}.json
+          if-no-files-found: error
+          retention-days: 7
