@@ -239,15 +239,47 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertEqual(parity[6:], [reports[25], smoke],
                          "parity must compare the actual canonical and smoke outputs")
 
+    def assert_handoff_matrix(self, workflow):
+        # This contract intentionally accepts only the two explicit OS entries.
+        # Strip comments, but keep indentation and entry boundaries intact.
+        strategy = workflow.split("    strategy:\n", 1)[1].split("    steps:\n", 1)[0]
+        matrix = [line for line in strategy.splitlines()
+                  if line.strip() and not line.lstrip().startswith("#")]
+        self.assertEqual(matrix, [
+            "      fail-fast: false",
+            "      matrix:",
+            "        os: [ubuntu-latest, windows-latest]",
+            "        include:",
+            "          - os: ubuntu-latest",
+            "            handoff_python: '3.10.22'",
+            "          - os: windows-latest",
+            "            handoff_python: '3.10.11'",
+        ], "handoff Python versions must be bound to the exact OS matrix entries")
+
+    def test_workflow_rejects_handoff_matrix_mutations(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        self.assert_handoff_matrix(workflow)
+        pin = "            handoff_python: '3.10.11'\n"
+        mutations = {
+            "pin moved to another entry": workflow.replace(pin, "          - os: macos-latest\n" + pin),
+            "missing Windows pin": workflow.replace(pin, ""),
+            "wrong Windows version": workflow.replace(pin, "            handoff_python: '3.10.22'\n"),
+            "duplicate Windows entry": workflow.replace(pin, pin + "          - os: windows-latest\n" + pin),
+            "wrong Windows indentation": workflow.replace(pin, "          handoff_python: '3.10.11'\n"),
+        }
+        for name, mutated in mutations.items():
+            with self.subTest(name=name):
+                self.assertNotEqual(mutated, workflow)
+                with self.assertRaisesRegex(AssertionError, "handoff Python versions must be bound"):
+                    self.assert_handoff_matrix(mutated)
+
     def test_workflow_uses_explicit_setup_python_executables(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
             encoding="utf-8")
         guard, comparison = workflow.split("  compare-builds:\n", 1)
         canonical, minimum = guard.split("      - name: Set up minimum Python for real collection smoke test\n", 1)
-        self.assertIn("          - os: ubuntu-latest\n            handoff_python: '3.10.22'\n", canonical)
-        self.assertIn("          - os: windows-latest\n", canonical)
-        self.assertEqual(canonical.count("            handoff_python: '3.10.11'\n"), 1)
-        self.assertEqual(canonical.count("            handoff_python:"), 2)
+        self.assert_handoff_matrix(workflow)
         for block, step, version in ((canonical, "canonical_python", "3.15.2"),
                                      (minimum, "minimum_python", "${{ matrix.handoff_python }}"),
                                      (comparison, "canonical_python", "3.15.2")):
