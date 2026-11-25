@@ -1,0 +1,296 @@
+#!/usr/bin/env python3
+"""Collect and compare fresh compiled diagnostic build identities, not runtime captures."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import subprocess
+import sys
+import zipfile
+from pathlib import Path
+
+SCHEMA = "issue45-compiled-build-identity/v1"
+SYSTEMS = {"ubuntu-latest": "Linux", "windows-latest": "Windows"}
+MAJORS = (21, 25)
+PROFILE_IDS = ("mc-1.19-netty-4.1.77", "mc-26.2-netty-4.2.15",
+               "upstream-netty-4.1.137", "upstream-netty-4.2.17")
+HEX = re.compile(r"[0-9a-f]{64}\Z")
+
+
+class IdentityValidationError(ValueError):
+    """A validation failure whose message is composed only of trusted labels."""
+
+
+def require(condition, message):
+    if not condition:
+        raise IdentityValidationError(message)
+
+
+def digest(path):
+    # Keep compatibility with the documented Python 3.10 minimum.
+    sha = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            sha.update(block)
+    return sha.hexdigest()
+
+
+def canonical_digest(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=True,
+                                     separators=(",", ":")).encode("ascii")).hexdigest()
+
+
+def archive_identity(path, agent=False):
+    with zipfile.ZipFile(path) as archive:
+        entries = archive.infolist()
+        require(bool(entries), "empty compiled archive")
+        require(len({e.filename for e in entries}) == len(entries), "duplicate archive member")
+        members = [{"name": e.filename, "size": e.file_size,
+                    "sha256": hashlib.sha256(archive.read(e)).hexdigest()} for e in entries]
+    compiled = [m for m in members if m["name"].endswith(".class") and
+                (not agent or m["name"].startswith("dev/skyrolly/issue45/"))]
+    require(bool(compiled), "missing compiled class members")
+    require(agent or len(compiled) == len(members), "unexpected non-class control member")
+    return {"jar_sha256": digest(path), "member_count": len(members),
+            "ordered_inventory_sha256": canonical_digest(members),
+            "compiled_count": len(compiled), "compiled_sha256": canonical_digest(compiled)}
+
+
+def context():
+    checkout, run, attempt = (os.environ[k] for k in
+                             ("GITHUB_SHA", "GITHUB_RUN_ID", "GITHUB_RUN_ATTEMPT"))
+    require(re.fullmatch(r"[0-9a-f]{40}", checkout), "invalid workflow checkout")
+    require(all(re.fullmatch(r"[1-9][0-9]*", v) for v in (run, attempt)), "invalid run identity")
+    actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    require(actual == checkout, "checkout does not match workflow SHA")
+    return checkout, run, attempt
+
+
+def classpath_identity(profile, root, controls):
+    """Reverify pinned classpath bytes; these are expected members, not observed order."""
+    lock, repo, cache = controls.LOCK, controls.REPO, controls.CACHE
+    wanted = set(profile["modules"])
+    selected, hashes = set(), []
+    if profile.get("artifactLockPath"):
+        source = repo / profile["artifactLockPath"]
+        require(digest(source) == profile["artifactLockSha256"], "candidate lock mismatch")
+        items = json.loads(source.read_text(encoding="utf-8"))["profiles"][profile["artifactLockName"]]
+        for item in items:
+            module, version = item["module"], profile["expectedNettyVersion"]
+            path = root / f"io/netty/{module}/{version}/{module}-{version}.jar"
+            require(path.stat().st_size == item["size"] and digest(path) == item["sha256"],
+                    "candidate classpath identity mismatch")
+            require(module not in selected, "duplicate classpath module")
+            selected.add(module)
+            hashes.append(digest(path))
+    else:
+        source = repo / profile["manifestPath"]
+        require(digest(source) == profile["manifestSha256"], "manifest mismatch")
+        for library in json.loads(source.read_text(encoding="utf-8"))["libraries"]:
+            parts = library.get("name", "").split(":")
+            if len(parts) != 3 or parts[0] != "io.netty" or parts[1] not in wanted:
+                continue
+            item = library["downloads"]["artifact"]
+            path = root / item["path"]
+            require(path.stat().st_size == item["size"] and
+                    controls.hash_file(path, "sha1") == item["sha1"], "official classpath identity mismatch")
+            require(parts[1] not in selected, "duplicate classpath module")
+            selected.add(parts[1])
+            hashes.append(digest(path))
+    require(selected == wanted, "incomplete classpath")
+    helper = cache / "lz4-java-1.8.0.jar"
+    require(digest(helper) == lock["syntheticLz4Helper"]["sha256"], "helper mismatch")
+    return hashes + [digest(helper)]
+
+
+def observed_control_classpath(root, profile_id, expected, *, checkout, run, attempt,
+                               system, java_runtime, inputs, archive):
+    """Bind the ordered compiler record to the current build and pinned inputs."""
+    path = root / "control-build-identity.json"
+    require(path.is_file(), "missing control build identity record")
+    record = strict_json(path)
+    require(isinstance(record, dict) and set(record) == {
+        "schema", "profile_id", "source_sha", "control_source_sha256",
+        "control_jar_sha256", "compiled_member_sha256", "compiler_sha256",
+        "classpath_sha256", "compiler_flags", "python_version", "run_id",
+        "run_attempt", "runner_os", "java_runtime"}, "invalid control build record fields")
+    require((record["schema"], record["profile_id"], record["source_sha"],
+             record["run_id"], record["run_attempt"], record["runner_os"],
+             record["java_runtime"]) ==
+            ("issue45-control-build-identity/v1", profile_id, checkout, run, attempt,
+             SYSTEMS[system], java_runtime), "control build record context mismatch")
+    require(record["compiler_sha256"] == inputs["compiler"] and
+            record["control_source_sha256"] == inputs["control_source"] and
+            record["control_jar_sha256"] == archive["jar_sha256"] and
+            record["compiler_flags"] == ["-encoding", "UTF-8", "-17"],
+            "control build record input or archive mismatch")
+    require(isinstance(record["python_version"], str) and
+            re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", record["python_version"]),
+            "invalid control build Python identity")
+    with zipfile.ZipFile(root / "issue45-synthetic-control.jar") as jar:
+        compiled = {item.filename: hashlib.sha256(jar.read(item)).hexdigest()
+                    for item in jar.infolist()}
+    require(record["compiled_member_sha256"] == compiled, "control build record member mismatch")
+    observed = record["classpath_sha256"]
+    # Verify the multiset (including multiplicity), then preserve the observed
+    # sequence. The cross-OS/Java comparator, not the metadata order, decides
+    # whether different actual compiler classpath sequences are reproducible.
+    require(isinstance(observed, list) and all(valid_hash(item) for item in observed) and
+            sorted(observed) == sorted(expected), "control build record classpath mismatch")
+    return observed
+
+
+def java_runtime_major(version):
+    # Match the same version grammar as run_controls.current_java_runtime.
+    # GA releases can omit all dotted components (for example 21+35-LTS).
+    match = re.fullmatch(r"([0-9]+)(?:\.[0-9]+)*(?:[-+][A-Za-z0-9.+-]+)?", version) if isinstance(version, str) else None
+    return match[1] if match else None
+
+
+def collect(work, major, system):
+    import run_controls as controls
+    checkout, run, attempt = context()
+    require(os.environ.get("RUNNER_OS") == SYSTEMS[system], "runner OS mismatch")
+    java_runtime = controls.current_java_runtime()
+    require(java_runtime_major(java_runtime) == str(major), "runtime Java major mismatch")
+    lock, cache, here = controls.LOCK, controls.CACHE, controls.HERE
+    inputs = {}
+    for key in ("compiler", "byteBuddy"):
+        pin = lock[key]
+        path = cache / pin["url"].rsplit("/", 1)[-1]
+        require(digest(path) == pin["sha256"], "pinned build dependency mismatch")
+        inputs[key] = digest(path)
+    source_root = here / "src/main/java"
+    sources = {p.relative_to(source_root).as_posix(): digest(p) for p in source_root.rglob("*.java")}
+    require(bool(sources), "missing agent source files")
+    inputs["agent_sources"] = canonical_digest(sources)
+    inputs["control_source"] = digest(here / "src/test/java/dev/skyrolly/issue45/ControlMain.java")
+    inputs["lock"] = digest(here / "dependencies.lock.json")
+    require(tuple(p["profileId"] for p in lock["syntheticProfiles"]) == PROFILE_IDS,
+            "unexpected profile matrix")
+    profiles = {}
+    for profile in lock["syntheticProfiles"]:
+        name = profile["profileId"]
+        root = work / name
+        archive = archive_identity(root / "issue45-synthetic-control.jar")
+        expected = classpath_identity(profile, root / "dependencies", controls)
+        observed = observed_control_classpath(
+            root, name, expected, checkout=checkout, run=run, attempt=attempt,
+            system=system, java_runtime=java_runtime, inputs=inputs, archive=archive)
+        profiles[name] = {"archive": archive, "classpath": observed}
+    return {"schema": SCHEMA, "checkout": checkout, "run": run, "attempt": attempt,
+            "os": system, "java_major": major, "java_runtime": java_runtime,
+            "python_version": sys.version.split()[0], "inputs": inputs,
+            "agent": archive_identity(work / "issue45-runtime-agent.jar", agent=True),
+            "profiles": profiles}
+
+
+def strict_json(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            require(key not in result, "duplicate JSON key")
+            result[key] = value
+        return result
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique)
+
+
+def valid_hash(value):
+    return isinstance(value, str) and HEX.fullmatch(value) is not None
+
+
+def validate_archive(value):
+    require(isinstance(value, dict) and set(value) == {"jar_sha256", "member_count",
+            "ordered_inventory_sha256", "compiled_count", "compiled_sha256"}, "invalid archive fields")
+    require(all(valid_hash(value[k]) for k in ("jar_sha256", "ordered_inventory_sha256", "compiled_sha256")),
+            "invalid archive digest")
+    require(all(type(value[k]) is int and value[k] > 0 for k in ("member_count", "compiled_count")) and
+            value["compiled_count"] <= value["member_count"], "invalid archive counts")
+
+
+def compare(root, checkout, run, attempt):
+    expected_dirs = {f"issue45-build-{run}-{attempt}-{system}" for system in SYSTEMS}
+    require(root.is_dir() and {p.name for p in root.iterdir()} == expected_dirs,
+            "missing or unexpected OS reports")
+    reports = {}
+    for system in SYSTEMS:
+        folder = root / f"issue45-build-{run}-{attempt}-{system}"
+        require(folder.is_dir() and
+                {p.name for p in folder.iterdir()} == {f"identity-j{m}.json" for m in MAJORS},
+                f"missing or unexpected Java reports: {system}")
+        for major in MAJORS:
+            value = strict_json(folder / f"identity-j{major}.json")
+            require(isinstance(value, dict) and set(value) == {"schema", "checkout", "run", "attempt",
+                    "os", "java_major", "java_runtime", "python_version", "inputs", "agent", "profiles"},
+                    "invalid report fields")
+            require((value["schema"], value["checkout"], value["run"], value["attempt"],
+                     value["os"], value["java_major"]) == (SCHEMA, checkout, run, attempt, system, major)
+                    and type(value["java_major"]) is int, "report context mismatch")
+            require(java_runtime_major(value["java_runtime"]) == str(major), "invalid Java runtime identity")
+            require(isinstance(value["python_version"], str) and
+                    re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", value["python_version"]), "invalid Python identity")
+            inputs = value["inputs"]
+            require(isinstance(inputs, dict) and set(inputs) == {"compiler", "byteBuddy", "agent_sources",
+                    "control_source", "lock"} and all(valid_hash(v) for v in inputs.values()), "invalid input identities")
+            validate_archive(value["agent"])
+            profiles = value["profiles"]
+            require(isinstance(profiles, dict) and set(profiles) == set(PROFILE_IDS), "incomplete profile matrix")
+            for name, profile in profiles.items():
+                require(isinstance(profile, dict) and set(profile) == {"archive", "classpath"}, "invalid profile fields")
+                validate_archive(profile["archive"])
+                require(profile["archive"]["compiled_count"] == profile["archive"]["member_count"],
+                        "invalid control member counts")
+                cp = profile["classpath"]
+                require(isinstance(cp, list) and len(cp) == (8 if name in (PROFILE_IDS[1], PROFILE_IDS[3]) else 7)
+                        and all(valid_hash(v) for v in cp), "invalid classpath identities")
+            reports[system, major] = value
+    baseline = reports["ubuntu-latest", 21]
+    for (system, major), value in reports.items():
+        require(value["java_runtime"] == reports["ubuntu-latest", major]["java_runtime"],
+                f"compiled build mismatch: {system} Java {major} java_runtime")
+        for field in ("python_version", "inputs", "agent", "profiles"):
+            require(value[field] == baseline[field], f"compiled build mismatch: {system} Java {major} {field}")
+    return baseline["agent"]["jar_sha256"], {name: value["archive"]["jar_sha256"]
+                                             for name, value in baseline["profiles"].items()}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    commands = parser.add_subparsers(dest="command", required=True)
+    take = commands.add_parser("collect")
+    take.add_argument("--work-dir", type=Path, required=True)
+    take.add_argument("--java-major", type=int, choices=MAJORS, required=True)
+    take.add_argument("--os", choices=SYSTEMS, required=True)
+    take.add_argument("--output", type=Path, required=True)
+    check = commands.add_parser("compare")
+    check.add_argument("--reports", type=Path, required=True)
+    args = parser.parse_args()
+    if args.command == "collect":
+        report = collect(args.work_dir, args.java_major, args.os)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open("x", encoding="utf-8") as stream:
+            json.dump(report, stream, sort_keys=True)
+            stream.write("\n")
+    else:
+        agent, profiles = compare(args.reports, *context())
+        print(json.dumps({"result": "pass", "agent_builds": 4, "control_builds": 16,
+                          "agent_sha256": agent, "control_sha256_by_profile": profiles}, sort_keys=True))
+    return 0
+
+
+def cli():
+    try:
+        return main()
+    except IdentityValidationError as error:
+        # Only require() messages use fixed, repository-controlled labels.
+        # Never render exception details from parsers, subprocesses or I/O.
+        raise SystemExit(f"compiled build identity: {error}") from None
+    except (ValueError, OSError, KeyError, TypeError, zipfile.BadZipFile, subprocess.CalledProcessError):
+        raise SystemExit("compiled build identity collection or comparison failed") from None
+
+
+if __name__ == "__main__":
+    raise SystemExit(cli())
