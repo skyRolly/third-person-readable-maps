@@ -33,3 +33,23 @@ require separately reviewed diagnostics and authorized real game runs.
 Do not overwrite historical evidence or upload the raw dependency JARs,
 absolute host paths or account information. No malformed frames or traffic
 are needed for this static verification.
+
+## Hosted end-to-end artifact check
+
+The separate Issue 45 official HTTP artifact verification workflow exercises
+the documented offline CLI on the exact PR head (or main push SHA). It
+reconciles all seven pinned manifest identities before acquiring each of
+the three official Mojang artifacts once, refuses redirects, bounds reads
+and checks size/SHA-1 before writing into a disposable library cache.
+The same offline CLI checks the actual ZIP inventories. Only the resulting
+static JSON report is uploaded; the log records the checkout, report
+SHA-256, artifact SHA-256 values and SPDY class counts. The temporary JARs
+are deleted. Download, integrity or CLI failures fail the job. No game or
+class execution, release clearance, or risk acceptance is implied.
+
+For an authorized network-enabled checkout, the same hosted path can be run
+locally with a new output file:
+
+```sh
+python diagnostics/issue45-runtime/verify_official_http_artifacts.py --output /path/to/new-http-observation.json
+```
