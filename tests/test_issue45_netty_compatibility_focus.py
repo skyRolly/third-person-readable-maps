@@ -94,7 +94,10 @@ class NettyFocusErratumTests(unittest.TestCase):
                 r"""(?:[A-Za-z0-9_-]+|'[A-Za-z0-9_-]+'|"(?:[A-Za-z0-9_-]|\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}))+")""")
 
             def nested_mapping_field(field):
-                match = re.fullmatch(rf"({nested_key})[ \t]*:[ \t]*(.*)", field)
+                # In a block mapping the colon needs separation or EOL.
+                # Without that boundary, a quoted scalar with an invalid
+                # suffix (e.g. "Choose":trailing) is not a metadata key.
+                match = re.fullmatch(rf"({nested_key})[ \t]*:(?=[ \t]|$)[ \t]*(.*)", field)
                 if match is None:
                     return None
                 key = match[1]
@@ -928,6 +931,25 @@ class NettyFocusErratumTests(unittest.TestCase):
                     '        description:\n          "Choose a color" trailing\n')
         for source in (triggers + good, good + triggers):
             self.assertFalse(all_native_checks_isolated(source))
+        # A separately wrapped quoted description is not a block mapping
+        # when the colon is immediately followed by non-separation content.
+        for key in ("description", "'description'", r'"\u0064escription"'):
+            prefix = ("on:\n  workflow_dispatch:\n    inputs:\n      color:\n        "
+                      + key + ":\n          ")
+            for scalar in ('"Choose":trailing', "'Choose':trailing",
+                           r'"\u0043hoose":trailing', '"Choose":[blue, green]',
+                           '"Choose":#comment', '"Choose":"trailing"'):
+                for source in (prefix + scalar + "\n" + good,
+                               good + prefix + scalar + "\n"):
+                    with self.subTest(malformed_description=scalar, key=key):
+                        self.assertFalse(all_native_checks_isolated(source))
+            for scalar in ('"Choose:trailing"', "'Choose:trailing'",
+                           '"Choose: trailing" # comment', '"Choose:#comment"'):
+                for source in (prefix + scalar + "\n" + good,
+                               good + prefix + scalar + "\n"):
+                    self.assertTrue(all_native_checks_isolated(source))
+                    self.assertFalse(all_native_checks_isolated(
+                        source + r'"\u0064efaults": {}' + "\n"))
         # A separate unrelated step or job may set its own shell without
         # changing any required guard command's execution.
         self.assertTrue(all_native_checks_isolated(
