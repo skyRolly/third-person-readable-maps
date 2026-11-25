@@ -399,7 +399,7 @@ class BuildIdentityTests(unittest.TestCase):
                 path.write_text(json.dumps(record), encoding="utf-8")
                 with self.assertRaises(gate.IdentityValidationError):
                     verify()
-        path.write_text(original[:-1] + ', "profile_id": "duplicate"}', encoding="utf-8")
+        path.write_text(original.rstrip()[:-1] + ', "profile_id": "duplicate"}', encoding="utf-8")
         with self.assertRaisesRegex(gate.IdentityValidationError, "duplicate JSON key"):
             verify()
         path.unlink()
