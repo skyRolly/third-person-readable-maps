@@ -1,0 +1,38 @@
+{
+  "schema": "issue45-spdy-class-control-archive/v1",
+  "advisory": "GHSA-6jqx-86gh-f27w",
+  "checkout": "ddb6354c9ac9a68d7ec8ce4dd367c8ca7df1697f",
+  "source_sha256": {
+    "diagnostics/issue45-spdy-class-probe/SpdyClassProbe.java": "1f0c602a0a2e7bd6840b816e5838410cba1fd8ebb1cea17a718faf02b0fd3d52",
+    "diagnostics/issue45-spdy-class-probe/probe.py": "1446921416221e670d2432cf767d392c1fc04d8529e40c9ee44092b00122451d"
+  },
+  "workflow": {
+    "run_id": 45652816177,
+    "run_attempt": 1,
+    "job_id": 139341489657,
+    "artifact_id": 15041257840,
+    "event": "pull_request",
+    "pr": 88,
+    "conclusion": "success",
+    "url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/45652816177/job/139341489657",
+    "artifact_url": "https://github.com/skyRolly/third-person-readable-maps/actions/runs/45652816177/artifacts/15041257840"
+  },
+  "archive": {
+    "path": "issue45-spdy-class-control-45652816177-1.zip",
+    "size_bytes": 2089,
+    "git_blob": "c3e081d2c461873ec1c6d542858f1c6f304a88f8",
+    "sha256": "a5d678a7a1aba6f2c9a6b92f1ae8354871d5c35f4b52730f9d34a186303dd13e",
+    "json_member": "issue45-spdy-class-control-45652816177-1.json",
+    "json_size_bytes": 4479,
+    "json_sha256": "156c456f4f81b4dc24e0d6fad2435995c2c8c4e788c83378cf20cba492236640"
+  },
+  "java": "Temurin 25.0.5+8",
+  "python": "3.15.2",
+  "observations": 3,
+  "library_count": 23,
+  "scope": "synthetic_noninitializing_class_definition_only",
+  "pipeline_observed": false,
+  "runtime_reachability": "not_established",
+  "risk_accepted": false,
+  "release_blocking": true
+}
