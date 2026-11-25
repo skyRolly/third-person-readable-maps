@@ -244,8 +244,12 @@ class BuildIdentityTests(unittest.TestCase):
             encoding="utf-8")
         guard, comparison = workflow.split("  compare-builds:\n", 1)
         canonical, minimum = guard.split("      - name: Set up minimum Python for real collection smoke test\n", 1)
+        self.assertIn("          - os: ubuntu-latest\n            handoff_python: '3.10.22'\n", canonical)
+        self.assertIn("          - os: windows-latest\n", canonical)
+        self.assertEqual(canonical.count("            handoff_python: '3.10.11'\n"), 1)
+        self.assertEqual(canonical.count("            handoff_python:"), 2)
         for block, step, version in ((canonical, "canonical_python", "3.15.2"),
-                                     (minimum, "minimum_python", "3.10.22"),
+                                     (minimum, "minimum_python", "${{ matrix.handoff_python }}"),
                                      (comparison, "canonical_python", "3.15.2")):
             self.assertEqual(block.count("        id: " + step + "\n"), 1)
             self.assertIn("          python-version: '" + version + "'", block)
@@ -253,8 +257,11 @@ class BuildIdentityTests(unittest.TestCase):
                         if line.strip().startswith("run: ")]
             self.assertTrue(commands)
             for args in commands:
+                expected = version
+                if step == "minimum_python" and "test_pinned_python.py" not in args:
+                    expected = "3.10.22"
                 self.assertEqual(args[:4], ["python", "scripts/run_pinned_python.py",
-                                           "${{ steps." + step + ".outputs.python-path }}", version])
+                                           "${{ steps." + step + ".outputs.python-path }}", expected])
         self.assertNotIn("shell:", workflow)
         setup, handoff = minimum.split("      - name: Test cross-version pinned Python handoff\n", 1)
         handoff = handoff.split("\n      - ", 1)[0]
@@ -263,6 +270,38 @@ class BuildIdentityTests(unittest.TestCase):
             self.assertNotIn("continue-on-error:", step)
         self.assertIn(' -m unittest discover -s tests -p "test_pinned_python.py" -v', handoff)
         self.assertIn("          ISSUE45_PINNED_TEST_TARGET: ${{ steps.canonical_python.outputs.python-path }}", handoff)
+        self.assertIn("          ISSUE45_PINNED_TEST_REQUIRED: '1'", handoff)
+
+    def test_workflow_requires_guard_success_after_comparison(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        comparison = workflow.split("  compare-builds:\n", 1)[1]
+        label = "      - name: Require successful guard and interpreter handoff\n"
+        self.assertEqual(comparison.count(label), 1)
+        before, final = comparison.split(label, 1)
+        self.assertIn("      - name: Require complete equal compiled artifact matrix\n", before)
+        # This is a separate native step after the actual comparison, not a
+        # replacement for it. No status override can suppress its exit code.
+        lines = final.splitlines()
+        self.assertEqual(len(lines), 3)
+        self.assertTrue(lines[0].startswith("        run: "))
+        self.assertEqual(lines[1:], ["        env:",
+                                   "          ISSUE45_GUARD_RESULT: ${{ needs.guard.result }}"])
+        args = shlex.split(lines[0].strip()[5:])
+        self.assertEqual(args[:5], ["python", "scripts/run_pinned_python.py",
+                                   "${{ steps.canonical_python.outputs.python-path }}", "3.15.2", "-c"])
+        self.assertEqual(len(args), 6)
+        for result in ("success", "failure", "skipped", "cancelled", None):
+            with self.subTest(guard_result=result):
+                env = dict(os.environ)
+                env.pop("ISSUE45_GUARD_RESULT", None)
+                if result is not None:
+                    env["ISSUE45_GUARD_RESULT"] = result
+                process = subprocess.run([sys.executable, *args[4:]], env=env,
+                                         capture_output=True, text=True, check=False)
+                self.assertEqual(process.returncode, 0 if result == "success" else 1)
+                if result != "success":
+                    self.assertIn("diagnostic guard or interpreter handoff did not pass", process.stderr)
 
     def test_workflow_rejects_artifact_path_mutations(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
