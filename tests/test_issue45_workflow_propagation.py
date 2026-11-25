@@ -16,7 +16,8 @@ def check_steps(text):
     }
     for name, command in expected.items():
         match = re.findall(r'(?m)^      - name: ' + re.escape(name) + r'\n        run: ([^\n]+)$', text)
-        if match != [command]:
+        pinned = 'python scripts/run_pinned_python.py "${{ steps.canonical_python.outputs.python-path }}" 3.15.2 '
+        if match != [command.replace('python ', pinned, 1)]:
             raise ValueError(name + ' must be an independent step')
     if 'continue-on-error:' in text:
         raise ValueError('test failure suppression is forbidden')

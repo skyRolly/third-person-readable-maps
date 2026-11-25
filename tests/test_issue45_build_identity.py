@@ -187,13 +187,18 @@ class BuildIdentityTests(unittest.TestCase):
 
         def output(name):
             args = shlex.split(field(name, "run", 8))
-            self.assertEqual(args[:3], ["python", "diagnostics/issue45-runtime/build_identity.py", "collect"])
+            minimum = name == "Collect real Java 25 compiled build identity on Python 3.10"
+            pin = ["python", "scripts/run_pinned_python.py",
+                   "${{ steps.minimum_python.outputs.python-path }}" if minimum else
+                   "${{ steps.canonical_python.outputs.python-path }}",
+                   "3.10.22" if minimum else "3.15.2"]
+            self.assertEqual(args[:6], pin + ["diagnostics/issue45-runtime/build_identity.py", "collect"])
             # argparse accepts both --option value and --option=value, and
             # normally allows abbreviations and repeated options (last wins).
             # For this workflow require exactly one of each full option name.
             allowed = {"--work-dir", "--java-major", "--os", "--output"}
             values = {}
-            index = 3
+            index = 6
             while index < len(args):
                 option, equals, value = args[index].partition("=")
                 self.assertIn(option, allowed, "unexpected collector option")
@@ -228,9 +233,28 @@ class BuildIdentityTests(unittest.TestCase):
         self.assertEqual(smoke, f"{smoke_dir}/identity-j25.json",
                          "smoke report must use its separate attempt directory")
         parity = shlex.split(field("Verify minimum Python collection matches canonical identity", "run", 8))
-        self.assertEqual(parity[:2], ["python", "-c"])
-        self.assertEqual(parity[3:], [reports[25], smoke],
+        self.assertEqual(parity[:5], ["python", "scripts/run_pinned_python.py",
+                                     "${{ steps.minimum_python.outputs.python-path }}", "3.10.22", "-c"])
+        self.assertEqual(parity[6:], [reports[25], smoke],
                          "parity must compare the actual canonical and smoke outputs")
+
+    def test_workflow_uses_explicit_setup_python_executables(self):
+        workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
+            encoding="utf-8")
+        guard, comparison = workflow.split("  compare-builds:\n", 1)
+        canonical, minimum = guard.split("      - name: Set up minimum Python for real collection smoke test\n", 1)
+        for block, step, version in ((canonical, "canonical_python", "3.15.2"),
+                                     (minimum, "minimum_python", "3.10.22"),
+                                     (comparison, "canonical_python", "3.15.2")):
+            self.assertEqual(block.count("        id: " + step + "\n"), 1)
+            self.assertIn("          python-version: '" + version + "'", block)
+            commands = [shlex.split(line.strip()[5:]) for line in block.splitlines()
+                        if line.strip().startswith("run: ")]
+            self.assertTrue(commands)
+            for args in commands:
+                self.assertEqual(args[:4], ["python", "scripts/run_pinned_python.py",
+                                           "${{ steps." + step + ".outputs.python-path }}", version])
+        self.assertNotIn("shell:", workflow)
 
     def test_workflow_rejects_artifact_path_mutations(self):
         workflow = (GATE_PATH.parents[2] / ".github/workflows/credential-guard-tests.yml").read_text(
