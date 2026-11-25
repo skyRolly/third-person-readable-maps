@@ -317,41 +317,45 @@ class ReviewPreparationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "pilot provenance differs"):
                     validate_pilot(pilot)
 
+    def assert_duplicate_member_rejected(self, data, key, value, first,
+                                         *, encoded_key=None, unique=True):
+        # Start from the strictly loaded fixture, not its incidental file spacing.
+        # Serialize in controlled formats, then inject the duplicate into JSON bytes.
+        for indent, colon in ((None, ":"), (2, ": "), (4, " :\t")):
+            with self.subTest(key=key, first=first, indent=indent, colon=colon):
+                raw = json.dumps(data, indent=indent, separators=(",", colon)).encode("utf-8")
+                self.assertEqual(load_evidence_json(raw), data)
+                member = (json.dumps(key) + colon + json.dumps(value)).encode("utf-8")
+                if unique:
+                    self.assertEqual(raw.count(member), 1)
+                else:
+                    self.assertIn(member, raw)
+                duplicate = ((encoded_key if encoded_key is not None else json.dumps(key))
+                             + colon + json.dumps(first)).encode("utf-8")
+                mutated = raw.replace(member, duplicate + b"," + member, 1)
+                self.assertNotEqual(mutated, raw)
+                # Prove the old decoder would hide the duplicate.
+                self.assertEqual(json.loads(mutated), data)
+                with self.assertRaisesRegex(ValueError, "duplicate JSON key: " + re.escape(key)):
+                    load_evidence_json(mutated)
+
     def test_pilot_duplicate_json_provenance_keys_rejected(self):
-        raw = (EVIDENCE / "pr22-review-index.json").read_bytes()
         for key, value in (("base_sha", self.pilot["base_sha"]),
                            ("zip_sha256", self.pilot["hosted_scan"]["zip_sha256"]),
                            ("spdy-observation-plan.md",
                             self.pilot["inputs_sha256"]["spdy-observation-plan.md"])):
-            member = (json.dumps(key) + ": " + json.dumps(value)).encode("utf-8")
-            self.assertEqual(raw.count(member), 1)
             for first in ("bad", value):
-                with self.subTest(key=key, first=first):
-                    duplicate = (json.dumps(key) + ": " + json.dumps(first)).encode("utf-8")
-                    mutated = raw.replace(member, duplicate + b", " + member, 1)
-                    # The old decoder loses the earlier value, even if it differs.
-                    self.assertEqual(json.loads(mutated), self.pilot)
-                    with self.assertRaisesRegex(ValueError, "duplicate JSON key: " + re.escape(key)):
-                        load_evidence_json(mutated)
+                self.assert_duplicate_member_rejected(self.pilot, key, value, first)
 
     def test_plan_duplicate_json_keys_rejected(self):
-        raw = (EVIDENCE / "spdy-runtime-plan.json").read_bytes()
         key = "proposal_source_sha256"
-        member = (json.dumps(key) + ": " + json.dumps(self.plan[key])).encode("utf-8")
-        self.assertEqual(raw.count(member), 1)
         # Escaped spelling decodes to exactly the same key.
-        duplicate = b'"proposal_source_sha\\u0032\\u0035\\u0036": "bad", '
-        mutated = raw.replace(member, duplicate + member, 1)
-        self.assertEqual(json.loads(mutated), self.plan)
-        with self.assertRaisesRegex(ValueError, "duplicate JSON key: " + key):
-            load_evidence_json(mutated)
+        self.assert_duplicate_member_rejected(
+            self.plan, key, self.plan[key], "bad",
+            encoded_key=r'"proposal_source_sha\u0032\u0035\u0036"')
         # The same hook also rejects duplicates inside array objects.
-        status = b'"status": "not_executed"'
-        self.assertIn(status, raw)
-        mutated = raw.replace(status, b'"status": "captured", ' + status, 1)
-        self.assertEqual(json.loads(mutated), self.plan)
-        with self.assertRaisesRegex(ValueError, "duplicate JSON key: status"):
-            load_evidence_json(mutated)
+        self.assert_duplicate_member_rejected(
+            self.plan, "status", "not_executed", "captured", unique=False)
 
     def test_strict_json_allows_same_key_in_distinct_objects(self):
         self.assertEqual(load_evidence_json(b'[{"key": 1}, {"key": 2}]'),
