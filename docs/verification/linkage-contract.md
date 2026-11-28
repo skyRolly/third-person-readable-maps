@@ -1,5 +1,10 @@
 # Packaged-JAR linkage verification contract
 
+The full fixture suite requires a JDK that can compile for Java 8 and 21 and
+run Java 21 class files; the project uses JDK 25. Set `JAVA_HOME` to that JDK,
+or put its `java` and `javac` on `PATH` when `JAVA_HOME` is unset. This build
+requirement is separate from the Java version required to play the mod.
+
 Run `python3 -m unittest discover -s tests` and
 `python3 scripts/verify_supported_apis.py --jar build/libs` after a clean
 build. The verifier reads the packaged class files and checks each declared

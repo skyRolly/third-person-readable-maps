@@ -5,19 +5,21 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
-    'scripts/jvm_linkage.py': '7a2f83acb42d2549f8471818265de3a69d4791a6584d6766e34eb10d65253a10',
-    'scripts/game_linkage.py': '366d421a34c52e125587aa0a9bbb5d311cf98cb6e2ee1a8b4bb46d811ad4e814',
-    'tests/test_jvm_linkage.py': '9146a19a30c49cfaaaa36a411a641d31a9a261b6720eb0ca50e4573fb4918bea',
-    'tests/test_hierarchy_linkage.py': '5a0d46b2b2139cc917bc1a07af55d3eb551648eb9ab980d9df0134b66d81e018',
-    'tests/hierarchy_entrypoint_fixtures.py': '4ec6751f1576c570921b8dea896d38535af8f0591c4adaf14165c9c23f16ac88',
+    'tests/test_java_toolchain.py': '518ac476311fe8f2b4dcf875fe4fa0cc2f5cb69181bfcd9a48ef2f833e9c5989',
+    'tests/java_toolchain.py': 'd977d0dddb52117746305cdbad0a2cbaf79bf65ff4c2d1ecc2882ebf2a070405',
+    'scripts/jvm_linkage.py': '91bc9d67ba51f8013707e2bbb8d9761d44739932242746065580b1eff20fd281',
+    'scripts/game_linkage.py': 'a785fe6581509be31966bbb1afc688ed9ffca044963b7ab7def8479401f398ab',
+    'tests/test_jvm_linkage.py': '650d1560b6e37a857e66bbbb08aaae42f7e1e83444492ba31eeedcb5114e60dc',
+    'tests/test_hierarchy_linkage.py': '3b8388aaef57bf2ac0b9ee3115ebece9a04662d9e37baed321b375c993f731b8',
+    'tests/hierarchy_entrypoint_fixtures.py': '996360319c65aa6c6be74036e07a7ba2b4a18a9752da0ce6205cd99f97f6e216',
     'scripts/verify_gradle_wrapper.py': '2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481',
-    'tests/test_verify_gradle_wrapper.py': '99e310cbd825da3556a26e49669f371902e6efe21254555a90074283d01c1a9d',
-    'tests/test_nestmate_linkage.py': '870e107ecb86a0ec97c85eed3b69509f92c66461ddf904170c4bc2f3548af235',
-    'docs/verification/linkage-contract.md': 'fcaa278b8a6ee2a7848fe9aa18801daac8ecace6379d10e31903a78ff84c89f8',
+    'tests/test_verify_gradle_wrapper.py': 'b4eeb0608cb5aca42226096c1178fbf3fed72f69158eba2cc349be96702c69cc',
+    'tests/test_nestmate_linkage.py': 'bf6bef36cba8b473b657c554860caab6ebc63dad16605b3ae4b611e9256a6185',
+    'docs/verification/linkage-contract.md': 'cc20bbe638fdb79da07730eb0738f965630b4f8f2ffdbd5eba002add47d71866',
 }
 ADAPTERS = {
-    'intermediary': '4b93019ab84f0ed7bfa057436c943080f90194e7a8c91179171512c00de5feb7',
-    'official': '159ecdbb63e288a8252ee8e286754f7c9003cb872eba3043f513df642e829758',
+    'intermediary': 'fccb16a5ff3d25ba9b80697811629a9bfcbcb16fd8b80e87b9303bbbac29cbbf',
+    'official': '3a720780ffac428a282c69a14e3ee2ef02802ad405718078ed61937fc9efa843',
 }
 
 

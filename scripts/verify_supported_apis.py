@@ -55,7 +55,10 @@ def parse_class(data):
     while i < len(pool):
         tag = number('>B')
         if tag == 1:
-            pool[i] = (tag, source.read(number('>H')).decode('utf-8', errors='replace'))
+            length = number('>H')
+            raw = source.read(length)
+            require(len(raw) == length, 'truncated class file')
+            pool[i] = (tag, jvm_linkage.decode_modified_utf8(raw))
         elif tag in (3, 4):
             source.read(4); pool[i] = (tag,)
         elif tag in (5, 6):
@@ -102,8 +105,8 @@ def verify(mod_path, versions, clients):
         config = json.loads(mod.read('thirdpersonreadablemaps.mixins.json'))
         require(config.get('required') is True and config.get('injectors', {}).get('defaultRequire') == 1 and
                 config.get('client') == ['ReadableMapLayerMixin'], 'unexpected or optional Mixin configuration')
-        mod_nodes = {node['name']: node for node in
-                     (jvm_linkage.parse(mod.read(path)) for path in mod.namelist() if path.endswith('.class'))}
+        require(config.get('mixins', []) == [], 'unsupported common Mixin registration')
+        raw_classes, mod_nodes = game_linkage.read_candidate_classes(mod)
         mixin_name = MIXIN[:-6]
         mixin = mod_nodes[mixin_name]
         require(mixin['annotations'].get('Lorg/spongepowered/asm/mixin/Mixin;', {}).get('value') == ['L' + TARGET + ';'],
@@ -116,10 +119,9 @@ def verify(mod_path, versions, clients):
         injection_point = handlers[0]['annotations']['Lorg/spongepowered/asm/mixin/injection/Inject;']['at'][0][1]['value']
         target_descriptor = handlers[0]['descriptor'][:-len(CALLBACK + ')V')] + ')V'
         refs = set()
-        for path in mod.namelist():
-            if path.endswith('.class'):
-                refs.update(ref for ref in parse_class(mod.read(path))['refs']
-                            if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
+        for raw in raw_classes:
+            refs.update(ref for ref in parse_class(raw)['refs']
+                        if ref[1].startswith(('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')))
     manifest = json.loads(get(MANIFEST))
     for version in versions:
         items = [x for x in manifest['versions'] if x['type'] == 'release' and x['id'] == version]

@@ -4,6 +4,25 @@ import re
 import jvm_linkage as jvm
 
 
+def read_candidate_classes(archive):
+    """Read each supported class entry once and bind its path to its identity."""
+    paths, raw_classes, nodes = set(), [], {}
+    for entry in archive.infolist():
+        if not entry.filename.endswith('.class'):
+            continue
+        jvm.require(entry.filename not in paths, 'duplicate candidate class path: ' + entry.filename)
+        paths.add(entry.filename)
+        raw = archive.read(entry)
+        node = jvm.parse(raw)
+        name = node['name']
+        jvm.require(name + '.class' == entry.filename,
+                    'candidate class path mismatch: ' + entry.filename + ' != ' + name + '.class')
+        jvm.require(name not in nodes, 'duplicate candidate class identity: ' + name)
+        raw_classes.append(raw)
+        nodes[name] = node
+    return raw_classes, nodes
+
+
 def validate_mixin_semantics(mod_nodes, mixin_targets):
     prefix = 'Lorg/spongepowered/asm/mixin/'
     allowed_class = {prefix + 'Mixin;'}
@@ -104,6 +123,13 @@ def validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version):
             target_node = lookup(target)
             jvm.require(target_node is not None, 'missing Mixin target: ' + target)
             jvm.require(not target_node['access'] & 0x0200, 'unsupported interface Mixin target: ' + target)
+            target_members = {(m['kind'], m['name'], m['descriptor']) for m in target_node['members']}
+            for member in node['members']:
+                if member['kind'] == 'method' and member['name'] in ('<init>', '<clinit>'):
+                    continue
+                signature = (member['kind'], member['name'], member['descriptor'])
+                jvm.require(signature not in target_members,
+                            'unsupported Mixin member collision: ' + member['name'])
             jvm.validate_hierarchy(target, lookup, forbidden=mixins)
             parent = node.get('super')
             jvm.require(parent is not None and parent not in mixins,
@@ -217,10 +243,13 @@ def verify_library_instructions(mod_nodes, mixin_targets, library, prefix, versi
     def local_lookup(name):
         if name in mod_nodes:
             return dict(mod_nodes[name], origin='candidate')
-        try:
-            return dict(jvm.parse(library.read(name + '.class'), include_code=False), origin='library')
-        except KeyError:
+        matches = [entry for entry in library.infolist() if entry.filename == name + '.class']
+        jvm.require(len(matches) <= 1, f'{version}: duplicate library class {name}')
+        if not matches:
             return None
+        node = jvm.parse(library.read(matches[0]), include_code=False)
+        jvm.require(node['name'] == name, f'{version}: library class name mismatch: {name} != {node["name"]}')
+        return dict(node, origin='library')
     lookup = class_lookup or local_lookup
 
     classes = {c for node in mod_nodes.values() for c in node['classes']
@@ -329,8 +358,11 @@ class RuntimeLibraries:
         path = name + '.class'
         matches = [entry for entry in archive.infolist() if entry.filename == path]
         jvm.require(len(matches) <= 1, f'{self.version}: duplicate library class {name}')
-        self._classes[name] = (dict(jvm.parse(archive.read(matches[0]), include_code=False),
-                                    origin='library:' + digest) if matches else None)
+        node = jvm.parse(archive.read(matches[0]), include_code=False) if matches else None
+        if node is not None:
+            jvm.require(node['name'] == name,
+                        f'{self.version}: library class name mismatch: {name} != {node["name"]}')
+        self._classes[name] = dict(node, origin='library:' + digest) if node is not None else None
         return self._classes[name]
 
 
@@ -342,11 +374,32 @@ def verify_declared_libraries(metadata, mod_nodes, mixin_targets, fetch_checked,
     sole Mixin callback class is supplied by the pinned Fabric Loader runtime.
     Unexpected external namespaces fail instead of being silently skipped.
     """
-    own = set(mod_nodes)
-    names = {n for node in mod_nodes.values() for n in node['classes']}
-    names.update(use['owner'] for node in mod_nodes.values() for use in node['uses'])
     game = ('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')
     platform = ('java/', 'javax/')
+    own = set(mod_nodes)
+    names = {n for node in mod_nodes.values() for n in node['classes']}
+    for name, node in mod_nodes.items():
+        caller = mixin_targets.get(name, name)
+        for use in node['uses']:
+            owner = use['owner']
+            if not owner.startswith('['):
+                names.add(owner)
+                continue
+            jvm.require((use['kind'], use['name'], use['descriptor'], use['operation'],
+                         use['reference_tag'], use['source_kind']) ==
+                        ('method', 'clone', '()Ljava/lang/Object;', 'invokevirtual', 10, 'instruction'),
+                        f'{version}: unsupported array member: {owner}.{use["name"]}')
+            jvm.require(len(owner) - len(owner.lstrip('[')) <= 255, f'{version}: invalid array class: {owner}')
+            component = jvm.class_use_name(owner)
+            if component is not None:
+                jvm.require(component and not any(c in component for c in '.;['),
+                            f'{version}: invalid array class: {owner}')
+                jvm.require(component not in mixin_targets,
+                            f'{version}: unsupported array component referencing a Mixin: {component}')
+                names.add(component)
+                if not component.startswith(platform):
+                    jvm.require(class_lookup is not None, f'{version}: array component resolver required')
+                    jvm.validate_class_use({'name': owner, 'operation': 'checkcast'}, caller, class_lookup)
     callback = {'org/spongepowered/asm/mixin/injection/callback/CallbackInfo'}
     prefixes = LIBRARY_PREFIXES
     unknown = sorted(n for n in names if n not in own and n not in callback and

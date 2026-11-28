@@ -1,6 +1,7 @@
 import hashlib
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -74,7 +75,7 @@ class WrapperChecks(unittest.TestCase):
                 with self.assertRaises((ValueError, UnicodeError)): wrapper.verify(self.root, forbidden)
 
     def test_previous_parser_accepts_java_unicode_override(self):
-        if not shutil.which('javac') or not shutil.which('java'): self.skipTest('JDK required')
+        if not java_toolchain.which('javac') or not java_toolchain.which('java'): self.skipTest('JDK required')
         self.props.write_text(canonical() + r'distribution\u0055rl=https\://example.invalid/gradle.zip' + '\n')
         # Reproduce the old line split without contacting either URL.
         old = {}
@@ -92,24 +93,24 @@ class WrapperChecks(unittest.TestCase):
                         'public static void main(String[] a) throws Exception { Properties p=new Properties(); '
                         'try(InputStream i=new FileInputStream(a[0])) { p.load(i); } '
                         'System.out.print(p.getProperty("distributionUrl")); }}')
-        subprocess.run(['javac','--release','8',str(java)],check=True,capture_output=True)
-        effective = subprocess.check_output(['java','-cp',str(self.root),'ReadProperties',str(self.props)],text=True)
+        subprocess.run([java_toolchain.which('javac'),'--release','8',str(java)],check=True,capture_output=True)
+        effective = subprocess.check_output([java_toolchain.which('java'),'-cp',str(self.root),'ReadProperties',str(self.props)],text=True)
         self.assertEqual(effective, 'https://example.invalid/gradle.zip')
         with self.assertRaises(ValueError): wrapper.verify(self.root, self.fetch)
 
     def test_canonical_effective_values_match_java_properties(self):
-        if not shutil.which('javac') or not shutil.which('java'): self.skipTest('JDK required')
+        if not java_toolchain.which('javac') or not java_toolchain.which('java'): self.skipTest('JDK required')
         java = self.root/'PropertiesOracle.java'
         java.write_text('import java.io.*; import java.util.*; public class PropertiesOracle { '
                         'public static void main(String[] a) throws Exception { Properties p=new Properties(); '
                         'try(InputStream i=new FileInputStream(a[0])) { p.load(i); } '
                         'System.out.println(p.getProperty("distributionUrl")); '
                         'System.out.println(p.getProperty("distributionSha256Sum")); }}')
-        subprocess.run(['javac','--release','8',str(java)],check=True,capture_output=True)
+        subprocess.run([java_toolchain.which('javac'),'--release','8',str(java)],check=True,capture_output=True)
         for version in ('9.8.2','9.9.0','9.9.1','9.9.2'):
             self.props.write_text(canonical(version))
             checked = wrapper.canonical_properties(self.props.read_bytes())
-            actual = subprocess.check_output(['java','-cp',str(self.root),'PropertiesOracle',str(self.props)],text=True).splitlines()
+            actual = subprocess.check_output([java_toolchain.which('java'),'-cp',str(self.root),'PropertiesOracle',str(self.props)],text=True).splitlines()
             self.assertEqual(actual, [checked['distributionUrl'].replace('\\:', ':'), checked['distributionSha256Sum']])
 
     def test_redirects_remain_on_gradle_checksum_hosts_and_same_path(self):
@@ -144,7 +145,7 @@ class WrapperChecks(unittest.TestCase):
         self.assertNotIn('continue-on-error', dependency)
         bat = (ROOT/'Build-Windows.bat').read_text()
         self.assertLess(bat.index('python scripts\\verify_gradle_wrapper.py'), bat.index('call gradlew.bat'))
-        self.assertIn('if errorlevel 1', bat)
+        self.assertIn('python scripts\\verify_gradle_wrapper.py || (', bat)
 
     def test_build_instructions_run_preflight_before_gradle(self):
         readme = (ROOT/'README.md').read_text().split('## Build from source', 1)[1].split('## Validation', 1)[0]
