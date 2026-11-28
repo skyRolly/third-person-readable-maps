@@ -30,18 +30,18 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 21
+    options.release = 8
     options.encoding = 'UTF-8'
     options.compilerArgs.add('-Xlint:unchecked')
 }
 
 java {
-    // Compile with the same JDK as Gradle, but enforce Java 21's APIs and bytecode above.
+    // Compile with the same JDK as Gradle, but enforce Java 8's APIs and bytecode above.
     toolchain.languageVersion = JavaLanguageVersion.of(25)
 }
 
 tasks.named('remapJar') {
-    archiveClassifier = "mc${project.minecraft_version}"
+    archiveClassifier = "mc${project.minecraft_group}"
 }
 
 jar {

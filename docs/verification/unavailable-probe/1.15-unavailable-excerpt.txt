@@ -1,0 +1,32 @@
+[03:30:41] [main/INFO]: Loading Minecraft 1.15 with Fabric Loader 0.20.1
+	- tprm_unavailable_map_probe 1.0.0
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=1
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=2
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=3
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=4
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=5
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=6
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=7
+[03:32:25] [Netty Local Client IO #0/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE blocked_map_update=8
+[03:32:28] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:28] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=1
+[03:32:28] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:28] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=2
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=3
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=4
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=5
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=6
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=7
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE observed_null=true
+[03:32:29] [main/INFO]: [STDOUT]: TPRM_UNAVAILABLE_PROBE render_completed=8
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[03:32:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved

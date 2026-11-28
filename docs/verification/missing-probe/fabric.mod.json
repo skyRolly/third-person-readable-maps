@@ -1,0 +1,1 @@
+{"schemaVersion": 1, "id": "tprm_missing_data_probe", "version": "1.0.0", "name": "Test-only forced missing map data", "environment": "client", "mixins": ["missing-data-probe.mixins.json"], "depends": {"fabricloader": ">=0.20.1", "thirdpersonreadablemaps": "0.0.2", "minecraft": ["1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5"]}}

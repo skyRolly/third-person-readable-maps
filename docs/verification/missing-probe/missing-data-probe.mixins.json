@@ -1,0 +1,1 @@
+{"required": true, "package": "nullprobe", "compatibilityLevel": "JAVA_8", "client": ["MissingDataProbeMixin"], "injectors": {"defaultRequire": 1}}

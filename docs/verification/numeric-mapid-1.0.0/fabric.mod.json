@@ -1,0 +1,1 @@
+{"schemaVersion": 1, "id": "tprm_mapid_probe", "version": "1.0.0", "name": "Test-only map identity probe", "environment": "client", "mixins": ["mapid-probe.mixins.json"], "depends": {"fabricloader": ">=0.20.1", "thirdpersonreadablemaps": ">=0.0.2", "minecraft": "1.15"}}
