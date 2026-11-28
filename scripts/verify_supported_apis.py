@@ -57,7 +57,10 @@ def read_class(data):
     while i < len(cp):
         tag = num('>B')
         if tag == 1:
-            cp[i] = (tag, source.read(num('>H')).decode('utf-8', errors='replace'))
+            length = num('>H')
+            raw = source.read(length)
+            require(len(raw) == length, 'truncated class file')
+            cp[i] = (tag, jvm_linkage.decode_modified_utf8(raw))
         elif tag in (3, 4):
             cp[i] = (tag, num('>I'))
         elif tag in (5, 6):
