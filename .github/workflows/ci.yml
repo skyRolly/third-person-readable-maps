@@ -50,6 +50,9 @@ jobs:
         run: '& "$env:GITHUB_WORKSPACE\Build-Windows.bat" --stacktrace --warning-mode=all'
       - name: Test static verification
         run: python -m unittest discover -s tests
+      - name: Reject unverified common Mixin registrations
+        if: runner.os == 'Linux'
+        run: python tests/verify_mixin_registration.py
       - name: Verify packaged game and library APIs
         run: python scripts/verify_supported_apis.py --jar build/libs
       - name: Upload distributable mod
@@ -96,5 +99,7 @@ jobs:
           cache-read-only: true
           validate-wrappers: true
           dependency-graph: generate-and-upload
-          additional-arguments: --no-daemon --console=plain --stacktrace
+          # This mode does not submit to GitHub, so Gradle needs no API token.
+          github-token: ''
+          additional-arguments: --no-daemon --console=plain --stacktrace --init-script ${{ github.workspace }}/.github/gradle/no-github-credentials.init.gradle
           artifact-retention-days: 14

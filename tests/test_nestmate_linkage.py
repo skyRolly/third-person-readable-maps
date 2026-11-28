@@ -3,6 +3,7 @@ import copy
 import io
 from pathlib import Path
 import shutil
+import java_toolchain
 import struct
 import subprocess
 import sys
@@ -44,7 +45,7 @@ def duplicate_class_attribute(data, desired):
 class NestAndDescriptorFixtures(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.javac = shutil.which('javac'); cls.java = shutil.which('java')
+        cls.javac = java_toolchain.which('javac'); cls.java = java_toolchain.which('java')
         if not cls.javac or not cls.java: raise unittest.SkipTest('JDK required')
 
     def fixture(self, release='21'):
