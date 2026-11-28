@@ -1,8 +1,7 @@
 @echo off
 setlocal
 pushd "%~dp0" || exit /b 1
-python scripts\verify_gradle_wrapper.py
-if errorlevel 1 (
+python scripts\verify_gradle_wrapper.py || (
   popd
   exit /b 1
 )

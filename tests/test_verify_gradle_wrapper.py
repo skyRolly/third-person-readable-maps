@@ -144,7 +144,7 @@ class WrapperChecks(unittest.TestCase):
         self.assertNotIn('continue-on-error', dependency)
         bat = (ROOT/'Build-Windows.bat').read_text()
         self.assertLess(bat.index('python scripts\\verify_gradle_wrapper.py'), bat.index('call gradlew.bat'))
-        self.assertIn('if errorlevel 1', bat)
+        self.assertIn('python scripts\\verify_gradle_wrapper.py || (', bat)
 
     def test_build_instructions_run_preflight_before_gradle(self):
         readme = (ROOT/'README.md').read_text().split('## Build from source', 1)[1].split('## Validation', 1)[0]
