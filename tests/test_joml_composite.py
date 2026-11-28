@@ -4,6 +4,7 @@ import io
 import json
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -19,7 +20,7 @@ import verify_supported_apis as verifier
 
 class JomlCompositeTests(unittest.TestCase):
     def test_inherited_game_member_and_missing_member(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:
