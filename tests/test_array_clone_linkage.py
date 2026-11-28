@@ -52,5 +52,29 @@ class ArrayCloneLinkageTests(unittest.TestCase):
                     verify(dict(node, uses=uses), lookup)
 
 
+    def test_mixin_array_component_is_rejected(self):
+        javac = java_toolchain.which('javac')
+        if not javac:
+            self.skipTest('javac is required')
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            mixin = root / 'mix/Mix.java'
+            mixin.parent.mkdir(parents=True)
+            mixin.write_text('package mix; public class Mix {}', encoding='utf-8')
+            caller = root / 'Caller.java'
+            caller.write_text('public class Caller { Object copy(mix.Mix[] x) { return x.clone(); } }', encoding='utf-8')
+            subprocess.run([javac, '--release', '8', '-d', str(root), str(mixin), str(caller)],
+                           check=True, capture_output=True, timeout=60)
+            nodes = {}
+            for name in ('Caller', 'mix/Mix'):
+                node = jvm_linkage.parse((root / (name + '.class')).read_bytes())
+                nodes[name] = dict(node, origin='candidate')
+            self.assertTrue(any(use['owner'] == '[Lmix/Mix;' and use['name'] == 'clone'
+                                for use in nodes['Caller']['uses']))
+            with self.assertRaisesRegex(ValueError, 'unsupported array component referencing a Mixin'):
+                game_linkage.verify_declared_libraries({}, nodes, {'mix/Mix': 'game/Target'},
+                                                      lambda _: None, 'fixture', class_lookup=nodes.get)
+
+
 if __name__ == '__main__':
     unittest.main()
