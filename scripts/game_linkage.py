@@ -224,10 +224,13 @@ def verify_library_instructions(mod_nodes, mixin_targets, library, prefix, versi
     def local_lookup(name):
         if name in mod_nodes:
             return dict(mod_nodes[name], origin='candidate')
-        try:
-            return dict(jvm.parse(library.read(name + '.class'), include_code=False), origin='library')
-        except KeyError:
+        matches = [entry for entry in library.infolist() if entry.filename == name + '.class']
+        jvm.require(len(matches) <= 1, f'{version}: duplicate library class {name}')
+        if not matches:
             return None
+        node = jvm.parse(library.read(matches[0]), include_code=False)
+        jvm.require(node['name'] == name, f'{version}: library class name mismatch: {name} != {node["name"]}')
+        return dict(node, origin='library')
     lookup = class_lookup or local_lookup
 
     classes = {c for node in mod_nodes.values() for c in node['classes']
@@ -336,8 +339,11 @@ class RuntimeLibraries:
         path = name + '.class'
         matches = [entry for entry in archive.infolist() if entry.filename == path]
         jvm.require(len(matches) <= 1, f'{self.version}: duplicate library class {name}')
-        self._classes[name] = (dict(jvm.parse(archive.read(matches[0]), include_code=False),
-                                    origin='library:' + digest) if matches else None)
+        node = jvm.parse(archive.read(matches[0]), include_code=False) if matches else None
+        if node is not None:
+            jvm.require(node['name'] == name,
+                        f'{self.version}: library class name mismatch: {name} != {node["name"]}')
+        self._classes[name] = dict(node, origin='library:' + digest) if node is not None else None
         return self._classes[name]
 
 
