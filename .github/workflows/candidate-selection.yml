@@ -26,3 +26,5 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_evidence_lifecycle.py' -v
       - name: Report selected evidence freshness
         run: python3 scripts/check_candidate_evidence_selection.py
+      - name: Compare current pinned verifier copies
+        run: python3 scripts/check_candidate_shared_sync.py --fetch-missing
