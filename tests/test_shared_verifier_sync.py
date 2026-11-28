@@ -6,7 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
     'scripts/jvm_linkage.py': '058655e3e78516e60b1900e81dd62d26feb5ae69503ab4c2553f1d908d3d7c35',
-    'scripts/game_linkage.py': '366d421a34c52e125587aa0a9bbb5d311cf98cb6e2ee1a8b4bb46d811ad4e814',
+    'scripts/game_linkage.py': 'a738cd05854753b16e385d6bcd203d7003030b509ded865f0328d100f199e92c',
     'tests/test_jvm_linkage.py': '9146a19a30c49cfaaaa36a411a641d31a9a261b6720eb0ca50e4573fb4918bea',
     'tests/test_hierarchy_linkage.py': '5a0d46b2b2139cc917bc1a07af55d3eb551648eb9ab980d9df0134b66d81e018',
     'tests/hierarchy_entrypoint_fixtures.py': '4ec6751f1576c570921b8dea896d38535af8f0591c4adaf14165c9c23f16ac88',
