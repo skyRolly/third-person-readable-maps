@@ -4,6 +4,7 @@ from Xlib import X,XK,display
 from Xlib.ext import xtest
 import hashlib,json,os,shutil,subprocess,time,zipfile
 import minecraft_launcher_lib as launcher
+from process_cleanup import managed_client
 import minecraft_launcher_lib.install as install
 install.install_jvm_runtime=lambda *args,**kwargs: None
 launcher.install.install_minecraft_version('1.19.3',str(shared) if 'shared' in globals() else '/workspace/.minecraft-test')
@@ -42,29 +43,30 @@ for mode,(jar,digest) in jars.items():
  opts={'username':'MapSmokeTest','uuid':'f36d949a12db4676bc41a7b7fe97fd55','token':'0','executablePath':java,'jvmArguments':['-Xmx1300M','-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts'],'gameDirectory':str(root),'customResolution':True,'resolutionWidth':'1280','resolutionHeight':'720'}
  cmd=launcher.command.get_minecraft_command('fabric-loader-0.20.1-1.19.3',str(shared),opts);log=root/'client.log';print('Launching',mode,'candidate',digest,flush=True)
  with log.open('w') as out:
-  p=subprocess.Popen(cmd,env=env,stdout=out,stderr=subprocess.STDOUT);wait(p,log,'mob_effect',180);time.sleep(8)
-  subprocess.run(['python3',str(shared/'x11-89.py'),'click:640:350','sleep:2','click:500:195','sleep:1','click:400:595'],env=env,check=True,stdout=subprocess.DEVNULL);time.sleep(8)
-  if 'Starting integrated' not in log.read_text(errors='replace'):subprocess.run(['python3',str(shared/'x11-89.py'),'click:380:410'],env=env,check=True,stdout=subprocess.DEVNULL)
-  wait(p,log,'MapSmokeTest joined the game',360);hotbar();tap('2');time.sleep(5);tap('F5');wait(p,log,'TPRM_MAPID_PROBE case=',120);time.sleep(4)
-  import re
-  import re
-  end=time.monotonic()+90
-  while time.monotonic()<end:
-   samples=[x for x in log.read_text(errors='replace').splitlines() if 'TPRM_MAPID_PROBE case=' in x]
-   if len(samples)>=30:break
-   time.sleep(1)
-  print(mode,'samples',samples[:30],flush=True)
-  rows=[dict(re.findall(r'(case|lookup|data)=([a-z]+)',x)) for x in samples[:30]]
-  assert len(rows)==30 and {x['case'] for x in rows}=={'absent','empty','text','fraction','overflow','nan','zero','shortzero','nonzero','unavailable'}
-  for case in ('absent','empty','text'):
-   assert all(x['lookup']==('true' if mode=='old' else 'false') and x['data']=='false' for x in rows if x['case']==case)
-  for case in ('fraction','overflow','nan'):
-   assert all(x['lookup']==('true' if mode=='old' else 'false') and x['data']==('true' if mode=='old' else 'false') for x in rows if x['case']==case)
-  for case in ('zero','shortzero','nonzero'):
-   assert all(x['lookup']=='true' and x['data']=='true' for x in rows if x['case']==case)
-  assert all(x['lookup']=='true' and x['data']=='false' for x in rows if x['case']=='unavailable')
-  d=display.Display(':89');r=d.screen().root;g=r.get_geometry();raw=r.get_image(0,0,g.width,g.height,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(g.width,g.height),raw.data,'raw','BGRX').save(root/'probe-scene.png');d.close()
-  off=log.stat().st_size;tap('Escape');time.sleep(1);subprocess.run(['python3',str(shared/'x11-89.py'),'click:640:520'],env=env,check=True,stdout=subprocess.DEVNULL);wait(p,log,'All chunks are saved',120,off);time.sleep(5);subprocess.run(['python3',str(shared/'x11-89.py'),'click:785:605'],env=env,check=True,stdout=subprocess.DEVNULL);p.wait(timeout=45);assert p.returncode==0
+  with managed_client(subprocess.Popen(cmd,env=env,stdout=out,stderr=subprocess.STDOUT)) as p:
+   wait(p,log,'mob_effect',180);time.sleep(8)
+   subprocess.run(['python3',str(shared/'x11-89.py'),'click:640:350','sleep:2','click:500:195','sleep:1','click:400:595'],env=env,check=True,stdout=subprocess.DEVNULL);time.sleep(8)
+   if 'Starting integrated' not in log.read_text(errors='replace'):subprocess.run(['python3',str(shared/'x11-89.py'),'click:380:410'],env=env,check=True,stdout=subprocess.DEVNULL)
+   wait(p,log,'MapSmokeTest joined the game',360);hotbar();tap('2');time.sleep(5);tap('F5');wait(p,log,'TPRM_MAPID_PROBE case=',120);time.sleep(4)
+   import re
+   import re
+   end=time.monotonic()+90
+   while time.monotonic()<end:
+    samples=[x for x in log.read_text(errors='replace').splitlines() if 'TPRM_MAPID_PROBE case=' in x]
+    if len(samples)>=30:break
+    time.sleep(1)
+   print(mode,'samples',samples[:30],flush=True)
+   rows=[dict(re.findall(r'(case|lookup|data)=([a-z]+)',x)) for x in samples[:30]]
+   assert len(rows)==30 and {x['case'] for x in rows}=={'absent','empty','text','fraction','overflow','nan','zero','shortzero','nonzero','unavailable'}
+   for case in ('absent','empty','text'):
+    assert all(x['lookup']==('true' if mode=='old' else 'false') and x['data']=='false' for x in rows if x['case']==case)
+   for case in ('fraction','overflow','nan'):
+    assert all(x['lookup']==('true' if mode=='old' else 'false') and x['data']==('true' if mode=='old' else 'false') for x in rows if x['case']==case)
+   for case in ('zero','shortzero','nonzero'):
+    assert all(x['lookup']=='true' and x['data']=='true' for x in rows if x['case']==case)
+   assert all(x['lookup']=='true' and x['data']=='false' for x in rows if x['case']=='unavailable')
+   d=display.Display(':89');r=d.screen().root;g=r.get_geometry();raw=r.get_image(0,0,g.width,g.height,X.ZPixmap,0xffffffff);Image.frombytes('RGB',(g.width,g.height),raw.data,'raw','BGRX').save(root/'probe-scene.png');d.close()
+   off=log.stat().st_size;tap('Escape');time.sleep(1);subprocess.run(['python3',str(shared/'x11-89.py'),'click:640:520'],env=env,check=True,stdout=subprocess.DEVNULL);wait(p,log,'All chunks are saved',120,off);time.sleep(5);subprocess.run(['python3',str(shared/'x11-89.py'),'click:785:605'],env=env,check=True,stdout=subprocess.DEVNULL);p.wait(timeout=45);assert p.returncode==0
  shutil.rmtree(root/'saves')
  for f in (root/'.fabric/remappedJars').glob('**/*-intermediary.jar'):f.unlink()
  print('Completed',mode,flush=True)
