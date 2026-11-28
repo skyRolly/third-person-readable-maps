@@ -96,5 +96,7 @@ jobs:
           cache-read-only: true
           validate-wrappers: true
           dependency-graph: generate-and-upload
-          additional-arguments: --no-daemon --console=plain --stacktrace
+          # This mode does not submit to GitHub, so Gradle needs no API token.
+          github-token: ''
+          additional-arguments: --no-daemon --console=plain --stacktrace --init-script ${{ github.workspace }}/.github/gradle/no-github-credentials.init.gradle
           artifact-retention-days: 14
