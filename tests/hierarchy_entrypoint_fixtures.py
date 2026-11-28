@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 
 
@@ -41,7 +42,7 @@ def prepare(root, support, out, javac, spec):
         (support/parent).unlink()
     if location == 'candidate' and variant != 'missing':
         (out/parent).parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(support/parent, out/parent)
-    java = shutil.which('java')
+    java = java_toolchain.which('java')
     if java:
         executed = subprocess.run([java, '-cp', os.pathsep.join(map(str, (out, support, loader_out))),
                                    'LoadHierarchy'], capture_output=True, text=True)

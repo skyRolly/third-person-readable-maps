@@ -5,19 +5,21 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
+    'tests/test_java_toolchain.py': '518ac476311fe8f2b4dcf875fe4fa0cc2f5cb69181bfcd9a48ef2f833e9c5989',
+    'tests/java_toolchain.py': 'd977d0dddb52117746305cdbad0a2cbaf79bf65ff4c2d1ecc2882ebf2a070405',
     'scripts/jvm_linkage.py': '058655e3e78516e60b1900e81dd62d26feb5ae69503ab4c2553f1d908d3d7c35',
     'scripts/game_linkage.py': 'a738cd05854753b16e385d6bcd203d7003030b509ded865f0328d100f199e92c',
-    'tests/test_jvm_linkage.py': '9146a19a30c49cfaaaa36a411a641d31a9a261b6720eb0ca50e4573fb4918bea',
-    'tests/test_hierarchy_linkage.py': '5a0d46b2b2139cc917bc1a07af55d3eb551648eb9ab980d9df0134b66d81e018',
-    'tests/hierarchy_entrypoint_fixtures.py': '4ec6751f1576c570921b8dea896d38535af8f0591c4adaf14165c9c23f16ac88',
+    'tests/test_jvm_linkage.py': '650d1560b6e37a857e66bbbb08aaae42f7e1e83444492ba31eeedcb5114e60dc',
+    'tests/test_hierarchy_linkage.py': '3b8388aaef57bf2ac0b9ee3115ebece9a04662d9e37baed321b375c993f731b8',
+    'tests/hierarchy_entrypoint_fixtures.py': '996360319c65aa6c6be74036e07a7ba2b4a18a9752da0ce6205cd99f97f6e216',
     'scripts/verify_gradle_wrapper.py': '2730fb13bf46b091a141f8adbbb178b299bb0f67831aaeffd2f3fc4a91402481',
-    'tests/test_verify_gradle_wrapper.py': 'd14bce590f784c2d15e7afe462d947a789c68cf0cef7632e94735678e6dfa6b2',
-    'tests/test_nestmate_linkage.py': '870e107ecb86a0ec97c85eed3b69509f92c66461ddf904170c4bc2f3548af235',
-    'docs/verification/linkage-contract.md': 'fcaa278b8a6ee2a7848fe9aa18801daac8ecace6379d10e31903a78ff84c89f8',
+    'tests/test_verify_gradle_wrapper.py': 'b4eeb0608cb5aca42226096c1178fbf3fed72f69158eba2cc349be96702c69cc',
+    'tests/test_nestmate_linkage.py': 'bf6bef36cba8b473b657c554860caab6ebc63dad16605b3ae4b611e9256a6185',
+    'docs/verification/linkage-contract.md': 'cc20bbe638fdb79da07730eb0738f965630b4f8f2ffdbd5eba002add47d71866',
 }
 ADAPTERS = {
-    'intermediary': '4b93019ab84f0ed7bfa057436c943080f90194e7a8c91179171512c00de5feb7',
-    'official': '159ecdbb63e288a8252ee8e286754f7c9003cb872eba3043f513df642e829758',
+    'intermediary': 'fccb16a5ff3d25ba9b80697811629a9bfcbcb16fd8b80e87b9303bbbac29cbbf',
+    'official': '3a720780ffac428a282c69a14e3ee2ef02802ad405718078ed61937fc9efa843',
 }
 
 
