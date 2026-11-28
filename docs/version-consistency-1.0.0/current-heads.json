@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "observed_on": "2026-11-21",
-  "status": "Current integrated maintenance branch heads and exact open legacy proposal heads; fresh CI, API, and build evidence is recorded per source. Dependency security and runtime evidence remain separate gates.",
+  "status": "Selected heads for the retained 2026-11-21 evidence. Legacy candidate branches have since advanced for credential isolation; current monitoring pins are in docs/legacy-candidate-evidence.json. The retained build, security and runtime records remain bound to the selected heads below and are not current-head acceptance.",
   "groups": {
     "1.14-1.14.4": {
       "pr": 23,
