@@ -47,7 +47,8 @@ class JomlCompositeTests(unittest.TestCase):
                     '@Mixin(net.minecraft.class_1.class) public class ReadableMapLayerMixin { '
                     '@Inject(method="method_1", at=@At("HEAD")) private void inject(CallbackInfo c) {} }',
                 'app/Caller.java':
-                    'package app; public class Caller { public void invoke(org.joml.Api x) { x.run(); } }',
+                    'package app; public class Caller { public void invoke(org.joml.Api x) { x.run(); } '
+                    'public Object copy(String[] x) { return x.clone(); } }',
             }
             paths = []
             for name, text in sources.items():
