@@ -1,0 +1,30 @@
+name: Candidate evidence freshness reporting
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'coordination/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selection:
+    name: Validate evidence freshness reporting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+      - name: Test pending and strict behavior
+        run: python3 -m unittest discover -s tests -p 'test_evidence_lifecycle.py' -v
+      - name: Report selected evidence freshness
+        run: python3 scripts/check_candidate_evidence_selection.py
+      - name: Compare current pinned verifier copies
+        run: python3 scripts/check_candidate_shared_sync.py --fetch-missing

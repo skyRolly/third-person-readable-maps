@@ -11,6 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
 import validate_current_evidence as evidence
+import check_candidate_evidence_selection as selection_check
 
 
 class EvidenceLifecycleTests(unittest.TestCase):
@@ -54,6 +55,36 @@ class EvidenceLifecycleTests(unittest.TestCase):
 
     def validate(self):
         return evidence.validate(self.heads, self.versions, self.selection, self.files.__getitem__, self.blobs.__getitem__)
+
+    def test_candidate_head_advance_marks_selected_evidence_pending(self):
+        monitored = {'g': {'candidate_head': self.current}}
+        self.assertEqual(selection_check.candidate_source_drift(self.heads, monitored), [])
+        monitored['g']['candidate_head'] = self.old
+        self.assertEqual(selection_check.candidate_source_drift(self.heads, monitored),
+                         ['g: selected evidence predates monitored candidate head'])
+        monitored['g'].update(candidate_head=self.current, monitoring={'state': 'integrated-transition'})
+        self.assertEqual(selection_check.candidate_source_drift(self.heads, monitored),
+                         ['g: verify selected evidence against transitioned source'])
+        monitored['g']['candidate_head'] = 'invalid'
+        with self.assertRaisesRegex(ValueError, 'invalid monitored candidate source'):
+            selection_check.candidate_source_drift(self.heads, monitored)
+        with self.assertRaisesRegex(ValueError, 'missing selected or monitored candidate source'):
+            selection_check.candidate_source_drift({}, monitored)
+        with self.assertRaisesRegex(ValueError, 'invalid candidate sources'):
+            selection_check.candidate_source_drift(self.heads, {})
+
+    def test_selection_check_preserves_validation_and_strict_mode(self):
+        candidates = {'g': {'candidate_head': self.old}}
+        def read(path):
+            return {'groups': self.heads if path.endswith('current-heads.json') else candidates}
+        with patch.object(evidence, 'read', side_effect=read), patch.object(evidence, 'main', return_value=0) as prior:
+            with patch.object(sys, 'argv', ['check']):
+                self.assertEqual(selection_check.main(), 0)
+            with patch.object(sys, 'argv', ['check', '--require-complete']):
+                self.assertEqual(selection_check.main(), 1)
+            self.assertEqual(prior.call_count, 2)
+        with patch.object(evidence, 'main', return_value=2):
+            self.assertEqual(selection_check.main(), 2)
 
     def test_historical_integrity_does_not_read_mutable_current_heads(self):
         import test_hierarchy_historical_evidence as historical
