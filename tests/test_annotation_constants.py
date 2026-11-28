@@ -1,6 +1,7 @@
 """The packaged verifier must read long and double annotation values."""
 from pathlib import Path
 import shutil
+import java_toolchain
 import struct
 import subprocess
 import sys
@@ -15,7 +16,7 @@ import verify_supported_apis as verifier
 
 class AnnotationConstantsTests(unittest.TestCase):
     def test_long_and_double_values_remain_available(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:
