@@ -204,6 +204,12 @@ def verify(mod_path, versions=None, clients=None):
             return re.sub(r'L([^;]+);', convert, desc)
         fetch_library = lambda artifact: checked(get(artifact['url']), artifact['sha1'], artifact['size'])
         runtime_libraries = game_linkage.RuntimeLibraries(metadata, fetch_library, version)
+        libraries = [x for x in metadata['libraries'] if x['name'].startswith('org.joml:joml:')]
+        require(len(libraries) == 1 and libraries[0]['name'] == 'org.joml:joml:1.10.5',
+                f'{version}: unexpected JOML version')
+        artifact = libraries[0]['downloads']['artifact']
+        checked(get(artifact['url']), artifact['sha1'], artifact['size'])
+        joml_refs = {ref for node in mod_classes.values() for ref in node['refs'] if ref[1].startswith('org/joml/')}
         with ZipFile(io.BytesIO(data)) as game:
             class_lookup = game_linkage.make_class_lookup(instruction_classes, game, forward, reverse,
                                                          mapped_members, version, runtime_libraries.lookup)
@@ -243,6 +249,9 @@ def verify(mod_path, versions=None, clients=None):
                 missing = [ref for ref in sorted(refs) if not game_linkage.resolve_game_reference(
                     *ref, class_lookup, instruction_classes, mixin_targets)]
                 require(not missing, f'{version}: missing game members on {platform}: {missing}')
+                missing_joml = [ref for ref in sorted(joml_refs) if not game_linkage.resolve_game_reference(
+                    *ref, class_lookup, instruction_classes, mixin_targets)]
+                require(not missing_joml, f'{version}: missing JOML members on {platform}: {missing_joml}')
                 instruction_count += game_linkage.verify_game_instructions(
                     instruction_classes, mixin_targets, game, forward, reverse, mapped_members, version,
                     class_lookup=class_lookup)
@@ -252,36 +261,6 @@ def verify(mod_path, versions=None, clients=None):
                 library_coverage.append((platform, coverage))
         print(f'{version}: dependency library checks: {library_coverage}')
         print(f'{version}: {instruction_count} JVM game member instructions verified')
-        libraries = [x for x in metadata['libraries'] if x['name'].startswith('org.joml:joml:')]
-        require(len(libraries) == 1 and libraries[0]['name'] == 'org.joml:joml:1.10.5',
-                f'{version}: unexpected JOML version')
-        artifact = libraries[0]['downloads']['artifact']
-        joml = checked(get(artifact['url']), artifact['sha1'], artifact['size'])
-        joml_refs = {ref for node in mod_classes.values() for ref in node['refs'] if ref[1].startswith('org/joml/')}
-        with ZipFile(io.BytesIO(joml)) as lib:
-            @lru_cache(None)
-            def joml_class(owner):
-                try:
-                    return read_class(lib.read(owner + '.class'))
-                except KeyError:
-                    return None
-            def resolve_joml(kind, owner, member, descriptor, seen=None):
-                seen = seen or set()
-                if owner in seen:
-                    return False
-                seen.add(owner)
-                node = joml_class(owner)
-                if not node:
-                    return False
-                if any((m['kind'], m['name'], m['descriptor']) == (kind, member, descriptor) for m in node['members']):
-                    return True
-                if member in ('<init>', '<clinit>'):
-                    return False
-                return any(resolve_joml(kind, ancestor, member, descriptor, seen)
-                           for ancestor in [node['super']] + node['interfaces'] if ancestor)
-            missing_joml = [ref for ref in sorted(joml_refs) if not resolve_joml(*ref)]
-            require(not missing_joml, f'{version}: missing JOML members: {missing_joml}')
-            game_linkage.verify_library_instructions(instruction_classes, mixin_targets, lib, 'org/joml/', version)
         print(f'{version}: {len(injections)} Mixin descriptors, {len(classes)} classes, {len(refs)} game and {len(joml_refs)} JOML references verified')
 
 
