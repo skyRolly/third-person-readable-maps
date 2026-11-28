@@ -2,6 +2,10 @@ plugins {
     id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 }
 
+if (project.minecraft_version != '1.19.3') {
+    throw new GradleException("Unsupported Minecraft build target: ${project.minecraft_version}; this port targets 1.19.3")
+}
+
 version = project.mod_version
 group = project.maven_group
 
