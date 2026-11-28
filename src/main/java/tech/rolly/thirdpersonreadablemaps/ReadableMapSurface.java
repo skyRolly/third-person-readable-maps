@@ -4,11 +4,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.state.MapRenderState;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.level.saveddata.maps.MapId;
@@ -16,10 +15,10 @@ import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 /** Submits map faces and map data in the holding hand coordinate space. */
 public final class ReadableMapSurface {
-    private static final RenderType BLANK_MAP_FACE = RenderTypes.text(
-            Identifier.withDefaultNamespace("textures/map/map_background.png"));
-    private static final RenderType FILLED_MAP_FACE = RenderTypes.text(
-            Identifier.withDefaultNamespace("textures/map/map_background_checkerboard.png"));
+    private static final RenderType BLANK_MAP_FACE = RenderType.text(
+            ResourceLocation.withDefaultNamespace("textures/map/map_background.png"));
+    private static final RenderType FILLED_MAP_FACE = RenderType.text(
+            ResourceLocation.withDefaultNamespace("textures/map/map_background_checkerboard.png"));
 
     private ReadableMapSurface() {}
 
