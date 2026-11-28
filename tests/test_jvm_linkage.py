@@ -1,4 +1,5 @@
 import shutil
+import java_toolchain
 import struct
 import hashlib
 import io
@@ -18,7 +19,7 @@ import game_linkage
 class ClassFileFixtures(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.javac = shutil.which('javac')
+        cls.javac = java_toolchain.which('javac')
         if not cls.javac:
             raise unittest.SkipTest('javac is required for bytecode fixtures')
 
@@ -99,7 +100,7 @@ class ClassFileFixtures(unittest.TestCase):
             self.assertEqual(use['enclosing_method'], 'main')
             with self.assertRaisesRegex(ValueError, 'final field write outside declaring class'):
                 linkage.validate_use(use, 'fixture/Caller', nodes.get)
-        java = shutil.which('java')
+        java = java_toolchain.which('java')
         if java:
             for arg in ('instance', 'static'):
                 run = subprocess.run([java, '-cp', str(root), 'fixture.Caller', arg], capture_output=True, text=True)
@@ -184,7 +185,7 @@ class ClassFileFixtures(unittest.TestCase):
                     u2(0x21)+u2(2)+u2(4)+u2(0)+fields+u2(2)+init+main+u2(0))
         temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
         root = Path(temp.name); (root/'fixture').mkdir()
-        java = shutil.which('java')
+        java = java_toolchain.which('java')
         for kind in (3, 4):
             for final in (False, True):
                 raw = handle_class(kind, final)
@@ -350,7 +351,7 @@ class ClassFileFixtures(unittest.TestCase):
             game_linkage.verify_game_instructions({old['name']:old}, {}, z, {}, {}, {}, 'fixture')
             with self.assertRaisesRegex(ValueError, 'inaccessible referenced class'):
                 game_linkage.verify_game_instructions({handle_node['name']:handle_node}, {}, z, {}, {}, {}, 'fixture')
-        java = shutil.which('java')
+        java = java_toolchain.which('java')
         if java:
             direct_run = subprocess.run([java, '-cp', str(out), 'app.Direct'], capture_output=True, text=True)
             self.assertEqual(direct_run.returncode, 0, direct_run.stderr)
@@ -376,7 +377,7 @@ class ClassFileFixtures(unittest.TestCase):
         temp = tempfile.TemporaryDirectory(); self.addCleanup(temp.cleanup)
         root = Path(temp.name); (root/'app').mkdir(); (root/'app/TypeCaller.class').write_bytes(raw)
         source = root/'Hidden.java'; archive = root/'game.jar'
-        java = shutil.which('java')
+        java = java_toolchain.which('java')
         for public in (True, False):
             source.write_text('package com.mojang.math; '+('public ' if public else '')+'class Hidden {}')
             subprocess.run([self.javac, '--release', '8', '-d', str(root), str(source)],
