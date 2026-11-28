@@ -1,13 +1,14 @@
 package tech.rolly.thirdpersonreadablemaps.mixin;
 
 import tech.rolly.thirdpersonreadablemaps.ReadableMapSurface;
+import tech.rolly.thirdpersonreadablemaps.ReadableMapHands;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -21,27 +22,28 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Submits filled maps using the third-person hand transform. */
+/** Renders filled maps using the third-person hand transform. */
 @Mixin(ItemInHandLayer.class)
 public abstract class ReadableMapLayerMixin<
         MapEntityState extends ArmedEntityRenderState,
-        MapEntityModel extends EntityModel<MapEntityState> & ArmedModel<MapEntityState>> extends RenderLayer<MapEntityState, MapEntityModel> {
+        MapEntityModel extends EntityModel<MapEntityState> & ArmedModel> extends RenderLayer<MapEntityState, MapEntityModel> {
 
     protected ReadableMapLayerMixin(RenderLayerParent<MapEntityState, MapEntityModel> mapLayerParent) {
         super(mapLayerParent);
     }
 
-    @Inject(method = "submitArmWithItem", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "renderArmWithItem", at = @At("HEAD"), cancellable = true)
     private void thirdpersonreadablemaps$submitReadableMap(
             MapEntityState mapEntityState,
             ItemStackRenderState unusedMapItemState,
-            ItemStack readableMapStack,
             HumanoidArm mapHoldingArm,
             PoseStack readableMapTransform,
-            SubmitNodeCollector readableMapQueue,
+            MultiBufferSource readableMapQueue,
             int readableMapPackedLight,
             CallbackInfo readableMapCallback) {
 
+        ReadableMapHands readableMapHands = (ReadableMapHands) mapEntityState;
+        ItemStack readableMapStack = readableMapHands.thirdpersonreadablemaps$getStack(mapHoldingArm);
         if (!(readableMapStack.getItem() instanceof MapItem) || Minecraft.getInstance().level == null) {
             return;
         }
@@ -56,16 +58,17 @@ public abstract class ReadableMapLayerMixin<
         }
 
         boolean isMapInMainHand = mapHoldingArm == mapEntityState.mainArm;
-        ItemStack otherHandMapStack = isMapInRightHand ? mapEntityState.leftHandItemStack : mapEntityState.rightHandItemStack;
+        ItemStack otherHandMapStack = readableMapHands.thirdpersonreadablemaps$getStack(
+                isMapInRightHand ? HumanoidArm.LEFT : HumanoidArm.RIGHT);
         boolean useCompactMap = !isMapInMainHand || !otherHandMapStack.isEmpty();
 
         readableMapTransform.pushPose();
         try {
-            readableMapModel.translateToHand(mapEntityState, mapHoldingArm, readableMapTransform);
-            readableMapTransform.mulPose(Axis.XP.rotationDegrees(-90.0f));
-            readableMapTransform.mulPose(Axis.YP.rotationDegrees(isMapInMainHand ? 205.0f : 200.0f));
+            readableMapModel.translateToHand(mapHoldingArm, readableMapTransform);
+            ReadableMapSurface.rotate(readableMapTransform, Axis.XP.rotationDegrees(-90.0f));
+            ReadableMapSurface.rotate(readableMapTransform, Axis.YP.rotationDegrees(isMapInMainHand ? 205.0f : 200.0f));
             if (isMapInMainHand) {
-                readableMapTransform.mulPose(Axis.ZP.rotationDegrees(10.0f));
+                ReadableMapSurface.rotate(readableMapTransform, Axis.ZP.rotationDegrees(10.0f));
             }
             float mapHandSign = isMapInRightHand ? 1f : -1f;
             readableMapTransform.translate(mapHandSign / 16f, isMapInMainHand ? (useCompactMap ? 0.09 : 0.24) : 0.125, -0.625);
