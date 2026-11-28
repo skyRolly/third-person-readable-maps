@@ -229,7 +229,9 @@ def parse(data, include_code=True):
                                    'operation': CLASS_OPS[op]})
             elif op == 186:
                 require(operands[2:] == b'\0\0', 'invalid invokedynamic operands')
-                constant(struct.unpack_from('>H', operands)[0], method_info, set())
+                index = struct.unpack_from('>H', operands)[0]
+                entry(index, 18)
+                constant(index, method_info, set())
             elif op in (18, 19, 20):
                 index = operands[0] if op == 18 else struct.unpack_from('>H', operands)[0]
                 constant(index, method_info, set())
