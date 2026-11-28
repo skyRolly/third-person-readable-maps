@@ -104,6 +104,13 @@ def validate_product_hierarchies(mod_nodes, mixin_targets, lookup, version):
             target_node = lookup(target)
             jvm.require(target_node is not None, 'missing Mixin target: ' + target)
             jvm.require(not target_node['access'] & 0x0200, 'unsupported interface Mixin target: ' + target)
+            target_members = {(m['kind'], m['name'], m['descriptor']) for m in target_node['members']}
+            for member in node['members']:
+                if member['kind'] == 'method' and member['name'] in ('<init>', '<clinit>'):
+                    continue
+                signature = (member['kind'], member['name'], member['descriptor'])
+                jvm.require(signature not in target_members,
+                            'unsupported Mixin member collision: ' + member['name'])
             jvm.validate_hierarchy(target, lookup, forbidden=mixins)
             parent = node.get('super')
             jvm.require(parent is not None and parent not in mixins,
@@ -342,11 +349,30 @@ def verify_declared_libraries(metadata, mod_nodes, mixin_targets, fetch_checked,
     sole Mixin callback class is supplied by the pinned Fabric Loader runtime.
     Unexpected external namespaces fail instead of being silently skipped.
     """
-    own = set(mod_nodes)
-    names = {n for node in mod_nodes.values() for n in node['classes']}
-    names.update(use['owner'] for node in mod_nodes.values() for use in node['uses'])
     game = ('net/minecraft/', 'com/mojang/blaze3d/', 'com/mojang/math/')
     platform = ('java/', 'javax/')
+    own = set(mod_nodes)
+    names = {n for node in mod_nodes.values() for n in node['classes']}
+    for name, node in mod_nodes.items():
+        caller = mixin_targets.get(name, name)
+        for use in node['uses']:
+            owner = use['owner']
+            if not owner.startswith('['):
+                names.add(owner)
+                continue
+            jvm.require((use['kind'], use['name'], use['descriptor'], use['operation'],
+                         use['reference_tag'], use['source_kind']) ==
+                        ('method', 'clone', '()Ljava/lang/Object;', 'invokevirtual', 10, 'instruction'),
+                        f'{version}: unsupported array member: {owner}.{use["name"]}')
+            jvm.require(len(owner) - len(owner.lstrip('[')) <= 255, f'{version}: invalid array class: {owner}')
+            component = jvm.class_use_name(owner)
+            if component is not None:
+                jvm.require(component and not any(c in component for c in '.;['),
+                            f'{version}: invalid array class: {owner}')
+                names.add(component)
+                if not component.startswith(platform):
+                    jvm.require(class_lookup is not None, f'{version}: array component resolver required')
+                    jvm.validate_class_use({'name': owner, 'operation': 'checkcast'}, caller, class_lookup)
     callback = {'org/spongepowered/asm/mixin/injection/callback/CallbackInfo'}
     prefixes = LIBRARY_PREFIXES
     unknown = sorted(n for n in names if n not in own and n not in callback and
