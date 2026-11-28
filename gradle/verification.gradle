@@ -110,8 +110,12 @@ tasks.register('verifyModJar') {
             }
             jar.entries().each { entry ->
                 if (entry.name.endsWith('.class')) {
-                    require(readClass(jar.getInputStream(entry).bytes).version <= Opcodes.V17,
-                            "Class requires a newer runtime than Java 17: ${entry.name}")
+                    def version = readClass(jar.getInputStream(entry).bytes).version
+                    def major = version & 0xffff
+                    def minor = (version >>> 16) & 0xffff
+                    require(major >= 45 && major <= (Opcodes.V17 & 0xffff) &&
+                            (minor == 0 || (major == 45 && minor <= 3)),
+                            "Unsupported class version or preview bytecode: ${entry.name}")
                 }
             }
             mixinClassPaths.each { mixinClassPath ->
