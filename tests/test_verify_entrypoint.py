@@ -4,6 +4,7 @@ import io
 import os
 import json
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -22,7 +23,7 @@ import hierarchy_entrypoint_fixtures as hierarchy_fixtures
 class OfficialEntrypointFixtures(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.javac = shutil.which('javac')
+        cls.javac = java_toolchain.which('javac')
         if not cls.javac:
             raise unittest.SkipTest('javac is required for packaged verifier fixtures')
         cls.temp = tempfile.TemporaryDirectory()
@@ -114,7 +115,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                                   'new PlatformCaller().invoke(new net.minecraft.client.renderer.entity.layers.ItemInHandLayer()); } }')
                 subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
                                check=True, capture_output=True)
-                subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                subprocess.run([java_toolchain.which('java'), '-cp', str(out)+os.pathsep+str(support),
                                 'fixture.PlatformCaller'], check=True, capture_output=True)
             elif candidate_case:
                 nest = root/'Nest.java'
@@ -160,7 +161,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                                   'new GameCaller().invoke(new net.minecraft.client.renderer.entity.layers.ItemInHandLayer()); } }')
                 subprocess.run([self.javac, '--release', '8', '-classpath', str(support), '-d', str(out), str(caller)],
                                check=True, capture_output=True)
-                subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                subprocess.run([java_toolchain.which('java'), '-cp', str(out)+os.pathsep+str(support),
                                 'fixture.GameCaller'], check=True, capture_output=True)
                 if game_inherited in ('removed', 'static', 'private', 'field-removed', 'field-static', 'field-private'):
                     method = {'removed':'', 'static':'public static void run() {}',
@@ -171,7 +172,7 @@ class OfficialEntrypointFixtures(unittest.TestCase):
                     api.write_text('package org.joml; public class Api { '+field+method+' }')
                     subprocess.run([self.javac, '--release', '8', '-d', str(support), str(api)],
                                    check=True, capture_output=True)
-                    result = subprocess.run([shutil.which('java'), '-cp', str(out)+os.pathsep+str(support),
+                    result = subprocess.run([java_toolchain.which('java'), '-cp', str(out)+os.pathsep+str(support),
                                              'fixture.GameCaller'], capture_output=True, text=True)
                     expected = ('NoSuchMethodError' if game_inherited == 'removed' else
                                 'NoSuchFieldError' if game_inherited == 'field-removed' else
