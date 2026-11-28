@@ -162,10 +162,10 @@ def verify(mod_path, versions=None, clients=None):
         config = json.loads(mod.read('thirdpersonreadablemaps.mixins.json'))
         require(config['required'] is True and config['injectors']['defaultRequire'] == 1, 'Mixins must be required')
         require(config['client'] == ['ArmedEntityRenderStateMixin', 'ReadableMapLayerMixin'], 'unexpected Mixins')
+        require(config.get('mixins', []) == [], 'unsupported common Mixin registration')
         prefix = config['package'].replace('.', '/') + '/'
-        raw_classes = [mod.read(path) for path in mod.namelist() if path.endswith('.class')]
+        raw_classes, instruction_classes = game_linkage.read_candidate_classes(mod)
         mod_classes = {node['name']: node for node in (read_class(raw) for raw in raw_classes)}
-        instruction_classes = {node['name']: node for node in (jvm_linkage.parse(raw) for raw in raw_classes)}
         injections = []
         mixin_targets = {}
         for mixin_name in config['client']:
