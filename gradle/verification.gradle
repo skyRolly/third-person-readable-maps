@@ -96,6 +96,7 @@ tasks.register('verifyModJar') {
             def config = readJson(metadata.mixins[0])
             require(config.required && config.compatibilityLevel == 'JAVA_25' && config.injectors.defaultRequire == 1, 'Mixin must be required on Java 25')
             require(config.package == 'tech.rolly.thirdpersonreadablemaps.mixin' && config.client == ['ReadableMapLayerMixin'], 'Incorrect client Mixin registration')
+            require(!config.containsKey('mixins') || config.mixins == [], 'Unsupported common Mixin registration')
             require(jar.manifest.mainAttributes.getValue('Fabric-Mapping-Namespace') == 'official', 'Expected an official-namespace distributable JAR')
             require(jar.manifest.mainAttributes.getValue('Fabric-Minecraft-Version') == minecraftVersion, 'Wrong Minecraft build target')
             ['tech/rolly/thirdpersonreadablemaps/ReadableMapSurface.class', mixinClassPath].each { path ->

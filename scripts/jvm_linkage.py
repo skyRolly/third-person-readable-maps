@@ -14,6 +14,33 @@ def require(ok, message):
         raise ValueError(message)
 
 
+def decode_modified_utf8(data):
+    """Decode the JVM's UTF-16-based modified UTF-8 without replacement."""
+    units = bytearray()
+    pos = 0
+    while pos < len(data):
+        first = data[pos]
+        pos += 1
+        if 1 <= first <= 0x7f:
+            value = first
+        elif 0xc0 <= first <= 0xdf:
+            require(pos < len(data) and data[pos] & 0xc0 == 0x80, 'invalid modified UTF-8')
+            second = data[pos]
+            pos += 1
+            value = ((first & 0x1f) << 6) | (second & 0x3f)
+            require(value >= 0x80 or (first == 0xc0 and second == 0x80), 'invalid modified UTF-8')
+        elif 0xe0 <= first <= 0xef:
+            require(pos + 1 < len(data) and data[pos] & 0xc0 == 0x80 and
+                    data[pos + 1] & 0xc0 == 0x80, 'invalid modified UTF-8')
+            value = ((first & 0x0f) << 12) | ((data[pos] & 0x3f) << 6) | (data[pos + 1] & 0x3f)
+            pos += 2
+            require(value >= 0x800, 'invalid modified UTF-8')
+        else:
+            raise ValueError('invalid modified UTF-8')
+        units.extend((value >> 8, value & 0xff))
+    return bytes(units).decode('utf-16-be', errors='surrogatepass')
+
+
 class Reader:
     def __init__(self, data):
         self.buf = io.BytesIO(data)
@@ -71,6 +98,32 @@ def instructions(code):
     require(pc == len(code), 'invalid bytecode length')
 
 
+def interface_argument_slots(descriptor):
+    """Count invokeinterface argument slots, including the receiver."""
+    require(descriptor.startswith('('), 'invalid method descriptor: ' + descriptor)
+    pos, slots = 1, 1
+    while True:
+        require(pos < len(descriptor), 'invalid method descriptor: ' + descriptor)
+        if descriptor[pos] == ')':
+            require(pos + 1 < len(descriptor) and slots <= 255, 'invalid method descriptor: ' + descriptor)
+            return slots
+        array = False
+        start = pos
+        while pos < len(descriptor) and descriptor[pos] == '[':
+            array = True
+            pos += 1
+        require(pos < len(descriptor) and pos - start <= 255, 'invalid method descriptor: ' + descriptor)
+        kind = descriptor[pos]
+        if kind == 'L':
+            end = descriptor.find(';', pos + 1)
+            require(end > pos + 1, 'invalid method descriptor: ' + descriptor)
+            pos = end + 1
+        else:
+            require(kind in 'BCDFIJSZ', 'invalid method descriptor: ' + descriptor)
+            pos += 1
+        slots += 2 if not array and kind in 'JD' else 1
+
+
 def parse(data, include_code=True):
     r = Reader(data)
     require(r.u4() == 0xCAFEBABE, 'invalid class file')
@@ -79,7 +132,7 @@ def parse(data, include_code=True):
     i = 1
     while i < len(cp):
         tag = r.u1()
-        if tag == 1: cp[i] = (tag, r.read(r.u2()).decode('utf-8', errors='replace'))
+        if tag == 1: cp[i] = (tag, decode_modified_utf8(r.read(r.u2())))
         elif tag in (3, 4): cp[i] = (tag, r.u4())
         elif tag in (5, 6): cp[i] = (tag, r.read(8)); i += 1
         elif tag in (7, 8, 16, 19, 20): cp[i] = (tag, r.u2())
@@ -222,14 +275,22 @@ def parse(data, include_code=True):
                 method_info['return_opcodes'].append(op)
             if op in MEMBER_OPS:
                 if op == 185:
-                    require(operands[2] > 0 and operands[3] == 0, 'invalid invokeinterface operands')
+                    index = struct.unpack_from('>H', operands)[0]
+                    _, _, nt = entry(index, 11)
+                    _, _, descriptor = entry(nt, 12)
+                    require(operands[2] == interface_argument_slots(text(descriptor)) and operands[3] == 0,
+                            'invalid invokeinterface operands')
                 member(struct.unpack_from('>H', operands)[0], MEMBER_OPS[op], 'instruction', method_info)
             elif op in CLASS_OPS:
-                class_uses.append({'name': class_name(struct.unpack_from('>H', operands)[0]),
-                                   'operation': CLASS_OPS[op]})
+                name = class_name(struct.unpack_from('>H', operands)[0])
+                require(name is not None, 'invalid class operand')
+                require(op != 187 or not name.startswith('['), 'new cannot instantiate an array class: ' + name)
+                class_uses.append({'name': name, 'operation': CLASS_OPS[op]})
             elif op == 186:
                 require(operands[2:] == b'\0\0', 'invalid invokedynamic operands')
-                constant(struct.unpack_from('>H', operands)[0], method_info, set())
+                index = struct.unpack_from('>H', operands)[0]
+                entry(index, 18)
+                constant(index, method_info, set())
             elif op in (18, 19, 20):
                 index = operands[0] if op == 18 else struct.unpack_from('>H', operands)[0]
                 constant(index, method_info, set())
@@ -266,6 +327,8 @@ def same_runtime_package(first, second, lookup):
 
 
 def validate_class_use(use, caller, lookup):
+    require(use['operation'] != 'new' or not use['name'].startswith('['),
+            'new cannot instantiate an array class: ' + use['name'])
     name = class_use_name(use['name'])
     if name is None: return
     node = lookup(name)
@@ -461,7 +524,8 @@ def validate_use(use, caller, lookup):
         require(op != 'invokeinterface' or interface, 'invokeinterface requires interface: ' + symbol)
         require(op != 'invokevirtual' or not interface, 'invokevirtual requires class: ' + symbol)
         require(name != '<clinit>', 'class initializer is not callable: ' + symbol)
-        require((name == '<init>') == (op == 'newinvokespecial' or (op == 'invokespecial' and name == '<init>')),
+        require((name == '<init>') == (op == 'newinvokespecial' or
+                (op == 'invokespecial' and name == '<init>' and use.get('source_kind') == 'instruction')),
                 'invalid constructor invocation: ' + symbol)
         if op == 'newinvokespecial':
             require(not (node['access'] & (0x0200 | 0x0400)),
