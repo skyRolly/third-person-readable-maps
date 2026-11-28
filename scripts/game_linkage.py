@@ -394,6 +394,8 @@ def verify_declared_libraries(metadata, mod_nodes, mixin_targets, fetch_checked,
             if component is not None:
                 jvm.require(component and not any(c in component for c in '.;['),
                             f'{version}: invalid array class: {owner}')
+                jvm.require(component not in mixin_targets,
+                            f'{version}: unsupported array component referencing a Mixin: {component}')
                 names.add(component)
                 if not component.startswith(platform):
                     jvm.require(class_lookup is not None, f'{version}: array component resolver required')
