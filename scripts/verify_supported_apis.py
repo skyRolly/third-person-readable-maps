@@ -61,7 +61,7 @@ def read_class(data):
         elif tag in (3, 4):
             cp[i] = (tag, num('>I'))
         elif tag in (5, 6):
-            source.read(8); cp[i] = (tag,); i += 1
+            cp[i] = (tag, num('>Q')); i += 1
         elif tag in (7, 8, 16, 19, 20):
             cp[i] = (tag, num('>H'))
         elif tag in (9, 10, 11, 12, 17, 18):
