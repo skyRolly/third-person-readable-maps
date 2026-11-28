@@ -51,6 +51,7 @@ tasks.register('verifyMixinTarget') {
             require(handlers.size() == 1, "Expected exactly one injection handler in ${mixinClassPath}")
             def handler = handlers[0]
             def inject = annotationValues(annotations(handler).find { it.desc == 'Lorg/spongepowered/asm/mixin/injection/Inject;' })
+            require(Type.getReturnType(handler.desc) == Type.VOID_TYPE, 'Mixin injection handler must return void')
             def arguments = Type.getArgumentTypes(handler.desc).toList()
             require(arguments.last().descriptor == 'Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;', 'Unexpected Mixin callback type')
             def descriptor = Type.getMethodDescriptor(Type.VOID_TYPE, arguments.dropRight(1) as Type[])

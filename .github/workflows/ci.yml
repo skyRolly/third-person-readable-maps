@@ -61,6 +61,9 @@ jobs:
           grep -F 'Unsupported Minecraft build target: 1.19.4; this port targets 1.19.3' "$RUNNER_TEMP/unsupported-target.log"
       - name: Test static verification
         run: python -m unittest discover -s tests
+      - name: Reject non-void Mixin injection handlers
+        if: runner.os == 'Linux'
+        run: python tests/verify_mixin_handler_return.py
       - name: Reject unverified common Mixin registrations
         if: runner.os == 'Linux'
         run: python tests/verify_mixin_registration.py
