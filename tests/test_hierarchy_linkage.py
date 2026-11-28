@@ -2,6 +2,7 @@
 from pathlib import Path
 import io
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -122,7 +123,7 @@ class HierarchyModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'missing Mixin target'): validate()
 
     def test_compiled_private_helpers_and_cross_mixin_restrictions(self):
-        javac, java = shutil.which('javac'), shutil.which('java')
+        javac, java = java_toolchain.which('javac'), java_toolchain.which('java')
         if not javac or not java: self.skipTest('JDK required')
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); src = root/'src'; out = root/'classes'; out.mkdir()
