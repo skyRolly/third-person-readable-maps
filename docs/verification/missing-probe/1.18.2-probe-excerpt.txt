@@ -1,0 +1,21 @@
+[10:34:31] [main/INFO]: Loading Minecraft 1.18.2 with Fabric Loader 0.20.1
+	- tprm_missing_data_probe 1.0.0
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=1
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=1
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=2
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=2
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=3
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=3
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=4
+[10:35:31] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=4
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=5
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=5
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=6
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=6
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=7
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=7
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE forced_null=8
+[10:35:32] [Render thread/INFO]: [STDOUT]: TPRM_MISSING_DATA_PROBE render_completed=8
+[10:35:42] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:35:42] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:35:42] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
