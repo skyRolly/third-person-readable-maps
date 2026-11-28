@@ -54,14 +54,22 @@ class VerifierFollowupEvidenceTests(unittest.TestCase):
         self.assertIn('MULTIPLAYER CAPTURE COMPLETE', runner)
         self.assertIn('KeyboardInterrupt', (directory / 'port-parser-attempt/runner.log').read_text())
 
-    def test_candidate_monitoring_pins_advanced_heads(self):
+    def test_candidate_monitoring_pins_credential_isolation_heads(self):
         refs = json.loads((ROOT / 'docs/version-consistency-1.0.0/current-heads.json').read_text())['groups']
         evidence = json.loads((ROOT / 'docs/legacy-candidate-evidence.json').read_text())
+        transition = json.loads((ROOT / 'docs/candidate-credential-isolation-transition.json').read_text())
+        self.assertEqual(transition['schema'], 1)
+        changes = transition['groups']
         rows = candidate_audit.candidate_matrix(evidence)['include']
         self.assertEqual(len(rows), 10)
+        self.assertEqual(set(changes), {row['group'] for row in rows})
         for row in rows:
-            self.assertEqual(row['sha'], refs[row['group']]['new_head'])
-            self.assertEqual(row['branch'], refs[row['group']]['branch'])
+            group = row['group']
+            self.assertEqual(changes[group]['previous_head'], refs[group]['new_head'])
+            self.assertEqual(row['sha'], changes[group]['candidate_head'])
+            self.assertNotEqual(row['sha'], changes[group]['previous_head'])
+            self.assertEqual(row['branch'], changes[group]['branch'])
+            self.assertEqual(row['branch'], refs[group]['branch'])
 
     def test_adjacent_version_negative_controls_match_new_sources(self):
         directory = ROOT / 'docs/negative-verifier-followup-2026-11-13'
