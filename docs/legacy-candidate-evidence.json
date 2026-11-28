@@ -8,7 +8,7 @@
     "1.21.9-1.21.10": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "24e4acd8e02d1a30c3d18860f2d72fa9b7c77f81",
-      "candidate_head": "8455a49c61c2c4359732e753c9efed264dcd2d4d",
+      "candidate_head": "975c0be768f3f7c31d9e1ad65e0e666ddf65d241",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/13",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.9-1.21.10.jar",
       "sha256": "c1c1724e9aa3ae1f0c9dc976a364a3ae98e22f2e49e9bd5a1ea8948809e16f1a",
@@ -45,7 +45,7 @@
     "1.21.4-1.21.8": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "55df5055388918d5df96a3f61f6c9dc999042271",
-      "candidate_head": "fa65f90f7699da4803ad39b8468cf04eb21e6222",
+      "candidate_head": "450f0e2d73befec08a2eee8e9e5f6337114d89b1",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/14",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.4-1.21.8.jar",
       "sha256": "6b7fbc8140fcc2fe8e510c82ce01a68a61dff5ad18a6a0dc437e1cbb3189d02e",
@@ -103,7 +103,7 @@
     "1.21.2-1.21.3": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "78ef3c311f2db755c87907af6d698ed4527bd2de",
-      "candidate_head": "ce2db6e26fe7fb3eed11c373af59ceb2b45fe78a",
+      "candidate_head": "a3a211a526aa76ff1edcd74d1f82052df0c606ac",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/16",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21.2-1.21.3.jar",
       "sha256": "1b16c66cb32a7684645d5c28e423fc76244d47326ba3e4cce839ead8e01b2e75",
@@ -140,7 +140,7 @@
     "1.21-1.21.1": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "7e6b43e91e9eb32788f288d6aa64aaa72ee3f514",
-      "candidate_head": "a20cc3e4d806b6bd7fa8503bc315419afa6ed9fd",
+      "candidate_head": "c6e1461a0bbf58d6ef9198758b47824e8c2ac0b5",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/17",
       "artifact": "third-person-readable-maps-1.0.0-mc1.21-1.21.1.jar",
       "sha256": "89fb3722f5136d73bc196d4edb4a20da95d1902edd4e7cef2ee39f9743eb892c",
@@ -177,7 +177,7 @@
     "1.20.5-1.20.6": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "c0efb70ad1e01298c96441d18bc68f0b2674d6d6",
-      "candidate_head": "f9814be14341fe1eb23781e96d94c77f7500d313",
+      "candidate_head": "4bed57813305ce9f1271a4fa66af52a3c557732a",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/18",
       "artifact": "third-person-readable-maps-1.0.0-mc1.20.5-1.20.6.jar",
       "sha256": "d0d37fb74198d8b930597eb4c615c6e09d43034ae7e1bfe34b6b12c4583c190a",
@@ -214,7 +214,7 @@
     "1.19.4-1.20.4": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "991fc1d6d21819f642c9963f91570fb10ab40f92",
-      "candidate_head": "92799fe7293a0e0c760fa6d05c65ad1f15a208d2",
+      "candidate_head": "8bf79a31ec145c38536857533c9f1fe573dddcb2",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/19",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.4-1.20.4.jar",
       "sha256": "c2fc1583487f5e1d4e6e82494582951aee055e45664583fbe1c6c88605601a2c",
@@ -279,7 +279,7 @@
     "1.17-1.19.2": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "d5792f245f133cdf4873b1e6ce0078c77d20a3d3",
-      "candidate_head": "7bbccdae251b6ca88df05e04625a3730dbe1e176",
+      "candidate_head": "ba00a38ec94c164412a31adaf4ff9d7efae39b0c",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/20",
       "artifact": "third-person-readable-maps-1.0.0-mc1.17-1.19.2.jar",
       "sha256": "fe12ac4576e7d6f55389192b8094698dce33467bf8fb9336a5cb06a72478fcb5",
@@ -358,7 +358,7 @@
     "1.15-1.16.5": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "24cd97031ac91ab3595c50add83c2208f5230fbc",
-      "candidate_head": "695f21619848aa38509bd8e3da1264c1c2bcc958",
+      "candidate_head": "15dca3f00044406860e5ad268e38a0e3ee7d74db",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/21",
       "artifact": "third-person-readable-maps-1.0.0-mc1.15-1.16.5.jar",
       "sha256": "11d981b84902ce7ecea3cbf2e97c2b73af13ad68b944892e9a38904c3cdde79c",
@@ -444,7 +444,7 @@
     "1.19.3": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
-      "candidate_head": "76b712fdf172f2af6eff00247dbab9c2e7ced4b7",
+      "candidate_head": "60c146f58b2a0a8707351191bcbe06ada101b0ce",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
       "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
@@ -474,7 +474,7 @@
     "1.14-1.14.4": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "f2b45ae6242ac44d952f7b037e0200f4a85ad128",
-      "candidate_head": "a2bdf9852af17b312fb7d745d536321a66078efb",
+      "candidate_head": "2786f251bba91114b7b64614a46bdec219a2dcb6",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/23",
       "artifact": "third-person-readable-maps-1.0.0-mc1.14-1.14.4.jar",
       "sha256": "e9ee5d9e7cd0c3e2bbbab8f328bf824e10388fa7049902e165e0c7684b39972b",

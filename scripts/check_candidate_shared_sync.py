@@ -13,7 +13,9 @@ import check_shared_verifier_sync as shared
 ROOT = Path(__file__).resolve().parents[1]
 CANDIDATE_ONLY = (shared.ADAPTER, 'tests/test_invokedynamic_cp.py',
                   'tests/test_annotation_constants.py', 'tests/test_windows_preflight.py',
-                  'tests/test_modified_utf8.py')
+                  'tests/test_modified_utf8.py', 'tests/test_unused_mixin_collision.py',
+                  'tests/test_array_clone_linkage.py', 'tests/java_toolchain.py',
+                  'tests/test_java_toolchain.py')
 
 
 def compare(candidates, maintenance, read_file):
