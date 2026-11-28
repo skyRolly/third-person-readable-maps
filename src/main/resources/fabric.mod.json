@@ -14,7 +14,7 @@
   "mixins": ["thirdpersonreadablemaps.mixins.json"],
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "minecraft": "${minecraft_version}",
-    "java": ">=21"
+    "minecraft": ["1.19.4", "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"],
+    "java": ">=17"
   }
 }
