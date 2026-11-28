@@ -55,7 +55,10 @@ def parse_class(data):
     while i < len(pool):
         tag = number('>B')
         if tag == 1:
-            pool[i] = (tag, source.read(number('>H')).decode('utf-8', errors='replace'))
+            length = number('>H')
+            raw = source.read(length)
+            require(len(raw) == length, 'truncated class file')
+            pool[i] = (tag, jvm_linkage.decode_modified_utf8(raw))
         elif tag in (3, 4):
             source.read(4); pool[i] = (tag,)
         elif tag in (5, 6):
