@@ -14,6 +14,33 @@ def require(ok, message):
         raise ValueError(message)
 
 
+def decode_modified_utf8(data):
+    """Decode the JVM's UTF-16-based modified UTF-8 without replacement."""
+    units = bytearray()
+    pos = 0
+    while pos < len(data):
+        first = data[pos]
+        pos += 1
+        if 1 <= first <= 0x7f:
+            value = first
+        elif 0xc0 <= first <= 0xdf:
+            require(pos < len(data) and data[pos] & 0xc0 == 0x80, 'invalid modified UTF-8')
+            second = data[pos]
+            pos += 1
+            value = ((first & 0x1f) << 6) | (second & 0x3f)
+            require(value >= 0x80 or (first == 0xc0 and second == 0x80), 'invalid modified UTF-8')
+        elif 0xe0 <= first <= 0xef:
+            require(pos + 1 < len(data) and data[pos] & 0xc0 == 0x80 and
+                    data[pos + 1] & 0xc0 == 0x80, 'invalid modified UTF-8')
+            value = ((first & 0x0f) << 12) | ((data[pos] & 0x3f) << 6) | (data[pos + 1] & 0x3f)
+            pos += 2
+            require(value >= 0x800, 'invalid modified UTF-8')
+        else:
+            raise ValueError('invalid modified UTF-8')
+        units.extend((value >> 8, value & 0xff))
+    return bytes(units).decode('utf-16-be', errors='surrogatepass')
+
+
 class Reader:
     def __init__(self, data):
         self.buf = io.BytesIO(data)
@@ -79,7 +106,7 @@ def parse(data, include_code=True):
     i = 1
     while i < len(cp):
         tag = r.u1()
-        if tag == 1: cp[i] = (tag, r.read(r.u2()).decode('utf-8', errors='replace'))
+        if tag == 1: cp[i] = (tag, decode_modified_utf8(r.read(r.u2())))
         elif tag in (3, 4): cp[i] = (tag, r.u4())
         elif tag in (5, 6): cp[i] = (tag, r.read(8)); i += 1
         elif tag in (7, 8, 16, 19, 20): cp[i] = (tag, r.u2())
