@@ -7,8 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
     'tests/test_java_toolchain.py': '518ac476311fe8f2b4dcf875fe4fa0cc2f5cb69181bfcd9a48ef2f833e9c5989',
     'tests/java_toolchain.py': 'd977d0dddb52117746305cdbad0a2cbaf79bf65ff4c2d1ecc2882ebf2a070405',
-    'scripts/jvm_linkage.py': '058655e3e78516e60b1900e81dd62d26feb5ae69503ab4c2553f1d908d3d7c35',
-    'scripts/game_linkage.py': 'a738cd05854753b16e385d6bcd203d7003030b509ded865f0328d100f199e92c',
+    'scripts/jvm_linkage.py': '91bc9d67ba51f8013707e2bbb8d9761d44739932242746065580b1eff20fd281',
+    'scripts/game_linkage.py': '508a530ed6655db5531ef3c724409a04e06d7c0a049ba3647cee28ab4f003856',
     'tests/test_jvm_linkage.py': '650d1560b6e37a857e66bbbb08aaae42f7e1e83444492ba31eeedcb5114e60dc',
     'tests/test_hierarchy_linkage.py': '3b8388aaef57bf2ac0b9ee3115ebece9a04662d9e37baed321b375c993f731b8',
     'tests/hierarchy_entrypoint_fixtures.py': '996360319c65aa6c6be74036e07a7ba2b4a18a9752da0ce6205cd99f97f6e216',
