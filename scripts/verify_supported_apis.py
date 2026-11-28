@@ -204,11 +204,6 @@ def verify(mod_path, versions=None, clients=None):
             return re.sub(r'L([^;]+);', convert, desc)
         fetch_library = lambda artifact: checked(get(artifact['url']), artifact['sha1'], artifact['size'])
         runtime_libraries = game_linkage.RuntimeLibraries(metadata, fetch_library, version)
-        libraries = [x for x in metadata['libraries'] if x['name'].startswith('org.joml:joml:')]
-        require(len(libraries) == 1 and libraries[0]['name'] == 'org.joml:joml:1.10.5',
-                f'{version}: unexpected JOML version')
-        artifact = libraries[0]['downloads']['artifact']
-        checked(get(artifact['url']), artifact['sha1'], artifact['size'])
         joml_refs = {ref for node in mod_classes.values() for ref in node['refs'] if ref[1].startswith('org/joml/')}
         with ZipFile(io.BytesIO(data)) as game:
             class_lookup = game_linkage.make_class_lookup(instruction_classes, game, forward, reverse,
@@ -261,6 +256,11 @@ def verify(mod_path, versions=None, clients=None):
                 library_coverage.append((platform, coverage))
         print(f'{version}: dependency library checks: {library_coverage}')
         print(f'{version}: {instruction_count} JVM game member instructions verified')
+        libraries = [x for x in metadata['libraries'] if x['name'].startswith('org.joml:joml:')]
+        require(len(libraries) == 1 and libraries[0]['name'] == 'org.joml:joml:1.10.5',
+                f'{version}: unexpected JOML version')
+        artifact = libraries[0]['downloads']['artifact']
+        checked(get(artifact['url']), artifact['sha1'], artifact['size'])
         print(f'{version}: {len(injections)} Mixin descriptors, {len(classes)} classes, {len(refs)} game and {len(joml_refs)} JOML references verified')
 
 
