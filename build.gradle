@@ -2,6 +2,10 @@ plugins {
     id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 }
 
+if (project.minecraft_version != '1.19.3') {
+    throw new GradleException("Unsupported Minecraft build target: ${project.minecraft_version}; this port targets 1.19.3")
+}
+
 version = project.mod_version
 group = project.maven_group
 
@@ -30,18 +34,18 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 21
+    options.release = 17
     options.encoding = 'UTF-8'
     options.compilerArgs.add('-Xlint:unchecked')
 }
 
 java {
-    // Compile with the same JDK as Gradle, but enforce Java 21's APIs and bytecode above.
+    // Compile with the same JDK as Gradle, but enforce Java 17's APIs and bytecode above.
     toolchain.languageVersion = JavaLanguageVersion.of(25)
 }
 
 tasks.named('remapJar') {
-    archiveClassifier = "mc${project.minecraft_version}"
+    archiveClassifier = "mc${project.minecraft_group}"
 }
 
 jar {

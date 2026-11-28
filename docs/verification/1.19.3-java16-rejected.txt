@@ -1,0 +1,19 @@
+2026-11-05 17:03:06,401 main ERROR Error processing element Queue ([Appenders: null]): CLASS_NOT_FOUND
+2026-11-05 17:03:06,858 main ERROR Unable to locate appender "ServerGuiConsole" for logger config "root"
+[17:03:07] [main/INFO]: Loading Minecraft 1.19.3 with Fabric Loader 0.20.1
+[17:03:07] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[17:03:08] [main/WARN]: Mod resolution failed
+[17:03:08] [main/INFO]: Immediate reason: [HARD_DEP_INCOMPATIBLE_PRESELECTED thirdpersonreadablemaps 0.0.2 {depends java @ [>=17]}, ROOT_FORCELOAD_SINGLE thirdpersonreadablemaps 0.0.2]
+[17:03:08] [main/INFO]: Reason: [HARD_DEP thirdpersonreadablemaps 0.0.2 {depends java @ [>=17]}]
+[17:03:08] [main/INFO]: Fix: add [], remove [], replace [[java 16] -> add:java 17 ([[17,∞)])]
+[17:03:08] [main/ERROR]: Incompatible mods found!
+net.fabricmc.loader.impl.FormattedException: Some of your mods are incompatible with the game or each other!
+A potential solution has been determined, this may resolve your problem:
+	 - Replace 'OpenJDK 64-Bit Server VM' (java) 16 with version 17 or later.
+More details:
+	 - Mod 'Third Person Readable Maps' (thirdpersonreadablemaps) 0.0.2 requires version 17 or later of 'OpenJDK 64-Bit Server VM' (java), but only the wrong version is present: 16!
+	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:51) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:207) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:142) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:66) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) ~[fabric-loader-0.20.1.jar:?]
