@@ -1,0 +1,2 @@
+[10:12:53] [Server thread/INFO]: [MapSmokeTest: Successfully filled 326 blocks]
+RuntimeError: Unconfirmed command /fill -5 80 -73 15 80 -53 minecraft:stone

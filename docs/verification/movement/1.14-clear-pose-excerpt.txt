@@ -1,0 +1,18 @@
+[10:22:07] [main/INFO]: Loading Minecraft 1.14 with Fabric Loader 0.20.1
+	- thirdpersonreadablemaps 0.0.2
+[10:22:52] [Server thread/INFO]: MapSmokeTest joined the game
+[10:22:58] [Server thread/INFO]: [MapSmokeTest: Teleported MapSmokeTest to 5.5, 81.0, -62.5]
+[10:22:58] [main/INFO]: [CHAT] Teleported MapSmokeTest to 5.5, 81.0, -62.5
+[10:23:01] [Server thread/INFO]: [MapSmokeTest: Set the time to 1000]
+[10:23:01] [main/INFO]: [CHAT] Set the time to 1000
+[10:23:10] [Server thread/INFO]: [MapSmokeTest: Set the time to 13000]
+[10:23:11] [main/INFO]: [CHAT] Set the time to 13000
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:23:17] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
