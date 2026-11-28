@@ -26,11 +26,14 @@ def run():
         older = (root / 'Fixture.class').read_bytes()
         if older[4:8] != b'\x00\x00\x00\x34':
             raise RuntimeError('fixture is not ordinary Java 8 bytecode')
-        preview = older[:4] + b'\xff\xff\x00\x41' + older[8:]
+        # Preview Java 17 must fail independently of the upper major limit.
+        preview = older[:4] + b'\xff\xff\x00\x3d' + older[8:]
+        newer = older[:4] + b'\x00\x00\x00\x41' + older[8:]
         backup = root / 'original.jar'
         shutil.copyfile(jar, backup)
         try:
-            for label, payload, should_pass in (('older', older, True), ('preview', preview, False)):
+            for label, payload, should_pass in (('older', older, True), ('preview', preview, False),
+                                                ('newer', newer, False)):
                 shutil.copyfile(backup, jar)
                 with ZipFile(jar, 'a') as archive:
                     archive.writestr('Fixture.class', payload)
