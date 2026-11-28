@@ -2,6 +2,7 @@
 import io
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -17,7 +18,7 @@ import jvm_linkage
 
 class UnusedMixinCollisionTests(unittest.TestCase):
     def test_unused_helper_collision_and_noncolliding_control(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:

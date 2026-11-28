@@ -1,6 +1,7 @@
 """An invokedynamic instruction must point to an InvokeDynamic constant."""
 from pathlib import Path
 import shutil
+import java_toolchain
 import struct
 import subprocess
 import sys
@@ -40,7 +41,7 @@ def constant_indices(data):
 
 class InvokeDynamicConstantTests(unittest.TestCase):
     def test_valid_lambda_and_wrong_constant_tag(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:
