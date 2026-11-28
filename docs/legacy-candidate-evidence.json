@@ -444,7 +444,7 @@
     "1.19.3": {
       "status": "CANDIDATE; CURRENT-HEAD VALIDATION PENDING",
       "source_commit": "2cb3f385443e6db375eb46077d562421ed7aa4cc",
-      "candidate_head": "25c3b1055328061dd2ea99ebe4c226f8e2888dc7",
+      "candidate_head": "a9140ac29c456067deae81ef6f85c0859148d344",
       "pull_request": "https://github.com/skyRolly/third-person-readable-maps/pull/22",
       "artifact": "third-person-readable-maps-1.0.0-mc1.19.3.jar",
       "sha256": "4282166c4250d35db2cc794de986ae4c3de9438e8d7932991778454bdefff1c1",
