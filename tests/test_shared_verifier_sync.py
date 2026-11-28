@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = {
     'tests/test_java_toolchain.py': '518ac476311fe8f2b4dcf875fe4fa0cc2f5cb69181bfcd9a48ef2f833e9c5989',
     'tests/java_toolchain.py': 'd977d0dddb52117746305cdbad0a2cbaf79bf65ff4c2d1ecc2882ebf2a070405',
-    'scripts/jvm_linkage.py': '91bc9d67ba51f8013707e2bbb8d9761d44739932242746065580b1eff20fd281',
+    'scripts/jvm_linkage.py': '843aa0aa5f90e8f9746085991de57f4f3a24874e18d15322f4b2fcefa8f18b1a',
     'scripts/game_linkage.py': 'a785fe6581509be31966bbb1afc688ed9ffca044963b7ab7def8479401f398ab',
     'tests/test_jvm_linkage.py': '650d1560b6e37a857e66bbbb08aaae42f7e1e83444492ba31eeedcb5114e60dc',
     'tests/test_hierarchy_linkage.py': '3b8388aaef57bf2ac0b9ee3115ebece9a04662d9e37baed321b375c993f731b8',

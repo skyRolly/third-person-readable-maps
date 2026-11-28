@@ -463,7 +463,7 @@ def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
     if not node: return None
     found = own(owner)
     if found or name in ('<init>', '<clinit>'): return found
-    interfaces, current, visited = [], node, set()
+    interfaces, current, visited, unresolved_superclass = [], node, set(), None
     # Class methods search each superclass before inherited interface methods.
     while current:
         interfaces.extend(current['interfaces'])
@@ -472,6 +472,8 @@ def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
         visited.add(parent)
         parent_node = hierarchy_node(parent)
         if parent_node is None:
+            if parent != 'java/lang/Object':
+                unresolved_superclass = parent
             break
         found = own(parent)
         if found: return found
@@ -487,6 +489,8 @@ def resolve_member(owner, kind, name, descriptor, lookup, seen=None):
         if found and not (found[2]['access'] & (8 | 2)):
             candidates.append(found)
         interfaces.extend(item['interfaces'])
+    require(not candidates or unresolved_superclass is None,
+            'unresolved platform superclass can shadow interface member: ' + str(unresolved_superclass))
     maximal = [c for c in candidates if not any(c[0] != d[0] and is_subclass(d[0], c[0], lookup)
                                                 for d in candidates)]
     concrete = [c for c in maximal if not (c[2]['access'] & 0x0400)]
