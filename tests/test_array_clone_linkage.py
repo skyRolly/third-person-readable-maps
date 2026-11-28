@@ -1,6 +1,7 @@
 """Array clone references are JVM operations, with checked component types."""
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -15,7 +16,7 @@ import jvm_linkage
 
 class ArrayCloneLinkageTests(unittest.TestCase):
     def test_primitive_platform_and_game_arrays_with_negative_controls(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:
