@@ -4,6 +4,25 @@ import re
 import jvm_linkage as jvm
 
 
+def read_candidate_classes(archive):
+    """Read each supported class entry once and bind its path to its identity."""
+    paths, raw_classes, nodes = set(), [], {}
+    for entry in archive.infolist():
+        if not entry.filename.endswith('.class'):
+            continue
+        jvm.require(entry.filename not in paths, 'duplicate candidate class path: ' + entry.filename)
+        paths.add(entry.filename)
+        raw = archive.read(entry)
+        node = jvm.parse(raw)
+        name = node['name']
+        jvm.require(name + '.class' == entry.filename,
+                    'candidate class path mismatch: ' + entry.filename + ' != ' + name + '.class')
+        jvm.require(name not in nodes, 'duplicate candidate class identity: ' + name)
+        raw_classes.append(raw)
+        nodes[name] = node
+    return raw_classes, nodes
+
+
 def validate_mixin_semantics(mod_nodes, mixin_targets):
     prefix = 'Lorg/spongepowered/asm/mixin/'
     allowed_class = {prefix + 'Mixin;'}
