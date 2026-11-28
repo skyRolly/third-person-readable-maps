@@ -1,6 +1,7 @@
 """JVM constant-pool text uses modified UTF-8, including UTF-16 surrogate pairs."""
 from pathlib import Path
 import shutil
+import java_toolchain
 import subprocess
 import sys
 import tempfile
@@ -24,7 +25,7 @@ class ModifiedUtf8Tests(unittest.TestCase):
                 decode(raw)
 
     def test_both_class_readers_preserve_distinct_supplementary_names(self):
-        javac = shutil.which('javac')
+        javac = java_toolchain.which('javac')
         if not javac:
             self.skipTest('javac is required')
         with tempfile.TemporaryDirectory() as temp:
